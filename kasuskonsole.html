@@ -1,0 +1,1070 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kasuskonsole</title>
+<style>
+  :root {
+    color-scheme: dark;
+
+    --bg: #05070d;
+    --bg-glow: #101a2e;
+    --panel: #0d1320;
+    --panel-2: #121b2c;
+    --panel-3: #172238;
+    --text: #f2f6ff;
+    --muted: #94a3ba;
+    --line: #2d3a53;
+    --accent: #7de3ff;
+    --accent-2: #f6c15c;
+    --good: #58e39a;
+    --bad: #ff6d7a;
+    --warn: #f6c15c;
+    --shadow: rgba(0, 0, 0, .46);
+
+    --radius-xl: 30px;
+    --radius-lg: 20px;
+    --radius-md: 14px;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    min-height: 100%;
+  }
+
+  body {
+    margin: 0;
+    padding: 18px;
+    display: grid;
+    place-items: center;
+    font-family:
+      Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", sans-serif;
+    color: var(--text);
+    background:
+      radial-gradient(circle at 50% -10%, rgba(125, 227, 255, .13) 0, transparent 36%),
+      radial-gradient(circle at 100% 20%, rgba(246, 193, 92, .09) 0, transparent 28%),
+      linear-gradient(180deg, var(--bg-glow) 0%, var(--bg) 64%);
+  }
+
+  main {
+    position: relative;
+    width: min(620px, 100%);
+    min-height: 720px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: 18px;
+    overflow: hidden;
+    background:
+      linear-gradient(135deg, rgba(125, 227, 255, .07), transparent 28%),
+      linear-gradient(180deg, rgba(255, 255, 255, .035), transparent 24%),
+      var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-xl);
+    padding: 28px;
+    box-shadow:
+      0 26px 80px var(--shadow),
+      inset 0 1px 0 rgba(255,255,255,.05);
+  }
+
+  main::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(90deg, transparent 0 8%, rgba(125,227,255,.055) 8% 8.35%, transparent 8.35% 100%),
+      repeating-linear-gradient(180deg, rgba(255,255,255,.018) 0 1px, transparent 1px 9px);
+    mask-image: linear-gradient(180deg, transparent, black 14%, black 84%, transparent);
+  }
+
+  header {
+    position: absolute;
+    top: 18px;
+    left: 22px;
+    right: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    z-index: 2;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: .98rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 900;
+  }
+
+  .menuWrap {
+    position: relative;
+  }
+
+  #menuToggle {
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    border-radius: 16px;
+    border: 1px solid var(--line);
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.045), transparent),
+      var(--panel-2);
+    color: var(--text);
+    font-size: 1.35rem;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+  }
+
+  #menuToggle:focus-visible,
+  #actionBtn:focus-visible,
+  #hintBtn:focus-visible,
+  .menuButton:focus-visible,
+  input:focus-visible,
+  select:focus-visible {
+    outline: 3px solid rgba(125, 227, 255, .38);
+    outline-offset: 3px;
+  }
+
+  #settingsPanel {
+    position: absolute;
+    top: 54px;
+    right: 0;
+    z-index: 10;
+    width: min(330px, calc(100vw - 54px));
+    padding: 14px;
+    display: none;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    background: #0a101c;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 18px 46px var(--shadow);
+  }
+
+  #settingsPanel.open {
+    display: grid;
+  }
+
+  label {
+    display: grid;
+    gap: 7px;
+    color: var(--muted);
+    font-size: .78rem;
+    font-weight: 850;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+  }
+
+  select,
+  .menuButton {
+    width: 100%;
+    color: var(--text);
+    background: #070c15;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 12px 13px;
+    font: inherit;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  .menuButton {
+    cursor: pointer;
+    font-weight: 850;
+  }
+
+  .menuButton.danger {
+    color: var(--bad);
+  }
+
+  .hud {
+    position: absolute;
+    top: 76px;
+    left: 24px;
+    right: 24px;
+    z-index: 1;
+    display: grid;
+    gap: 10px;
+  }
+
+  .missionRow {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    color: var(--muted);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: .82rem;
+    font-weight: 850;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+
+  .progressShell {
+    height: 10px;
+    overflow: hidden;
+    background: #060b13;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+  }
+
+  #progressBar {
+    height: 100%;
+    width: 0%;
+    background:
+      linear-gradient(90deg, var(--accent), var(--accent-2));
+    border-radius: inherit;
+    transition: width .18s ease;
+  }
+
+  .statsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  .stat {
+    min-width: 0;
+    padding: 9px 8px;
+    background: rgba(7, 12, 21, .74);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    text-align: center;
+  }
+
+  .statLabel {
+    color: var(--muted);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: .62rem;
+    font-weight: 900;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+  }
+
+  .statValue {
+    margin-top: 2px;
+    color: var(--text);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: 1.04rem;
+    font-weight: 950;
+  }
+
+  .statValue.good {
+    color: var(--good);
+  }
+
+  .statValue.bad {
+    color: var(--bad);
+  }
+
+  .statValue.warn {
+    color: var(--warn);
+  }
+
+  .drill {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    justify-items: center;
+    gap: 14px;
+    text-align: center;
+    margin-top: 96px;
+  }
+
+  .articleType {
+    min-height: 1.1rem;
+    color: var(--accent-2);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: .84rem;
+    font-weight: 900;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+  }
+
+  .prompt {
+    min-height: 96px;
+    display: grid;
+    place-items: center;
+    color: var(--text);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: clamp(2.65rem, 10vw, 4.75rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -.055em;
+    text-shadow: 0 0 22px rgba(125, 227, 255, .16);
+  }
+
+  input {
+    width: min(340px, 100%);
+    color: var(--text);
+    background: #070c15;
+    border: 2px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 17px 18px;
+    text-align: center;
+    font-size: 1.85rem;
+    font-weight: 850;
+    outline: none;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.035),
+      0 10px 24px rgba(0,0,0,.18);
+  }
+
+  input:focus {
+    border-color: var(--accent);
+    box-shadow:
+      0 0 0 4px rgba(125, 227, 255, .13),
+      0 0 34px rgba(125, 227, 255, .10);
+  }
+
+  input.correct {
+    border-color: var(--good);
+    background: rgba(88, 227, 154, .10);
+  }
+
+  input.missed {
+    border-color: var(--bad);
+    background: rgba(255, 109, 122, .10);
+  }
+
+  .buttonRow {
+    width: min(340px, 100%);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  #actionBtn {
+    width: 100%;
+    border: 0;
+    border-radius: var(--radius-lg);
+    padding: 15px 18px;
+    color: #041018;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.28), transparent),
+      var(--accent);
+    font: inherit;
+    font-size: 1.05rem;
+    font-weight: 950;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow:
+      0 14px 28px rgba(0, 0, 0, .24),
+      0 0 28px rgba(125, 227, 255, .14);
+  }
+
+  #actionBtn.next {
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.24), transparent),
+      var(--good);
+  }
+
+  #hintBtn {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 10px 14px;
+    color: var(--muted);
+    background: rgba(7, 12, 21, .74);
+    font: inherit;
+    font-size: .86rem;
+    font-weight: 900;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  #hintBtn:disabled {
+    opacity: .45;
+    cursor: default;
+  }
+
+  .feedback {
+    min-height: 34px;
+    display: grid;
+    place-items: center;
+    color: var(--text);
+    font-size: 1.18rem;
+    font-weight: 900;
+  }
+
+  .feedback.good {
+    color: var(--good);
+  }
+
+  .feedback.missed {
+    color: var(--bad);
+  }
+
+  .feedback.warn {
+    color: var(--warn);
+  }
+
+  .miniTableWrap {
+    min-height: 164px;
+    width: min(390px, 100%);
+    display: grid;
+    place-items: start center;
+  }
+
+  .miniTable {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 4px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: .77rem;
+    color: var(--muted);
+    opacity: 0;
+    transform: translateY(4px);
+    pointer-events: none;
+  }
+
+  .miniTable.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity .14s ease, transform .14s ease;
+  }
+
+  .miniTable th,
+  .miniTable td {
+    border: 1px solid var(--line);
+    background: #07101a;
+    border-radius: 10px;
+    padding: 7px 7px;
+    text-align: center;
+  }
+
+  .miniTable th {
+    color: var(--muted);
+    font-weight: 950;
+    text-transform: uppercase;
+  }
+
+  .miniTable td {
+    color: var(--text);
+    font-weight: 900;
+  }
+
+  .miniTable .target {
+    color: var(--accent-2);
+    border-color: var(--accent-2);
+    background: rgba(246,193,92,.08);
+  }
+
+  .miniTable .hit {
+    color: #12050a;
+    background: var(--bad);
+    border-color: var(--bad);
+    box-shadow: 0 0 18px rgba(255,109,122,.16);
+  }
+
+  .resultPanel {
+    display: none;
+    width: min(410px, 100%);
+    padding: 18px;
+    background: rgba(7, 12, 21, .78);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    text-align: center;
+  }
+
+  .resultPanel.visible {
+    display: grid;
+    gap: 10px;
+  }
+
+  .rank {
+    color: var(--accent-2);
+    font-size: 1.35rem;
+    font-weight: 950;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .resultLine {
+    color: var(--muted);
+    font-weight: 800;
+  }
+
+  .bestLine {
+    color: var(--accent);
+    font-weight: 900;
+  }
+
+  @media (max-width: 560px) {
+    body {
+      padding: 10px;
+    }
+
+    main {
+      min-height: calc(100vh - 20px);
+      padding: 18px;
+      border-radius: 24px;
+    }
+
+    header {
+      top: 13px;
+      left: 16px;
+      right: 13px;
+    }
+
+    .hud {
+      top: 72px;
+      left: 14px;
+      right: 14px;
+    }
+
+    .statsGrid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .drill {
+      margin-top: 138px;
+    }
+
+    .prompt {
+      min-height: 82px;
+    }
+
+    .miniTableWrap {
+      min-height: 150px;
+    }
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Kasuskonsole</h1>
+    <div class="menuWrap">
+      <button id="menuToggle" aria-label="Einstellungen öffnen" aria-expanded="false">☰</button>
+      <div id="settingsPanel" aria-hidden="true">
+        <label>
+          Artikeltyp
+          <select id="articleType">
+            <option value="mixed">gemischt</option>
+            <option value="definite">bestimmt: der/die/das</option>
+            <option value="indefinite">unbestimmt: ein/eine</option>
+            <option value="negative">negativ: kein/keine</option>
+          </select>
+        </label>
+        <label>
+          Runde
+          <select id="roundTarget">
+            <option value="10">10 Fragen</option>
+            <option value="20" selected>20 Fragen</option>
+            <option value="30">30 Fragen</option>
+            <option value="50">50 Fragen</option>
+          </select>
+        </label>
+        <button class="menuButton" id="restartBtn">Neue Runde</button>
+        <button class="menuButton danger" id="resetBestBtn">Bestwerte löschen</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hud" aria-label="Rundenstatus">
+    <div class="missionRow">
+      <span id="missionLabel">Runde 1</span>
+      <span id="targetLabel">0 / 20</span>
+    </div>
+    <div class="progressShell" aria-hidden="true">
+      <div id="progressBar"></div>
+    </div>
+    <div class="statsGrid">
+      <div class="stat">
+        <div class="statLabel">Punkte</div>
+        <div class="statValue" id="scoreValue">0</div>
+      </div>
+      <div class="stat">
+        <div class="statLabel">Richtig</div>
+        <div class="statValue good" id="correctValue">0</div>
+      </div>
+      <div class="stat">
+        <div class="statLabel">Fehler</div>
+        <div class="statValue bad" id="wrongValue">0</div>
+      </div>
+      <div class="stat">
+        <div class="statLabel">Serie</div>
+        <div class="statValue warn" id="streakValue">0</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="drill" aria-live="polite">
+    <div class="articleType" id="articleLabel"></div>
+    <div class="prompt" id="prompt">…</div>
+
+    <input id="answerInput" autocomplete="off" autocapitalize="off" spellcheck="false" inputmode="text" />
+
+    <div class="buttonRow">
+      <button id="actionBtn">Prüfen</button>
+      <button id="hintBtn">Hilfe</button>
+    </div>
+
+    <div class="feedback" id="feedback"></div>
+    <div class="miniTableWrap" id="miniTableWrap"></div>
+
+    <div class="resultPanel" id="resultPanel">
+      <div class="rank" id="rankText"></div>
+      <div class="resultLine" id="resultSummary"></div>
+      <div class="resultLine" id="accuracySummary"></div>
+      <div class="bestLine" id="bestSummary"></div>
+    </div>
+  </section>
+</main>
+
+<script>
+const paradigms = {
+  definite: {
+    label: "DER / DIE / DAS",
+    table: {
+      "NOM|MASK": "der",
+      "NOM|FEM": "die",
+      "NOM|NEU": "das",
+      "NOM|PL": "die",
+      "AKK|MASK": "den",
+      "AKK|FEM": "die",
+      "AKK|NEU": "das",
+      "AKK|PL": "die",
+      "DAT|MASK": "dem",
+      "DAT|FEM": "der",
+      "DAT|NEU": "dem",
+      "DAT|PL": "den",
+      "GEN|MASK": "des",
+      "GEN|FEM": "der",
+      "GEN|NEU": "des",
+      "GEN|PL": "der"
+    }
+  },
+  indefinite: {
+    label: "EIN / EINE",
+    table: {
+      "NOM|MASK": "ein",
+      "NOM|FEM": "eine",
+      "NOM|NEU": "ein",
+      "NOM|PL": "none",
+      "AKK|MASK": "einen",
+      "AKK|FEM": "eine",
+      "AKK|NEU": "ein",
+      "AKK|PL": "none",
+      "DAT|MASK": "einem",
+      "DAT|FEM": "einer",
+      "DAT|NEU": "einem",
+      "DAT|PL": "none",
+      "GEN|MASK": "eines",
+      "GEN|FEM": "einer",
+      "GEN|NEU": "eines",
+      "GEN|PL": "none"
+    }
+  },
+  negative: {
+    label: "KEIN / KEINE",
+    table: {
+      "NOM|MASK": "kein",
+      "NOM|FEM": "keine",
+      "NOM|NEU": "kein",
+      "NOM|PL": "keine",
+      "AKK|MASK": "keinen",
+      "AKK|FEM": "keine",
+      "AKK|NEU": "kein",
+      "AKK|PL": "keine",
+      "DAT|MASK": "keinem",
+      "DAT|FEM": "keiner",
+      "DAT|NEU": "keinem",
+      "DAT|PL": "keinen",
+      "GEN|MASK": "keines",
+      "GEN|FEM": "keiner",
+      "GEN|NEU": "keines",
+      "GEN|PL": "keiner"
+    }
+  }
+};
+
+const articleTypes = ["definite", "indefinite", "negative"];
+const cases = [{ key: "NOM" }, { key: "AKK" }, { key: "DAT" }, { key: "GEN" }];
+const genders = [{ key: "MASK" }, { key: "FEM" }, { key: "NEU" }, { key: "PL" }];
+
+let current = null;
+let lastKey = null;
+let state = "checking";
+let hintUsed = false;
+let roundNumber = 1;
+
+let score = 0;
+let correct = 0;
+let wrong = 0;
+let streak = 0;
+let bestStreakRound = 0;
+
+let highScore = Number(localStorage.getItem("kasuskonsoleHighScore") || 0);
+let bestStreakAll = Number(localStorage.getItem("kasuskonsoleBestStreak") || 0);
+
+function randomIndex(max) {
+  if (window.crypto && window.crypto.getRandomValues) {
+    const array = new Uint32Array(1);
+    window.crypto.getRandomValues(array);
+    return array[0] % max;
+  }
+  return Math.floor(Math.random() * max);
+}
+
+function normalise(value) {
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/[—–]/g, "-")
+    .replace(/\s+/g, " ");
+}
+
+function acceptedAnswers(answer) {
+  if (answer === "none") {
+    return ["", "-", "none", "kein artikel", "ohne artikel", "nichts"];
+  }
+  return [answer];
+}
+
+function displayAnswer(answer) {
+  return answer === "none" ? "kein Artikel" : answer;
+}
+
+function targetCount() {
+  return Number(document.getElementById("roundTarget").value);
+}
+
+function answeredCount() {
+  return correct + wrong;
+}
+
+function accuracy() {
+  const answered = answeredCount();
+  return answered === 0 ? 0 : Math.round((correct / answered) * 100);
+}
+
+function selectedArticleType() {
+  const selected = document.getElementById("articleType").value;
+  if (selected === "mixed") {
+    return articleTypes[randomIndex(articleTypes.length)];
+  }
+  return selected;
+}
+
+function pickQuestion() {
+  if (answeredCount() >= targetCount()) {
+    showResults();
+    return;
+  }
+
+  const type = selectedArticleType();
+
+  let chosenCase;
+  let chosenGender;
+  let key;
+
+  do {
+    chosenCase = cases[randomIndex(cases.length)];
+    chosenGender = genders[randomIndex(genders.length)];
+    key = `${type}|${chosenCase.key}|${chosenGender.key}`;
+  } while (cases.length * genders.length * articleTypes.length > 1 && key === lastKey);
+
+  lastKey = key;
+  current = {
+    type,
+    caseKey: chosenCase.key,
+    genderKey: chosenGender.key,
+    answer: paradigms[type].table[`${chosenCase.key}|${chosenGender.key}`]
+  };
+
+  state = "checking";
+  hintUsed = false;
+  renderQuestion();
+  renderHud();
+}
+
+function renderQuestion() {
+  document.getElementById("resultPanel").classList.remove("visible");
+  document.getElementById("articleLabel").textContent = paradigms[current.type].label;
+  document.getElementById("prompt").textContent = `${current.caseKey} ${current.genderKey}`;
+
+  const input = document.getElementById("answerInput");
+  input.value = "";
+  input.classList.remove("correct", "missed");
+  input.disabled = false;
+  input.style.display = "";
+
+  const feedback = document.getElementById("feedback");
+  feedback.textContent = "";
+  feedback.className = "feedback";
+
+  document.getElementById("miniTableWrap").innerHTML = "";
+
+  const actionBtn = document.getElementById("actionBtn");
+  actionBtn.textContent = "Prüfen";
+  actionBtn.classList.remove("next");
+  actionBtn.style.display = "";
+
+  const hintBtn = document.getElementById("hintBtn");
+  hintBtn.disabled = false;
+  hintBtn.style.display = "";
+
+  requestAnimationFrame(() => input.focus());
+}
+
+function renderHud() {
+  const target = targetCount();
+  const answered = answeredCount();
+  const pct = Math.min(100, Math.round((answered / target) * 100));
+
+  document.getElementById("missionLabel").textContent = `Runde ${roundNumber}`;
+  document.getElementById("targetLabel").textContent = `${answered} / ${target}`;
+  document.getElementById("progressBar").style.width = `${pct}%`;
+
+  document.getElementById("scoreValue").textContent = score;
+  document.getElementById("correctValue").textContent = correct;
+  document.getElementById("wrongValue").textContent = wrong;
+  document.getElementById("streakValue").textContent = streak;
+}
+
+function checkAnswer() {
+  if (state !== "checking") return;
+
+  const input = document.getElementById("answerInput");
+  const choice = normalise(input.value);
+  const valid = acceptedAnswers(current.answer).map(normalise);
+  const isCorrect = valid.includes(choice);
+
+  state = "next";
+
+  if (isCorrect) {
+    correct++;
+    streak++;
+    bestStreakRound = Math.max(bestStreakRound, streak);
+
+    const base = hintUsed ? 50 : 100;
+    const streakBonus = hintUsed ? 0 : Math.min(streak, 5) * 10;
+    score += base + streakBonus;
+
+    input.classList.add("correct");
+    document.getElementById("feedback").textContent =
+      `${current.caseKey} ${current.genderKey} = ${displayAnswer(current.answer)}`;
+    document.getElementById("feedback").classList.add("good");
+  } else {
+    wrong++;
+    streak = 0;
+
+    input.classList.add("missed");
+    document.getElementById("feedback").textContent =
+      `${current.caseKey} ${current.genderKey} = ${displayAnswer(current.answer)}`;
+    document.getElementById("feedback").classList.add("missed");
+    renderMiniTable("missed");
+  }
+
+  input.disabled = true;
+  document.getElementById("hintBtn").disabled = true;
+
+  const actionBtn = document.getElementById("actionBtn");
+  if (answeredCount() >= targetCount()) {
+    actionBtn.textContent = "Ergebnis";
+  } else {
+    actionBtn.textContent = "Weiter";
+  }
+  actionBtn.classList.add("next");
+
+  renderHud();
+  actionBtn.focus();
+}
+
+function showHint() {
+  if (state !== "checking" || hintUsed) return;
+  hintUsed = true;
+  document.getElementById("feedback").textContent = "Hilfsmodus: Zielfeld verdeckt";
+  document.getElementById("feedback").className = "feedback warn";
+  document.getElementById("hintBtn").disabled = true;
+  renderMiniTable("hint");
+  document.getElementById("answerInput").focus();
+}
+
+function renderMiniTable(mode) {
+  const wrap = document.getElementById("miniTableWrap");
+  wrap.innerHTML = "";
+
+  const table = document.createElement("table");
+  table.className = "miniTable";
+
+  const thead = document.createElement("thead");
+  const headRow = document.createElement("tr");
+  headRow.appendChild(document.createElement("th"));
+
+  genders.forEach(g => {
+    const th = document.createElement("th");
+    th.textContent = g.key;
+    headRow.appendChild(th);
+  });
+
+  thead.appendChild(headRow);
+  table.appendChild(thead);
+
+  const tbody = document.createElement("tbody");
+
+  cases.forEach(c => {
+    const row = document.createElement("tr");
+    const th = document.createElement("th");
+    th.textContent = c.key;
+    row.appendChild(th);
+
+    genders.forEach(g => {
+      const td = document.createElement("td");
+      const value = paradigms[current.type].table[`${c.key}|${g.key}`];
+      const isTarget = c.key === current.caseKey && g.key === current.genderKey;
+
+      if (mode === "hint" && isTarget) {
+        td.textContent = "???";
+        td.className = "target";
+      } else {
+        td.textContent = displayAnswer(value);
+      }
+
+      if (mode === "missed" && isTarget) {
+        td.className = "hit";
+      }
+
+      row.appendChild(td);
+    });
+
+    tbody.appendChild(row);
+  });
+
+  table.appendChild(tbody);
+  wrap.appendChild(table);
+
+  requestAnimationFrame(() => table.classList.add("visible"));
+}
+
+function rankName(acc, mistakes, finalStreak) {
+  if (acc === 100 && finalStreak >= targetCount()) return "Perfekter Lauf";
+  if (acc >= 95) return "Kasuskommandant";
+  if (acc >= 85) return "Formstabil";
+  if (acc >= 70) return "Auf Kurs";
+  if (mistakes <= targetCount() / 2) return "Wacklig, aber lebendig";
+  return "Reparaturmodus";
+}
+
+function showResults() {
+  state = "results";
+
+  if (score > highScore) {
+    highScore = score;
+    localStorage.setItem("kasuskonsoleHighScore", String(highScore));
+  }
+
+  if (bestStreakRound > bestStreakAll) {
+    bestStreakAll = bestStreakRound;
+    localStorage.setItem("kasuskonsoleBestStreak", String(bestStreakAll));
+  }
+
+  document.getElementById("articleLabel").textContent = "Runde abgeschlossen";
+  document.getElementById("prompt").textContent = `${accuracy()}%`;
+  document.getElementById("answerInput").style.display = "none";
+  document.getElementById("hintBtn").style.display = "none";
+  document.getElementById("miniTableWrap").innerHTML = "";
+  document.getElementById("feedback").textContent = "";
+  document.getElementById("feedback").className = "feedback";
+
+  document.getElementById("rankText").textContent = rankName(accuracy(), wrong, bestStreakRound);
+  document.getElementById("resultSummary").textContent =
+    `${correct} richtig · ${wrong} Fehler · ${score} Punkte`;
+  document.getElementById("accuracySummary").textContent =
+    `Beste Serie diese Runde: ${bestStreakRound}`;
+  document.getElementById("bestSummary").textContent =
+    `Bestwert: ${highScore} Punkte · Beste Serie: ${bestStreakAll}`;
+  document.getElementById("resultPanel").classList.add("visible");
+
+  const actionBtn = document.getElementById("actionBtn");
+  actionBtn.textContent = "Neue Runde";
+  actionBtn.classList.add("next");
+  actionBtn.style.display = "";
+  actionBtn.focus();
+
+  renderHud();
+}
+
+function newRound() {
+  roundNumber++;
+  score = 0;
+  correct = 0;
+  wrong = 0;
+  streak = 0;
+  bestStreakRound = 0;
+  state = "checking";
+  hintUsed = false;
+  lastKey = null;
+  renderHud();
+  pickQuestion();
+}
+
+function action() {
+  if (state === "checking") {
+    checkAnswer();
+  } else if (state === "next") {
+    pickQuestion();
+  } else {
+    newRound();
+  }
+}
+
+const menuToggle = document.getElementById("menuToggle");
+const settingsPanel = document.getElementById("settingsPanel");
+
+menuToggle.addEventListener("click", () => {
+  const open = !settingsPanel.classList.contains("open");
+  settingsPanel.classList.toggle("open", open);
+  menuToggle.setAttribute("aria-expanded", String(open));
+  settingsPanel.setAttribute("aria-hidden", String(!open));
+});
+
+document.addEventListener("click", (event) => {
+  if (!event.target.closest(".menuWrap")) {
+    settingsPanel.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    settingsPanel.setAttribute("aria-hidden", "true");
+  }
+});
+
+document.getElementById("articleType").addEventListener("change", newRound);
+document.getElementById("roundTarget").addEventListener("change", newRound);
+document.getElementById("restartBtn").addEventListener("click", newRound);
+document.getElementById("resetBestBtn").addEventListener("click", () => {
+  highScore = 0;
+  bestStreakAll = 0;
+  localStorage.removeItem("kasuskonsoleHighScore");
+  localStorage.removeItem("kasuskonsoleBestStreak");
+  showResults();
+});
+
+document.getElementById("actionBtn").addEventListener("click", action);
+document.getElementById("hintBtn").addEventListener("click", showHint);
+
+document.getElementById("answerInput").addEventListener("keydown", event => {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    action();
+  }
+});
+
+renderHud();
+pickQuestion();
+</script>
+</body>
+</html>
