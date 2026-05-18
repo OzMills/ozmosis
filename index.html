@@ -1776,6 +1776,7 @@ body[data-support-lang="ar"] .englishGloss {
   unicode-bidi:plaintext;
 }
 body[data-support-lang="ar"] .startSetting select,
+body[data-support-lang="ar"] .languagePanel,
 body[data-support-lang="ar"] .languageStrip,
 body[data-support-lang="ar"] .heatmapTabs {
   direction:ltr;
@@ -1850,6 +1851,36 @@ body.setupMode .bottomHud {
   opacity:.8;
 }
 .startScreen > * { position:relative; z-index:1; }
+.languagePanel {
+  display:grid;
+  gap:8px;
+  padding:10px;
+  border:1.5px solid rgba(125,227,255,.18);
+  border-radius:18px;
+  background:rgba(4,8,16,.52);
+}
+.languageLabel {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:var(--muted);
+  font-size:.76rem;
+  font-weight:950;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.languageIcon {
+  width:24px;
+  height:24px;
+  display:grid;
+  place-items:center;
+  border:1px solid color-mix(in srgb, var(--mode) 48%, var(--line));
+  border-radius:50%;
+  color:var(--accent);
+  background:#07101b;
+  font-size:.82rem;
+  line-height:1;
+}
 .languageStrip {
   display:grid;
   grid-template-columns:repeat(5, minmax(0,1fr));
@@ -1866,6 +1897,18 @@ body.setupMode .bottomHud {
   letter-spacing:.05em;
   font-size:clamp(.88rem,3.5vw,1.05rem);
   cursor:pointer;
+  display:grid;
+  place-items:center;
+  gap:2px;
+  padding:6px 8px;
+}
+.langName {
+  display:none;
+  font-size:.7rem;
+  font-weight:850;
+  letter-spacing:0;
+  text-transform:none;
+  line-height:1.05;
 }
 .langBtn.active {
   color:#06121d;
@@ -1875,17 +1918,20 @@ body.setupMode .bottomHud {
 }
 .startHero {
   text-align:center;
-  padding:22px 18px;
-  border:2px solid color-mix(in srgb, var(--mode) 60%, transparent);
+  padding:16px 18px;
+  border:0;
   border-radius:22px;
-  background:rgba(5,9,19,.72);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.035), transparent 58%),
+    rgba(5,9,19,.72);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035);
 }
 .startHero h2 {
   margin:0 0 8px;
   color:var(--accent);
   text-transform:uppercase;
   letter-spacing:.08em;
-  font-size:clamp(1.45rem,6vw,2.4rem);
+  font-size:clamp(1.35rem,5.4vw,2.05rem);
   line-height:1.05;
 }
 .startHero p {
@@ -1897,8 +1943,66 @@ body.setupMode .bottomHud {
 }
 .startOptions {
   display:grid;
+  grid-template-columns:1fr;
+  gap:10px;
+}
+.startAccordion {
+  border:1.5px solid rgba(125,227,255,.22);
+  border-radius:18px;
+  background:rgba(4,8,16,.58);
+  overflow:hidden;
+}
+.startAccordion[open] {
+  background:rgba(4,8,16,.72);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.02);
+}
+.startAccordion summary {
+  min-height:52px;
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:center;
+  gap:10px;
+  padding:10px 12px;
+  cursor:pointer;
+  color:var(--text);
+  font-weight:950;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  list-style:none;
+}
+.startAccordion summary::-webkit-details-marker { display:none; }
+.startAccordion summary::after {
+  content:"+";
+  width:28px;
+  height:28px;
+  display:grid;
+  place-items:center;
+  border:1px solid color-mix(in srgb, var(--mode) 50%, var(--line));
+  border-radius:50%;
+  color:var(--accent);
+  background:#07101b;
+}
+.startAccordion[open] summary::after {
+  content:"-";
+}
+.startAccordionKicker {
+  display:block;
+  margin-top:3px;
+  color:var(--muted);
+  font-size:.72rem;
+  font-weight:800;
+  letter-spacing:.03em;
+  line-height:1.25;
+  text-transform:none;
+}
+.startAccordionGrid {
+  display:grid;
   grid-template-columns:repeat(2, minmax(0,1fr));
-  gap:12px;
+  gap:10px;
+  padding:0 12px 12px;
+}
+.startAccordionGrid.single {
+  grid-template-columns:1fr;
 }
 .startSetting {
   display:grid;
@@ -1926,6 +2030,13 @@ body.setupMode .bottomHud {
   font-family:inherit;
   font-weight:850;
   padding:0 12px;
+}
+.startHelpText {
+  margin:0;
+  color:var(--muted);
+  font-size:.75rem;
+  font-weight:760;
+  line-height:1.25;
 }
 .startButton {
   width:100%;
@@ -1966,6 +2077,7 @@ body.setupMode .bottomHud {
 
 .startButton:focus-visible,
 .langBtn:focus-visible,
+.startAccordion summary:focus-visible,
 .startSetting select:focus-visible {
   outline:3px solid var(--accent);
   outline-offset:3px;
@@ -1983,8 +2095,28 @@ body[dir="rtl"] .startHero p {
 @media (max-width:520px) {
   .startScreen { padding:18px; gap:14px; }
   .startOptions { grid-template-columns:1fr; }
+  .startAccordionGrid { grid-template-columns:1fr; }
   .languageStrip { gap:6px; }
   .langBtn { min-height:42px; border-radius:14px; }
+}
+
+@media (min-width:760px) and (min-height:620px) {
+  .languagePanel {
+    grid-template-columns:auto 1fr;
+    align-items:center;
+  }
+
+  .languageStrip {
+    grid-template-columns:repeat(5, minmax(0, 1fr));
+  }
+
+  .langBtn {
+    min-height:52px;
+  }
+
+  .langName {
+    display:block;
+  }
 }
 
 
@@ -2137,6 +2269,334 @@ body[dir="rtl"] .startHero p {
   .checkLine { font-size:.84rem; }
 }
 
+/* v19: responsive shell tuning.
+   Wider and short screens should feel like a desktop console, not a centered phone. */
+@media (min-width: 900px) {
+  main {
+    width:min(980px, calc(100vw - 40px));
+  }
+
+  .bottomHud {
+    width:min(980px, calc(100vw - 24px));
+  }
+}
+
+@media (min-width: 1200px) and (min-height: 780px) {
+  main,
+  .bottomHud {
+    width:min(1040px, calc(100vw - 64px));
+  }
+}
+
+@media (max-width: 759px) {
+  html,
+  body {
+    width:100%;
+    max-width:100%;
+    overflow-x:hidden;
+    padding-left:10px;
+    padding-right:10px;
+  }
+
+  main {
+    width:calc(100vw - 20px) !important;
+    max-width:calc(100vw - 20px);
+    min-width:0;
+  }
+
+  .header,
+  .startScreen,
+  .languagePanel,
+  .languageStrip,
+  .startOptions,
+  .startSetting,
+  .startGenitiveGrid,
+  .checkLine {
+    min-width:0;
+  }
+
+  .langBtn {
+    font-size:clamp(.78rem, 3.3vw, .98rem);
+    min-width:0;
+    padding-left:4px;
+    padding-right:4px;
+  }
+
+  .startSetting select {
+    min-width:0;
+  }
+}
+
+@media (max-width: 520px) {
+  body {
+    padding-left:8px;
+    padding-right:8px;
+  }
+
+  body.setupMode {
+    justify-items:start;
+  }
+
+  main {
+    width:calc(100vw - 56px) !important;
+    max-width:calc(100vw - 56px);
+  }
+
+  body.setupMode main {
+    padding:12px;
+    transform:scale(.92);
+    transform-origin:top left;
+  }
+
+  body.setupMode h1 {
+    font-size:clamp(1.15rem, 6.7vw, 1.45rem);
+  }
+
+  body.setupMode #menuToggle {
+    width:46px;
+    height:46px;
+  }
+}
+
+body.setupMode {
+  padding:clamp(10px, 2vh, 18px) clamp(10px, 2vw, 24px);
+}
+
+body.setupMode main {
+  max-height:calc(100vh - clamp(20px, 4vh, 36px));
+}
+
+@supports (height: 100dvh) {
+  body.setupMode main {
+    max-height:calc(100dvh - clamp(20px, 4vh, 36px));
+  }
+}
+
+@media (min-width: 900px) {
+  body.setupMode main {
+    width:min(1060px, calc(100vw - 40px));
+    padding:clamp(16px, 1.7vw, 22px);
+  }
+
+  body.setupMode .header {
+    margin-bottom:clamp(10px, 1.5vh, 14px);
+  }
+
+  body.setupMode h1 {
+    font-size:clamp(1.35rem, 2.35vw, 1.8rem);
+  }
+
+  .startScreen {
+    margin-top:0;
+    padding:clamp(14px, 1.7vw, 20px);
+    gap:clamp(10px, 1.6vh, 14px);
+  }
+
+  .startHero {
+    padding:clamp(16px, 2vw, 22px);
+  }
+
+  .startHero h2 {
+    font-size:clamp(1.65rem, 3.2vw, 2.25rem);
+  }
+}
+
+@media (min-width: 1180px) and (min-height: 761px) {
+  .startScreen {
+    grid-template-columns:minmax(330px, .95fr) minmax(520px, 1.25fr);
+    align-items:stretch;
+    gap:12px 14px;
+  }
+
+  .languagePanel,
+  .languageStrip,
+  .startButton,
+  .startFeedbackNote {
+    grid-column:1 / -1;
+  }
+
+  .startHero {
+    display:grid;
+    align-content:center;
+  }
+
+  .startOptions {
+    gap:10px;
+  }
+
+  .startGenitiveGrid {
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+    gap:8px;
+  }
+
+  .checkLine {
+    min-height:40px;
+    font-size:.8rem;
+  }
+
+  .startButton {
+    min-height:56px;
+  }
+}
+
+@media (min-width: 900px) and (max-height: 760px) {
+  body.setupMode {
+    padding:10px clamp(10px, 1.8vw, 22px);
+  }
+
+  body.setupMode main {
+    width:min(1080px, calc(100vw - 32px));
+    padding:clamp(12px, 1.3vw, 16px);
+  }
+
+  body.setupMode .header {
+    margin-bottom:8px;
+  }
+
+  body.setupMode h1 {
+    font-size:clamp(1.28rem, 2.1vw, 1.6rem);
+  }
+
+  body.setupMode #menuToggle {
+    width:48px;
+    height:48px;
+    border-radius:16px;
+  }
+
+  .startScreen {
+    grid-template-columns:minmax(270px, .9fr) minmax(430px, 1.15fr);
+    align-items:stretch;
+    gap:10px 12px;
+    padding:12px;
+  }
+
+  .languagePanel,
+  .languageStrip,
+  .startButton,
+  .startFeedbackNote {
+    grid-column:1 / -1;
+  }
+
+  .languageStrip {
+    gap:7px;
+  }
+
+  .langBtn {
+    min-height:38px;
+    border-radius:14px;
+    font-size:.92rem;
+  }
+
+  .startHero {
+    display:grid;
+    align-content:center;
+    min-height:0;
+    padding:14px;
+  }
+
+  .startHero h2 {
+    font-size:clamp(1.45rem, 2.8vw, 2rem);
+  }
+
+  .startHero p {
+    font-size:.88rem;
+    line-height:1.28;
+  }
+
+  .startOptions {
+    gap:9px;
+  }
+
+  .startSetting {
+    padding:9px;
+    border-radius:15px;
+  }
+
+  .startSetting select {
+    min-height:38px;
+  }
+
+  .startGenitiveGrid {
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+    gap:7px;
+  }
+
+  .checkLine {
+    min-height:38px;
+    padding:7px 8px;
+    font-size:.78rem;
+  }
+
+  .checkLine input[type="checkbox"] {
+    width:18px;
+    height:18px;
+  }
+
+  .startButton {
+    min-height:52px;
+    border-radius:18px;
+    font-size:clamp(1.12rem, 2.2vw, 1.38rem);
+  }
+
+  .startFeedbackNote {
+    padding:8px 10px;
+    font-size:.82rem;
+  }
+}
+
+@media (min-width: 900px) and (max-height: 620px) {
+  body.setupMode main {
+    width:min(1120px, calc(100vw - 28px));
+  }
+
+  .startScreen {
+    grid-template-columns:minmax(240px, .82fr) minmax(500px, 1.28fr);
+    gap:8px 10px;
+    padding:10px;
+  }
+
+  .startHero {
+    padding:12px;
+  }
+
+  .startHero h2 {
+    font-size:clamp(1.28rem, 2.4vw, 1.75rem);
+  }
+
+  .startHero p {
+    font-size:.8rem;
+  }
+
+  .startSetting label,
+  .genitiveHeader {
+    font-size:.68rem;
+  }
+
+  .startSetting select,
+  .langBtn,
+  .checkLine {
+    min-height:34px;
+  }
+
+  .startButton {
+    min-height:46px;
+  }
+
+  .startFeedbackNote {
+    display:none;
+  }
+}
+
+@media (min-width: 760px) and (max-width: 899px) {
+  body.setupMode main {
+    width:min(760px, calc(100vw - 28px));
+  }
+
+  body.setupMode .startHero h2 {
+    font-size:clamp(1.5rem, 4vw, 2rem);
+  }
+}
+
 </style>
 </head>
 <body data-mode="definite">
@@ -2148,8 +2608,8 @@ body[dir="rtl"] .startHero p {
       <div id="settingsPanel">
         <label>Aufgabentyp
           <select id="taskType">
-            <option value="table" selected>Tabellen-Drill</option>
-            <option value="cloze">Lücken-Drill</option>
+            <option value="cloze" selected>In Context [Default]</option>
+            <option value="table">Out of Context</option>
             <option value="mixed">Gemischt</option>
           </select>
         </label>
@@ -2222,80 +2682,106 @@ body[dir="rtl"] .startHero p {
   </div>
 
   <section class="startScreen" id="startScreen" aria-labelledby="startTitle">
-    <div class="languageStrip" id="languageStrip" role="group" aria-label="Support language">
-      <button class="langBtn" type="button" data-lang="en">EN</button>
-      <button class="langBtn" type="button" data-lang="tr">TR</button>
-      <button class="langBtn" type="button" data-lang="ar">AR</button>
-      <button class="langBtn" type="button" data-lang="zh">中文</button>
-      <button class="langBtn" type="button" data-lang="uk">UA</button>
+    <div class="languagePanel" aria-labelledby="languageLabel">
+      <div class="languageLabel" id="languageLabel"><span class="languageIcon" aria-hidden="true">Aa</span><span id="languageLabelText">Sprache</span></div>
+      <div class="languageStrip" id="languageStrip" role="group" aria-label="Support language">
+        <button class="langBtn" type="button" data-lang="en"><span class="langCode">EN</span><span class="langName">English</span></button>
+        <button class="langBtn" type="button" data-lang="tr"><span class="langCode">TR</span><span class="langName">Türkçe</span></button>
+        <button class="langBtn" type="button" data-lang="ar"><span class="langCode">AR</span><span class="langName">العربية</span></button>
+        <button class="langBtn" type="button" data-lang="zh"><span class="langCode">中文</span><span class="langName">中文</span></button>
+        <button class="langBtn" type="button" data-lang="uk"><span class="langCode">UA</span><span class="langName">Українська</span></button>
+      </div>
     </div>
 
     <div class="startHero">
-      <h2 id="startTitle">What do you want to practise?</h2>
-      <p id="startIntro">Choose your support language and set up a round. German grammar terms stay visible so you learn the target system.</p>
+      <h2 id="startTitle">New Practice</h2>
+      <p id="startIntro">Choose a drill.</p>
     </div>
 
     <div class="startOptions" aria-label="New game options">
-      <div class="startSetting">
-        <label id="startTaskLabel" for="startTaskType">Task type</label>
-        <select id="startTaskType">
-          <option value="table">Table drill</option>
-          <option value="cloze">Gap drill</option>
-          <option value="mixed">Mixed</option>
-        </select>
-      </div>
-      <div class="startSetting">
-        <label id="startArticleLabel" for="startArticleType">Article type</label>
-        <select id="startArticleType">
-          <option value="mixed">Mixed articles</option>
-          <option value="definite">DER</option>
-          <option value="indefinite">EIN</option>
-          <option value="negative">KEIN</option>
-        </select>
-      </div>
-      <div class="startSetting genitiveStartSetting">
-        <div class="genitiveHeader">
-          <span id="startGenitiveLabel">Genitive</span>
-          <button class="genitiveHelpBtn" id="startGenitiveHelpBtn" type="button" aria-label="Genitive examples">?</button>
+      <details class="startAccordion" id="practiceAccordion" open>
+        <summary>
+          <span id="startOptionsTitle">Options</span>
+        </summary>
+        <div class="startAccordionGrid">
+          <div class="startSetting">
+            <label id="startTaskLabel" for="startTaskType">Learning style</label>
+            <select id="startTaskType">
+              <option value="cloze" selected>In Context [Default]</option>
+              <option value="table">Out of Context</option>
+              <option value="mixed">Mixed</option>
+            </select>
+          </div>
+          <div class="startSetting">
+            <label id="startArticleLabel" for="startArticleType">Articles to practice</label>
+            <select id="startArticleType">
+              <option value="mixed">All [Default]</option>
+              <option value="definite">DER</option>
+              <option value="indefinite">EIN</option>
+              <option value="negative">KEIN</option>
+            </select>
+          </div>
         </div>
-        <div class="startGenitiveGrid">
-          <label class="checkLine"><input id="startGenitiveTableMode" type="checkbox"><span id="startGenitiveTableText">Table row</span></label>
-          <label class="checkLine"><input id="startGenitiveBasicCloze" type="checkbox"><span id="startGenitiveBasicText">Basic ownership clozes</span></label>
-          <label class="checkLine"><input id="startGenitiveWrittenCloze" type="checkbox"><span id="startGenitiveWrittenText">Written preposition clozes</span></label>
-        </div>
-        <select id="startIncludeGenitive" hidden aria-hidden="true">
-          <option value="off">Off</option>
-          <option value="on">On</option>
-        </select>
-      </div>
-      <div class="startSetting">
-        <label id="startSupportLabel" for="startEnglishSupport">Meaning support</label>
-        <select id="startEnglishSupport">
-          <option value="smart">Smart</option>
-          <option value="after">After answer</option>
-          <option value="always">Always</option>
-          <option value="off">Off</option>
-        </select>
-      </div>
-      <div class="startSetting">
-        <label id="startRoundLabel" for="startRoundTarget">Round length</label>
-        <select id="startRoundTarget">
-          <option value="10">10</option>
-          <option value="20">20</option>
-          <option value="30">30</option>
-          <option value="50">50</option>
-        </select>
-      </div>
-      <div class="startSetting">
-        <label id="startAdaptiveLabel" for="startAdaptiveMode">Adaptive selection</label>
-        <select id="startAdaptiveMode">
-          <option value="on">On</option>
-          <option value="off">Off / random</option>
-        </select>
-      </div>
-    </div>
+      </details>
 
-    <button class="startButton" id="startRoundBtn" type="button">Start</button>
+      <button class="startButton" id="startRoundBtn" type="button">Start</button>
+
+      <details class="startAccordion" id="genitiveAccordion">
+        <summary>
+          <span>Genitive <span class="startAccordionKicker">Optional focused Genitiv practice.</span></span>
+        </summary>
+        <div class="startAccordionGrid single">
+          <div class="startSetting genitiveStartSetting">
+            <div class="genitiveHeader">
+              <span id="startGenitiveLabel">Genitive</span>
+              <button class="genitiveHelpBtn" id="startGenitiveHelpBtn" type="button" aria-label="Genitive examples">?</button>
+            </div>
+            <div class="startGenitiveGrid">
+              <label class="checkLine"><input id="startGenitiveTableMode" type="checkbox"><span id="startGenitiveTableText">Table row</span></label>
+              <label class="checkLine"><input id="startGenitiveBasicCloze" type="checkbox"><span id="startGenitiveBasicText">Basic ownership clozes</span></label>
+              <label class="checkLine"><input id="startGenitiveWrittenCloze" type="checkbox"><span id="startGenitiveWrittenText">Written preposition clozes</span></label>
+            </div>
+            <select id="startIncludeGenitive" hidden aria-hidden="true">
+              <option value="off">Off</option>
+              <option value="on">On</option>
+            </select>
+          </div>
+        </div>
+      </details>
+
+      <details class="startAccordion" id="supportAccordion">
+        <summary>
+          <span>Support & pace <span class="startAccordionKicker">Meaning hints, round length, and adaptivity.</span></span>
+        </summary>
+        <div class="startAccordionGrid">
+          <div class="startSetting">
+            <label id="startSupportLabel" for="startEnglishSupport">Meaning support</label>
+            <select id="startEnglishSupport">
+              <option value="smart">Smart</option>
+              <option value="after">After answer</option>
+              <option value="always">Always</option>
+              <option value="off">Off</option>
+            </select>
+          </div>
+          <div class="startSetting">
+            <label id="startRoundLabel" for="startRoundTarget">Round length</label>
+            <select id="startRoundTarget">
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="30">30</option>
+              <option value="50">50</option>
+            </select>
+          </div>
+          <div class="startSetting">
+            <label id="startAdaptiveLabel" for="startAdaptiveMode">Adaptive selection</label>
+            <select id="startAdaptiveMode">
+              <option value="on">On</option>
+              <option value="off">Off / random</option>
+            </select>
+          </div>
+        </div>
+      </details>
+    </div>
 
     <p class="startFeedbackNote" id="startFeedbackNote">I made this tool for my own German learning. Feedback is welcome: <a href="mailto:ozmillsrpg@gmail.com">ozmillsrpg@gmail.com</a></p>
   </section>
@@ -2486,55 +2972,62 @@ body[dir="rtl"] .startHero p {
   var supportLanguage = "en";
   var LANGS = ["en", "tr", "ar", "zh", "uk"];
   var LANG_META = {
-    en: { label:"EN", dir:"ltr" },
-    tr: { label:"TR", dir:"ltr" },
-    ar: { label:"AR", dir:"rtl" },
-    zh: { label:"中文", dir:"ltr" },
-    uk: { label:"UA", dir:"ltr" }
+    en: { label:"EN", name:"English", dir:"ltr" },
+    tr: { label:"TR", name:"Türkçe", dir:"ltr" },
+    ar: { label:"AR", name:"العربية", dir:"rtl" },
+    zh: { label:"中文", name:"中文", dir:"ltr" },
+    uk: { label:"UA", name:"Українська", dir:"ltr" }
   };
   var I18N = {
     en: {
-      startTitle:"What do you want to practise?",
-      startIntro:"Choose your support language and set up a round. German grammar terms stay visible so you learn the target system.",
+      startTitle:"New Practice",
+      startIntro:"Choose a drill.",
+      language:"Sprache",
       feedbackNote:"I made this tool for my own German learning. Feedback is welcome:",
-      taskType:"Task type", table:"Table drill", cloze:"Gap drill", mixed:"Mixed",
-      articleType:"Article type", mixedArticles:"Mixed articles", definite:"DER", indefinite:"EIN", negative:"KEIN",
+      taskType:"Learning style", table:"Out of Context", cloze:"In Context [Default]", mixed:"Mixed",
+      articleType:"Articles to practice", mixedArticles:"All [Default]", definite:"DER", indefinite:"EIN", negative:"KEIN",
+      tableHelp:"Quick article recall from case and gender.", clozeHelp:"Fill the missing article in a German sentence.", mixedTaskHelp:"Switch between table prompts and sentence gaps.",
+      mixedArticlesHelp:"Practise definite, indefinite, and negative articles together.", definiteHelp:"Practise der, die, das, den, dem, and related forms.", indefiniteHelp:"Practise ein, eine, einen, einem, and related forms.", negativeHelp:"Practise kein, keine, keinen, keinem, and related forms.",
       genitive:"Genitive", genitiveTable:"Table row", genitiveBasic:"Basic ownership clozes", genitiveWritten:"Written preposition clozes", genHelpTitle:"Genitive options", genHelpIntro:"Use these only when you want Genitive practice. Start with the table row, then basic ownership, then written prepositions.", genHelpTable:"Table row", genHelpBasic:"Basic ownership", genHelpWritten:"Written prepositions", off:"Off", on:"On", support:"Meaning support", smart:"Smart", after:"After answer", always:"Always", random:"Off / random", roundLength:"Round length", adaptive:"Adaptive selection", start:"Start",
       hidden:"Meaning hidden until answer.", newGame:"New game", result:"Results", accuracy:"hit rate", focus:"Focus", right:"correct", mistakes:"errors", points:"points", longTerm:"Last 20 %", next:"Next", hold:"keep stable"
     },
     tr: {
-      startTitle:"Ne çalışmak istiyorsun?",
-      startIntro:"Destek dilini seç ve turu ayarla. Hedef sistemi öğrenmen için Almanca gramer terimleri görünür kalır.",
+      startTitle:"Yeni alıştırma",
+      startIntro:"Bir alıştırma seç.",
+      language:"Sprache",
       feedbackNote:"Bu aracı kendi Almanca öğrenmem için yaptım. Geri bildirim memnuniyetle karşılanır:",
-      taskType:"Alıştırma türü", table:"Tablo alıştırması", cloze:"Boşluk alıştırması", mixed:"Karışık",
-      articleType:"Artikel türü", mixedArticles:"Karışık artikeller", definite:"DER", indefinite:"EIN", negative:"KEIN",
+      taskType:"Öğrenme stili", table:"Bağlam dışı", cloze:"Bağlam içinde [Varsayılan]", mixed:"Karışık",
+      articleType:"Çalışılacak artikeller", mixedArticles:"Hepsi [Varsayılan]", definite:"DER", indefinite:"EIN", negative:"KEIN",
       genitive:"Genitiv", genitiveTable:"Tablo satırı", genitiveBasic:"Temel sahiplik boşlukları", genitiveWritten:"Yazılı dil edatı boşlukları", genHelpTitle:"Genitiv seçenekleri", genHelpIntro:"Bunları yalnızca Genitiv çalışmak istediğinde kullan. Önce tablo satırı, sonra temel sahiplik, sonra yazılı dil edatları.", genHelpTable:"Tablo satırı", genHelpBasic:"Temel sahiplik", genHelpWritten:"Yazılı dil edatları", off:"Kapalı", on:"Açık", support:"Anlam desteği", smart:"Akıllı", after:"Cevaptan sonra", always:"Her zaman", random:"Kapalı / rastgele", roundLength:"Tur uzunluğu", adaptive:"Uyarlanmış seçim", start:"Başla",
       hidden:"Anlam cevaptan sonra gösterilir.", newGame:"Yeni tur", result:"Sonuç", accuracy:"isabet oranı", focus:"Odak", right:"doğru", mistakes:"hata", points:"puan", longTerm:"Son 20 doğru %", next:"Sonraki", hold:"sabit tut"
     },
     ar: {
-      startTitle:"ماذا تريد أن تتدرّب؟",
-      startIntro:"اختر لغة المساعدة واضبط الجولة. تبقى مصطلحات القواعد الألمانية ظاهرة كي تتعلّم النظام الهدف.",
+      startTitle:"تدريب جديد",
+      startIntro:"اختر نوع التدريب.",
+      language:"Sprache",
       feedbackNote:"صنعت هذه الأداة لتعلّمي الألمانية. أرحّب بالملاحظات:",
-      taskType:"نوع التدريب", table:"تدريب الجدول", cloze:"تدريب الفراغات", mixed:"مختلط",
-      articleType:"نوع الأداة", mixedArticles:"أدوات مختلطة", definite:"DER", indefinite:"EIN", negative:"KEIN",
+      taskType:"أسلوب التعلم", table:"خارج السياق", cloze:"داخل السياق [افتراضي]", mixed:"مختلط",
+      articleType:"الأدوات للتدريب", mixedArticles:"الكل [افتراضي]", definite:"DER", indefinite:"EIN", negative:"KEIN",
       genitive:"Genitiv", genitiveTable:"صف الجدول", genitiveBasic:"فراغات الملكية الأساسية", genitiveWritten:"فراغات حروف الجر الكتابية", genHelpTitle:"خيارات Genitiv", genHelpIntro:"استخدم هذه الخيارات فقط عندما تريد تدريب Genitiv. ابدأ بصف الجدول، ثم الملكية الأساسية، ثم حروف الجر في اللغة المكتوبة.", genHelpTable:"صف الجدول", genHelpBasic:"الملكية الأساسية", genHelpWritten:"حروف الجر الكتابية", off:"إيقاف", on:"تشغيل", support:"مساعدة المعنى", smart:"ذكي", after:"بعد الإجابة", always:"دائمًا", random:"إيقاف / عشوائي", roundLength:"طول الجولة", adaptive:"اختيار تكيفي", start:"ابدأ",
       hidden:"المعنى مخفي حتى الإجابة.", newGame:"جولة جديدة", result:"النتيجة", accuracy:"نسبة النجاح", focus:"التركيز", right:"صحيح", mistakes:"أخطاء", points:"نقاط", longTerm:"آخر 20 إجابة %", next:"التالي", hold:"حافظ عليه"
     },
     zh: {
-      startTitle:"你想练习什么？",
-      startIntro:"选择辅助语言并设置一轮练习。德语语法术语会保留，帮助你学习目标系统。",
+      startTitle:"新练习",
+      startIntro:"选择练习类型。",
+      language:"Sprache",
       feedbackNote:"我做这个工具是为了自己学习德语。欢迎反馈：",
-      taskType:"题型", table:"表格练习", cloze:"填空练习", mixed:"混合",
-      articleType:"冠词类型", mixedArticles:"混合冠词", definite:"DER", indefinite:"EIN", negative:"KEIN",
+      taskType:"学习方式", table:"脱离语境", cloze:"在语境中 [默认]", mixed:"混合",
+      articleType:"练习冠词", mixedArticles:"全部 [默认]", definite:"DER", indefinite:"EIN", negative:"KEIN",
       genitive:"Genitiv", genitiveTable:"表格行", genitiveBasic:"基础所属填空", genitiveWritten:"书面介词填空", genHelpTitle:"Genitiv 选项", genHelpIntro:"只在你想练 Genitiv 时使用这些选项。先练表格行，再练基础所属，最后练书面介词。", genHelpTable:"表格行", genHelpBasic:"基础所属", genHelpWritten:"书面介词", off:"关", on:"开", support:"意思提示", smart:"智能", after:"答题后", always:"总是", random:"关 / 随机", roundLength:"题数", adaptive:"自适应选择", start:"开始",
       hidden:"答题后显示意思。", newGame:"新一轮", result:"结果", accuracy:"正确率", focus:"重点", right:"正确", mistakes:"错误", points:"分", longTerm:"近20题正确率", next:"下一步", hold:"保持稳定"
     },
     uk: {
-      startTitle:"Що хочеш тренувати?",
-      startIntro:"Обери мову підтримки й налаштуй раунд. Німецькі граматичні терміни залишаються видимими, щоб ти вчив цільову систему.",
+      startTitle:"Нове тренування",
+      startIntro:"Обери тип вправи.",
+      language:"Sprache",
       feedbackNote:"Я створив цей інструмент для власного вивчення німецької. Буду радий відгукам:",
-      taskType:"Тип вправи", table:"Таблична вправа", cloze:"Вправа з пропуском", mixed:"Змішано",
-      articleType:"Тип артикля", mixedArticles:"Змішані артиклі", definite:"DER", indefinite:"EIN", negative:"KEIN",
+      taskType:"Стиль навчання", table:"Поза контекстом", cloze:"У контексті [Типово]", mixed:"Змішано",
+      articleType:"Артиклі для практики", mixedArticles:"Усі [Типово]", definite:"DER", indefinite:"EIN", negative:"KEIN",
       genitive:"Genitiv", genitiveTable:"Рядок таблиці", genitiveBasic:"Базові пропуски належності", genitiveWritten:"Пропуски з книжними прийменниками", genHelpTitle:"Налаштування Genitiv", genHelpIntro:"Використовуй це лише для тренування Genitiv. Почни з рядка таблиці, потім базова належність, потім книжні прийменники.", genHelpTable:"Рядок таблиці", genHelpBasic:"Базова належність", genHelpWritten:"Книжні прийменники", off:"Вимкнено", on:"Увімкнено", support:"Підказка значення", smart:"Розумно", after:"Після відповіді", always:"Завжди", random:"Вимкнено / випадково", roundLength:"Довжина раунду", adaptive:"Адаптивний вибір", start:"Старт",
       hidden:"Значення приховано до відповіді.", newGame:"Новий раунд", result:"Результат", accuracy:"точність", focus:"Фокус", right:"правильно", mistakes:"помилок", points:"балів", longTerm:"Останні 20 %", next:"Далі", hold:"закріпити"
     }
@@ -3643,6 +4136,14 @@ body[dir="rtl"] .startHero p {
       if (options[option.value] !== undefined) option.textContent = options[option.value];
     });
   }
+  function updateStartOptionHelp() {
+    var task = el("startTaskType") ? el("startTaskType").value : "cloze";
+    var article = el("startArticleType") ? el("startArticleType").value : "mixed";
+    var taskKey = task === "cloze" ? "clozeHelp" : task === "mixed" ? "mixedTaskHelp" : "tableHelp";
+    var articleKey = article === "definite" ? "definiteHelp" : article === "indefinite" ? "indefiniteHelp" : article === "negative" ? "negativeHelp" : "mixedArticlesHelp";
+    if (el("startTaskHelp")) el("startTaskHelp").textContent = t(taskKey);
+    if (el("startArticleHelp")) el("startArticleHelp").textContent = t(articleKey);
+  }
   function applyLanguage() {
     if (LANGS.indexOf(supportLanguage) === -1) supportLanguage = "en";
     var meta = LANG_META[supportLanguage] || LANG_META.en;
@@ -3650,7 +4151,16 @@ body[dir="rtl"] .startHero p {
     document.documentElement.dir = "ltr";
     document.body.dir = "ltr";
     document.body.setAttribute("data-support-lang", supportLanguage);
-    document.querySelectorAll(".langBtn").forEach(function(btn){ btn.classList.toggle("active", btn.getAttribute("data-lang") === supportLanguage); btn.setAttribute("aria-pressed", btn.getAttribute("data-lang") === supportLanguage ? "true" : "false"); });
+    document.querySelectorAll(".langBtn").forEach(function(btn){
+      var lang = btn.getAttribute("data-lang"), info = LANG_META[lang] || {};
+      btn.classList.toggle("active", lang === supportLanguage);
+      btn.setAttribute("aria-pressed", lang === supportLanguage ? "true" : "false");
+      btn.setAttribute("aria-label", info.name || info.label || lang);
+      var code = btn.querySelector(".langCode"), name = btn.querySelector(".langName");
+      if (code) code.textContent = info.label || lang.toUpperCase();
+      if (name) name.textContent = info.name || info.label || lang.toUpperCase();
+    });
+    if (el("languageLabelText")) el("languageLabelText").textContent = t("language");
     if (el("startTitle")) el("startTitle").textContent = t("startTitle");
     if (el("startIntro")) el("startIntro").textContent = t("startIntro");
     if (el("startFeedbackNote")) el("startFeedbackNote").innerHTML = t("feedbackNote") + ' <a href="mailto:ozmillsrpg@gmail.com">ozmillsrpg@gmail.com</a>';
@@ -3670,6 +4180,7 @@ body[dir="rtl"] .startHero p {
     setSelectOptions("includeGenitive", {off:t("off"), on:t("on")});
     setSelectOptions("englishSupport", {smart:t("smart"), after:t("after"), always:t("always"), off:t("off")});
     setSelectOptions("adaptiveMode", {on:t("on"), off:t("random")});
+    updateStartOptionHelp();
     if (current && current.kind === "cloze") renderEnglishGloss();
   }
   function setSupportLanguage(lang) {
@@ -3690,14 +4201,25 @@ body[dir="rtl"] .startHero p {
     [["startGenitiveTableMode","genitiveTableMode"],["startGenitiveBasicCloze","genitiveBasicCloze"],["startGenitiveWrittenCloze","genitiveWrittenCloze"]].forEach(function(pair){ if (el(pair[0]) && el(pair[1])) el(pair[1]).checked = el(pair[0]).checked; });
     syncHiddenGenitiveSelects();
   }
+  function syncStartAccordions() {
+    if (el("practiceAccordion")) el("practiceAccordion").open = true;
+    var genitiveOpen = checkboxOn("startGenitiveTableMode") || checkboxOn("startGenitiveBasicCloze") || checkboxOn("startGenitiveWrittenCloze");
+    if (el("genitiveAccordion")) el("genitiveAccordion").open = genitiveOpen;
+    if (el("supportAccordion")) el("supportAccordion").open = false;
+  }
   function showStartScreen() {
     state = "setup";
     document.body.classList.add("setupMode");
     document.body.classList.remove("resultsMode");
     if (el("startScreen")) el("startScreen").hidden = false;
     syncStartFromSettings();
+    syncStartAccordions();
     applyLanguage();
-    if (el("startRoundBtn")) setTimeout(function(){ el("startRoundBtn").focus(); }, 0);
+    setTimeout(function(){
+      var shell = document.querySelector("main");
+      if (shell) shell.scrollTop = 0;
+      window.scrollTo(0, 0);
+    }, 0);
   }
   function hideStartScreen() {
     document.body.classList.remove("setupMode");
@@ -3807,7 +4329,7 @@ body[dir="rtl"] .startHero p {
   function safeGetLegacy(key) { try { return Number(window.localStorage.getItem(key) || 0); } catch (e) { return 0; } }
   function savePersistent() {
     safeSetObject({ highScore: highScore, bestStreakAll: bestStreakAll, learnerModel: learnerModel, settings: {
-      taskType: el("taskType") ? el("taskType").value : "table",
+      taskType: el("taskType") ? el("taskType").value : "cloze",
       articleType: el("articleType") ? el("articleType").value : "mixed",
       includeGenitive: genitiveTableOn() ? "on" : "off",
       genitiveTableMode: genitiveTableOn() ? "on" : "off",
@@ -3844,7 +4366,7 @@ body[dir="rtl"] .startHero p {
   function displayAnswer(answer) { return answer === "none" ? "kein Artikel" : answer; }
   function questionKey(q) { return q.kind === "cloze" ? "cloze|" + q.id : "table|" + q.type + "|" + q.caseKey + "|" + q.genderKey; }
   function articleTitle(type) { return paradigms[type] ? paradigms[type].title : "Gemischt"; }
-  function taskTitle() { var type = el("taskType") ? el("taskType").value : "mixed"; return type === "table" ? "Tabellen-Drill" : type === "cloze" ? "Lücken-Drill" : "Gemischte Runde"; }
+  function taskTitle() { var type = el("taskType") ? el("taskType").value : "cloze"; return type === "table" ? "Out of Context" : type === "cloze" ? "In Context" : "Mixed"; }
 
   function patternFor(type, caseKey, genderKey) {
     if (type === "definite") {
@@ -4023,7 +4545,7 @@ body[dir="rtl"] .startHero p {
   function includeGenitive() { return genitiveTableOn(); }
   function activeCases() { return includeGenitive() ? cases : cases.filter(function (c) { return c.key !== "Genitiv"; }); }
   function selectedArticleType() { var selected=el("articleType").value; return selected === "mixed" ? articleTypes[randomIndex(articleTypes.length)] : selected; }
-  function currentTaskType() { var selected=el("taskType") ? el("taskType").value : "table"; return selected === "mixed" ? (randomIndex(2) === 0 ? "table" : "cloze") : selected; }
+  function currentTaskType() { var selected=el("taskType") ? el("taskType").value : "cloze"; return selected === "mixed" ? (randomIndex(2) === 0 ? "table" : "cloze") : selected; }
   function renderHud() { var target=targetCount(), answered=answeredCount(), pct=Math.min(100,Math.round((answered/target)*100)); el("targetLabel").textContent=answered+" / "+target; el("progressBar").style.width=pct+"%"; el("scoreValue").textContent=score; el("correctValue").textContent=correct; el("wrongValue").textContent=wrong; el("streakValue").textContent=streak; }
   function renderMode() {
     if (current && current.kind === "cloze") {
@@ -4197,6 +4719,7 @@ body[dir="rtl"] .startHero p {
   function init(){ loadPersistent(); bind("menuToggle","click",function(event){ event.stopPropagation(); toggleMenu();}); document.addEventListener("click",function(event){ if (!event.target.closest(".menuWrap")) setMenu(false);}); bind("taskType","change",function(){ if (state !== "setup") newRound(); else savePersistent(); }); bind("articleType","change",function(){ if (state !== "setup") newRound(); else savePersistent(); }); bind("includeGenitive","change",function(){ setCheckbox("genitiveTableMode", el("includeGenitive").value === "on"); syncHiddenGenitiveSelects(); if (state !== "setup") newRound(); else savePersistent(); });
     ["genitiveTableMode","genitiveBasicCloze","genitiveWrittenCloze"].forEach(function(id){ bind(id,"change",function(){ syncHiddenGenitiveSelects(); if (state !== "setup") newRound(); else savePersistent(); }); });
     ["startGenitiveTableMode","startGenitiveBasicCloze","startGenitiveWrittenCloze"].forEach(function(id){ bind(id,"change",function(){ syncHiddenGenitiveSelects(); }); });
+    ["startTaskType","startArticleType"].forEach(function(id){ bind(id,"change",updateStartOptionHelp); });
     function openGenitiveHelp(){ if (el("genitiveHelpOverlay")) { el("genitiveHelpOverlay").hidden = false; setTimeout(function(){ if (el("genitiveHelpCloseBtn")) el("genitiveHelpCloseBtn").focus(); },0); } }
     function closeGenitiveHelp(){ if (el("genitiveHelpOverlay")) el("genitiveHelpOverlay").hidden = true; }
     bind("genitiveHelpBtn","click",openGenitiveHelp);
