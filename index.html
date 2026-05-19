@@ -1,9 +1,9 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="de">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Kasuskonsole — Language Start v15 Test Fix</title>
+<title>Kasuskonsole â€” Language Start v15 Test Fix</title>
 <style>
 :root {
   color-scheme: dark;
@@ -338,7 +338,7 @@ button {
 .miniTable td { color:var(--text); font-weight:900; }
 .miniTable .target { color:var(--accent-2); border-color:var(--accent-2); background:rgba(246,193,92,.08); }
 .miniTable .hitCorrect { color:#041018; background:var(--good); border-color:var(--good); }
-.miniTable .hitMissed { color:#12050a; background:var(--bad); border-color:var(--bad); }
+.miniTable .hitMissed { color:#041018; background:var(--good); border-color:var(--good); box-shadow:0 0 0 2px rgba(125,227,255,.28); }
 
 
 .practiceSurface {
@@ -389,6 +389,23 @@ button {
   font-weight:780;
 }
 
+.microRule {
+  margin-top:2px;
+  padding:8px 10px;
+  border:1px solid color-mix(in srgb, var(--accent) 34%, var(--line));
+  border-radius:12px;
+  background:rgba(125,227,255,.055);
+  color:var(--text);
+  font-weight:820;
+}
+
+.microRule strong {
+  display:block;
+  color:var(--accent);
+  font-weight:950;
+  margin-bottom:2px;
+}
+
 .correctionTarget {
   color:var(--text);
   font-weight:950;
@@ -423,6 +440,21 @@ button {
 .rank { color:var(--accent-2); font-size:1.25rem; font-weight:950; text-transform:uppercase; }
 .resultLine { color:var(--muted); font-weight:800; }
 .bestLine { color:var(--accent); font-weight:900; }
+.sessionCoverage {
+  display:grid;
+  gap:6px;
+  text-align:left;
+  color:var(--muted);
+  font-size:.86rem;
+  line-height:1.3;
+}
+.sessionCoverage strong {
+  color:var(--text);
+  font-weight:950;
+}
+.sessionCoverageRow {
+  display:block;
+}
 
 .bottomHud {
   pointer-events:none;
@@ -817,7 +849,7 @@ button {
 /* Prompt and action refinements requested:
    - Case and gender always stay side-by-side.
    - Hilfe is a text button under the answer actions.
-   - Kein Artikel is visually related to Prüfen but softer.
+   - Kein Artikel is visually related to PrÃ¼fen but softer.
 */
 @media (max-width: 430px) {
   .promptStack {
@@ -861,7 +893,7 @@ button {
 
 
 /* Final Hilfe placement override:
-   Hilfe belongs below the Kein Artikel / Prüfen row, not inside the prompt card.
+   Hilfe belongs below the Kein Artikel / PrÃ¼fen row, not inside the prompt card.
 */
 #hintBtn {
   position: static !important;
@@ -1090,7 +1122,7 @@ button {
 }
 
 
-/* Cloze/progress additions — intentionally small, preserving the original layout. */
+/* Cloze/progress additions â€” intentionally small, preserving the original layout. */
 #settingsPanel {
   max-height:min(78vh, 720px);
   overflow:auto;
@@ -1185,7 +1217,7 @@ button {
   gap:6px;
 }
 .answerArea .correctionTarget {
-  color:var(--bad);
+  color:var(--accent);
   font-weight:950;
   font-size:clamp(1rem,4vw,1.2rem);
   line-height:1.2;
@@ -2597,6 +2629,452 @@ body.setupMode main {
   }
 }
 
+/* v28: responsive UX audit.
+   Keep the neon console identity while letting phone screens use the full canvas,
+   and prevent wide layouts from behaving like an enlarged phone. */
+html {
+  min-height:100%;
+  background:#020712;
+}
+
+@supports (min-height: 100dvh) {
+  body {
+    min-height:100dvh;
+  }
+}
+
+body {
+  overflow-x:hidden;
+}
+
+body.menuOpen main,
+body.menuOpen .bottomHud {
+  filter:none !important;
+}
+
+body.menuOpen::after {
+  display:none !important;
+}
+
+#settingsPanel {
+  max-width:min(420px, calc(100vw - 20px)) !important;
+}
+
+.challengeCard,
+.answerArea,
+.miniTableWrap,
+.practiceSurface,
+.resultPanel {
+  max-width:min(100%, 620px);
+}
+
+.promptWord,
+.clozePrompt,
+.blankSlot,
+#answerInput,
+.miniTable,
+.resultHeatmap,
+.genitiveExampleGroup code {
+  direction:ltr;
+  unicode-bidi:isolate;
+}
+
+@media (min-width: 1024px) {
+  body:not(.setupMode):not(.resultsMode) main,
+  body:not(.setupMode):not(.resultsMode) .bottomHud {
+    width:min(1120px, calc(100vw - 48px));
+  }
+
+  body:not(.setupMode):not(.resultsMode) .challengeCard,
+  body:not(.setupMode):not(.resultsMode) .answerArea {
+    max-width:620px;
+  }
+}
+
+@media (min-width: 1360px) and (min-height: 760px) {
+  body.setupMode main {
+    width:min(1180px, calc(100vw - 72px));
+  }
+
+  body.setupMode .startScreen {
+    max-width:1120px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+}
+
+@media (min-width: 1600px) {
+  body:not(.setupMode) main,
+  body:not(.setupMode) .bottomHud {
+    width:min(1180px, calc(100vw - 96px));
+  }
+
+  body.setupMode main {
+    width:min(1200px, calc(100vw - 120px));
+  }
+}
+
+@media (max-width: 759px) {
+  body {
+    padding-left:0 !important;
+    padding-right:0 !important;
+    place-items:start stretch;
+  }
+
+  main {
+    width:100vw !important;
+    max-width:100vw !important;
+    min-height:calc(100vh - var(--hudHeight) - 6px);
+    border-left:0;
+    border-right:0;
+    border-top:0;
+    border-radius:0 0 24px 24px;
+    padding:clamp(12px, 4vw, 18px);
+  }
+
+  @supports (min-height: 100dvh) {
+    main {
+      min-height:calc(100dvh - var(--hudHeight) - 6px);
+    }
+  }
+
+  #settingsPanel {
+    left:max(10px, env(safe-area-inset-left)) !important;
+    right:max(10px, env(safe-area-inset-right)) !important;
+    top:max(70px, calc(env(safe-area-inset-top) + 58px)) !important;
+    width:auto !important;
+    max-width:none !important;
+    max-height:calc(100dvh - 86px - env(safe-area-inset-bottom)) !important;
+    padding:12px !important;
+    background:rgba(5,9,19,.98) !important;
+  }
+
+  .header {
+    margin-bottom:10px;
+  }
+
+  h1 {
+    font-size:clamp(1.2rem, 7.2vw, 1.75rem);
+  }
+
+  .startScreen {
+    margin-top:0;
+    width:100%;
+    max-width:100%;
+    padding:clamp(12px, 4vw, 18px);
+    gap:12px;
+    border-width:1.5px;
+    border-radius:22px;
+    overflow:hidden;
+  }
+
+  .languagePanel,
+  .languageStrip,
+  .startHero,
+  .startOptions,
+  .startAccordion,
+  .startSetting {
+    width:100%;
+    max-width:100%;
+  }
+
+  .languageStrip {
+    grid-template-columns:repeat(5, minmax(0, 1fr));
+    overflow:hidden;
+  }
+
+  .langBtn {
+    width:100%;
+    min-width:0;
+    overflow:hidden;
+  }
+
+  .langCode,
+  .langName {
+    max-width:100%;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+
+  .startHero {
+    padding:12px;
+    border-radius:18px;
+  }
+
+  .startHero h2 {
+    font-size:clamp(1.35rem, 7vw, 1.95rem);
+    letter-spacing:.06em;
+    overflow-wrap:anywhere;
+  }
+
+  .startHero p {
+    font-size:.9rem;
+  }
+
+  .startButton {
+    min-height:56px;
+    border-radius:19px;
+    font-size:clamp(1.05rem, 5.8vw, 1.35rem);
+  }
+
+  .startAccordion summary {
+    min-height:48px;
+  }
+
+  .startSetting {
+    padding:10px;
+    border-radius:16px;
+  }
+
+  .startSetting select {
+    min-height:44px;
+  }
+
+  .bottomHud {
+    width:100vw;
+    border-left:0;
+    border-right:0;
+    border-bottom:0;
+    border-radius:20px 20px 0 0;
+  }
+}
+
+@media (max-width: 520px) {
+  body.setupMode,
+  body {
+    justify-items:stretch !important;
+  }
+
+  main,
+  body.setupMode main {
+    width:100vw !important;
+    max-width:100vw !important;
+    transform:none !important;
+    transform-origin:center top !important;
+    padding:clamp(12px, 4vw, 16px);
+  }
+
+  body.setupMode main {
+    max-height:none;
+  }
+
+  body.setupMode h1 {
+    font-size:clamp(1.12rem, 7.2vw, 1.55rem);
+  }
+
+  body.setupMode #menuToggle {
+    width:46px;
+    height:46px;
+    border-radius:16px;
+  }
+
+  .languagePanel {
+    padding:9px;
+    border-radius:17px;
+  }
+
+  .languageStrip {
+    gap:6px;
+  }
+
+  .langBtn {
+    min-height:44px;
+    border-radius:14px;
+    padding-left:2px;
+    padding-right:2px;
+  }
+}
+
+@media (max-width: 360px), (max-height: 620px) {
+  body {
+    padding-bottom:calc(var(--hudHeight) + 8px);
+  }
+
+  main {
+    padding:10px;
+  }
+
+  .header {
+    gap:8px;
+    margin-bottom:8px;
+  }
+
+  h1 {
+    font-size:clamp(1rem, 7vw, 1.32rem);
+  }
+
+  #menuToggle {
+    width:44px;
+    height:44px;
+    border-radius:15px;
+  }
+
+  .languagePanel,
+  .startScreen,
+  .startAccordion,
+  .startSetting,
+  .challengeCard,
+  .answerArea {
+    border-radius:16px;
+  }
+
+  .startScreen {
+    padding:10px;
+    gap:10px;
+  }
+
+  .startHero {
+    padding:10px;
+  }
+
+  .startHero h2 {
+    font-size:clamp(1.18rem, 6.5vw, 1.5rem);
+    letter-spacing:.04em;
+    margin-bottom:4px;
+  }
+
+  .startHero p,
+  .startAccordionKicker,
+  .startHelpText {
+    font-size:.76rem;
+  }
+
+  .startButton {
+    min-height:50px;
+    border-radius:16px;
+  }
+
+  .startAccordion summary {
+    min-height:44px;
+    padding:8px 10px;
+  }
+
+  .startAccordionGrid {
+    gap:8px;
+    padding:0 10px 10px;
+  }
+
+  .bottomHud {
+    padding:7px 9px calc(7px + env(safe-area-inset-bottom));
+  }
+
+  .statsGrid {
+    gap:5px;
+  }
+
+  .stat {
+    padding:6px 4px;
+  }
+
+  .statLabel {
+    font-size:.58rem;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+  body {
+    padding-top:6px;
+    padding-bottom:calc(var(--hudHeight) + 6px);
+  }
+
+  main {
+    width:min(100vw, 1040px) !important;
+    min-height:auto;
+    padding:10px;
+    border-radius:18px;
+  }
+
+  .header {
+    margin-bottom:8px;
+  }
+
+  .content {
+    gap:8px;
+  }
+
+  .challengeCard {
+    padding:12px;
+    gap:8px;
+  }
+
+  .answerArea {
+    padding:10px;
+    gap:8px;
+  }
+
+  .startScreen {
+    grid-template-columns:minmax(240px, .8fr) minmax(320px, 1.2fr);
+    gap:8px;
+    padding:10px;
+  }
+
+  .languagePanel,
+  .startButton,
+  .startFeedbackNote {
+    grid-column:1 / -1;
+  }
+
+  .startHero {
+    display:grid;
+    align-content:center;
+    min-height:0;
+  }
+
+  .startHero h2 {
+    font-size:clamp(1.16rem, 4vw, 1.55rem);
+  }
+
+  .startHero p,
+  .startFeedbackNote {
+    display:none;
+  }
+
+  .startButton {
+    min-height:46px;
+  }
+
+  .bottomHud {
+    padding-top:6px;
+  }
+}
+
+@media (min-width: 900px) and (max-height: 760px) {
+  body.setupMode .startOptions {
+    grid-column:1 / -1;
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+    align-items:start;
+  }
+
+  body.setupMode .startAccordion {
+    height:100%;
+  }
+
+  body.setupMode .startAccordionGrid {
+    grid-template-columns:1fr;
+  }
+
+  body.setupMode .startHero {
+    max-width:none;
+  }
+}
+
+@media (min-width: 1180px) and (max-height: 760px) {
+  body.setupMode .startHero {
+    grid-column:1 / -1;
+    max-width:540px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior:auto !important;
+    transition-duration:.01ms !important;
+    animation-duration:.01ms !important;
+  }
+}
+
 </style>
 </head>
 <body data-mode="definite">
@@ -2604,7 +3082,7 @@ body.setupMode main {
   <div class="header">
     <h1>Kasuskonsole</h1>
     <div class="menuWrap">
-      <button id="menuToggle" type="button" aria-label="Einstellungen öffnen">☰</button>
+      <button id="menuToggle" type="button" aria-label="Einstellungen Ã¶ffnen">â˜°</button>
       <div id="settingsPanel">
         <label>Aufgabentyp
           <select id="taskType">
@@ -2642,7 +3120,7 @@ body.setupMode main {
             <option value="off">Aus</option>
           </select>
         </label>
-        <label>Rundenlänge
+        <label>RundenlÃ¤nge
           <select id="roundTarget">
             <option value="10">10 Fragen</option>
             <option value="20" selected>20 Fragen</option>
@@ -2662,17 +3140,17 @@ body.setupMode main {
         <button class="menuButton" id="exportBtn" type="button">Fortschritt exportieren</button>
         <button class="menuButton" id="importBtn" type="button">Fortschritt importieren</button>
         <input class="hiddenFileInput" id="importFile" type="file" accept="application/json,.json">
-        <button class="menuButton danger" id="resetBestBtn" type="button">Bestwerte löschen</button>
-        <button class="menuButton danger" id="resetProfileBtn" type="button">Lernprofil löschen</button>
+        <button class="menuButton danger" id="resetBestBtn" type="button">Bestwerte lÃ¶schen</button>
+        <button class="menuButton danger" id="resetProfileBtn" type="button">Lernprofil lÃ¶schen</button>
         <div class="menuDivider"></div>
         <div class="comingSoon">
-          <div class="menuSectionTitle">Demnächst</div>
+          <div class="menuSectionTitle">DemnÃ¤chst</div>
           <ul>
             <li>Adjektivendungen</li>
             <li>Fehlerkorrektur-Modus</li>
             <li>Kontrast-Drills: der / den / dem</li>
             <li>Session-Auswertung nach Fehlerart</li>
-            <li>Eigene Lücken importieren</li>
+            <li>Eigene LÃ¼cken importieren</li>
           </ul>
         </div>
         <div class="menuDivider"></div>
@@ -2686,10 +3164,10 @@ body.setupMode main {
       <div class="languageLabel" id="languageLabel"><span class="languageIcon" aria-hidden="true">Aa</span><span id="languageLabelText">Sprache</span></div>
       <div class="languageStrip" id="languageStrip" role="group" aria-label="Support language">
         <button class="langBtn" type="button" data-lang="en"><span class="langCode">EN</span><span class="langName">English</span></button>
-        <button class="langBtn" type="button" data-lang="tr"><span class="langCode">TR</span><span class="langName">Türkçe</span></button>
-        <button class="langBtn" type="button" data-lang="ar"><span class="langCode">AR</span><span class="langName">العربية</span></button>
-        <button class="langBtn" type="button" data-lang="zh"><span class="langCode">中文</span><span class="langName">中文</span></button>
-        <button class="langBtn" type="button" data-lang="uk"><span class="langCode">UA</span><span class="langName">Українська</span></button>
+        <button class="langBtn" type="button" data-lang="tr"><span class="langCode">TR</span><span class="langName">TÃ¼rkÃ§e</span></button>
+        <button class="langBtn" type="button" data-lang="ar"><span class="langCode">AR</span><span class="langName">Ø§Ù„Ø¹Ø±Ø¨ÙŠØ©</span></button>
+        <button class="langBtn" type="button" data-lang="zh"><span class="langCode">ä¸­æ–‡</span><span class="langName">ä¸­æ–‡</span></button>
+        <button class="langBtn" type="button" data-lang="uk"><span class="langCode">UA</span><span class="langName">Ð£ÐºÑ€Ð°Ñ—Ð½ÑÑŒÐºÐ°</span></button>
       </div>
     </div>
 
@@ -2697,6 +3175,8 @@ body.setupMode main {
       <h2 id="startTitle">New Practice</h2>
       <p id="startIntro">Choose a drill.</p>
     </div>
+
+    <button class="startButton" id="startRoundBtn" type="button">Start</button>
 
     <div class="startOptions" aria-label="New game options">
       <details class="startAccordion" id="practiceAccordion" open>
@@ -2723,8 +3203,6 @@ body.setupMode main {
           </div>
         </div>
       </details>
-
-      <button class="startButton" id="startRoundBtn" type="button">Start</button>
 
       <details class="startAccordion" id="genitiveAccordion">
         <summary>
@@ -2801,7 +3279,7 @@ body.setupMode main {
 
         <div class="actionGrid" id="actionGrid">
           <button id="noArticleBtn" type="button">Kein Artikel</button>
-          <button id="checkBtn" type="button">Prüfen</button>
+          <button id="checkBtn" type="button">PrÃ¼fen</button>
         </div>
 
         <button id="hintBtn" type="button">Hilfe</button>
@@ -2851,23 +3329,23 @@ body.setupMode main {
   <div class="genitiveHelpCard" role="dialog" aria-modal="true" aria-labelledby="genitiveHelpTitle">
     <div class="genitiveHelpTop">
       <h2 id="genitiveHelpTitle">Genitive options</h2>
-      <button class="genitiveHelpClose" id="genitiveHelpCloseBtn" type="button">×</button>
+      <button class="genitiveHelpClose" id="genitiveHelpCloseBtn" type="button">Ã—</button>
     </div>
     <p class="genitiveHelpIntro" id="genitiveHelpIntro">Use these only when you want Genitive practice. Start with the table row, then basic ownership, then written prepositions.</p>
     <section class="genitiveExampleGroup">
       <h3 id="genitiveHelpTableTitle">Table row</h3>
-      <p><code>Genitiv Maskulinum → des</code></p>
-      <p><code>Genitiv Femininum → der</code></p>
+      <p><code>Genitiv Maskulinum â†’ des</code></p>
+      <p><code>Genitiv Femininum â†’ der</code></p>
     </section>
     <section class="genitiveExampleGroup">
       <h3 id="genitiveHelpBasicTitle">Basic ownership</h3>
-      <p><code>Der Name ___ Lehrers steht auf der Liste. → des</code></p>
-      <p><code>Die Tasche ___ Frau liegt im Flur. → der</code></p>
+      <p><code>Der Name ___ Lehrers steht auf der Liste. â†’ des</code></p>
+      <p><code>Die Tasche ___ Frau liegt im Flur. â†’ der</code></p>
     </section>
     <section class="genitiveExampleGroup">
       <h3 id="genitiveHelpWrittenTitle">Written prepositions</h3>
-      <p><code>Während ___ Unterrichts höre ich zu. → des</code></p>
-      <p><code>Innerhalb ___ Woche melde ich mich. → einer</code></p>
+      <p><code>WÃ¤hrend ___ Unterrichts hÃ¶re ich zu. â†’ des</code></p>
+      <p><code>Innerhalb ___ Woche melde ich mich. â†’ einer</code></p>
     </section>
   </div>
 </div>
@@ -2880,9 +3358,9 @@ body.setupMode main {
           <div class="devEyebrow">Testing only</div>
           <h2 id="devToolsTitle">Dev Tools</h2>
         </div>
-        <button class="devCloseBtn" id="devCloseBtn" type="button" aria-label="Dev Tools schließen">×</button>
+        <button class="devCloseBtn" id="devCloseBtn" type="button" aria-label="Dev Tools schlieÃŸen">Ã—</button>
       </div>
-      <p class="devIntro">Temporäre Prototypen, bevor sie in den normalen Lernfluss eingebaut werden.</p>
+      <p class="devIntro">TemporÃ¤re Prototypen, bevor sie in den normalen Lernfluss eingebaut werden.</p>
       <div class="devTestList">
         <button class="devTestItem" id="openNewGameMockBtn" type="button">
           <strong>New Game Screen Mock</strong>
@@ -2897,12 +3375,12 @@ body.setupMode main {
           <div class="devEyebrow">Mock screen</div>
           <h2>Neue Runde</h2>
         </div>
-        <button class="devCloseBtn" id="newGameCloseBtn" type="button" aria-label="Mock schließen">×</button>
+        <button class="devCloseBtn" id="newGameCloseBtn" type="button" aria-label="Mock schlieÃŸen">Ã—</button>
       </div>
 
       <div class="newGameHero">
         <h2>Was willst du trainieren?</h2>
-        <p class="newGameIntro">Mockup: Diese Ansicht könnte vor einer neuen Runde erscheinen. Vom Ergebnisbildschirm bleibt „Neue Runde“ als schneller Play-again-Weg erhalten.</p>
+        <p class="newGameIntro">Mockup: Diese Ansicht kÃ¶nnte vor einer neuen Runde erscheinen. Vom Ergebnisbildschirm bleibt â€žNeue Rundeâ€œ als schneller Play-again-Weg erhalten.</p>
       </div>
 
       <div class="newGameGrid">
@@ -2910,7 +3388,7 @@ body.setupMode main {
           <label for="mockTaskType">Aufgabentyp</label>
           <select id="mockTaskType">
             <option value="table">Tabellen-Drill</option>
-            <option value="cloze">Lücken-Drill</option>
+            <option value="cloze">LÃ¼cken-Drill</option>
             <option value="mixed">Gemischt</option>
           </select>
         </div>
@@ -2940,7 +3418,7 @@ body.setupMode main {
           </select>
         </div>
         <div class="mockSetting">
-          <label for="mockRoundTarget">Rundenlänge</label>
+          <label for="mockRoundTarget">RundenlÃ¤nge</label>
           <select id="mockRoundTarget">
             <option value="10">10 Fragen</option>
             <option value="20">20 Fragen</option>
@@ -2952,12 +3430,12 @@ body.setupMode main {
 
       <div class="newGameSummary">
         <strong>Design question</strong>
-        <span>First launch probably needs this screen. Endgame can keep the fast „Neue Runde“ button for immediate replay.</span>
+        <span>First launch probably needs this screen. Endgame can keep the fast â€žNeue Rundeâ€œ button for immediate replay.</span>
       </div>
 
       <div class="newGameActions">
-        <button class="mockSecondaryBtn" id="backToDevListBtn" type="button">Zurück</button>
-        <button class="mockStartBtn" id="applyNewGameMockBtn" type="button">Übernehmen & starten</button>
+        <button class="mockSecondaryBtn" id="backToDevListBtn" type="button">ZurÃ¼ck</button>
+        <button class="mockStartBtn" id="applyNewGameMockBtn" type="button">Ãœbernehmen & starten</button>
       </div>
     </div>
   </div>
@@ -2973,10 +3451,10 @@ body.setupMode main {
   var LANGS = ["en", "tr", "ar", "zh", "uk"];
   var LANG_META = {
     en: { label:"EN", name:"English", dir:"ltr" },
-    tr: { label:"TR", name:"Türkçe", dir:"ltr" },
-    ar: { label:"AR", name:"العربية", dir:"rtl" },
-    zh: { label:"中文", name:"中文", dir:"ltr" },
-    uk: { label:"UA", name:"Українська", dir:"ltr" }
+    tr: { label:"TR", name:"TÃ¼rkÃ§e", dir:"ltr" },
+    ar: { label:"AR", name:"Ø§Ù„Ø¹Ø±Ø¨ÙŠØ©", dir:"rtl" },
+    zh: { label:"ä¸­æ–‡", name:"ä¸­æ–‡", dir:"ltr" },
+    uk: { label:"UA", name:"Ð£ÐºÑ€Ð°Ñ—Ð½ÑÑŒÐºÐ°", dir:"ltr" }
   };
   var I18N = {
     en: {
@@ -2992,44 +3470,44 @@ body.setupMode main {
       hidden:"Meaning hidden until answer.", newGame:"New game", result:"Results", accuracy:"hit rate", focus:"Focus", right:"correct", mistakes:"errors", points:"points", longTerm:"Last 20 %", next:"Next", hold:"keep stable"
     },
     tr: {
-      startTitle:"Yeni alıştırma",
-      startIntro:"Bir alıştırma seç.",
+      startTitle:"Yeni alÄ±ÅŸtÄ±rma",
+      startIntro:"Bir alÄ±ÅŸtÄ±rma seÃ§.",
       language:"Sprache",
-      feedbackNote:"Bu aracı kendi Almanca öğrenmem için yaptım. Geri bildirim memnuniyetle karşılanır:",
-      taskType:"Öğrenme stili", table:"Bağlam dışı", cloze:"Bağlam içinde [Varsayılan]", mixed:"Karışık",
-      articleType:"Çalışılacak artikeller", mixedArticles:"Hepsi [Varsayılan]", definite:"DER", indefinite:"EIN", negative:"KEIN",
-      genitive:"Genitiv", genitiveTable:"Tablo satırı", genitiveBasic:"Temel sahiplik boşlukları", genitiveWritten:"Yazılı dil edatı boşlukları", genHelpTitle:"Genitiv seçenekleri", genHelpIntro:"Bunları yalnızca Genitiv çalışmak istediğinde kullan. Önce tablo satırı, sonra temel sahiplik, sonra yazılı dil edatları.", genHelpTable:"Tablo satırı", genHelpBasic:"Temel sahiplik", genHelpWritten:"Yazılı dil edatları", off:"Kapalı", on:"Açık", support:"Anlam desteği", smart:"Akıllı", after:"Cevaptan sonra", always:"Her zaman", random:"Kapalı / rastgele", roundLength:"Tur uzunluğu", adaptive:"Uyarlanmış seçim", start:"Başla",
-      hidden:"Anlam cevaptan sonra gösterilir.", newGame:"Yeni tur", result:"Sonuç", accuracy:"isabet oranı", focus:"Odak", right:"doğru", mistakes:"hata", points:"puan", longTerm:"Son 20 doğru %", next:"Sonraki", hold:"sabit tut"
+      feedbackNote:"Bu aracÄ± kendi Almanca Ã¶ÄŸrenmem iÃ§in yaptÄ±m. Geri bildirim memnuniyetle karÅŸÄ±lanÄ±r:",
+      taskType:"Ã–ÄŸrenme stili", table:"BaÄŸlam dÄ±ÅŸÄ±", cloze:"BaÄŸlam iÃ§inde [VarsayÄ±lan]", mixed:"KarÄ±ÅŸÄ±k",
+      articleType:"Ã‡alÄ±ÅŸÄ±lacak artikeller", mixedArticles:"Hepsi [VarsayÄ±lan]", definite:"DER", indefinite:"EIN", negative:"KEIN",
+      genitive:"Genitiv", genitiveTable:"Tablo satÄ±rÄ±", genitiveBasic:"Temel sahiplik boÅŸluklarÄ±", genitiveWritten:"YazÄ±lÄ± dil edatÄ± boÅŸluklarÄ±", genHelpTitle:"Genitiv seÃ§enekleri", genHelpIntro:"BunlarÄ± yalnÄ±zca Genitiv Ã§alÄ±ÅŸmak istediÄŸinde kullan. Ã–nce tablo satÄ±rÄ±, sonra temel sahiplik, sonra yazÄ±lÄ± dil edatlarÄ±.", genHelpTable:"Tablo satÄ±rÄ±", genHelpBasic:"Temel sahiplik", genHelpWritten:"YazÄ±lÄ± dil edatlarÄ±", off:"KapalÄ±", on:"AÃ§Ä±k", support:"Anlam desteÄŸi", smart:"AkÄ±llÄ±", after:"Cevaptan sonra", always:"Her zaman", random:"KapalÄ± / rastgele", roundLength:"Tur uzunluÄŸu", adaptive:"UyarlanmÄ±ÅŸ seÃ§im", start:"BaÅŸla",
+      hidden:"Anlam cevaptan sonra gÃ¶sterilir.", newGame:"Yeni tur", result:"SonuÃ§", accuracy:"isabet oranÄ±", focus:"Odak", right:"doÄŸru", mistakes:"hata", points:"puan", longTerm:"Son 20 doÄŸru %", next:"Sonraki", hold:"sabit tut"
     },
     ar: {
-      startTitle:"تدريب جديد",
-      startIntro:"اختر نوع التدريب.",
+      startTitle:"ØªØ¯Ø±ÙŠØ¨ Ø¬Ø¯ÙŠØ¯",
+      startIntro:"Ø§Ø®ØªØ± Ù†ÙˆØ¹ Ø§Ù„ØªØ¯Ø±ÙŠØ¨.",
       language:"Sprache",
-      feedbackNote:"صنعت هذه الأداة لتعلّمي الألمانية. أرحّب بالملاحظات:",
-      taskType:"أسلوب التعلم", table:"خارج السياق", cloze:"داخل السياق [افتراضي]", mixed:"مختلط",
-      articleType:"الأدوات للتدريب", mixedArticles:"الكل [افتراضي]", definite:"DER", indefinite:"EIN", negative:"KEIN",
-      genitive:"Genitiv", genitiveTable:"صف الجدول", genitiveBasic:"فراغات الملكية الأساسية", genitiveWritten:"فراغات حروف الجر الكتابية", genHelpTitle:"خيارات Genitiv", genHelpIntro:"استخدم هذه الخيارات فقط عندما تريد تدريب Genitiv. ابدأ بصف الجدول، ثم الملكية الأساسية، ثم حروف الجر في اللغة المكتوبة.", genHelpTable:"صف الجدول", genHelpBasic:"الملكية الأساسية", genHelpWritten:"حروف الجر الكتابية", off:"إيقاف", on:"تشغيل", support:"مساعدة المعنى", smart:"ذكي", after:"بعد الإجابة", always:"دائمًا", random:"إيقاف / عشوائي", roundLength:"طول الجولة", adaptive:"اختيار تكيفي", start:"ابدأ",
-      hidden:"المعنى مخفي حتى الإجابة.", newGame:"جولة جديدة", result:"النتيجة", accuracy:"نسبة النجاح", focus:"التركيز", right:"صحيح", mistakes:"أخطاء", points:"نقاط", longTerm:"آخر 20 إجابة %", next:"التالي", hold:"حافظ عليه"
+      feedbackNote:"ØµÙ†Ø¹Øª Ù‡Ø°Ù‡ Ø§Ù„Ø£Ø¯Ø§Ø© Ù„ØªØ¹Ù„Ù‘Ù…ÙŠ Ø§Ù„Ø£Ù„Ù…Ø§Ù†ÙŠØ©. Ø£Ø±Ø­Ù‘Ø¨ Ø¨Ø§Ù„Ù…Ù„Ø§Ø­Ø¸Ø§Øª:",
+      taskType:"Ø£Ø³Ù„ÙˆØ¨ Ø§Ù„ØªØ¹Ù„Ù…", table:"Ø®Ø§Ø±Ø¬ Ø§Ù„Ø³ÙŠØ§Ù‚", cloze:"Ø¯Ø§Ø®Ù„ Ø§Ù„Ø³ÙŠØ§Ù‚ [Ø§ÙØªØ±Ø§Ø¶ÙŠ]", mixed:"Ù…Ø®ØªÙ„Ø·",
+      articleType:"Ø§Ù„Ø£Ø¯ÙˆØ§Øª Ù„Ù„ØªØ¯Ø±ÙŠØ¨", mixedArticles:"Ø§Ù„ÙƒÙ„ [Ø§ÙØªØ±Ø§Ø¶ÙŠ]", definite:"DER", indefinite:"EIN", negative:"KEIN",
+      genitive:"Genitiv", genitiveTable:"ØµÙ Ø§Ù„Ø¬Ø¯ÙˆÙ„", genitiveBasic:"ÙØ±Ø§ØºØ§Øª Ø§Ù„Ù…Ù„ÙƒÙŠØ© Ø§Ù„Ø£Ø³Ø§Ø³ÙŠØ©", genitiveWritten:"ÙØ±Ø§ØºØ§Øª Ø­Ø±ÙˆÙ Ø§Ù„Ø¬Ø± Ø§Ù„ÙƒØªØ§Ø¨ÙŠØ©", genHelpTitle:"Ø®ÙŠØ§Ø±Ø§Øª Genitiv", genHelpIntro:"Ø§Ø³ØªØ®Ø¯Ù… Ù‡Ø°Ù‡ Ø§Ù„Ø®ÙŠØ§Ø±Ø§Øª ÙÙ‚Ø· Ø¹Ù†Ø¯Ù…Ø§ ØªØ±ÙŠØ¯ ØªØ¯Ø±ÙŠØ¨ Genitiv. Ø§Ø¨Ø¯Ø£ Ø¨ØµÙ Ø§Ù„Ø¬Ø¯ÙˆÙ„ØŒ Ø«Ù… Ø§Ù„Ù…Ù„ÙƒÙŠØ© Ø§Ù„Ø£Ø³Ø§Ø³ÙŠØ©ØŒ Ø«Ù… Ø­Ø±ÙˆÙ Ø§Ù„Ø¬Ø± ÙÙŠ Ø§Ù„Ù„ØºØ© Ø§Ù„Ù…ÙƒØªÙˆØ¨Ø©.", genHelpTable:"ØµÙ Ø§Ù„Ø¬Ø¯ÙˆÙ„", genHelpBasic:"Ø§Ù„Ù…Ù„ÙƒÙŠØ© Ø§Ù„Ø£Ø³Ø§Ø³ÙŠØ©", genHelpWritten:"Ø­Ø±ÙˆÙ Ø§Ù„Ø¬Ø± Ø§Ù„ÙƒØªØ§Ø¨ÙŠØ©", off:"Ø¥ÙŠÙ‚Ø§Ù", on:"ØªØ´ØºÙŠÙ„", support:"Ù…Ø³Ø§Ø¹Ø¯Ø© Ø§Ù„Ù…Ø¹Ù†Ù‰", smart:"Ø°ÙƒÙŠ", after:"Ø¨Ø¹Ø¯ Ø§Ù„Ø¥Ø¬Ø§Ø¨Ø©", always:"Ø¯Ø§Ø¦Ù…Ù‹Ø§", random:"Ø¥ÙŠÙ‚Ø§Ù / Ø¹Ø´ÙˆØ§Ø¦ÙŠ", roundLength:"Ø·ÙˆÙ„ Ø§Ù„Ø¬ÙˆÙ„Ø©", adaptive:"Ø§Ø®ØªÙŠØ§Ø± ØªÙƒÙŠÙÙŠ", start:"Ø§Ø¨Ø¯Ø£",
+      hidden:"Ø§Ù„Ù…Ø¹Ù†Ù‰ Ù…Ø®ÙÙŠ Ø­ØªÙ‰ Ø§Ù„Ø¥Ø¬Ø§Ø¨Ø©.", newGame:"Ø¬ÙˆÙ„Ø© Ø¬Ø¯ÙŠØ¯Ø©", result:"Ø§Ù„Ù†ØªÙŠØ¬Ø©", accuracy:"Ù†Ø³Ø¨Ø© Ø§Ù„Ù†Ø¬Ø§Ø­", focus:"Ø§Ù„ØªØ±ÙƒÙŠØ²", right:"ØµØ­ÙŠØ­", mistakes:"Ø£Ø®Ø·Ø§Ø¡", points:"Ù†Ù‚Ø§Ø·", longTerm:"Ø¢Ø®Ø± 20 Ø¥Ø¬Ø§Ø¨Ø© %", next:"Ø§Ù„ØªØ§Ù„ÙŠ", hold:"Ø­Ø§ÙØ¸ Ø¹Ù„ÙŠÙ‡"
     },
     zh: {
-      startTitle:"新练习",
-      startIntro:"选择练习类型。",
+      startTitle:"æ–°ç»ƒä¹ ",
+      startIntro:"é€‰æ‹©ç»ƒä¹ ç±»åž‹ã€‚",
       language:"Sprache",
-      feedbackNote:"我做这个工具是为了自己学习德语。欢迎反馈：",
-      taskType:"学习方式", table:"脱离语境", cloze:"在语境中 [默认]", mixed:"混合",
-      articleType:"练习冠词", mixedArticles:"全部 [默认]", definite:"DER", indefinite:"EIN", negative:"KEIN",
-      genitive:"Genitiv", genitiveTable:"表格行", genitiveBasic:"基础所属填空", genitiveWritten:"书面介词填空", genHelpTitle:"Genitiv 选项", genHelpIntro:"只在你想练 Genitiv 时使用这些选项。先练表格行，再练基础所属，最后练书面介词。", genHelpTable:"表格行", genHelpBasic:"基础所属", genHelpWritten:"书面介词", off:"关", on:"开", support:"意思提示", smart:"智能", after:"答题后", always:"总是", random:"关 / 随机", roundLength:"题数", adaptive:"自适应选择", start:"开始",
-      hidden:"答题后显示意思。", newGame:"新一轮", result:"结果", accuracy:"正确率", focus:"重点", right:"正确", mistakes:"错误", points:"分", longTerm:"近20题正确率", next:"下一步", hold:"保持稳定"
+      feedbackNote:"æˆ‘åšè¿™ä¸ªå·¥å…·æ˜¯ä¸ºäº†è‡ªå·±å­¦ä¹ å¾·è¯­ã€‚æ¬¢è¿Žåé¦ˆï¼š",
+      taskType:"å­¦ä¹ æ–¹å¼", table:"è„±ç¦»è¯­å¢ƒ", cloze:"åœ¨è¯­å¢ƒä¸­ [é»˜è®¤]", mixed:"æ··åˆ",
+      articleType:"ç»ƒä¹ å† è¯", mixedArticles:"å…¨éƒ¨ [é»˜è®¤]", definite:"DER", indefinite:"EIN", negative:"KEIN",
+      genitive:"Genitiv", genitiveTable:"è¡¨æ ¼è¡Œ", genitiveBasic:"åŸºç¡€æ‰€å±žå¡«ç©º", genitiveWritten:"ä¹¦é¢ä»‹è¯å¡«ç©º", genHelpTitle:"Genitiv é€‰é¡¹", genHelpIntro:"åªåœ¨ä½ æƒ³ç»ƒ Genitiv æ—¶ä½¿ç”¨è¿™äº›é€‰é¡¹ã€‚å…ˆç»ƒè¡¨æ ¼è¡Œï¼Œå†ç»ƒåŸºç¡€æ‰€å±žï¼Œæœ€åŽç»ƒä¹¦é¢ä»‹è¯ã€‚", genHelpTable:"è¡¨æ ¼è¡Œ", genHelpBasic:"åŸºç¡€æ‰€å±ž", genHelpWritten:"ä¹¦é¢ä»‹è¯", off:"å…³", on:"å¼€", support:"æ„æ€æç¤º", smart:"æ™ºèƒ½", after:"ç­”é¢˜åŽ", always:"æ€»æ˜¯", random:"å…³ / éšæœº", roundLength:"é¢˜æ•°", adaptive:"è‡ªé€‚åº”é€‰æ‹©", start:"å¼€å§‹",
+      hidden:"ç­”é¢˜åŽæ˜¾ç¤ºæ„æ€ã€‚", newGame:"æ–°ä¸€è½®", result:"ç»“æžœ", accuracy:"æ­£ç¡®çŽ‡", focus:"é‡ç‚¹", right:"æ­£ç¡®", mistakes:"é”™è¯¯", points:"åˆ†", longTerm:"è¿‘20é¢˜æ­£ç¡®çŽ‡", next:"ä¸‹ä¸€æ­¥", hold:"ä¿æŒç¨³å®š"
     },
     uk: {
-      startTitle:"Нове тренування",
-      startIntro:"Обери тип вправи.",
+      startTitle:"ÐÐ¾Ð²Ðµ Ñ‚Ñ€ÐµÐ½ÑƒÐ²Ð°Ð½Ð½Ñ",
+      startIntro:"ÐžÐ±ÐµÑ€Ð¸ Ñ‚Ð¸Ð¿ Ð²Ð¿Ñ€Ð°Ð²Ð¸.",
       language:"Sprache",
-      feedbackNote:"Я створив цей інструмент для власного вивчення німецької. Буду радий відгукам:",
-      taskType:"Стиль навчання", table:"Поза контекстом", cloze:"У контексті [Типово]", mixed:"Змішано",
-      articleType:"Артиклі для практики", mixedArticles:"Усі [Типово]", definite:"DER", indefinite:"EIN", negative:"KEIN",
-      genitive:"Genitiv", genitiveTable:"Рядок таблиці", genitiveBasic:"Базові пропуски належності", genitiveWritten:"Пропуски з книжними прийменниками", genHelpTitle:"Налаштування Genitiv", genHelpIntro:"Використовуй це лише для тренування Genitiv. Почни з рядка таблиці, потім базова належність, потім книжні прийменники.", genHelpTable:"Рядок таблиці", genHelpBasic:"Базова належність", genHelpWritten:"Книжні прийменники", off:"Вимкнено", on:"Увімкнено", support:"Підказка значення", smart:"Розумно", after:"Після відповіді", always:"Завжди", random:"Вимкнено / випадково", roundLength:"Довжина раунду", adaptive:"Адаптивний вибір", start:"Старт",
-      hidden:"Значення приховано до відповіді.", newGame:"Новий раунд", result:"Результат", accuracy:"точність", focus:"Фокус", right:"правильно", mistakes:"помилок", points:"балів", longTerm:"Останні 20 %", next:"Далі", hold:"закріпити"
+      feedbackNote:"Ð¯ ÑÑ‚Ð²Ð¾Ñ€Ð¸Ð² Ñ†ÐµÐ¹ Ñ–Ð½ÑÑ‚Ñ€ÑƒÐ¼ÐµÐ½Ñ‚ Ð´Ð»Ñ Ð²Ð»Ð°ÑÐ½Ð¾Ð³Ð¾ Ð²Ð¸Ð²Ñ‡ÐµÐ½Ð½Ñ Ð½Ñ–Ð¼ÐµÑ†ÑŒÐºÐ¾Ñ—. Ð‘ÑƒÐ´Ñƒ Ñ€Ð°Ð´Ð¸Ð¹ Ð²Ñ–Ð´Ð³ÑƒÐºÐ°Ð¼:",
+      taskType:"Ð¡Ñ‚Ð¸Ð»ÑŒ Ð½Ð°Ð²Ñ‡Ð°Ð½Ð½Ñ", table:"ÐŸÐ¾Ð·Ð° ÐºÐ¾Ð½Ñ‚ÐµÐºÑÑ‚Ð¾Ð¼", cloze:"Ð£ ÐºÐ¾Ð½Ñ‚ÐµÐºÑÑ‚Ñ– [Ð¢Ð¸Ð¿Ð¾Ð²Ð¾]", mixed:"Ð—Ð¼Ñ–ÑˆÐ°Ð½Ð¾",
+      articleType:"ÐÑ€Ñ‚Ð¸ÐºÐ»Ñ– Ð´Ð»Ñ Ð¿Ñ€Ð°ÐºÑ‚Ð¸ÐºÐ¸", mixedArticles:"Ð£ÑÑ– [Ð¢Ð¸Ð¿Ð¾Ð²Ð¾]", definite:"DER", indefinite:"EIN", negative:"KEIN",
+      genitive:"Genitiv", genitiveTable:"Ð ÑÐ´Ð¾Ðº Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ñ–", genitiveBasic:"Ð‘Ð°Ð·Ð¾Ð²Ñ– Ð¿Ñ€Ð¾Ð¿ÑƒÑÐºÐ¸ Ð½Ð°Ð»ÐµÐ¶Ð½Ð¾ÑÑ‚Ñ–", genitiveWritten:"ÐŸÑ€Ð¾Ð¿ÑƒÑÐºÐ¸ Ð· ÐºÐ½Ð¸Ð¶Ð½Ð¸Ð¼Ð¸ Ð¿Ñ€Ð¸Ð¹Ð¼ÐµÐ½Ð½Ð¸ÐºÐ°Ð¼Ð¸", genHelpTitle:"ÐÐ°Ð»Ð°ÑˆÑ‚ÑƒÐ²Ð°Ð½Ð½Ñ Genitiv", genHelpIntro:"Ð’Ð¸ÐºÐ¾Ñ€Ð¸ÑÑ‚Ð¾Ð²ÑƒÐ¹ Ñ†Ðµ Ð»Ð¸ÑˆÐµ Ð´Ð»Ñ Ñ‚Ñ€ÐµÐ½ÑƒÐ²Ð°Ð½Ð½Ñ Genitiv. ÐŸÐ¾Ñ‡Ð½Ð¸ Ð· Ñ€ÑÐ´ÐºÐ° Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ñ–, Ð¿Ð¾Ñ‚Ñ–Ð¼ Ð±Ð°Ð·Ð¾Ð²Ð° Ð½Ð°Ð»ÐµÐ¶Ð½Ñ–ÑÑ‚ÑŒ, Ð¿Ð¾Ñ‚Ñ–Ð¼ ÐºÐ½Ð¸Ð¶Ð½Ñ– Ð¿Ñ€Ð¸Ð¹Ð¼ÐµÐ½Ð½Ð¸ÐºÐ¸.", genHelpTable:"Ð ÑÐ´Ð¾Ðº Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ñ–", genHelpBasic:"Ð‘Ð°Ð·Ð¾Ð²Ð° Ð½Ð°Ð»ÐµÐ¶Ð½Ñ–ÑÑ‚ÑŒ", genHelpWritten:"ÐšÐ½Ð¸Ð¶Ð½Ñ– Ð¿Ñ€Ð¸Ð¹Ð¼ÐµÐ½Ð½Ð¸ÐºÐ¸", off:"Ð’Ð¸Ð¼ÐºÐ½ÐµÐ½Ð¾", on:"Ð£Ð²Ñ–Ð¼ÐºÐ½ÐµÐ½Ð¾", support:"ÐŸÑ–Ð´ÐºÐ°Ð·ÐºÐ° Ð·Ð½Ð°Ñ‡ÐµÐ½Ð½Ñ", smart:"Ð Ð¾Ð·ÑƒÐ¼Ð½Ð¾", after:"ÐŸÑ–ÑÐ»Ñ Ð²Ñ–Ð´Ð¿Ð¾Ð²Ñ–Ð´Ñ–", always:"Ð—Ð°Ð²Ð¶Ð´Ð¸", random:"Ð’Ð¸Ð¼ÐºÐ½ÐµÐ½Ð¾ / Ð²Ð¸Ð¿Ð°Ð´ÐºÐ¾Ð²Ð¾", roundLength:"Ð”Ð¾Ð²Ð¶Ð¸Ð½Ð° Ñ€Ð°ÑƒÐ½Ð´Ñƒ", adaptive:"ÐÐ´Ð°Ð¿Ñ‚Ð¸Ð²Ð½Ð¸Ð¹ Ð²Ð¸Ð±Ñ–Ñ€", start:"Ð¡Ñ‚Ð°Ñ€Ñ‚",
+      hidden:"Ð—Ð½Ð°Ñ‡ÐµÐ½Ð½Ñ Ð¿Ñ€Ð¸Ñ…Ð¾Ð²Ð°Ð½Ð¾ Ð´Ð¾ Ð²Ñ–Ð´Ð¿Ð¾Ð²Ñ–Ð´Ñ–.", newGame:"ÐÐ¾Ð²Ð¸Ð¹ Ñ€Ð°ÑƒÐ½Ð´", result:"Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚", accuracy:"Ñ‚Ð¾Ñ‡Ð½Ñ–ÑÑ‚ÑŒ", focus:"Ð¤Ð¾ÐºÑƒÑ", right:"Ð¿Ñ€Ð°Ð²Ð¸Ð»ÑŒÐ½Ð¾", mistakes:"Ð¿Ð¾Ð¼Ð¸Ð»Ð¾Ðº", points:"Ð±Ð°Ð»Ñ–Ð²", longTerm:"ÐžÑÑ‚Ð°Ð½Ð½Ñ– 20 %", next:"Ð”Ð°Ð»Ñ–", hold:"Ð·Ð°ÐºÑ€Ñ–Ð¿Ð¸Ñ‚Ð¸"
     }
   };
   function t(key) { var pack = I18N[supportLanguage] || I18N.en; return pack[key] || I18N.en[key] || key; }
@@ -3128,7 +3606,7 @@ body.setupMode main {
       },
       {
         id: "clz-def-nom-n-001",
-        sentence: "___ Kind schläft schon.",
+        sentence: "___ Kind schlÃ¤ft schon.",
         translation: "The child is already sleeping.",
         answer: "das",
         choices: ["das", "der", "die", "den", "dem"],
@@ -3137,11 +3615,11 @@ body.setupMode main {
         articleType: "definite",
         errorType: "caseRole",
         hint: "The child is doing the verb, so Kind is nominative.",
-        explanation: "Kind is neuter and the subject of schläft. Neuter nominative definite article = das."
+        explanation: "Kind is neuter and the subject of schlÃ¤ft. Neuter nominative definite article = das."
       },
       {
         id: "clz-def-nom-pl-001",
-        sentence: "___ Bücher liegen auf dem Tisch.",
+        sentence: "___ BÃ¼cher liegen auf dem Tisch.",
         translation: "The books are lying on the table.",
         answer: "die",
         choices: ["die", "der", "den", "dem", "das"],
@@ -3149,8 +3627,8 @@ body.setupMode main {
         gender: "plural",
         articleType: "definite",
         errorType: "caseRole",
-        hint: "The plural verb liegen confirms Bücher is the subject.",
-        explanation: "Bücher is plural and the subject of liegen. Plural nominative definite article = die."
+        hint: "The plural verb liegen confirms BÃ¼cher is the subject.",
+        explanation: "BÃ¼cher is plural and the subject of liegen. Plural nominative definite article = die."
       },
 
       {
@@ -3287,7 +3765,7 @@ body.setupMode main {
       },
       {
         id: "clz-indef-nom-n-001",
-        sentence: "___ Paket liegt vor der Tür.",
+        sentence: "___ Paket liegt vor der TÃ¼r.",
         translation: "A package is lying in front of the door.",
         answer: "ein",
         choices: ["ein", "eine", "einen", "einem", "einer"],
@@ -3302,8 +3780,8 @@ body.setupMode main {
         id: "clz-indef-nom-pl-001",
         sentence: "___ Kinder spielen im Park.",
         translation: "Children are playing in the park.",
-        answer: "—",
-        choices: ["—", "ein", "eine", "einen", "einem", "einer"],
+        answer: "â€”",
+        choices: ["â€”", "ein", "eine", "einen", "einem", "einer"],
         case: "nominative",
         gender: "plural",
         articleType: "indefinite",
@@ -3355,8 +3833,8 @@ body.setupMode main {
         id: "clz-indef-acc-pl-001",
         sentence: "Wir kaufen ___ Blumen.",
         translation: "We are buying flowers.",
-        answer: "—",
-        choices: ["—", "ein", "eine", "einen", "einem", "einer"],
+        answer: "â€”",
+        choices: ["â€”", "ein", "eine", "einen", "einem", "einer"],
         case: "accusative",
         gender: "plural",
         articleType: "indefinite",
@@ -3408,8 +3886,8 @@ body.setupMode main {
         id: "clz-indef-dat-pl-001",
         sentence: "Wir sprechen mit ___ Freunden.",
         translation: "We are speaking with friends.",
-        answer: "—",
-        choices: ["—", "ein", "eine", "einen", "einem", "einer"],
+        answer: "â€”",
+        choices: ["â€”", "ein", "eine", "einen", "einem", "einer"],
         case: "dative",
         gender: "plural",
         articleType: "indefinite",
@@ -3420,7 +3898,7 @@ body.setupMode main {
 
       {
         id: "clz-kein-nom-m-001",
-        sentence: "___ Zug fährt heute.",
+        sentence: "___ Zug fÃ¤hrt heute.",
         translation: "No train is running today.",
         answer: "kein",
         choices: ["kein", "keinen", "keinem", "keine", "keiner"],
@@ -3433,7 +3911,7 @@ body.setupMode main {
       },
       {
         id: "clz-kein-nom-f-001",
-        sentence: "___ Lösung passt.",
+        sentence: "___ LÃ¶sung passt.",
         translation: "No solution fits.",
         answer: "keine",
         choices: ["keine", "keiner", "keinen", "kein", "keinem"],
@@ -3441,8 +3919,8 @@ body.setupMode main {
         gender: "feminine",
         articleType: "negative",
         errorType: "negationArticle",
-        hint: "Lösung is feminine and subject.",
-        explanation: "Lösung is feminine and the subject. Feminine nominative negative article = keine."
+        hint: "LÃ¶sung is feminine and subject.",
+        explanation: "LÃ¶sung is feminine and the subject. Feminine nominative negative article = keine."
       },
       {
         id: "clz-kein-nom-n-001",
@@ -3459,7 +3937,7 @@ body.setupMode main {
       },
       {
         id: "clz-kein-nom-pl-001",
-        sentence: "___ Plätze sind frei.",
+        sentence: "___ PlÃ¤tze sind frei.",
         translation: "No seats are free.",
         answer: "keine",
         choices: ["keine", "keinen", "keinem", "kein", "keiner"],
@@ -3467,8 +3945,8 @@ body.setupMode main {
         gender: "plural",
         articleType: "negative",
         errorType: "negationArticle",
-        hint: "Plätze is plural and subject.",
-        explanation: "Plätze is plural and the subject. Plural nominative negative article = keine."
+        hint: "PlÃ¤tze is plural and subject.",
+        explanation: "PlÃ¤tze is plural and the subject. Plural nominative negative article = keine."
       },
 
       {
@@ -3610,7 +4088,7 @@ body.setupMode main {
     },
     {
       id: "clz-gen-basic-def-n-001",
-      sentence: "Die Tür ___ Autos ist offen.",
+      sentence: "Die TÃ¼r ___ Autos ist offen.",
       translation: "The car door is open.",
       answer: "des",
       choices: ["des", "der", "dem", "das", "den"],
@@ -3680,7 +4158,7 @@ body.setupMode main {
     },
     {
       id: "clz-gen-written-def-m-001",
-      sentence: "Während ___ Unterrichts höre ich zu.",
+      sentence: "WÃ¤hrend ___ Unterrichts hÃ¶re ich zu.",
       translation: "During the lesson, I listen.",
       answer: "des",
       choices: ["des", "der", "dem", "den", "die"],
@@ -3689,8 +4167,8 @@ body.setupMode main {
       articleType: "definite",
       genitiveStyle: "written",
       errorType: "genitivePreposition",
-      hint: "Während is a written-style Genitive preposition.",
-      explanation: "Während takes Genitive here. Unterrichts is masculine. Definite article = des."
+      hint: "WÃ¤hrend is a written-style Genitive preposition.",
+      explanation: "WÃ¤hrend takes Genitive here. Unterrichts is masculine. Definite article = des."
     },
     {
       id: "clz-gen-written-def-m-002",
@@ -3722,7 +4200,7 @@ body.setupMode main {
     },
     {
       id: "clz-gen-written-def-f-001",
-      sentence: "Außerhalb ___ Stadt ist es ruhig.",
+      sentence: "AuÃŸerhalb ___ Stadt ist es ruhig.",
       translation: "Outside the city, it is quiet.",
       answer: "der",
       choices: ["der", "die", "dem", "des", "den"],
@@ -3731,312 +4209,340 @@ body.setupMode main {
       articleType: "definite",
       genitiveStyle: "written",
       errorType: "genitivePreposition",
-      hint: "Außerhalb is a written-style Genitive preposition.",
-      explanation: "Außerhalb takes Genitive here. Stadt is feminine. Definite article = der."
+      hint: "AuÃŸerhalb is a written-style Genitive preposition.",
+      explanation: "AuÃŸerhalb takes Genitive here. Stadt is feminine. Definite article = der."
     }
   ]);
 
+  clozeQuestions = clozeQuestions.concat([
+    { id:"clz-indef-dat-m-002", sentence:"Ich spreche mit ___ Mann.", translation:"I am speaking with a man.", answer:"einem", choices:["ein","einen","einem","eine","einer"], case:"dative", gender:"masculine", articleType:"indefinite", sourceType:"dativePreposition", grammarCue:"mit + Dativ", difficulty:"core", risk:"clean", hint:"mit takes dative. Mann is masculine.", explanation:"mit takes dative. Masculine dative indefinite article = einem." },
+    { id:"clz-indef-dat-m-003", sentence:"Sie hilft ___ Mann.", translation:"She is helping a man.", answer:"einem", choices:["ein","einen","einem","eine","einer"], case:"dative", gender:"masculine", articleType:"indefinite", sourceType:"verbComplement", grammarCue:"helfen + Dativ", difficulty:"core", risk:"clean", hint:"helfen takes dative. Mann is masculine.", explanation:"helfen takes dative. Masculine dative indefinite article = einem." },
+    { id:"clz-indef-dat-n-002", sentence:"Ich helfe ___ Kind.", translation:"I am helping a child.", answer:"einem", choices:["ein","einen","einem","eine","einer"], case:"dative", gender:"neuter", articleType:"indefinite", sourceType:"verbComplement", grammarCue:"helfen + Dativ", difficulty:"core", risk:"clean", hint:"helfen takes dative. Kind is neuter.", explanation:"helfen takes dative. Neuter dative indefinite article = einem." },
+    { id:"clz-indef-dat-n-003", sentence:"Ich sitze neben ___ Fenster.", translation:"I am sitting next to a window.", answer:"einem", choices:["ein","einen","einem","eine","einer"], case:"dative", gender:"neuter", articleType:"indefinite", sourceType:"twoWayLocation", grammarCue:"location with neben + Dativ", difficulty:"core", risk:"clean", hint:"A location with neben uses dative. Fenster is neuter.", explanation:"Location answers where, so neben takes dative. Neuter dative indefinite article = einem." },
+    { id:"clz-kein-dat-m-002", sentence:"Ich spreche mit ___ Mann.", translation:"I am not speaking with a man.", answer:"keinem", choices:["kein","keinen","keinem","keine","keiner"], case:"dative", gender:"masculine", articleType:"negative", sourceType:"dativePreposition", grammarCue:"mit + Dativ", difficulty:"core", risk:"clean", hint:"mit takes dative. Mann is masculine.", explanation:"mit takes dative. Masculine dative negative article = keinem." },
+    { id:"clz-kein-dat-n-002", sentence:"Ich helfe ___ Kind.", translation:"I am not helping a child.", answer:"keinem", choices:["kein","keinen","keinem","keine","keiner"], case:"dative", gender:"neuter", articleType:"negative", sourceType:"verbComplement", grammarCue:"helfen + Dativ", difficulty:"core", risk:"clean", hint:"helfen takes dative. Kind is neuter.", explanation:"helfen takes dative. Neuter dative negative article = keinem." },
+    { id:"clz-def-dat-m-002", sentence:"Ich spreche mit ___ Mann.", translation:"I am speaking with the man.", answer:"dem", choices:["der","den","dem","die","das"], case:"dative", gender:"masculine", articleType:"definite", sourceType:"dativePreposition", grammarCue:"mit + Dativ", difficulty:"core", risk:"clean", hint:"mit takes dative. Mann is masculine.", explanation:"mit takes dative. Masculine dative definite article = dem." },
+    { id:"clz-def-dat-n-002", sentence:"Ich sitze neben ___ Fenster.", translation:"I am sitting next to the window.", answer:"dem", choices:["das","dem","den","der","die"], case:"dative", gender:"neuter", articleType:"definite", sourceType:"twoWayLocation", grammarCue:"location with neben + Dativ", difficulty:"core", risk:"clean", hint:"A location with neben uses dative. Fenster is neuter.", explanation:"Location answers where, so neben takes dative. Neuter dative definite article = dem." },
+    { id:"clz-def-acc-m-002", sentence:"Ich sehe ___ Hund.", translation:"I see the dog.", answer:"den", choices:["der","den","dem","die","das"], case:"accusative", gender:"masculine", articleType:"definite", sourceType:"directObject", grammarCue:"sehen + Akkusativ", difficulty:"core", risk:"clean", hint:"sehen takes a direct object. Hund is masculine.", explanation:"Hund is masculine and the direct object. Masculine accusative definite article = den." },
+    { id:"clz-indef-acc-m-002", sentence:"Ich sehe ___ Hund.", translation:"I see a dog.", answer:"einen", choices:["ein","einen","einem","eine","einer"], case:"accusative", gender:"masculine", articleType:"indefinite", sourceType:"directObject", grammarCue:"sehen + Akkusativ", difficulty:"core", risk:"clean", hint:"sehen takes a direct object. Hund is masculine.", explanation:"Hund is masculine and the direct object. Masculine accusative indefinite article = einen." },
+    { id:"clz-kein-acc-m-002", sentence:"Ich sehe ___ Hund.", translation:"I do not see a dog.", answer:"keinen", choices:["kein","keinen","keinem","keine","keiner"], case:"accusative", gender:"masculine", articleType:"negative", sourceType:"directObject", grammarCue:"sehen + Akkusativ", difficulty:"core", risk:"clean", hint:"sehen takes a direct object. Hund is masculine.", explanation:"Hund is masculine and the direct object. Masculine accusative negative article = keinen." },
+    { id:"clz-def-dat-pl-002", sentence:"Ich helfe ___ Kindern.", translation:"I am helping the children.", answer:"den", choices:["die","den","dem","der","das"], case:"dative", gender:"plural", articleType:"definite", sourceType:"verbComplement", grammarCue:"helfen + Dativ", difficulty:"core", risk:"clean", hint:"helfen takes dative. Kindern is plural.", explanation:"helfen takes dative. Plural dative definite article = den." },
+    { id:"clz-kein-dat-pl-002", sentence:"Ich helfe ___ Kindern.", translation:"I am helping no children.", answer:"keinen", choices:["keine","keinen","keinem","kein","keiner"], case:"dative", gender:"plural", articleType:"negative", sourceType:"verbComplement", grammarCue:"helfen + Dativ", difficulty:"core", risk:"clean", hint:"helfen takes dative. Kindern is plural.", explanation:"helfen takes dative. Plural dative negative article = keinen." },
+    { id:"clz-indef-dat-pl-002", sentence:"Ich helfe ___ Kindern.", translation:"I am helping children.", answer:"none", choices:["kein Artikel","ein","eine","einen","einem","einer"], case:"dative", gender:"plural", articleType:"indefinite", sourceType:"verbComplement", grammarCue:"helfen + Dativ", difficulty:"core", risk:"clean", hint:"helfen takes dative, but indefinite plural has no article.", explanation:"There is no indefinite plural article. Kindern is dative plural, so the blank stays empty." }
+  ]);
+
   clozeQuestions = clozeQuestions.map(function (q) {
+    var normalCase = caseFromEnglish[q.case] || q.case;
+    var normalGender = genderFromEnglish[q.gender] || q.gender;
+    var source = q.sourceType || (q.genitiveStyle === "basic" ? "genitiveOwnership" : (q.genitiveStyle === "written" ? "genitivePreposition" : (q.errorType === "prepositionCase" ? "dativePreposition" : (q.errorType === "caseRole" && normalCase === "Nominativ" ? "subject" : (q.errorType === "caseRole" ? "directObject" : "verbComplement")))));
+    var variantGroup = q.variantGroupId || [q.articleType, caseSlug(normalCase), genderSlug(normalGender), "core"].join("-");
     return {
       kind: "cloze", id: q.id, type: q.articleType,
-      caseKey: caseFromEnglish[q.case] || q.case,
-      genderKey: genderFromEnglish[q.gender] || q.gender,
-      answer: q.answer === "—" ? "none" : q.answer,
+      caseKey: normalCase,
+      genderKey: normalGender,
+      answer: q.answer === "â€”" ? "none" : q.answer,
       sentence: q.sentence, translation: q.translation, hint: q.hint,
-      explanation: q.explanation, errorType: q.errorType || "cloze", genitiveStyle: q.genitiveStyle || null
+      explanation: q.explanation, errorType: q.errorType || "cloze", genitiveStyle: q.genitiveStyle || null,
+      sourceType: source,
+      grammarCue: q.grammarCue || q.hint || "",
+      difficulty: q.difficulty || (normalCase === "Genitiv" ? "advanced" : "core"),
+      risk: q.risk || (normalCase === "Genitiv" ? "genitiveExtraLoad" : "clean"),
+      variantGroupId: variantGroup,
+      contrastGroupIds: q.contrastGroupIds || [caseSlug(normalCase) + "-" + genderSlug(normalGender), q.articleType + "-" + caseSlug(normalCase), "article-" + q.articleType]
     };
   });
 
   var CLOZE_TRANSLATIONS = {
     "clz-def-nom-m-001": {
-        "tr": "Adam girişte bekliyor.",
-        "ar": "الرجل ينتظر عند المدخل.",
-        "zh": "这个男人在入口等。",
-        "uk": "Чоловік чекає біля входу."
+        "tr": "Adam giriÅŸte bekliyor.",
+        "ar": "Ø§Ù„Ø±Ø¬Ù„ ÙŠÙ†ØªØ¸Ø± Ø¹Ù†Ø¯ Ø§Ù„Ù…Ø¯Ø®Ù„.",
+        "zh": "è¿™ä¸ªç”·äººåœ¨å…¥å£ç­‰ã€‚",
+        "uk": "Ð§Ð¾Ð»Ð¾Ð²Ñ–Ðº Ñ‡ÐµÐºÐ°Ñ” Ð±Ñ–Ð»Ñ Ð²Ñ…Ð¾Ð´Ñƒ."
     },
     "clz-def-nom-f-001": {
-        "tr": "Kadın bugün evde çalışıyor.",
-        "ar": "المرأة تعمل في المنزل اليوم.",
-        "zh": "这个女人今天在家工作。",
-        "uk": "Жінка сьогодні працює вдома."
+        "tr": "KadÄ±n bugÃ¼n evde Ã§alÄ±ÅŸÄ±yor.",
+        "ar": "Ø§Ù„Ù…Ø±Ø£Ø© ØªØ¹Ù…Ù„ ÙÙŠ Ø§Ù„Ù…Ù†Ø²Ù„ Ø§Ù„ÙŠÙˆÙ….",
+        "zh": "è¿™ä¸ªå¥³äººä»Šå¤©åœ¨å®¶å·¥ä½œã€‚",
+        "uk": "Ð–Ñ–Ð½ÐºÐ° ÑÑŒÐ¾Ð³Ð¾Ð´Ð½Ñ– Ð¿Ñ€Ð°Ñ†ÑŽÑ” Ð²Ð´Ð¾Ð¼Ð°."
     },
     "clz-def-nom-n-001": {
-        "tr": "Çocuk zaten uyuyor.",
-        "ar": "الطفل نائم بالفعل.",
-        "zh": "这个孩子已经睡着了。",
-        "uk": "Дитина вже спить."
+        "tr": "Ã‡ocuk zaten uyuyor.",
+        "ar": "Ø§Ù„Ø·ÙÙ„ Ù†Ø§Ø¦Ù… Ø¨Ø§Ù„ÙØ¹Ù„.",
+        "zh": "è¿™ä¸ªå­©å­å·²ç»ç¡ç€äº†ã€‚",
+        "uk": "Ð”Ð¸Ñ‚Ð¸Ð½Ð° Ð²Ð¶Ðµ ÑÐ¿Ð¸Ñ‚ÑŒ."
     },
     "clz-def-nom-pl-001": {
-        "tr": "Kitaplar masanın üzerinde duruyor.",
-        "ar": "الكتب موجودة على الطاولة.",
-        "zh": "这些书在桌子上。",
-        "uk": "Книжки лежать на столі."
+        "tr": "Kitaplar masanÄ±n Ã¼zerinde duruyor.",
+        "ar": "Ø§Ù„ÙƒØªØ¨ Ù…ÙˆØ¬ÙˆØ¯Ø© Ø¹Ù„Ù‰ Ø§Ù„Ø·Ø§ÙˆÙ„Ø©.",
+        "zh": "è¿™äº›ä¹¦åœ¨æ¡Œå­ä¸Šã€‚",
+        "uk": "ÐšÐ½Ð¸Ð¶ÐºÐ¸ Ð»ÐµÐ¶Ð°Ñ‚ÑŒ Ð½Ð° ÑÑ‚Ð¾Ð»Ñ–."
     },
     "clz-def-acc-m-001": {
-        "tr": "Adamı görüyorum.",
-        "ar": "أنا أرى الرجل.",
-        "zh": "我看见这个男人。",
-        "uk": "Я бачу чоловіка."
+        "tr": "AdamÄ± gÃ¶rÃ¼yorum.",
+        "ar": "Ø£Ù†Ø§ Ø£Ø±Ù‰ Ø§Ù„Ø±Ø¬Ù„.",
+        "zh": "æˆ‘çœ‹è§è¿™ä¸ªç”·äººã€‚",
+        "uk": "Ð¯ Ð±Ð°Ñ‡Ñƒ Ñ‡Ð¾Ð»Ð¾Ð²Ñ–ÐºÐ°."
     },
     "clz-def-acc-f-001": {
-        "tr": "Mesajı okuyor.",
-        "ar": "هي تقرأ الرسالة.",
-        "zh": "她在读这条消息。",
-        "uk": "Вона читає повідомлення."
+        "tr": "MesajÄ± okuyor.",
+        "ar": "Ù‡ÙŠ ØªÙ‚Ø±Ø£ Ø§Ù„Ø±Ø³Ø§Ù„Ø©.",
+        "zh": "å¥¹åœ¨è¯»è¿™æ¡æ¶ˆæ¯ã€‚",
+        "uk": "Ð’Ð¾Ð½Ð° Ñ‡Ð¸Ñ‚Ð°Ñ” Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½Ñ."
     },
     "clz-def-acc-n-001": {
-        "tr": "Arabaya ihtiyacımız var.",
-        "ar": "نحن نحتاج إلى السيارة.",
-        "zh": "我们需要这辆车。",
-        "uk": "Нам потрібна машина."
+        "tr": "Arabaya ihtiyacÄ±mÄ±z var.",
+        "ar": "Ù†Ø­Ù† Ù†Ø­ØªØ§Ø¬ Ø¥Ù„Ù‰ Ø§Ù„Ø³ÙŠØ§Ø±Ø©.",
+        "zh": "æˆ‘ä»¬éœ€è¦è¿™è¾†è½¦ã€‚",
+        "uk": "ÐÐ°Ð¼ Ð¿Ð¾Ñ‚Ñ€Ñ–Ð±Ð½Ð° Ð¼Ð°ÑˆÐ¸Ð½Ð°."
     },
     "clz-def-acc-pl-001": {
-        "tr": "Çiçekleri satın alıyor.",
-        "ar": "هو يشتري الزهور.",
-        "zh": "他在买这些花。",
-        "uk": "Він купує квіти."
+        "tr": "Ã‡iÃ§ekleri satÄ±n alÄ±yor.",
+        "ar": "Ù‡Ùˆ ÙŠØ´ØªØ±ÙŠ Ø§Ù„Ø²Ù‡ÙˆØ±.",
+        "zh": "ä»–åœ¨ä¹°è¿™äº›èŠ±ã€‚",
+        "uk": "Ð’Ñ–Ð½ ÐºÑƒÐ¿ÑƒÑ” ÐºÐ²Ñ–Ñ‚Ð¸."
     },
     "clz-def-dat-m-001": {
-        "tr": "Otobüsle gidiyorum.",
-        "ar": "أنا أذهب بالحافلة.",
-        "zh": "我坐公交车去。",
-        "uk": "Я їду автобусом."
+        "tr": "OtobÃ¼sle gidiyorum.",
+        "ar": "Ø£Ù†Ø§ Ø£Ø°Ù‡Ø¨ Ø¨Ø§Ù„Ø­Ø§ÙÙ„Ø©.",
+        "zh": "æˆ‘åå…¬äº¤è½¦åŽ»ã€‚",
+        "uk": "Ð¯ Ñ—Ð´Ñƒ Ð°Ð²Ñ‚Ð¾Ð±ÑƒÑÐ¾Ð¼."
     },
     "clz-def-dat-f-001": {
-        "tr": "Komşu kadınla konuşuyorum.",
-        "ar": "أنا أتحدث مع الجارة.",
-        "zh": "我正在和女邻居说话。",
-        "uk": "Я розмовляю з сусідкою."
+        "tr": "KomÅŸu kadÄ±nla konuÅŸuyorum.",
+        "ar": "Ø£Ù†Ø§ Ø£ØªØ­Ø¯Ø« Ù…Ø¹ Ø§Ù„Ø¬Ø§Ø±Ø©.",
+        "zh": "æˆ‘æ­£åœ¨å’Œå¥³é‚»å±…è¯´è¯ã€‚",
+        "uk": "Ð¯ Ñ€Ð¾Ð·Ð¼Ð¾Ð²Ð»ÑÑŽ Ð· ÑÑƒÑÑ–Ð´ÐºÐ¾ÑŽ."
     },
     "clz-def-dat-n-001": {
-        "tr": "Çocuk oyuncakla oynuyor.",
-        "ar": "الطفل يلعب باللعبة.",
-        "zh": "孩子在玩这个玩具。",
-        "uk": "Дитина грається іграшкою."
+        "tr": "Ã‡ocuk oyuncakla oynuyor.",
+        "ar": "Ø§Ù„Ø·ÙÙ„ ÙŠÙ„Ø¹Ø¨ Ø¨Ø§Ù„Ù„Ø¹Ø¨Ø©.",
+        "zh": "å­©å­åœ¨çŽ©è¿™ä¸ªçŽ©å…·ã€‚",
+        "uk": "Ð”Ð¸Ñ‚Ð¸Ð½Ð° Ð³Ñ€Ð°Ñ”Ñ‚ÑŒÑÑ Ñ–Ð³Ñ€Ð°ÑˆÐºÐ¾ÑŽ."
     },
     "clz-def-dat-pl-001": {
-        "tr": "Çocuklarla okula gidiyoruz.",
-        "ar": "نحن نذهب إلى المدرسة مع الأطفال.",
-        "zh": "我们和孩子们一起去学校。",
-        "uk": "Ми їдемо до школи з дітьми."
+        "tr": "Ã‡ocuklarla okula gidiyoruz.",
+        "ar": "Ù†Ø­Ù† Ù†Ø°Ù‡Ø¨ Ø¥Ù„Ù‰ Ø§Ù„Ù…Ø¯Ø±Ø³Ø© Ù…Ø¹ Ø§Ù„Ø£Ø·ÙØ§Ù„.",
+        "zh": "æˆ‘ä»¬å’Œå­©å­ä»¬ä¸€èµ·åŽ»å­¦æ ¡ã€‚",
+        "uk": "ÐœÐ¸ Ñ—Ð´ÐµÐ¼Ð¾ Ð´Ð¾ ÑˆÐºÐ¾Ð»Ð¸ Ð· Ð´Ñ–Ñ‚ÑŒÐ¼Ð¸."
     },
     "clz-indef-nom-m-001": {
-        "tr": "Bir müşteri kasada bekliyor.",
-        "ar": "زبون ينتظر عند صندوق الدفع.",
-        "zh": "一位顾客在收银台等。",
-        "uk": "Клієнт чекає біля каси."
+        "tr": "Bir mÃ¼ÅŸteri kasada bekliyor.",
+        "ar": "Ø²Ø¨ÙˆÙ† ÙŠÙ†ØªØ¸Ø± Ø¹Ù†Ø¯ ØµÙ†Ø¯ÙˆÙ‚ Ø§Ù„Ø¯ÙØ¹.",
+        "zh": "ä¸€ä½é¡¾å®¢åœ¨æ”¶é“¶å°ç­‰ã€‚",
+        "uk": "ÐšÐ»Ñ–Ñ”Ð½Ñ‚ Ñ‡ÐµÐºÐ°Ñ” Ð±Ñ–Ð»Ñ ÐºÐ°ÑÐ¸."
     },
     "clz-indef-nom-f-001": {
-        "tr": "Bir kadın meslektaş birazdan arayacak.",
-        "ar": "زميلة ستتصل بعد قليل.",
-        "zh": "一位女同事马上会打电话。",
-        "uk": "Колега зараз зателефонує."
+        "tr": "Bir kadÄ±n meslektaÅŸ birazdan arayacak.",
+        "ar": "Ø²Ù…ÙŠÙ„Ø© Ø³ØªØªØµÙ„ Ø¨Ø¹Ø¯ Ù‚Ù„ÙŠÙ„.",
+        "zh": "ä¸€ä½å¥³åŒäº‹é©¬ä¸Šä¼šæ‰“ç”µè¯ã€‚",
+        "uk": "ÐšÐ¾Ð»ÐµÐ³Ð° Ð·Ð°Ñ€Ð°Ð· Ð·Ð°Ñ‚ÐµÐ»ÐµÑ„Ð¾Ð½ÑƒÑ”."
     },
     "clz-indef-nom-n-001": {
-        "tr": "Kapının önünde bir paket duruyor.",
-        "ar": "طرد موجود أمام الباب.",
-        "zh": "门前有一个包裹。",
-        "uk": "Пакунок лежить перед дверима."
+        "tr": "KapÄ±nÄ±n Ã¶nÃ¼nde bir paket duruyor.",
+        "ar": "Ø·Ø±Ø¯ Ù…ÙˆØ¬ÙˆØ¯ Ø£Ù…Ø§Ù… Ø§Ù„Ø¨Ø§Ø¨.",
+        "zh": "é—¨å‰æœ‰ä¸€ä¸ªåŒ…è£¹ã€‚",
+        "uk": "ÐŸÐ°ÐºÑƒÐ½Ð¾Ðº Ð»ÐµÐ¶Ð¸Ñ‚ÑŒ Ð¿ÐµÑ€ÐµÐ´ Ð´Ð²ÐµÑ€Ð¸Ð¼Ð°."
     },
     "clz-indef-nom-pl-001": {
-        "tr": "Çocuklar parkta oynuyor.",
-        "ar": "أطفال يلعبون في الحديقة.",
-        "zh": "孩子们在公园玩。",
-        "uk": "Діти граються в парку."
+        "tr": "Ã‡ocuklar parkta oynuyor.",
+        "ar": "Ø£Ø·ÙØ§Ù„ ÙŠÙ„Ø¹Ø¨ÙˆÙ† ÙÙŠ Ø§Ù„Ø­Ø¯ÙŠÙ‚Ø©.",
+        "zh": "å­©å­ä»¬åœ¨å…¬å›­çŽ©ã€‚",
+        "uk": "Ð”Ñ–Ñ‚Ð¸ Ð³Ñ€Ð°ÑŽÑ‚ÑŒÑÑ Ð² Ð¿Ð°Ñ€ÐºÑƒ."
     },
     "clz-indef-acc-m-001": {
-        "tr": "Bir kalem arıyorum.",
-        "ar": "أنا أبحث عن قلم.",
-        "zh": "我在找一支笔。",
-        "uk": "Я шукаю ручку."
+        "tr": "Bir kalem arÄ±yorum.",
+        "ar": "Ø£Ù†Ø§ Ø£Ø¨Ø­Ø« Ø¹Ù† Ù‚Ù„Ù….",
+        "zh": "æˆ‘åœ¨æ‰¾ä¸€æ”¯ç¬”ã€‚",
+        "uk": "Ð¯ ÑˆÑƒÐºÐ°ÑŽ Ñ€ÑƒÑ‡ÐºÑƒ."
     },
     "clz-indef-acc-f-001": {
-        "tr": "Bir mesaj yazıyor.",
-        "ar": "هو يكتب رسالة.",
-        "zh": "他在写一条消息。",
-        "uk": "Він пише повідомлення."
+        "tr": "Bir mesaj yazÄ±yor.",
+        "ar": "Ù‡Ùˆ ÙŠÙƒØªØ¨ Ø±Ø³Ø§Ù„Ø©.",
+        "zh": "ä»–åœ¨å†™ä¸€æ¡æ¶ˆæ¯ã€‚",
+        "uk": "Ð’Ñ–Ð½ Ð¿Ð¸ÑˆÐµ Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½Ñ."
     },
     "clz-indef-acc-n-001": {
         "tr": "Bir kitap okuyor.",
-        "ar": "هي تقرأ كتابًا.",
-        "zh": "她在读一本书。",
-        "uk": "Вона читає книжку."
+        "ar": "Ù‡ÙŠ ØªÙ‚Ø±Ø£ ÙƒØªØ§Ø¨Ù‹Ø§.",
+        "zh": "å¥¹åœ¨è¯»ä¸€æœ¬ä¹¦ã€‚",
+        "uk": "Ð’Ð¾Ð½Ð° Ñ‡Ð¸Ñ‚Ð°Ñ” ÐºÐ½Ð¸Ð¶ÐºÑƒ."
     },
     "clz-indef-acc-pl-001": {
-        "tr": "Çiçek satın alıyoruz.",
-        "ar": "نحن نشتري زهورًا.",
-        "zh": "我们在买花。",
-        "uk": "Ми купуємо квіти."
+        "tr": "Ã‡iÃ§ek satÄ±n alÄ±yoruz.",
+        "ar": "Ù†Ø­Ù† Ù†Ø´ØªØ±ÙŠ Ø²Ù‡ÙˆØ±Ù‹Ø§.",
+        "zh": "æˆ‘ä»¬åœ¨ä¹°èŠ±ã€‚",
+        "uk": "ÐœÐ¸ ÐºÑƒÐ¿ÑƒÑ”Ð¼Ð¾ ÐºÐ²Ñ–Ñ‚Ð¸."
     },
     "clz-indef-dat-m-001": {
-        "tr": "Bir öğretmenle konuşuyorum.",
-        "ar": "أنا أتحدث مع معلّم.",
-        "zh": "我正在和一位老师说话。",
-        "uk": "Я розмовляю з учителем."
+        "tr": "Bir Ã¶ÄŸretmenle konuÅŸuyorum.",
+        "ar": "Ø£Ù†Ø§ Ø£ØªØ­Ø¯Ø« Ù…Ø¹ Ù…Ø¹Ù„Ù‘Ù….",
+        "zh": "æˆ‘æ­£åœ¨å’Œä¸€ä½è€å¸ˆè¯´è¯ã€‚",
+        "uk": "Ð¯ Ñ€Ð¾Ð·Ð¼Ð¾Ð²Ð»ÑÑŽ Ð· ÑƒÑ‡Ð¸Ñ‚ÐµÐ»ÐµÐ¼."
     },
     "clz-indef-dat-f-001": {
-        "tr": "Bir arkadaşla telefonda konuşuyorum.",
-        "ar": "أنا أتحدث على الهاتف مع صديقة.",
-        "zh": "我正在和一位朋友打电话。",
-        "uk": "Я розмовляю телефоном з подругою."
+        "tr": "Bir arkadaÅŸla telefonda konuÅŸuyorum.",
+        "ar": "Ø£Ù†Ø§ Ø£ØªØ­Ø¯Ø« Ø¹Ù„Ù‰ Ø§Ù„Ù‡Ø§ØªÙ Ù…Ø¹ ØµØ¯ÙŠÙ‚Ø©.",
+        "zh": "æˆ‘æ­£åœ¨å’Œä¸€ä½æœ‹å‹æ‰“ç”µè¯ã€‚",
+        "uk": "Ð¯ Ñ€Ð¾Ð·Ð¼Ð¾Ð²Ð»ÑÑŽ Ñ‚ÐµÐ»ÐµÑ„Ð¾Ð½Ð¾Ð¼ Ð· Ð¿Ð¾Ð´Ñ€ÑƒÐ³Ð¾ÑŽ."
     },
     "clz-indef-dat-n-001": {
         "tr": "Taksiyle gidiyoruz.",
-        "ar": "نحن نذهب بسيارة أجرة.",
-        "zh": "我们坐出租车去。",
-        "uk": "Ми їдемо таксі."
+        "ar": "Ù†Ø­Ù† Ù†Ø°Ù‡Ø¨ Ø¨Ø³ÙŠØ§Ø±Ø© Ø£Ø¬Ø±Ø©.",
+        "zh": "æˆ‘ä»¬åå‡ºç§Ÿè½¦åŽ»ã€‚",
+        "uk": "ÐœÐ¸ Ñ—Ð´ÐµÐ¼Ð¾ Ñ‚Ð°ÐºÑÑ–."
     },
     "clz-indef-dat-pl-001": {
-        "tr": "Arkadaşlarla konuşuyoruz.",
-        "ar": "نحن نتحدث مع أصدقاء.",
-        "zh": "我们正在和朋友们说话。",
-        "uk": "Ми розмовляємо з друзями."
+        "tr": "ArkadaÅŸlarla konuÅŸuyoruz.",
+        "ar": "Ù†Ø­Ù† Ù†ØªØ­Ø¯Ø« Ù…Ø¹ Ø£ØµØ¯Ù‚Ø§Ø¡.",
+        "zh": "æˆ‘ä»¬æ­£åœ¨å’Œæœ‹å‹ä»¬è¯´è¯ã€‚",
+        "uk": "ÐœÐ¸ Ñ€Ð¾Ð·Ð¼Ð¾Ð²Ð»ÑÑ”Ð¼Ð¾ Ð· Ð´Ñ€ÑƒÐ·ÑÐ¼Ð¸."
     },
     "clz-kein-nom-m-001": {
-        "tr": "Bugün tren çalışmıyor.",
-        "ar": "لا يوجد قطار يعمل اليوم.",
-        "zh": "今天没有火车运行。",
-        "uk": "Сьогодні жоден потяг не їде."
+        "tr": "BugÃ¼n tren Ã§alÄ±ÅŸmÄ±yor.",
+        "ar": "Ù„Ø§ ÙŠÙˆØ¬Ø¯ Ù‚Ø·Ø§Ø± ÙŠØ¹Ù…Ù„ Ø§Ù„ÙŠÙˆÙ….",
+        "zh": "ä»Šå¤©æ²¡æœ‰ç«è½¦è¿è¡Œã€‚",
+        "uk": "Ð¡ÑŒÐ¾Ð³Ð¾Ð´Ð½Ñ– Ð¶Ð¾Ð´ÐµÐ½ Ð¿Ð¾Ñ‚ÑÐ³ Ð½Ðµ Ñ—Ð´Ðµ."
     },
     "clz-kein-nom-f-001": {
-        "tr": "Hiçbir çözüm uygun değil.",
-        "ar": "لا يوجد حل مناسب.",
-        "zh": "没有解决方案合适。",
-        "uk": "Жодне рішення не підходить."
+        "tr": "HiÃ§bir Ã§Ã¶zÃ¼m uygun deÄŸil.",
+        "ar": "Ù„Ø§ ÙŠÙˆØ¬Ø¯ Ø­Ù„ Ù…Ù†Ø§Ø³Ø¨.",
+        "zh": "æ²¡æœ‰è§£å†³æ–¹æ¡ˆåˆé€‚ã€‚",
+        "uk": "Ð–Ð¾Ð´Ð½Ðµ Ñ€Ñ–ÑˆÐµÐ½Ð½Ñ Ð½Ðµ Ð¿Ñ–Ð´Ñ…Ð¾Ð´Ð¸Ñ‚ÑŒ."
     },
     "clz-kein-nom-n-001": {
-        "tr": "Hiçbir pencere açık değil.",
-        "ar": "لا توجد نافذة مفتوحة.",
-        "zh": "没有窗户开着。",
-        "uk": "Жодне вікно не відчинене."
+        "tr": "HiÃ§bir pencere aÃ§Ä±k deÄŸil.",
+        "ar": "Ù„Ø§ ØªÙˆØ¬Ø¯ Ù†Ø§ÙØ°Ø© Ù…ÙØªÙˆØ­Ø©.",
+        "zh": "æ²¡æœ‰çª—æˆ·å¼€ç€ã€‚",
+        "uk": "Ð–Ð¾Ð´Ð½Ðµ Ð²Ñ–ÐºÐ½Ð¾ Ð½Ðµ Ð²Ñ–Ð´Ñ‡Ð¸Ð½ÐµÐ½Ðµ."
     },
     "clz-kein-nom-pl-001": {
-        "tr": "Boş yer yok.",
-        "ar": "لا توجد مقاعد شاغرة.",
-        "zh": "没有空座位。",
-        "uk": "Вільних місць немає."
+        "tr": "BoÅŸ yer yok.",
+        "ar": "Ù„Ø§ ØªÙˆØ¬Ø¯ Ù…Ù‚Ø§Ø¹Ø¯ Ø´Ø§ØºØ±Ø©.",
+        "zh": "æ²¡æœ‰ç©ºåº§ä½ã€‚",
+        "uk": "Ð’Ñ–Ð»ÑŒÐ½Ð¸Ñ… Ð¼Ñ–ÑÑ†ÑŒ Ð½ÐµÐ¼Ð°Ñ”."
     },
     "clz-kein-acc-m-001": {
         "tr": "Randevum yok.",
-        "ar": "ليس لدي موعد.",
-        "zh": "我没有预约。",
-        "uk": "У мене немає зустрічі."
+        "ar": "Ù„ÙŠØ³ Ù„Ø¯ÙŠ Ù…ÙˆØ¹Ø¯.",
+        "zh": "æˆ‘æ²¡æœ‰é¢„çº¦ã€‚",
+        "uk": "Ð£ Ð¼ÐµÐ½Ðµ Ð½ÐµÐ¼Ð°Ñ” Ð·ÑƒÑÑ‚Ñ€Ñ–Ñ‡Ñ–."
     },
     "clz-kein-acc-f-001": {
-        "tr": "Zamanımız yok.",
-        "ar": "ليس لدينا وقت.",
-        "zh": "我们没有时间。",
-        "uk": "У нас немає часу."
+        "tr": "ZamanÄ±mÄ±z yok.",
+        "ar": "Ù„ÙŠØ³ Ù„Ø¯ÙŠÙ†Ø§ ÙˆÙ‚Øª.",
+        "zh": "æˆ‘ä»¬æ²¡æœ‰æ—¶é—´ã€‚",
+        "uk": "Ð£ Ð½Ð°Ñ Ð½ÐµÐ¼Ð°Ñ” Ñ‡Ð°ÑÑƒ."
     },
     "clz-kein-acc-n-001": {
-        "tr": "Onun arabası yok.",
-        "ar": "هي لا تملك سيارة.",
-        "zh": "她没有车。",
-        "uk": "У неї немає машини."
+        "tr": "Onun arabasÄ± yok.",
+        "ar": "Ù‡ÙŠ Ù„Ø§ ØªÙ…Ù„Ùƒ Ø³ÙŠØ§Ø±Ø©.",
+        "zh": "å¥¹æ²¡æœ‰è½¦ã€‚",
+        "uk": "Ð£ Ð½ÐµÑ— Ð½ÐµÐ¼Ð°Ñ” Ð¼Ð°ÑˆÐ¸Ð½Ð¸."
     },
     "clz-kein-acc-pl-001": {
-        "tr": "Çiçek almıyor.",
-        "ar": "هي لا تشتري زهورًا.",
-        "zh": "她不买花。",
-        "uk": "Вона не купує квіти."
+        "tr": "Ã‡iÃ§ek almÄ±yor.",
+        "ar": "Ù‡ÙŠ Ù„Ø§ ØªØ´ØªØ±ÙŠ Ø²Ù‡ÙˆØ±Ù‹Ø§.",
+        "zh": "å¥¹ä¸ä¹°èŠ±ã€‚",
+        "uk": "Ð’Ð¾Ð½Ð° Ð½Ðµ ÐºÑƒÐ¿ÑƒÑ” ÐºÐ²Ñ–Ñ‚Ð¸."
     },
     "clz-kein-dat-m-001": {
         "tr": "Bir hata beklemiyoruz.",
-        "ar": "نحن لا نتوقع خطأً.",
-        "zh": "我们不预期会有错误。",
-        "uk": "Ми не очікуємо помилки."
+        "ar": "Ù†Ø­Ù† Ù„Ø§ Ù†ØªÙˆÙ‚Ø¹ Ø®Ø·Ø£Ù‹.",
+        "zh": "æˆ‘ä»¬ä¸é¢„æœŸä¼šæœ‰é”™è¯¯ã€‚",
+        "uk": "ÐœÐ¸ Ð½Ðµ Ð¾Ñ‡Ñ–ÐºÑƒÑ”Ð¼Ð¾ Ð¿Ð¾Ð¼Ð¸Ð»ÐºÐ¸."
     },
     "clz-kein-dat-f-001": {
         "tr": "Bir cevap beklemiyorum.",
-        "ar": "أنا لا أتوقع ردًا.",
-        "zh": "我不期待回复。",
-        "uk": "Я не очікую відповіді."
+        "ar": "Ø£Ù†Ø§ Ù„Ø§ Ø£ØªÙˆÙ‚Ø¹ Ø±Ø¯Ù‹Ø§.",
+        "zh": "æˆ‘ä¸æœŸå¾…å›žå¤ã€‚",
+        "uk": "Ð¯ Ð½Ðµ Ð¾Ñ‡Ñ–ÐºÑƒÑŽ Ð²Ñ–Ð´Ð¿Ð¾Ð²Ñ–Ð´Ñ–."
     },
     "clz-kein-dat-n-001": {
         "tr": "Bir sorun beklemiyoruz.",
-        "ar": "نحن لا نتوقع مشكلة.",
-        "zh": "我们不预期会有问题。",
-        "uk": "Ми не очікуємо проблеми."
+        "ar": "Ù†Ø­Ù† Ù„Ø§ Ù†ØªÙˆÙ‚Ø¹ Ù…Ø´ÙƒÙ„Ø©.",
+        "zh": "æˆ‘ä»¬ä¸é¢„æœŸä¼šæœ‰é—®é¢˜ã€‚",
+        "uk": "ÐœÐ¸ Ð½Ðµ Ð¾Ñ‡Ñ–ÐºÑƒÑ”Ð¼Ð¾ Ð¿Ñ€Ð¾Ð±Ð»ÐµÐ¼Ð¸."
     },
     "clz-kein-dat-pl-001": {
         "tr": "Sorun beklemiyoruz.",
-        "ar": "نحن لا نتوقع مشاكل.",
-        "zh": "我们不预期会有问题。",
-        "uk": "Ми не очікуємо проблем."
+        "ar": "Ù†Ø­Ù† Ù„Ø§ Ù†ØªÙˆÙ‚Ø¹ Ù…Ø´Ø§ÙƒÙ„.",
+        "zh": "æˆ‘ä»¬ä¸é¢„æœŸä¼šæœ‰é—®é¢˜ã€‚",
+        "uk": "ÐœÐ¸ Ð½Ðµ Ð¾Ñ‡Ñ–ÐºÑƒÑ”Ð¼Ð¾ Ð¿Ñ€Ð¾Ð±Ð»ÐµÐ¼."
     }
 ,
     "clz-gen-basic-def-m-001": {
-        "tr": "Öğretmenin adı listede yazıyor.",
-        "ar": "اسم المعلّم موجود في القائمة.",
-        "zh": "老师的名字在名单上。",
-        "uk": "Ім’я вчителя є у списку."
+        "tr": "Ã–ÄŸretmenin adÄ± listede yazÄ±yor.",
+        "ar": "Ø§Ø³Ù… Ø§Ù„Ù…Ø¹Ù„Ù‘Ù… Ù…ÙˆØ¬ÙˆØ¯ ÙÙŠ Ø§Ù„Ù‚Ø§Ø¦Ù…Ø©.",
+        "zh": "è€å¸ˆçš„åå­—åœ¨åå•ä¸Šã€‚",
+        "uk": "Ð†Ð¼â€™Ñ Ð²Ñ‡Ð¸Ñ‚ÐµÐ»Ñ Ñ” Ñƒ ÑÐ¿Ð¸ÑÐºÑƒ."
     },
     "clz-gen-basic-def-f-001": {
-        "tr": "Kadının çantası koridorda duruyor.",
-        "ar": "حقيبة المرأة في الممر.",
-        "zh": "那个女人的包在走廊里。",
-        "uk": "Сумка жінки лежить у коридорі."
+        "tr": "KadÄ±nÄ±n Ã§antasÄ± koridorda duruyor.",
+        "ar": "Ø­Ù‚ÙŠØ¨Ø© Ø§Ù„Ù…Ø±Ø£Ø© ÙÙŠ Ø§Ù„Ù…Ù…Ø±.",
+        "zh": "é‚£ä¸ªå¥³äººçš„åŒ…åœ¨èµ°å»Šé‡Œã€‚",
+        "uk": "Ð¡ÑƒÐ¼ÐºÐ° Ð¶Ñ–Ð½ÐºÐ¸ Ð»ÐµÐ¶Ð¸Ñ‚ÑŒ Ñƒ ÐºÐ¾Ñ€Ð¸Ð´Ð¾Ñ€Ñ–."
     },
     "clz-gen-basic-def-n-001": {
-        "tr": "Arabanın kapısı açık.",
-        "ar": "باب السيارة مفتوح.",
-        "zh": "车门开着。",
-        "uk": "Двері машини відчинені."
+        "tr": "ArabanÄ±n kapÄ±sÄ± aÃ§Ä±k.",
+        "ar": "Ø¨Ø§Ø¨ Ø§Ù„Ø³ÙŠØ§Ø±Ø© Ù…ÙØªÙˆØ­.",
+        "zh": "è½¦é—¨å¼€ç€ã€‚",
+        "uk": "Ð”Ð²ÐµÑ€Ñ– Ð¼Ð°ÑˆÐ¸Ð½Ð¸ Ð²Ñ–Ð´Ñ‡Ð¸Ð½ÐµÐ½Ñ–."
     },
     "clz-gen-basic-def-pl-001": {
-        "tr": "Çocukların adları burada yazıyor.",
-        "ar": "أسماء الأطفال هنا.",
-        "zh": "孩子们的名字在这里。",
-        "uk": "Імена дітей тут."
+        "tr": "Ã‡ocuklarÄ±n adlarÄ± burada yazÄ±yor.",
+        "ar": "Ø£Ø³Ù…Ø§Ø¡ Ø§Ù„Ø£Ø·ÙØ§Ù„ Ù‡Ù†Ø§.",
+        "zh": "å­©å­ä»¬çš„åå­—åœ¨è¿™é‡Œã€‚",
+        "uk": "Ð†Ð¼ÐµÐ½Ð° Ð´Ñ–Ñ‚ÐµÐ¹ Ñ‚ÑƒÑ‚."
     },
     "clz-gen-basic-indef-m-001": {
-        "tr": "Bu, bir sürücünün ifadesidir.",
-        "ar": "هذه إفادة سائق.",
-        "zh": "这是一名司机的陈述。",
-        "uk": "Це заява водія."
+        "tr": "Bu, bir sÃ¼rÃ¼cÃ¼nÃ¼n ifadesidir.",
+        "ar": "Ù‡Ø°Ù‡ Ø¥ÙØ§Ø¯Ø© Ø³Ø§Ø¦Ù‚.",
+        "zh": "è¿™æ˜¯ä¸€åå¸æœºçš„é™ˆè¿°ã€‚",
+        "uk": "Ð¦Ðµ Ð·Ð°ÑÐ²Ð° Ð²Ð¾Ð´Ñ–Ñ."
     },
     "clz-gen-basic-indef-f-001": {
-        "tr": "Bu, bir kadının görüşüdür.",
-        "ar": "هذا رأي امرأة.",
-        "zh": "这是一位女性的意见。",
-        "uk": "Це думка жінки."
+        "tr": "Bu, bir kadÄ±nÄ±n gÃ¶rÃ¼ÅŸÃ¼dÃ¼r.",
+        "ar": "Ù‡Ø°Ø§ Ø±Ø£ÙŠ Ø§Ù…Ø±Ø£Ø©.",
+        "zh": "è¿™æ˜¯ä¸€ä½å¥³æ€§çš„æ„è§ã€‚",
+        "uk": "Ð¦Ðµ Ð´ÑƒÐ¼ÐºÐ° Ð¶Ñ–Ð½ÐºÐ¸."
     },
     "clz-gen-basic-indef-n-001": {
-        "tr": "Bu, bir arabanın rengidir.",
-        "ar": "هذا لون سيارة.",
-        "zh": "这是一辆车的颜色。",
-        "uk": "Це колір машини."
+        "tr": "Bu, bir arabanÄ±n rengidir.",
+        "ar": "Ù‡Ø°Ø§ Ù„ÙˆÙ† Ø³ÙŠØ§Ø±Ø©.",
+        "zh": "è¿™æ˜¯ä¸€è¾†è½¦çš„é¢œè‰²ã€‚",
+        "uk": "Ð¦Ðµ ÐºÐ¾Ð»Ñ–Ñ€ Ð¼Ð°ÑˆÐ¸Ð½Ð¸."
     },
     "clz-gen-written-def-m-001": {
-        "tr": "Ders sırasında dinliyorum.",
-        "ar": "أستمع أثناء الدرس.",
-        "zh": "上课期间我在听。",
-        "uk": "Під час уроку я слухаю."
+        "tr": "Ders sÄ±rasÄ±nda dinliyorum.",
+        "ar": "Ø£Ø³ØªÙ…Ø¹ Ø£Ø«Ù†Ø§Ø¡ Ø§Ù„Ø¯Ø±Ø³.",
+        "zh": "ä¸Šè¯¾æœŸé—´æˆ‘åœ¨å¬ã€‚",
+        "uk": "ÐŸÑ–Ð´ Ñ‡Ð°Ñ ÑƒÑ€Ð¾ÐºÑƒ Ñ ÑÐ»ÑƒÑ…Ð°ÑŽ."
     },
     "clz-gen-written-def-m-002": {
-        "tr": "Yağmura rağmen dışarı çıkıyoruz.",
-        "ar": "رغم المطر نخرج.",
-        "zh": "尽管下雨，我们还是出去。",
-        "uk": "Попри дощ ми виходимо."
+        "tr": "YaÄŸmura raÄŸmen dÄ±ÅŸarÄ± Ã§Ä±kÄ±yoruz.",
+        "ar": "Ø±ØºÙ… Ø§Ù„Ù…Ø·Ø± Ù†Ø®Ø±Ø¬.",
+        "zh": "å°½ç®¡ä¸‹é›¨ï¼Œæˆ‘ä»¬è¿˜æ˜¯å‡ºåŽ»ã€‚",
+        "uk": "ÐŸÐ¾Ð¿Ñ€Ð¸ Ð´Ð¾Ñ‰ Ð¼Ð¸ Ð²Ð¸Ñ…Ð¾Ð´Ð¸Ð¼Ð¾."
     },
     "clz-gen-written-indef-f-001": {
-        "tr": "Bir hafta içinde haber vereceğim.",
-        "ar": "سأتواصل خلال أسبوع.",
-        "zh": "我会在一周内联系。",
-        "uk": "Я зв’яжуся протягом тижня."
+        "tr": "Bir hafta iÃ§inde haber vereceÄŸim.",
+        "ar": "Ø³Ø£ØªÙˆØ§ØµÙ„ Ø®Ù„Ø§Ù„ Ø£Ø³Ø¨ÙˆØ¹.",
+        "zh": "æˆ‘ä¼šåœ¨ä¸€å‘¨å†…è”ç³»ã€‚",
+        "uk": "Ð¯ Ð·Ð²â€™ÑÐ¶ÑƒÑÑ Ð¿Ñ€Ð¾Ñ‚ÑÐ³Ð¾Ð¼ Ñ‚Ð¸Ð¶Ð½Ñ."
     },
     "clz-gen-written-def-f-001": {
-        "tr": "Şehrin dışında sakin.",
-        "ar": "خارج المدينة المكان هادئ.",
-        "zh": "城外很安静。",
-        "uk": "За межами міста тихо."
+        "tr": "Åžehrin dÄ±ÅŸÄ±nda sakin.",
+        "ar": "Ø®Ø§Ø±Ø¬ Ø§Ù„Ù…Ø¯ÙŠÙ†Ø© Ø§Ù„Ù…ÙƒØ§Ù† Ù‡Ø§Ø¯Ø¦.",
+        "zh": "åŸŽå¤–å¾ˆå®‰é™ã€‚",
+        "uk": "Ð—Ð° Ð¼ÐµÐ¶Ð°Ð¼Ð¸ Ð¼Ñ–ÑÑ‚Ð° Ñ‚Ð¸Ñ…Ð¾."
     }
 
 };
 
   var current = null, lastKey = null, state = "checking", hintUsed = false;
   var score = 0, correct = 0, wrong = 0, streak = 0, bestStreakRound = 0, highScore = 0, bestStreakAll = 0;
-  var mistakeCounts = {}, retryQueue = [];
+  var mistakeCounts = {}, retryQueue = [], sessionLog = [], sessionMisses = {}, sessionPromptCounts = {};
+  var currentWasRetry = false, currentShowMicroRule = false;
   var resultHeatmapType = "definite";
   var learnerModel = defaultLearnerModel();
 
@@ -4048,7 +4554,7 @@ body.setupMode main {
     node.setAttribute("aria-expanded", expanded ? "true" : "false");
   }
   function defaultLearnerModel() {
-    return { version: 2, stats: {}, recent: [] };
+    return { version: 3, stats: {}, recent: [], lastSessionLog: [] };
   }
   function normaliseHistory(history) {
     if (!Array.isArray(history)) return [];
@@ -4061,7 +4567,7 @@ body.setupMode main {
   function normaliseLearnerModel(model) {
     var clean = defaultLearnerModel();
     if (!model || typeof model !== "object") return clean;
-    clean.version = 2;
+    clean.version = 3;
     clean.stats = model.stats && typeof model.stats === "object" ? model.stats : {};
     Object.keys(clean.stats).forEach(function(key){
       var rec = clean.stats[key] || {};
@@ -4069,13 +4575,43 @@ body.setupMode main {
       clean.stats[key] = rec;
     });
     clean.recent = Array.isArray(model.recent) ? model.recent.slice(-24) : [];
+    clean.lastSessionLog = Array.isArray(model.lastSessionLog) ? model.lastSessionLog.slice(-80) : [];
     return clean;
   }
   function adaptiveEnabled() {
     return !el("adaptiveMode") || el("adaptiveMode").value !== "off";
   }
+  function caseSlug(value) {
+    var map = { Nominativ:"nominative", Akkusativ:"accusative", Dativ:"dative", Genitiv:"genitive" };
+    return map[value] || String(value || "?").toLowerCase();
+  }
+  function genderSlug(value) {
+    var map = { Maskulinum:"masculine", Femininum:"feminine", Neutrum:"neuter", Plural:"plural" };
+    return map[value] || String(value || "?").toLowerCase();
+  }
+  function sourceTypeFor(q) {
+    if (!q) return "table";
+    if (q.sourceType) return q.sourceType;
+    if (q.kind === "table") return "table";
+    if (q.genitiveStyle === "basic") return "genitiveOwnership";
+    if (q.genitiveStyle === "written") return "genitivePreposition";
+    if (q.errorType === "prepositionCase") return q.caseKey === "Akkusativ" ? "accusativePreposition" : "dativePreposition";
+    if (q.errorType === "caseRole") return q.caseKey === "Nominativ" ? "subject" : "directObject";
+    if (q.errorType === "noArticlePlural") return q.caseKey === "Dativ" ? "dativePreposition" : (q.caseKey === "Akkusativ" ? "directObject" : "subject");
+    if (q.errorType === "negationArticle") return q.caseKey === "Dativ" ? "dativePreposition" : (q.caseKey === "Akkusativ" ? "directObject" : "subject");
+    return "verbComplement";
+  }
+  function articleFamilyFor(q) {
+    return q && q.answer === "none" ? "noArticle" : (q && q.type ? q.type : "mixed");
+  }
   function skillKey(q) {
-    return [q.kind || "table", q.type || "mixed", q.caseKey || "?", q.genderKey || "?"].join("|");
+    return [q.kind || "table", articleFamilyFor(q), caseSlug(q.caseKey), genderSlug(q.genderKey), sourceTypeFor(q)].join("|");
+  }
+  function skillCellKey(q) {
+    return [q.kind || "table", articleFamilyFor(q), caseSlug(q.caseKey), genderSlug(q.genderKey)].join("|");
+  }
+  function promptKey(q) {
+    return q && q.id ? String(q.id) : questionKey(q);
   }
   function blankSkillRecord() {
     return {
@@ -4247,7 +4783,7 @@ body.setupMode main {
     activeArticleTypes().forEach(function(type){
       activeCases().forEach(function(c){
         genders.forEach(function(g){
-          out.push({kind:"table", id:"table|"+type+"|"+c.key+"|"+g.key, type:type, caseKey:c.key, genderKey:g.key, answer:paradigms[type].table[c.key+"|"+g.key]});
+          out.push({kind:"table", id:"table|"+type+"|"+c.key+"|"+g.key, type:type, caseKey:c.key, genderKey:g.key, sourceType:"table", variantGroupId:"table-"+type+"-"+caseSlug(c.key)+"-"+genderSlug(g.key), answer:paradigms[type].table[c.key+"|"+g.key]});
         });
       });
     });
@@ -4257,6 +4793,8 @@ body.setupMode main {
     var types = activeArticleTypes();
     return clozeQuestions.filter(function(q){
       if (types.indexOf(q.type) === -1) return false;
+      if (q.difficulty && q.difficulty !== "core" && !genitiveClozeAllowed(q)) return false;
+      if (q.risk && q.risk !== "clean" && q.caseKey !== "Genitiv") return false;
       if (q.caseKey === "Genitiv") return genitiveClozeAllowed(q);
       return q.caseKey !== "Genitiv";
     }).map(cloneQuestion);
@@ -4267,8 +4805,39 @@ body.setupMode main {
     if (task === "cloze") return makeClozeCandidates();
     return makeTableCandidates().concat(makeClozeCandidates());
   }
+  function broadReviewMode() {
+    return (!el("taskType") || el("taskType").value === "mixed") && (!el("articleType") || el("articleType").value === "mixed");
+  }
+  function recentSession(n) {
+    return sessionLog.slice(Math.max(0, sessionLog.length - n));
+  }
+  function countRecent(fn, n) {
+    return recentSession(n).reduce(function(sum,item){ return sum + (fn(item) ? 1 : 0); }, 0);
+  }
+  function violatesBroadCaps(q) {
+    if (!sessionLog.length) return false;
+    var cell = skillCellKey(q), article = articleFamilyFor(q), caseKey = q.caseKey;
+    var last = sessionLog[sessionLog.length - 1];
+    if (last && last.skillCellKey === cell) return true;
+    if (countRecent(function(item){ return item.skillCellKey === cell; }, 10) >= 2) return true;
+    if (countRecent(function(item){ return item.case === caseKey; }, 10) >= 5) return true;
+    if (el("articleType") && el("articleType").value === "mixed" && countRecent(function(item){ return item.articleType === article; }, 10) >= 6) return true;
+    return false;
+  }
+  function filteredByCaps(candidates, allowRetry) {
+    var broad = broadReviewMode();
+    var filtered = candidates.filter(function(q){
+      if (questionKey(q) === lastKey) return false;
+      if (broad && violatesBroadCaps(q)) return false;
+      if (!broad && countRecent(function(item){ return item.skillCellKey === skillCellKey(q); }, 10) >= 4) return false;
+      if (Number(sessionPromptCounts[promptKey(q)] || 0) >= 2) return false;
+      if (!allowRetry && q.retry) return false;
+      return true;
+    });
+    return filtered.length ? filtered : candidates.filter(function(q){ return questionKey(q) !== lastKey; });
+  }
   function randomCandidate(candidates) {
-    var pool = candidates.filter(function(q){ return questionKey(q) !== lastKey; });
+    var pool = filteredByCaps(candidates, true);
     if (!pool.length) pool = candidates;
     return cloneQuestion(pool[randomIndex(pool.length)]);
   }
@@ -4291,11 +4860,15 @@ body.setupMode main {
     score += Math.min(3, Number(rec.lapses || 0)) * 0.6;
     if (rec.lastWrong && now - rec.lastWrong < 30 * 60 * 1000) score += 1.2;
     if (questionKey(q) === lastKey) score -= 100;
+    if (broadReviewMode() && violatesBroadCaps(q)) score -= 80;
+    if (Number(sessionPromptCounts[promptKey(q)] || 0) >= 2) score -= 100;
     if (rec.lastSeen && now - rec.lastSeen < 90 * 1000) score -= 2.5;
     if ((learnerModel.recent || []).indexOf(skillKey(q)) !== -1) score -= 0.8;
     return Math.max(0.01, score + Math.random() * 0.35);
   }
   function weightedPick(candidates, now) {
+    candidates = filteredByCaps(candidates, true);
+    if (!candidates.length) return null;
     var weighted = candidates.map(function(q){ return { q:q, w:candidatePriority(q, now) }; });
     weighted.sort(function(a,b){ return b.w - a.w; });
     var top = weighted.slice(0, Math.min(8, weighted.length));
@@ -4328,7 +4901,8 @@ body.setupMode main {
   function safeSetObject(obj) { try { window.localStorage.setItem(STORAGE_KEY, JSON.stringify(obj)); } catch (e) {} }
   function safeGetLegacy(key) { try { return Number(window.localStorage.getItem(key) || 0); } catch (e) { return 0; } }
   function savePersistent() {
-    safeSetObject({ highScore: highScore, bestStreakAll: bestStreakAll, learnerModel: learnerModel, settings: {
+    learnerModel.lastSessionLog = sessionLog.slice(-80);
+    safeSetObject({ highScore: highScore, bestStreakAll: bestStreakAll, learnerModel: learnerModel, sessionLog: sessionLog.slice(-80), settings: {
       taskType: el("taskType") ? el("taskType").value : "cloze",
       articleType: el("articleType") ? el("articleType").value : "mixed",
       includeGenitive: genitiveTableOn() ? "on" : "off",
@@ -4361,8 +4935,8 @@ body.setupMode main {
   function safeRemoveAll() { try { window.localStorage.removeItem(STORAGE_KEY); window.localStorage.removeItem("kasuskonsoleHighScore"); window.localStorage.removeItem("kasuskonsoleBestStreak"); } catch (e) {} }
   function randomIndex(max) { return Math.floor(Math.random() * max); }
   function escapeHtml(value) { return String(value || "").replace(/[&<>"]/g, function (ch) { return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[ch]; }); }
-  function normalise(value) { return String(value || "").trim().toLowerCase().replace(/[—–]/g, "-").replace(/\s+/g, " "); }
-  function acceptedAnswers(answer) { return answer === "none" ? ["kein artikel", "ohne artikel", "nullartikel", "none", "-", "—", "nichts"] : [answer]; }
+  function normalise(value) { return String(value || "").trim().toLowerCase().replace(/[â€”â€“]/g, "-").replace(/\s+/g, " "); }
+  function acceptedAnswers(answer) { return answer === "none" ? ["kein artikel", "ohne artikel", "nullartikel", "none", "-", "â€”", "nichts"] : [answer]; }
   function displayAnswer(answer) { return answer === "none" ? "kein Artikel" : answer; }
   function questionKey(q) { return q.kind === "cloze" ? "cloze|" + q.id : "table|" + q.type + "|" + q.caseKey + "|" + q.genderKey; }
   function articleTitle(type) { return paradigms[type] ? paradigms[type].title : "Gemischt"; }
@@ -4402,31 +4976,123 @@ body.setupMode main {
   function cueFor(q) {
     if (q.kind === "cloze") {
       var sentence = String(q.sentence || "").toLowerCase();
-      if (q.caseKey === "Nominativ") return "Subjekt → Nominativ.";
-      if (q.caseKey === "Akkusativ") return "Direktes Objekt → Akkusativ.";
-      if (sentence.indexOf(" mit ___") !== -1 || sentence.indexOf(" mit ___") !== -1) return "mit → Dativ.";
-      if (sentence.indexOf(" bei ___") !== -1) return "bei → Dativ.";
-      if (sentence.indexOf(" aus ___") !== -1) return "aus → Dativ.";
-      if (sentence.indexOf(" von ___") !== -1) return "von → Dativ.";
-      if (q.caseKey === "Dativ") return "Dativ-Auslöser beachten.";
+      if (q.caseKey === "Nominativ") return "Subjekt â†’ Nominativ.";
+      if (q.caseKey === "Akkusativ") return "Direktes Objekt â†’ Akkusativ.";
+      if (sentence.indexOf(" mit ___") !== -1 || sentence.indexOf(" mit ___") !== -1) return "mit â†’ Dativ.";
+      if (sentence.indexOf(" bei ___") !== -1) return "bei â†’ Dativ.";
+      if (sentence.indexOf(" aus ___") !== -1) return "aus â†’ Dativ.";
+      if (sentence.indexOf(" von ___") !== -1) return "von â†’ Dativ.";
+      if (q.caseKey === "Dativ") return "Dativ-AuslÃ¶ser beachten.";
       return patternFor(q.type, q.caseKey, q.genderKey);
     }
     return patternFor(q.type, q.caseKey, q.genderKey);
   }
 
+  function microRuleFor(q) {
+    var answer = displayAnswer(q.answer);
+    if (q.type === "indefinite" && q.caseKey === "Dativ" && (q.genderKey === "Maskulinum" || q.genderKey === "Neutrum")) {
+      return "Dativ " + q.genderKey + " = " + answer + ". Masculine and neuter share -em in Dativ: ein Mann -> einem Mann, ein Kind -> einem Kind.";
+    }
+    if (q.type === "negative" && q.caseKey === "Dativ" && (q.genderKey === "Maskulinum" || q.genderKey === "Neutrum")) {
+      return "Dativ " + q.genderKey + " = " + answer + ". kein follows the ein pattern: kein Kind -> keinem Kind.";
+    }
+    if (q.caseKey === "Akkusativ" && q.genderKey === "Maskulinum") {
+      return "Akkusativ Maskulinum = " + answer + ". Only masculine changes in Akkusativ.";
+    }
+    if (q.caseKey === "Dativ" && q.genderKey === "Plural") {
+      return "Dativ Plural = " + answer + ". Plural dative often also adds -n to the noun.";
+    }
+    if (q.type === "indefinite" && q.genderKey === "Plural") {
+      return "Indefinite plural has no article. Use kein Artikel unless the meaning is negative.";
+    }
+    return patternFor(q.type, q.caseKey, q.genderKey) || (q.grammarCue || "");
+  }
+
   function recordMistake(q) { var key = (q.kind === "cloze" ? "Cloze" : articleTitle(q.type)) + "|" + q.caseKey + "|" + q.genderKey + "|" + (q.errorType || "article"); if (!mistakeCounts[key]) mistakeCounts[key] = { count:0, type:q.type, caseKey:q.caseKey, genderKey:q.genderKey, kind:q.kind, errorType:q.errorType || "article" }; mistakeCounts[key].count += 1; }
-  function queueRetry(q) { var copy = JSON.parse(JSON.stringify(q)); copy.delay = 3 + randomIndex(3); copy.retry = true; retryQueue.push(copy); }
-  function maybeGetRetry() { if (!retryQueue.length) return null; for (var i=0;i<retryQueue.length;i++) retryQueue[i].delay -= 1; for (var j=0;j<retryQueue.length;j++) if (retryQueue[j].delay <= 0) return retryQueue.splice(j,1)[0]; return null; }
+  function logAttempt(q, isCorrect, choice) {
+    sessionLog.push({
+      number: sessionLog.length + 1,
+      taskType: q.kind || "table",
+      articleType: articleFamilyFor(q),
+      articleFamily: articleFamilyFor(q),
+      case: q.caseKey,
+      gender: q.genderKey,
+      sourceType: sourceTypeFor(q),
+      skillKey: skillKey(q),
+      skillCellKey: skillCellKey(q),
+      itemId: promptKey(q),
+      variantGroupId: q.variantGroupId || "",
+      wasRetry: !!currentWasRetry,
+      microRuleShown: !!currentShowMicroRule,
+      wasCorrect: !!isCorrect,
+      userAnswer: displayTypedChoice(choice),
+      correctAnswer: displayAnswer(q.answer)
+    });
+    sessionPromptCounts[promptKey(q)] = Number(sessionPromptCounts[promptKey(q)] || 0) + 1;
+    learnerModel.lastSessionLog = sessionLog.slice(-80);
+    try { window.kasusSessionLog = sessionLog; } catch (e) {}
+  }
+  function retryVariantFor(q) {
+    var cell = skillCellKey(q), original = promptKey(q);
+    var pool = makeQuestionCandidates().filter(function(candidate){
+      return skillCellKey(candidate) === cell && promptKey(candidate) !== original;
+    });
+    if (!pool.length) return cloneQuestion(q);
+    pool.sort(function(a,b){
+      var aSeen = countRecent(function(item){ return item.itemId === promptKey(a); }, 12);
+      var bSeen = countRecent(function(item){ return item.itemId === promptKey(b); }, 12);
+      return aSeen - bSeen;
+    });
+    return cloneQuestion(pool[0]);
+  }
+  function contrastVariantFor(q) {
+    var groups = q.contrastGroupIds || [];
+    if (!groups.length) return null;
+    var originalCell = skillCellKey(q), originalPrompt = promptKey(q);
+    var pool = makeQuestionCandidates().filter(function(candidate){
+      if (skillCellKey(candidate) === originalCell || promptKey(candidate) === originalPrompt) return false;
+      var other = candidate.contrastGroupIds || [];
+      return groups.some(function(group){ return other.indexOf(group) !== -1; });
+    });
+    if (!pool.length) return null;
+    return cloneQuestion(pool[randomIndex(Math.min(pool.length, 4))]);
+  }
+  function queueRetry(q) {
+    var misses = Number(sessionMisses[skillCellKey(q)] || 0);
+    var copy = misses >= 3 ? (contrastVariantFor(q) || retryVariantFor(q)) : retryVariantFor(q);
+    copy.delay = broadReviewMode() ? 3 + randomIndex(4) : 1 + randomIndex(3);
+    copy.retry = true;
+    copy.retryOf = skillCellKey(q);
+    copy.showMicroRule = misses >= 2;
+    retryQueue.push(copy);
+  }
+  function maybeGetRetry() {
+    if (!retryQueue.length) return null;
+    for (var i=0;i<retryQueue.length;i++) retryQueue[i].delay -= 1;
+    for (var j=0;j<retryQueue.length;j++) {
+      if (retryQueue[j].delay <= 0) {
+        if (broadReviewMode() && violatesBroadCaps(retryQueue[j])) {
+          retryQueue[j].delay = 1;
+          continue;
+        }
+        return retryQueue.splice(j,1)[0];
+      }
+    }
+    return null;
+  }
   function matchesForChoice(choice, type) { var matches=[]; if (!choice || !paradigms[type]) return matches; cases.forEach(function(c){ genders.forEach(function(g){ var value=paradigms[type].table[c.key+"|"+g.key]; if (normalise(displayAnswer(value))===choice || normalise(value)===choice) matches.push({caseKey:c.key,caseShort:c.short,genderKey:g.key,genderShort:g.short}); }); }); return matches; }
   function shortList(items) { return items.map(function(item){ return item.caseShort + " " + item.genderShort; }).join(", "); }
-  function displayTypedChoice(choice) { return choice === "kein artikel" ? "kein Artikel" : (choice || "—"); }
-  function diagnosisFor(choice) { if (choice === "kein artikel") { if (current.type === "indefinite" && current.genderKey === "Plural") return "„Kein Artikel“ ist nur richtig, wenn der unbestimmte Plural gefragt ist."; if (current.type === "indefinite") return "„Kein Artikel“ passt nur beim unbestimmten Plural. Hier ist " + current.genderKey + " gefragt."; return "„Kein Artikel“ gehört nicht zu diesem Artikeltyp."; } var matches=matchesForChoice(choice,current.type); if (!matches.length) return "Diese Form gehört nicht zu diesem Artikeltyp."; var sameGender=matches.filter(function(m){return m.genderKey===current.genderKey;}); if (sameGender.length) return "Richtige Spalte, falscher Kasus: Deine Form gehört zu " + shortList(sameGender) + "."; var sameCase=matches.filter(function(m){return m.caseKey===current.caseKey;}); if (sameCase.length) return "Richtiger Kasus, falsches Genus/Numerus: Deine Form gehört zu " + shortList(sameCase) + "."; return "Deine Form kommt in der Tabelle vor, aber nicht in dieser Zeile oder Spalte."; }
+  function displayTypedChoice(choice) { return choice === "kein artikel" ? "kein Artikel" : (choice || "â€”"); }
+  function diagnosisFor(choice) { if (choice === "kein artikel") { if (current.type === "indefinite" && current.genderKey === "Plural") return "â€žKein Artikelâ€œ ist nur richtig, wenn der unbestimmte Plural gefragt ist."; if (current.type === "indefinite") return "â€žKein Artikelâ€œ passt nur beim unbestimmten Plural. Hier ist " + current.genderKey + " gefragt."; return "â€žKein Artikelâ€œ gehÃ¶rt nicht zu diesem Artikeltyp."; } var matches=matchesForChoice(choice,current.type); if (!matches.length) return "Diese Form gehÃ¶rt nicht zu diesem Artikeltyp."; var sameGender=matches.filter(function(m){return m.genderKey===current.genderKey;}); if (sameGender.length) return "Richtige Spalte, falscher Kasus: Deine Form gehÃ¶rt zu " + shortList(sameGender) + "."; var sameCase=matches.filter(function(m){return m.caseKey===current.caseKey;}); if (sameCase.length) return "Richtiger Kasus, falsches Genus/Numerus: Deine Form gehÃ¶rt zu " + shortList(sameCase) + "."; return "Deine Form kommt in der Tabelle vor, aber nicht in dieser Zeile oder Spalte."; }
   function renderFeedbackCard(isCorrect) {
     var block = el("correctionBlock");
     var cue = cueFor(current);
     block.className = "correctionBlock" + (isCorrect ? " success" : "");
     block.innerHTML = "<div class=\"correctionTarget\">" + current.caseKey + " " + current.genderKey + " = " + displayAnswer(current.answer) + "</div>" +
       "<div class=\"correctionPattern\">" + escapeHtml(cue) + "</div>";
+    if (!isCorrect && currentShowMicroRule) {
+      block.innerHTML += "<div class=\"microRule\"><strong>Repair rule</strong>" + escapeHtml(microRuleFor(current)) + "</div>";
+    }
     block.classList.add("visible");
   }
   function renderCorrection(choice) { renderFeedbackCard(false); }
@@ -4441,7 +5107,7 @@ body.setupMode main {
   function weakSpotSummary() {
     var items=sortedWeakSpots(3);
     if (!items.length) return "Keine Fehlerschwerpunkte in dieser Runde.";
-    return items.map(function(item){ return item.caseKey + " " + item.genderKey + ": " + item.count; }).join(" · ");
+    return items.map(function(item){ return item.caseKey + " " + item.genderKey + ": " + item.count; }).join(" Â· ");
   }
   function heatmapShortLabel(type) {
     if (type === "indefinite") return "EIN";
@@ -4458,7 +5124,7 @@ body.setupMode main {
     Object.keys(learnerModel.stats || {}).forEach(function(key){
       var parts = key.split("|");
       if (parts.length < 4) return;
-      if (parts[1] !== typeFilter || parts[2] !== caseKey || parts[3] !== genderKey) return;
+      if (parts[1] !== typeFilter || parts[2] !== caseSlug(caseKey) || parts[3] !== genderSlug(genderKey)) return;
       var rec = learnerModel.stats[key] || {};
       var hist = normaliseHistory(rec.history);
       if (hist.length) {
@@ -4533,6 +5199,42 @@ body.setupMode main {
     html += '</tbody></table>';
     return html;
   }
+  function countBy(field) {
+    var out = {};
+    sessionLog.forEach(function(item){ var key = item[field] || "?"; out[key] = Number(out[key] || 0) + 1; });
+    return out;
+  }
+  function formatCounts(obj, order) {
+    var labels = { definite:"DER", indefinite:"EIN", negative:"KEIN", noArticle:"no article", table:"Table", cloze:"Cloze" };
+    return order.filter(function(key){ return Number(obj[key] || 0) > 0; }).map(function(key){ return (labels[key] || key) + ": " + Number(obj[key] || 0); }).join(" · ");
+  }
+  function topRepeatedSkills(limit) {
+    var counts = {};
+    sessionLog.forEach(function(item){
+      var key = item.skillCellKey || item.skillKey;
+      if (!counts[key]) counts[key] = { key:key, count:0 };
+      counts[key].count += 1;
+    });
+    return Object.keys(counts).map(function(key){ return counts[key]; }).sort(function(a,b){ return b.count - a.count; }).slice(0, limit || 3);
+  }
+  function sessionShapeLabel() {
+    if (!sessionLog.length) return "Broad Review";
+    var top = topRepeatedSkills(1)[0];
+    if (top && top.count / sessionLog.length > 0.30) return "Narrow Loop Warning";
+    if (retryQueue.length || sessionLog.some(function(item){ return item.wasRetry; })) return broadReviewMode() ? "Mixed Review" : "Focused Repair";
+    return broadReviewMode() ? "Broad Review" : "Mixed Review";
+  }
+  function sessionCoverageHtml() {
+    var casesSeen = countBy("case"), articlesSeen = countBy("articleFamily"), tasksSeen = countBy("taskType");
+    var repeated = topRepeatedSkills(3).map(function(item){ return item.key + " (" + item.count + ")"; }).join(" Â· ") || "None";
+    return '<div class="sessionCoverage">' +
+      '<span class="sessionCoverageRow"><strong>' + escapeHtml(sessionShapeLabel()) + '</strong></span>' +
+      '<span class="sessionCoverageRow"><strong>Cases:</strong> ' + escapeHtml(formatCounts(casesSeen, ["Nominativ","Akkusativ","Dativ","Genitiv"])) + '</span>' +
+      '<span class="sessionCoverageRow"><strong>Articles:</strong> ' + escapeHtml(formatCounts(articlesSeen, ["definite","indefinite","negative","noArticle"])) + '</span>' +
+      '<span class="sessionCoverageRow"><strong>Tasks:</strong> ' + escapeHtml(formatCounts(tasksSeen, ["table","cloze"])) + '</span>' +
+      '<span class="sessionCoverageRow"><strong>Repeated:</strong> ' + escapeHtml(repeated) + '</span>' +
+    '</div>';
+  }
   function setResultHeatmapType(type) {
     if (articleTypes.indexOf(type) === -1) return;
     resultHeatmapType = type;
@@ -4550,7 +5252,7 @@ body.setupMode main {
   function renderMode() {
     if (current && current.kind === "cloze") {
       document.body.setAttribute("data-mode", "definite");
-      el("modeTitle").textContent = "Satzlücke";
+      el("modeTitle").textContent = "SatzlÃ¼cke";
       return;
     }
     document.body.setAttribute("data-mode", current.type || "definite");
@@ -4558,7 +5260,7 @@ body.setupMode main {
   }
   function pickTableQuestion(type) { var chosenCase, chosenGender, key, usableCases=activeCases(); do { chosenCase=usableCases[randomIndex(usableCases.length)]; chosenGender=genders[randomIndex(genders.length)]; key="table|"+type+"|"+chosenCase.key+"|"+chosenGender.key; } while (key===lastKey); return {kind:"table", id:key, type:type, caseKey:chosenCase.key, genderKey:chosenGender.key, answer:paradigms[type].table[chosenCase.key+"|"+chosenGender.key]}; }
   function pickClozeQuestion(type) { var pool=clozeQuestions.filter(function(q){ return type === "mixed" || q.type === type; }); if (!pool.length) pool=clozeQuestions; var q,key,guard=0; do { q=pool[randomIndex(pool.length)]; key="cloze|"+q.id; guard += 1; } while (key===lastKey && guard<12); return JSON.parse(JSON.stringify(q)); }
-  function pickQuestion() { savePersistent(); if (answeredCount() >= targetCount()) { showResults(); return; } var retry=maybeGetRetry(); if (retry) { current=retry; lastKey=questionKey(current); } else { var candidates=makeQuestionCandidates(); current = pickAdaptiveQuestion(candidates) || (currentTaskType() === "cloze" ? pickClozeQuestion(el("articleType").value === "mixed" ? "mixed" : el("articleType").value) : pickTableQuestion(selectedArticleType())); lastKey=questionKey(current); } state="checking"; hintUsed=false; renderQuestion(); renderHud(); }
+  function pickQuestion() { savePersistent(); if (answeredCount() >= targetCount()) { showResults(); return; } var retry=maybeGetRetry(); currentWasRetry=false; currentShowMicroRule=false; var candidates=makeQuestionCandidates(); if (retry) { current=retry; currentWasRetry=true; currentShowMicroRule=!!retry.showMicroRule; } else { current = pickAdaptiveQuestion(candidates) || (currentTaskType() === "cloze" ? pickClozeQuestion(el("articleType").value === "mixed" ? "mixed" : el("articleType").value) : pickTableQuestion(selectedArticleType())); } if (Number(sessionPromptCounts[promptKey(current)] || 0) >= 2) { var alternates = candidates.filter(function(q){ return Number(sessionPromptCounts[promptKey(q)] || 0) < 2 && questionKey(q) !== lastKey; }); if (alternates.length) { current = cloneQuestion(alternates[randomIndex(alternates.length)]); currentWasRetry = false; currentShowMicroRule = false; } } lastKey=questionKey(current); state="checking"; hintUsed=false; renderQuestion(); renderHud(); }
   function sentenceHtml(sentence, resultClass) {
     var replacement = '<span class="blankSlot">___</span>';
     if (resultClass) replacement = '<span class="blankSlot answerSlot ' + resultClass + '">' + escapeHtml(displayAnswer(current.answer)) + '</span>';
@@ -4566,12 +5268,12 @@ body.setupMode main {
   }
   function englishShouldShow() { var mode=el("englishSupport") ? el("englishSupport").value : "smart"; if (current.kind !== "cloze") return false; if (mode === "off") return false; if (mode === "always") return true; if (mode === "after") return state !== "checking"; return true; }
   function renderEnglishGloss() { var node=el("englishGloss"); if (!node) return; node.className="englishGloss"; if (current.kind !== "cloze") { node.textContent=""; return; } if (englishShouldShow()) node.textContent=getClozeTranslation(current); else { node.textContent=el("englishSupport").value === "off" ? "" : t("hidden"); if (node.textContent) node.classList.add("hiddenGloss"); } }
-  function renderQuestion() { renderMode(); document.body.classList.remove("resultsMode"); el("answerArea").classList.remove("answered", "resultsArea"); var supportColumn=document.querySelector(".supportColumn"); var resultPanel=el("resultPanel"); if (supportColumn && resultPanel && resultPanel.parentElement !== supportColumn) supportColumn.appendChild(resultPanel); el("resultPanel").classList.remove("visible"); var prompt=el("promptValue"); prompt.className="promptWord" + (current.kind === "cloze" ? " clozePrompt" : ""); if (current.kind === "cloze") prompt.innerHTML=sentenceHtml(current.sentence); else prompt.textContent=current.caseKey+" "+current.genderKey; renderEnglishGloss(); var input=el("answerInput"); input.value=""; input.disabled=false; input.style.display=""; input.placeholder=current.kind === "cloze" ? "Lücke ausfüllen" : "Artikel eingeben"; input.classList.remove("correct","missed"); el("feedback").innerHTML=""; el("feedback").className="feedback"; el("practiceSurface").classList.add("hidden"); setSupportPlaceholder(true, false); el("miniTableWrap").innerHTML=""; el("correctionBlock").className="correctionBlock"; el("correctionBlock").innerHTML=""; el("actionGrid").style.display="grid"; el("checkBtn").disabled=false; el("noArticleBtn").disabled=false; el("noArticleBtn").style.display=""; el("hintBtn").disabled=false; el("hintBtn").hidden=false; el("hintBtn").style.display=""; el("nextBtn").classList.remove("visible"); el("nextBtn").textContent="Weiter"; setTimeout(function(){ input.focus(); },0); }
+  function renderQuestion() { renderMode(); document.body.classList.remove("resultsMode"); el("answerArea").classList.remove("answered", "resultsArea"); var supportColumn=document.querySelector(".supportColumn"); var resultPanel=el("resultPanel"); if (supportColumn && resultPanel && resultPanel.parentElement !== supportColumn) supportColumn.appendChild(resultPanel); el("resultPanel").classList.remove("visible"); var prompt=el("promptValue"); prompt.className="promptWord" + (current.kind === "cloze" ? " clozePrompt" : ""); if (current.kind === "cloze") prompt.innerHTML=sentenceHtml(current.sentence); else prompt.textContent=current.caseKey+" "+current.genderKey; renderEnglishGloss(); var input=el("answerInput"); input.value=""; input.disabled=false; input.style.display=""; input.placeholder=current.kind === "cloze" ? "LÃ¼cke ausfÃ¼llen" : "Artikel eingeben"; input.classList.remove("correct","missed"); el("feedback").innerHTML=""; el("feedback").className="feedback"; el("practiceSurface").classList.add("hidden"); setSupportPlaceholder(true, false); el("miniTableWrap").innerHTML=""; el("correctionBlock").className="correctionBlock"; el("correctionBlock").innerHTML=""; if (currentShowMicroRule) { el("correctionBlock").innerHTML="<div class=\"microRule\"><strong>Repair rule</strong>" + escapeHtml(microRuleFor(current)) + "</div>"; el("correctionBlock").classList.add("visible"); } el("actionGrid").style.display="grid"; el("checkBtn").disabled=false; el("noArticleBtn").disabled=false; el("noArticleBtn").style.display=""; el("hintBtn").disabled=false; el("hintBtn").hidden=false; el("hintBtn").style.display=""; el("nextBtn").classList.remove("visible"); el("nextBtn").textContent="Weiter"; setTimeout(function(){ input.focus(); },0); }
   function checkAnswer(overrideChoice) {
     if (state !== "checking") return;
     var input=el("answerInput"), choice=overrideChoice === "none" ? "kein artikel" : normalise(input.value);
     if (!choice) {
-      el("feedback").textContent="Artikel eingeben oder „Kein Artikel“ wählen.";
+      el("feedback").textContent="Artikel eingeben oder â€žKein Artikelâ€œ wÃ¤hlen.";
       el("feedback").className="feedback warn";
       input.focus();
       return;
@@ -4579,6 +5281,7 @@ body.setupMode main {
     if (overrideChoice === "none") input.value="kein Artikel";
     var valid=acceptedAnswers(current.answer).map(normalise), isCorrect=valid.indexOf(choice) !== -1;
     recordLearningOutcome(current, isCorrect);
+    logAttempt(current, isCorrect, choice);
     state="next";
     el("answerArea").classList.add("answered");
     if (current.kind === "cloze") {
@@ -4602,6 +5305,7 @@ body.setupMode main {
       el("feedback").innerHTML="";
       el("feedback").className="feedback";
       recordMistake(current);
+      sessionMisses[skillCellKey(current)] = Number(sessionMisses[skillCellKey(current)] || 0) + 1;
       queueRetry(current);
       renderMiniTable("missed");
       renderCorrection(choice);
@@ -4649,8 +5353,8 @@ body.setupMode main {
     el("feedback").innerHTML="";
     el("feedback").className="feedback";
     el("rankText").textContent=t("focus");
-    el("resultSummary").textContent=correct+" " + t("right") + " · "+wrong+" " + t("mistakes");
-    el("accuracySummary").textContent="";
+    el("resultSummary").textContent=correct+" " + t("right") + " Â· "+wrong+" " + t("mistakes");
+    el("accuracySummary").innerHTML=sessionCoverageHtml();
     el("bestSummary").textContent=(newHigh ? "Neuer Bestwert: "+highScore+" Punkte" : (newStreak ? "Neue beste Serie: "+bestStreakAll : ""));
     resultHeatmapType = defaultHeatmapType();
     el("weakSummary").innerHTML=weakSpotHtml(resultHeatmapType);
@@ -4662,11 +5366,11 @@ body.setupMode main {
     next.classList.add("visible");
     renderHud();
   }
-  function newRound() { hideStartScreen(); score=0; correct=0; wrong=0; streak=0; bestStreakRound=0; mistakeCounts={}; retryQueue=[]; state="checking"; hintUsed=false; lastKey=null; savePersistent(); pickQuestion(); }
+  function newRound() { hideStartScreen(); score=0; correct=0; wrong=0; streak=0; bestStreakRound=0; mistakeCounts={}; retryQueue=[]; sessionLog=[]; sessionMisses={}; sessionPromptCounts={}; currentWasRetry=false; currentShowMicroRule=false; state="checking"; hintUsed=false; lastKey=null; savePersistent(); pickQuestion(); }
   function proceed() { if (state === "next") pickQuestion(); else if (state === "results") showStartScreen(); }
   function bind(id,event,fn){ var node=el(id); if (node) node.addEventListener(event,fn,false); }
-  function exportProgress(){ savePersistent(); var payload={app:"Kasuskonsole",version:"original-layout-cloze-v18-genitive-options",exportedAt:new Date().toISOString(),data:safeGetObject()}; var blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"}); var url=URL.createObjectURL(blob); var a=document.createElement("a"); a.href=url; a.download="kasuskonsole-progress.json"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){ URL.revokeObjectURL(url); },250); }
-  function importProgress(file){ if (!file) return; var reader=new FileReader(); reader.onload=function(){ try { var parsed=JSON.parse(String(reader.result || "{}")), data=parsed.data || parsed; safeSetObject(data); loadPersistent(); newRound(); } catch(e){ el("feedback").textContent="Import fehlgeschlagen: ungültige JSON-Datei."; el("feedback").className="feedback missed"; } }; reader.readAsText(file); }
+  function exportProgress(){ savePersistent(); var payload={app:"Kasuskonsole",version:"v27-grammar-aware-retry",exportedAt:new Date().toISOString(),sessionLog:sessionLog.slice(-80),data:safeGetObject()}; var blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"}); var url=URL.createObjectURL(blob); var a=document.createElement("a"); a.href=url; a.download="kasuskonsole-progress.json"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){ URL.revokeObjectURL(url); },250); }
+  function importProgress(file){ if (!file) return; var reader=new FileReader(); reader.onload=function(){ try { var parsed=JSON.parse(String(reader.result || "{}")), data=parsed.data || parsed; safeSetObject(data); loadPersistent(); newRound(); } catch(e){ el("feedback").textContent="Import fehlgeschlagen: ungÃ¼ltige JSON-Datei."; el("feedback").className="feedback missed"; } }; reader.readAsText(file); }
 
   function syncMockFromSettings() {
     var pairs = [
@@ -4713,7 +5417,7 @@ body.setupMode main {
     savePersistent();
     newRound();
   }
-  window.kasusCheck=function(){checkAnswer();}; window.kasusNoArticle=function(){checkAnswer("none");}; window.kasusProceed=function(){proceed();}; window.kasusHint=function(){showHint();}; window.kasusNewRound=function(){showStartScreen();}; window.kasusStartRound=function(){startConfiguredRound();}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusResetBest=function(){ highScore=0; bestStreakAll=0; savePersistent(); if (state === "results") showResults(); else renderHud(); }; window.kasusResetProfile=function(){ resetLearnerModel(); }; window.kasusToggleMenu=function(){ var panel=el("settingsPanel"); panel.classList.toggle("open"); document.body.classList.toggle("menuOpen", panel.classList.contains("open")); };
+  window.kasusCheck=function(){checkAnswer();}; window.kasusNoArticle=function(){checkAnswer("none");}; window.kasusProceed=function(){proceed();}; window.kasusHint=function(){showHint();}; window.kasusNewRound=function(){showStartScreen();}; window.kasusStartRound=function(){startConfiguredRound();}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusSessionLog=function(){return sessionLog.slice();}; window.kasusCurrent=function(){return cloneQuestion(current);}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusResetBest=function(){ highScore=0; bestStreakAll=0; savePersistent(); if (state === "results") showResults(); else renderHud(); }; window.kasusResetProfile=function(){ resetLearnerModel(); }; window.kasusToggleMenu=function(){ var panel=el("settingsPanel"); panel.classList.toggle("open"); document.body.classList.toggle("menuOpen", panel.classList.contains("open")); };
   function setMenu(open) { el("settingsPanel").classList.toggle("open", open); document.body.classList.toggle("menuOpen", open); }
   function toggleMenu() { setMenu(!el("settingsPanel").classList.contains("open")); }
   function init(){ loadPersistent(); bind("menuToggle","click",function(event){ event.stopPropagation(); toggleMenu();}); document.addEventListener("click",function(event){ if (!event.target.closest(".menuWrap")) setMenu(false);}); bind("taskType","change",function(){ if (state !== "setup") newRound(); else savePersistent(); }); bind("articleType","change",function(){ if (state !== "setup") newRound(); else savePersistent(); }); bind("includeGenitive","change",function(){ setCheckbox("genitiveTableMode", el("includeGenitive").value === "on"); syncHiddenGenitiveSelects(); if (state !== "setup") newRound(); else savePersistent(); });
@@ -4731,3 +5435,4 @@ body.setupMode main {
 </script>
 </body>
 </html>
+
