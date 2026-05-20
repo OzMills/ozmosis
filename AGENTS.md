@@ -2,7 +2,7 @@
 
 ## Project identity
 
-Kasuskonsole is a static, single-file German case/article trainer deployed through GitHub Pages. The production app is the repository-root `index.html`.
+Ozmosis is a static, single-file German case/article trainer deployed through GitHub Pages. The production app is the repository-root `index.html`.
 
 Use the current repository files as source of truth. If the user supplies a newer uploaded package, loose `index.html`, README, CHANGELOG, screenshot, or Codex log in the task, inspect those first and explicitly state which source you used.
 
@@ -42,7 +42,7 @@ Arabic UI may be RTL, but German exercises, prompts, answer fields, blanks, exam
 
 ## Pedagogy rules
 
-Kasuskonsole is a learning instrument, not a worksheet generator.
+Ozmosis is a learning instrument, not a worksheet generator.
 
 Prioritise retrieval practice, spaced retry, interleaving, contrastive practice, low cognitive load, concise corrective feedback, and natural Hochdeutsch.
 
