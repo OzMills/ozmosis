@@ -1,3 +1,5 @@
+## v0.32.1 - Connector Sprint UX/Bug Pass
+
 ## v0.32 - B1 Connector Sprint Bank
 
 - Added a structured B1 Connector Sprint under Grammar.
