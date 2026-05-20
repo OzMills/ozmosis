@@ -1,158 +1,378 @@
-# Kasuskonsole
+\# OZMOSIS
 
-**Kasuskonsole** is a single-file German case and article trainer for learners who need repeated practice with **der**, **ein**, and **kein** forms.
 
-It focuses on German articles across:
 
-- **Nominativ**
-- **Akkusativ**
-- **Dativ**
-- optional **Genitiv**
+OZMOSIS is a static, single-file German learning app focused on fast B1 test preparation.
 
-The app is designed for quick, focused practice rather than full-course teaching. It is especially useful for learners who know the grammar in theory but still hesitate when choosing forms like `der`, `den`, `dem`, `einem`, `keinen`, or `des`.
 
-## Live app
 
-Once GitHub Pages is enabled, the app should be available here:
+It was formerly called Kasuskonsole and began as a German case/article trainer. The current priority is a personal B1 sprint tool based on uploaded course notes, with later room for B1 to B2 expansion.
 
-```text
-https://ozmills.github.io/kasuskonsole/
-```
 
-## What it does
 
-Kasuskonsole offers two main practice styles.
+\## Current Focus
 
-### In Context
 
-Sentence-gap practice.
 
-Example:
+The active development goal is:
 
-```text
-Ich helfe ___ Kind.
-```
 
-The learner chooses the correct article form from context.
 
-### Out of Context
+Build the fastest useful personal B1 test-prep tool.
 
-Direct article-table practice.
 
-Example:
 
-```text
-Dativ Neutrum — DER article
-```
+Current priority order:
 
-The learner chooses the correct form directly.
 
-### Mixed
 
-Combines contextual sentence gaps and direct article-table practice.
+1\. B1 landing/tool hub
 
-## Article families
+2\. B1 content engine
 
-The app can practise:
+3\. Connector Sprint
 
-- **All article types**
-- **DER words**
-- **EIN words**
-- **KEIN words**
+4\. Redemittel Sprint
 
-## Genitiv practice
+5\. Wortschatz Sprint
 
-Genitiv is optional and remains off by default.
+6\. Writing/Speaking cards
 
-When enabled, it can appear as:
+7\. Today's B1 Sprint
 
-- **Table row**
-- **Basic ownership clozes**
-- **Written preposition clozes**
+8\. Weakness repair
 
-This separation is intentional. Genitiv can quickly become too dense for early practice because it may involve article choice, noun endings, register, and phrase structure at the same time.
+9\. Later: full Leitner, import tools, B2 expansion
 
-## Language support
 
-The interface currently supports:
 
-- English
-- Turkish
-- Arabic
-- Chinese
-- Ukrainian
+\## Current Known Version
 
-German exercise text remains German.
 
-Arabic support text may use right-to-left layout where appropriate, but German prompts, tables, and answer forms should remain left-to-right.
 
-## Progress tracking
+Current working line:
 
-Kasuskonsole stores learner progress locally in the browser using `localStorage`.
 
-This means:
 
-- progress stays on the same device/browser
-- no account is required
-- no server is used
-- clearing browser data may erase progress
+\- v30-b1-sprint-landing-page
 
-## Technical structure
+\- v31-b1-content-engine-lite
 
-Kasuskonsole is intentionally simple:
+\- next: v32-b1-connector-sprint-bank
 
-```text
-index.html
-```
 
-There is no build step, framework, package manager, backend, or database.
 
-To deploy a new version, replace the repo-root `index.html`.
+Known v31 state:
 
-## Recommended repo structure
 
-```text
-kasuskonsole/
-├─ index.html
-├─ README.md
-└─ CHANGELOG.md
-```
 
-## Development notes
+\- OZMOSIS landing/tool hub exists.
 
-The current public version is a catch-up release based on the internal v25 working build.
+\- Lightweight B1 practice engine exists.
 
-Recent work included:
+\- 24 seed B1 items exist across Grammar, Wortschatz, and Redemittel.
 
-- simplified New Practice options
-- clearer learning-style labels
-- multilingual UI support
-- optional Genitiv practice
-- responsive layout tuning for mobile, tablet, laptop, and desktop viewports
-- preservation of the original dark neon console style
-- fixed bottom HUD with progress, points, correct answers, errors, and streak
+\- Today's B1 Sprint, Grammar, Wortschatz, and Redemittel open real practice rounds.
 
-## Testing notes
+\- B1 progress persists under `ozmosis\_b1\_sprint\_progress\_v1`.
 
-Recent responsive checks covered common viewport sizes including:
+\- Existing Case Trainer, Options, Dev Tools, and localStorage compatibility are preserved.
 
-```text
-390×844
-430×932
-768×1024
-932×430
-1365×599
-1440×900
-```
 
-Known limitation: because this is a static browser app, live GitHub Pages persistence should be checked after deployment by answering questions, reloading the page, exporting progress, and confirming that local progress remains available.
 
-## Changelog
+\## Architecture
 
-See [`CHANGELOG.md`](CHANGELOG.md) for version history.
 
-## License
 
-No license has been selected yet.
+OZMOSIS is intentionally simple:
 
-Until a license is added, all rights are reserved by default.
+
+
+\- static single-file app
+
+\- main deployed file: `index.html`
+
+\- no backend
+
+\- no framework
+
+\- no build step
+
+\- no database
+
+\- no accounts
+
+\- no analytics
+
+\- no external API calls
+
+\- no runtime AI generation
+
+\- no dependencies unless explicitly approved
+
+
+
+The app is designed to run directly in the browser and deploy through GitHub Pages.
+
+
+
+\## Repository Structure
+
+
+
+Recommended clean repo structure:
+
+
+
+&#x20;   /
+
+&#x20;   ├─ index.html
+
+&#x20;   ├─ README.md
+
+&#x20;   ├─ CHANGELOG.txt
+
+&#x20;   ├─ AGENTS.md
+
+&#x20;   ├─ .gitignore
+
+&#x20;   ├─ content/
+
+&#x20;   │  └─ ozmosis\_b1\_connector\_sprint\_v1\_bank.json
+
+&#x20;   └─ docs/
+
+&#x20;      ├─ Kasuskonsole Source Brief.md
+
+&#x20;      ├─ OZMOSIS\_B1\_Test\_Sprint\_Pivot\_Production\_Plan.md
+
+&#x20;      ├─ OZMOSIS\_Case\_Teaching\_Leitner\_Iteration\_Plan.md
+
+&#x20;      └─ qa/
+
+&#x20;         └─ ozmosis\_b1\_connector\_sprint\_v1\_qa\_protocol.md
+
+
+
+Do not commit old version folders, screenshots, ZIP packages, generated test output, local progress exports, or development archive folders.
+
+
+
+\## Running Locally
+
+
+
+Open `index.html` directly in a modern browser.
+
+
+
+No install step is required.
+
+
+
+\## Deployment
+
+
+
+The live app is served from GitHub Pages using the repo-root `index.html`.
+
+
+
+Live app:
+
+
+
+&#x20;   https://ozmills.github.io/kasuskonsole/
+
+
+
+\## Development Rules
+
+
+
+Before changing code, read:
+
+
+
+\- AGENTS.md
+
+\- CHANGELOG.txt
+
+\- docs/Kasuskonsole Source Brief.md
+
+
+
+For Codex work, always follow `AGENTS.md`.
+
+
+
+Key rules:
+
+
+
+\- Do not redesign unless explicitly asked.
+
+\- Do not add dependencies.
+
+\- Do not rewrite the app.
+
+\- Do not change localStorage keys without migration.
+
+\- Do not break export/import compatibility.
+
+\- Do not claim tests passed unless they were actually run.
+
+\- Keep German learning content LTR, including in Arabic UI.
+
+
+
+\## B1 Content Rules
+
+
+
+B1 practice items should be:
+
+
+
+\- natural Hochdeutsch
+
+\- B1-relevant
+
+\- course/test relevant
+
+\- single-target where possible
+
+\- not artificially complex
+
+\- not Genitiv unless explicitly enabled
+
+\- not adjective-ending-focused unless specifically requested
+
+\- not a hidden multi-skill trap
+
+
+
+Connector banks should use structured variant families:
+
+
+
+\- target rule
+
+\- sibling variants
+
+\- contrast variants
+
+\- error-repair items
+
+\- production cards
+
+
+
+Do not generate random isolated examples.
+
+
+
+\## Testing Expectations
+
+
+
+Reports should distinguish between:
+
+
+
+\- code inspection
+
+\- syntax check
+
+\- browser smoke test
+
+\- responsive screenshot/visual test
+
+\- manual visual inspection
+
+\- localStorage persistence test
+
+\- export/import test
+
+\- Arabic RTL/LTR smoke
+
+\- live GitHub Pages test
+
+
+
+Responsive checks should include:
+
+
+
+\- 320×568
+
+\- 390×844
+
+\- 430×932
+
+\- 768×1024
+
+\- 1365×599
+
+\- 1440×900
+
+
+
+Watch for:
+
+
+
+\- HUD covering actions
+
+\- clipped modals
+
+\- unreachable buttons
+
+\- nested scroll traps
+
+\- desktop looking like an oversized phone
+
+\- Arabic reversing German content
+
+\- long labels breaking layout
+
+\- weak focus states
+
+
+
+\## Current Next Patch
+
+
+
+Unless superseded, the next planned patch is:
+
+
+
+v32-b1-connector-sprint-bank
+
+
+
+Goal:
+
+
+
+\- add structured B1 Connector Sprint under Grammar
+
+\- support connector choice, word-order cloze, error repair, and production-card item types
+
+\- preserve the existing v31 B1 engine and seed modes
+
+\- extend B1 progress without wiping existing progress
+
+
+
+Do not implement full Leitner, dashboards, AI grading, writing correction, speaking scoring, or unrelated content banks in this patch.
+
+
+
+\## Notes
+
+
+
+The broader long-term plan still includes Leitner, import tools, B2 expansion, stronger repair modes, and richer writing/speaking support. These are intentionally deferred until the B1 sprint baseline is useful.
+

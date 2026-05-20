@@ -1,0 +1,46 @@
+## v0.32 - B1 Connector Sprint Bank
+
+- Added a structured B1 Connector Sprint under Grammar.
+- Added the 120-item B1 connector bank covering reason, contrast, purpose, time, repair, and production transfer.
+- Added support for connector-choice, word-order cloze, error-repair, and production-card item types.
+- Added connector-family filtering for All, Reason, Contrast, Purpose, Time, and Repair.
+- Preserved existing v31 B1 seed practice, Case Trainer, Options, Dev Tools, and localStorage compatibility.
+- Extended B1 progress tracking for connector attempts and practised production cards.
+
+## v31-b1-content-engine-lite
+
+- Added a lightweight B1 practice engine.
+- Added 24 seed B1 sprint items across Grammar, Wortschatz, and Redemittel.
+- Connected Today’s B1 Sprint, Grammar, Wortschatz, and Redemittel landing-page buttons to real practice rounds.
+- Added basic B1 item progress persistence under `ozmosis_b1_sprint_progress_v1`.
+- Preserved existing Case Trainer, Options, Dev Tools, and localStorage compatibility.
+
+## v30-b1-sprint-landing-page
+
+- Added a numbered OZMOSIS landing page for B1 sprint navigation.
+- Kept existing Case Trainer, Options, and Dev Tools accessible.
+- Added placeholder navigation for upcoming Grammar, Wortschatz, Redemittel, Schreiben, Sprechen, and Course Map tools.
+- Preserved existing static single-file architecture and local progress.
+
+## v33 - Lernbox footer HUD and progress strips
+
+- Moved the Lernbox prompt, answer input, and actions out of the extra outer play box.
+- Added a fixed Lernbox footer HUD with done, right, wrong, retry, and thin top progress-bar status.
+- Added the same thin top progress-bar treatment to the main practice HUD.
+- Kept the fullscreen Lernbox prototype flow and existing article trainer behavior intact.
+
+## v32 - Fullscreen Lernbox cloze prototype
+
+- Changed the Dev Tools Leitner prototype into a fullscreen `LERNBOX PROTOTYPE` cloze session.
+- Switched the prototype data source to `LeitnerTest.json`.
+- Randomized each prototype round to a maximum of 10 initial clozes and requeues missed clozes for retry.
+- Added a compact Lernbox results screen with strongest and weakest category summaries.
+- Moved prototype progress reset to the Dev Tools list with a confirmation screen.
+- Removed visible due-card status text, step text, intro copy, and in-prototype Dev Tools/back controls.
+
+## v31 - Dev Leitner prototype with external TSV data
+
+- Added a Dev Tools Leitner article prototype.
+- Added external TSV data files for article items and Leitner card configuration.
+- Added local Leitner progress persistence using a separate localStorage namespace.
+- Added five-step star rating display with due-card scheduling and early-practice handling.
