@@ -58,7 +58,7 @@ Current working line:
 
 \- v31-b1-content-engine-lite
 
-\- next: v32-b1-connector-sprint-bank
+\- next: v0.32-b1-connector-sprint-bank
 
 
 
@@ -348,7 +348,7 @@ Unless superseded, the next planned patch is:
 
 
 
-v32-b1-connector-sprint-bank
+v0.32-b1-connector-sprint-bank
 
 
 
