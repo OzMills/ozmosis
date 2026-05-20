@@ -5,7 +5,7 @@
   "cefr": "B1",
   "source": "B1Work course notes + OZMOSIS B1 sprint pivot",
   "purpose": "Structured B1 connector practice using variant families, contrast families, word-order checks, repair items, and production cards.",
-  "qaStatus": "structural_checks_passed",
+  "qaStatus": "v0.32.1_structural_and_targeted_review",
   "items": [
     {
       "id": "b1_connector_001",
@@ -1861,7 +1861,7 @@
       "cefr": "B1",
       "difficulty": "sprint_core",
       "variantFamilyId": "purpose_damit",
-      "variantRole": "sibling",
+      "variantRole": "recognition",
       "targetRule": "Use damit when the purpose clause has its own expressed subject or when the subject changes.",
       "contrastTargets": [
         "um ... zu"
@@ -1876,7 +1876,8 @@
       "microRule": "Use damit when the purpose clause has its own expressed subject or when the subject changes.",
       "tags": [
         "purpose",
-        "damit"
+        "damit",
+        "recognition"
       ],
       "status": "active",
       "qa": {
@@ -1889,7 +1890,8 @@
           "no_adjective_ending_target": true,
           "course_context_relevant": true
         },
-        "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
+        "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation.",
+        "v0321_note": "v0.32.1: kept active as an easy recognition item, not a strong contrast item."
       },
       "choices": [
         "damit",
@@ -2148,7 +2150,7 @@
         "purpose",
         "damit"
       ],
-      "status": "active",
+      "status": "review",
       "qa": {
         "status": "passed_internal",
         "checks": {
@@ -2159,7 +2161,8 @@
           "no_adjective_ending_target": true,
           "course_context_relevant": true
         },
-        "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
+        "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation.",
+        "v0321_note": "v0.32.1 review: hidden passive/load beyond connector recognition."
       },
       "choices": [
         "damit",
@@ -3339,7 +3342,7 @@
         "time",
         "während"
       ],
-      "status": "active",
+      "status": "review",
       "qa": {
         "status": "passed_internal",
         "checks": {
@@ -3350,7 +3353,8 @@
           "no_adjective_ending_target": true,
           "course_context_relevant": true
         },
-        "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
+        "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation.",
+        "v0321_note": "v0.32.1 review: während/solange contrast can be contextually ambiguous."
       },
       "choices": [
         "während",
@@ -4032,7 +4036,7 @@
       "cefr": "B1",
       "difficulty": "sprint_core",
       "variantFamilyId": "time_seitdem",
-      "variantRole": "sibling",
+      "variantRole": "recognition",
       "targetRule": "Temporal connectors introduce time relationships; subordinate temporal clauses send the finite verb to the end.",
       "contrastTargets": [
         "bis"
@@ -4047,7 +4051,8 @@
       "microRule": "Temporal connectors introduce time relationships; subordinate temporal clauses send the finite verb to the end.",
       "tags": [
         "time",
-        "seitdem"
+        "seitdem",
+        "recognition"
       ],
       "status": "active",
       "qa": {
@@ -4060,7 +4065,8 @@
           "no_adjective_ending_target": true,
           "course_context_relevant": true
         },
-        "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
+        "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation.",
+        "v0321_note": "v0.32.1: kept active as an easy recognition item, not a strong contrast item."
       },
       "choices": [
         "seitdem",
@@ -4094,7 +4100,7 @@
         "time",
         "seitdem"
       ],
-      "status": "active",
+      "status": "review",
       "qa": {
         "status": "passed_internal",
         "checks": {
@@ -4105,7 +4111,8 @@
           "no_adjective_ending_target": true,
           "course_context_relevant": true
         },
-        "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
+        "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation.",
+        "v0321_note": "v0.32.1 review: hidden passive/load beyond connector recognition."
       },
       "choices": [
         "seitdem",
@@ -4206,7 +4213,7 @@
       "cefr": "B1",
       "difficulty": "sprint_core",
       "variantFamilyId": "time_bis",
-      "variantRole": "sibling",
+      "variantRole": "recognition",
       "targetRule": "Temporal connectors introduce time relationships; subordinate temporal clauses send the finite verb to the end.",
       "contrastTargets": [
         "seitdem"
@@ -4221,7 +4228,8 @@
       "microRule": "Temporal connectors introduce time relationships; subordinate temporal clauses send the finite verb to the end.",
       "tags": [
         "time",
-        "bis"
+        "bis",
+        "recognition"
       ],
       "status": "active",
       "qa": {
@@ -4234,7 +4242,8 @@
           "no_adjective_ending_target": true,
           "course_context_relevant": true
         },
-        "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
+        "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation.",
+        "v0321_note": "v0.32.1: kept active as an easy recognition item, not a strong contrast item."
       },
       "choices": [
         "bis",
@@ -4397,7 +4406,7 @@
         "time",
         "solange"
       ],
-      "status": "active",
+      "status": "review",
       "qa": {
         "status": "passed_internal",
         "checks": {
@@ -4408,7 +4417,8 @@
           "no_adjective_ending_target": true,
           "course_context_relevant": true
         },
-        "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
+        "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation.",
+        "v0321_note": "v0.32.1 review: solange/während contrast can be contextually ambiguous."
       },
       "choices": [
         "solange",
@@ -4442,7 +4452,7 @@
         "time",
         "solange"
       ],
-      "status": "active",
+      "status": "review",
       "qa": {
         "status": "passed_internal",
         "checks": {
@@ -4453,7 +4463,8 @@
           "no_adjective_ending_target": true,
           "course_context_relevant": true
         },
-        "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
+        "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation.",
+        "v0321_note": "v0.32.1 review: solange/während contrast can be contextually ambiguous."
       },
       "choices": [
         "solange",
@@ -5007,7 +5018,7 @@
         "solange",
         "während"
       ],
-      "status": "active",
+      "status": "review",
       "qa": {
         "status": "passed_internal",
         "checks": {
@@ -5018,7 +5029,8 @@
           "no_adjective_ending_target": true,
           "course_context_relevant": true
         },
-        "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
+        "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation.",
+        "v0321_note": "v0.32.1 review: repair item duplicates ambiguous solange/während contrast."
       },
       "choices": [
         "während",

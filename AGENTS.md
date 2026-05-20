@@ -1,8 +1,16 @@
 # AGENTS.md
 
-## Project identity
+## Project Identity
 
-Ozmosis is a static, single-file German case/article trainer deployed through GitHub Pages. The production app is the repository-root `index.html`.
+Ozmosis is a static, dependency-free German learning app deployed through GitHub Pages. The production app is the repository-root `index.html`.
+
+Ozmosis was formerly called Kasuskonsole. Historical notes may still use that name, but current user-facing and repo-facing language should use `Ozmosis`.
+
+Current working version: `v0.32`
+
+Next planned patch: `v0.32.1-connector-sprint-ux-bug-pass`
+
+Use pre-1.0 version naming from now on: `v0.30`, `v0.31`, `v0.32`, `v0.32.1`, `v0.33`, and later.
 
 Use the current repository files as source of truth. If the user supplies a newer uploaded package, loose `index.html`, README, CHANGELOG, screenshot, or Codex log in the task, inspect those first and explicitly state which source you used.
 
@@ -17,7 +25,7 @@ Source-of-truth order:
 
 If sources disagree, prefer the newest concrete file/package. Do not treat old chat claims as proof that a feature or bug still exists.
 
-## Architecture constraints
+## Architecture Constraints
 
 - Keep the app static and single-file unless the user explicitly approves a structural change.
 - Main app file: `index.html`.
@@ -26,21 +34,25 @@ If sources disagree, prefer the newest concrete file/package. Do not treat old c
 - Preserve localStorage compatibility. Do not rename storage keys or change export/import formats without a migration plan and backward-compatibility notes.
 - Preserve UTF-8 text. Do not introduce mojibake in German, Turkish, Arabic, Chinese, Ukrainian, or UI symbols.
 
-## Product constraints
+## Product Constraints
 
 Preserve the current product identity:
 
 - dark neon console aesthetic;
 - compact mobile-first layout;
 - fixed HUD/footer concept during practice;
-- answer → feedback → continue rhythm;
-- table drills, cloze/gap drills, mixed practice, DER/EIN/KEIN, Nominativ/Akkusativ/Dativ, optional Genitiv, adaptive retry, progress persistence, export/import, results/heatmap, and multilingual support unless the task explicitly changes them.
+- answer -> feedback -> continue rhythm;
+- B1 landing/tool hub;
+- B1 practice engine;
+- B1 Connector Sprint;
+- existing Case Trainer with table drills, cloze/gap drills, mixed practice, DER/EIN/KEIN, Nominativ/Akkusativ/Dativ, optional Genitiv, adaptive retry, progress persistence, export/import, results/heatmap, and multilingual support;
+- Options and Dev Tools unless the task explicitly changes them.
 
 Do not redesign. Make the smallest robust patch that satisfies the task.
 
-Arabic UI may be RTL, but German exercises, prompts, answer fields, blanks, examples, grammar tables, article forms, and heatmaps must remain LTR.
+Arabic UI may be RTL, but German exercises, prompts, answer fields, blanks, examples, grammar tables, article forms, heatmaps, model answers, and cloze text must remain LTR.
 
-## Pedagogy rules
+## Pedagogy Rules
 
 Ozmosis is a learning instrument, not a worksheet generator.
 
@@ -51,123 +63,48 @@ For German content changes, check:
 - noun gender;
 - case logic;
 - article form;
+- connector logic;
+- word order;
 - single-answer validity;
 - naturalness/register;
 - whether the item accidentally tests hidden grammar.
 
 Core clozes should usually test one primary target. Avoid gotcha dative verbs, n-declension nouns, adjective endings, obscure fixed-preposition patterns, heavy idioms, ambiguous no-article plurals, and Genitiv unless explicitly enabled or requested.
 
-Genitiv remains optional and separate from the default pool. Genitiv clozes must have one clean answer and must not require hidden noun/adjective-ending inference.
+Genitiv remains optional and separate from the default Case Trainer pool. Genitiv clozes must have one clean answer and must not require hidden noun/adjective-ending inference.
 
-## UX rules
+Connector bank item statuses:
 
-Prioritise:
+- `active`: may appear in normal practice rounds.
+- `review`: excluded from normal practice; reserved for Dev Tools/audit.
+- `retired`: excluded from normal practice.
 
-- clear primary action;
-- low decision load;
-- visible answer → feedback → continue flow;
-- useful minimal feedback;
-- keyboard/mouse/touch usability;
-- accessible focus and tap states;
-- scroll reachability at the top and bottom of each screen;
-- responsive behaviour across phone, landscape phone, tablet, short laptop, normal laptop, desktop, and large desktop.
+## Editing Rules
 
-Watch for HUD overlap, clipped settings/modals, actions below the fold, trapped nested scroll, desktop looking like an oversized phone, long translated labels, weak focus states, and Arabic accidentally reversing German content.
+- Keep diffs scoped to the requested patch.
+- Prefer existing functions, CSS tokens, visual language, and storage conventions.
+- Do not remove current Dev Tools behaviour.
+- Do not rename storage keys.
+- Do not wipe `ozmosis_b1_sprint_progress_v1`.
+- Keep German content and docs UTF-8.
+- Do not bake new large content banks into unrelated structures unless the task explicitly asks for it.
+- If external content files exist under `content/`, keep embedded app data and source content synchronized when the app currently embeds the bank.
 
-## Implementation workflow
+## Testing Rules
 
-Before editing:
+Do not claim tests passed unless actually run.
 
-1. Inspect `index.html` and any task-supplied files.
-2. Identify current version markers/title/changelog notes where present.
-3. Check for existing relevant code before adding new logic.
-4. State the narrow goal and non-negotiables.
+For app changes, prefer:
 
-While editing:
+- JavaScript syntax check for inline script in `index.html`;
+- browser smoke load;
+- target practice-flow checks;
+- localStorage persistence checks when progress code changes;
+- responsive checks at representative phone/tablet/laptop sizes;
+- Arabic RTL/LTR smoke when UI, prompt, or answer rendering changes.
 
-- Prefer small, localised patches.
-- Do not rewrite unrelated sections.
-- Do not remove existing features unless explicitly requested.
-- Keep CSS/JS/HTML naming consistent with the existing file.
-- Avoid duplicate dead code where practical, but do not perform broad cleanup unless requested.
+Report tests not run and why.
 
-After editing:
+## Release Notes
 
-- Report changed files.
-- Summarise the actual change.
-- List tests/checks actually run.
-- List blocked tests separately.
-- Note limitations/risks.
-- Provide a changelog draft.
-
-Never claim a test passed unless it was actually run.
-
-## Required checks
-
-At minimum, after changing `index.html`, run a JavaScript syntax check over inline scripts. Example:
-
-```bash
-node -e "const fs=require('fs');const html=fs.readFileSync('index.html','utf8');const scripts=[...html.matchAll(/<script\\b[^>]*>([\\s\\S]*?)<\\/script>/gi)].map(m=>m[1]);if(!scripts.length) throw new Error('No inline scripts found');scripts.forEach((s,i)=>{try{new Function(s)}catch(e){console.error('Inline script '+(i+1)+' failed');throw e}});console.log('Inline script syntax OK:',scripts.length);"
-```
-
-Also run the most relevant available validation for the task:
-
-- browser smoke test for interaction changes;
-- responsive screenshots for layout changes;
-- console-error check for UI changes;
-- localStorage persistence test for state changes;
-- export/import test for progress-data changes;
-- RTL/LTR check for language or Arabic changes;
-- German QA pass for cloze/table content changes.
-
-If a tool, browser, server, or permission is blocked, say exactly what was blocked and run the next-best validation. Do not invent results.
-
-## Responsive test targets
-
-For layout/UI tasks, check a representative spread where possible:
-
-- 320×568 small phone;
-- 390×844 normal phone;
-- 430×932 large phone;
-- landscape phone or short viewport;
-- 768×1024 tablet;
-- 1365×599 short laptop;
-- 1440×900 normal laptop;
-- desktop/large desktop.
-
-Screenshots are preferred for visual claims.
-
-## Versioning and changelog
-
-Use small versioned builds such as `v30-short-description`, `v31-short-description`, etc. If numbering is ambiguous, ask or propose the next clean version without rewriting history.
-
-For changelog notes, distinguish:
-
-- local/uncommitted;
-- tested locally;
-- committed;
-- deployed to GitHub Pages;
-- verified live.
-
-Do not claim deployment unless it was actually verified on the live app.
-
-## Review guidelines
-
-When reviewing a PR or diff, focus on serious issues:
-
-- broken practice flow;
-- wrong German grammar/article/case logic;
-- regressions in mobile/short-laptop layout;
-- HUD overlap or unreachable controls;
-- broken persistence/export/import;
-- storage-key or export-format changes without migration;
-- mojibake/encoding corruption;
-- Arabic RTL leaking into German exercise content;
-- accidental new dependencies or external calls;
-- untested claims in the report.
-
-Treat typo-level issues as lower priority unless they affect German correctness, UI clarity, or learner trust.
-
-## Communication style
-
-Be concise, direct, and specific. Prefer concrete file/function/selector references over broad commentary. If uncertain, say what evidence is missing and what you checked.
+Update `CHANGELOG.txt` for user-facing changes. New entries should use pre-1.0 version names.
