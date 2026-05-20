@@ -6,7 +6,7 @@ OZMOSIS is a static, single-file German learning app focused on fast B1 test pre
 
 
 
-It was formerly called Kasuskonsole and began as a German case/article trainer. The current priority is a personal B1 sprint tool based on uploaded course notes, with later room for B1 to B2 expansion.
+It was formerly called Ozmosis and began as a German case/article trainer. The current priority is a personal B1 sprint tool based on uploaded course notes, with later room for B1 to B2 expansion.
 
 
 
@@ -142,7 +142,7 @@ Recommended clean repo structure:
 
 &#x20;   └─ docs/
 
-&#x20;      ├─ Kasuskonsole Source Brief.md
+&#x20;      ├─ Ozmosis Source Brief.md
 
 &#x20;      ├─ OZMOSIS\_B1\_Test\_Sprint\_Pivot\_Production\_Plan.md
 
@@ -182,7 +182,7 @@ Live app:
 
 
 
-&#x20;   https://ozmills.github.io/kasuskonsole/
+&#x20;   https://ozmills.github.io/ozmosis/
 
 
 
@@ -199,6 +199,7 @@ Before changing code, read:
 \- CHANGELOG.txt
 
 \- docs/Kasuskonsole Source Brief.md
+(This should be changed to Ozmosis to reflect the name change)
 
 
 
