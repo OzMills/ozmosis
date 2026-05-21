@@ -18,7 +18,7 @@ Current priority order:
 
 ## Current Known Version
 
-Current working version: `v0.33.1`
+Current working version: `v0.33.5`
 
 Next planned patch: `v0.34`
 
@@ -36,6 +36,10 @@ Known v0.33 state:
 - v0.32.3 fixes mobile typed-cloze keyboard-era clipping and connector word-order consistency.
 - v0.33 adds the first Redemittel Survival Set and seeded B1 round randomisation.
 - v0.33.1 cleans up the B1 renderer contract and feedback behaviour.
+- v0.33.2 reframes the landing page as a B1 command screen.
+- v0.33.3 repairs practice-flow UX, choice-submit consistency, translation reveal, HUD progress labelling, and honest extra-practice star behaviour.
+- v0.33.4 completes the blocked v0.33.3 QA gate and clarifies homepage hero copy so it does not imply resumable daily-round queues.
+- v0.33.5 adds a real resumable 12-item daily sprint queue, FIFO retry for failed/assisted items, visible translation support, Teach me scaffolding, and clearer star/feedback behaviour.
 - B1 progress persists under `ozmosis_b1_sprint_progress_v1`.
 - Existing Case Trainer, Options, Dev Tools, export/import, and localStorage compatibility are preserved.
 

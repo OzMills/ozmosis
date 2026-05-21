@@ -1,3 +1,50 @@
+## v0.33.5 - Daily Sprint Queue and Teach Me Pass
+
+- Restored visible translation/support text in B1 practice and removed the reveal/hide translation control for now.
+- Simplified correct/wrong feedback by avoiding redundant `Correct answer` lines when the answer is already visible.
+- Added a real 12-item daily sprint queue that can be resumed during the day.
+- Changed daily sprint progress so only unassisted correct answers advance the count.
+- Added FIFO retry behaviour for missed and assisted items.
+- Added darker progress segments for retry debt and bright segments for successful completions.
+- Added a `Teach me` action for typed clozes that ghosts the correct answer without awarding progress.
+- Updated star visuals with five-sided filled stars, clearer earned/current sizing, and improved bronze/silver/gold progression.
+- Preserved existing B1 practice, Redemittel, Connector Sprint, Wortschatz, Case Trainer, Options, Dev Tools, localStorage, and randomisation behaviour.
+
+## v0.33.4 - Blocked QA Completion and Practice Flow Repair
+
+- Completed the blocked v0.33.3 QA gate for result-screen menu behaviour, extra-practice runtime behaviour, malformed B1 progress fallback, and Arabic RTL/LTR handling.
+- Repaired confirmed practice-flow regressions found during the QA gate.
+- Clarified homepage hero copy so progress and continue states do not overpromise resumable daily rounds.
+- Added a Dev Tools header menu control so the fixed options panel remains reachable from the overlay.
+- Preserved existing B1 practice, Redemittel, Connector Sprint, Case Trainer, Options, Dev Tools, localStorage, and randomisation behaviour.
+
+## v0.33.3 - Practice Flow UX and Honest Progress Pass
+
+- Improved menu and scroll behaviour so options and practice screens do not get trapped behind the fixed HUD.
+- Added a clear route back home from active B1 practice.
+- Updated the corner menu for the new Ozmosis command-screen structure.
+- Moved unavailable or placeholder homepage features into a clearer coming-soon/disabled state.
+- Added borderless reveal/hide translation behaviour for English support text.
+- Refined inline cloze styling so answer blanks feel integrated with the sentence.
+- Replaced submitted cloze inputs with non-editable red/green answer text.
+- Moved textual round progress into the fourth HUD box and replaced `Serie` with progress.
+- Added honest extra-practice labelling for non-due practice items and prevented early star progression where supported.
+- Added concise explanation for why extra practice does not earn stars.
+- Added feedback email text to the landing page and options menu.
+- Changed B1 choice items to require selecting an option and pressing `Prüfen`.
+- Improved star feedback styling with clearer earned/current states.
+- Preserved existing B1 practice, Redemittel, Connector Sprint, Case Trainer, Options, Dev Tools, localStorage, and randomisation behaviour.
+
+## v0.33.2 - Frontpage UX Reframe
+
+- Reframed the landing page as a B1 command screen.
+- Added a dominant Today’s B1 Sprint hero action.
+- Added compact local progress/status information.
+- Grouped learning routes into Practice, Production, Tools, and System sections.
+- Demoted Options and Dev Tools from primary learning-route status.
+- Added clearer labels, sublabels, and readiness/status pills.
+- Preserved existing B1 practice, Redemittel, Connector Sprint, Case Trainer, Options, Dev Tools, localStorage, and randomisation behaviour.
+
 ## v0.33.1 - B1 Renderer Contract and Feedback Cleanup
 
 - Fixed typed-cloze post-submit rendering so editable inputs become non-editable coloured cloze text.

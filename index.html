@@ -18,6 +18,9 @@
   --good:#58e39a;
   --bad:#ff6d7a;
   --warn:#f6c15c;
+  --ok:#58e39a;
+  --accent-2:#f6c15c;
+  --pink:#ff9fe0;
   --mode:#7de3ff;
   --modeSoft:rgba(125,227,255,.14);
   --modeShadow:rgba(125,227,255,.2);
@@ -352,6 +355,16 @@ select, .menuButton {
   padding:10px 12px;
 }
 
+.actionGrid.teachAction {
+  grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
+}
+
+.actionGrid.teachAction #noArticleBtn,
+.actionGrid.teachAction #checkBtn {
+  min-height:46px;
+  padding:10px 12px;
+}
+
 .connectorChoiceGrid {
   width:min(520px,100%);
   display:none;
@@ -384,6 +397,13 @@ select, .menuButton {
   outline:none;
 }
 
+.connectorChoiceGrid button.selected {
+  border-color:var(--accent);
+  background:rgba(125,227,255,.14);
+  color:var(--text);
+  box-shadow:0 0 22px rgba(125,227,255,.2), inset 0 1px 0 rgba(255,255,255,.06);
+}
+
 .connectorChoiceGrid button.correct {
   border-color:var(--good);
   background:rgba(88,227,154,.18);
@@ -400,15 +420,68 @@ select, .menuButton {
   display:flex;
   justify-content:center;
   align-items:center;
-  gap:4px;
+  gap:5px;
   margin-top:2px;
-  font-size:clamp(1.05rem,4vw,1.35rem);
+  min-height:1.8rem;
   line-height:1;
 }
 
 .b1Star {
   color:#536073;
   text-shadow:none;
+  font-size:clamp(.9rem,3.4vw,1.1rem);
+  line-height:1;
+  transform-origin:center;
+}
+
+.b1Star.unearned {
+  color:#536073;
+  opacity:.62;
+}
+
+.b1Star.earned {
+  font-size:clamp(1.16rem,4.3vw,1.42rem);
+  color:#c77b36;
+  opacity:.9;
+}
+
+.b1Star.current {
+  font-size:clamp(1.36rem,5vw,1.66rem);
+  filter:drop-shadow(0 0 8px currentColor);
+}
+
+.b1Star.earned.level1 {
+  color:#b97538;
+  opacity:.82;
+}
+
+.b1Star.earned.level2 {
+  color:#d58a3f;
+  opacity:.92;
+}
+
+.b1Star.earned.level3 {
+  color:#f0a34a;
+  opacity:1;
+  filter:drop-shadow(0 0 5px rgba(240,163,74,.28));
+}
+
+.b1Star.earned.level4 {
+  color:#d7e4f0;
+  opacity:1;
+  filter:drop-shadow(0 0 6px rgba(215,228,240,.3));
+}
+
+.b1Star.earned.level5 {
+  color:#ffe06d;
+  opacity:1;
+  filter:drop-shadow(0 0 8px rgba(255,224,109,.42));
+}
+
+.b1Star.current.level3,
+.b1Star.current.level4,
+.b1Star.current.level5 {
+  filter:drop-shadow(0 0 10px currentColor);
 }
 
 .b1Star.bronze { color:#c7834e; }
@@ -452,6 +525,22 @@ button {
     color-mix(in srgb, var(--mode) 58%, #07101a);
   color:#061018;
   opacity:.82;
+}
+
+#noArticleBtn.teachBtn {
+  border-color:color-mix(in srgb, var(--accent) 46%, var(--line));
+  background:rgba(6,15,28,.7);
+  color:var(--accent);
+  opacity:.74;
+  text-transform:none;
+  letter-spacing:.01em;
+}
+
+#noArticleBtn.teachBtn:hover,
+#noArticleBtn.teachBtn:focus-visible {
+  opacity:1;
+  outline:none;
+  box-shadow:0 0 18px rgba(125,227,255,.16);
 }
 
 #checkBtn {
@@ -674,6 +763,10 @@ button {
   background:linear-gradient(90deg,var(--mode),var(--accent));
   border-radius:inherit;
   transition:width .18s ease;
+}
+
+#progressBar.dailyDebt {
+  background:linear-gradient(90deg, var(--accent), var(--mode));
 }
 #targetLabel {
   color:var(--muted);
@@ -1355,6 +1448,78 @@ button {
   opacity:.7;
   font-style:italic;
 }
+
+.translationToggle {
+  display:inline-flex;
+  justify-self:center;
+  align-items:center;
+  justify-content:center;
+  min-height:1.9em;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  color:var(--accent);
+  font:inherit;
+  font-size:clamp(.86rem,3.2vw,1rem);
+  font-weight:900;
+  line-height:1.35;
+  text-decoration:none;
+  cursor:pointer;
+}
+
+.translationToggle:hover,
+.translationToggle:focus-visible {
+  color:var(--text);
+  outline:0;
+  text-shadow:0 0 16px var(--modeShadow);
+}
+
+.translationToggle[hidden] {
+  display:none !important;
+}
+
+.b1PracticeTag {
+  justify-self:center;
+  min-height:24px;
+  padding:5px 10px 4px;
+  border:1px solid color-mix(in srgb, var(--warn) 62%, var(--line));
+  border-radius:999px;
+  background:rgba(246,193,92,.1);
+  color:var(--warn);
+  font-size:.68rem;
+  font-weight:1000;
+  letter-spacing:.1em;
+  line-height:1;
+  text-transform:uppercase;
+}
+
+.b1PracticeTag[hidden] {
+  display:none !important;
+}
+
+.whyNoStarsBtn {
+  min-height:32px;
+  padding:0;
+  border:0;
+  background:transparent;
+  color:var(--accent);
+  font:inherit;
+  font-size:.88rem;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.whyNoStarsBtn:hover,
+.whyNoStarsBtn:focus-visible {
+  color:var(--text);
+  outline:0;
+  text-shadow:0 0 16px var(--modeShadow);
+}
+
+.whyNoStarsBtn[hidden] {
+  display:none !important;
+}
 .promptWord.clozePrompt {
   white-space:normal !important;
   overflow-wrap:anywhere;
@@ -1400,6 +1565,11 @@ button {
 .answerArea .correctionBlock.visible {
   display:grid;
   gap:6px;
+}
+.answerArea .correctionBlock.info {
+  border-color:color-mix(in srgb, var(--accent) 34%, var(--line));
+  border-left-color:var(--accent);
+  background:rgba(125,227,255,.07);
 }
 .answerArea .correctionTarget {
   color:var(--accent);
@@ -1635,6 +1805,12 @@ body .modeTitle.clozeNeutral,
   justify-content:space-between;
   gap:12px;
   margin-bottom:14px;
+}
+
+.devHeadActions {
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
 
 .devEyebrow {
@@ -4055,11 +4231,12 @@ body.homeMode .startScreen {
 }
 
 body.homeMode main {
+  position:relative;
   width:min(980px, 100%);
   min-height:100vh;
   max-height:none !important;
   margin:0 auto;
-  padding:clamp(14px, 3vw, 28px);
+  padding:clamp(20px, 3vw, 34px);
   overflow:visible !important;
 }
 
@@ -4070,18 +4247,37 @@ body.homeMode main {
 }
 
 body.homeMode .header {
+  position:absolute;
+  top:clamp(18px, 3vw, 34px);
+  right:clamp(20px, 3vw, 34px);
+  z-index:8;
   justify-content:flex-end;
-  min-height:clamp(46px, 9vw, 58px);
-  margin-bottom:clamp(8px, 2vh, 16px);
+  min-height:0;
+  margin:0;
+  padding:0;
+  width:auto;
 }
 
-body.homeMode .header h1,
-body.homeMode #menuToggle {
+body.homeMode .header h1 {
   display:none !important;
 }
 
+body.homeMode #menuToggle {
+  display:grid !important;
+  place-items:center;
+  width:clamp(56px, 13vw, 72px);
+  height:clamp(56px, 13vw, 72px);
+  border:2px solid color-mix(in srgb, var(--accent) 70%, var(--line));
+  border-radius:18px;
+  background:rgba(5,11,22,.84);
+  color:var(--text);
+  box-shadow:0 0 22px rgba(85,211,255,.18), inset 0 1px 0 rgba(255,255,255,.08);
+  font-size:clamp(1.35rem, 5vw, 1.8rem);
+}
+
 body.homeMode #settingsPanel {
-  top:0;
+  top:calc(100% + 10px);
+  right:0;
 }
 
 .homeScreen,
@@ -4096,21 +4292,362 @@ body.homeMode #settingsPanel {
   padding-bottom:calc(18px + env(safe-area-inset-bottom));
 }
 
+.homeScreen {
+  width:min(820px, 100%);
+  gap:0;
+}
+
+.homeIntro {
+  padding-right:clamp(74px, 17vw, 112px);
+  margin-bottom:clamp(18px, 4vw, 28px);
+}
+
 .homeScreen h2,
 .hubPlaceholder h2,
 .grammarHub h2 {
   margin:0;
   color:var(--accent);
-  font-size:clamp(2.25rem, 11vw, 4.8rem);
+  font-size:clamp(3.05rem, 16vw, 5.8rem);
   line-height:.95;
-  letter-spacing:.1em;
-  text-transform:uppercase;
+  letter-spacing:0;
+  text-transform:none;
   font-weight:1000;
 }
 
 #homeTitle {
   text-transform:none;
-  letter-spacing:.045em;
+  letter-spacing:0;
+}
+
+.hubPlaceholder h2,
+.grammarHub h2 {
+  font-size:clamp(2.25rem, 11vw, 4.8rem);
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+
+.homeSubtitle {
+  margin:.28rem 0 0;
+  color:var(--muted);
+  font-size:clamp(1.08rem, 5.4vw, 1.65rem);
+  line-height:1.1;
+  font-weight:900;
+}
+
+.homeHero {
+  display:grid;
+  grid-template-columns:1fr;
+  gap:14px;
+  width:100%;
+  min-height:clamp(108px, 25vw, 142px);
+  padding:clamp(18px, 5vw, 28px);
+  border:2px solid color-mix(in srgb, var(--accent) 78%, var(--mode));
+  border-radius:26px;
+  background:
+    radial-gradient(circle at 12% 15%, rgba(85,211,255,.18), transparent 30%),
+    linear-gradient(135deg, rgba(4,13,27,.96), rgba(9,20,34,.82));
+  color:var(--text);
+  font-family:inherit;
+  text-align:left;
+  cursor:pointer;
+  box-shadow:0 0 28px rgba(85,211,255,.22), inset 0 1px 0 rgba(255,255,255,.08);
+}
+
+.homeHero:hover,
+.homeHero:focus-visible {
+  border-color:var(--accent);
+  outline:none;
+  box-shadow:0 0 34px rgba(85,211,255,.31), inset 0 1px 0 rgba(255,255,255,.1);
+}
+
+.homeHero:active,
+.homeRouteCard:active,
+.homeChip:active {
+  transform:translateY(1px);
+}
+
+.homeHeroTop {
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:end;
+  gap:14px;
+}
+
+.homeHeroTitle {
+  display:block;
+  color:var(--text);
+  font-size:clamp(1.28rem, 6vw, 2.15rem);
+  line-height:1.05;
+  font-weight:1000;
+}
+
+.homeHeroMeta {
+  display:block;
+  margin-top:.42rem;
+  color:var(--muted);
+  font-size:clamp(.9rem, 3.9vw, 1.18rem);
+  line-height:1.25;
+  font-weight:850;
+}
+
+.homeHeroCta {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:44px;
+  padding:.68rem .92rem;
+  border:1.5px solid var(--accent);
+  border-radius:14px;
+  color:var(--accent);
+  background:rgba(2,12,25,.64);
+  font-size:clamp(.86rem, 3.4vw, 1rem);
+  font-weight:1000;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+
+.homeHeroProgress {
+  display:grid;
+  grid-template-columns:repeat(12, minmax(0, 1fr));
+  gap:5px;
+  width:100%;
+}
+
+.homeHeroProgress span {
+  height:12px;
+  border:1px solid color-mix(in srgb, var(--accent) 34%, var(--line));
+  border-radius:8px;
+  background:rgba(8,16,29,.86);
+}
+
+.homeHeroProgress span.filled {
+  border-color:color-mix(in srgb, var(--accent) 80%, white);
+  background:linear-gradient(90deg, var(--accent), var(--mode));
+  box-shadow:0 0 12px rgba(85,211,255,.26);
+}
+
+.homeHeroProgress span.retry {
+  border-color:color-mix(in srgb, var(--accent) 38%, var(--line));
+  background:rgba(30,67,105,.78);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+}
+
+.homeStatusStrip {
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  align-items:center;
+  gap:0;
+  min-height:54px;
+  margin-top:12px;
+  border:1.5px solid color-mix(in srgb, var(--accent) 46%, var(--line));
+  border-radius:18px;
+  background:rgba(5,10,20,.74);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+}
+
+.homeStatusItem {
+  display:grid;
+  justify-items:center;
+  gap:2px;
+  padding:9px 8px;
+  color:var(--muted);
+  font-size:.78rem;
+  line-height:1.1;
+  font-weight:900;
+  text-align:center;
+}
+
+.homeStatusItem + .homeStatusItem {
+  border-left:1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+.homeStatusValue {
+  color:var(--accent);
+  font-size:1rem;
+  font-weight:1000;
+  font-variant-numeric:tabular-nums;
+}
+
+.homeStatusStrip.single {
+  grid-template-columns:1fr;
+}
+
+.homeStatusStrip.single .homeStatusItem {
+  min-height:54px;
+  place-content:center;
+}
+
+.homeStatusStrip.single .homeStatusItem:not(:first-child) {
+  display:none;
+}
+
+.homeSection {
+  display:grid;
+  gap:10px;
+  margin-top:clamp(22px, 4.4vw, 30px);
+}
+
+.homeSectionTitle {
+  margin:0;
+  color:var(--accent);
+  font-size:clamp(1.18rem, 5vw, 1.6rem);
+  line-height:1.05;
+  font-weight:1000;
+}
+
+.homeRouteGrid,
+.homeChipGrid {
+  display:grid;
+  grid-template-columns:1fr;
+  gap:10px;
+}
+
+.homeRouteCard,
+.homeChip {
+  border:1.5px solid color-mix(in srgb, var(--accent) 48%, var(--line));
+  border-radius:18px;
+  background:linear-gradient(135deg, rgba(7,14,27,.86), rgba(8,18,31,.68));
+  color:var(--text);
+  font-family:inherit;
+  cursor:pointer;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+}
+
+.homeRouteCard {
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:14px;
+  min-height:78px;
+  padding:14px 16px;
+  text-align:left;
+}
+
+.homeRouteNumber {
+  min-width:2.1ch;
+  color:var(--accent);
+  font-size:clamp(1.85rem, 9vw, 2.45rem);
+  line-height:1;
+  font-weight:1000;
+  font-variant-numeric:tabular-nums;
+}
+
+.homeRouteMain {
+  min-width:0;
+}
+
+.homeRouteLabel {
+  display:block;
+  color:var(--text);
+  font-size:clamp(1.06rem, 4.9vw, 1.38rem);
+  line-height:1.08;
+  font-weight:1000;
+}
+
+.homeRouteSub {
+  display:block;
+  margin-top:.28rem;
+  color:var(--muted);
+  font-size:clamp(.82rem, 3.5vw, .98rem);
+  line-height:1.2;
+  font-weight:800;
+}
+
+.homePill {
+  justify-self:end;
+  padding:.44rem .62rem;
+  border:1.5px solid var(--accent);
+  border-radius:12px;
+  color:var(--accent);
+  background:rgba(3,14,25,.74);
+  font-size:.72rem;
+  line-height:1;
+  font-weight:1000;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+
+.homePill.ready {
+  color:var(--ok);
+  border-color:var(--ok);
+}
+
+.homeChip {
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:center;
+  gap:10px;
+  min-height:54px;
+  padding:12px 14px;
+  text-align:left;
+  font-size:clamp(.94rem, 4vw, 1.08rem);
+  line-height:1.1;
+  font-weight:950;
+}
+
+.homeChip.system {
+  color:var(--accent);
+  border-color:color-mix(in srgb, var(--accent) 34%, var(--line));
+  background:rgba(5,11,22,.58);
+}
+
+.homeRouteCard.unavailable,
+.homeChip.unavailable {
+  border-color:color-mix(in srgb, var(--muted) 28%, var(--line));
+  background:linear-gradient(135deg, rgba(8,13,22,.64), rgba(7,12,21,.48));
+  color:color-mix(in srgb, var(--text) 76%, var(--muted));
+  opacity:.74;
+}
+
+.homeRouteCard.unavailable .homeRouteNumber,
+.homeRouteCard.unavailable .homeRouteLabel,
+.homeChip.unavailable,
+.homeChip.unavailable .homeChipArrow {
+  color:color-mix(in srgb, var(--muted) 78%, var(--text));
+}
+
+.homeRouteCard.unavailable:hover,
+.homeRouteCard.unavailable:focus-visible,
+.homeChip.unavailable:hover,
+.homeChip.unavailable:focus-visible {
+  border-color:color-mix(in srgb, var(--muted) 44%, var(--line));
+  box-shadow:none;
+}
+
+.homePill.soon {
+  color:var(--muted);
+  border-color:color-mix(in srgb, var(--muted) 45%, var(--line));
+  background:rgba(6,10,18,.68);
+}
+
+.homeFeedback {
+  margin:clamp(18px,4vw,28px) 0 0;
+  color:color-mix(in srgb, var(--muted) 82%, var(--text));
+  font-size:.82rem;
+  font-weight:800;
+  text-align:center;
+}
+
+#settingsPanel .homeFeedback {
+  margin:0 0 2px;
+  text-align:left;
+}
+
+.homeChipArrow {
+  color:var(--accent);
+  font-size:1.25rem;
+  line-height:1;
+}
+
+.homeRouteCard:hover,
+.homeRouteCard:focus-visible,
+.homeChip:hover,
+.homeChip:focus-visible {
+  border-color:var(--accent);
+  outline:none;
+  box-shadow:0 0 18px rgba(125,227,255,.18), inset 0 1px 0 rgba(255,255,255,.055);
 }
 
 .homeNav {
@@ -4193,6 +4730,18 @@ body.homeMode #settingsPanel {
     width:min(860px, 100%);
   }
 
+  .homeChipGrid {
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+  }
+
+  .homeSection.production .homeRouteGrid {
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+  }
+
+  .homeSection.production .homeRouteCard {
+    min-height:66px;
+  }
+
   .homeNav {
     grid-template-columns:repeat(2, minmax(0, 1fr));
     gap:10px;
@@ -4215,6 +4764,70 @@ body.homeMode #settingsPanel {
     padding-right:12px;
   }
 
+  body.homeMode .header {
+    right:12px;
+  }
+
+  body.homeMode #menuToggle {
+    width:52px;
+    height:52px;
+    border-radius:16px;
+  }
+
+  .homeIntro {
+    padding-right:64px;
+    margin-bottom:16px;
+  }
+
+  .homeScreen h2 {
+    font-size:clamp(2.62rem, 15vw, 3.1rem);
+  }
+
+  .homeHero {
+    padding:15px;
+    border-radius:22px;
+  }
+
+  .homeHeroTop {
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+
+  .homeHeroCta {
+    width:100%;
+  }
+
+  .homeStatusStrip {
+    min-height:48px;
+  }
+
+  .homeStatusItem {
+    padding:8px 5px;
+    font-size:.72rem;
+  }
+
+  .homeStatusValue {
+    font-size:.9rem;
+  }
+
+  .homeRouteCard {
+    min-height:72px;
+    grid-template-columns:auto 1fr;
+    gap:11px;
+    padding:12px 13px;
+  }
+
+  .homeRouteCard .homePill {
+    grid-column:2;
+    justify-self:start;
+    margin-top:2px;
+  }
+
+  .homeChip {
+    min-height:50px;
+    padding:11px 13px;
+  }
+
   .homeNav {
     gap:7px;
   }
@@ -4223,6 +4836,130 @@ body.homeMode #settingsPanel {
     min-height:44px;
     border-radius:14px;
     padding:8px 11px;
+  }
+}
+
+/* v0.33.5: daily sprint queue, Teach me, and cloze feedback pass. */
+#settingsPanel.open {
+  position:fixed !important;
+  top:max(12px, env(safe-area-inset-top)) !important;
+  right:max(12px, env(safe-area-inset-right)) !important;
+  bottom:max(12px, env(safe-area-inset-bottom)) !important;
+  left:auto !important;
+  width:min(390px, calc(100vw - 24px)) !important;
+  max-width:calc(100vw - 24px) !important;
+  max-height:none !important;
+  overflow-y:auto !important;
+  overscroll-behavior:contain;
+  z-index:30000 !important;
+}
+
+body.homeMode #settingsPanel.open {
+  top:max(12px, env(safe-area-inset-top)) !important;
+  right:max(12px, env(safe-area-inset-right)) !important;
+}
+
+body.menuOpen {
+  overflow:hidden !important;
+}
+
+body.menuOpen main,
+body.menuOpen .bottomHud {
+  filter:none !important;
+}
+
+.content,
+.startScreen,
+.homeScreen,
+.hubPlaceholder,
+.grammarHub {
+  padding-bottom:calc(22px + env(safe-area-inset-bottom));
+}
+
+body:not(.homeMode) main {
+  overflow-y:auto;
+}
+
+.bottomHud #targetLabel {
+  display:none !important;
+}
+
+body.b1Mode .promptWord.clozePrompt {
+  overflow-wrap:normal;
+  word-break:normal;
+}
+
+body.b1Mode .inlineClozeInput,
+body.b1Mode.b1TypedCloze .inlineClozeInput {
+  display:inline-block !important;
+  width:var(--clozeWidth, 12ch) !important;
+  min-width:min(11ch, 72vw) !important;
+  max-width:min(22ch, 78vw) !important;
+  min-height:44px !important;
+  margin:0 .08em !important;
+  padding:.08em .28em .12em !important;
+  border:0 !important;
+  border-bottom:4px solid var(--mode) !important;
+  border-radius:0 0 12px 12px !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  color:var(--text) !important;
+  font:inherit !important;
+  font-size:.94em !important;
+  line-height:1.08 !important;
+  text-align:center !important;
+  vertical-align:baseline !important;
+}
+
+body.b1Mode .inlineClozeInput:focus,
+body.b1Mode.b1TypedCloze .inlineClozeInput:focus {
+  border-bottom-color:var(--accent) !important;
+  outline:none;
+  box-shadow:0 7px 0 -4px color-mix(in srgb, var(--accent) 42%, transparent), 0 10px 22px -14px var(--modeShadow) !important;
+}
+
+body.b1Mode .inlineClozeInput.teachGhost::placeholder {
+  color:color-mix(in srgb, var(--accent) 70%, var(--muted));
+  opacity:.52;
+}
+
+body.b1Mode .inlineClozeInput.teachGhost {
+  border-bottom-color:color-mix(in srgb, var(--accent) 74%, var(--line)) !important;
+}
+
+body.b1Mode .clozeAnswerText,
+body.b1Mode.b1TypedCloze .clozeAnswerText {
+  display:inline-block !important;
+  min-width:3.4ch !important;
+  width:auto !important;
+  max-width:min(22ch, 78vw) !important;
+  margin:0 .08em !important;
+  padding:.08em .28em .12em !important;
+  border:0 !important;
+  border-bottom:4px solid currentColor !important;
+  border-radius:0 0 12px 12px !important;
+  background:transparent !important;
+  text-shadow:none !important;
+  vertical-align:baseline !important;
+}
+
+body.b1Mode .clozeAnswerText.correct {
+  color:var(--good) !important;
+}
+
+body.b1Mode .clozeAnswerText.missed {
+  color:var(--bad) !important;
+}
+
+@media (max-width:480px) {
+  #settingsPanel.open {
+    left:max(10px, env(safe-area-inset-left)) !important;
+    right:max(10px, env(safe-area-inset-right)) !important;
+    width:auto !important;
+  }
+
+  body.b1Mode .promptWord.clozePrompt {
+    overflow-wrap:break-word;
   }
 }
 
@@ -4245,6 +4982,15 @@ body.homeMode #settingsPanel {
     <div class="menuWrap">
       <button id="menuToggle" type="button" aria-label="Einstellungen öffnen">☰</button>
       <div id="settingsPanel">
+        <div class="menuSectionTitle">Ozmosis</div>
+        <div class="homeFeedback">Feedback: ozmillsrpg@gmail.com</div>
+        <button class="menuButton" id="menuHomeBtn" type="button">Home</button>
+        <button class="menuButton" id="menuSprintBtn" type="button">Today's B1 Sprint</button>
+        <button class="menuButton" id="menuGrammarBtn" type="button">Grammar</button>
+        <button class="menuButton" id="menuRedemittelBtn" type="button">Redemittel</button>
+        <button class="menuButton" id="menuCaseTrainerBtn" type="button">Case Trainer</button>
+        <div class="menuDivider"></div>
+        <div class="menuSectionTitle">Options</div>
         <label>Aufgabentyp
           <select id="taskType">
             <option value="cloze" selected>In Context [Default]</option>
@@ -4295,7 +5041,7 @@ body.homeMode #settingsPanel {
             <option value="off">Aus / Zufall</option>
           </select>
         </label>
-        <button class="menuButton" id="restartBtn" type="button">Neue Runde</button>
+        <button class="menuButton" id="restartBtn" type="button">Neue Runde / New Game</button>
         <div class="menuDivider"></div>
         <div class="menuSectionTitle">Daten</div>
         <button class="menuButton" id="exportBtn" type="button">Fortschritt exportieren</button>
@@ -4324,19 +5070,88 @@ body.homeMode #settingsPanel {
   </div>
 
   <section class="homeScreen" id="homeScreen" aria-labelledby="homeTitle" hidden>
-    <h2 id="homeTitle">Ozmosis</h2>
-    <nav class="homeNav" aria-label="Ozmosis tools">
-      <button class="homeNavButton" id="homeSprintBtn" type="button"><span class="homeNavNumber">1.</span><span>Today’s B1 Sprint</span></button>
-      <button class="homeNavButton" id="homeGrammarBtn" type="button"><span class="homeNavNumber">2.</span><span>Grammar</span></button>
-      <button class="homeNavButton" id="homeWortschatzBtn" type="button"><span class="homeNavNumber">3.</span><span>Wortschatz</span></button>
-      <button class="homeNavButton" id="homeRedemittelBtn" type="button"><span class="homeNavNumber">4.</span><span>Redemittel</span></button>
-      <button class="homeNavButton homePlaceholderBtn" id="homeSchreibenBtn" type="button" data-title="Schreiben"><span class="homeNavNumber">5.</span><span>Schreiben</span></button>
-      <button class="homeNavButton homePlaceholderBtn" id="homeSprechenBtn" type="button" data-title="Sprechen"><span class="homeNavNumber">6.</span><span>Sprechen</span></button>
-      <button class="homeNavButton homePlaceholderBtn" id="homeCourseMapBtn" type="button" data-title="Course Map"><span class="homeNavNumber">7.</span><span>Course Map</span></button>
-      <button class="homeNavButton" id="homeCaseTrainerBtn" type="button"><span class="homeNavNumber">8.</span><span>Case Trainer</span></button>
-      <button class="homeNavButton" id="homeOptionsBtn" type="button"><span class="homeNavNumber">9.</span><span>Options</span></button>
-      <button class="homeNavButton" id="homeDevToolsBtn" type="button"><span class="homeNavNumber">10.</span><span>Dev Tools</span></button>
-    </nav>
+    <div class="homeIntro">
+      <h2 id="homeTitle">Ozmosis</h2>
+      <p class="homeSubtitle">B1 Test Sprint</p>
+    </div>
+
+    <button class="homeHero" id="homeSprintBtn" type="button" aria-describedby="homeHeroMeta">
+      <span class="homeHeroTop">
+        <span>
+          <span class="homeHeroTitle" id="homeHeroTitle">Start Today’s B1 Sprint</span>
+          <span class="homeHeroMeta" id="homeHeroMeta">12 mixed B1 items · fast practice</span>
+        </span>
+        <span class="homeHeroCta" id="homeHeroCta">START</span>
+      </span>
+      <span class="homeHeroProgress" id="homeHeroProgress" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+      </span>
+    </button>
+
+    <div class="homeStatusStrip" id="homeStatusStrip" aria-label="Local B1 practice status">
+      <div class="homeStatusItem"><span>Today</span><span class="homeStatusValue" id="homeStatusToday">Ready</span></div>
+      <div class="homeStatusItem"><span>Due</span><span class="homeStatusValue" id="homeStatusDue">--</span></div>
+      <div class="homeStatusItem"><span>Weak</span><span class="homeStatusValue" id="homeStatusWeak">--</span></div>
+    </div>
+
+    <section class="homeSection practice" aria-labelledby="homePracticeTitle">
+      <h3 class="homeSectionTitle" id="homePracticeTitle">Practice</h3>
+      <div class="homeRouteGrid">
+        <button class="homeRouteCard" id="homeGrammarBtn" type="button">
+          <span class="homeRouteNumber">1.</span>
+          <span class="homeRouteMain"><span class="homeRouteLabel">Grammar</span><span class="homeRouteSub">Connectors · word order · cases</span></span>
+          <span class="homePill ready">READY</span>
+        </button>
+        <button class="homeRouteCard" id="homeWortschatzBtn" type="button">
+          <span class="homeRouteNumber">2.</span>
+          <span class="homeRouteMain"><span class="homeRouteLabel">Wortschatz</span><span class="homeRouteSub">Work · illness · admin</span></span>
+          <span class="homePill">LITE</span>
+        </button>
+        <button class="homeRouteCard" id="homeRedemittelBtn" type="button">
+          <span class="homeRouteNumber">3.</span>
+          <span class="homeRouteMain"><span class="homeRouteLabel">Redemittel</span><span class="homeRouteSub">Email · appointments · complaints</span></span>
+          <span class="homePill ready">READY</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="homeSection production comingSoonRoutes" aria-labelledby="homeComingSoonTitle">
+      <h3 class="homeSectionTitle" id="homeComingSoonTitle">Coming Soon</h3>
+      <div class="homeRouteGrid">
+        <button class="homeRouteCard unavailable homePlaceholderBtn" id="homeSchreibenBtn" type="button" data-title="Schreiben">
+          <span class="homeRouteNumber">4.</span>
+          <span class="homeRouteMain"><span class="homeRouteLabel">Schreiben</span><span class="homeRouteSub">Production cards are not a full route yet</span></span>
+          <span class="homePill soon">SOON</span>
+        </button>
+        <button class="homeRouteCard unavailable homePlaceholderBtn" id="homeSprechenBtn" type="button" data-title="Sprechen">
+          <span class="homeRouteNumber">5.</span>
+          <span class="homeRouteMain"><span class="homeRouteLabel">Sprechen</span><span class="homeRouteSub">Production cards are not a full route yet</span></span>
+          <span class="homePill soon">SOON</span>
+        </button>
+        <button class="homeRouteCard unavailable homePlaceholderBtn" id="homeCourseMapBtn" type="button" data-title="Course Map">
+          <span class="homeRouteNumber">6.</span>
+          <span class="homeRouteMain"><span class="homeRouteLabel">Course Map</span><span class="homeRouteSub">Planned structure view</span></span>
+          <span class="homePill soon">SOON</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="homeSection tools" aria-labelledby="homeToolsTitle">
+      <h3 class="homeSectionTitle" id="homeToolsTitle">Tools</h3>
+      <div class="homeChipGrid">
+        <button class="homeChip" id="homeCaseTrainerBtn" type="button"><span>Case Trainer</span><span class="homeChipArrow">›</span></button>
+      </div>
+    </section>
+
+    <section class="homeSection system" aria-labelledby="homeSystemTitle">
+      <h3 class="homeSectionTitle" id="homeSystemTitle">System</h3>
+      <div class="homeChipGrid">
+        <button class="homeChip system" id="homeOptionsBtn" type="button"><span>Options</span></button>
+        <button class="homeChip system" id="homeDevToolsBtn" type="button"><span>Dev Tools</span></button>
+      </div>
+    </section>
+    <p class="homeFeedback">Feedback: ozmillsrpg@gmail.com</p>
   </section>
 
   <section class="hubPlaceholder" id="hubPlaceholder" aria-labelledby="hubPlaceholderTitle" hidden>
@@ -4484,11 +5299,13 @@ body.homeMode #settingsPanel {
   <section class="content">
     <div class="taskColumn">
       <section class="challengeCard">
+        <div class="b1PracticeTag" id="b1PracticeTag" hidden>EXTRA PRACTICE</div>
         <div class="modeTitle" id="modeTitle">Bestimmter Artikel</div>
         <div class="promptStack">
           <span class="promptWord" id="promptValue">Dativ Plural</span>
         </div>
         <div class="englishGloss" id="englishGloss"></div>
+        <button class="translationToggle" id="translationToggle" type="button" hidden></button>
       </section>
 
       <section class="answerArea" id="answerArea">
@@ -4505,6 +5322,7 @@ body.homeMode #settingsPanel {
         <div class="correctionBlock" id="correctionBlock"></div>
 
         <div class="feedback" id="feedback"></div>
+        <button class="whyNoStarsBtn" id="whyNoStarsBtn" type="button" hidden>Why no stars?</button>
         <button id="nextBtn" type="button">Weiter</button>
       </section>
     </div>
@@ -4539,7 +5357,7 @@ body.homeMode #settingsPanel {
     <div class="stat"><div class="statLabel">Punkte</div><div class="statValue" id="scoreValue">0</div></div>
     <div class="stat"><div class="statLabel">Richtig</div><div class="statValue good" id="correctValue">0</div></div>
     <div class="stat"><div class="statLabel">Fehler</div><div class="statValue bad" id="wrongValue">0</div></div>
-    <div class="stat"><div class="statLabel">Serie</div><div class="statValue warn" id="streakValue">0</div></div>
+    <div class="stat"><div class="statLabel">FORTSCHRITT</div><div class="statValue warn" id="streakValue">0 / 20</div></div>
   </div>
 </section>
 
@@ -4576,7 +5394,10 @@ body.homeMode #settingsPanel {
           <div class="devEyebrow">Testing only</div>
           <h2 id="devToolsTitle">Dev Tools</h2>
         </div>
-        <button class="devCloseBtn" id="devCloseBtn" type="button" aria-label="Dev Tools schließen">×</button>
+        <div class="devHeadActions">
+          <button class="devCloseBtn" id="devMenuBtn" type="button" aria-label="Menu öffnen">☰</button>
+          <button class="devCloseBtn" id="devCloseBtn" type="button" aria-label="Dev Tools schließen">×</button>
+        </div>
       </div>
       <p class="devIntro">Temporäre Prototypen, bevor sie in den normalen Lernfluss eingebaut werden.</p>
       <div class="devTestList">
@@ -4744,6 +5565,7 @@ body.homeMode #settingsPanel {
   var STORAGE_KEY = "kasuskonsoleOriginalLayoutClozeV4";
   var LEITNER_STORAGE_KEY = "kasuskonsole.leitner.v1";
   var B1_STORAGE_KEY = "ozmosis_b1_sprint_progress_v1";
+  var B1_DAILY_TOTAL = 12;
   var LEITNER_INTERVALS = [
     0,
     10 * 60 * 1000,
@@ -4777,7 +5599,14 @@ body.homeMode #settingsPanel {
     connectorFamily:"",
     deckKey:"",
     filterKey:"",
-    roundSeed:""
+    roundSeed:"",
+    selectedChoice:"",
+    translationOpen:false,
+    currentExtraPractice:false,
+    currentAssisted:false,
+    dailySprint:false,
+    dailyDateKey:"",
+    assisted:0
   };
 
   var supportLanguage = "en";
@@ -10726,7 +11555,7 @@ body.homeMode #settingsPanel {
     redCloze("b1_redemittel_007","formal_email","Ich möchte mich ___ die Informationen bedanken.","für","Ich möchte mich für die Informationen bedanken.","I would like to thank you for the information.","sich bedanken für is the useful pattern.","red_formal_thanks",["email","thanks"]),
     redCloze("b1_redemittel_008","formal_email","Könnten Sie mir bitte ___ Informationen schicken?","weitere","Könnten Sie mir bitte weitere Informationen schicken?","Could you please send me more information?","weitere Informationen is a common formal request.","red_formal_info",["email","request"]),
     redChoice("b1_redemittel_009","formal_email","Formelle Anrede:","Sehr geehrte Frau Müller,",["Hallo Frau Müller,","Sehr geehrte Frau Müller,","Liebe Frau Müller,"],"Sehr geehrte Frau Müller,","Choose the formal opening.","Sehr geehrte/r is the safest formal email opening.","red_formal_greeting_frau",["email","choice"]),
-    redChoice("b1_redemittel_010","formal_email","Formeller Schluss:","Mit freundlichen Grüßen",["Tschüss","Mit freundlichen Grüßen","Bis bald"],"Mit freundlichen Grüßen","Choose the formal closing.","Mit freundlichen Grüßen is neutral and formal.","red_formal_closing",["email","choice"]),
+    redChoice("b1_redemittel_010","formal_email","Formeller Schluss:","Mit freundlichen Grüßen",["Viele Grüße","Mit freundlichen Grüßen","Freundlichen Gruß"],"Mit freundlichen Grüßen","Choose the formal closing.","Mit freundlichen Grüßen is neutral and formal.","red_formal_closing",["email","choice"]),
     redRepair("b1_redemittel_011","formal_email","Bessere formelle Form: ___","Ich freue mich auf Ihre Antwort.",["Schreib mir schnell.","Ich freue mich auf Ihre Antwort.","Antworten Sie sofort."],"Ich freue mich auf Ihre Antwort.","Make the request polite and formal.","Use a neutral closing expectation, not a command.","red_formal_reply",["email","repair"]),
     redRepair("b1_redemittel_012","formal_email","Bessere formelle Form: ___","Ich schreibe Ihnen, weil ich eine Frage habe.",["Ich schreibe Ihnen, weil ich eine Frage habe.","Ich schreibe, weil Frage.","Ich will was fragen."],"Ich schreibe Ihnen, weil ich eine Frage habe.","Choose the natural formal sentence.","Keep the email phrase complete and polite.","red_formal_purpose",["email","repair"]),
     redCloze("b1_redemittel_013","formal_email","Ich ___ Ihnen für Ihre Hilfe.","danke","Ich danke Ihnen für Ihre Hilfe.","I thank you for your help.","Ich danke Ihnen is formal and direct.","red_formal_thanks",["email"]),
@@ -10741,7 +11570,7 @@ body.homeMode #settingsPanel {
     redCloze("b1_redemittel_021","appointment","Könnten wir den Termin auf Montag ___?","verschieben","Könnten wir den Termin auf Montag verschieben?","Could we move the appointment to Monday?","auf + day is used for moving to a date.","red_appointment_move",["appointment"]),
     redCloze("b1_redemittel_022","appointment","Ich habe am Dienstag leider keine ___.","Zeit","Ich habe am Dienstag leider keine Zeit.","I unfortunately have no time on Tuesday.","keine Zeit is simple and acceptable B1 language.","red_appointment_time",["appointment"]),
     redChoice("b1_redemittel_023","appointment","Beste Formulierung für Terminvereinbarung:","einen Termin vereinbaren",["einen Termin bekommen","einen Termin vereinbaren","einen Termin machen"],"einen Termin vereinbaren","Choose the natural scheduling phrase.","vereinbaren is the standard verb for appointments.","red_appointment_arrange",["appointment","choice"]),
-    redChoice("b1_redemittel_024","appointment","Höfliche Alternative:","Hätten Sie vielleicht einen anderen Termin?",["Geben Sie mir anderen Termin.","Hätten Sie vielleicht einen anderen Termin?","Ich brauche Termin."],"Hätten Sie vielleicht einen anderen Termin?","Choose the polite request.","Hätten Sie vielleicht ...? sounds polite and test-safe.","red_appointment_other",["appointment","choice"]),
+    redChoice("b1_redemittel_024","appointment","Höfliche Alternative:","Hätten Sie vielleicht einen anderen Termin?",["Haben Sie noch einen Termin?","Hätten Sie vielleicht einen anderen Termin?","Ich möchte einen anderen Termin."],"Hätten Sie vielleicht einen anderen Termin?","Choose the polite request.","Hätten Sie vielleicht ...? sounds polite and test-safe.","red_appointment_other",["appointment","choice"]),
     redRepair("b1_redemittel_025","appointment","Bessere Form: ___","Ich möchte gern einen Termin vereinbaren.",["Ich will einen Termin bekommen.","Ich möchte gern einen Termin vereinbaren.","Ich mache Termin."],"Ich möchte gern einen Termin vereinbaren.","Make the appointment request polite.","Ich möchte gern ... is safer than Ich will ...","red_appointment_arrange",["appointment","repair"]),
     redRepair("b1_redemittel_026","appointment","Bessere Form: ___","Der Termin passt mir leider nicht.",["Der Termin ist schlecht.","Der Termin passt mir leider nicht.","Ich komme nicht, egal."],"Der Termin passt mir leider nicht.","Explain a scheduling problem politely.","leider softens the refusal.","red_appointment_fit",["appointment","repair"]),
     redCloze("b1_redemittel_027","appointment","Ich kann leider erst ___ 14 Uhr kommen.","um","Ich kann leider erst um 14 Uhr kommen.","I unfortunately can only come at 2 p.m.","Use um for clock time.","red_appointment_time",["appointment"]),
@@ -10753,10 +11582,10 @@ body.homeMode #settingsPanel {
     redCloze("b1_redemittel_032","request","Ich möchte mich erkundigen, ___ der Kurs noch frei ist.","ob","Ich möchte mich erkundigen, ob der Kurs noch frei ist.","I would like to ask whether the course still has places.","sich erkundigen, ob ... is formal and useful.","red_request_inquire",["request"]),
     redCloze("b1_redemittel_033","request","Könnten Sie mir bitte die Unterlagen ___?","schicken","Könnten Sie mir bitte die Unterlagen schicken?","Could you please send me the documents?","schicken is clear and neutral for documents.","red_request_documents",["request"]),
     redCloze("b1_redemittel_034","request","Ich hätte gern einen ___ über die Kosten.","Überblick","Ich hätte gern einen Überblick über die Kosten.","I would like an overview of the costs.","einen Überblick über is useful formal vocabulary.","red_request_info",["request"]),
-    redChoice("b1_redemittel_035","request","Höfliche Bitte:","Könnten Sie mir bitte helfen?",["Hilf mir.","Könnten Sie mir bitte helfen?","Sie müssen helfen."],"Könnten Sie mir bitte helfen?","Choose the polite form.","Könnten Sie bitte ... is test-safe.","red_request_help",["request","choice"]),
-    redChoice("b1_redemittel_036","request","Formulierung für Rückruf:","Könnten Sie mich bitte zurückrufen?",["Könnten Sie mich bitte zurückrufen?","Rufen Sie sofort.","Telefonieren Sie mich."],"Könnten Sie mich bitte zurückrufen?","Choose the natural callback request.","mich zurückrufen is correct.","red_request_callback",["request","choice"]),
+    redChoice("b1_redemittel_035","request","Höfliche Bitte:","Könnten Sie mir bitte helfen?",["Können Sie mir helfen?","Könnten Sie mir bitte helfen?","Bitte helfen Sie mir."],"Könnten Sie mir bitte helfen?","Choose the polite form.","Könnten Sie bitte ... is test-safe.","red_request_help",["request","choice"]),
+    redChoice("b1_redemittel_036","request","Formulierung für Rückruf:","Könnten Sie mich bitte zurückrufen?",["Können Sie mich zurückrufen?","Könnten Sie mich bitte zurückrufen?","Rufen Sie mich bitte zurück."],"Könnten Sie mich bitte zurückrufen?","Choose the natural callback request.","mich zurückrufen is correct.","red_request_callback",["request","choice"]),
     redRepair("b1_redemittel_037","request","Bessere Form: ___","Ich möchte mich erkundigen, ob die Stelle noch frei ist.",["Ich will wissen, Stelle frei?","Ich möchte mich erkundigen, ob die Stelle noch frei ist.","Sagen Sie mir Stelle."],"Ich möchte mich erkundigen, ob die Stelle noch frei ist.","Make the question formal and complete.","erkundigen, ob ... is useful in formal contexts.","red_request_inquire",["request","repair"]),
-    redRepair("b1_redemittel_038","request","Bessere Form: ___","Könnten Sie mir bitte die Adresse schicken?",["Schicken Adresse.","Könnten Sie mir bitte die Adresse schicken?","Ich brauche Adresse jetzt."],"Könnten Sie mir bitte die Adresse schicken?","Use a polite request pattern.","Könnten Sie mir bitte ...? is neutral and polite.","red_request_documents",["request","repair"]),
+    redRepair("b1_redemittel_038","request","Bessere Form: ___","Könnten Sie mir bitte die Adresse schicken?",["Können Sie mir die Adresse schicken?","Könnten Sie mir bitte die Adresse schicken?","Bitte schicken Sie mir die Adresse."],"Könnten Sie mir bitte die Adresse schicken?","Use a polite request pattern.","Könnten Sie mir bitte ...? is neutral and polite.","red_request_documents",["request","repair"]),
     redCloze("b1_redemittel_039","request","Ich hätte gern ___ Informationen.","mehr","Ich hätte gern mehr Informationen.","I would like more information.","mehr Informationen is a simple useful phrase.","red_request_info",["request"]),
 
     redCloze("b1_redemittel_040","complaint","Leider gibt es ein Problem ___ der Lieferung.","mit","Leider gibt es ein Problem mit der Lieferung.","Unfortunately there is a problem with the delivery.","ein Problem mit + Dativ is standard.","red_complaint_problem",["complaint"]),
@@ -10766,10 +11595,10 @@ body.homeMode #settingsPanel {
     redCloze("b1_redemittel_044","complaint","Ich bitte Sie um eine schnelle ___.","Lösung","Ich bitte Sie um eine schnelle Lösung.","I ask you for a quick solution.","um eine Lösung bitten is formal enough for B1.","red_complaint_solution",["complaint"]),
     redCloze("b1_redemittel_045","complaint","Könnten Sie das bitte ___?","prüfen","Könnten Sie das bitte prüfen?","Could you please check that?","prüfen is useful formal service vocabulary.","red_complaint_check",["complaint"]),
     redCloze("b1_redemittel_046","complaint","Ich habe die Ware noch nicht ___.","erhalten","Ich habe die Ware noch nicht erhalten.","I have not received the goods yet.","erhalten is formal and useful in complaints.","red_complaint_delivery",["complaint"]),
-    redChoice("b1_redemittel_047","complaint","Formelle Beschwerde:","Leider gibt es ein Problem mit der Lieferung.",["Leider gibt es ein Problem mit der Lieferung.","Ihre Lieferung ist schlecht.","Das ist Mist."],"Leider gibt es ein Problem mit der Lieferung.","Choose the formal problem statement.","Leider keeps the complaint controlled and polite.","red_complaint_problem",["complaint","choice"]),
-    redChoice("b1_redemittel_048","complaint","Beste Bitte um Lösung:","Ich bitte Sie um eine schnelle Lösung.",["Machen Sie schnell.","Ich bitte Sie um eine schnelle Lösung.","Ich will Lösung."],"Ich bitte Sie um eine schnelle Lösung.","Choose the formal solution request.","Ich bitte Sie um ... is direct but polite.","red_complaint_solution",["complaint","choice"]),
+    redChoice("b1_redemittel_047","complaint","Formelle Beschwerde:","Leider gibt es ein Problem mit der Lieferung.",["Es gibt ein Problem mit der Lieferung.","Leider gibt es ein Problem mit der Lieferung.","Die Lieferung ist problematisch."],"Leider gibt es ein Problem mit der Lieferung.","Choose the formal problem statement.","Leider keeps the complaint controlled and polite.","red_complaint_problem",["complaint","choice"]),
+    redChoice("b1_redemittel_048","complaint","Beste Bitte um Lösung:","Ich bitte Sie um eine schnelle Lösung.",["Bitte finden Sie eine Lösung.","Ich bitte Sie um eine schnelle Lösung.","Könnten Sie eine Lösung prüfen?"],"Ich bitte Sie um eine schnelle Lösung.","Choose the formal solution request.","Ich bitte Sie um ... is direct but polite.","red_complaint_solution",["complaint","choice"]),
     redRepair("b1_redemittel_049","complaint","Bessere Form: ___","Ich möchte mich beschweren.",["Ich will meckern.","Ich möchte mich beschweren.","Ich bin sauer."],"Ich möchte mich beschweren.","Use neutral complaint language.","beschweren is formal enough; meckern is too informal.","red_complaint_complain",["complaint","repair"]),
-    redRepair("b1_redemittel_050","complaint","Bessere Form: ___","Könnten Sie das bitte prüfen?",["Prüfen Sie sofort.","Könnten Sie das bitte prüfen?","Sie müssen das machen."],"Könnten Sie das bitte prüfen?","Make the request polite.","Könnten Sie bitte ... softens the complaint.","red_complaint_check",["complaint","repair"]),
+    redRepair("b1_redemittel_050","complaint","Bessere Form: ___","Könnten Sie das bitte prüfen?",["Prüfen Sie das bitte.","Könnten Sie das bitte prüfen?","Bitte kümmern Sie sich darum."],"Könnten Sie das bitte prüfen?","Make the request polite.","Könnten Sie bitte ... softens the complaint.","red_complaint_check",["complaint","repair"]),
     redCloze("b1_redemittel_051","complaint","Ich warte noch ___ meine Bestellung.","auf","Ich warte noch auf meine Bestellung.","I am still waiting for my order.","warten auf + Akkusativ is the phrase.","red_complaint_delivery",["complaint"]),
 
     redCloze("b1_redemittel_052","application","Hiermit bewerbe ich mich ___ die Stelle.","um","Hiermit bewerbe ich mich um die Stelle.","I hereby apply for the position.","sich bewerben um + Akkusativ.","red_application_apply",["application"]),
@@ -10779,8 +11608,8 @@ body.homeMode #settingsPanel {
     redCloze("b1_redemittel_056","application","Über eine Einladung zum Gespräch würde ich mich ___.","freuen","Über eine Einladung zum Gespräch würde ich mich freuen.","I would be pleased about an invitation to an interview.","This is a standard application closing.","red_application_interview",["application"]),
     redCloze("b1_redemittel_057","application","Ich habe Ihre Anzeige mit Interesse ___.","gelesen","Ich habe Ihre Anzeige mit Interesse gelesen.","I read your advertisement with interest.","mit Interesse gelesen is formal application language.","red_application_interest",["application"]),
     redCloze("b1_redemittel_058","application","Meine Stärken sind Zuverlässigkeit und ___.","Teamfähigkeit","Meine Stärken sind Zuverlässigkeit und Teamfähigkeit.","My strengths are reliability and teamwork.","Teamfähigkeit is high-yield job vocabulary.","red_application_strengths",["application"]),
-    redChoice("b1_redemittel_059","application","Beste Bewerbungsformulierung:","Hiermit bewerbe ich mich um die Stelle.",["Ich will Job.","Hiermit bewerbe ich mich um die Stelle.","Ich nehme die Stelle."],"Hiermit bewerbe ich mich um die Stelle.","Choose the formal application phrase.","Hiermit bewerbe ich mich um ... is standard.","red_application_apply",["application","choice"]),
-    redChoice("b1_redemittel_060","application","Höflicher Schluss für Bewerbung:","Über eine Einladung zum Gespräch würde ich mich freuen.",["Über eine Einladung zum Gespräch würde ich mich freuen.","Laden Sie mich ein.","Ich will ein Gespräch."],"Über eine Einladung zum Gespräch würde ich mich freuen.","Choose the polite closing.","würde ich mich freuen is formal and polite.","red_application_interview",["application","choice"]),
+    redChoice("b1_redemittel_059","application","Beste Bewerbungsformulierung:","Hiermit bewerbe ich mich um die Stelle.",["Ich interessiere mich für die Stelle.","Hiermit bewerbe ich mich um die Stelle.","Ich möchte mich auf die Stelle melden."],"Hiermit bewerbe ich mich um die Stelle.","Choose the formal application phrase.","Hiermit bewerbe ich mich um ... is standard.","red_application_apply",["application","choice"]),
+    redChoice("b1_redemittel_060","application","Höflicher Schluss für Bewerbung:","Über eine Einladung zum Gespräch würde ich mich freuen.",["Ich freue mich über ein Gespräch.","Über eine Einladung zum Gespräch würde ich mich freuen.","Ich hoffe auf ein Gespräch."],"Über eine Einladung zum Gespräch würde ich mich freuen.","Choose the polite closing.","würde ich mich freuen is formal and polite.","red_application_interview",["application","choice"]),
     redRepair("b1_redemittel_061","application","Bessere Form: ___","Ich interessiere mich für die Stelle.",["Ich finde die Stelle okay.","Ich interessiere mich für die Stelle.","Ich will diese Arbeit."],"Ich interessiere mich für die Stelle.","Use formal interest language.","sich interessieren für is neutral and useful.","red_application_interest",["application","repair"]),
     redRepair("b1_redemittel_062","application","Bessere Form: ___","Ich habe Erfahrung mit Büroarbeit.",["Ich kann Büro.","Ich habe Erfahrung mit Büroarbeit.","Büro ist gut."],"Ich habe Erfahrung mit Büroarbeit.","Name experience clearly.","Erfahrung mit is the job-application phrase.","red_application_experience",["application","repair"]),
     redCloze("b1_redemittel_063","application","Ich bin motiviert und ___.","zuverlässig","Ich bin motiviert und zuverlässig.","I am motivated and reliable.","zuverlässig is useful B1 job vocabulary.","red_application_strengths",["application"]),
@@ -10791,8 +11620,8 @@ body.homeMode #settingsPanel {
     redCloze("b1_redemittel_067","illness_absence","Ich bin versichert ___ der AOK.","bei","Ich bin versichert bei der AOK.","I am insured with AOK.","versichert bei is the useful pattern.","red_illness_insurance",["illness","insurance"]),
     redCloze("b1_redemittel_068","illness_absence","Ich kann erst morgen wieder ___.","kommen","Ich kann erst morgen wieder kommen.","I can only come again tomorrow.","erst morgen wieder is useful absence language.","red_illness_return",["illness"]),
     redCloze("b1_redemittel_069","illness_absence","Ich muss mich leider krank ___.","melden","Ich muss mich leider krank melden.","I unfortunately have to call in sick.","sich krank melden is the workplace phrase.","red_illness_absent",["illness"]),
-    redChoice("b1_redemittel_070","illness_absence","Beste Formulierung für Abwesenheit:","Ich muss mich leider krank melden.",["Ich bin weg.","Ich muss mich leider krank melden.","Ich mache Krankheit."],"Ich muss mich leider krank melden.","Choose the workplace phrase.","sich krank melden is natural.","red_illness_absent",["illness","choice"]),
-    redChoice("b1_redemittel_071","illness_absence","Formulierung zur Versicherung:","Ich bin versichert bei der AOK.",["Ich bin versichert bei der AOK.","Ich habe Versicherung in AOK.","AOK macht Versicherung."],"Ich bin versichert bei der AOK.","Choose the natural insurance sentence.","versichert bei is the pattern.","red_illness_insurance",["illness","choice"]),
+    redChoice("b1_redemittel_070","illness_absence","Beste Formulierung für Abwesenheit:","Ich muss mich leider krank melden.",["Ich bin heute krank.","Ich muss mich leider krank melden.","Ich kann heute nicht kommen."],"Ich muss mich leider krank melden.","Choose the workplace phrase.","sich krank melden is natural.","red_illness_absent",["illness","choice"]),
+    redChoice("b1_redemittel_071","illness_absence","Formulierung zur Versicherung:","Ich bin bei der AOK versichert.",["Ich bin bei der AOK versichert.","Ich habe eine Versicherung bei der AOK.","Meine Krankenkasse ist die AOK."],"Ich bin bei der AOK versichert.","Choose the natural insurance sentence.","bei der AOK versichert is the pattern.","red_illness_insurance",["illness","choice"]),
     redRepair("b1_redemittel_072","illness_absence","Bessere Form: ___","Ich habe einen Arzttermin.",["Ich habe Doktorzeit.","Ich habe einen Arzttermin.","Ich bin bei Arztzeit."],"Ich habe einen Arzttermin.","Use the standard noun Arzttermin.","Arzttermin is compact and natural.","red_illness_doctor",["illness","repair"]),
     redRepair("b1_redemittel_073","illness_absence","Bessere Form: ___","Ich kann erst morgen wieder kommen.",["Ich komme morgen vielleicht wieder.","Ich kann erst morgen wieder kommen.","Heute nein, morgen ja."],"Ich kann erst morgen wieder kommen.","Make the return time clear.","erst morgen wieder is concise and natural.","red_illness_return",["illness","repair"]),
 
@@ -10801,10 +11630,10 @@ body.homeMode #settingsPanel {
     redCloze("b1_redemittel_076","polite_requests","___ Sie mir bitte helfen?","Könnten","Könnten Sie mir bitte helfen?","Could you please help me?","Könnten Sie bitte ... is polite.","red_polite_koennten",["polite"]),
     redCloze("b1_redemittel_077","polite_requests","___ es möglich, den Termin zu verschieben?","Wäre","Wäre es möglich, den Termin zu verschieben?","Would it be possible to move the appointment?","Wäre es möglich ... is very useful and polite.","red_polite_waere",["polite"]),
     redCloze("b1_redemittel_078","polite_requests","___ ich kurz etwas fragen?","Dürfte","Dürfte ich kurz etwas fragen?","May I ask something briefly?","Dürfte ich ... is polite but still B1-usable.","red_polite_duerfte",["polite"]),
-    redChoice("b1_redemittel_079","polite_requests","Höflichste Bitte:","Könnten Sie mir bitte helfen?",["Helfen Sie.","Könnten Sie mir bitte helfen?","Du hilfst mir."],"Könnten Sie mir bitte helfen?","Choose the polite formal request.","Könnten Sie bitte ... is the safest form.","red_polite_koennten",["polite","choice"]),
-    redChoice("b1_redemittel_080","polite_requests","Höfliche Terminformulierung:","Wäre es möglich, den Termin zu verschieben?",["Wäre es möglich, den Termin zu verschieben?","Termin ändern!","Ich will anderen Termin."],"Wäre es möglich, den Termin zu verschieben?","Choose the polite indirect question.","Wäre es möglich ... is formal and soft.","red_polite_waere",["polite","choice"]),
+    redChoice("b1_redemittel_079","polite_requests","Höflichste Bitte:","Könnten Sie mir bitte helfen?",["Können Sie mir bitte helfen?","Könnten Sie mir bitte helfen?","Bitte helfen Sie mir kurz."],"Könnten Sie mir bitte helfen?","Choose the polite formal request.","Könnten Sie bitte ... is the safest form.","red_polite_koennten",["polite","choice"]),
+    redChoice("b1_redemittel_080","polite_requests","Höfliche Terminformulierung:","Wäre es möglich, den Termin zu verschieben?",["Können wir den Termin verschieben?","Wäre es möglich, den Termin zu verschieben?","Ich möchte den Termin verschieben."],"Wäre es möglich, den Termin zu verschieben?","Choose the polite indirect question.","Wäre es möglich ... is formal and soft.","red_polite_waere",["polite","choice"]),
     redRepair("b1_redemittel_081","polite_requests","Bessere Form: ___","Ich hätte gern einen Beratungstermin.",["Ich will Beratung.","Ich hätte gern einen Beratungstermin.","Gib mir Beratung."],"Ich hätte gern einen Beratungstermin.","Use polite service language.","hätte gern is softer than will.","red_polite_haette",["polite","repair"]),
-    redRepair("b1_redemittel_082","polite_requests","Bessere Form: ___","Könnten Sie mir bitte eine Bestätigung schicken?",["Schicken Sie Bestätigung.","Könnten Sie mir bitte eine Bestätigung schicken?","Ich brauche das jetzt."],"Könnten Sie mir bitte eine Bestätigung schicken?","Make the request formal and polite.","Könnten Sie mir bitte ...? is a reliable pattern.","red_polite_koennten",["polite","repair"]),
+    redRepair("b1_redemittel_082","polite_requests","Bessere Form: ___","Könnten Sie mir bitte eine Bestätigung schicken?",["Können Sie mir eine Bestätigung schicken?","Könnten Sie mir bitte eine Bestätigung schicken?","Bitte schicken Sie mir eine Bestätigung."],"Könnten Sie mir bitte eine Bestätigung schicken?","Make the request formal and polite.","Könnten Sie mir bitte ...? is a reliable pattern.","red_polite_koennten",["polite","repair"]),
     redCloze("b1_redemittel_083","polite_requests","Ich würde gern ___, ob noch ein Platz frei ist.","fragen","Ich würde gern fragen, ob noch ein Platz frei ist.","I would like to ask whether a place is still free.","würde gern fragen, ob ... is polite and clear.","red_polite_wuerde",["polite"]),
 
     redProduction("b1_redemittel_084","production","Schreiben/Sprechen: Bitten Sie darum, einen Termin zu verschieben.","Ask to move an appointment.",["Könnten wir den Termin verschieben?","Der Termin passt mir leider nicht.","Hätten Sie vielleicht einen anderen Termin?"],["Say why the appointment does not work.","Ask for a new appointment politely.","Use Sie-form."],"Der Termin am Freitag passt mir leider nicht. Könnten wir den Termin verschieben? Hätten Sie vielleicht einen anderen Termin?","red_prod_appointment",["appointment"]),
@@ -12062,8 +12891,324 @@ body.homeMode #settingsPanel {
   function shouldApplyLiveSettings() {
     return state !== "setup" && state !== "home" && state !== "placeholder" && state !== "grammarHub" && state !== "redemittelHub" && state.indexOf("b1") !== 0;
   }
+  function homeStorageAvailable() {
+    try {
+      if (!window.localStorage) return false;
+      var probe = "__ozmosis_home_probe__";
+      window.localStorage.setItem(probe, "1");
+      window.localStorage.removeItem(probe);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+  function homeDateKey(value) {
+    var d = value ? new Date(value) : new Date();
+    if (isNaN(d.getTime())) return "";
+    var month = String(d.getMonth() + 1).padStart(2, "0");
+    var day = String(d.getDate()).padStart(2, "0");
+    return d.getFullYear() + "-" + month + "-" + day;
+  }
+  function b1ItemById(id) {
+    var pool = B1_ITEMS.concat(B1_CONNECTOR_ITEMS, B1_REDEMITTEL_ITEMS);
+    for (var i = 0; i < pool.length; i += 1) {
+      if (pool[i] && pool[i].id === id) return pool[i];
+    }
+    return null;
+  }
+  function b1UniqueIds(ids) {
+    var out = [], seen = {};
+    (ids || []).forEach(function(id){
+      id = String(id || "");
+      if (!id || seen[id]) return;
+      seen[id] = true;
+      out.push(id);
+    });
+    return out;
+  }
+  function b1DailySkeleton(dateKey) {
+    return {
+      version:1,
+      dateKey:dateKey || homeDateKey(),
+      originalIds:[],
+      queue:[],
+      currentId:"",
+      completedIds:[],
+      failedIds:[],
+      assistedIds:[],
+      successCount:0,
+      total:B1_DAILY_TOTAL,
+      startedAt:"",
+      updatedAt:"",
+      finishedAt:null
+    };
+  }
+  function normaliseB1DailySprint(daily) {
+    if (!daily || typeof daily !== "object") return null;
+    var out = b1DailySkeleton(String(daily.dateKey || ""));
+    out.version = Number(daily.version || 1);
+    out.originalIds = b1UniqueIds(daily.originalIds).filter(b1ItemById);
+    out.completedIds = b1UniqueIds(daily.completedIds).filter(function(id){ return out.originalIds.indexOf(id) !== -1; });
+    out.failedIds = b1UniqueIds(daily.failedIds).filter(function(id){ return out.originalIds.indexOf(id) !== -1 && out.completedIds.indexOf(id) === -1; });
+    out.assistedIds = b1UniqueIds(daily.assistedIds).filter(function(id){ return out.originalIds.indexOf(id) !== -1 && out.completedIds.indexOf(id) === -1; });
+    out.queue = b1UniqueIds(daily.queue).filter(function(id){ return out.originalIds.indexOf(id) !== -1 && out.completedIds.indexOf(id) === -1; });
+    out.currentId = String(daily.currentId || "");
+    if (out.currentId && (out.originalIds.indexOf(out.currentId) === -1 || out.completedIds.indexOf(out.currentId) !== -1)) out.currentId = "";
+    out.total = B1_DAILY_TOTAL;
+    out.successCount = out.completedIds.length;
+    out.startedAt = daily.startedAt || "";
+    out.updatedAt = daily.updatedAt || "";
+    out.finishedAt = daily.finishedAt || null;
+    if (out.successCount >= B1_DAILY_TOTAL && !out.finishedAt) out.finishedAt = new Date().toISOString();
+    return out;
+  }
+  function b1CurrentDailySprint(store) {
+    store = store || safeGetB1Progress();
+    var daily = normaliseB1DailySprint(store.meta && store.meta.dailySprintV1);
+    if (!daily || daily.dateKey !== homeDateKey() || !daily.originalIds.length) return null;
+    return daily;
+  }
+  function b1DailyRetryCount(daily) {
+    if (!daily) return 0;
+    var pending = {};
+    b1UniqueIds((daily.failedIds || []).concat(daily.assistedIds || [])).forEach(function(id){
+      if (daily.completedIds.indexOf(id) === -1) pending[id] = true;
+    });
+    return Object.keys(pending).length;
+  }
+  function b1DailyStats(daily) {
+    daily = normaliseB1DailySprint(daily);
+    if (!daily) return { success:0, retry:0, total:B1_DAILY_TOTAL, finished:false };
+    return {
+      success:daily.completedIds.length,
+      retry:b1DailyRetryCount(daily),
+      total:B1_DAILY_TOTAL,
+      finished:!!daily.finishedAt || daily.completedIds.length >= B1_DAILY_TOTAL
+    };
+  }
+  function b1WeakRecord(rec) {
+    if (!rec) return false;
+    var wrong = Number(rec.wrong || 0), correct = Number(rec.correct || 0), step = Number(rec.step || 0);
+    return rec.lastResult === "wrong" || wrong > correct || (wrong > 0 && step === 0);
+  }
+  function b1DailySelectionIds(pool, store) {
+    var nowMs = Date.now();
+    var seed = createRoundSeed("daily", homeDateKey());
+    var buckets = { fresh:[], due:[], weak:[], old:[] };
+    shuffleWithSeed(pool.filter(b1ItemIsNormalEligible), seed).forEach(function(item){
+      var rec = b1ProgressRecordFor(store, item);
+      var bucket = b1ItemProgressState(item, store, nowMs);
+      if (bucket === "new") buckets.fresh.push(item);
+      else if (bucket === "due") buckets.due.push(item);
+      else if (b1WeakRecord(rec)) buckets.weak.push(item);
+      else buckets.old.push(item);
+    });
+    var priority = buckets.fresh.concat(buckets.due, buckets.weak, buckets.old);
+    var clustered = reduceB1FamilyClustering(priority, 2, B1_DAILY_TOTAL);
+    return clustered.slice(0, B1_DAILY_TOTAL).map(function(item){ return item.id; });
+  }
+  function b1SaveDailySprint(daily) {
+    var store = safeGetB1Progress();
+    if (!store.meta || typeof store.meta !== "object") store.meta = {};
+    daily = normaliseB1DailySprint(daily) || b1DailySkeleton(homeDateKey());
+    daily.updatedAt = new Date().toISOString();
+    store.meta.dailySprintV1 = daily;
+    safeSetB1Progress(store);
+    return daily;
+  }
+  function b1CreateDailySprint() {
+    var store = safeGetB1Progress();
+    var pool = b1PoolFor("mixed");
+    var ids = b1DailySelectionIds(pool, store);
+    var daily = b1DailySkeleton(homeDateKey());
+    var now = new Date().toISOString();
+    daily.originalIds = ids;
+    daily.queue = ids.slice();
+    daily.total = B1_DAILY_TOTAL;
+    daily.startedAt = now;
+    daily.updatedAt = now;
+    store.meta.dailySprintV1 = daily;
+    safeSetB1Progress(store);
+    if (ids.length) rememberB1RoundStart("b1_seed", "mixed", ids[0]);
+    return daily;
+  }
+  function b1DailyQueueIds(daily) {
+    daily = normaliseB1DailySprint(daily);
+    if (!daily) return [];
+    var ids = [];
+    if (daily.currentId && daily.completedIds.indexOf(daily.currentId) === -1) ids.push(daily.currentId);
+    return b1UniqueIds(ids.concat(daily.queue)).filter(function(id){ return daily.completedIds.indexOf(id) === -1; });
+  }
+  function b1RuntimeItemForId(id, store) {
+    var item = b1ItemById(id);
+    if (!item) return null;
+    var bucket = b1ItemProgressState(item, store || safeGetB1Progress(), Date.now());
+    return b1MarkExtraPractice(item, bucket === "extra");
+  }
+  function b1RuntimeItemsFromDaily(daily) {
+    var store = safeGetB1Progress();
+    daily = normaliseB1DailySprint(daily);
+    var ids = b1DailyQueueIds(daily);
+    if (daily && !ids.length && daily.completedIds.length < B1_DAILY_TOTAL) {
+      ids = daily.originalIds.filter(function(id){ return daily.completedIds.indexOf(id) === -1; });
+    }
+    return ids.map(function(id){ return b1RuntimeItemForId(id, store); }).filter(Boolean);
+  }
+  function b1DailySetCurrent(id) {
+    var store = safeGetB1Progress();
+    var daily = b1CurrentDailySprint(store);
+    if (!daily) return null;
+    daily.currentId = id || "";
+    daily.queue = b1UniqueIds(b1Runtime.queue.map(function(item){ return item && item.id; })).filter(function(qid){ return qid && qid !== daily.currentId && daily.completedIds.indexOf(qid) === -1; });
+    store.meta.dailySprintV1 = normaliseB1DailySprint(daily);
+    safeSetB1Progress(store);
+    return store.meta.dailySprintV1;
+  }
+  function b1AppendDailyRetry(daily, id, assisted) {
+    if (!daily || !id || daily.completedIds.indexOf(id) !== -1) return daily;
+    daily.queue = b1UniqueIds(daily.queue.filter(function(qid){ return qid !== id; }).concat(id));
+    if (daily.failedIds.indexOf(id) === -1) daily.failedIds.push(id);
+    if (assisted && daily.assistedIds.indexOf(id) === -1) daily.assistedIds.push(id);
+    return daily;
+  }
+  function b1CompleteDailyId(daily, id) {
+    if (!daily || !id) return daily;
+    if (daily.completedIds.indexOf(id) === -1) daily.completedIds.push(id);
+    daily.queue = daily.queue.filter(function(qid){ return qid !== id; });
+    daily.failedIds = daily.failedIds.filter(function(qid){ return qid !== id; });
+    daily.assistedIds = daily.assistedIds.filter(function(qid){ return qid !== id; });
+    if (daily.currentId === id) daily.currentId = "";
+    daily.successCount = daily.completedIds.length;
+    if (daily.successCount >= B1_DAILY_TOTAL) daily.finishedAt = daily.finishedAt || new Date().toISOString();
+    return daily;
+  }
+  function b1UpdateDailyAfterAnswer(item, isCorrect, assisted) {
+    if (!b1Runtime.dailySprint || !item || !item.id) return null;
+    var store = safeGetB1Progress();
+    var daily = b1CurrentDailySprint(store);
+    if (!daily || daily.originalIds.indexOf(item.id) === -1) return null;
+    daily.currentId = "";
+    if (isCorrect && !assisted) daily = b1CompleteDailyId(daily, item.id);
+    else daily = b1AppendDailyRetry(daily, item.id, assisted);
+    daily.updatedAt = new Date().toISOString();
+    store.meta.dailySprintV1 = normaliseB1DailySprint(daily);
+    safeSetB1Progress(store);
+    b1Runtime.queue = b1RuntimeItemsFromDaily(store.meta.dailySprintV1);
+    return store.meta.dailySprintV1;
+  }
+  function b1HomeProgressSummary() {
+    var summary = { storageAvailable:homeStorageAvailable(), parseOk:true, hasProgress:false, todayCount:0, retryCount:0, weakCount:0, dueCount:0, latestLabel:"", daily:null, dailyFinished:false };
+    if (!summary.storageAvailable) return summary;
+    var parsed = {};
+    try {
+      var raw = window.localStorage.getItem(B1_STORAGE_KEY);
+      summary.hasProgress = !!raw;
+      parsed = raw ? JSON.parse(raw) : {};
+    } catch (e) {
+      summary.parseOk = false;
+      return summary;
+    }
+    var items = parsed && parsed.items && typeof parsed.items === "object" ? parsed.items : {};
+    var today = homeDateKey();
+    var daily = b1CurrentDailySprint(parsed);
+    if (daily) {
+      var stats = b1DailyStats(daily);
+      summary.daily = daily;
+      summary.todayCount = stats.success;
+      summary.retryCount = stats.retry;
+      summary.dailyFinished = stats.finished;
+      summary.latestLabel = "Today";
+    }
+    var latestTime = 0;
+    Object.keys(items).forEach(function(id){
+      var rec = items[id] || {};
+      var attempts = Number(rec.attempts || 0) + Number(rec.practised || 0);
+      if (!attempts) return;
+      var step = Math.max(0, Math.min(5, Number(rec.step || 0)));
+      var wrong = Number(rec.wrong || 0);
+      var correct = Number(rec.correct || 0);
+      if (!daily && rec.lastSeenAt && homeDateKey(rec.lastSeenAt) === today) summary.todayCount += 1;
+      var dueAt = Date.parse(rec.nextDueAt || "");
+      if (!rec.nextDueAt || isNaN(dueAt) || dueAt <= Date.now()) summary.dueCount += 1;
+      if (rec.lastResult === "wrong" || wrong > correct || (wrong > 0 && step === 0)) summary.weakCount += 1;
+      if (rec.lastSeenAt) {
+        var time = new Date(rec.lastSeenAt).getTime();
+        if (!isNaN(time) && time > latestTime) {
+          latestTime = time;
+          var item = b1ItemById(id);
+          summary.latestLabel = item && item.source === "Ozmosis B1 Redemittel Survival Set v1" ? "Redemittel" :
+            (item && item.itemType && item.itemType.indexOf("connector") !== -1 ? "Connector" :
+            (item && item.itemType === "vocab_cloze" ? "Wortschatz" :
+            (item && item.itemType ? "B1 Sprint" : "")));
+        }
+      }
+    });
+    summary.todayCount = Math.min(B1_DAILY_TOTAL, summary.todayCount);
+    return summary;
+  }
+  function setHomeStatus(summary) {
+    var strip = el("homeStatusStrip");
+    if (!strip) return;
+    strip.classList.remove("single");
+    if (!summary.storageAvailable || !summary.parseOk) {
+      strip.classList.add("single");
+      if (el("homeStatusToday")) el("homeStatusToday").textContent = "Local progress unavailable";
+      return;
+    }
+    if (!summary.hasProgress) {
+      strip.classList.add("single");
+      if (el("homeStatusToday")) el("homeStatusToday").textContent = "Ready for B1 practice";
+      return;
+    }
+    if (el("homeStatusToday")) el("homeStatusToday").textContent = summary.todayCount ? summary.todayCount + "/12" : (summary.latestLabel ? "Last: " + summary.latestLabel : "Ready");
+    if (el("homeStatusDue")) el("homeStatusDue").textContent = summary.daily ? String(summary.retryCount) : String(summary.dueCount);
+    if (el("homeStatusWeak")) el("homeStatusWeak").textContent = String(summary.weakCount);
+  }
+  function setHomeHeroProgress(count, retryCount) {
+    var nodes = el("homeHeroProgress") ? el("homeHeroProgress").querySelectorAll("span") : [];
+    retryCount = Math.max(0, Number(retryCount || 0));
+    nodes.forEach(function(node, index){
+      node.classList.toggle("filled", index < count);
+      node.classList.toggle("retry", index >= count && index < count + retryCount);
+    });
+  }
+  function renderHomeCommandScreen() {
+    var summary = b1HomeProgressSummary();
+    var title = "Start Today’s B1 Sprint";
+    var meta = "12 mixed B1 items · fast practice";
+    var cta = "START";
+    var fill = 0;
+    var retryFill = 0;
+    if (!summary.storageAvailable || !summary.parseOk) {
+      title = "Start B1 practice";
+      meta = "Local progress unavailable";
+      cta = "START";
+    } else if (summary.daily && summary.dailyFinished) {
+      title = "Today's sprint complete";
+      meta = "12 / 12 done - extra practice available";
+      cta = "EXTRA ROUND";
+      fill = 12;
+    } else if (summary.daily) {
+      title = "Continue today's practice";
+      meta = summary.todayCount + " / 12 complete - " + summary.retryCount + " waiting for retry";
+      cta = "CONTINUE";
+      fill = summary.todayCount;
+      retryFill = summary.retryCount;
+    }
+    if (el("homeHeroTitle")) el("homeHeroTitle").textContent = title;
+    if (el("homeHeroMeta")) el("homeHeroMeta").textContent = meta;
+    if (el("homeHeroCta")) el("homeHeroCta").textContent = cta;
+    if (el("homeSprintBtn")) el("homeSprintBtn").setAttribute("aria-label", title + ". " + meta);
+    setHomeHeroProgress(fill, retryFill);
+    setHomeStatus(summary);
+  }
   function showHomeScreen() {
     b1Runtime.active = false;
+    b1Runtime.selectedChoice = "";
+    b1Runtime.translationOpen = false;
+    b1Runtime.currentExtraPractice = false;
+    b1Runtime.currentAssisted = false;
+    b1Runtime.dailySprint = false;
     clearMobileClozeFocus();
     state = "home";
     setMenu(false);
@@ -12075,6 +13220,7 @@ body.homeMode #settingsPanel {
     if (el("redemittelHub")) el("redemittelHub").hidden = true;
     if (el("startScreen")) el("startScreen").hidden = true;
     applyLanguage();
+    renderHomeCommandScreen();
     setTimeout(function(){
       window.scrollTo(0, 0);
       if (el("homeSprintBtn")) el("homeSprintBtn").focus();
@@ -12687,7 +13833,50 @@ body.homeMode #settingsPanel {
   function activeCases() { return includeGenitive() ? cases : cases.filter(function (c) { return c.key !== "Genitiv"; }); }
   function selectedArticleType() { var selected=el("articleType").value; return selected === "mixed" ? articleTypes[randomIndex(articleTypes.length)] : selected; }
   function currentTaskType() { var selected=el("taskType") ? el("taskType").value : "cloze"; return selected === "mixed" ? (randomIndex(2) === 0 ? "table" : "cloze") : selected; }
-  function renderHud() { if (b1Runtime.active) { var b1Target=b1Runtime.target || 1, b1Answered=b1AnsweredCount(), b1Pct=Math.min(100,Math.round((b1Answered/b1Target)*100)); el("targetLabel").textContent=b1Answered+" / "+b1Target; el("progressBar").style.width=b1Pct+"%"; el("scoreValue").textContent=b1Runtime.correct*100; el("correctValue").textContent=b1Runtime.correct; el("wrongValue").textContent=b1Runtime.wrong; el("streakValue").textContent=b1Runtime.streak; return; } var target=targetCount(), answered=answeredCount(), pct=Math.min(100,Math.round((answered/target)*100)); el("targetLabel").textContent=answered+" / "+target; el("progressBar").style.width=pct+"%"; el("scoreValue").textContent=score; el("correctValue").textContent=correct; el("wrongValue").textContent=wrong; el("streakValue").textContent=streak; }
+  function setHudProgress(success, retry, total) {
+    var bar = el("progressBar");
+    total = Math.max(1, Number(total || 1));
+    success = Math.max(0, Math.min(total, Number(success || 0)));
+    retry = Math.max(0, Math.min(total - success, Number(retry || 0)));
+    var visible = success + retry;
+    var pct = Math.min(100, Math.round((visible / total) * 100));
+    bar.classList.toggle("dailyDebt", retry > 0);
+    bar.style.width = pct + "%";
+    if (retry > 0 && visible > 0) {
+      var successShare = Math.round((success / visible) * 100);
+      bar.style.background = "linear-gradient(90deg, var(--accent) 0%, var(--mode) " + successShare + "%, rgba(42,76,116,.9) " + successShare + "%, rgba(42,76,116,.9) 100%)";
+    } else {
+      bar.style.background = "";
+    }
+  }
+  function renderHud() {
+    if (b1Runtime.active) {
+      var b1Target = b1Runtime.target || 1;
+      var b1Answered = b1AnsweredCount();
+      if (b1Runtime.dailySprint) {
+        var daily = b1CurrentDailySprint();
+        var stats = b1DailyStats(daily);
+        b1Answered = stats.success;
+        b1Target = stats.total;
+        setHudProgress(stats.success, stats.retry, stats.total);
+      } else {
+        setHudProgress(b1Answered, 0, b1Target);
+      }
+      el("targetLabel").textContent = b1Answered + " / " + b1Target;
+      el("scoreValue").textContent = b1Runtime.correct * 100;
+      el("correctValue").textContent = b1Runtime.correct;
+      el("wrongValue").textContent = b1Runtime.wrong;
+      el("streakValue").textContent = b1Answered + " / " + b1Target;
+      return;
+    }
+    var target = targetCount(), answered = answeredCount();
+    setHudProgress(answered, 0, target);
+    el("targetLabel").textContent = answered + " / " + target;
+    el("scoreValue").textContent = score;
+    el("correctValue").textContent = correct;
+    el("wrongValue").textContent = wrong;
+    el("streakValue").textContent = answered + " / " + target;
+  }
   function renderMode() {
     if (current && current.kind === "cloze") {
       document.body.setAttribute("data-mode", "definite");
@@ -12705,8 +13894,8 @@ body.homeMode #settingsPanel {
     if (resultClass) replacement = '<span class="blankSlot answerSlot ' + resultClass + '">' + escapeHtml(displayAnswer(current.answer)) + '</span>';
     return escapeHtml(sentence || "").replace(/___/g, replacement);
   }
-  function englishShouldShow() { var mode=el("englishSupport") ? el("englishSupport").value : "smart"; if (current.kind !== "cloze") return false; if (mode === "off") return false; if (mode === "always") return true; if (mode === "after") return state !== "checking"; return true; }
-  function renderEnglishGloss() { var node=el("englishGloss"); if (!node) return; node.className="englishGloss"; if (current.kind !== "cloze") { node.textContent=""; return; } if (englishShouldShow()) node.textContent=getClozeTranslation(current); else { node.textContent=el("englishSupport").value === "off" ? "" : t("hidden"); if (node.textContent) node.classList.add("hiddenGloss"); } }
+  function englishShouldShow() { var mode=el("englishSupport") ? el("englishSupport").value : "smart"; if (current.kind !== "cloze") return false; if (mode === "off") return false; if (mode === "always") return true; if (mode === "after") return state !== "checking"; return state !== "checking"; }
+  function renderEnglishGloss() { var node=el("englishGloss"); if (!node) return; if (el("translationToggle")) el("translationToggle").hidden = true; if (el("b1PracticeTag")) el("b1PracticeTag").hidden = true; if (el("whyNoStarsBtn")) el("whyNoStarsBtn").hidden = true; node.className="englishGloss"; if (current.kind !== "cloze") { node.textContent=""; return; } if (englishShouldShow()) node.textContent=getClozeTranslation(current); else { node.textContent=el("englishSupport").value === "off" ? "" : t("hidden"); if (node.textContent) node.classList.add("hiddenGloss"); } }
 
   function cloneB1Item(item) {
     return JSON.parse(JSON.stringify(item));
@@ -12815,6 +14004,29 @@ body.homeMode #settingsPanel {
     });
     return selected;
   }
+  function b1ProgressRecordFor(store, item) {
+    return store && store.items && item && item.id ? store.items[item.id] : null;
+  }
+  function b1AttemptsForRecord(rec) {
+    if (!rec) return 0;
+    return Number(rec.attempts || 0) + Number(rec.practised || 0) + Number(rec.assisted || 0);
+  }
+  function b1ItemProgressState(item, store, nowMs) {
+    var rec = b1ProgressRecordFor(store, item);
+    if (!b1AttemptsForRecord(rec)) return "new";
+    var dueAt = Date.parse(rec.nextDueAt || "");
+    if (!rec.nextDueAt || isNaN(dueAt) || dueAt <= nowMs) return "due";
+    return "extra";
+  }
+  function b1MarkExtraPractice(item, extra) {
+    var copy = cloneB1Item(item);
+    copy._extraPractice = !!extra;
+    return copy;
+  }
+  function b1NextDueIso(step) {
+    var idx = Math.max(0, Math.min(LEITNER_INTERVALS.length - 1, Number(step || 0)));
+    return new Date(Date.now() + Number(LEITNER_INTERVALS[idx] || 0)).toISOString();
+  }
   function buildB1Round(options) {
     options = options || {};
     var deckKey = options.deckKey || "b1";
@@ -12822,10 +14034,23 @@ body.homeMode #settingsPanel {
     var roundLength = Math.max(1, Number(options.roundLength || 10));
     var seed = options.seed || createRoundSeed(deckKey, filterKey);
     var eligible = (options.items || []).filter(b1ItemIsNormalEligible);
-    var shuffled = shuffleWithSeed(eligible, seed);
-    shuffled = avoidRecentFirst(shuffled, deckKey, filterKey);
-    var clustered = reduceB1FamilyClustering(shuffled, 2, roundLength);
-    var queue = clustered.slice(0, roundLength).map(cloneB1Item);
+    var store = safeGetB1Progress();
+    var nowMs = Date.now();
+    var newItems = [], dueItems = [], extraItems = [];
+    shuffleWithSeed(eligible, seed).forEach(function(item){
+      var bucket = b1ItemProgressState(item, store, nowMs);
+      if (bucket === "new") newItems.push(item);
+      else if (bucket === "due") dueItems.push(item);
+      else extraItems.push(item);
+    });
+    var priority = avoidRecentFirst(newItems.concat(dueItems), deckKey, filterKey);
+    var clustered = reduceB1FamilyClustering(priority, 2, roundLength);
+    var queue = clustered.slice(0, roundLength).map(function(item){ return b1MarkExtraPractice(item, false); });
+    if (queue.length < roundLength && extraItems.length) {
+      var needed = roundLength - queue.length;
+      var extraClustered = reduceB1FamilyClustering(avoidRecentFirst(extraItems, deckKey, filterKey), 2, needed);
+      queue = queue.concat(extraClustered.slice(0, needed).map(function(item){ return b1MarkExtraPractice(item, true); }));
+    }
     if (queue.length) rememberB1RoundStart(deckKey, filterKey, queue[0].id);
     return { queue:queue, seed:seed };
   }
@@ -12914,13 +14139,13 @@ body.homeMode #settingsPanel {
     return { queue:queue.map(cloneB1Item), seed:seed };
   }
   function b1AnsweredCount() {
-    return b1Runtime.correct + b1Runtime.wrong + b1Runtime.practised;
+    return b1Runtime.correct + b1Runtime.wrong + b1Runtime.practised + Number(b1Runtime.assisted || 0);
   }
   function b1UsesChoices(item) {
     return item && (item.itemType === "connector_choice" || item.itemType === "phrase_choice" || (item.itemType === "error_repair" && item.choices && item.choices.length));
   }
   function b1IsTypedCloze(item) {
-    if (!item || b1UsesChoices(item) || item.itemType === "production_card" || item.itemType === "error_repair") return false;
+    if (!item || b1UsesChoices(item) || item.itemType === "production_card") return false;
     return ["grammar_cloze", "vocab_cloze", "redemittel_cloze", "word_order_cloze", "phrase_cloze"].indexOf(item.itemType) !== -1 || String(item.prompt_de || "").indexOf("___") !== -1;
   }
   function b1PromptWithoutFakeBlank(prompt) {
@@ -13010,22 +14235,31 @@ body.homeMode #settingsPanel {
       return issues;
     }, []);
   }
-  function recordB1Progress(item, outcome) {
+  function recordB1Progress(item, outcome, options) {
+    options = options || {};
     var store = safeGetB1Progress();
     var id = item.id;
     var now = new Date().toISOString();
     var result = outcome === true ? "correct" : (outcome === false ? "wrong" : String(outcome || "wrong"));
-    var rec = store.items[id] || { attempts:0, correct:0, wrong:0, practised:0, recentResults:[] };
+    var rec = store.items[id] || { attempts:0, correct:0, wrong:0, practised:0, assisted:0, recentResults:[] };
     var previousStep = Math.max(0, Math.min(5, Number(rec.step || 0)));
     rec.attempts = Number(rec.attempts || 0) + 1;
     rec.correct = Number(rec.correct || 0) + (result === "correct" ? 1 : 0);
     rec.wrong = Number(rec.wrong || 0) + (result === "wrong" ? 1 : 0);
     rec.practised = Number(rec.practised || 0) + (result === "practised" ? 1 : 0);
-    rec.step = result === "wrong" ? 0 : (result === "correct" || result === "practised" ? Math.min(5, previousStep + 1) : previousStep);
+    rec.assisted = Number(rec.assisted || 0) + (result === "assisted" ? 1 : 0);
+    if (options.extraPractice || options.assisted || result === "assisted") {
+      rec.step = previousStep;
+      if (options.extraPractice) rec.lastExtraPracticeAt = now;
+      if (options.assisted || result === "assisted") rec.lastAssistedAt = now;
+    } else {
+      rec.step = result === "wrong" ? 0 : (result === "correct" || result === "practised" ? Math.min(5, previousStep + 1) : previousStep);
+      rec.nextDueAt = b1NextDueIso(rec.step);
+    }
     rec.lastSeenAt = now;
     rec.lastResult = result;
     if (!Array.isArray(rec.recentResults)) rec.recentResults = [];
-    rec.recentResults.push({ at:now, result:rec.lastResult });
+    rec.recentResults.push({ at:now, result:rec.lastResult, extraPractice:!!options.extraPractice, assisted:!!options.assisted || result === "assisted" });
     if (rec.recentResults.length > 20) rec.recentResults = rec.recentResults.slice(-20);
     store.items[id] = rec;
     safeSetB1Progress(store);
@@ -13040,13 +14274,18 @@ body.homeMode #settingsPanel {
   function b1StarsHtml(step) {
     step = Math.max(0, Math.min(5, Number(step || 0)));
     var colors = ["grey", "grey", "grey", "grey", "grey"];
-    if (step >= 1) colors[0] = "bronze";
-    if (step >= 2) colors[1] = "bronze";
-    if (step >= 3) colors[2] = "bronze";
-    if (step >= 4) colors[3] = "silver";
-    if (step >= 5) colors[4] = "gold";
+    if (step >= 1) colors[0] = "bronze level1";
+    if (step >= 2) colors[1] = "bronze level2";
+    if (step >= 3) colors[2] = "bronze level3";
+    if (step >= 4) colors[3] = "silver level4";
+    if (step >= 5) colors[4] = "gold level5";
     return '<div class="b1Stars" role="img" aria-label="Leitner rating ' + step + ' of 5">' +
-      colors.map(function(color){ return '<span class="b1Star ' + color + '">★</span>'; }).join("") +
+      colors.map(function(color, index){
+        var earned = index < step;
+        var current = earned && index === step - 1;
+        var glyph = earned ? "★" : "☆";
+        return '<span class="b1Star ' + color + ' ' + (earned ? "earned" : "unearned") + (current ? " current" : "") + '" aria-hidden="true">' + glyph + '</span>';
+      }).join("") +
       '</div>';
   }
   function startB1Round(mode) {
@@ -13055,23 +14294,47 @@ body.homeMode #settingsPanel {
       showHubPlaceholder(b1RoundTitle(mode));
       return;
     }
-    var roundLength = mode === "mixed" ? 12 : 10;
-    var round = buildB1Round({ deckKey:"b1_seed", filterKey:mode, items:pool, roundLength:roundLength });
-    var queue = round.queue;
+    var roundLength = mode === "mixed" ? B1_DAILY_TOTAL : 10;
+    var daily = null;
+    var dailyMode = mode === "mixed";
+    var round = null;
+    var queue = [];
+    if (dailyMode) {
+      daily = b1CurrentDailySprint();
+      if (daily && b1DailyStats(daily).finished) {
+        dailyMode = false;
+        round = buildB1Round({ deckKey:"b1_seed", filterKey:"mixed-extra", items:pool, roundLength:roundLength });
+        queue = round.queue;
+      } else {
+        daily = daily || b1CreateDailySprint();
+        queue = b1RuntimeItemsFromDaily(daily);
+        round = { seed:"daily|" + daily.dateKey };
+      }
+    } else {
+      round = buildB1Round({ deckKey:"b1_seed", filterKey:mode, items:pool, roundLength:roundLength });
+      queue = round.queue;
+    }
     b1Runtime.active = true;
     b1Runtime.mode = mode;
-    b1Runtime.title = b1RoundTitle(mode);
+    b1Runtime.title = dailyMode ? "Today's B1 Sprint" : (mode === "mixed" ? "Extra B1 Practice" : b1RoundTitle(mode));
     b1Runtime.queue = queue;
     b1Runtime.current = null;
-    b1Runtime.target = queue.length;
+    b1Runtime.target = dailyMode ? B1_DAILY_TOTAL : queue.length;
     b1Runtime.correct = 0;
     b1Runtime.wrong = 0;
     b1Runtime.practised = 0;
+    b1Runtime.assisted = 0;
     b1Runtime.streak = 0;
     b1Runtime.connectorFamily = "";
     b1Runtime.deckKey = "b1_seed";
     b1Runtime.filterKey = mode;
     b1Runtime.roundSeed = round.seed;
+    b1Runtime.selectedChoice = "";
+    b1Runtime.translationOpen = false;
+    b1Runtime.currentExtraPractice = false;
+    b1Runtime.currentAssisted = false;
+    b1Runtime.dailySprint = dailyMode;
+    b1Runtime.dailyDateKey = dailyMode && daily ? daily.dateKey : "";
     state = "b1Checking";
     current = null;
     hintUsed = false;
@@ -13105,11 +14368,18 @@ body.homeMode #settingsPanel {
     b1Runtime.correct = 0;
     b1Runtime.wrong = 0;
     b1Runtime.practised = 0;
+    b1Runtime.assisted = 0;
     b1Runtime.streak = 0;
     b1Runtime.connectorFamily = family;
     b1Runtime.deckKey = "connector";
     b1Runtime.filterKey = family;
     b1Runtime.roundSeed = round.seed;
+    b1Runtime.selectedChoice = "";
+    b1Runtime.translationOpen = false;
+    b1Runtime.currentExtraPractice = false;
+    b1Runtime.currentAssisted = false;
+    b1Runtime.dailySprint = false;
+    b1Runtime.dailyDateKey = "";
     state = "b1Checking";
     current = null;
     hintUsed = false;
@@ -13144,11 +14414,18 @@ body.homeMode #settingsPanel {
     b1Runtime.correct = 0;
     b1Runtime.wrong = 0;
     b1Runtime.practised = 0;
+    b1Runtime.assisted = 0;
     b1Runtime.streak = 0;
     b1Runtime.connectorFamily = "";
     b1Runtime.deckKey = "redemittel";
     b1Runtime.filterKey = filter;
     b1Runtime.roundSeed = round.seed;
+    b1Runtime.selectedChoice = "";
+    b1Runtime.translationOpen = false;
+    b1Runtime.currentExtraPractice = false;
+    b1Runtime.currentAssisted = false;
+    b1Runtime.dailySprint = false;
+    b1Runtime.dailyDateKey = "";
     state = "b1Checking";
     current = null;
     hintUsed = false;
@@ -13171,6 +14448,35 @@ body.homeMode #settingsPanel {
     grid.className = "connectorChoiceGrid";
     grid.innerHTML = "";
   }
+  function b1SupportMode() {
+    return el("englishSupport") ? el("englishSupport").value : "smart";
+  }
+  function renderB1Translation(forceOpen) {
+    var gloss = el("englishGloss");
+    var toggle = el("translationToggle");
+    if (!gloss) return;
+    var mode = b1SupportMode();
+    var text = b1Runtime.current && b1Runtime.current.support_en ? b1Runtime.current.support_en : "";
+    gloss.className = "englishGloss";
+    if (!text || mode === "off") {
+      gloss.textContent = "";
+      if (toggle) toggle.hidden = true;
+      b1Runtime.translationOpen = false;
+      return;
+    }
+    gloss.textContent = text;
+    b1Runtime.translationOpen = true;
+    if (toggle) {
+      toggle.hidden = true;
+      toggle.textContent = "";
+      toggle.setAttribute("aria-expanded", "true");
+    }
+  }
+  function toggleB1Translation() {
+    if (!b1Runtime.active || !b1Runtime.current) return;
+    b1Runtime.translationOpen = true;
+    renderB1Translation(false);
+  }
   function renderConnectorChoices(item) {
     var grid = el("connectorChoiceGrid");
     if (!grid || !item.choices || !item.choices.length) return false;
@@ -13180,11 +14486,24 @@ body.homeMode #settingsPanel {
       btn.type = "button";
       btn.textContent = choice;
       btn.setAttribute("dir", "ltr");
-      btn.addEventListener("click", function(){ checkB1Answer(choice); }, false);
+      btn.setAttribute("aria-pressed", "false");
+      btn.addEventListener("click", function(){ selectB1Choice(choice, btn); }, false);
       grid.appendChild(btn);
     });
     grid.classList.add("visible");
     return true;
+  }
+  function selectB1Choice(choice, btn) {
+    if (state !== "b1Checking") return;
+    b1Runtime.selectedChoice = choice;
+    var buttons = el("connectorChoiceGrid") ? el("connectorChoiceGrid").querySelectorAll("button") : [];
+    buttons.forEach(function(node){
+      var selected = node === btn;
+      node.classList.toggle("selected", selected);
+      node.setAttribute("aria-pressed", selected ? "true" : "false");
+    });
+    el("feedback").textContent = "";
+    el("feedback").className = "feedback";
   }
   function renderProductionControls(item) {
     var grid = el("connectorChoiceGrid");
@@ -13229,6 +14548,9 @@ body.homeMode #settingsPanel {
   function renderB1Question() {
     var item = b1Runtime.current;
     clearMobileClozeFocus();
+    b1Runtime.selectedChoice = "";
+    b1Runtime.translationOpen = false;
+    b1Runtime.currentAssisted = false;
     document.body.setAttribute("data-mode", "definite");
     document.body.classList.remove("resultsMode");
     el("answerArea").classList.remove("answered", "resultsArea");
@@ -13239,8 +14561,8 @@ body.homeMode #settingsPanel {
     el("modeTitle").textContent = b1Runtime.title;
     el("promptValue").className = "promptWord clozePrompt";
     el("promptValue").innerHTML = b1PromptHtml(item);
-    el("englishGloss").className = "englishGloss";
-    el("englishGloss").textContent = item.support_en || "";
+    if (el("b1PracticeTag")) el("b1PracticeTag").hidden = !b1Runtime.currentExtraPractice;
+    renderB1Translation(false);
     var input = el("answerInput");
     input.value = "";
     input.disabled = false;
@@ -13249,6 +14571,7 @@ body.homeMode #settingsPanel {
     input.classList.remove("correct", "missed");
     el("feedback").innerHTML = "";
     el("feedback").className = "feedback";
+    if (el("whyNoStarsBtn")) el("whyNoStarsBtn").hidden = !b1Runtime.currentExtraPractice;
     resetConnectorChoiceGrid();
     el("practiceSurface").classList.add("hidden");
     setSupportPlaceholder(false, false);
@@ -13261,6 +14584,8 @@ body.homeMode #settingsPanel {
     document.body.classList.toggle("b1TypedCloze", !!inlineInput);
     if (inlineInput) {
       bindInlineClozeFocus(inlineInput);
+      inlineInput.placeholder = "";
+      inlineInput.classList.remove("teachGhost");
       inlineInput.addEventListener("keydown", function(event){
         var isEnter = event.key === "Enter" || event.key === "Return" || event.keyCode === 13 || event.which === 13;
         if (!isEnter) return;
@@ -13271,14 +14596,16 @@ body.homeMode #settingsPanel {
     if (usesChoices || isProduction || inlineInput) input.style.display = "none";
     if (usesChoices) renderConnectorChoices(item);
     if (isProduction) renderProductionControls(item);
-    el("actionGrid").classList.remove("singleAction", "rightAction");
-    if (inlineInput) el("actionGrid").classList.add("rightAction");
+    el("actionGrid").classList.remove("singleAction", "rightAction", "teachAction");
+    if (inlineInput) el("actionGrid").classList.add("teachAction");
     else el("actionGrid").classList.add("singleAction");
-    el("actionGrid").style.display = usesChoices || isProduction ? "none" : "grid";
-    el("checkBtn").disabled = usesChoices || isProduction;
+    el("actionGrid").style.display = isProduction ? "none" : "grid";
+    el("checkBtn").disabled = isProduction;
     el("checkBtn").textContent = "Prüfen";
-    el("noArticleBtn").disabled = true;
-    el("noArticleBtn").style.display = "none";
+    el("noArticleBtn").classList.toggle("teachBtn", !!inlineInput);
+    el("noArticleBtn").textContent = inlineInput ? "Teach me" : "Kein Artikel";
+    el("noArticleBtn").disabled = !inlineInput;
+    el("noArticleBtn").style.display = inlineInput ? "" : "none";
     el("hintBtn").disabled = true;
     el("hintBtn").hidden = true;
     el("hintBtn").style.display = "none";
@@ -13291,28 +14618,53 @@ body.homeMode #settingsPanel {
       else input.focus();
     }, 0);
   }
-  function renderB1Feedback(isCorrect) {
+  function renderB1Feedback(isCorrect, assisted) {
     var item = b1Runtime.current;
     var block = el("correctionBlock");
     var stars = b1StarsHtml(b1StepFor(item));
-    var typedCloze = b1UsesInlineInput(item);
-    block.className = "correctionBlock" + (isCorrect ? " success" : "");
-    if (isCorrect && typedCloze) {
-      block.innerHTML = "<div class=\"correctionTarget\" aria-label=\"Correct\">✓</div>" +
-        stars;
-    } else if (isCorrect) {
-      block.innerHTML = "<div class=\"correctionTarget\" aria-label=\"Correct\">✓</div>" +
-        stars;
-    } else {
-      block.innerHTML = "<div class=\"correctionTarget\">Correct answer: " + escapeHtml(item.answer || "") + "</div>" +
-        stars +
-        (item.microRule ? "<div class=\"microRule\">" + escapeHtml(item.microRule) + "</div>" : "");
-    }
+    var extraLine = b1Runtime.currentExtraPractice ? "<div class=\"microRule\">Extra practice: stars stay on the spaced-review schedule.</div>" : "";
+    var assistedLine = assisted ? "<div class=\"microRule\">Assisted practice - try it again later.</div>" : "";
+    var ruleLine = (!isCorrect && item.microRule) ? "<div class=\"microRule\">" + escapeHtml(item.microRule) + "</div>" : "";
+    var marker = isCorrect ? "✓" : "✕";
+    var label = assisted ? "Assisted practice" : (isCorrect ? "Correct" : "Wrong");
+    block.className = "correctionBlock" + (isCorrect && !assisted ? " success" : "");
+    block.innerHTML = "<div class=\"correctionTarget\" aria-label=\"" + label + "\">" + marker + "</div>" +
+      stars +
+      assistedLine +
+      extraLine +
+      ruleLine;
     block.classList.add("visible");
+  }
+  function teachB1Answer() {
+    if (state !== "b1Checking" || !b1Runtime.active || !b1Runtime.current || !b1UsesInlineInput(b1Runtime.current)) return;
+    var input = el("b1InlineInput");
+    if (!input) return;
+    b1Runtime.currentAssisted = true;
+    input.placeholder = b1Runtime.current.answer || "";
+    input.classList.add("teachGhost");
+    input.style.cssText = b1ClozeWidthStyle(b1Runtime.current);
+    var feedback = el("feedback");
+    feedback.textContent = "Assisted practice - type it once, then try again later.";
+    feedback.className = "feedback";
+    input.focus();
+  }
+  function explainExtraPracticeStars() {
+    if (!b1Runtime.currentExtraPractice) return;
+    var block = el("correctionBlock");
+    if (!block) return;
+    block.className = "correctionBlock info visible";
+    block.innerHTML = "<div class=\"correctionTarget\">Why no stars?</div>" +
+      "<div class=\"microRule\">Stars are earned when a card is new or due for review. This one is extra practice, so it helps you rehearse but does not move the card forward early. That keeps the spaced-repetition timing honest.</div>";
+  }
+  function b1RoundComplete() {
+    if (b1Runtime.dailySprint) {
+      return b1DailyStats(b1CurrentDailySprint()).finished;
+    }
+    return b1AnsweredCount() >= b1Runtime.target;
   }
   function markB1ProductionPractised() {
     if (state !== "b1Checking" || !b1Runtime.current || b1Runtime.current.itemType !== "production_card") return;
-    recordB1Progress(b1Runtime.current, "practised");
+    recordB1Progress(b1Runtime.current, "practised", { extraPractice:b1Runtime.currentExtraPractice });
     b1Runtime.practised += 1;
     state = "b1Next";
     el("answerArea").classList.add("answered");
@@ -13323,7 +14675,7 @@ body.homeMode #settingsPanel {
     block.querySelector(".correctionTarget").textContent = "Practised";
     var buttons = el("connectorChoiceGrid") ? el("connectorChoiceGrid").querySelectorAll("button") : [];
     buttons.forEach(function(btn){ btn.disabled = true; });
-    el("nextBtn").textContent = b1AnsweredCount() >= b1Runtime.target ? "Ergebnis" : "Weiter";
+    el("nextBtn").textContent = b1RoundComplete() ? "Ergebnis" : "Weiter";
     el("nextBtn").classList.add("visible");
     renderHud();
     el("nextBtn").focus();
@@ -13333,38 +14685,51 @@ body.homeMode #settingsPanel {
     var input = el("answerInput");
     var inlineInput = el("b1InlineInput");
     var activeInput = inlineInput || input;
-    var raw = rawOverride !== undefined ? rawOverride : activeInput.value;
+    var usesChoices = b1UsesChoices(b1Runtime.current);
+    var raw = usesChoices ? (rawOverride !== undefined ? rawOverride : b1Runtime.selectedChoice) : (rawOverride !== undefined ? rawOverride : activeInput.value);
     if (!b1CleanAnswer(raw)) {
-      el("feedback").textContent = "Antwort eingeben.";
+      el("feedback").textContent = usesChoices ? "Antwort auswählen." : "Antwort eingeben.";
       el("feedback").className = "feedback warn";
-      activeInput.focus();
+      if (usesChoices) {
+        var firstChoice = el("connectorChoiceGrid") && el("connectorChoiceGrid").querySelector("button");
+        if (firstChoice) firstChoice.focus();
+      } else {
+        activeInput.focus();
+      }
       return;
     }
     clearMobileClozeFocus();
     var isCorrect = b1AnswerMatches(b1Runtime.current, raw);
-    recordB1Progress(b1Runtime.current, isCorrect);
+    var assisted = !!b1Runtime.currentAssisted;
+    recordB1Progress(b1Runtime.current, assisted ? "assisted" : isCorrect, { extraPractice:b1Runtime.currentExtraPractice, assisted:assisted });
+    b1UpdateDailyAfterAnswer(b1Runtime.current, isCorrect, assisted);
     state = "b1Next";
     el("answerArea").classList.add("answered");
     el("promptValue").innerHTML = b1PromptHtml(b1Runtime.current, isCorrect ? "correct" : "missed");
+    renderB1Translation(b1SupportMode() === "after");
     var choiceButtons = el("connectorChoiceGrid") ? el("connectorChoiceGrid").querySelectorAll("button") : [];
     choiceButtons.forEach(function(btn){
       btn.disabled = true;
       if (b1AnswerMatches(b1Runtime.current, btn.textContent)) btn.classList.add("correct");
       else if (b1CleanAnswer(btn.textContent).toLowerCase() === b1CleanAnswer(raw).toLowerCase()) btn.classList.add("missed");
     });
-    if (isCorrect) {
+    if (isCorrect && !assisted) {
       b1Runtime.correct += 1;
       b1Runtime.streak += 1;
-      activeInput.classList.add("correct");
+      if (!usesChoices) activeInput.classList.add("correct");
+    } else if (assisted) {
+      b1Runtime.assisted += 1;
+      b1Runtime.streak = 0;
+      if (!usesChoices) activeInput.classList.add(isCorrect ? "correct" : "missed");
     } else {
       b1Runtime.wrong += 1;
       b1Runtime.streak = 0;
-      activeInput.classList.add("missed");
+      if (!usesChoices) activeInput.classList.add("missed");
     }
     el("feedback").innerHTML = "";
     el("feedback").className = "feedback";
-    renderB1Feedback(isCorrect);
-    activeInput.disabled = true;
+    renderB1Feedback(isCorrect, assisted);
+    if (!usesChoices) activeInput.disabled = true;
     el("checkBtn").disabled = true;
     el("noArticleBtn").disabled = true;
     el("hintBtn").disabled = true;
@@ -13372,7 +14737,7 @@ body.homeMode #settingsPanel {
     el("hintBtn").style.display = "none";
     el("actionGrid").style.display = "none";
     setSupportPlaceholder(false, false);
-    el("nextBtn").textContent = b1AnsweredCount() >= b1Runtime.target ? "Ergebnis" : "Weiter";
+    el("nextBtn").textContent = b1RoundComplete() ? "Ergebnis" : "Weiter";
     el("nextBtn").classList.add("visible");
     renderHud();
     el("nextBtn").focus();
@@ -13380,11 +14745,21 @@ body.homeMode #settingsPanel {
   function nextB1Question() {
     if (!b1Runtime.active) return;
     clearMobileClozeFocus();
-    if (b1AnsweredCount() >= b1Runtime.target || !b1Runtime.queue.length) {
+    if (b1RoundComplete()) {
+      showB1Results();
+      return;
+    }
+    if (!b1Runtime.queue.length && b1Runtime.dailySprint) {
+      b1Runtime.queue = b1RuntimeItemsFromDaily(b1CurrentDailySprint());
+    }
+    if (!b1Runtime.queue.length) {
       showB1Results();
       return;
     }
     b1Runtime.current = b1Runtime.queue.shift();
+    b1Runtime.currentAssisted = false;
+    b1Runtime.currentExtraPractice = !!(b1Runtime.current && b1Runtime.current._extraPractice);
+    if (b1Runtime.dailySprint && b1Runtime.current) b1DailySetCurrent(b1Runtime.current.id);
     state = "b1Checking";
     renderB1Question();
     renderHud();
@@ -13405,9 +14780,12 @@ body.homeMode #settingsPanel {
     el("promptValue").className = "promptWord";
     el("promptValue").textContent = pct + "% accuracy";
     el("englishGloss").textContent = b1Runtime.title;
+    if (el("translationToggle")) el("translationToggle").hidden = true;
+    if (el("b1PracticeTag")) el("b1PracticeTag").hidden = true;
+    if (el("whyNoStarsBtn")) el("whyNoStarsBtn").hidden = true;
     el("answerInput").style.display = "none";
     el("actionGrid").style.display = "none";
-    el("actionGrid").classList.remove("singleAction", "rightAction");
+    el("actionGrid").classList.remove("singleAction", "rightAction", "teachAction");
     el("hintBtn").style.display = "none";
     setSupportPlaceholder(false, false);
     el("miniTableWrap").innerHTML = "";
@@ -13416,10 +14794,15 @@ body.homeMode #settingsPanel {
     el("feedback").innerHTML = "";
     el("feedback").className = "feedback";
     el("rankText").textContent = b1Runtime.title;
-    el("resultSummary").textContent = b1Runtime.correct + " / " + scored + " correct";
+    if (b1Runtime.dailySprint) {
+      var dailyStats = b1DailyStats(b1CurrentDailySprint());
+      el("resultSummary").textContent = dailyStats.success + " / " + dailyStats.total + " complete";
+    } else {
+      el("resultSummary").textContent = b1Runtime.correct + " / " + scored + " correct";
+    }
     el("accuracySummary").textContent = "Progress saved locally";
     el("bestSummary").textContent = "";
-    el("weakSummary").innerHTML = "<div class=\"sessionCoverage\"><strong>Items practised</strong><span>" + answered + " of " + b1Runtime.target + "</span><strong>Wrong</strong><span>" + b1Runtime.wrong + "</span><strong>Production</strong><span>" + b1Runtime.practised + "</span></div>";
+    el("weakSummary").innerHTML = "<div class=\"sessionCoverage\"><strong>Items practised</strong><span>" + answered + " of " + b1Runtime.target + "</span><strong>Wrong</strong><span>" + b1Runtime.wrong + "</span><strong>Assisted</strong><span>" + b1Runtime.assisted + "</span><strong>Production</strong><span>" + b1Runtime.practised + "</span></div>";
     var rp = el("resultPanel");
     rp.classList.add("visible");
     var next = el("nextBtn");
@@ -13530,7 +14913,7 @@ body.homeMode #settingsPanel {
   function newRound() { b1Runtime.active=false; hideStartScreen(); score=0; correct=0; wrong=0; streak=0; bestStreakRound=0; mistakeCounts={}; retryQueue=[]; sessionLog=[]; sessionMisses={}; sessionPromptCounts={}; currentWasRetry=false; currentShowMicroRule=false; state="checking"; hintUsed=false; lastKey=null; savePersistent(); pickQuestion(); }
   function proceed() { if (state === "b1Next") nextB1Question(); else if (state === "b1Results") { if (b1Runtime.mode === "connector_sprint") showGrammarHub(); else if (b1Runtime.mode === "redemittel") showRedemittelHub(); else showHomeScreen(); } else if (state === "next") pickQuestion(); else if (state === "results") showStartScreen(); }
   function bind(id,event,fn){ var node=el(id); if (node) node.addEventListener(event,fn,false); }
-  function exportProgress(){ savePersistent(); var payload={app:"Ozmosis",version:"v0.33.1-renderer-contract-cleanup",exportedAt:new Date().toISOString(),sessionLog:sessionLog.slice(-80),data:safeGetObject(),leitner:safeGetLeitner(),b1:safeGetB1Progress()}; var blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"}); var url=URL.createObjectURL(blob); var a=document.createElement("a"); a.href=url; a.download="ozmosis-progress.json"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){ URL.revokeObjectURL(url); },250); }
+  function exportProgress(){ savePersistent(); var payload={app:"Ozmosis",version:"v0.33.5-daily-sprint-queue-and-teach-me-pass",exportedAt:new Date().toISOString(),sessionLog:sessionLog.slice(-80),data:safeGetObject(),leitner:safeGetLeitner(),b1:safeGetB1Progress()}; var blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"}); var url=URL.createObjectURL(blob); var a=document.createElement("a"); a.href=url; a.download="ozmosis-progress.json"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){ URL.revokeObjectURL(url); },250); }
   function importProgress(file){ if (!file) return; var reader=new FileReader(); reader.onload=function(){ try { var parsed=JSON.parse(String(reader.result || "{}")), data=parsed.data || parsed; safeSetObject(data); if (parsed.leitner && typeof parsed.leitner === "object") safeSetLeitner(parsed.leitner); if (parsed.b1 && typeof parsed.b1 === "object") safeSetB1Progress(parsed.b1); loadPersistent(); newRound(); } catch(e){ el("feedback").textContent="Import fehlgeschlagen: ungültige JSON-Datei."; el("feedback").className="feedback missed"; } }; reader.readAsText(file); }
   document.addEventListener("click", function(event){
     var target = event.target && event.target.closest ? event.target.closest("button") : null;
@@ -13557,6 +14940,14 @@ body.homeMode #settingsPanel {
   document.addEventListener("keydown", function(event){
     if ((event.key === "Escape" || event.key === "Esc") && state === "redemittelHub") showHomeScreen();
   }, false);
+  document.addEventListener("click", function(event){
+    var target = event.target && event.target.closest ? event.target.closest("#noArticleBtn") : null;
+    if (!target || !b1Runtime.active) return;
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+    teachB1Answer();
+  }, true);
 
   function fetchLeitnerJson(url) {
     return fetch(url, { cache:"no-store" }).then(function(response){
@@ -13958,6 +15349,7 @@ body.homeMode #settingsPanel {
     if (!open) {
       overlay.classList.remove("leitnerFullscreen");
       setLeitnerHud(false);
+      setMenu(false);
     }
     if (open) {
       showDevList();
@@ -13998,6 +15390,10 @@ body.homeMode #settingsPanel {
   }
   window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }; window.kasusNoArticle=function(){checkAnswer("none");}; window.kasusProceed=function(){proceed();}; window.kasusHint=function(){showHint();}; window.kasusNewRound=function(){showStartScreen();}; window.kasusStartRound=function(){startConfiguredRound();}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusSessionLog=function(){return sessionLog.slice();}; window.kasusCurrent=function(){return current ? cloneQuestion(current) : cloneB1Item(b1Runtime.current || {});}; window.kasusLeitnerDebug=function(){ return { storageKey:LEITNER_STORAGE_KEY, runtime:leitnerRuntime, progress:safeGetLeitner() }; }; window.ozmosisB1Debug=function(){ return { storageKey:B1_STORAGE_KEY, itemCount:B1_ITEMS.length, connectorCount:B1_CONNECTOR_ITEMS.length, redemittelCount:B1_REDEMITTEL_ITEMS.length, runtime:b1Runtime, progress:safeGetB1Progress() }; }; window.ozmosisStartConnector=function(family){ startConnectorSprint(family || "all"); }; window.ozmosisStartRedemittel=function(filter){ startRedemittelRound(filter || "mixed"); }; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusResetBest=function(){ highScore=0; bestStreakAll=0; savePersistent(); if (state === "results") showResults(); else renderHud(); }; window.kasusResetProfile=function(){ resetLearnerModel(); }; window.kasusToggleMenu=function(){ var panel=el("settingsPanel"); panel.classList.toggle("open"); document.body.classList.toggle("menuOpen", panel.classList.contains("open")); };
   window.ozmosisContentAudit = function(){ return b1ConnectorWordOrderIssues(); };
+  function mountSettingsPanel() {
+    var panel = el("settingsPanel");
+    if (panel && panel.parentElement !== document.body) document.body.appendChild(panel);
+  }
   function setMenu(open) { el("settingsPanel").classList.toggle("open", open); document.body.classList.toggle("menuOpen", open); }
   function toggleMenu() { setMenu(!el("settingsPanel").classList.contains("open")); }
   function isMobileClozeViewport() {
@@ -14042,7 +15438,7 @@ body.homeMode #settingsPanel {
     document.documentElement.style.setProperty("--safeBottom", keyboardOffset > 80 ? "72px" : "max(12px, env(safe-area-inset-bottom))");
     document.body.classList.toggle("keyboardOpen", keyboardOffset > 80);
   }
-  function init(){ loadPersistent(); updateKeyboardOpenClass(); if (window.visualViewport) { window.visualViewport.addEventListener("resize", updateKeyboardOpenClass); window.visualViewport.addEventListener("scroll", updateKeyboardOpenClass); } bind("menuToggle","click",function(event){ event.stopPropagation(); toggleMenu();}); document.addEventListener("click",function(event){ if (!event.target.closest(".menuWrap")) setMenu(false);}); bind("taskType","change",function(){ if (shouldApplyLiveSettings()) newRound(); else savePersistent(); }); bind("articleType","change",function(){ if (shouldApplyLiveSettings()) newRound(); else savePersistent(); }); bind("includeGenitive","change",function(){ setCheckbox("genitiveTableMode", el("includeGenitive").value === "on"); syncHiddenGenitiveSelects(); if (shouldApplyLiveSettings()) newRound(); else savePersistent(); });
+  function init(){ loadPersistent(); updateKeyboardOpenClass(); mountSettingsPanel(); if (window.visualViewport) { window.visualViewport.addEventListener("resize", updateKeyboardOpenClass); window.visualViewport.addEventListener("scroll", updateKeyboardOpenClass); } bind("menuToggle","click",function(event){ event.stopPropagation(); toggleMenu();}); document.addEventListener("click",function(event){ if (!event.target.closest(".menuWrap") && !event.target.closest("#settingsPanel")) setMenu(false);}); bind("taskType","change",function(){ if (shouldApplyLiveSettings()) newRound(); else savePersistent(); }); bind("articleType","change",function(){ if (shouldApplyLiveSettings()) newRound(); else savePersistent(); }); bind("includeGenitive","change",function(){ setCheckbox("genitiveTableMode", el("includeGenitive").value === "on"); syncHiddenGenitiveSelects(); if (shouldApplyLiveSettings()) newRound(); else savePersistent(); });
     ["genitiveTableMode","genitiveBasicCloze","genitiveWrittenCloze"].forEach(function(id){ bind(id,"change",function(){ syncHiddenGenitiveSelects(); if (shouldApplyLiveSettings()) newRound(); else savePersistent(); }); });
     ["startGenitiveTableMode","startGenitiveBasicCloze","startGenitiveWrittenCloze"].forEach(function(id){ bind(id,"change",function(){ syncHiddenGenitiveSelects(); }); });
     ["startTaskType","startArticleType"].forEach(function(id){ bind(id,"change",updateStartOptionHelp); });
@@ -14051,7 +15447,7 @@ body.homeMode #settingsPanel {
     bind("genitiveHelpBtn","click",openGenitiveHelp);
     bind("startGenitiveHelpBtn","click",openGenitiveHelp);
     bind("genitiveHelpCloseBtn","click",closeGenitiveHelp);
-    if (el("genitiveHelpOverlay")) el("genitiveHelpOverlay").addEventListener("click",function(event){ if (event.target === el("genitiveHelpOverlay")) closeGenitiveHelp(); },false); bind("englishSupport","change",function(){ savePersistent(); if (current) renderQuestion(); }); bind("roundTarget","change",function(){ if (shouldApplyLiveSettings()) newRound(); else savePersistent(); }); bind("adaptiveMode","change",function(){ savePersistent(); if (shouldApplyLiveSettings()) newRound(); }); bind("restartBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("resetBestBtn","click",function(){window.kasusResetBest();}); bind("resetProfileBtn","click",function(){window.kasusResetProfile();}); bind("exportBtn","click",exportProgress); bind("importBtn","click",function(){el("importFile").click();}); bind("importFile","change",function(event){ importProgress(event.target.files && event.target.files[0]); event.target.value=""; }); bind("devToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("devCloseBtn","click",function(){ setDevTools(false); }); bind("newGameCloseBtn","click",function(){ setDevTools(false); }); bind("leitnerCloseBtn","click",closeLeitnerPrototype); bind("openNewGameMockBtn","click",showNewGameMock); bind("openLeitnerPrototypeBtn","click",showLeitnerPrototype); bind("resetLeitnerPrototypeBtn","click",showLeitnerResetConfirm); bind("backToDevListBtn","click",showDevList); bind("leitnerResetCloseBtn","click",showDevList); bind("cancelLeitnerResetBtn","click",showDevList); bind("confirmLeitnerResetBtn","click",resetLeitnerPrototypeProgress); bind("leitnerRestartBtn","click",startLeitnerQueue); bind("leitnerCheckBtn","click",checkLeitnerAnswer); bind("leitnerNextBtn","click",nextLeitnerCard); bind("leitnerAnswerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (leitnerRuntime.answered) nextLeitnerCard(); else checkLeitnerAnswer(); }); bind("applyNewGameMockBtn","click",applyNewGameMock); bind("homeSprintBtn","click",function(){ startB1Round("mixed"); }); bind("homeGrammarBtn","click",showGrammarHub); bind("grammarBackBtn","click",showHomeScreen); bind("grammarSeedBtn","click",function(){ startB1Round("grammar_cloze"); }); bind("connectorAllBtn","click",function(){ startConnectorSprint("all"); }); bind("connectorReasonBtn","click",function(){ startConnectorSprint("reason"); }); bind("connectorContrastBtn","click",function(){ startConnectorSprint("contrast"); }); bind("connectorPurposeBtn","click",function(){ startConnectorSprint("purpose"); }); bind("connectorTimeBtn","click",function(){ startConnectorSprint("time"); }); bind("connectorRepairBtn","click",function(){ startConnectorSprint("repair"); }); bind("homeWortschatzBtn","click",function(){ startB1Round("vocab_cloze"); }); bind("homeRedemittelBtn","click",function(){ startB1Round("redemittel_cloze"); }); bind("homeCaseTrainerBtn","click",showStartScreen); bind("caseTrainerBackBtn","click",showHomeScreen); bind("homeOptionsBtn","click",function(event){ event.stopPropagation(); setDevTools(false); setMenu(!el("settingsPanel").classList.contains("open")); }); bind("homeDevToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("hubBackBtn","click",showHomeScreen); document.querySelectorAll(".homePlaceholderBtn").forEach(function(btn){ btn.addEventListener("click",function(){ showHubPlaceholder(btn.getAttribute("data-title") || btn.textContent.trim()); }); }); var devOverlay=el("devOverlay"); if (devOverlay) devOverlay.addEventListener("click",function(event){ if (event.target === devOverlay && !devOverlay.classList.contains("leitnerFullscreen")) setDevTools(false); },false); document.addEventListener("keydown",function(event){ if ((event.key === "Escape" || event.key === "Esc") && el("genitiveHelpOverlay") && !el("genitiveHelpOverlay").hidden) { el("genitiveHelpOverlay").hidden = true; return; } if ((event.key === "Escape" || event.key === "Esc") && el("devOverlay") && !el("devOverlay").hidden) { setDevTools(false); return; } if ((event.key === "Escape" || event.key === "Esc") && (state === "placeholder" || state === "grammarHub")) showHomeScreen(); }); bind("checkBtn","click",function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }); bind("noArticleBtn","click",function(){checkAnswer("none");}); bind("nextBtn","click",proceed); bind("hintBtn","click",showHint); bind("supportPlaceholder","click",showHint); bind("startRoundBtn","click",startConfiguredRound); document.querySelectorAll(".langBtn").forEach(function(btn){ btn.addEventListener("click",function(){ setSupportLanguage(btn.getAttribute("data-lang")); }); }); bind("answerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (state==="b1Checking") checkB1Answer(); else if (state==="checking") checkAnswer(); else proceed(); }); renderHud(); applyLanguage(); showHomeScreen(); }
+    if (el("genitiveHelpOverlay")) el("genitiveHelpOverlay").addEventListener("click",function(event){ if (event.target === el("genitiveHelpOverlay")) closeGenitiveHelp(); },false); bind("englishSupport","change",function(){ savePersistent(); if (b1Runtime.active) renderB1Translation(false); else if (current) renderQuestion(); }); bind("roundTarget","change",function(){ if (shouldApplyLiveSettings()) newRound(); else savePersistent(); }); bind("adaptiveMode","change",function(){ savePersistent(); if (shouldApplyLiveSettings()) newRound(); }); bind("menuHomeBtn","click",function(){ setMenu(false); showHomeScreen(); }); bind("menuSprintBtn","click",function(){ setMenu(false); startB1Round("mixed"); }); bind("menuGrammarBtn","click",function(){ setMenu(false); showGrammarHub(); }); bind("menuRedemittelBtn","click",function(){ setMenu(false); showRedemittelHub(); }); bind("menuCaseTrainerBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("restartBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("resetBestBtn","click",function(){window.kasusResetBest();}); bind("resetProfileBtn","click",function(){window.kasusResetProfile();}); bind("exportBtn","click",exportProgress); bind("importBtn","click",function(){el("importFile").click();}); bind("importFile","change",function(event){ importProgress(event.target.files && event.target.files[0]); event.target.value=""; }); bind("devToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("devMenuBtn","click",function(event){ event.stopPropagation(); setMenu(!el("settingsPanel").classList.contains("open")); }); bind("devCloseBtn","click",function(){ setDevTools(false); }); bind("newGameCloseBtn","click",function(){ setDevTools(false); }); bind("leitnerCloseBtn","click",closeLeitnerPrototype); bind("openNewGameMockBtn","click",showNewGameMock); bind("openLeitnerPrototypeBtn","click",showLeitnerPrototype); bind("resetLeitnerPrototypeBtn","click",showLeitnerResetConfirm); bind("backToDevListBtn","click",showDevList); bind("leitnerResetCloseBtn","click",showDevList); bind("cancelLeitnerResetBtn","click",showDevList); bind("confirmLeitnerResetBtn","click",resetLeitnerPrototypeProgress); bind("leitnerRestartBtn","click",startLeitnerQueue); bind("leitnerCheckBtn","click",checkLeitnerAnswer); bind("leitnerNextBtn","click",nextLeitnerCard); bind("leitnerAnswerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (leitnerRuntime.answered) nextLeitnerCard(); else checkLeitnerAnswer(); }); bind("applyNewGameMockBtn","click",applyNewGameMock); bind("homeSprintBtn","click",function(){ startB1Round("mixed"); }); bind("homeGrammarBtn","click",showGrammarHub); bind("grammarBackBtn","click",showHomeScreen); bind("grammarSeedBtn","click",function(){ startB1Round("grammar_cloze"); }); bind("connectorAllBtn","click",function(){ startConnectorSprint("all"); }); bind("connectorReasonBtn","click",function(){ startConnectorSprint("reason"); }); bind("connectorContrastBtn","click",function(){ startConnectorSprint("contrast"); }); bind("connectorPurposeBtn","click",function(){ startConnectorSprint("purpose"); }); bind("connectorTimeBtn","click",function(){ startConnectorSprint("time"); }); bind("connectorRepairBtn","click",function(){ startConnectorSprint("repair"); }); bind("homeWortschatzBtn","click",function(){ startB1Round("vocab_cloze"); }); bind("homeRedemittelBtn","click",function(){ startB1Round("redemittel_cloze"); }); bind("homeCaseTrainerBtn","click",showStartScreen); bind("caseTrainerBackBtn","click",showHomeScreen); bind("homeOptionsBtn","click",function(event){ event.stopPropagation(); setDevTools(false); setMenu(!el("settingsPanel").classList.contains("open")); }); bind("homeDevToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("hubBackBtn","click",showHomeScreen); document.querySelectorAll(".homePlaceholderBtn").forEach(function(btn){ btn.addEventListener("click",function(){ showHubPlaceholder(btn.getAttribute("data-title") || btn.textContent.trim()); }); }); var devOverlay=el("devOverlay"); if (devOverlay) devOverlay.addEventListener("click",function(event){ if (event.target === devOverlay && !devOverlay.classList.contains("leitnerFullscreen")) setDevTools(false); },false); document.addEventListener("keydown",function(event){ if ((event.key === "Escape" || event.key === "Esc") && el("genitiveHelpOverlay") && !el("genitiveHelpOverlay").hidden) { el("genitiveHelpOverlay").hidden = true; return; } if ((event.key === "Escape" || event.key === "Esc") && el("devOverlay") && !el("devOverlay").hidden) { setDevTools(false); return; } if ((event.key === "Escape" || event.key === "Esc") && (state === "placeholder" || state === "grammarHub")) showHomeScreen(); }); bind("checkBtn","click",function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }); bind("noArticleBtn","click",function(){checkAnswer("none");}); bind("nextBtn","click",proceed); bind("hintBtn","click",showHint); bind("supportPlaceholder","click",showHint); bind("translationToggle","click",toggleB1Translation); bind("whyNoStarsBtn","click",explainExtraPracticeStars); bind("startRoundBtn","click",startConfiguredRound); document.querySelectorAll(".langBtn").forEach(function(btn){ btn.addEventListener("click",function(){ setSupportLanguage(btn.getAttribute("data-lang")); }); }); bind("answerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (state==="b1Checking") checkB1Answer(); else if (state==="checking") checkAnswer(); else proceed(); }); renderHud(); applyLanguage(); showHomeScreen(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
 }());
 </script>
