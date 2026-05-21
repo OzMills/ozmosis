@@ -1,3 +1,15 @@
+## v0.33.1 - B1 Renderer Contract and Feedback Cleanup
+
+- Fixed typed-cloze post-submit rendering so editable inputs become non-editable coloured cloze text.
+- Removed redundant correct-answer repetition for correct typed-cloze answers.
+- Prevented choice items from rendering fake empty cloze blanks.
+- Cleaned up choice-item feedback so correct answers are not duplicated unnecessarily.
+- Cleaned up error-repair and production-card feedback behaviour.
+- Converted English Redemittel prompt labels to German where they were incorrectly stored as `prompt_de`.
+- Preserved mobile keyboard visibility fixes for typed-cloze submit actions.
+- Preserved connector word-order consistency for `weil`, `denn`, and `deshalb`.
+- Preserved Redemittel, Connector Sprint, seeded B1 randomisation, Case Trainer, Options, Dev Tools, and B1 progress behaviour.
+
 ## v0.33 - Redemittel Survival Set and B1 Randomisation
 
 - Added a structured B1 Redemittel hub.

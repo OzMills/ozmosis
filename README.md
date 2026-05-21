@@ -18,7 +18,7 @@ Current priority order:
 
 ## Current Known Version
 
-Current working version: `v0.33`
+Current working version: `v0.33.1`
 
 Next planned patch: `v0.34`
 
@@ -35,6 +35,7 @@ Known v0.33 state:
 - v0.32.2 improves mobile typed-cloze overflow, input sizing, and focus layout.
 - v0.32.3 fixes mobile typed-cloze keyboard-era clipping and connector word-order consistency.
 - v0.33 adds the first Redemittel Survival Set and seeded B1 round randomisation.
+- v0.33.1 cleans up the B1 renderer contract and feedback behaviour.
 - B1 progress persists under `ozmosis_b1_sprint_progress_v1`.
 - Existing Case Trainer, Options, Dev Tools, export/import, and localStorage compatibility are preserved.
 

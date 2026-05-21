@@ -10725,8 +10725,8 @@ body.homeMode #settingsPanel {
     redCloze("b1_redemittel_006","formal_email","Sehr geehrter ___ Schneider,","Herr","Sehr geehrter Herr Schneider,","Dear Mr Schneider,","Use Herr with the masculine formal greeting.","red_formal_greeting_herr",["email","greeting"]),
     redCloze("b1_redemittel_007","formal_email","Ich möchte mich ___ die Informationen bedanken.","für","Ich möchte mich für die Informationen bedanken.","I would like to thank you for the information.","sich bedanken für is the useful pattern.","red_formal_thanks",["email","thanks"]),
     redCloze("b1_redemittel_008","formal_email","Könnten Sie mir bitte ___ Informationen schicken?","weitere","Könnten Sie mir bitte weitere Informationen schicken?","Could you please send me more information?","weitere Informationen is a common formal request.","red_formal_info",["email","request"]),
-    redChoice("b1_redemittel_009","formal_email","Formelle Anrede: ___","Sehr geehrte Frau Müller,",["Hallo Frau Müller,","Sehr geehrte Frau Müller,","Liebe Frau Müller,"],"Sehr geehrte Frau Müller,","Choose the formal opening.","Sehr geehrte/r is the safest formal email opening.","red_formal_greeting_frau",["email","choice"]),
-    redChoice("b1_redemittel_010","formal_email","Formeller Schluss: ___","Mit freundlichen Grüßen",["Tschüss","Mit freundlichen Grüßen","Bis bald"],"Mit freundlichen Grüßen","Choose the formal closing.","Mit freundlichen Grüßen is neutral and formal.","red_formal_closing",["email","choice"]),
+    redChoice("b1_redemittel_009","formal_email","Formelle Anrede:","Sehr geehrte Frau Müller,",["Hallo Frau Müller,","Sehr geehrte Frau Müller,","Liebe Frau Müller,"],"Sehr geehrte Frau Müller,","Choose the formal opening.","Sehr geehrte/r is the safest formal email opening.","red_formal_greeting_frau",["email","choice"]),
+    redChoice("b1_redemittel_010","formal_email","Formeller Schluss:","Mit freundlichen Grüßen",["Tschüss","Mit freundlichen Grüßen","Bis bald"],"Mit freundlichen Grüßen","Choose the formal closing.","Mit freundlichen Grüßen is neutral and formal.","red_formal_closing",["email","choice"]),
     redRepair("b1_redemittel_011","formal_email","Bessere formelle Form: ___","Ich freue mich auf Ihre Antwort.",["Schreib mir schnell.","Ich freue mich auf Ihre Antwort.","Antworten Sie sofort."],"Ich freue mich auf Ihre Antwort.","Make the request polite and formal.","Use a neutral closing expectation, not a command.","red_formal_reply",["email","repair"]),
     redRepair("b1_redemittel_012","formal_email","Bessere formelle Form: ___","Ich schreibe Ihnen, weil ich eine Frage habe.",["Ich schreibe Ihnen, weil ich eine Frage habe.","Ich schreibe, weil Frage.","Ich will was fragen."],"Ich schreibe Ihnen, weil ich eine Frage habe.","Choose the natural formal sentence.","Keep the email phrase complete and polite.","red_formal_purpose",["email","repair"]),
     redCloze("b1_redemittel_013","formal_email","Ich ___ Ihnen für Ihre Hilfe.","danke","Ich danke Ihnen für Ihre Hilfe.","I thank you for your help.","Ich danke Ihnen is formal and direct.","red_formal_thanks",["email"]),
@@ -10740,8 +10740,8 @@ body.homeMode #settingsPanel {
     redCloze("b1_redemittel_020","appointment","Hätten Sie vielleicht einen ___ Termin?","anderen","Hätten Sie vielleicht einen anderen Termin?","Would you perhaps have another appointment time?","einen anderen Termin is the useful replacement phrase.","red_appointment_other",["appointment"]),
     redCloze("b1_redemittel_021","appointment","Könnten wir den Termin auf Montag ___?","verschieben","Könnten wir den Termin auf Montag verschieben?","Could we move the appointment to Monday?","auf + day is used for moving to a date.","red_appointment_move",["appointment"]),
     redCloze("b1_redemittel_022","appointment","Ich habe am Dienstag leider keine ___.","Zeit","Ich habe am Dienstag leider keine Zeit.","I unfortunately have no time on Tuesday.","keine Zeit is simple and acceptable B1 language.","red_appointment_time",["appointment"]),
-    redChoice("b1_redemittel_023","appointment","Best phrase for arranging: ___","einen Termin vereinbaren",["einen Termin bekommen","einen Termin vereinbaren","einen Termin machen"],"einen Termin vereinbaren","Choose the natural scheduling phrase.","vereinbaren is the standard verb for appointments.","red_appointment_arrange",["appointment","choice"]),
-    redChoice("b1_redemittel_024","appointment","Polite alternative request: ___","Hätten Sie vielleicht einen anderen Termin?",["Geben Sie mir anderen Termin.","Hätten Sie vielleicht einen anderen Termin?","Ich brauche Termin."],"Hätten Sie vielleicht einen anderen Termin?","Choose the polite request.","Hätten Sie vielleicht ...? sounds polite and test-safe.","red_appointment_other",["appointment","choice"]),
+    redChoice("b1_redemittel_023","appointment","Beste Formulierung für Terminvereinbarung:","einen Termin vereinbaren",["einen Termin bekommen","einen Termin vereinbaren","einen Termin machen"],"einen Termin vereinbaren","Choose the natural scheduling phrase.","vereinbaren is the standard verb for appointments.","red_appointment_arrange",["appointment","choice"]),
+    redChoice("b1_redemittel_024","appointment","Höfliche Alternative:","Hätten Sie vielleicht einen anderen Termin?",["Geben Sie mir anderen Termin.","Hätten Sie vielleicht einen anderen Termin?","Ich brauche Termin."],"Hätten Sie vielleicht einen anderen Termin?","Choose the polite request.","Hätten Sie vielleicht ...? sounds polite and test-safe.","red_appointment_other",["appointment","choice"]),
     redRepair("b1_redemittel_025","appointment","Bessere Form: ___","Ich möchte gern einen Termin vereinbaren.",["Ich will einen Termin bekommen.","Ich möchte gern einen Termin vereinbaren.","Ich mache Termin."],"Ich möchte gern einen Termin vereinbaren.","Make the appointment request polite.","Ich möchte gern ... is safer than Ich will ...","red_appointment_arrange",["appointment","repair"]),
     redRepair("b1_redemittel_026","appointment","Bessere Form: ___","Der Termin passt mir leider nicht.",["Der Termin ist schlecht.","Der Termin passt mir leider nicht.","Ich komme nicht, egal."],"Der Termin passt mir leider nicht.","Explain a scheduling problem politely.","leider softens the refusal.","red_appointment_fit",["appointment","repair"]),
     redCloze("b1_redemittel_027","appointment","Ich kann leider erst ___ 14 Uhr kommen.","um","Ich kann leider erst um 14 Uhr kommen.","I unfortunately can only come at 2 p.m.","Use um for clock time.","red_appointment_time",["appointment"]),
@@ -10753,8 +10753,8 @@ body.homeMode #settingsPanel {
     redCloze("b1_redemittel_032","request","Ich möchte mich erkundigen, ___ der Kurs noch frei ist.","ob","Ich möchte mich erkundigen, ob der Kurs noch frei ist.","I would like to ask whether the course still has places.","sich erkundigen, ob ... is formal and useful.","red_request_inquire",["request"]),
     redCloze("b1_redemittel_033","request","Könnten Sie mir bitte die Unterlagen ___?","schicken","Könnten Sie mir bitte die Unterlagen schicken?","Could you please send me the documents?","schicken is clear and neutral for documents.","red_request_documents",["request"]),
     redCloze("b1_redemittel_034","request","Ich hätte gern einen ___ über die Kosten.","Überblick","Ich hätte gern einen Überblick über die Kosten.","I would like an overview of the costs.","einen Überblick über is useful formal vocabulary.","red_request_info",["request"]),
-    redChoice("b1_redemittel_035","request","Polite request: ___","Könnten Sie mir bitte helfen?",["Hilf mir.","Könnten Sie mir bitte helfen?","Sie müssen helfen."],"Könnten Sie mir bitte helfen?","Choose the polite form.","Könnten Sie bitte ... is test-safe.","red_request_help",["request","choice"]),
-    redChoice("b1_redemittel_036","request","Callback phrase: ___","Könnten Sie mich bitte zurückrufen?",["Könnten Sie mich bitte zurückrufen?","Rufen Sie sofort.","Telefonieren Sie mich."],"Könnten Sie mich bitte zurückrufen?","Choose the natural callback request.","mich zurückrufen is correct.","red_request_callback",["request","choice"]),
+    redChoice("b1_redemittel_035","request","Höfliche Bitte:","Könnten Sie mir bitte helfen?",["Hilf mir.","Könnten Sie mir bitte helfen?","Sie müssen helfen."],"Könnten Sie mir bitte helfen?","Choose the polite form.","Könnten Sie bitte ... is test-safe.","red_request_help",["request","choice"]),
+    redChoice("b1_redemittel_036","request","Formulierung für Rückruf:","Könnten Sie mich bitte zurückrufen?",["Könnten Sie mich bitte zurückrufen?","Rufen Sie sofort.","Telefonieren Sie mich."],"Könnten Sie mich bitte zurückrufen?","Choose the natural callback request.","mich zurückrufen is correct.","red_request_callback",["request","choice"]),
     redRepair("b1_redemittel_037","request","Bessere Form: ___","Ich möchte mich erkundigen, ob die Stelle noch frei ist.",["Ich will wissen, Stelle frei?","Ich möchte mich erkundigen, ob die Stelle noch frei ist.","Sagen Sie mir Stelle."],"Ich möchte mich erkundigen, ob die Stelle noch frei ist.","Make the question formal and complete.","erkundigen, ob ... is useful in formal contexts.","red_request_inquire",["request","repair"]),
     redRepair("b1_redemittel_038","request","Bessere Form: ___","Könnten Sie mir bitte die Adresse schicken?",["Schicken Adresse.","Könnten Sie mir bitte die Adresse schicken?","Ich brauche Adresse jetzt."],"Könnten Sie mir bitte die Adresse schicken?","Use a polite request pattern.","Könnten Sie mir bitte ...? is neutral and polite.","red_request_documents",["request","repair"]),
     redCloze("b1_redemittel_039","request","Ich hätte gern ___ Informationen.","mehr","Ich hätte gern mehr Informationen.","I would like more information.","mehr Informationen is a simple useful phrase.","red_request_info",["request"]),
@@ -10766,8 +10766,8 @@ body.homeMode #settingsPanel {
     redCloze("b1_redemittel_044","complaint","Ich bitte Sie um eine schnelle ___.","Lösung","Ich bitte Sie um eine schnelle Lösung.","I ask you for a quick solution.","um eine Lösung bitten is formal enough for B1.","red_complaint_solution",["complaint"]),
     redCloze("b1_redemittel_045","complaint","Könnten Sie das bitte ___?","prüfen","Könnten Sie das bitte prüfen?","Could you please check that?","prüfen is useful formal service vocabulary.","red_complaint_check",["complaint"]),
     redCloze("b1_redemittel_046","complaint","Ich habe die Ware noch nicht ___.","erhalten","Ich habe die Ware noch nicht erhalten.","I have not received the goods yet.","erhalten is formal and useful in complaints.","red_complaint_delivery",["complaint"]),
-    redChoice("b1_redemittel_047","complaint","Formal complaint opening: ___","Leider gibt es ein Problem mit der Lieferung.",["Leider gibt es ein Problem mit der Lieferung.","Ihre Lieferung ist schlecht.","Das ist Mist."],"Leider gibt es ein Problem mit der Lieferung.","Choose the formal problem statement.","Leider keeps the complaint controlled and polite.","red_complaint_problem",["complaint","choice"]),
-    redChoice("b1_redemittel_048","complaint","Best solution request: ___","Ich bitte Sie um eine schnelle Lösung.",["Machen Sie schnell.","Ich bitte Sie um eine schnelle Lösung.","Ich will Lösung."],"Ich bitte Sie um eine schnelle Lösung.","Choose the formal solution request.","Ich bitte Sie um ... is direct but polite.","red_complaint_solution",["complaint","choice"]),
+    redChoice("b1_redemittel_047","complaint","Formelle Beschwerde:","Leider gibt es ein Problem mit der Lieferung.",["Leider gibt es ein Problem mit der Lieferung.","Ihre Lieferung ist schlecht.","Das ist Mist."],"Leider gibt es ein Problem mit der Lieferung.","Choose the formal problem statement.","Leider keeps the complaint controlled and polite.","red_complaint_problem",["complaint","choice"]),
+    redChoice("b1_redemittel_048","complaint","Beste Bitte um Lösung:","Ich bitte Sie um eine schnelle Lösung.",["Machen Sie schnell.","Ich bitte Sie um eine schnelle Lösung.","Ich will Lösung."],"Ich bitte Sie um eine schnelle Lösung.","Choose the formal solution request.","Ich bitte Sie um ... is direct but polite.","red_complaint_solution",["complaint","choice"]),
     redRepair("b1_redemittel_049","complaint","Bessere Form: ___","Ich möchte mich beschweren.",["Ich will meckern.","Ich möchte mich beschweren.","Ich bin sauer."],"Ich möchte mich beschweren.","Use neutral complaint language.","beschweren is formal enough; meckern is too informal.","red_complaint_complain",["complaint","repair"]),
     redRepair("b1_redemittel_050","complaint","Bessere Form: ___","Könnten Sie das bitte prüfen?",["Prüfen Sie sofort.","Könnten Sie das bitte prüfen?","Sie müssen das machen."],"Könnten Sie das bitte prüfen?","Make the request polite.","Könnten Sie bitte ... softens the complaint.","red_complaint_check",["complaint","repair"]),
     redCloze("b1_redemittel_051","complaint","Ich warte noch ___ meine Bestellung.","auf","Ich warte noch auf meine Bestellung.","I am still waiting for my order.","warten auf + Akkusativ is the phrase.","red_complaint_delivery",["complaint"]),
@@ -10779,8 +10779,8 @@ body.homeMode #settingsPanel {
     redCloze("b1_redemittel_056","application","Über eine Einladung zum Gespräch würde ich mich ___.","freuen","Über eine Einladung zum Gespräch würde ich mich freuen.","I would be pleased about an invitation to an interview.","This is a standard application closing.","red_application_interview",["application"]),
     redCloze("b1_redemittel_057","application","Ich habe Ihre Anzeige mit Interesse ___.","gelesen","Ich habe Ihre Anzeige mit Interesse gelesen.","I read your advertisement with interest.","mit Interesse gelesen is formal application language.","red_application_interest",["application"]),
     redCloze("b1_redemittel_058","application","Meine Stärken sind Zuverlässigkeit und ___.","Teamfähigkeit","Meine Stärken sind Zuverlässigkeit und Teamfähigkeit.","My strengths are reliability and teamwork.","Teamfähigkeit is high-yield job vocabulary.","red_application_strengths",["application"]),
-    redChoice("b1_redemittel_059","application","Best application phrase: ___","Hiermit bewerbe ich mich um die Stelle.",["Ich will Job.","Hiermit bewerbe ich mich um die Stelle.","Ich nehme die Stelle."],"Hiermit bewerbe ich mich um die Stelle.","Choose the formal application phrase.","Hiermit bewerbe ich mich um ... is standard.","red_application_apply",["application","choice"]),
-    redChoice("b1_redemittel_060","application","Best interview closing: ___","Über eine Einladung zum Gespräch würde ich mich freuen.",["Über eine Einladung zum Gespräch würde ich mich freuen.","Laden Sie mich ein.","Ich will ein Gespräch."],"Über eine Einladung zum Gespräch würde ich mich freuen.","Choose the polite closing.","würde ich mich freuen is formal and polite.","red_application_interview",["application","choice"]),
+    redChoice("b1_redemittel_059","application","Beste Bewerbungsformulierung:","Hiermit bewerbe ich mich um die Stelle.",["Ich will Job.","Hiermit bewerbe ich mich um die Stelle.","Ich nehme die Stelle."],"Hiermit bewerbe ich mich um die Stelle.","Choose the formal application phrase.","Hiermit bewerbe ich mich um ... is standard.","red_application_apply",["application","choice"]),
+    redChoice("b1_redemittel_060","application","Höflicher Schluss für Bewerbung:","Über eine Einladung zum Gespräch würde ich mich freuen.",["Über eine Einladung zum Gespräch würde ich mich freuen.","Laden Sie mich ein.","Ich will ein Gespräch."],"Über eine Einladung zum Gespräch würde ich mich freuen.","Choose the polite closing.","würde ich mich freuen is formal and polite.","red_application_interview",["application","choice"]),
     redRepair("b1_redemittel_061","application","Bessere Form: ___","Ich interessiere mich für die Stelle.",["Ich finde die Stelle okay.","Ich interessiere mich für die Stelle.","Ich will diese Arbeit."],"Ich interessiere mich für die Stelle.","Use formal interest language.","sich interessieren für is neutral and useful.","red_application_interest",["application","repair"]),
     redRepair("b1_redemittel_062","application","Bessere Form: ___","Ich habe Erfahrung mit Büroarbeit.",["Ich kann Büro.","Ich habe Erfahrung mit Büroarbeit.","Büro ist gut."],"Ich habe Erfahrung mit Büroarbeit.","Name experience clearly.","Erfahrung mit is the job-application phrase.","red_application_experience",["application","repair"]),
     redCloze("b1_redemittel_063","application","Ich bin motiviert und ___.","zuverlässig","Ich bin motiviert und zuverlässig.","I am motivated and reliable.","zuverlässig is useful B1 job vocabulary.","red_application_strengths",["application"]),
@@ -10791,8 +10791,8 @@ body.homeMode #settingsPanel {
     redCloze("b1_redemittel_067","illness_absence","Ich bin versichert ___ der AOK.","bei","Ich bin versichert bei der AOK.","I am insured with AOK.","versichert bei is the useful pattern.","red_illness_insurance",["illness","insurance"]),
     redCloze("b1_redemittel_068","illness_absence","Ich kann erst morgen wieder ___.","kommen","Ich kann erst morgen wieder kommen.","I can only come again tomorrow.","erst morgen wieder is useful absence language.","red_illness_return",["illness"]),
     redCloze("b1_redemittel_069","illness_absence","Ich muss mich leider krank ___.","melden","Ich muss mich leider krank melden.","I unfortunately have to call in sick.","sich krank melden is the workplace phrase.","red_illness_absent",["illness"]),
-    redChoice("b1_redemittel_070","illness_absence","Best absence phrase: ___","Ich muss mich leider krank melden.",["Ich bin weg.","Ich muss mich leider krank melden.","Ich mache Krankheit."],"Ich muss mich leider krank melden.","Choose the workplace phrase.","sich krank melden is natural.","red_illness_absent",["illness","choice"]),
-    redChoice("b1_redemittel_071","illness_absence","Insurance phrase: ___","Ich bin versichert bei der AOK.",["Ich bin versichert bei der AOK.","Ich habe Versicherung in AOK.","AOK macht Versicherung."],"Ich bin versichert bei der AOK.","Choose the natural insurance sentence.","versichert bei is the pattern.","red_illness_insurance",["illness","choice"]),
+    redChoice("b1_redemittel_070","illness_absence","Beste Formulierung für Abwesenheit:","Ich muss mich leider krank melden.",["Ich bin weg.","Ich muss mich leider krank melden.","Ich mache Krankheit."],"Ich muss mich leider krank melden.","Choose the workplace phrase.","sich krank melden is natural.","red_illness_absent",["illness","choice"]),
+    redChoice("b1_redemittel_071","illness_absence","Formulierung zur Versicherung:","Ich bin versichert bei der AOK.",["Ich bin versichert bei der AOK.","Ich habe Versicherung in AOK.","AOK macht Versicherung."],"Ich bin versichert bei der AOK.","Choose the natural insurance sentence.","versichert bei is the pattern.","red_illness_insurance",["illness","choice"]),
     redRepair("b1_redemittel_072","illness_absence","Bessere Form: ___","Ich habe einen Arzttermin.",["Ich habe Doktorzeit.","Ich habe einen Arzttermin.","Ich bin bei Arztzeit."],"Ich habe einen Arzttermin.","Use the standard noun Arzttermin.","Arzttermin is compact and natural.","red_illness_doctor",["illness","repair"]),
     redRepair("b1_redemittel_073","illness_absence","Bessere Form: ___","Ich kann erst morgen wieder kommen.",["Ich komme morgen vielleicht wieder.","Ich kann erst morgen wieder kommen.","Heute nein, morgen ja."],"Ich kann erst morgen wieder kommen.","Make the return time clear.","erst morgen wieder is concise and natural.","red_illness_return",["illness","repair"]),
 
@@ -10801,8 +10801,8 @@ body.homeMode #settingsPanel {
     redCloze("b1_redemittel_076","polite_requests","___ Sie mir bitte helfen?","Könnten","Könnten Sie mir bitte helfen?","Could you please help me?","Könnten Sie bitte ... is polite.","red_polite_koennten",["polite"]),
     redCloze("b1_redemittel_077","polite_requests","___ es möglich, den Termin zu verschieben?","Wäre","Wäre es möglich, den Termin zu verschieben?","Would it be possible to move the appointment?","Wäre es möglich ... is very useful and polite.","red_polite_waere",["polite"]),
     redCloze("b1_redemittel_078","polite_requests","___ ich kurz etwas fragen?","Dürfte","Dürfte ich kurz etwas fragen?","May I ask something briefly?","Dürfte ich ... is polite but still B1-usable.","red_polite_duerfte",["polite"]),
-    redChoice("b1_redemittel_079","polite_requests","Most polite request: ___","Könnten Sie mir bitte helfen?",["Helfen Sie.","Könnten Sie mir bitte helfen?","Du hilfst mir."],"Könnten Sie mir bitte helfen?","Choose the polite formal request.","Könnten Sie bitte ... is the safest form.","red_polite_koennten",["polite","choice"]),
-    redChoice("b1_redemittel_080","polite_requests","Polite appointment phrase: ___","Wäre es möglich, den Termin zu verschieben?",["Wäre es möglich, den Termin zu verschieben?","Termin ändern!","Ich will anderen Termin."],"Wäre es möglich, den Termin zu verschieben?","Choose the polite indirect question.","Wäre es möglich ... is formal and soft.","red_polite_waere",["polite","choice"]),
+    redChoice("b1_redemittel_079","polite_requests","Höflichste Bitte:","Könnten Sie mir bitte helfen?",["Helfen Sie.","Könnten Sie mir bitte helfen?","Du hilfst mir."],"Könnten Sie mir bitte helfen?","Choose the polite formal request.","Könnten Sie bitte ... is the safest form.","red_polite_koennten",["polite","choice"]),
+    redChoice("b1_redemittel_080","polite_requests","Höfliche Terminformulierung:","Wäre es möglich, den Termin zu verschieben?",["Wäre es möglich, den Termin zu verschieben?","Termin ändern!","Ich will anderen Termin."],"Wäre es möglich, den Termin zu verschieben?","Choose the polite indirect question.","Wäre es möglich ... is formal and soft.","red_polite_waere",["polite","choice"]),
     redRepair("b1_redemittel_081","polite_requests","Bessere Form: ___","Ich hätte gern einen Beratungstermin.",["Ich will Beratung.","Ich hätte gern einen Beratungstermin.","Gib mir Beratung."],"Ich hätte gern einen Beratungstermin.","Use polite service language.","hätte gern is softer than will.","red_polite_haette",["polite","repair"]),
     redRepair("b1_redemittel_082","polite_requests","Bessere Form: ___","Könnten Sie mir bitte eine Bestätigung schicken?",["Schicken Sie Bestätigung.","Könnten Sie mir bitte eine Bestätigung schicken?","Ich brauche das jetzt."],"Könnten Sie mir bitte eine Bestätigung schicken?","Make the request formal and polite.","Könnten Sie mir bitte ...? is a reliable pattern.","red_polite_koennten",["polite","repair"]),
     redCloze("b1_redemittel_083","polite_requests","Ich würde gern ___, ob noch ein Platz frei ist.","fragen","Ich würde gern fragen, ob noch ein Platz frei ist.","I would like to ask whether a place is still free.","würde gern fragen, ob ... is polite and clear.","red_polite_wuerde",["polite"]),
@@ -12919,8 +12919,19 @@ body.homeMode #settingsPanel {
   function b1UsesChoices(item) {
     return item && (item.itemType === "connector_choice" || item.itemType === "phrase_choice" || (item.itemType === "error_repair" && item.choices && item.choices.length));
   }
+  function b1IsTypedCloze(item) {
+    if (!item || b1UsesChoices(item) || item.itemType === "production_card" || item.itemType === "error_repair") return false;
+    return ["grammar_cloze", "vocab_cloze", "redemittel_cloze", "word_order_cloze", "phrase_cloze"].indexOf(item.itemType) !== -1 || String(item.prompt_de || "").indexOf("___") !== -1;
+  }
+  function b1PromptWithoutFakeBlank(prompt) {
+    return String(prompt || "").replace(/\s*___\s*$/g, "").replace(/\s+([:;,.?!])/g, "$1").trim();
+  }
+  function b1ClozeReplacement(item, resultClass) {
+    if (resultClass) return '<span class="clozeAnswerText ' + resultClass + '">' + escapeHtml(item.answer || "") + '</span>';
+    return '<input id="b1InlineInput" class="inlineClozeInput" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Answer blank" style="' + b1ClozeWidthStyle(item) + '">';
+  }
   function b1UsesInlineInput(item) {
-    return item && item.itemType !== "production_card" && !b1UsesChoices(item);
+    return b1IsTypedCloze(item);
   }
   function b1ClozeWidthStyle(item) {
     var answerLength = b1CleanAnswer(item && item.answer || "").length;
@@ -12929,11 +12940,18 @@ body.homeMode #settingsPanel {
   }
   function b1PromptHtml(item, resultClass) {
     if (item && item.itemType === "production_card") return escapeHtml(item.prompt_de || "");
-    var replacement = '<span class="blankSlot">___</span>';
-    if (resultClass) replacement = '<span class="clozeAnswerText ' + resultClass + '">' + escapeHtml(item.answer || "") + '</span>';
-    else if (b1UsesInlineInput(item)) replacement = '<input id="b1InlineInput" class="inlineClozeInput" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Answer blank" style="' + b1ClozeWidthStyle(item) + '">';
-    var prompt = escapeHtml(item.prompt_de || "");
-    return prompt.indexOf("___") === -1 ? prompt + " " + replacement : prompt.replace(/___/g, replacement);
+    var rawPrompt = String(item && item.prompt_de || "");
+    if (b1UsesChoices(item)) {
+      if (item.itemType === "error_repair" && resultClass && rawPrompt.indexOf("___") !== -1) {
+        return escapeHtml(rawPrompt).replace(/___/g, b1ClozeReplacement(item, resultClass));
+      }
+      if (item.itemType === "error_repair") return escapeHtml(b1PromptWithoutFakeBlank(rawPrompt));
+      return escapeHtml(item.itemType === "phrase_choice" ? b1PromptWithoutFakeBlank(rawPrompt) : rawPrompt);
+    }
+    if (b1IsTypedCloze(item) && rawPrompt.indexOf("___") !== -1) {
+      return escapeHtml(rawPrompt).replace(/___/g, b1ClozeReplacement(item, resultClass));
+    }
+    return escapeHtml(b1PromptWithoutFakeBlank(rawPrompt));
   }
   function b1CapitalizationMatters(item) {
     return item && item.itemType === "vocab_cloze" && /^[A-ZÄÖÜ]/.test(String(item.answer || ""));
@@ -13284,7 +13302,6 @@ body.homeMode #settingsPanel {
         stars;
     } else if (isCorrect) {
       block.innerHTML = "<div class=\"correctionTarget\" aria-label=\"Correct\">✓</div>" +
-        "<div class=\"correctionPattern\">" + escapeHtml(item.fullAnswer_de || item.prompt_de || "") + "</div>" +
         stars;
     } else {
       block.innerHTML = "<div class=\"correctionTarget\">Correct answer: " + escapeHtml(item.answer || "") + "</div>" +
@@ -13300,11 +13317,10 @@ body.homeMode #settingsPanel {
     state = "b1Next";
     el("answerArea").classList.add("answered");
     var block = el("correctionBlock");
-    block.className = "correctionBlock success visible";
+    block.className = "correctionBlock visible";
     block.innerHTML = "<div class=\"correctionTarget\" aria-label=\"Practised\">✓</div>" +
-      "<div class=\"correctionPattern\">" + escapeHtml(b1Runtime.current.modelAnswer_de || b1Runtime.current.fullAnswer_de || "") + "</div>" +
-      b1StarsHtml(b1StepFor(b1Runtime.current)) +
-      "<div class=\"microRule\">" + escapeHtml(b1Runtime.current.microRule || "") + "</div>";
+      "<div class=\"microRule\">Saved to local practice progress.</div>";
+    block.querySelector(".correctionTarget").textContent = "Practised";
     var buttons = el("connectorChoiceGrid") ? el("connectorChoiceGrid").querySelectorAll("button") : [];
     buttons.forEach(function(btn){ btn.disabled = true; });
     el("nextBtn").textContent = b1AnsweredCount() >= b1Runtime.target ? "Ergebnis" : "Weiter";
@@ -13514,7 +13530,7 @@ body.homeMode #settingsPanel {
   function newRound() { b1Runtime.active=false; hideStartScreen(); score=0; correct=0; wrong=0; streak=0; bestStreakRound=0; mistakeCounts={}; retryQueue=[]; sessionLog=[]; sessionMisses={}; sessionPromptCounts={}; currentWasRetry=false; currentShowMicroRule=false; state="checking"; hintUsed=false; lastKey=null; savePersistent(); pickQuestion(); }
   function proceed() { if (state === "b1Next") nextB1Question(); else if (state === "b1Results") { if (b1Runtime.mode === "connector_sprint") showGrammarHub(); else if (b1Runtime.mode === "redemittel") showRedemittelHub(); else showHomeScreen(); } else if (state === "next") pickQuestion(); else if (state === "results") showStartScreen(); }
   function bind(id,event,fn){ var node=el(id); if (node) node.addEventListener(event,fn,false); }
-  function exportProgress(){ savePersistent(); var payload={app:"Ozmosis",version:"v0.33-redemittel-survival-set-and-b1-randomisation",exportedAt:new Date().toISOString(),sessionLog:sessionLog.slice(-80),data:safeGetObject(),leitner:safeGetLeitner(),b1:safeGetB1Progress()}; var blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"}); var url=URL.createObjectURL(blob); var a=document.createElement("a"); a.href=url; a.download="ozmosis-progress.json"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){ URL.revokeObjectURL(url); },250); }
+  function exportProgress(){ savePersistent(); var payload={app:"Ozmosis",version:"v0.33.1-renderer-contract-cleanup",exportedAt:new Date().toISOString(),sessionLog:sessionLog.slice(-80),data:safeGetObject(),leitner:safeGetLeitner(),b1:safeGetB1Progress()}; var blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"}); var url=URL.createObjectURL(blob); var a=document.createElement("a"); a.href=url; a.download="ozmosis-progress.json"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){ URL.revokeObjectURL(url); },250); }
   function importProgress(file){ if (!file) return; var reader=new FileReader(); reader.onload=function(){ try { var parsed=JSON.parse(String(reader.result || "{}")), data=parsed.data || parsed; safeSetObject(data); if (parsed.leitner && typeof parsed.leitner === "object") safeSetLeitner(parsed.leitner); if (parsed.b1 && typeof parsed.b1 === "object") safeSetB1Progress(parsed.b1); loadPersistent(); newRound(); } catch(e){ el("feedback").textContent="Import fehlgeschlagen: ungültige JSON-Datei."; el("feedback").className="feedback missed"; } }; reader.readAsText(file); }
   document.addEventListener("click", function(event){
     var target = event.target && event.target.closest ? event.target.closest("button") : null;
