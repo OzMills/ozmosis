@@ -23,6 +23,8 @@
   --modeShadow:rgba(125,227,255,.2);
   --hudHeight:104px;
   --radius:24px;
+  --visibleViewportHeight:100vh;
+  --keyboardHeight:0px;
 }
 
 body[data-mode="definite"] {
@@ -43,8 +45,15 @@ body[data-mode="negative"] {
 
 * { box-sizing:border-box; }
 
+html,
+body {
+  max-width:100%;
+  overflow-x:hidden;
+}
+
 body {
   min-height:100vh;
+  width:100%;
   margin:0;
   padding:12px 12px calc(var(--hudHeight) + 18px);
   display:grid;
@@ -59,6 +68,8 @@ body {
 main {
   position:relative;
   width:min(700px,100%);
+  max-width:100%;
+  min-width:0;
   padding:clamp(16px,4vw,28px);
   border:1px solid color-mix(in srgb, var(--mode) 42%, var(--line));
   border-radius:clamp(20px,4vw,30px);
@@ -84,15 +95,20 @@ main::before {
 .header, .content { position:relative; z-index:1; }
 
 .header {
-  display:flex;
-  justify-content:space-between;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
   align-items:center;
   gap:12px;
   margin-bottom:clamp(12px,3vw,18px);
+  min-width:0;
 }
 
 h1 {
   margin:0;
+  min-width:0;
+  max-width:100%;
+  overflow:hidden;
+  text-overflow:ellipsis;
   color:var(--accent);
   font-size:clamp(1.2rem,6vw,2rem);
   letter-spacing:.12em;
@@ -100,11 +116,17 @@ h1 {
   font-weight:950;
 }
 
-.menuWrap { position:relative; }
+.menuWrap {
+  position:relative;
+  justify-self:end;
+  min-width:0;
+}
 
 #menuToggle {
   width:clamp(46px,12vw,56px);
   height:clamp(46px,12vw,56px);
+  max-width:100%;
+  flex:0 0 auto;
   border-radius:18px;
   border:1px solid color-mix(in srgb, var(--mode) 42%, var(--line));
   background:var(--panel2);
@@ -663,7 +685,7 @@ button {
 @media (max-width:430px) {
   :root { --hudHeight:104px; }
   main { width:100%; }
-  h1 { max-width:calc(100vw - 120px); }
+  h1 { max-width:100%; }
 }
 
 @media (max-width:360px) {
@@ -1101,6 +1123,7 @@ button {
   justify-items:center !important;
   align-items:start !important;
   gap:clamp(10px,2.4vw,18px) !important;
+  min-width:0 !important;
 }
 
 .taskColumn {
@@ -1109,6 +1132,7 @@ button {
   justify-items:center;
   align-content:start;
   gap:10px;
+  min-width:0;
 }
 
 .supportColumn {
@@ -1116,12 +1140,14 @@ button {
   display:grid;
   align-content:start;
   gap:10px;
+  min-width:0;
 }
 
 .taskColumn .challengeCard,
 .taskColumn .answerArea {
   width:100% !important;
   max-width:520px;
+  min-width:0;
 }
 
 .taskColumn #answerInput,
@@ -3169,6 +3195,131 @@ body.b1Mode.keyboardOpen .actionGrid.rightAction #checkBtn {
   padding-bottom:8px;
 }
 
+@media (max-width: 759px) {
+  body.b1Mode.b1TypedCloze main {
+    max-height:calc(var(--visibleViewportHeight, 100vh) - var(--hudHeight) - 8px - env(safe-area-inset-bottom)) !important;
+    min-height:calc(var(--visibleViewportHeight, 100vh) - var(--hudHeight) - 8px - env(safe-area-inset-bottom)) !important;
+  }
+
+  body.b1Mode.b1TypedCloze .header {
+    grid-template-columns:minmax(0,1fr) auto;
+    margin-bottom:clamp(4px, 1.8vh, 10px);
+  }
+
+  body.b1Mode.b1TypedCloze h1 {
+    font-size:clamp(1.05rem, 6vw, 1.45rem);
+    letter-spacing:.08em;
+  }
+
+  body.b1Mode.b1TypedCloze .content {
+    min-height:calc(var(--visibleViewportHeight, 100vh) - var(--hudHeight) - 92px - env(safe-area-inset-bottom));
+    align-content:center !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:clamp(8px, 2.6vh, 14px) !important;
+  }
+
+  body.b1Mode.b1TypedCloze .taskColumn {
+    align-content:center;
+    gap:clamp(8px, 2vh, 12px);
+  }
+
+  body.b1Mode.b1TypedCloze .challengeCard {
+    padding:clamp(8px, 2.5vh, 14px) 0 !important;
+    gap:clamp(8px, 2.2vh, 12px) !important;
+  }
+
+  body.b1Mode.b1TypedCloze .promptWord.clozePrompt {
+    font-size:clamp(1.55rem, 7vw, 2.25rem) !important;
+    line-height:1.13;
+    letter-spacing:0 !important;
+    overflow-wrap:normal;
+    word-break:normal;
+    hyphens:none;
+  }
+
+  body.b1Mode.b1TypedCloze .inlineClozeInput {
+    display:block;
+    width:var(--clozeWidth, 12ch);
+    min-width:11ch;
+    max-width:min(320px, 86vw);
+    min-height:60px;
+    margin:.36em auto .32em;
+    padding:.08em .55em;
+    border:2px solid color-mix(in srgb, var(--mode) 62%, var(--line));
+    border-bottom:4px solid var(--mode);
+    border-radius:16px;
+    background:rgba(7,12,21,.92);
+    box-shadow:0 0 0 1px rgba(255,255,255,.035), 0 0 22px var(--modeShadow);
+    font-size:clamp(1.35rem, 6vw, 1.9rem);
+    line-height:1.15;
+    vertical-align:middle;
+  }
+
+  body.b1Mode.b1TypedCloze .inlineClozeInput:focus {
+    border-color:var(--accent);
+    border-bottom-color:var(--accent);
+    box-shadow:0 0 0 4px color-mix(in srgb, var(--accent) 22%, transparent), 0 0 34px var(--modeShadow);
+  }
+
+  body.b1Mode.b1TypedCloze .blankSlot.answerSlot {
+    display:block;
+    width:max-content;
+    max-width:min(320px, 86vw);
+    margin:.36em auto .32em;
+    padding:.18em .72em .16em;
+    border:2px solid color-mix(in srgb, var(--mode) 62%, var(--line));
+    border-bottom-width:4px;
+    border-radius:16px;
+    background:rgba(7,12,21,.92);
+    color:var(--text);
+    text-shadow:none;
+  }
+
+  body.b1Mode.b1TypedCloze .englishGloss {
+    font-size:clamp(.95rem, 4vw, 1.2rem);
+    line-height:1.28;
+    margin-top:0;
+  }
+
+  body.b1Mode.b1TypedCloze .answerArea {
+    gap:clamp(8px, 2vh, 12px);
+  }
+
+  body.b1Mode.b1TypedCloze .actionGrid.rightAction {
+    width:100% !important;
+    max-width:min(420px, 100%);
+    grid-template-columns:minmax(0,1fr) minmax(132px, 172px);
+    align-items:center;
+  }
+
+  body.b1Mode.b1TypedCloze .actionGrid.rightAction #checkBtn {
+    min-height:56px;
+    padding:12px 14px;
+    font-size:clamp(.88rem, 3.8vw, 1rem);
+  }
+
+  body.mobileClozeFocus.b1Mode.b1TypedCloze main {
+    padding-top:clamp(8px, 2vh, 14px);
+    padding-bottom:clamp(8px, 2vh, 14px);
+  }
+
+  body.mobileClozeFocus.b1Mode.b1TypedCloze .header {
+    min-height:42px;
+    margin-bottom:2px;
+  }
+
+  body.mobileClozeFocus.b1Mode.b1TypedCloze #menuToggle {
+    width:42px;
+    height:42px;
+    border-radius:15px;
+  }
+
+  body.mobileClozeFocus.b1Mode.b1TypedCloze .content {
+    min-height:calc(var(--visibleViewportHeight, 100vh) - var(--hudHeight) - 72px - env(safe-area-inset-bottom));
+  }
+}
+
 @media (min-width: 1024px) {
   body:not(.setupMode):not(.resultsMode) main,
   body:not(.setupMode):not(.resultsMode) .bottomHud {
@@ -3212,8 +3363,8 @@ body.b1Mode.keyboardOpen .actionGrid.rightAction #checkBtn {
   }
 
   main {
-    width:100vw !important;
-    max-width:100vw !important;
+    width:100% !important;
+    max-width:100% !important;
     min-height:calc(100vh - var(--hudHeight) - 6px);
     border-left:0;
     border-right:0;
@@ -3240,11 +3391,16 @@ body.b1Mode.keyboardOpen .actionGrid.rightAction #checkBtn {
   }
 
   .header {
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
     margin-bottom:10px;
+    min-width:0;
   }
 
   h1 {
     font-size:clamp(1.2rem, 7.2vw, 1.75rem);
+    min-width:0;
+    max-width:100%;
   }
 
   .startScreen {
@@ -3321,7 +3477,8 @@ body.b1Mode.keyboardOpen .actionGrid.rightAction #checkBtn {
   }
 
   .bottomHud {
-    width:100vw;
+    width:100%;
+    max-width:100%;
     border-left:0;
     border-right:0;
     border-bottom:0;
@@ -3337,8 +3494,8 @@ body.b1Mode.keyboardOpen .actionGrid.rightAction #checkBtn {
 
   main,
   body.setupMode main {
-    width:100vw !important;
-    max-width:100vw !important;
+    width:100% !important;
+    max-width:100% !important;
     transform:none !important;
     transform-origin:center top !important;
     padding:clamp(12px, 4vw, 16px);
@@ -3468,7 +3625,7 @@ body.b1Mode.keyboardOpen .actionGrid.rightAction #checkBtn {
   }
 
   main {
-    width:min(100vw, 1040px) !important;
+    width:min(100%, 1040px) !important;
     min-height:auto;
     padding:10px;
     border-radius:18px;
@@ -3590,7 +3747,7 @@ body.setupMode {
 }
 
 body.setupMode main {
-  width:min(1200px, 100vw);
+  width:min(1200px, 100%);
   min-height:100vh;
   max-height:none !important;
   margin:0 auto;
@@ -3613,8 +3770,8 @@ body.setupMode .header {
 
 @media (max-width: 759px) {
   body.setupMode main {
-    width:100vw !important;
-    max-width:100vw !important;
+    width:100% !important;
+    max-width:100% !important;
     border-radius:0;
     border-left:0;
     border-right:0;
@@ -3807,7 +3964,7 @@ body.homeMode .startScreen {
 }
 
 body.homeMode main {
-  width:min(980px, 100vw);
+  width:min(980px, 100%);
   min-height:100vh;
   max-height:none !important;
   margin:0 auto;
@@ -11656,10 +11813,11 @@ body.homeMode #settingsPanel {
   }
   function showHomeScreen() {
     b1Runtime.active = false;
+    clearMobileClozeFocus();
     state = "home";
     setMenu(false);
     document.body.classList.add("homeMode");
-    document.body.classList.remove("setupMode", "resultsMode", "placeholderMode", "b1Mode");
+    document.body.classList.remove("setupMode", "resultsMode", "placeholderMode", "b1Mode", "b1TypedCloze");
     if (el("homeScreen")) el("homeScreen").hidden = false;
     if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
     if (el("grammarHub")) el("grammarHub").hidden = true;
@@ -11671,10 +11829,11 @@ body.homeMode #settingsPanel {
     }, 0);
   }
   function showHubPlaceholder(title) {
+    clearMobileClozeFocus();
     state = "placeholder";
     setMenu(false);
     document.body.classList.add("homeMode", "placeholderMode");
-    document.body.classList.remove("setupMode", "resultsMode", "b1Mode");
+    document.body.classList.remove("setupMode", "resultsMode", "b1Mode", "b1TypedCloze");
     if (el("homeScreen")) el("homeScreen").hidden = true;
     if (el("grammarHub")) el("grammarHub").hidden = true;
     if (el("startScreen")) el("startScreen").hidden = true;
@@ -11687,10 +11846,11 @@ body.homeMode #settingsPanel {
   }
   function showGrammarHub() {
     b1Runtime.active = false;
+    clearMobileClozeFocus();
     state = "grammarHub";
     setMenu(false);
     document.body.classList.add("homeMode");
-    document.body.classList.remove("setupMode", "resultsMode", "placeholderMode", "b1Mode");
+    document.body.classList.remove("setupMode", "resultsMode", "placeholderMode", "b1Mode", "b1TypedCloze");
     if (el("homeScreen")) el("homeScreen").hidden = true;
     if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
     if (el("grammarHub")) el("grammarHub").hidden = false;
@@ -11702,8 +11862,9 @@ body.homeMode #settingsPanel {
   }
   function showStartScreen() {
     b1Runtime.active = false;
+    clearMobileClozeFocus();
     state = "setup";
-    document.body.classList.remove("homeMode", "placeholderMode", "b1Mode");
+    document.body.classList.remove("homeMode", "placeholderMode", "b1Mode", "b1TypedCloze");
     document.body.classList.add("setupMode");
     document.body.classList.remove("resultsMode");
     if (el("homeScreen")) el("homeScreen").hidden = true;
@@ -11720,7 +11881,8 @@ body.homeMode #settingsPanel {
     }, 0);
   }
   function hideStartScreen() {
-    document.body.classList.remove("setupMode", "b1Mode");
+    clearMobileClozeFocus();
+    document.body.classList.remove("setupMode", "b1Mode", "b1TypedCloze");
     if (el("startScreen")) el("startScreen").hidden = true;
   }
   function startConfiguredRound() {
@@ -12369,11 +12531,16 @@ body.homeMode #settingsPanel {
   function b1UsesInlineInput(item) {
     return item && item.itemType !== "production_card" && !b1UsesChoices(item);
   }
+  function b1ClozeWidthStyle(item) {
+    var answerLength = b1CleanAnswer(item && item.answer || "").length;
+    var chars = Math.max(9, Math.min(22, answerLength + 3));
+    return "--clozeWidth:" + chars + "ch";
+  }
   function b1PromptHtml(item, resultClass) {
     if (item && item.itemType === "production_card") return escapeHtml(item.prompt_de || "");
     var replacement = '<span class="blankSlot">___</span>';
     if (resultClass) replacement = '<span class="blankSlot answerSlot ' + resultClass + '">' + escapeHtml(item.answer || "") + '</span>';
-    else if (b1UsesInlineInput(item)) replacement = '<input id="b1InlineInput" class="inlineClozeInput" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Answer blank">';
+    else if (b1UsesInlineInput(item)) replacement = '<input id="b1InlineInput" class="inlineClozeInput" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Answer blank" style="' + b1ClozeWidthStyle(item) + '">';
     var prompt = escapeHtml(item.prompt_de || "");
     return prompt.indexOf("___") === -1 ? prompt + " " + replacement : prompt.replace(/___/g, replacement);
   }
@@ -12449,6 +12616,8 @@ body.homeMode #settingsPanel {
     state = "b1Checking";
     current = null;
     hintUsed = false;
+    clearMobileClozeFocus();
+    document.body.classList.remove("b1TypedCloze");
     setMenu(false);
     setDevTools(false);
     document.body.classList.add("b1Mode");
@@ -12480,6 +12649,8 @@ body.homeMode #settingsPanel {
     state = "b1Checking";
     current = null;
     hintUsed = false;
+    clearMobileClozeFocus();
+    document.body.classList.remove("b1TypedCloze");
     setMenu(false);
     setDevTools(false);
     document.body.classList.add("b1Mode");
@@ -12543,6 +12714,7 @@ body.homeMode #settingsPanel {
   }
   function renderB1Question() {
     var item = b1Runtime.current;
+    clearMobileClozeFocus();
     document.body.setAttribute("data-mode", "definite");
     document.body.classList.remove("resultsMode");
     el("answerArea").classList.remove("answered", "resultsArea");
@@ -12572,7 +12744,9 @@ body.homeMode #settingsPanel {
     var usesChoices = b1UsesChoices(item);
     var isProduction = item.itemType === "production_card";
     var inlineInput = el("b1InlineInput");
+    document.body.classList.toggle("b1TypedCloze", !!inlineInput);
     if (inlineInput) {
+      bindInlineClozeFocus(inlineInput);
       inlineInput.addEventListener("keydown", function(event){
         var isEnter = event.key === "Enter" || event.key === "Return" || event.keyCode === 13 || event.which === 13;
         if (!isEnter) return;
@@ -12649,6 +12823,7 @@ body.homeMode #settingsPanel {
       activeInput.focus();
       return;
     }
+    clearMobileClozeFocus();
     var isCorrect = b1AnswerMatches(b1Runtime.current, raw);
     recordB1Progress(b1Runtime.current, isCorrect);
     state = "b1Next";
@@ -12687,6 +12862,7 @@ body.homeMode #settingsPanel {
   }
   function nextB1Question() {
     if (!b1Runtime.active) return;
+    clearMobileClozeFocus();
     if (b1AnsweredCount() >= b1Runtime.target || !b1Runtime.queue.length) {
       showB1Results();
       return;
@@ -12701,7 +12877,9 @@ body.homeMode #settingsPanel {
     var scored = b1Runtime.correct + b1Runtime.wrong;
     var pct = scored ? Math.round((b1Runtime.correct / scored) * 100) : 0;
     state = "b1Results";
+    clearMobileClozeFocus();
     resetConnectorChoiceGrid();
+    document.body.classList.remove("b1TypedCloze");
     document.body.classList.add("resultsMode");
     el("answerArea").classList.remove("answered");
     el("answerArea").classList.add("resultsArea");
@@ -12835,7 +13013,7 @@ body.homeMode #settingsPanel {
   function newRound() { b1Runtime.active=false; hideStartScreen(); score=0; correct=0; wrong=0; streak=0; bestStreakRound=0; mistakeCounts={}; retryQueue=[]; sessionLog=[]; sessionMisses={}; sessionPromptCounts={}; currentWasRetry=false; currentShowMicroRule=false; state="checking"; hintUsed=false; lastKey=null; savePersistent(); pickQuestion(); }
   function proceed() { if (state === "b1Next") nextB1Question(); else if (state === "b1Results") { if (b1Runtime.mode === "connector_sprint") showGrammarHub(); else showHomeScreen(); } else if (state === "next") pickQuestion(); else if (state === "results") showStartScreen(); }
   function bind(id,event,fn){ var node=el(id); if (node) node.addEventListener(event,fn,false); }
-  function exportProgress(){ savePersistent(); var payload={app:"Ozmosis",version:"v0.32.1-connector-sprint-ux-bug-pass",exportedAt:new Date().toISOString(),sessionLog:sessionLog.slice(-80),data:safeGetObject(),leitner:safeGetLeitner(),b1:safeGetB1Progress()}; var blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"}); var url=URL.createObjectURL(blob); var a=document.createElement("a"); a.href=url; a.download="ozmosis-progress.json"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){ URL.revokeObjectURL(url); },250); }
+  function exportProgress(){ savePersistent(); var payload={app:"Ozmosis",version:"v0.32.2-mobile-cloze-overflow-and-input-layout-pass",exportedAt:new Date().toISOString(),sessionLog:sessionLog.slice(-80),data:safeGetObject(),leitner:safeGetLeitner(),b1:safeGetB1Progress()}; var blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"}); var url=URL.createObjectURL(blob); var a=document.createElement("a"); a.href=url; a.download="ozmosis-progress.json"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){ URL.revokeObjectURL(url); },250); }
   function importProgress(file){ if (!file) return; var reader=new FileReader(); reader.onload=function(){ try { var parsed=JSON.parse(String(reader.result || "{}")), data=parsed.data || parsed; safeSetObject(data); if (parsed.leitner && typeof parsed.leitner === "object") safeSetLeitner(parsed.leitner); if (parsed.b1 && typeof parsed.b1 === "object") safeSetB1Progress(parsed.b1); loadPersistent(); newRound(); } catch(e){ el("feedback").textContent="Import fehlgeschlagen: ungültige JSON-Datei."; el("feedback").className="feedback missed"; } }; reader.readAsText(file); }
 
   function fetchLeitnerJson(url) {
@@ -13279,10 +13457,41 @@ body.homeMode #settingsPanel {
   window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }; window.kasusNoArticle=function(){checkAnswer("none");}; window.kasusProceed=function(){proceed();}; window.kasusHint=function(){showHint();}; window.kasusNewRound=function(){showStartScreen();}; window.kasusStartRound=function(){startConfiguredRound();}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusSessionLog=function(){return sessionLog.slice();}; window.kasusCurrent=function(){return current ? cloneQuestion(current) : cloneB1Item(b1Runtime.current || {});}; window.kasusLeitnerDebug=function(){ return { storageKey:LEITNER_STORAGE_KEY, runtime:leitnerRuntime, progress:safeGetLeitner() }; }; window.ozmosisB1Debug=function(){ return { storageKey:B1_STORAGE_KEY, itemCount:B1_ITEMS.length, connectorCount:B1_CONNECTOR_ITEMS.length, runtime:b1Runtime, progress:safeGetB1Progress() }; }; window.ozmosisStartConnector=function(family){ startConnectorSprint(family || "all"); }; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusResetBest=function(){ highScore=0; bestStreakAll=0; savePersistent(); if (state === "results") showResults(); else renderHud(); }; window.kasusResetProfile=function(){ resetLearnerModel(); }; window.kasusToggleMenu=function(){ var panel=el("settingsPanel"); panel.classList.toggle("open"); document.body.classList.toggle("menuOpen", panel.classList.contains("open")); };
   function setMenu(open) { el("settingsPanel").classList.toggle("open", open); document.body.classList.toggle("menuOpen", open); }
   function toggleMenu() { setMenu(!el("settingsPanel").classList.contains("open")); }
+  function isMobileClozeViewport() {
+    return !window.matchMedia || window.matchMedia("(max-width: 759px)").matches;
+  }
+  function clearMobileClozeFocus() {
+    document.body.classList.remove("mobileClozeFocus");
+  }
+  function setMobileClozeFocus(open) {
+    if (open && isMobileClozeViewport()) document.body.classList.add("mobileClozeFocus");
+    else clearMobileClozeFocus();
+  }
+  function centerMobileClozeTask() {
+    if (!document.body.classList.contains("mobileClozeFocus")) return;
+    if (!isMobileClozeViewport()) return;
+    var task = document.querySelector(".taskColumn");
+    if (!task || !task.scrollIntoView) return;
+    try { task.scrollIntoView({ block:"center", inline:"nearest" }); } catch (e) { task.scrollIntoView(false); }
+  }
+  function bindInlineClozeFocus(input) {
+    if (!input) return;
+    input.addEventListener("focus", function(){
+      setMobileClozeFocus(true);
+      updateKeyboardOpenClass();
+      window.setTimeout(centerMobileClozeTask, 90);
+    }, false);
+    input.addEventListener("blur", function(){
+      window.setTimeout(function(){
+        if (document.activeElement !== input) clearMobileClozeFocus();
+      }, 80);
+    }, false);
+  }
   function updateKeyboardOpenClass() {
     var vv = window.visualViewport;
-    if (!vv) return;
-    var keyboardOffset = Math.max(0, window.innerHeight - vv.height - vv.offsetTop);
+    var visibleHeight = vv ? vv.height : window.innerHeight;
+    var keyboardOffset = vv ? Math.max(0, window.innerHeight - vv.height - vv.offsetTop) : 0;
+    document.documentElement.style.setProperty("--visibleViewportHeight", visibleHeight + "px");
     document.documentElement.style.setProperty("--keyboardHeight", keyboardOffset + "px");
     document.body.classList.toggle("keyboardOpen", keyboardOffset > 80);
   }

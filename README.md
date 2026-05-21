@@ -20,11 +20,11 @@ Current priority order:
 
 ## Current Known Version
 
-Current working version: `v0.32`
+Current working version: `v0.32.2`
 
-Next planned patch: `v0.32.1-connector-sprint-ux-bug-pass`
+Next planned patch: `v0.33-redemittel-sprint-content`
 
-Known v0.32 state:
+Known v0.32 line state:
 
 - Ozmosis landing/tool hub exists.
 - Lightweight B1 practice engine exists.
@@ -33,6 +33,8 @@ Known v0.32 state:
 - Structured B1 Connector Sprint exists under Grammar.
 - The connector bank contains 120 items covering reason, contrast, purpose, time, repair, and production transfer.
 - Connector Sprint supports connector-choice, word-order cloze, error-repair, and production-card item types.
+- v0.32.1 stabilised Connector Sprint UX and item-status handling.
+- v0.32.2 improves mobile typed-cloze overflow, input sizing, and focus layout.
 - B1 progress persists under `ozmosis_b1_sprint_progress_v1`.
 - Existing Case Trainer, Options, Dev Tools, export/import, and localStorage compatibility are preserved.
 

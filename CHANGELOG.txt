@@ -1,3 +1,12 @@
+## v0.32.2 - Mobile Cloze Overflow and Input Layout Pass
+
+- Fixed mobile horizontal overflow that could clip the app header/menu.
+- Constrained the header, main panel, and HUD to the mobile viewport.
+- Improved mobile typed-cloze layout so answer fields are larger and do not overlap prompt text.
+- Added mobile cloze focus behaviour for better keyboard-era layout.
+- Added iPhone 15 Pro size validation to responsive QA.
+- Preserved Connector Sprint, Case Trainer, Options, Dev Tools, and B1 progress behaviour.
+
 ## v0.32.1 - Connector Sprint UX/Bug Pass
 
 - Stabilised the B1 Connector Sprint after v0.32.
