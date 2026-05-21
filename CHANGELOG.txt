@@ -1,3 +1,25 @@
+## v0.33 - Redemittel Survival Set and B1 Randomisation
+
+- Added a structured B1 Redemittel hub.
+- Added Redemittel practice categories for formal email, appointments, requests, complaints, applications, illness/absence, and polite requests.
+- Added the first Redemittel Survival Set item bank.
+- Added Redemittel production cards for short writing/speaking transfer.
+- Integrated Redemittel progress with existing B1 progress persistence.
+- Added seeded B1 round randomisation.
+- Added recent-start anti-repeat logic to reduce repeated opening clozes.
+- Centralised B1 round selection so future banks can share the same shuffle behaviour.
+- Preserved Connector Sprint, Case Trainer, Options, Dev Tools, mobile cloze behaviour, and localStorage compatibility.
+
+## v0.32.3 - Mobile Typed-Cloze Keyboard Cutoff and Connector Word-Order Fix
+
+- Fixed mobile typed-cloze cutoff that could partially hide `Prüfen` while the keyboard was open.
+- Improved focus-mode viewport handling so prompt text, support text, and submit controls remain visible.
+- Replaced editable cloze inputs after submission with non-editable coloured cloze answer text.
+- Removed redundant full-sentence feedback for correct typed-cloze answers.
+- Fixed connector items where accepted answers did not match the visible German word order.
+- Added QA coverage for `weil`, `denn`, and `deshalb` word-order consistency.
+- Preserved Connector Sprint, Case Trainer, Options, Dev Tools, and B1 progress behaviour.
+
 ## v0.32.2 - Mobile Cloze Overflow and Input Layout Pass
 
 - Fixed mobile horizontal overflow that could clip the app header/menu.

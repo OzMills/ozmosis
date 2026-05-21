@@ -24,7 +24,10 @@
   --hudHeight:104px;
   --radius:24px;
   --visibleViewportHeight:100vh;
+  --visualViewportOffsetTop:0px;
   --keyboardHeight:0px;
+  --keyboardInset:0px;
+  --safeBottom:max(12px, env(safe-area-inset-bottom));
 }
 
 body[data-mode="definite"] {
@@ -301,6 +304,32 @@ select, .menuButton {
   background:rgba(255,109,122,.14);
   border-color:var(--bad);
   color:var(--bad);
+}
+
+.clozeAnswerText {
+  display:inline-block;
+  min-width:3.4ch;
+  padding:0 .18em .03em;
+  margin:0 .05em;
+  border-bottom:3px solid var(--mode);
+  border-radius:8px;
+  background:var(--modeSoft);
+  color:var(--text);
+  text-shadow:none;
+  direction:ltr;
+  unicode-bidi:isolate;
+}
+
+.clozeAnswerText.correct {
+  border-color:var(--good);
+  color:var(--good);
+  background:rgba(88,227,154,.13);
+}
+
+.clozeAnswerText.missed {
+  border-color:var(--bad);
+  color:var(--bad);
+  background:rgba(255,109,122,.12);
 }
 
 .actionGrid {
@@ -3159,6 +3188,7 @@ body.menuOpen::after {
 .promptWord,
 .clozePrompt,
 .blankSlot,
+.clozeAnswerText,
 #answerInput,
 .inlineClozeInput,
 .miniTable,
@@ -3262,7 +3292,8 @@ body.b1Mode.keyboardOpen .actionGrid.rightAction #checkBtn {
     box-shadow:0 0 0 4px color-mix(in srgb, var(--accent) 22%, transparent), 0 0 34px var(--modeShadow);
   }
 
-  body.b1Mode.b1TypedCloze .blankSlot.answerSlot {
+  body.b1Mode.b1TypedCloze .blankSlot.answerSlot,
+  body.b1Mode.b1TypedCloze .clozeAnswerText {
     display:block;
     width:max-content;
     max-width:min(320px, 86vw);
@@ -3300,8 +3331,16 @@ body.b1Mode.keyboardOpen .actionGrid.rightAction #checkBtn {
   }
 
   body.mobileClozeFocus.b1Mode.b1TypedCloze main {
+    max-height:none !important;
+    min-height:0 !important;
+    overflow:visible !important;
     padding-top:clamp(8px, 2vh, 14px);
-    padding-bottom:clamp(8px, 2vh, 14px);
+    padding-bottom:calc(var(--safeBottom) + 14px);
+  }
+
+  body.mobileClozeFocus.b1Mode.b1TypedCloze {
+    padding-bottom:calc(var(--safeBottom) + 12px) !important;
+    overflow-y:auto;
   }
 
   body.mobileClozeFocus.b1Mode.b1TypedCloze .header {
@@ -3316,7 +3355,59 @@ body.b1Mode.keyboardOpen .actionGrid.rightAction #checkBtn {
   }
 
   body.mobileClozeFocus.b1Mode.b1TypedCloze .content {
-    min-height:calc(var(--visibleViewportHeight, 100vh) - var(--hudHeight) - 72px - env(safe-area-inset-bottom));
+    min-height:0 !important;
+    padding-bottom:calc(var(--safeBottom) + 10px);
+    align-content:start !important;
+  }
+
+  @media (max-width:360px), (max-height:620px) {
+    body.mobileClozeFocus.b1Mode.b1TypedCloze main {
+      padding-top:6px;
+    }
+
+    body.mobileClozeFocus.b1Mode.b1TypedCloze .header {
+      min-height:38px;
+      margin-bottom:0;
+    }
+
+    body.mobileClozeFocus.b1Mode.b1TypedCloze h1 {
+      font-size:clamp(.9rem, 5.5vw, 1.1rem);
+      letter-spacing:.06em;
+    }
+
+    body.mobileClozeFocus.b1Mode.b1TypedCloze #menuToggle {
+      width:38px;
+      height:38px;
+      border-radius:14px;
+    }
+
+    body.mobileClozeFocus.b1Mode.b1TypedCloze .challengeCard {
+      gap:5px !important;
+      padding-top:6px !important;
+      padding-bottom:6px !important;
+    }
+
+    body.mobileClozeFocus.b1Mode.b1TypedCloze .promptWord.clozePrompt {
+      font-size:clamp(1.28rem, 6vw, 1.55rem) !important;
+      line-height:1.1;
+    }
+
+    body.mobileClozeFocus.b1Mode.b1TypedCloze .inlineClozeInput {
+      min-width:12ch;
+      min-height:56px;
+      margin:.22em auto .2em;
+      font-size:clamp(1.22rem, 5.8vw, 1.55rem);
+    }
+
+    body.mobileClozeFocus.b1Mode.b1TypedCloze .englishGloss {
+      font-size:clamp(.86rem, 3.7vw, 1rem);
+      line-height:1.18;
+    }
+
+    body.mobileClozeFocus.b1Mode.b1TypedCloze .taskColumn,
+    body.mobileClozeFocus.b1Mode.b1TypedCloze .answerArea {
+      gap:6px;
+    }
   }
 }
 
@@ -4267,6 +4358,22 @@ body.homeMode #settingsPanel {
     <button class="homeBackButton" id="grammarBackBtn" type="button">Back</button>
   </section>
 
+  <section class="grammarHub redemittelHub" id="redemittelHub" aria-labelledby="redemittelHubTitle" hidden>
+    <h2 id="redemittelHubTitle">Redemittel</h2>
+    <nav class="homeNav" aria-label="Redemittel tools">
+      <button class="homeNavButton" id="redemittelMixedBtn" type="button"><span class="homeNavNumber">1.</span><span>Mixed Redemittel</span></button>
+      <button class="homeNavButton" id="redemittelFormalBtn" type="button"><span class="homeNavNumber">2.</span><span>Formal Email</span></button>
+      <button class="homeNavButton" id="redemittelAppointmentBtn" type="button"><span class="homeNavNumber">3.</span><span>Appointment</span></button>
+      <button class="homeNavButton" id="redemittelRequestBtn" type="button"><span class="homeNavNumber">4.</span><span>Request</span></button>
+      <button class="homeNavButton" id="redemittelComplaintBtn" type="button"><span class="homeNavNumber">5.</span><span>Complaint</span></button>
+      <button class="homeNavButton" id="redemittelApplicationBtn" type="button"><span class="homeNavNumber">6.</span><span>Application</span></button>
+      <button class="homeNavButton" id="redemittelIllnessBtn" type="button"><span class="homeNavNumber">7.</span><span>Illness / Absence</span></button>
+      <button class="homeNavButton" id="redemittelPoliteBtn" type="button"><span class="homeNavNumber">8.</span><span>Polite Requests</span></button>
+      <button class="homeNavButton" id="redemittelProductionBtn" type="button"><span class="homeNavNumber">9.</span><span>Production Cards</span></button>
+    </nav>
+    <button class="homeBackButton" id="redemittelBackBtn" type="button">Back</button>
+  </section>
+
   <section class="startScreen" id="startScreen" aria-labelledby="startTitle">
     <button class="homeBackButton caseTrainerBackBtn" id="caseTrainerBackBtn" type="button">Back</button>
 
@@ -4667,7 +4774,10 @@ body.homeMode #settingsPanel {
     wrong:0,
     practised:0,
     streak:0,
-    connectorFamily:""
+    connectorFamily:"",
+    deckKey:"",
+    filterKey:"",
+    roundSeed:""
   };
 
   var supportLanguage = "en";
@@ -4762,12 +4872,12 @@ body.homeMode #settingsPanel {
       cefr: "B1",
       difficulty: "sprint_core",
       prompt_de: "Ich kann heute nicht kommen, ___ ich krank bin.",
-      answer: "denn",
-      acceptedAnswers: ["denn"],
-      fullAnswer_de: "Ich kann heute nicht kommen, denn ich bin krank.",
+      answer: "weil",
+      acceptedAnswers: ["weil"],
+      fullAnswer_de: "Ich kann heute nicht kommen, weil ich krank bin.",
       support_en: "I cannot come today because I am ill.",
-      microRule: "denn connects two main clauses; the verb stays in position 2.",
-      tags: ["denn", "hauptsatz", "krankmeldung"],
+      microRule: "weil starts a subordinate clause; the finite verb goes to the end.",
+      tags: ["weil", "nebensatz", "krankmeldung"],
       status: "active"
     },
     {
@@ -10564,6 +10674,147 @@ body.homeMode #settingsPanel {
       ]
     }
   ];
+  function redBase(id, section, itemType, prompt, answer, full, support, note, family, tags, extra) {
+    var item = {
+      id:id,
+      source:"Ozmosis B1 Redemittel Survival Set v1",
+      chapter:5,
+      courseDomain:section,
+      grammarDomain:"redemittel",
+      section:section,
+      category:section,
+      itemType:itemType,
+      cefr:"B1",
+      difficulty:"sprint_core",
+      prompt_de:prompt,
+      answer:answer || "",
+      acceptedAnswers:answer ? [answer] : [],
+      fullAnswer_de:full || prompt,
+      support_en:support || "",
+      microRule:note || "",
+      variantFamilyId:family || id,
+      variantRole:"survival",
+      tags:(tags || []).concat(["redemittel", section]),
+      status:"active"
+    };
+    Object.keys(extra || {}).forEach(function(key){ item[key] = extra[key]; });
+    return item;
+  }
+  function redCloze(id, section, prompt, answer, full, support, note, family, tags) {
+    return redBase(id, section, "redemittel_cloze", prompt, answer, full, support, note, family, tags);
+  }
+  function redChoice(id, section, prompt, answer, choices, full, support, note, family, tags) {
+    return redBase(id, section, "phrase_choice", prompt, answer, full, support, note, family, tags, { choices:choices });
+  }
+  function redRepair(id, section, prompt, answer, choices, full, support, note, family, tags) {
+    return redBase(id, section, "error_repair", prompt, answer, full, support, note, family, tags, { choices:choices });
+  }
+  function redProduction(id, section, prompt, support, phrases, checklist, model, family, tags) {
+    return redBase(id, section, "production_card", prompt, "self_check", model, support, "Use the phrases actively, then mark the card practised.", family, (tags || []).concat(["production"]), {
+      usefulPhrases:phrases,
+      productionChecklist:checklist,
+      modelAnswer_de:model
+    });
+  }
+  const B1_REDEMITTEL_ITEMS = [
+    redCloze("b1_redemittel_001","formal_email","Vielen Dank ___ Ihre Nachricht.","für","Vielen Dank für Ihre Nachricht.","Thank you for your message.","vielen Dank für + Akkusativ is a standard formal phrase.","red_formal_thanks",["email","thanks"]),
+    redCloze("b1_redemittel_002","formal_email","Ich schreibe Ihnen, ___ ich eine Frage habe.","weil","Ich schreibe Ihnen, weil ich eine Frage habe.","I am writing because I have a question.","In formal email, Ich schreibe Ihnen, weil ... is clear and polite.","red_formal_purpose",["email","weil"]),
+    redCloze("b1_redemittel_003","formal_email","Ich freue mich ___ Ihre Antwort.","auf","Ich freue mich auf Ihre Antwort.","I look forward to your reply.","sich freuen auf + Akkusativ.","red_formal_reply",["email","closing"]),
+    redCloze("b1_redemittel_004","formal_email","___ freundlichen Grüßen","Mit","Mit freundlichen Grüßen","Kind regards.","Formal closing starts with Mit.","red_formal_closing",["email","closing"]),
+    redCloze("b1_redemittel_005","formal_email","Sehr geehrte ___ Müller,","Frau","Sehr geehrte Frau Müller,","Dear Ms Müller,","Use Frau with the feminine formal greeting.","red_formal_greeting_frau",["email","greeting"]),
+    redCloze("b1_redemittel_006","formal_email","Sehr geehrter ___ Schneider,","Herr","Sehr geehrter Herr Schneider,","Dear Mr Schneider,","Use Herr with the masculine formal greeting.","red_formal_greeting_herr",["email","greeting"]),
+    redCloze("b1_redemittel_007","formal_email","Ich möchte mich ___ die Informationen bedanken.","für","Ich möchte mich für die Informationen bedanken.","I would like to thank you for the information.","sich bedanken für is the useful pattern.","red_formal_thanks",["email","thanks"]),
+    redCloze("b1_redemittel_008","formal_email","Könnten Sie mir bitte ___ Informationen schicken?","weitere","Könnten Sie mir bitte weitere Informationen schicken?","Could you please send me more information?","weitere Informationen is a common formal request.","red_formal_info",["email","request"]),
+    redChoice("b1_redemittel_009","formal_email","Formelle Anrede: ___","Sehr geehrte Frau Müller,",["Hallo Frau Müller,","Sehr geehrte Frau Müller,","Liebe Frau Müller,"],"Sehr geehrte Frau Müller,","Choose the formal opening.","Sehr geehrte/r is the safest formal email opening.","red_formal_greeting_frau",["email","choice"]),
+    redChoice("b1_redemittel_010","formal_email","Formeller Schluss: ___","Mit freundlichen Grüßen",["Tschüss","Mit freundlichen Grüßen","Bis bald"],"Mit freundlichen Grüßen","Choose the formal closing.","Mit freundlichen Grüßen is neutral and formal.","red_formal_closing",["email","choice"]),
+    redRepair("b1_redemittel_011","formal_email","Bessere formelle Form: ___","Ich freue mich auf Ihre Antwort.",["Schreib mir schnell.","Ich freue mich auf Ihre Antwort.","Antworten Sie sofort."],"Ich freue mich auf Ihre Antwort.","Make the request polite and formal.","Use a neutral closing expectation, not a command.","red_formal_reply",["email","repair"]),
+    redRepair("b1_redemittel_012","formal_email","Bessere formelle Form: ___","Ich schreibe Ihnen, weil ich eine Frage habe.",["Ich schreibe Ihnen, weil ich eine Frage habe.","Ich schreibe, weil Frage.","Ich will was fragen."],"Ich schreibe Ihnen, weil ich eine Frage habe.","Choose the natural formal sentence.","Keep the email phrase complete and polite.","red_formal_purpose",["email","repair"]),
+    redCloze("b1_redemittel_013","formal_email","Ich ___ Ihnen für Ihre Hilfe.","danke","Ich danke Ihnen für Ihre Hilfe.","I thank you for your help.","Ich danke Ihnen is formal and direct.","red_formal_thanks",["email"]),
+    redCloze("b1_redemittel_014","formal_email","Ich habe Ihre Anzeige ___ Interesse gelesen.","mit","Ich habe Ihre Anzeige mit Interesse gelesen.","I read your advert with interest.","mit Interesse gelesen is a useful formal phrase.","red_formal_interest",["email","application"]),
+    redCloze("b1_redemittel_015","formal_email","Über eine Antwort würde ich mich sehr ___.","freuen","Über eine Antwort würde ich mich sehr freuen.","I would be very pleased to receive a reply.","würde mich freuen is polite B1 writing language.","red_formal_reply",["email","closing"]),
+
+    redCloze("b1_redemittel_016","appointment","Ich möchte einen Termin ___.","vereinbaren","Ich möchte einen Termin vereinbaren.","I would like to arrange an appointment.","einen Termin vereinbaren is the standard phrase.","red_appointment_arrange",["appointment"]),
+    redCloze("b1_redemittel_017","appointment","Ich muss den Termin leider ___.","verschieben","Ich muss den Termin leider verschieben.","I unfortunately have to move the appointment.","verschieben means move/postpone an appointment.","red_appointment_move",["appointment"]),
+    redCloze("b1_redemittel_018","appointment","Ich möchte den Termin am Freitag ___.","absagen","Ich möchte den Termin am Freitag absagen.","I would like to cancel the appointment on Friday.","absagen is used for cancelling appointments.","red_appointment_cancel",["appointment"]),
+    redCloze("b1_redemittel_019","appointment","Der Termin passt mir leider ___.","nicht","Der Termin passt mir leider nicht.","The appointment unfortunately does not suit me.","passt mir nicht is natural for scheduling.","red_appointment_fit",["appointment"]),
+    redCloze("b1_redemittel_020","appointment","Hätten Sie vielleicht einen ___ Termin?","anderen","Hätten Sie vielleicht einen anderen Termin?","Would you perhaps have another appointment time?","einen anderen Termin is the useful replacement phrase.","red_appointment_other",["appointment"]),
+    redCloze("b1_redemittel_021","appointment","Könnten wir den Termin auf Montag ___?","verschieben","Könnten wir den Termin auf Montag verschieben?","Could we move the appointment to Monday?","auf + day is used for moving to a date.","red_appointment_move",["appointment"]),
+    redCloze("b1_redemittel_022","appointment","Ich habe am Dienstag leider keine ___.","Zeit","Ich habe am Dienstag leider keine Zeit.","I unfortunately have no time on Tuesday.","keine Zeit is simple and acceptable B1 language.","red_appointment_time",["appointment"]),
+    redChoice("b1_redemittel_023","appointment","Best phrase for arranging: ___","einen Termin vereinbaren",["einen Termin bekommen","einen Termin vereinbaren","einen Termin machen"],"einen Termin vereinbaren","Choose the natural scheduling phrase.","vereinbaren is the standard verb for appointments.","red_appointment_arrange",["appointment","choice"]),
+    redChoice("b1_redemittel_024","appointment","Polite alternative request: ___","Hätten Sie vielleicht einen anderen Termin?",["Geben Sie mir anderen Termin.","Hätten Sie vielleicht einen anderen Termin?","Ich brauche Termin."],"Hätten Sie vielleicht einen anderen Termin?","Choose the polite request.","Hätten Sie vielleicht ...? sounds polite and test-safe.","red_appointment_other",["appointment","choice"]),
+    redRepair("b1_redemittel_025","appointment","Bessere Form: ___","Ich möchte gern einen Termin vereinbaren.",["Ich will einen Termin bekommen.","Ich möchte gern einen Termin vereinbaren.","Ich mache Termin."],"Ich möchte gern einen Termin vereinbaren.","Make the appointment request polite.","Ich möchte gern ... is safer than Ich will ...","red_appointment_arrange",["appointment","repair"]),
+    redRepair("b1_redemittel_026","appointment","Bessere Form: ___","Der Termin passt mir leider nicht.",["Der Termin ist schlecht.","Der Termin passt mir leider nicht.","Ich komme nicht, egal."],"Der Termin passt mir leider nicht.","Explain a scheduling problem politely.","leider softens the refusal.","red_appointment_fit",["appointment","repair"]),
+    redCloze("b1_redemittel_027","appointment","Ich kann leider erst ___ 14 Uhr kommen.","um","Ich kann leider erst um 14 Uhr kommen.","I unfortunately can only come at 2 p.m.","Use um for clock time.","red_appointment_time",["appointment"]),
+
+    redCloze("b1_redemittel_028","request","Könnten Sie mir bitte ___?","helfen","Könnten Sie mir bitte helfen?","Could you please help me?","Könnten Sie ...? is a polite request.","red_request_help",["request"]),
+    redCloze("b1_redemittel_029","request","Ich brauche Hilfe ___ dem Formular.","bei","Ich brauche Hilfe bei dem Formular.","I need help with the form.","Hilfe bei + Dativ is the useful pattern.","red_request_help",["request"]),
+    redCloze("b1_redemittel_030","request","Könnten Sie mich bitte ___?","zurückrufen","Könnten Sie mich bitte zurückrufen?","Could you please call me back?","zurückrufen is the standard callback verb.","red_request_callback",["request","phone"]),
+    redCloze("b1_redemittel_031","request","Ich hätte gern eine ___ Auskunft.","kurze","Ich hätte gern eine kurze Auskunft.","I would like a brief piece of information.","Ich hätte gern is polite service language.","red_request_info",["request"]),
+    redCloze("b1_redemittel_032","request","Ich möchte mich erkundigen, ___ der Kurs noch frei ist.","ob","Ich möchte mich erkundigen, ob der Kurs noch frei ist.","I would like to ask whether the course still has places.","sich erkundigen, ob ... is formal and useful.","red_request_inquire",["request"]),
+    redCloze("b1_redemittel_033","request","Könnten Sie mir bitte die Unterlagen ___?","schicken","Könnten Sie mir bitte die Unterlagen schicken?","Could you please send me the documents?","schicken is clear and neutral for documents.","red_request_documents",["request"]),
+    redCloze("b1_redemittel_034","request","Ich hätte gern einen ___ über die Kosten.","Überblick","Ich hätte gern einen Überblick über die Kosten.","I would like an overview of the costs.","einen Überblick über is useful formal vocabulary.","red_request_info",["request"]),
+    redChoice("b1_redemittel_035","request","Polite request: ___","Könnten Sie mir bitte helfen?",["Hilf mir.","Könnten Sie mir bitte helfen?","Sie müssen helfen."],"Könnten Sie mir bitte helfen?","Choose the polite form.","Könnten Sie bitte ... is test-safe.","red_request_help",["request","choice"]),
+    redChoice("b1_redemittel_036","request","Callback phrase: ___","Könnten Sie mich bitte zurückrufen?",["Könnten Sie mich bitte zurückrufen?","Rufen Sie sofort.","Telefonieren Sie mich."],"Könnten Sie mich bitte zurückrufen?","Choose the natural callback request.","mich zurückrufen is correct.","red_request_callback",["request","choice"]),
+    redRepair("b1_redemittel_037","request","Bessere Form: ___","Ich möchte mich erkundigen, ob die Stelle noch frei ist.",["Ich will wissen, Stelle frei?","Ich möchte mich erkundigen, ob die Stelle noch frei ist.","Sagen Sie mir Stelle."],"Ich möchte mich erkundigen, ob die Stelle noch frei ist.","Make the question formal and complete.","erkundigen, ob ... is useful in formal contexts.","red_request_inquire",["request","repair"]),
+    redRepair("b1_redemittel_038","request","Bessere Form: ___","Könnten Sie mir bitte die Adresse schicken?",["Schicken Adresse.","Könnten Sie mir bitte die Adresse schicken?","Ich brauche Adresse jetzt."],"Könnten Sie mir bitte die Adresse schicken?","Use a polite request pattern.","Könnten Sie mir bitte ...? is neutral and polite.","red_request_documents",["request","repair"]),
+    redCloze("b1_redemittel_039","request","Ich hätte gern ___ Informationen.","mehr","Ich hätte gern mehr Informationen.","I would like more information.","mehr Informationen is a simple useful phrase.","red_request_info",["request"]),
+
+    redCloze("b1_redemittel_040","complaint","Leider gibt es ein Problem ___ der Lieferung.","mit","Leider gibt es ein Problem mit der Lieferung.","Unfortunately there is a problem with the delivery.","ein Problem mit + Dativ is standard.","red_complaint_problem",["complaint"]),
+    redCloze("b1_redemittel_041","complaint","Ich möchte mich ___.","beschweren","Ich möchte mich beschweren.","I would like to complain.","sich beschweren is the basic complaint phrase.","red_complaint_complain",["complaint"]),
+    redCloze("b1_redemittel_042","complaint","Die Lieferung ist noch nicht ___.","angekommen","Die Lieferung ist noch nicht angekommen.","The delivery has not arrived yet.","angekommen is the natural result verb.","red_complaint_delivery",["complaint"]),
+    redCloze("b1_redemittel_043","complaint","Das Gerät funktioniert ___.","nicht","Das Gerät funktioniert nicht.","The device does not work.","funktioniert nicht is direct and neutral.","red_complaint_device",["complaint"]),
+    redCloze("b1_redemittel_044","complaint","Ich bitte Sie um eine schnelle ___.","Lösung","Ich bitte Sie um eine schnelle Lösung.","I ask you for a quick solution.","um eine Lösung bitten is formal enough for B1.","red_complaint_solution",["complaint"]),
+    redCloze("b1_redemittel_045","complaint","Könnten Sie das bitte ___?","prüfen","Könnten Sie das bitte prüfen?","Could you please check that?","prüfen is useful formal service vocabulary.","red_complaint_check",["complaint"]),
+    redCloze("b1_redemittel_046","complaint","Ich habe die Ware noch nicht ___.","erhalten","Ich habe die Ware noch nicht erhalten.","I have not received the goods yet.","erhalten is formal and useful in complaints.","red_complaint_delivery",["complaint"]),
+    redChoice("b1_redemittel_047","complaint","Formal complaint opening: ___","Leider gibt es ein Problem mit der Lieferung.",["Leider gibt es ein Problem mit der Lieferung.","Ihre Lieferung ist schlecht.","Das ist Mist."],"Leider gibt es ein Problem mit der Lieferung.","Choose the formal problem statement.","Leider keeps the complaint controlled and polite.","red_complaint_problem",["complaint","choice"]),
+    redChoice("b1_redemittel_048","complaint","Best solution request: ___","Ich bitte Sie um eine schnelle Lösung.",["Machen Sie schnell.","Ich bitte Sie um eine schnelle Lösung.","Ich will Lösung."],"Ich bitte Sie um eine schnelle Lösung.","Choose the formal solution request.","Ich bitte Sie um ... is direct but polite.","red_complaint_solution",["complaint","choice"]),
+    redRepair("b1_redemittel_049","complaint","Bessere Form: ___","Ich möchte mich beschweren.",["Ich will meckern.","Ich möchte mich beschweren.","Ich bin sauer."],"Ich möchte mich beschweren.","Use neutral complaint language.","beschweren is formal enough; meckern is too informal.","red_complaint_complain",["complaint","repair"]),
+    redRepair("b1_redemittel_050","complaint","Bessere Form: ___","Könnten Sie das bitte prüfen?",["Prüfen Sie sofort.","Könnten Sie das bitte prüfen?","Sie müssen das machen."],"Könnten Sie das bitte prüfen?","Make the request polite.","Könnten Sie bitte ... softens the complaint.","red_complaint_check",["complaint","repair"]),
+    redCloze("b1_redemittel_051","complaint","Ich warte noch ___ meine Bestellung.","auf","Ich warte noch auf meine Bestellung.","I am still waiting for my order.","warten auf + Akkusativ is the phrase.","red_complaint_delivery",["complaint"]),
+
+    redCloze("b1_redemittel_052","application","Hiermit bewerbe ich mich ___ die Stelle.","um","Hiermit bewerbe ich mich um die Stelle.","I hereby apply for the position.","sich bewerben um + Akkusativ.","red_application_apply",["application"]),
+    redCloze("b1_redemittel_053","application","Ich interessiere mich ___ die Ausbildung.","für","Ich interessiere mich für die Ausbildung.","I am interested in the training position.","sich interessieren für is the pattern.","red_application_interest",["application"]),
+    redCloze("b1_redemittel_054","application","Ich habe Erfahrung ___ Kundenkontakt.","mit","Ich habe Erfahrung mit Kundenkontakt.","I have experience with customer contact.","Erfahrung mit is useful job language.","red_application_experience",["application"]),
+    redCloze("b1_redemittel_055","application","Ich würde gern bei Ihnen ___.","arbeiten","Ich würde gern bei Ihnen arbeiten.","I would like to work for you.","würde gern is polite and appropriate.","red_application_work",["application"]),
+    redCloze("b1_redemittel_056","application","Über eine Einladung zum Gespräch würde ich mich ___.","freuen","Über eine Einladung zum Gespräch würde ich mich freuen.","I would be pleased about an invitation to an interview.","This is a standard application closing.","red_application_interview",["application"]),
+    redCloze("b1_redemittel_057","application","Ich habe Ihre Anzeige mit Interesse ___.","gelesen","Ich habe Ihre Anzeige mit Interesse gelesen.","I read your advertisement with interest.","mit Interesse gelesen is formal application language.","red_application_interest",["application"]),
+    redCloze("b1_redemittel_058","application","Meine Stärken sind Zuverlässigkeit und ___.","Teamfähigkeit","Meine Stärken sind Zuverlässigkeit und Teamfähigkeit.","My strengths are reliability and teamwork.","Teamfähigkeit is high-yield job vocabulary.","red_application_strengths",["application"]),
+    redChoice("b1_redemittel_059","application","Best application phrase: ___","Hiermit bewerbe ich mich um die Stelle.",["Ich will Job.","Hiermit bewerbe ich mich um die Stelle.","Ich nehme die Stelle."],"Hiermit bewerbe ich mich um die Stelle.","Choose the formal application phrase.","Hiermit bewerbe ich mich um ... is standard.","red_application_apply",["application","choice"]),
+    redChoice("b1_redemittel_060","application","Best interview closing: ___","Über eine Einladung zum Gespräch würde ich mich freuen.",["Über eine Einladung zum Gespräch würde ich mich freuen.","Laden Sie mich ein.","Ich will ein Gespräch."],"Über eine Einladung zum Gespräch würde ich mich freuen.","Choose the polite closing.","würde ich mich freuen is formal and polite.","red_application_interview",["application","choice"]),
+    redRepair("b1_redemittel_061","application","Bessere Form: ___","Ich interessiere mich für die Stelle.",["Ich finde die Stelle okay.","Ich interessiere mich für die Stelle.","Ich will diese Arbeit."],"Ich interessiere mich für die Stelle.","Use formal interest language.","sich interessieren für is neutral and useful.","red_application_interest",["application","repair"]),
+    redRepair("b1_redemittel_062","application","Bessere Form: ___","Ich habe Erfahrung mit Büroarbeit.",["Ich kann Büro.","Ich habe Erfahrung mit Büroarbeit.","Büro ist gut."],"Ich habe Erfahrung mit Büroarbeit.","Name experience clearly.","Erfahrung mit is the job-application phrase.","red_application_experience",["application","repair"]),
+    redCloze("b1_redemittel_063","application","Ich bin motiviert und ___.","zuverlässig","Ich bin motiviert und zuverlässig.","I am motivated and reliable.","zuverlässig is useful B1 job vocabulary.","red_application_strengths",["application"]),
+
+    redCloze("b1_redemittel_064","illness_absence","Ich bin krank und kann heute nicht ___.","kommen","Ich bin krank und kann heute nicht kommen.","I am ill and cannot come today.","Simple absence sentence; clear and polite.","red_illness_absent",["illness"]),
+    redCloze("b1_redemittel_065","illness_absence","Ich brauche eine ___.","Krankmeldung","Ich brauche eine Krankmeldung.","I need a sick note.","Krankmeldung is useful admin vocabulary.","red_illness_note",["illness"]),
+    redCloze("b1_redemittel_066","illness_absence","Ich habe einen ___.","Arzttermin","Ich habe einen Arzttermin.","I have a doctor's appointment.","Arzttermin is common and useful.","red_illness_doctor",["illness"]),
+    redCloze("b1_redemittel_067","illness_absence","Ich bin versichert ___ der AOK.","bei","Ich bin versichert bei der AOK.","I am insured with AOK.","versichert bei is the useful pattern.","red_illness_insurance",["illness","insurance"]),
+    redCloze("b1_redemittel_068","illness_absence","Ich kann erst morgen wieder ___.","kommen","Ich kann erst morgen wieder kommen.","I can only come again tomorrow.","erst morgen wieder is useful absence language.","red_illness_return",["illness"]),
+    redCloze("b1_redemittel_069","illness_absence","Ich muss mich leider krank ___.","melden","Ich muss mich leider krank melden.","I unfortunately have to call in sick.","sich krank melden is the workplace phrase.","red_illness_absent",["illness"]),
+    redChoice("b1_redemittel_070","illness_absence","Best absence phrase: ___","Ich muss mich leider krank melden.",["Ich bin weg.","Ich muss mich leider krank melden.","Ich mache Krankheit."],"Ich muss mich leider krank melden.","Choose the workplace phrase.","sich krank melden is natural.","red_illness_absent",["illness","choice"]),
+    redChoice("b1_redemittel_071","illness_absence","Insurance phrase: ___","Ich bin versichert bei der AOK.",["Ich bin versichert bei der AOK.","Ich habe Versicherung in AOK.","AOK macht Versicherung."],"Ich bin versichert bei der AOK.","Choose the natural insurance sentence.","versichert bei is the pattern.","red_illness_insurance",["illness","choice"]),
+    redRepair("b1_redemittel_072","illness_absence","Bessere Form: ___","Ich habe einen Arzttermin.",["Ich habe Doktorzeit.","Ich habe einen Arzttermin.","Ich bin bei Arztzeit."],"Ich habe einen Arzttermin.","Use the standard noun Arzttermin.","Arzttermin is compact and natural.","red_illness_doctor",["illness","repair"]),
+    redRepair("b1_redemittel_073","illness_absence","Bessere Form: ___","Ich kann erst morgen wieder kommen.",["Ich komme morgen vielleicht wieder.","Ich kann erst morgen wieder kommen.","Heute nein, morgen ja."],"Ich kann erst morgen wieder kommen.","Make the return time clear.","erst morgen wieder is concise and natural.","red_illness_return",["illness","repair"]),
+
+    redCloze("b1_redemittel_074","polite_requests","Ich ___ gern einen Termin vereinbaren.","würde","Ich würde gern einen Termin vereinbaren.","I would like to arrange an appointment.","würde gern is polite B1 language.","red_polite_wuerde",["polite"]),
+    redCloze("b1_redemittel_075","polite_requests","Ich ___ gern weitere Informationen.","hätte","Ich hätte gern weitere Informationen.","I would like more information.","hätte gern is useful service language.","red_polite_haette",["polite"]),
+    redCloze("b1_redemittel_076","polite_requests","___ Sie mir bitte helfen?","Könnten","Könnten Sie mir bitte helfen?","Could you please help me?","Könnten Sie bitte ... is polite.","red_polite_koennten",["polite"]),
+    redCloze("b1_redemittel_077","polite_requests","___ es möglich, den Termin zu verschieben?","Wäre","Wäre es möglich, den Termin zu verschieben?","Would it be possible to move the appointment?","Wäre es möglich ... is very useful and polite.","red_polite_waere",["polite"]),
+    redCloze("b1_redemittel_078","polite_requests","___ ich kurz etwas fragen?","Dürfte","Dürfte ich kurz etwas fragen?","May I ask something briefly?","Dürfte ich ... is polite but still B1-usable.","red_polite_duerfte",["polite"]),
+    redChoice("b1_redemittel_079","polite_requests","Most polite request: ___","Könnten Sie mir bitte helfen?",["Helfen Sie.","Könnten Sie mir bitte helfen?","Du hilfst mir."],"Könnten Sie mir bitte helfen?","Choose the polite formal request.","Könnten Sie bitte ... is the safest form.","red_polite_koennten",["polite","choice"]),
+    redChoice("b1_redemittel_080","polite_requests","Polite appointment phrase: ___","Wäre es möglich, den Termin zu verschieben?",["Wäre es möglich, den Termin zu verschieben?","Termin ändern!","Ich will anderen Termin."],"Wäre es möglich, den Termin zu verschieben?","Choose the polite indirect question.","Wäre es möglich ... is formal and soft.","red_polite_waere",["polite","choice"]),
+    redRepair("b1_redemittel_081","polite_requests","Bessere Form: ___","Ich hätte gern einen Beratungstermin.",["Ich will Beratung.","Ich hätte gern einen Beratungstermin.","Gib mir Beratung."],"Ich hätte gern einen Beratungstermin.","Use polite service language.","hätte gern is softer than will.","red_polite_haette",["polite","repair"]),
+    redRepair("b1_redemittel_082","polite_requests","Bessere Form: ___","Könnten Sie mir bitte eine Bestätigung schicken?",["Schicken Sie Bestätigung.","Könnten Sie mir bitte eine Bestätigung schicken?","Ich brauche das jetzt."],"Könnten Sie mir bitte eine Bestätigung schicken?","Make the request formal and polite.","Könnten Sie mir bitte ...? is a reliable pattern.","red_polite_koennten",["polite","repair"]),
+    redCloze("b1_redemittel_083","polite_requests","Ich würde gern ___, ob noch ein Platz frei ist.","fragen","Ich würde gern fragen, ob noch ein Platz frei ist.","I would like to ask whether a place is still free.","würde gern fragen, ob ... is polite and clear.","red_polite_wuerde",["polite"]),
+
+    redProduction("b1_redemittel_084","production","Schreiben/Sprechen: Bitten Sie darum, einen Termin zu verschieben.","Ask to move an appointment.",["Könnten wir den Termin verschieben?","Der Termin passt mir leider nicht.","Hätten Sie vielleicht einen anderen Termin?"],["Say why the appointment does not work.","Ask for a new appointment politely.","Use Sie-form."],"Der Termin am Freitag passt mir leider nicht. Könnten wir den Termin verschieben? Hätten Sie vielleicht einen anderen Termin?","red_prod_appointment",["appointment"]),
+    redProduction("b1_redemittel_085","production","Schreiben/Sprechen: Schreiben Sie eine kurze formelle E-Mail mit Dank und Schluss.","Write a short formal email with thanks and closing.",["Vielen Dank für Ihre Nachricht.","Ich freue mich auf Ihre Antwort.","Mit freundlichen Grüßen"],["Use a formal greeting or closing.","Thank the person.","Keep it short."],"Vielen Dank für Ihre Nachricht. Ich freue mich auf Ihre Antwort. Mit freundlichen Grüßen","red_prod_email",["email"]),
+    redProduction("b1_redemittel_086","production","Schreiben/Sprechen: Melden Sie sich bei der Arbeit krank.","Call or write in sick at work.",["Ich muss mich leider krank melden.","Ich bin krank und kann heute nicht kommen.","Ich kann erst morgen wieder kommen."],["Say you are sick.","Say you cannot come.","Give a return time if possible."],"Guten Morgen, ich muss mich leider krank melden. Ich bin krank und kann heute nicht kommen. Ich kann erst morgen wieder kommen.","red_prod_illness",["illness"]),
+    redProduction("b1_redemittel_087","production","Schreiben/Sprechen: Beschweren Sie sich höflich über eine Lieferung.","Complain politely about a delivery.",["Leider gibt es ein Problem mit der Lieferung.","Die Lieferung ist noch nicht angekommen.","Ich bitte Sie um eine schnelle Lösung."],["State the problem.","Stay polite.","Ask for a solution."],"Leider gibt es ein Problem mit der Lieferung. Die Lieferung ist noch nicht angekommen. Ich bitte Sie um eine schnelle Lösung.","red_prod_complaint",["complaint"]),
+    redProduction("b1_redemittel_088","production","Schreiben/Sprechen: Formulieren Sie zwei Sätze für eine Bewerbung.","Write two sentences for an application.",["Hiermit bewerbe ich mich um die Stelle.","Ich interessiere mich für die Ausbildung.","Über eine Einladung zum Gespräch würde ich mich freuen."],["Say what you apply for.","Say why or show interest.","Use a polite closing if possible."],"Hiermit bewerbe ich mich um die Stelle. Ich interessiere mich für die Ausbildung und würde gern bei Ihnen arbeiten.","red_prod_application",["application"]),
+    redProduction("b1_redemittel_089","production","Schreiben/Sprechen: Bitten Sie höflich um Hilfe.","Ask politely for help.",["Könnten Sie mir bitte helfen?","Ich brauche Hilfe bei dem Formular.","Ich hätte gern mehr Informationen."],["Use Könnten Sie bitte ...","Name the problem.","Keep it polite."],"Könnten Sie mir bitte helfen? Ich brauche Hilfe bei dem Formular. Ich hätte gern mehr Informationen.","red_prod_request",["request"]),
+    redProduction("b1_redemittel_090","production","Schreiben/Sprechen: Fragen Sie höflich nach Informationen.","Ask politely for information.",["Ich möchte mich erkundigen, ob ...","Dürfte ich kurz etwas fragen?","Könnten Sie mir bitte weitere Informationen schicken?"],["Use a polite opener.","Ask one clear question.","Use Sie-form."],"Ich möchte mich erkundigen, ob der Kurs noch frei ist. Könnten Sie mir bitte weitere Informationen schicken?","red_prod_information",["request","polite"])
+  ];
   var genders = [
     { key: "Maskulinum", short: "M", en: "masculine" },
     { key: "Neutrum", short: "N", en: "neuter" },
@@ -11809,7 +12060,7 @@ body.homeMode #settingsPanel {
     if (el("supportAccordion")) el("supportAccordion").open = false;
   }
   function shouldApplyLiveSettings() {
-    return state !== "setup" && state !== "home" && state !== "placeholder" && state !== "grammarHub" && state.indexOf("b1") !== 0;
+    return state !== "setup" && state !== "home" && state !== "placeholder" && state !== "grammarHub" && state !== "redemittelHub" && state.indexOf("b1") !== 0;
   }
   function showHomeScreen() {
     b1Runtime.active = false;
@@ -11821,6 +12072,7 @@ body.homeMode #settingsPanel {
     if (el("homeScreen")) el("homeScreen").hidden = false;
     if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
     if (el("grammarHub")) el("grammarHub").hidden = true;
+    if (el("redemittelHub")) el("redemittelHub").hidden = true;
     if (el("startScreen")) el("startScreen").hidden = true;
     applyLanguage();
     setTimeout(function(){
@@ -11836,6 +12088,7 @@ body.homeMode #settingsPanel {
     document.body.classList.remove("setupMode", "resultsMode", "b1Mode", "b1TypedCloze");
     if (el("homeScreen")) el("homeScreen").hidden = true;
     if (el("grammarHub")) el("grammarHub").hidden = true;
+    if (el("redemittelHub")) el("redemittelHub").hidden = true;
     if (el("startScreen")) el("startScreen").hidden = true;
     if (el("hubPlaceholderTitle")) el("hubPlaceholderTitle").textContent = title || "Ozmosis";
     if (el("hubPlaceholder")) el("hubPlaceholder").hidden = false;
@@ -11854,10 +12107,28 @@ body.homeMode #settingsPanel {
     if (el("homeScreen")) el("homeScreen").hidden = true;
     if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
     if (el("grammarHub")) el("grammarHub").hidden = false;
+    if (el("redemittelHub")) el("redemittelHub").hidden = true;
     if (el("startScreen")) el("startScreen").hidden = true;
     setTimeout(function(){
       window.scrollTo(0, 0);
       if (el("grammarSeedBtn")) el("grammarSeedBtn").focus();
+    }, 0);
+  }
+  function showRedemittelHub() {
+    b1Runtime.active = false;
+    clearMobileClozeFocus();
+    state = "redemittelHub";
+    setMenu(false);
+    document.body.classList.add("homeMode");
+    document.body.classList.remove("setupMode", "resultsMode", "placeholderMode", "b1Mode", "b1TypedCloze");
+    if (el("homeScreen")) el("homeScreen").hidden = true;
+    if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
+    if (el("grammarHub")) el("grammarHub").hidden = true;
+    if (el("redemittelHub")) el("redemittelHub").hidden = false;
+    if (el("startScreen")) el("startScreen").hidden = true;
+    setTimeout(function(){
+      window.scrollTo(0, 0);
+      if (el("redemittelMixedBtn")) el("redemittelMixedBtn").focus();
     }, 0);
   }
   function showStartScreen() {
@@ -11870,6 +12141,7 @@ body.homeMode #settingsPanel {
     if (el("homeScreen")) el("homeScreen").hidden = true;
     if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
     if (el("grammarHub")) el("grammarHub").hidden = true;
+    if (el("redemittelHub")) el("redemittelHub").hidden = true;
     if (el("startScreen")) el("startScreen").hidden = false;
     syncStartFromSettings();
     syncStartAccordions();
@@ -12050,15 +12322,19 @@ body.homeMode #settingsPanel {
       var parsed = raw ? JSON.parse(raw) : {};
       if (!parsed || typeof parsed !== "object") parsed = {};
       if (!parsed.items || typeof parsed.items !== "object") parsed.items = {};
+      if (!parsed.meta || typeof parsed.meta !== "object") parsed.meta = {};
+      if (!parsed.meta.recentRoundStarts || typeof parsed.meta.recentRoundStarts !== "object") parsed.meta.recentRoundStarts = {};
       return parsed;
     } catch (e) {
-      return { items:{} };
+      return { items:{}, meta:{ recentRoundStarts:{} } };
     }
   }
   function safeSetB1Progress(obj) {
     try {
       if (!obj || typeof obj !== "object") obj = { items:{} };
       if (!obj.items || typeof obj.items !== "object") obj.items = {};
+      if (!obj.meta || typeof obj.meta !== "object") obj.meta = {};
+      if (!obj.meta.recentRoundStarts || typeof obj.meta.recentRoundStarts !== "object") obj.meta.recentRoundStarts = {};
       window.localStorage.setItem(B1_STORAGE_KEY, JSON.stringify(obj));
     } catch (e) {}
   }
@@ -12444,6 +12720,115 @@ body.homeMode #settingsPanel {
     }
     return copy;
   }
+  function randomSeedPart() {
+    try {
+      if (window.crypto && window.crypto.getRandomValues) {
+        var bytes = new Uint32Array(2);
+        window.crypto.getRandomValues(bytes);
+        return bytes[0].toString(36) + bytes[1].toString(36);
+      }
+    } catch (e) {}
+    return Math.random().toString(36).slice(2) + Date.now().toString(36);
+  }
+  function createRoundSeed(deckKey, filterKey) {
+    return String(deckKey || "b1") + "|" + String(filterKey || "all") + "|" + randomSeedPart();
+  }
+  function hashSeed(seed) {
+    var h = 2166136261 >>> 0;
+    String(seed || "").split("").forEach(function(ch){
+      h ^= ch.charCodeAt(0);
+      h = Math.imul(h, 16777619);
+    });
+    return h >>> 0;
+  }
+  function seededRandom(seed) {
+    var a = hashSeed(seed);
+    return function() {
+      a += 0x6D2B79F5;
+      var t = a;
+      t = Math.imul(t ^ (t >>> 15), t | 1);
+      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  function shuffleWithSeed(items, seed) {
+    var copy = items.slice();
+    var rand = seededRandom(seed);
+    for (var i = copy.length - 1; i > 0; i -= 1) {
+      var j = Math.floor(rand() * (i + 1)), tmp = copy[i];
+      copy[i] = copy[j];
+      copy[j] = tmp;
+    }
+    return copy;
+  }
+  function b1ItemIsNormalEligible(item) {
+    return item && (item.status === "active" || item.status === "recognition");
+  }
+  function b1ItemFamily(item) {
+    return String((item && item.variantFamilyId) || (item && item.id) || "unknown");
+  }
+  function getB1RecentStarts(deckKey, filterKey) {
+    var store = safeGetB1Progress();
+    var deck = store.meta.recentRoundStarts[String(deckKey || "b1")] || {};
+    var list = deck[String(filterKey || "all")];
+    return Array.isArray(list) ? list.slice() : [];
+  }
+  function rememberB1RoundStart(deckKey, filterKey, itemId) {
+    if (!itemId) return;
+    var store = safeGetB1Progress();
+    var dKey = String(deckKey || "b1");
+    var fKey = String(filterKey || "all");
+    if (!store.meta.recentRoundStarts[dKey] || typeof store.meta.recentRoundStarts[dKey] !== "object") store.meta.recentRoundStarts[dKey] = {};
+    var list = store.meta.recentRoundStarts[dKey][fKey];
+    if (!Array.isArray(list)) list = [];
+    list.push(String(itemId));
+    store.meta.recentRoundStarts[dKey][fKey] = list.slice(-10);
+    safeSetB1Progress(store);
+  }
+  function avoidRecentFirst(items, deckKey, filterKey) {
+    if (!items.length) return items;
+    var recent = getB1RecentStarts(deckKey, filterKey);
+    if (!recent.length || items.length < 2) return items;
+    if (recent.indexOf(items[0].id) === -1) return items;
+    for (var i = 1; i < items.length; i += 1) {
+      if (recent.indexOf(items[i].id) === -1) {
+        var copy = items.slice(), chosen = copy.splice(i, 1)[0];
+        copy.unshift(chosen);
+        return copy;
+      }
+    }
+    return items;
+  }
+  function reduceB1FamilyClustering(items, maxPerFamily, roundLength) {
+    var selected = [], later = [], counts = {};
+    items.forEach(function(item){
+      var family = b1ItemFamily(item);
+      if (selected.length < roundLength && Number(counts[family] || 0) < maxPerFamily) {
+        selected.push(item);
+        counts[family] = Number(counts[family] || 0) + 1;
+      } else {
+        later.push(item);
+      }
+    });
+    later.forEach(function(item){
+      if (selected.length < roundLength) selected.push(item);
+    });
+    return selected;
+  }
+  function buildB1Round(options) {
+    options = options || {};
+    var deckKey = options.deckKey || "b1";
+    var filterKey = options.filterKey || "all";
+    var roundLength = Math.max(1, Number(options.roundLength || 10));
+    var seed = options.seed || createRoundSeed(deckKey, filterKey);
+    var eligible = (options.items || []).filter(b1ItemIsNormalEligible);
+    var shuffled = shuffleWithSeed(eligible, seed);
+    shuffled = avoidRecentFirst(shuffled, deckKey, filterKey);
+    var clustered = reduceB1FamilyClustering(shuffled, 2, roundLength);
+    var queue = clustered.slice(0, roundLength).map(cloneB1Item);
+    if (queue.length) rememberB1RoundStart(deckKey, filterKey, queue[0].id);
+    return { queue:queue, seed:seed };
+  }
   function b1RoundTitle(mode) {
     if (mode === "grammar_cloze") return "B1 Grammar";
     if (mode === "vocab_cloze") return "B1 Wortschatz";
@@ -12451,8 +12836,9 @@ body.homeMode #settingsPanel {
     return "Today’s B1 Sprint";
   }
   function b1PoolFor(mode) {
-    var active = B1_ITEMS.filter(function(item){ return item && item.status === "active"; });
-    if (mode === "mixed") return active;
+    var active = B1_ITEMS.filter(b1ItemIsNormalEligible);
+    if (mode === "mixed") return active.concat(B1_REDEMITTEL_ITEMS.filter(function(item){ return b1ItemIsNormalEligible(item) && item.itemType !== "production_card"; }));
+    if (mode === "redemittel_cloze") return B1_REDEMITTEL_ITEMS.filter(function(item){ return b1ItemIsNormalEligible(item) && item.itemType !== "production_card"; });
     return active.filter(function(item){ return item.itemType === mode; });
   }
   function connectorFamilyFor(item) {
@@ -12473,32 +12859,35 @@ body.homeMode #settingsPanel {
     if (family === "repair") return "Repair";
     return "Connector Sprint";
   }
+  function redemittelTitle(filter) {
+    if (filter === "formal_email") return "Formal Email";
+    if (filter === "appointment") return "Appointment";
+    if (filter === "request") return "Request";
+    if (filter === "complaint") return "Complaint";
+    if (filter === "application") return "Application";
+    if (filter === "illness_absence") return "Illness / Absence";
+    if (filter === "polite_requests") return "Polite Requests";
+    if (filter === "production") return "Production Cards";
+    return "Mixed Redemittel";
+  }
+  function redemittelPoolFor(filter) {
+    filter = filter || "mixed";
+    return B1_REDEMITTEL_ITEMS.filter(function(item){
+      if (!b1ItemIsNormalEligible(item)) return false;
+      if (filter === "production") return item.itemType === "production_card";
+      if (item.itemType === "production_card") return false;
+      if (filter === "mixed") return true;
+      return item.section === filter;
+    });
+  }
   function b1ConnectorPoolFor(family) {
     var allowed = ["connector_choice", "word_order_cloze", "error_repair", "production_card"];
     return B1_CONNECTOR_ITEMS.filter(function(item){
-      if (!item || item.status !== "active" || allowed.indexOf(item.itemType) === -1) return false;
+      if (!b1ItemIsNormalEligible(item) || allowed.indexOf(item.itemType) === -1) return false;
       if (family === "all") return true;
       if (family === "repair") return connectorFamilyFor(item) === "repair";
       return connectorFamilyFor(item) === family;
     });
-  }
-  function takeConnectorItems(pool, count) {
-    var out = [], seen = {};
-    shuffleList(pool).forEach(function(item){
-      if (out.length >= count) return;
-      var family = item.variantFamilyId || item.id;
-      if (Number(seen[family] || 0) >= 2) return;
-      seen[family] = Number(seen[family] || 0) + 1;
-      out.push(item);
-    });
-    if (out.length < count) {
-      shuffleList(pool).forEach(function(item){
-        if (out.length >= count) return;
-        if (out.some(function(existing){ return existing.id === item.id; })) return;
-        out.push(item);
-      });
-    }
-    return out;
   }
   function buildConnectorQueue(family) {
     var pool = b1ConnectorPoolFor(family);
@@ -12507,26 +12896,28 @@ body.homeMode #settingsPanel {
     var wordOrder = pool.filter(function(item){ return item.itemType === "word_order_cloze"; });
     var repair = pool.filter(function(item){ return item.itemType === "error_repair"; });
     var queue = [];
+    var seed = createRoundSeed("connector", family || "all");
     if (family === "all") {
-      queue = queue.concat(takeConnectorItems(choice, 6));
-      queue = queue.concat(takeConnectorItems(wordOrder, 2));
-      queue = queue.concat(takeConnectorItems(repair, 1));
-      if (production.length) queue.push(shuffleList(production)[0]);
+      queue = queue.concat(buildB1Round({ deckKey:"connector", filterKey:"all-choice", items:choice, roundLength:6, seed:seed + "|choice" }).queue);
+      queue = queue.concat(buildB1Round({ deckKey:"connector", filterKey:"all-word-order", items:wordOrder, roundLength:2, seed:seed + "|word" }).queue);
+      queue = queue.concat(buildB1Round({ deckKey:"connector", filterKey:"all-repair", items:repair, roundLength:1, seed:seed + "|repair" }).queue);
+      if (production.length) queue.push(buildB1Round({ deckKey:"connector", filterKey:"all-production", items:production, roundLength:1, seed:seed + "|production" }).queue[0]);
     } else if (family === "repair") {
-      queue = takeConnectorItems(repair, Math.min(10, repair.length));
+      queue = buildB1Round({ deckKey:"connector", filterKey:family, items:repair, roundLength:10, seed:seed }).queue;
     } else {
-      queue = queue.concat(takeConnectorItems(choice, 7));
-      queue = queue.concat(takeConnectorItems(wordOrder, 3));
-      if (queue.length < 10) queue = queue.concat(takeConnectorItems(pool.filter(function(item){ return queue.every(function(q){ return q.id !== item.id; }) && item.itemType !== "production_card"; }), 10 - queue.length));
+      queue = queue.concat(buildB1Round({ deckKey:"connector", filterKey:family + "-choice", items:choice, roundLength:7, seed:seed + "|choice" }).queue);
+      queue = queue.concat(buildB1Round({ deckKey:"connector", filterKey:family + "-word-order", items:wordOrder, roundLength:3, seed:seed + "|word" }).queue);
+      if (queue.length < 10) queue = queue.concat(buildB1Round({ deckKey:"connector", filterKey:family + "-fallback", items:pool.filter(function(item){ return queue.every(function(q){ return q.id !== item.id; }) && item.itemType !== "production_card"; }), roundLength:10 - queue.length, seed:seed + "|fallback" }).queue);
     }
-    queue = queue.filter(Boolean).slice(0, 10);
-    return queue.map(cloneB1Item);
+    queue = avoidRecentFirst(queue.filter(Boolean), "connector", family || "all").slice(0, 10);
+    if (queue.length) rememberB1RoundStart("connector", family || "all", queue[0].id);
+    return { queue:queue.map(cloneB1Item), seed:seed };
   }
   function b1AnsweredCount() {
     return b1Runtime.correct + b1Runtime.wrong + b1Runtime.practised;
   }
   function b1UsesChoices(item) {
-    return item && (item.itemType === "connector_choice" || (item.itemType === "error_repair" && item.choices && item.choices.length));
+    return item && (item.itemType === "connector_choice" || item.itemType === "phrase_choice" || (item.itemType === "error_repair" && item.choices && item.choices.length));
   }
   function b1UsesInlineInput(item) {
     return item && item.itemType !== "production_card" && !b1UsesChoices(item);
@@ -12539,7 +12930,7 @@ body.homeMode #settingsPanel {
   function b1PromptHtml(item, resultClass) {
     if (item && item.itemType === "production_card") return escapeHtml(item.prompt_de || "");
     var replacement = '<span class="blankSlot">___</span>';
-    if (resultClass) replacement = '<span class="blankSlot answerSlot ' + resultClass + '">' + escapeHtml(item.answer || "") + '</span>';
+    if (resultClass) replacement = '<span class="clozeAnswerText ' + resultClass + '">' + escapeHtml(item.answer || "") + '</span>';
     else if (b1UsesInlineInput(item)) replacement = '<input id="b1InlineInput" class="inlineClozeInput" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Answer blank" style="' + b1ClozeWidthStyle(item) + '">';
     var prompt = escapeHtml(item.prompt_de || "");
     return prompt.indexOf("___") === -1 ? prompt + " " + replacement : prompt.replace(/___/g, replacement);
@@ -12554,6 +12945,52 @@ body.homeMode #settingsPanel {
     var value = b1CleanAnswer(raw).toLowerCase();
     var accepted = item.acceptedAnswers && item.acceptedAnswers.length ? item.acceptedAnswers : [item.answer];
     return accepted.some(function(answer){ return value === b1CleanAnswer(answer).toLowerCase(); });
+  }
+  function b1ConnectorWordOrderIssues() {
+    var finiteVerbs = [
+      "bin","bist","ist","sind","seid","war","waren",
+      "habe","hast","hat","haben","habt",
+      "kann","kannst","können","könnt","muss","musst","müssen","müsst",
+      "bleibe","bleibst","bleibt","bleiben",
+      "komme","kommst","kommt","kommen",
+      "rufe","rufst","ruft","rufen",
+      "brauche","brauchst","braucht","brauchen",
+      "prüfe","prüfst","prüft","prüfen",
+      "starte","startest","startet","starten",
+      "schicke","schickst","schickt","schicken",
+      "bewerbe","bewirbt","bewerben",
+      "funktioniert","fehlt","stimmt"
+    ];
+    var subjects = "(ich|du|er|sie|es|wir|ihr|Sie|der|die|das|ein|eine|mein|meine|unser|unsere|die\\s+\\w+|der\\s+\\w+|das\\s+\\w+)";
+    var v2Pattern = new RegExp("^\\s*" + subjects + "\\s+(" + finiteVerbs.join("|") + ")\\b", "i");
+    var verbFirstPattern = new RegExp("^\\s*(" + finiteVerbs.join("|") + ")\\b", "i");
+    function acceptedFor(item) {
+      return (item.acceptedAnswers && item.acceptedAnswers.length ? item.acceptedAnswers : [item.answer]).map(function(value){ return b1CleanAnswer(value).toLowerCase(); });
+    }
+    function continuationFor(item) {
+      var prompt = String(item.prompt_de || "");
+      var idx = prompt.indexOf("___");
+      return idx === -1 ? "" : prompt.slice(idx + 3).trim();
+    }
+    return B1_ITEMS.concat(B1_CONNECTOR_ITEMS).reduce(function(issues, item){
+      if (!item || item.status === "retired") return issues;
+      var accepted = acceptedFor(item);
+      var tail = continuationFor(item);
+      var full = String(item.fullAnswer_de || "");
+      if (accepted.indexOf("denn") !== -1 && tail && !v2Pattern.test(tail)) {
+        issues.push({ id:item.id, connector:"denn", issue:"denn requires V2 continuation", prompt:item.prompt_de, accepted:accepted });
+      }
+      if (accepted.indexOf("deshalb") !== -1 && tail && !verbFirstPattern.test(tail)) {
+        issues.push({ id:item.id, connector:"deshalb", issue:"deshalb requires inversion after the connector", prompt:item.prompt_de, accepted:accepted });
+      }
+      if (/denn\s+ich\s+krank\s+bin/i.test(full) || /weil\s+ich\s+bin\s+krank/i.test(full) || /deshalb\s+ich\s+\w+/i.test(full)) {
+        issues.push({ id:item.id, connector:"fullAnswer", issue:"fullAnswer word order contradiction", fullAnswer_de:item.fullAnswer_de });
+      }
+      if (accepted.indexOf("denn") !== -1 && /___\s+ich\s+krank\s+bin/i.test(String(item.prompt_de || ""))) {
+        issues.push({ id:item.id, connector:"denn", issue:"known regression: denn with verb-final 'ich krank bin'", prompt:item.prompt_de });
+      }
+      return issues;
+    }, []);
   }
   function recordB1Progress(item, outcome) {
     var store = safeGetB1Progress();
@@ -12600,8 +13037,9 @@ body.homeMode #settingsPanel {
       showHubPlaceholder(b1RoundTitle(mode));
       return;
     }
-    var queue = shuffleList(pool).map(cloneB1Item);
-    if (mode === "mixed" && queue.length > 12) queue = queue.slice(0, 12);
+    var roundLength = mode === "mixed" ? 12 : 10;
+    var round = buildB1Round({ deckKey:"b1_seed", filterKey:mode, items:pool, roundLength:roundLength });
+    var queue = round.queue;
     b1Runtime.active = true;
     b1Runtime.mode = mode;
     b1Runtime.title = b1RoundTitle(mode);
@@ -12613,6 +13051,9 @@ body.homeMode #settingsPanel {
     b1Runtime.practised = 0;
     b1Runtime.streak = 0;
     b1Runtime.connectorFamily = "";
+    b1Runtime.deckKey = "b1_seed";
+    b1Runtime.filterKey = mode;
+    b1Runtime.roundSeed = round.seed;
     state = "b1Checking";
     current = null;
     hintUsed = false;
@@ -12625,12 +13066,14 @@ body.homeMode #settingsPanel {
     if (el("homeScreen")) el("homeScreen").hidden = true;
     if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
     if (el("grammarHub")) el("grammarHub").hidden = true;
+    if (el("redemittelHub")) el("redemittelHub").hidden = true;
     if (el("startScreen")) el("startScreen").hidden = true;
     nextB1Question();
   }
   function startConnectorSprint(family) {
     family = family || "all";
-    var queue = buildConnectorQueue(family);
+    var round = buildConnectorQueue(family);
+    var queue = round.queue;
     if (!queue.length) {
       showGrammarHub();
       return;
@@ -12646,6 +13089,9 @@ body.homeMode #settingsPanel {
     b1Runtime.practised = 0;
     b1Runtime.streak = 0;
     b1Runtime.connectorFamily = family;
+    b1Runtime.deckKey = "connector";
+    b1Runtime.filterKey = family;
+    b1Runtime.roundSeed = round.seed;
     state = "b1Checking";
     current = null;
     hintUsed = false;
@@ -12658,6 +13104,46 @@ body.homeMode #settingsPanel {
     if (el("homeScreen")) el("homeScreen").hidden = true;
     if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
     if (el("grammarHub")) el("grammarHub").hidden = true;
+    if (el("redemittelHub")) el("redemittelHub").hidden = true;
+    if (el("startScreen")) el("startScreen").hidden = true;
+    nextB1Question();
+  }
+  function startRedemittelRound(filter) {
+    filter = filter || "mixed";
+    var pool = redemittelPoolFor(filter);
+    if (!pool.length) {
+      showRedemittelHub();
+      return;
+    }
+    var round = buildB1Round({ deckKey:"redemittel", filterKey:filter, items:pool, roundLength:10 });
+    var queue = round.queue;
+    b1Runtime.active = true;
+    b1Runtime.mode = "redemittel";
+    b1Runtime.title = redemittelTitle(filter);
+    b1Runtime.queue = queue;
+    b1Runtime.current = null;
+    b1Runtime.target = queue.length;
+    b1Runtime.correct = 0;
+    b1Runtime.wrong = 0;
+    b1Runtime.practised = 0;
+    b1Runtime.streak = 0;
+    b1Runtime.connectorFamily = "";
+    b1Runtime.deckKey = "redemittel";
+    b1Runtime.filterKey = filter;
+    b1Runtime.roundSeed = round.seed;
+    state = "b1Checking";
+    current = null;
+    hintUsed = false;
+    clearMobileClozeFocus();
+    document.body.classList.remove("b1TypedCloze");
+    setMenu(false);
+    setDevTools(false);
+    document.body.classList.add("b1Mode");
+    document.body.classList.remove("homeMode", "setupMode", "placeholderMode", "resultsMode");
+    if (el("homeScreen")) el("homeScreen").hidden = true;
+    if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
+    if (el("grammarHub")) el("grammarHub").hidden = true;
+    if (el("redemittelHub")) el("redemittelHub").hidden = true;
     if (el("startScreen")) el("startScreen").hidden = true;
     nextB1Question();
   }
@@ -12686,6 +13172,16 @@ body.homeMode #settingsPanel {
     var grid = el("connectorChoiceGrid");
     if (!grid) return;
     grid.innerHTML = "";
+    if (item.usefulPhrases && item.usefulPhrases.length) {
+      var phrases = document.createElement("ul");
+      phrases.className = "productionChecklist";
+      item.usefulPhrases.forEach(function(line){
+        var li = document.createElement("li");
+        li.textContent = line;
+        phrases.appendChild(li);
+      });
+      grid.appendChild(phrases);
+    }
     var checklist = document.createElement("ul");
     checklist.className = "productionChecklist";
     (item.productionChecklist || []).forEach(function(line){
@@ -12701,7 +13197,7 @@ body.homeMode #settingsPanel {
       var block = el("correctionBlock");
       block.className = "correctionBlock success visible";
       block.innerHTML = "<div class=\"correctionTarget\">Model</div>" +
-        "<div class=\"correctionPattern\">" + escapeHtml(item.fullAnswer_de || "") + "</div>";
+        "<div class=\"correctionPattern\">" + escapeHtml(item.modelAnswer_de || item.fullAnswer_de || "") + "</div>";
       model.disabled = true;
     }, false);
     var mark = document.createElement("button");
@@ -12781,14 +13277,19 @@ body.homeMode #settingsPanel {
     var item = b1Runtime.current;
     var block = el("correctionBlock");
     var stars = b1StarsHtml(b1StepFor(item));
+    var typedCloze = b1UsesInlineInput(item);
     block.className = "correctionBlock" + (isCorrect ? " success" : "");
-    if (isCorrect) {
+    if (isCorrect && typedCloze) {
+      block.innerHTML = "<div class=\"correctionTarget\" aria-label=\"Correct\">✓</div>" +
+        stars;
+    } else if (isCorrect) {
       block.innerHTML = "<div class=\"correctionTarget\" aria-label=\"Correct\">✓</div>" +
         "<div class=\"correctionPattern\">" + escapeHtml(item.fullAnswer_de || item.prompt_de || "") + "</div>" +
         stars;
     } else {
       block.innerHTML = "<div class=\"correctionTarget\">Correct answer: " + escapeHtml(item.answer || "") + "</div>" +
-        stars;
+        stars +
+        (item.microRule ? "<div class=\"microRule\">" + escapeHtml(item.microRule) + "</div>" : "");
     }
     block.classList.add("visible");
   }
@@ -12801,7 +13302,7 @@ body.homeMode #settingsPanel {
     var block = el("correctionBlock");
     block.className = "correctionBlock success visible";
     block.innerHTML = "<div class=\"correctionTarget\" aria-label=\"Practised\">✓</div>" +
-      "<div class=\"correctionPattern\">" + escapeHtml(b1Runtime.current.fullAnswer_de || "") + "</div>" +
+      "<div class=\"correctionPattern\">" + escapeHtml(b1Runtime.current.modelAnswer_de || b1Runtime.current.fullAnswer_de || "") + "</div>" +
       b1StarsHtml(b1StepFor(b1Runtime.current)) +
       "<div class=\"microRule\">" + escapeHtml(b1Runtime.current.microRule || "") + "</div>";
     var buttons = el("connectorChoiceGrid") ? el("connectorChoiceGrid").querySelectorAll("button") : [];
@@ -12907,7 +13408,7 @@ body.homeMode #settingsPanel {
     rp.classList.add("visible");
     var next = el("nextBtn");
     el("answerArea").insertBefore(rp, next);
-    next.textContent = b1Runtime.mode === "connector_sprint" ? "Grammar" : "Home";
+    next.textContent = b1Runtime.mode === "connector_sprint" ? "Grammar" : (b1Runtime.mode === "redemittel" ? "Redemittel" : "Home");
     next.classList.add("visible");
     renderHud();
   }
@@ -13011,10 +13512,35 @@ body.homeMode #settingsPanel {
     renderHud();
   }
   function newRound() { b1Runtime.active=false; hideStartScreen(); score=0; correct=0; wrong=0; streak=0; bestStreakRound=0; mistakeCounts={}; retryQueue=[]; sessionLog=[]; sessionMisses={}; sessionPromptCounts={}; currentWasRetry=false; currentShowMicroRule=false; state="checking"; hintUsed=false; lastKey=null; savePersistent(); pickQuestion(); }
-  function proceed() { if (state === "b1Next") nextB1Question(); else if (state === "b1Results") { if (b1Runtime.mode === "connector_sprint") showGrammarHub(); else showHomeScreen(); } else if (state === "next") pickQuestion(); else if (state === "results") showStartScreen(); }
+  function proceed() { if (state === "b1Next") nextB1Question(); else if (state === "b1Results") { if (b1Runtime.mode === "connector_sprint") showGrammarHub(); else if (b1Runtime.mode === "redemittel") showRedemittelHub(); else showHomeScreen(); } else if (state === "next") pickQuestion(); else if (state === "results") showStartScreen(); }
   function bind(id,event,fn){ var node=el(id); if (node) node.addEventListener(event,fn,false); }
-  function exportProgress(){ savePersistent(); var payload={app:"Ozmosis",version:"v0.32.2-mobile-cloze-overflow-and-input-layout-pass",exportedAt:new Date().toISOString(),sessionLog:sessionLog.slice(-80),data:safeGetObject(),leitner:safeGetLeitner(),b1:safeGetB1Progress()}; var blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"}); var url=URL.createObjectURL(blob); var a=document.createElement("a"); a.href=url; a.download="ozmosis-progress.json"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){ URL.revokeObjectURL(url); },250); }
+  function exportProgress(){ savePersistent(); var payload={app:"Ozmosis",version:"v0.33-redemittel-survival-set-and-b1-randomisation",exportedAt:new Date().toISOString(),sessionLog:sessionLog.slice(-80),data:safeGetObject(),leitner:safeGetLeitner(),b1:safeGetB1Progress()}; var blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"}); var url=URL.createObjectURL(blob); var a=document.createElement("a"); a.href=url; a.download="ozmosis-progress.json"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){ URL.revokeObjectURL(url); },250); }
   function importProgress(file){ if (!file) return; var reader=new FileReader(); reader.onload=function(){ try { var parsed=JSON.parse(String(reader.result || "{}")), data=parsed.data || parsed; safeSetObject(data); if (parsed.leitner && typeof parsed.leitner === "object") safeSetLeitner(parsed.leitner); if (parsed.b1 && typeof parsed.b1 === "object") safeSetB1Progress(parsed.b1); loadPersistent(); newRound(); } catch(e){ el("feedback").textContent="Import fehlgeschlagen: ungültige JSON-Datei."; el("feedback").className="feedback missed"; } }; reader.readAsText(file); }
+  document.addEventListener("click", function(event){
+    var target = event.target && event.target.closest ? event.target.closest("button") : null;
+    if (!target) return;
+    var actions = {
+      homeRedemittelBtn:function(){ showRedemittelHub(); },
+      redemittelBackBtn:function(){ showHomeScreen(); },
+      redemittelMixedBtn:function(){ startRedemittelRound("mixed"); },
+      redemittelFormalBtn:function(){ startRedemittelRound("formal_email"); },
+      redemittelAppointmentBtn:function(){ startRedemittelRound("appointment"); },
+      redemittelRequestBtn:function(){ startRedemittelRound("request"); },
+      redemittelComplaintBtn:function(){ startRedemittelRound("complaint"); },
+      redemittelApplicationBtn:function(){ startRedemittelRound("application"); },
+      redemittelIllnessBtn:function(){ startRedemittelRound("illness_absence"); },
+      redemittelPoliteBtn:function(){ startRedemittelRound("polite_requests"); },
+      redemittelProductionBtn:function(){ startRedemittelRound("production"); }
+    };
+    if (!actions[target.id]) return;
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+    actions[target.id]();
+  }, true);
+  document.addEventListener("keydown", function(event){
+    if ((event.key === "Escape" || event.key === "Esc") && state === "redemittelHub") showHomeScreen();
+  }, false);
 
   function fetchLeitnerJson(url) {
     return fetch(url, { cache:"no-store" }).then(function(response){
@@ -13454,7 +13980,8 @@ body.homeMode #settingsPanel {
     savePersistent();
     newRound();
   }
-  window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }; window.kasusNoArticle=function(){checkAnswer("none");}; window.kasusProceed=function(){proceed();}; window.kasusHint=function(){showHint();}; window.kasusNewRound=function(){showStartScreen();}; window.kasusStartRound=function(){startConfiguredRound();}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusSessionLog=function(){return sessionLog.slice();}; window.kasusCurrent=function(){return current ? cloneQuestion(current) : cloneB1Item(b1Runtime.current || {});}; window.kasusLeitnerDebug=function(){ return { storageKey:LEITNER_STORAGE_KEY, runtime:leitnerRuntime, progress:safeGetLeitner() }; }; window.ozmosisB1Debug=function(){ return { storageKey:B1_STORAGE_KEY, itemCount:B1_ITEMS.length, connectorCount:B1_CONNECTOR_ITEMS.length, runtime:b1Runtime, progress:safeGetB1Progress() }; }; window.ozmosisStartConnector=function(family){ startConnectorSprint(family || "all"); }; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusResetBest=function(){ highScore=0; bestStreakAll=0; savePersistent(); if (state === "results") showResults(); else renderHud(); }; window.kasusResetProfile=function(){ resetLearnerModel(); }; window.kasusToggleMenu=function(){ var panel=el("settingsPanel"); panel.classList.toggle("open"); document.body.classList.toggle("menuOpen", panel.classList.contains("open")); };
+  window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }; window.kasusNoArticle=function(){checkAnswer("none");}; window.kasusProceed=function(){proceed();}; window.kasusHint=function(){showHint();}; window.kasusNewRound=function(){showStartScreen();}; window.kasusStartRound=function(){startConfiguredRound();}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusSessionLog=function(){return sessionLog.slice();}; window.kasusCurrent=function(){return current ? cloneQuestion(current) : cloneB1Item(b1Runtime.current || {});}; window.kasusLeitnerDebug=function(){ return { storageKey:LEITNER_STORAGE_KEY, runtime:leitnerRuntime, progress:safeGetLeitner() }; }; window.ozmosisB1Debug=function(){ return { storageKey:B1_STORAGE_KEY, itemCount:B1_ITEMS.length, connectorCount:B1_CONNECTOR_ITEMS.length, redemittelCount:B1_REDEMITTEL_ITEMS.length, runtime:b1Runtime, progress:safeGetB1Progress() }; }; window.ozmosisStartConnector=function(family){ startConnectorSprint(family || "all"); }; window.ozmosisStartRedemittel=function(filter){ startRedemittelRound(filter || "mixed"); }; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusResetBest=function(){ highScore=0; bestStreakAll=0; savePersistent(); if (state === "results") showResults(); else renderHud(); }; window.kasusResetProfile=function(){ resetLearnerModel(); }; window.kasusToggleMenu=function(){ var panel=el("settingsPanel"); panel.classList.toggle("open"); document.body.classList.toggle("menuOpen", panel.classList.contains("open")); };
+  window.ozmosisContentAudit = function(){ return b1ConnectorWordOrderIssues(); };
   function setMenu(open) { el("settingsPanel").classList.toggle("open", open); document.body.classList.toggle("menuOpen", open); }
   function toggleMenu() { setMenu(!el("settingsPanel").classList.contains("open")); }
   function isMobileClozeViewport() {
@@ -13490,9 +14017,13 @@ body.homeMode #settingsPanel {
   function updateKeyboardOpenClass() {
     var vv = window.visualViewport;
     var visibleHeight = vv ? vv.height : window.innerHeight;
+    var viewportOffsetTop = vv ? vv.offsetTop : 0;
     var keyboardOffset = vv ? Math.max(0, window.innerHeight - vv.height - vv.offsetTop) : 0;
     document.documentElement.style.setProperty("--visibleViewportHeight", visibleHeight + "px");
+    document.documentElement.style.setProperty("--visualViewportOffsetTop", viewportOffsetTop + "px");
     document.documentElement.style.setProperty("--keyboardHeight", keyboardOffset + "px");
+    document.documentElement.style.setProperty("--keyboardInset", keyboardOffset + "px");
+    document.documentElement.style.setProperty("--safeBottom", keyboardOffset > 80 ? "72px" : "max(12px, env(safe-area-inset-bottom))");
     document.body.classList.toggle("keyboardOpen", keyboardOffset > 80);
   }
   function init(){ loadPersistent(); updateKeyboardOpenClass(); if (window.visualViewport) { window.visualViewport.addEventListener("resize", updateKeyboardOpenClass); window.visualViewport.addEventListener("scroll", updateKeyboardOpenClass); } bind("menuToggle","click",function(event){ event.stopPropagation(); toggleMenu();}); document.addEventListener("click",function(event){ if (!event.target.closest(".menuWrap")) setMenu(false);}); bind("taskType","change",function(){ if (shouldApplyLiveSettings()) newRound(); else savePersistent(); }); bind("articleType","change",function(){ if (shouldApplyLiveSettings()) newRound(); else savePersistent(); }); bind("includeGenitive","change",function(){ setCheckbox("genitiveTableMode", el("includeGenitive").value === "on"); syncHiddenGenitiveSelects(); if (shouldApplyLiveSettings()) newRound(); else savePersistent(); });

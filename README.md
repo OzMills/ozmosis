@@ -10,21 +10,19 @@ Build the fastest useful personal B1 test-prep tool.
 
 Current priority order:
 
-1. Stabilise the B1 Connector Sprint.
-2. Add Redemittel Sprint content.
-3. Add Wortschatz Sprint content.
-4. Improve Today's B1 Sprint composition.
-5. Add writing/speaking cards.
-6. Add weakness repair.
-7. Later: full Leitner, import tools, B2 expansion.
+1. Improve Today's B1 Sprint composition.
+2. Add Wortschatz Sprint content.
+3. Add writing/speaking cards.
+4. Add weakness repair.
+5. Later: full Leitner, import tools, B2 expansion.
 
 ## Current Known Version
 
-Current working version: `v0.32.2`
+Current working version: `v0.33`
 
-Next planned patch: `v0.33-redemittel-sprint-content`
+Next planned patch: `v0.34`
 
-Known v0.32 line state:
+Known v0.33 state:
 
 - Ozmosis landing/tool hub exists.
 - Lightweight B1 practice engine exists.
@@ -35,6 +33,8 @@ Known v0.32 line state:
 - Connector Sprint supports connector-choice, word-order cloze, error-repair, and production-card item types.
 - v0.32.1 stabilised Connector Sprint UX and item-status handling.
 - v0.32.2 improves mobile typed-cloze overflow, input sizing, and focus layout.
+- v0.32.3 fixes mobile typed-cloze keyboard-era clipping and connector word-order consistency.
+- v0.33 adds the first Redemittel Survival Set and seeded B1 round randomisation.
 - B1 progress persists under `ozmosis_b1_sprint_progress_v1`.
 - Existing Case Trainer, Options, Dev Tools, export/import, and localStorage compatibility are preserved.
 
