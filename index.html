@@ -6202,6 +6202,72 @@ body.b1Mode .clozeAnswerText.missed {
     });
   }
   const B1_REDEMITTEL_ITEMS = (window.OZMOSIS_CONTENT && Array.isArray(window.OZMOSIS_CONTENT.b1Redemittel)) ? window.OZMOSIS_CONTENT.b1Redemittel : [];
+  const B1_CONTENT_REGISTRY = {
+    core:{
+      key:"core",
+      label:"B1 Basics",
+      items:B1_ITEMS,
+      source:"index.html",
+      includeInDaily:true,
+      excludeProductionFromAutoGradedDaily:false
+    },
+    connectors:{
+      key:"connectors",
+      label:"Connector Sprint",
+      items:B1_CONNECTOR_ITEMS,
+      source:"content/b1-connectors.js",
+      includeInDaily:false,
+      excludeProductionFromAutoGradedDaily:false
+    },
+    redemittel:{
+      key:"redemittel",
+      label:"Redemittel",
+      items:B1_REDEMITTEL_ITEMS,
+      source:"content/b1-redemittel.js",
+      includeInDaily:true,
+      excludeProductionFromAutoGradedDaily:true
+    },
+    wortschatz:{
+      key:"wortschatz",
+      label:"Wortschatz",
+      items:B1_WORTSCHATZ_ITEMS,
+      sourceItems:B1_WORTSCHATZ_SOURCE_ITEMS,
+      source:"content/b1-wortschatz.js",
+      includeInDaily:true,
+      excludeProductionFromAutoGradedDaily:true
+    }
+  };
+  function b1RegistryBank(key) {
+    return B1_CONTENT_REGISTRY[String(key || "")] || null;
+  }
+  function b1RegistryBanks() {
+    return Object.keys(B1_CONTENT_REGISTRY).map(function(key){ return B1_CONTENT_REGISTRY[key]; });
+  }
+  function b1RegistryItems(key) {
+    var bank = b1RegistryBank(key);
+    return bank && Array.isArray(bank.items) ? bank.items : [];
+  }
+  function b1RegistryPracticeItems() {
+    return b1RegistryBanks().reduce(function(out, bank){
+      return out.concat(Array.isArray(bank.items) ? bank.items : []);
+    }, []);
+  }
+  function b1RegistrySummary() {
+    return b1RegistryBanks().map(function(bank){
+      var items = Array.isArray(bank.items) ? bank.items : [];
+      var sourceItems = Array.isArray(bank.sourceItems) ? bank.sourceItems : null;
+      return {
+        key:bank.key,
+        label:bank.label,
+        source:bank.source,
+        includeInDaily:!!bank.includeInDaily,
+        excludeProductionFromAutoGradedDaily:!!bank.excludeProductionFromAutoGradedDaily,
+        itemCount:items.length,
+        sourceItemCount:sourceItems ? sourceItems.length : null,
+        productionCount:items.filter(function(item){ return item && item.itemType === "production_card"; }).length
+      };
+    });
+  }
   var genders = [
     { key: "Maskulinum", short: "M", en: "masculine" },
     { key: "Neutrum", short: "N", en: "neuter" },
@@ -7468,7 +7534,7 @@ body.b1Mode .clozeAnswerText.missed {
     return d.getFullYear() + "-" + month + "-" + day;
   }
   function b1ItemById(id) {
-    var pool = B1_ITEMS.concat(B1_CONNECTOR_ITEMS, B1_REDEMITTEL_ITEMS, B1_WORTSCHATZ_ITEMS);
+    var pool = b1RegistryPracticeItems();
     for (var i = 0; i < pool.length; i += 1) {
       if (pool[i] && pool[i].id === id) return pool[i];
     }
@@ -8513,6 +8579,16 @@ body.b1Mode .clozeAnswerText.missed {
   function b1ItemIsNormalEligible(item) {
     return item && (item.status === "active" || item.status === "recognition");
   }
+  function b1RegistryDailyEligibleItems() {
+    return b1RegistryBanks().reduce(function(out, bank){
+      if (!bank.includeInDaily) return out;
+      var items = Array.isArray(bank.items) ? bank.items : [];
+      if (bank.excludeProductionFromAutoGradedDaily) {
+        items = items.filter(function(item){ return item && item.itemType !== "production_card"; });
+      }
+      return out.concat(items.filter(b1ItemIsNormalEligible));
+    }, []);
+  }
   function b1ItemFamily(item) {
     return String((item && item.variantFamilyId) || (item && item.id) || "unknown");
   }
@@ -8646,10 +8722,10 @@ body.b1Mode .clozeAnswerText.missed {
     return "Today’s B1 Sprint";
   }
   function b1PoolFor(mode) {
-    var active = B1_ITEMS.filter(b1ItemIsNormalEligible);
-    var redemittel = B1_REDEMITTEL_ITEMS.filter(function(item){ return b1ItemIsNormalEligible(item) && item.itemType !== "production_card"; });
-    var wortschatz = B1_WORTSCHATZ_ITEMS.filter(function(item){ return b1ItemIsNormalEligible(item) && item.itemType !== "production_card"; });
-    if (mode === "mixed") return active.concat(redemittel, wortschatz);
+    var active = b1RegistryItems("core").filter(b1ItemIsNormalEligible);
+    var redemittel = b1RegistryItems("redemittel").filter(function(item){ return b1ItemIsNormalEligible(item) && item.itemType !== "production_card"; });
+    var wortschatz = b1RegistryItems("wortschatz").filter(function(item){ return b1ItemIsNormalEligible(item) && item.itemType !== "production_card"; });
+    if (mode === "mixed") return b1RegistryDailyEligibleItems();
     if (mode === "redemittel_cloze") return redemittel;
     if (mode === "vocab_cloze") return wortschatz;
     return active.filter(function(item){ return item.itemType === mode; });
@@ -8678,7 +8754,7 @@ body.b1Mode .clozeAnswerText.missed {
   }
   function wortschatzPoolFor(filter) {
     filter = filter || "mixed";
-    return B1_WORTSCHATZ_ITEMS.filter(function(item){
+    return b1RegistryItems("wortschatz").filter(function(item){
       if (!b1ItemIsNormalEligible(item)) return false;
       if (filter === "production") return item.itemType === "production_card";
       if (item.itemType === "production_card") return false;
@@ -8698,7 +8774,7 @@ body.b1Mode .clozeAnswerText.missed {
   }
   function redemittelPoolFor(filter) {
     filter = filter || "mixed";
-    return B1_REDEMITTEL_ITEMS.filter(function(item){
+    return b1RegistryItems("redemittel").filter(function(item){
       if (!b1ItemIsNormalEligible(item)) return false;
       if (filter === "production") return item.itemType === "production_card";
       if (item.itemType === "production_card") return false;
@@ -8708,7 +8784,7 @@ body.b1Mode .clozeAnswerText.missed {
   }
   function b1ConnectorPoolFor(family) {
     var allowed = ["connector_choice", "word_order_cloze", "error_repair", "production_card"];
-    return B1_CONNECTOR_ITEMS.filter(function(item){
+    return b1RegistryItems("connectors").filter(function(item){
       if (!b1ItemIsNormalEligible(item) || allowed.indexOf(item.itemType) === -1) return false;
       if (family === "all") return true;
       if (family === "repair") return connectorFamilyFor(item) === "repair";
@@ -8816,7 +8892,7 @@ body.b1Mode .clozeAnswerText.missed {
       var idx = prompt.indexOf("___");
       return idx === -1 ? "" : prompt.slice(idx + 3).trim();
     }
-    return B1_ITEMS.concat(B1_CONNECTOR_ITEMS).reduce(function(issues, item){
+    return b1RegistryItems("core").concat(b1RegistryItems("connectors")).reduce(function(issues, item){
       if (!item || item.status === "retired") return issues;
       var accepted = acceptedFor(item);
       var tail = continuationFor(item);
@@ -10036,7 +10112,7 @@ body.b1Mode .clozeAnswerText.missed {
     savePersistent();
     newRound();
   }
-  window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }; window.kasusNoArticle=function(){checkAnswer("none");}; window.kasusProceed=function(){proceed();}; window.kasusHint=function(){showHint();}; window.kasusNewRound=function(){showStartScreen();}; window.kasusStartRound=function(){startConfiguredRound();}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusSessionLog=function(){return sessionLog.slice();}; window.kasusCurrent=function(){return current ? cloneQuestion(current) : cloneB1Item(b1Runtime.current || {});}; window.kasusLeitnerDebug=function(){ return { storageKey:LEITNER_STORAGE_KEY, runtime:leitnerRuntime, progress:safeGetLeitner() }; }; window.ozmosisB1Debug=function(){ return { storageKey:B1_STORAGE_KEY, itemCount:B1_ITEMS.length, connectorCount:B1_CONNECTOR_ITEMS.length, redemittelCount:B1_REDEMITTEL_ITEMS.length, wortschatzCount:B1_WORTSCHATZ_ITEMS.length, runtime:b1Runtime, progress:safeGetB1Progress() }; }; window.ozmosisStartConnector=function(family){ startConnectorSprint(family || "all"); }; window.ozmosisStartRedemittel=function(filter){ startRedemittelRound(filter || "mixed"); }; window.ozmosisStartWortschatz=function(filter){ startWortschatzRound(filter || "mixed"); }; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusResetBest=function(){ highScore=0; bestStreakAll=0; savePersistent(); if (state === "results") showResults(); else renderHud(); }; window.kasusResetProfile=function(){ resetLearnerModel(); }; window.kasusToggleMenu=function(){ var panel=el("settingsPanel"); panel.classList.toggle("open"); document.body.classList.toggle("menuOpen", panel.classList.contains("open")); };
+  window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }; window.kasusNoArticle=function(){checkAnswer("none");}; window.kasusProceed=function(){proceed();}; window.kasusHint=function(){showHint();}; window.kasusNewRound=function(){showStartScreen();}; window.kasusStartRound=function(){startConfiguredRound();}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusSessionLog=function(){return sessionLog.slice();}; window.kasusCurrent=function(){return current ? cloneQuestion(current) : cloneB1Item(b1Runtime.current || {});}; window.kasusLeitnerDebug=function(){ return { storageKey:LEITNER_STORAGE_KEY, runtime:leitnerRuntime, progress:safeGetLeitner() }; }; window.ozmosisB1Debug=function(){ return { storageKey:B1_STORAGE_KEY, itemCount:B1_ITEMS.length, connectorCount:B1_CONNECTOR_ITEMS.length, redemittelCount:B1_REDEMITTEL_ITEMS.length, wortschatzCount:B1_WORTSCHATZ_ITEMS.length, registry:b1RegistrySummary(), runtime:b1Runtime, progress:safeGetB1Progress() }; }; window.ozmosisStartConnector=function(family){ startConnectorSprint(family || "all"); }; window.ozmosisStartRedemittel=function(filter){ startRedemittelRound(filter || "mixed"); }; window.ozmosisStartWortschatz=function(filter){ startWortschatzRound(filter || "mixed"); }; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusResetBest=function(){ highScore=0; bestStreakAll=0; savePersistent(); if (state === "results") showResults(); else renderHud(); }; window.kasusResetProfile=function(){ resetLearnerModel(); }; window.kasusToggleMenu=function(){ var panel=el("settingsPanel"); panel.classList.toggle("open"); document.body.classList.toggle("menuOpen", panel.classList.contains("open")); };
   window.ozmosisContentAudit = function(){ return b1ConnectorWordOrderIssues(); };
   function mountSettingsPanel() {
     var panel = el("settingsPanel");

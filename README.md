@@ -17,9 +17,9 @@ Current priority order:
 
 ## Current Known Version
 
-Current working version: `v0.37`
+Current working version: `v0.38`
 
-Next planned patch: `v0.38`
+Next planned patch: `v0.39`
 
 Known current state:
 
@@ -43,6 +43,7 @@ Known current state:
 - v0.35 extracts the B1 Connector Sprint item bank into `content/b1-connectors.js` while preserving static GitHub Pages compatibility.
 - v0.36 extracts the B1 Redemittel item bank into `content/b1-redemittel.js`.
 - v0.37 extracts the B1 Wortschatz source bank into `content/b1-wortschatz.js` while preserving the v0.34 schema mapping in `index.html`.
+- v0.38 adds a central B1 content registry for the existing core, Connector, Redemittel, and Wortschatz banks without changing learner-facing behaviour.
 - B1 progress persists under `ozmosis_b1_sprint_progress_v1`.
 - Existing Case Trainer, Options, Dev Tools, export/import, and localStorage compatibility are preserved.
 

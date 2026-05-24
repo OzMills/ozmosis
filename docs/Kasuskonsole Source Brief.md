@@ -47,11 +47,10 @@ The current repo files must confirm implementation state.
 
 Current expected repo/package state:
 
-- Current version: **v0.37 — Static B1 Bank Extraction Complete**.
-- Next planned patch: **v0.38 — B1 Content Registry Normalisation**.
-- Next planned QA/content pass after that: **v0.39 — Static Content QA Pass**.
+- Current version: **v0.38 — B1 Content Registry Normalisation**.
+- Next planned patch: **v0.39 — Static Content QA Pass**.
 
-v0.37 should include:
+v0.38 should include:
 
 - Ozmosis landing/tool hub.
 - Today’s B1 Sprint.
@@ -64,6 +63,7 @@ v0.37 should include:
 - Classic static script loading for extracted B1 banks.
 - `window.OZMOSIS_CONTENT` as the current static bank namespace.
 - `B1_CONNECTOR_ITEMS`, `B1_REDEMITTEL_ITEMS`, and `B1_WORTSCHATZ_ITEMS` still available to the app at runtime through the extracted banks.
+- A central B1 content registry for the existing core, Connector, Redemittel, and Wortschatz banks.
 - `index.html` as the main deployed app entry file.
 - Production-card support.
 - Teach me support.
@@ -76,7 +76,7 @@ v0.37 should include:
 - `content/ozmosis_b1_connector_sprint_v1_bank.json`.
 - `content/ozmosis_b1_wortschatz_survival_set_v1.json`.
 
-Historical note: **v0.34** introduced/integrated the 150-item B1 Wortschatz Survival Set. It is no longer the current expected state after the static bank extraction pass.
+Historical note: **v0.34** introduced/integrated the 150-item B1 Wortschatz Survival Set. **v0.35-v0.37** extracted the static B1 banks. They are no longer the current expected state after v0.38 registry normalisation.
 
 Important: this brief describes the expected state for orientation. Always verify the current repo files before acting.
 
@@ -399,13 +399,13 @@ Near-term structural sequence:
 - **v0.37 — Wortschatz Bank Static JS Extraction** — complete.
   - Moved existing Wortschatz bank/source bank from `index.html` to `content/b1-wortschatz.js`.
 
-- **v0.38 — B1 Content Registry Normalisation** — next planned patch.
-  - Create one stable internal registration/loading pattern for extracted B1 banks.
+- **v0.38 — B1 Content Registry Normalisation** — complete.
+  - Created one stable internal registration/loading pattern for extracted B1 banks.
 
-- **v0.39 — Static Content QA Pass**
+- **v0.39 — Static Content QA Pass** — next planned patch.
   - Verify counts, IDs, item types, statuses, UTF-8, and route availability.
 
-Do not bundle v0.38 or v0.39 into source-brief cleanup or other documentation-only passes.
+Do not bundle v0.39 into source-brief cleanup or other documentation-only passes.
 
 ---
 
@@ -579,4 +579,4 @@ window.OZMOSIS_CONTENT.b1Redemittel = [...]
 window.OZMOSIS_CONTENT.b1Wortschatz = [...]
 ```
 
-The next structural step is v0.38 registry normalisation. Do not start v0.38 from a source-brief cleanup task.
+The next structural step is v0.39 static content QA. Do not start v0.39 from a source-brief cleanup task.
