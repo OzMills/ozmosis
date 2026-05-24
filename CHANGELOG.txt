@@ -1,3 +1,10 @@
+## v0.39 - Static Content QA Pass
+
+- Added `docs/qa/v0.39_static_content_qa.md` covering the current core, Connector, Redemittel, and Wortschatz banks.
+- Verified bank inventory, counts, item IDs, item types, statuses, production-card treatment, registry metadata, Daily Sprint inclusion policy, UTF-8/mojibake risk, route availability, persistence, export/import availability, responsive smoke, and Arabic/German directionality where tooling allowed.
+- Preserved existing app behaviour, item content, item IDs, item statuses, scoring, routing, feedback, Teach me, FIFO/simple retry, production-card handling, Case Trainer, Options, Dev Tools, export/import, and localStorage compatibility.
+- Added no new content, backend, framework, build step, fetch, module loading, dependencies, package manager, runtime AI generation, analytics, accounts, external calls, or UI redesign.
+
 ## v0.38 - B1 Content Registry Normalisation
 
 - Added a central B1 content registry for the existing core, Connector, Redemittel, and Wortschatz banks.

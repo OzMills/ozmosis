@@ -47,10 +47,10 @@ The current repo files must confirm implementation state.
 
 Current expected repo/package state:
 
-- Current version: **v0.38 — B1 Content Registry Normalisation**.
-- Next planned patch: **v0.39 — Static Content QA Pass**.
+- Current version: **v0.39 — Static Content QA Pass**.
+- Next planned patch: **v0.40 — Content Usefulness Planning**.
 
-v0.38 should include:
+v0.39 should include:
 
 - Ozmosis landing/tool hub.
 - Today’s B1 Sprint.
@@ -75,8 +75,9 @@ v0.38 should include:
 - Export/import compatibility preserved.
 - `content/ozmosis_b1_connector_sprint_v1_bank.json`.
 - `content/ozmosis_b1_wortschatz_survival_set_v1.json`.
+- `docs/qa/v0.39_static_content_qa.md`.
 
-Historical note: **v0.34** introduced/integrated the 150-item B1 Wortschatz Survival Set. **v0.35-v0.37** extracted the static B1 banks. They are no longer the current expected state after v0.38 registry normalisation.
+Historical note: **v0.34** introduced/integrated the 150-item B1 Wortschatz Survival Set. **v0.35-v0.37** extracted the static B1 banks. **v0.38** added the central B1 registry. They are no longer the current expected state after v0.39 static content QA.
 
 Important: this brief describes the expected state for orientation. Always verify the current repo files before acting.
 
@@ -402,10 +403,13 @@ Near-term structural sequence:
 - **v0.38 — B1 Content Registry Normalisation** — complete.
   - Created one stable internal registration/loading pattern for extracted B1 banks.
 
-- **v0.39 — Static Content QA Pass** — next planned patch.
-  - Verify counts, IDs, item types, statuses, UTF-8, and route availability.
+- **v0.39 — Static Content QA Pass** — complete.
+  - Verified counts, IDs, item types, statuses, UTF-8, route availability, persistence, export/import availability, responsive smoke, and Arabic/German directionality where tooling allowed.
 
-Do not bundle v0.39 into source-brief cleanup or other documentation-only passes.
+- **v0.40 — Content Usefulness Planning** — next planned patch.
+  - Plan the next B1 content usefulness step without changing the static app architecture.
+
+Do not bundle v0.40 into source-brief cleanup or other documentation-only passes.
 
 ---
 
@@ -457,6 +461,8 @@ Use pre-1.0 version naming:
 - `v0.37`
 - `v0.37.1`
 - `v0.38`
+- `v0.39`
+- `v0.40`
 
 Do not use old `v30`, `v31`, `v32` as the active naming style except when referring to historical builds.
 
@@ -579,4 +585,4 @@ window.OZMOSIS_CONTENT.b1Redemittel = [...]
 window.OZMOSIS_CONTENT.b1Wortschatz = [...]
 ```
 
-The next structural step is v0.39 static content QA. Do not start v0.39 from a source-brief cleanup task.
+The next structural step is v0.40 content usefulness planning. Do not start v0.40 from a source-brief cleanup task.
