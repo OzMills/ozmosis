@@ -45,26 +45,26 @@ The current repo files must confirm implementation state.
 
 ## Current expected version state
 
-Current expected state before the next extraction pass:
+Current expected repo/package state:
 
-- Current version: **v0.34 — Wortschatz Survival Set Integration**.
-- Next planned structural work:
-  - **v0.35 — Connector Bank Static JS Extraction**.
-  - **v0.36 — Redemittel Bank Static JS Extraction**.
-  - **v0.37 — Wortschatz Bank Static JS Extraction**.
-  - **v0.38 — B1 Content Registry Normalisation**.
-  - **v0.39 — Static Content QA Pass**.
+- Current version: **v0.37 — Static B1 Bank Extraction Complete**.
+- Next planned patch: **v0.38 — B1 Content Registry Normalisation**.
+- Next planned QA/content pass after that: **v0.39 — Static Content QA Pass**.
 
-v0.34 should include:
+v0.37 should include:
 
 - Ozmosis landing/tool hub.
 - Today’s B1 Sprint.
 - B1 Connector Sprint.
 - Redemittel practice.
 - 150-item B1 Wortschatz Survival Set.
-- `B1_CONNECTOR_ITEMS`.
-- `B1_REDEMITTEL_ITEMS`.
-- `B1_WORTSCHATZ_ITEMS`.
+- `content/b1-connectors.js`.
+- `content/b1-redemittel.js`.
+- `content/b1-wortschatz.js`.
+- Classic static script loading for extracted B1 banks.
+- `window.OZMOSIS_CONTENT` as the current static bank namespace.
+- `B1_CONNECTOR_ITEMS`, `B1_REDEMITTEL_ITEMS`, and `B1_WORTSCHATZ_ITEMS` still available to the app at runtime through the extracted banks.
+- `index.html` as the main deployed app entry file.
 - Production-card support.
 - Teach me support.
 - FIFO/simple retry behaviour.
@@ -76,7 +76,9 @@ v0.34 should include:
 - `content/ozmosis_b1_connector_sprint_v1_bank.json`.
 - `content/ozmosis_b1_wortschatz_survival_set_v1.json`.
 
-Important: this brief describes the expected state. Always verify the current repo files before acting.
+Historical note: **v0.34** introduced/integrated the 150-item B1 Wortschatz Survival Set. It is no longer the current expected state after the static bank extraction pass.
+
+Important: this brief describes the expected state for orientation. Always verify the current repo files before acting.
 
 ---
 
@@ -388,23 +390,22 @@ Watch for:
 
 Near-term structural sequence:
 
-- **v0.35 — Connector Bank Static JS Extraction**
-  - Move existing connector bank from `index.html` to `content/b1-connectors.js`.
+- **v0.35 — Connector Bank Static JS Extraction** — complete.
+  - Moved existing connector bank from `index.html` to `content/b1-connectors.js`.
 
-- **v0.36 — Redemittel Bank Static JS Extraction**
-  - Move existing Redemittel bank from `index.html` to `content/b1-redemittel.js`.
+- **v0.36 — Redemittel Bank Static JS Extraction** — complete.
+  - Moved existing Redemittel bank from `index.html` to `content/b1-redemittel.js`.
 
-- **v0.37 — Wortschatz Bank Static JS Extraction**
-  - Move existing Wortschatz bank/source bank from `index.html` to `content/b1-wortschatz.js`.
+- **v0.37 — Wortschatz Bank Static JS Extraction** — complete.
+  - Moved existing Wortschatz bank/source bank from `index.html` to `content/b1-wortschatz.js`.
 
-- **v0.38 — B1 Content Registry Normalisation**
+- **v0.38 — B1 Content Registry Normalisation** — next planned patch.
   - Create one stable internal registration/loading pattern for extracted B1 banks.
-  - Do not do this during v0.35–v0.37 unless explicitly requested.
 
 - **v0.39 — Static Content QA Pass**
   - Verify counts, IDs, item types, statuses, UTF-8, and route availability.
 
-Do not bundle v0.38 or v0.39 into the v0.35–v0.37 extraction pass.
+Do not bundle v0.38 or v0.39 into source-brief cleanup or other documentation-only passes.
 
 ---
 
@@ -452,7 +453,10 @@ Use pre-1.0 version naming:
 - `v0.33`
 - `v0.34`
 - `v0.35`
-- `v0.35.1`
+- `v0.36`
+- `v0.37`
+- `v0.37.1`
+- `v0.38`
 
 Do not use old `v30`, `v31`, `v32` as the active naming style except when referring to historical builds.
 
@@ -552,22 +556,27 @@ Responsive checks should cover:
 
 Do not imply live GitHub Pages was tested unless it was actually tested.
 
+Old screenshots under `test-results/v0.33-redemittel/` are historical only. They are not v0.37 validation unless a current test report explicitly says they were regenerated and inspected for v0.37.
+
 ---
 
 ## Static content-bank extraction rules
 
-For v0.35–v0.37:
+For v0.35–v0.37, the static bank extraction targets are complete in the current expected state:
 
-Allowed target files:
+Current extracted bank files:
 
 - `content/b1-connectors.js`;
 - `content/b1-redemittel.js`;
 - `content/b1-wortschatz.js`.
 
-Preferred namespace:
+Current namespace:
 
 ```js
 window.OZMOSIS_CONTENT = window.OZMOSIS_CONTENT || {};
 window.OZMOSIS_CONTENT.b1Connectors = [...]
 window.OZMOSIS_CONTENT.b1Redemittel = [...]
 window.OZMOSIS_CONTENT.b1Wortschatz = [...]
+```
+
+The next structural step is v0.38 registry normalisation. Do not start v0.38 from a source-brief cleanup task.

@@ -17,11 +17,11 @@ Current priority order:
 
 ## Current Known Version
 
-Current working version: `v0.35`
+Current working version: `v0.37`
 
-Next planned patch: `v0.36`
+Next planned patch: `v0.38`
 
-Known v0.33 state:
+Known current state:
 
 - Ozmosis landing/tool hub exists.
 - Lightweight B1 practice engine exists.
@@ -41,6 +41,8 @@ Known v0.33 state:
 - v0.33.5 adds a real resumable 12-item daily sprint queue, FIFO retry for failed/assisted items, visible translation support, Teach me scaffolding, and clearer star/feedback behaviour.
 - v0.34 integrates the 150-item B1 Wortschatz Survival Set while preserving daily sprint, Teach me, FIFO retry, Redemittel, Connector Sprint, and Case Trainer behaviour.
 - v0.35 extracts the B1 Connector Sprint item bank into `content/b1-connectors.js` while preserving static GitHub Pages compatibility.
+- v0.36 extracts the B1 Redemittel item bank into `content/b1-redemittel.js`.
+- v0.37 extracts the B1 Wortschatz source bank into `content/b1-wortschatz.js` while preserving the v0.34 schema mapping in `index.html`.
 - B1 progress persists under `ozmosis_b1_sprint_progress_v1`.
 - Existing Case Trainer, Options, Dev Tools, export/import, and localStorage compatibility are preserved.
 
@@ -77,7 +79,11 @@ Recommended clean repo structure:
 ├─ AGENTS.md
 ├─ .gitignore
 ├─ content/
-│  └─ ozmosis_b1_connector_sprint_v1_bank.json
+│  ├─ b1-connectors.js
+│  ├─ b1-redemittel.js
+│  ├─ b1-wortschatz.js
+│  ├─ ozmosis_b1_connector_sprint_v1_bank.json
+│  └─ ozmosis_b1_wortschatz_survival_set_v1.json
 └─ docs/
    ├─ Kasuskonsole Source Brief.md
    ├─ OZMOSIS_B1_Test_Sprint_Pivot_Production_Plan.md

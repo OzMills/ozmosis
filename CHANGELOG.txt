@@ -1,3 +1,24 @@
+## v0.37.1 - Source Brief Current-State Cleanup
+
+- Updated `docs/Kasuskonsole Source Brief.md` to reflect v0.37 as the current extracted-bank state and v0.38 as the next planned patch.
+- Clarified that old v0.34 extraction-prep wording is historical, not current.
+- Clarified that old v0.33 screenshots are historical and not v0.37 validation.
+- Made no app-code, content-bank, routing, storage, UX, or behaviour changes.
+
+## v0.37 - Wortschatz Bank Static JS Extraction
+
+- Moved the existing B1 Wortschatz source bank from `index.html` into `content/b1-wortschatz.js`.
+- Loaded the Wortschatz bank through a classic static script and `window.OZMOSIS_CONTENT` namespace.
+- Preserved the v0.34 Wortschatz schema mapping, typed cloze, phrase choice, error repair, production-card rendering, Today's B1 Sprint inclusion rules, Connector Sprint, Redemittel, Case Trainer, Options, Dev Tools, and localStorage compatibility.
+- Added no backend, framework, build step, fetch, module loading, dependencies, package manager, or runtime external calls.
+
+## v0.36 - Redemittel Bank Static JS Extraction
+
+- Moved the existing B1 Redemittel item bank from `index.html` into `content/b1-redemittel.js`.
+- Loaded the Redemittel bank through a classic static script and `window.OZMOSIS_CONTENT` namespace.
+- Preserved Redemittel behaviour, Today's B1 Sprint inclusion, item IDs, item statuses, scoring, routing, feedback, production-card rendering, Connector Sprint, Wortschatz, Case Trainer, Options, Dev Tools, and localStorage compatibility.
+- Added no backend, framework, build step, fetch, module loading, dependencies, package manager, or runtime external calls.
+
 ## v0.35 - Connector Bank Static JS Extraction
 
 - Moved the existing B1 Connector Sprint item bank from `index.html` into `content/b1-connectors.js`.
