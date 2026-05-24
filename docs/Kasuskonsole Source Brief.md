@@ -47,10 +47,10 @@ The current repo files must confirm implementation state.
 
 Current expected repo/package state:
 
-- Current version: **v0.39 — Static Content QA Pass**.
+- Current version: **v0.39.1 — Export Metadata / Deployment Readiness Cleanup**.
 - Next planned patch: **v0.40 — Content Usefulness Planning**.
 
-v0.39 should include:
+v0.39.1 should include:
 
 - Ozmosis landing/tool hub.
 - Today’s B1 Sprint.
@@ -76,8 +76,9 @@ v0.39 should include:
 - `content/ozmosis_b1_connector_sprint_v1_bank.json`.
 - `content/ozmosis_b1_wortschatz_survival_set_v1.json`.
 - `docs/qa/v0.39_static_content_qa.md`.
+- Current progress-export metadata that no longer identifies new exports as v0.34.
 
-Historical note: **v0.34** introduced/integrated the 150-item B1 Wortschatz Survival Set. **v0.35-v0.37** extracted the static B1 banks. **v0.38** added the central B1 registry. They are no longer the current expected state after v0.39 static content QA.
+Historical note: **v0.34** introduced/integrated the 150-item B1 Wortschatz Survival Set. **v0.35-v0.37** extracted the static B1 banks. **v0.38** added the central B1 registry. **v0.39** added static content QA. They are no longer the current expected state after v0.39.1 export metadata cleanup.
 
 Important: this brief describes the expected state for orientation. Always verify the current repo files before acting.
 
@@ -406,6 +407,9 @@ Near-term structural sequence:
 - **v0.39 — Static Content QA Pass** — complete.
   - Verified counts, IDs, item types, statuses, UTF-8, route availability, persistence, export/import availability, responsive smoke, and Arabic/German directionality where tooling allowed.
 
+- **v0.39.1 — Export Metadata / Deployment Readiness Cleanup** — complete.
+  - Updated stale progress-export metadata without changing import compatibility or learner-facing behaviour.
+
 - **v0.40 — Content Usefulness Planning** — next planned patch.
   - Plan the next B1 content usefulness step without changing the static app architecture.
 
@@ -462,6 +466,7 @@ Use pre-1.0 version naming:
 - `v0.37.1`
 - `v0.38`
 - `v0.39`
+- `v0.39.1`
 - `v0.40`
 
 Do not use old `v30`, `v31`, `v32` as the active naming style except when referring to historical builds.

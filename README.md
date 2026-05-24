@@ -17,7 +17,7 @@ Current priority order:
 
 ## Current Known Version
 
-Current working version: `v0.39`
+Current working version: `v0.39.1`
 
 Next planned patch: `v0.40`
 
@@ -45,6 +45,7 @@ Known current state:
 - v0.37 extracts the B1 Wortschatz source bank into `content/b1-wortschatz.js` while preserving the v0.34 schema mapping in `index.html`.
 - v0.38 adds a central B1 content registry for the existing core, Connector, Redemittel, and Wortschatz banks without changing learner-facing behaviour.
 - v0.39 adds a static content QA report for the existing B1 banks, registry metadata, Daily Sprint inclusion policy, UTF-8 safety, route smoke, persistence, export/import, responsive checks, and Arabic/German directionality.
+- v0.39.1 updates stale progress-export metadata while preserving import compatibility and app behaviour.
 - B1 progress persists under `ozmosis_b1_sprint_progress_v1`.
 - Existing Case Trainer, Options, Dev Tools, export/import, and localStorage compatibility are preserved.
 

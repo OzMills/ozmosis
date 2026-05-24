@@ -1,3 +1,10 @@
+## v0.39.1 - Export Metadata / Deployment Readiness Cleanup
+
+- Updated stale export metadata so new progress exports no longer identify as `v0.34-wortschatz-survival-set-integration`.
+- Preserved import compatibility, localStorage compatibility, B1 registry behaviour, Today's B1 Sprint behaviour, route behaviour, item content, item IDs, item statuses, scoring, feedback, production-card handling, Case Trainer, Options, Dev Tools, and extracted static content banks.
+- Left the Today's B1 Sprint connector-inclusion policy unchanged for the planned v0.40 content usefulness decision.
+- Added no new content, backend, framework, build step, fetch, module loading, dependencies, package manager, runtime AI generation, analytics, accounts, external calls, or UI redesign.
+
 ## v0.39 - Static Content QA Pass
 
 - Added `docs/qa/v0.39_static_content_qa.md` covering the current core, Connector, Redemittel, and Wortschatz banks.
