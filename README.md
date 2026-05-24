@@ -11,16 +11,15 @@ Build the fastest useful personal B1 test-prep tool.
 Current priority order:
 
 1. Improve Today's B1 Sprint composition.
-2. Add Wortschatz Sprint content.
-3. Add writing/speaking cards.
-4. Add weakness repair.
-5. Later: full Leitner, import tools, B2 expansion.
+2. Add writing/speaking cards.
+3. Add weakness repair.
+4. Later: full Leitner, import tools, B2 expansion.
 
 ## Current Known Version
 
-Current working version: `v0.33.5`
+Current working version: `v0.35`
 
-Next planned patch: `v0.34`
+Next planned patch: `v0.36`
 
 Known v0.33 state:
 
@@ -40,6 +39,8 @@ Known v0.33 state:
 - v0.33.3 repairs practice-flow UX, choice-submit consistency, translation reveal, HUD progress labelling, and honest extra-practice star behaviour.
 - v0.33.4 completes the blocked v0.33.3 QA gate and clarifies homepage hero copy so it does not imply resumable daily-round queues.
 - v0.33.5 adds a real resumable 12-item daily sprint queue, FIFO retry for failed/assisted items, visible translation support, Teach me scaffolding, and clearer star/feedback behaviour.
+- v0.34 integrates the 150-item B1 Wortschatz Survival Set while preserving daily sprint, Teach me, FIFO retry, Redemittel, Connector Sprint, and Case Trainer behaviour.
+- v0.35 extracts the B1 Connector Sprint item bank into `content/b1-connectors.js` while preserving static GitHub Pages compatibility.
 - B1 progress persists under `ozmosis_b1_sprint_progress_v1`.
 - Existing Case Trainer, Options, Dev Tools, export/import, and localStorage compatibility are preserved.
 

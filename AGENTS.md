@@ -6,9 +6,9 @@ Ozmosis is a static, dependency-free German learning app deployed through GitHub
 
 Ozmosis was formerly called Kasuskonsole. Historical notes may still use that name, but current user-facing and repo-facing language should use `Ozmosis`.
 
-Current working version: `v0.33.5`
+Current working version: `v0.35`
 
-Next planned patch: `v0.34`
+Next planned patch: `v0.36`
 
 Use pre-1.0 version naming from now on: `v0.30`, `v0.31`, `v0.32`, `v0.32.1`, `v0.33`, and later.
 
@@ -45,6 +45,7 @@ Preserve the current product identity:
 - B1 landing/tool hub;
 - B1 practice engine;
 - B1 Connector Sprint;
+- B1 Wortschatz Survival Set;
 - existing Case Trainer with table drills, cloze/gap drills, mixed practice, DER/EIN/KEIN, Nominativ/Akkusativ/Dativ, optional Genitiv, adaptive retry, progress persistence, export/import, results/heatmap, and multilingual support;
 - Options and Dev Tools unless the task explicitly changes them.
 

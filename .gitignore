@@ -1,0 +1,17 @@
+*.zip
+screenshots/
+test-results/
+playwright-report/
+_development-files/
+Kasuskonsole Versions/
+repo-all-files.txt
+dirlist.txt
+*.bak
+*.tmp
+node_modules/
+dist/
+build/
+__chrome_profile*/
+__edge_profile*/
+__*_test*.html
+__*_script.js

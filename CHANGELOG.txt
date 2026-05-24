@@ -1,3 +1,19 @@
+## v0.35 - Connector Bank Static JS Extraction
+
+- Moved the existing B1 Connector Sprint item bank from `index.html` into `content/b1-connectors.js`.
+- Loaded the connector bank through a classic static script and `window.OZMOSIS_CONTENT` namespace.
+- Preserved Connector Sprint behaviour, Today's B1 Sprint inclusion, item IDs, item statuses, scoring, routing, feedback, Teach me, FIFO retry, Redemittel, Wortschatz, Case Trainer, Options, Dev Tools, and localStorage compatibility.
+- Preserved the v0.34 Wortschatz schema mapping and embedded Wortschatz/Redemittel banks.
+- Added no backend, framework, build step, fetch, module loading, dependencies, package manager, or runtime external calls.
+
+## v0.34 - Wortschatz Survival Set Integration
+
+- Integrated the 150-item B1 Wortschatz Survival Set into the Ozmosis B1 practice engine.
+- Added real mixed Wortschatz practice using typed cloze, phrase choice, error repair, and production-card content where supported.
+- Added non-production Wortschatz items to Today's B1 Sprint selection.
+- Preserved dailySprintV1, Teach me scaffolding, FIFO retry, FORTSCHRITT HUD, visible English support, Connector Sprint, Redemittel, Case Trainer, Options, Dev Tools, and localStorage compatibility.
+- Preserved the source JSON bank under `content/ozmosis_b1_wortschatz_survival_set_v1.json`.
+
 ## v0.33.5 - Daily Sprint Queue and Teach Me Pass
 
 - Restored visible translation/support text in B1 practice and removed the reveal/hide translation control for now.
