@@ -1,8 +1,8 @@
-# Ozmosis Development Roadmap v0.42.1
+# Ozmosis Development Roadmap v0.42.3
 
 Status: current planning roadmap
-Current known development position: v0.42.1 completed
-Next planned patch: v0.42.2 - Deferred Findings Recovery / Policy Decisions
+Current known development position: v0.42.3 completed
+Next planned patch: v0.42.4 - Debug Stamp + State Snapshot Export
 
 This roadmap is planning guidance only. Current repo files, `index.html`, `README.md`, `CHANGELOG.txt`, `AGENTS.md`, and the versioned source brief remain higher-trust sources for implementation state. Do not implement future items early.
 
@@ -43,6 +43,8 @@ This roadmap is planning guidance only. Current repo files, `index.html`, `READM
 - v0.41 audited B1 skill tags and metadata coverage.
 - v0.42 added a non-visual B1 Learning Map data scaffold.
 - v0.42.1 added an optional B1 Diagnostic Sprint that records diagnostic evidence into the existing progress evidence and Learning Map scaffold.
+- v0.42.2 recovered the diagnostic flow, added clearer exit/result/import/export feedback, improved repair feedback clarity, and documented deferred connector, production-card, distractor, support, and contrast-feedback decisions.
+- v0.42.3 repaired support fields for existing Connector, Redemittel, and selected high-yield Wortschatz production cards while keeping production self-marked and no more visible than before.
 
 ## Current B1 Direction
 
@@ -56,9 +58,9 @@ The B1 spine should remain evidence-first:
 
 ## Near-Term Roadmap
 
-### v0.42.2 - Deferred Findings Recovery / Policy Decisions
+### v0.42.4 - Debug Stamp + State Snapshot Export
 
-Goal: decide and document the deferred policy and deployment findings that should not be folded into the diagnostic patch.
+Goal: add lightweight failure-reporting instrumentation before learner-facing Learning Map work.
 
 Scope constraints:
 
@@ -66,19 +68,24 @@ Scope constraints:
 - no Skill Matrix UI;
 - no weakness repair;
 - no new content banks;
-- decide, but do not silently change, connector inclusion for Today's B1 Sprint;
-- decide, but do not silently rewrite, production-card useful phrase gaps;
-- record live deployment status;
-- record manual iPhone Safari status if available;
+- do not change connector inclusion for Today's B1 Sprint;
+- do not make production cards a new primary route;
+- do not change production-card support content unless a regression is found;
+- preserve diagnostic/evidence/confidence/export/import behavior;
 - no B2 content.
 
-Decision topics:
+Instrumentation topics:
 
-- whether connector items should remain outside Today's B1 Sprint or be added in a later explicit behaviour patch;
-- whether production-card useful phrase gaps require a metadata/content repair pass;
-- whether diagnostic evidence is clean enough for v0.43 Learning Map UI preparation;
-- whether live GitHub Pages is aligned with the repository;
-- whether real iPhone Safari keyboard testing has been completed.
+- current route/mode/debug stamp;
+- app version, export version, storage key names, registry counts, and evidence counts;
+- optional state snapshot export for QA reports;
+- no sensitive user data beyond existing local progress export semantics.
+
+Deferred decisions already recorded in v0.42.2:
+
+- Connector items should remain outside Today's B1 Sprint until diagnostic/Learning Map targeting can add them intentionally.
+- Production cards should not become more visible until usefulPhrases/checklists are repaired.
+- Politeness distractor quality, English support visibility, `obwohl`/`trotzdem` contrast feedback, and ChatGPT/tutor-review handoff require separate patches.
 
 ### v0.43 - Learning Map UI Preparation
 

@@ -124,16 +124,18 @@
       "polite_request"
     ],
     "useful_phrases": [
-      "Könnten wir den Termin verschieben?",
+      "Könnten wir den Termin bitte verschieben?",
       "Leider kann ich an diesem Tag nicht.",
-      "Hätten Sie einen anderen Termin frei?"
+      "Hätten Sie einen anderen Termin frei?",
+      "Am ... hätte ich Zeit.",
+      "Vielen Dank für Ihr Verständnis."
     ],
     "checklist": [
       "Polite request",
       "Mentions Termin",
       "Clear reason or alternative"
     ],
-    "model_answer": "Könnten wir den Termin bitte verschieben? Leider kann ich an diesem Tag nicht."
+    "model_answer": "Könnten wir den Termin bitte verschieben? Leider kann ich an diesem Tag nicht. Am Montag hätte ich Zeit."
   },
   {
     "id": "b1_vocab_bestaetigung_001",
@@ -398,16 +400,18 @@
       "polite_request"
     ],
     "useful_phrases": [
-      "Mir fehlen noch ...",
-      "Könnten Sie mir ... schicken?",
-      "die Unterlagen"
+      "Mir fehlen noch die Unterlagen.",
+      "Könnten Sie mir die Unterlagen bitte schicken?",
+      "Welche Unterlagen brauche ich noch?",
+      "Ich reiche die Unterlagen nach.",
+      "Vielen Dank für Ihre Hilfe."
     ],
     "checklist": [
       "Polite request",
       "Mentions missing documents",
       "Clear action requested"
     ],
-    "model_answer": "Mir fehlen noch die Unterlagen. Könnten Sie mir diese bitte schicken?"
+    "model_answer": "Mir fehlen noch einige Unterlagen. Könnten Sie mir bitte sagen, welche Unterlagen ich noch brauche?"
   },
   {
     "id": "b1_vocab_formular_001",
@@ -669,8 +673,10 @@
       "delivery"
     ],
     "useful_phrases": [
-      "Ich möchte mich über ... beschweren.",
-      "Die Lieferung ist verspätet.",
+      "Ich möchte mich über die Lieferung beschweren.",
+      "Die Lieferung ist leider verspätet.",
+      "Ich warte seit ... auf die Lieferung.",
+      "Könnten Sie das bitte prüfen?",
       "Ich bitte um eine schnelle Lösung."
     ],
     "checklist": [
@@ -678,7 +684,7 @@
       "Problem described",
       "Requests solution"
     ],
-    "model_answer": "Ich möchte mich über die verspätete Lieferung beschweren. Ich bitte um eine schnelle Lösung."
+    "model_answer": "Ich möchte mich über die verspätete Lieferung beschweren. Könnten Sie das bitte prüfen und mir eine Lösung anbieten?"
   },
   {
     "id": "b1_vocab_lieferung_001",
@@ -806,8 +812,10 @@
       "problem"
     ],
     "useful_phrases": [
-      "Die Lieferung ist noch nicht angekommen.",
-      "Könnten Sie bitte prüfen, ...?",
+      "Die Lieferung ist leider noch nicht angekommen.",
+      "Können Sie bitte den Status prüfen?",
+      "Ich warte seit ... auf die Lieferung.",
+      "Können Sie mir sagen, wann sie kommt?",
       "Vielen Dank für Ihre Hilfe."
     ],
     "checklist": [
@@ -815,7 +823,7 @@
       "Polite request",
       "Clear reference to delivery"
     ],
-    "model_answer": "Die Lieferung ist leider noch nicht angekommen. Könnten Sie bitte prüfen, wo sie ist?"
+    "model_answer": "Die Lieferung ist leider noch nicht angekommen. Können Sie bitte prüfen, wann sie kommt?"
   },
   {
     "id": "b1_vocab_bestellung_001",
@@ -942,7 +950,9 @@
     ],
     "useful_phrases": [
       "Ich habe die falsche Bestellung erhalten.",
+      "Das ist leider nicht meine Bestellung.",
       "Könnten Sie das bitte prüfen?",
+      "Können Sie mir die richtige Bestellung schicken?",
       "Vielen Dank im Voraus."
     ],
     "checklist": [
@@ -950,7 +960,7 @@
       "Polite request",
       "Formal enough for email"
     ],
-    "model_answer": "Ich habe leider die falsche Bestellung erhalten. Könnten Sie das bitte prüfen?"
+    "model_answer": "Ich habe leider die falsche Bestellung erhalten. Könnten Sie das bitte prüfen und mir die richtige Bestellung schicken?"
   },
   {
     "id": "b1_vocab_rechnung_001",
@@ -1212,16 +1222,18 @@
       "help_request"
     ],
     "useful_phrases": [
-      "Das Gerät funktioniert nicht.",
+      "Das Gerät funktioniert leider nicht.",
+      "Ich habe ein Problem mit dem Gerät.",
+      "Es lässt sich nicht einschalten.",
       "Könnten Sie mir bitte helfen?",
-      "Ich habe ein Problem mit dem Gerät."
+      "Können Sie das Gerät bitte prüfen?"
     ],
     "checklist": [
       "States the technical problem",
       "Asks for help",
       "Polite request"
     ],
-    "model_answer": "Das Gerät funktioniert leider nicht. Könnten Sie mir bitte helfen?"
+    "model_answer": "Das Gerät funktioniert leider nicht. Es lässt sich nicht einschalten. Könnten Sie mir bitte helfen?"
   },
   {
     "id": "b1_vocab_rueckmeldung_001",
@@ -1621,15 +1633,17 @@
     ],
     "useful_phrases": [
       "Ich bin leider krank.",
+      "Ich kann heute nicht kommen.",
       "Ich schicke Ihnen die Krankmeldung morgen.",
-      "Vielen Dank für Ihr Verständnis."
+      "Vielen Dank für Ihr Verständnis.",
+      "Mit freundlichen Grüßen"
     ],
     "checklist": [
       "Says you are ill",
       "Mentions Krankmeldung",
       "Polite closing"
     ],
-    "model_answer": "Sehr geehrte Damen und Herren, ich bin leider krank. Ich schicke Ihnen die Krankmeldung morgen. Vielen Dank für Ihr Verständnis."
+    "model_answer": "Guten Morgen, ich bin leider krank und kann heute nicht kommen. Ich schicke Ihnen die Krankmeldung morgen. Vielen Dank für Ihr Verständnis."
   },
   {
     "id": "b1_vocab_arzttermin_001",
@@ -1893,16 +1907,18 @@
       "polite_request"
     ],
     "useful_phrases": [
-      "Ich brauche Informationen ...",
-      "von meiner Krankenkasse",
-      "Könnten Sie mir bitte ... schicken?"
+      "Ich brauche Informationen von meiner Krankenkasse.",
+      "Ich habe eine Frage zu meinem Beitrag.",
+      "Könnten Sie mir bitte Informationen schicken?",
+      "Können Sie mir das bitte erklären?",
+      "Vielen Dank für Ihre Hilfe."
     ],
     "checklist": [
       "Mentions Krankenkasse",
       "Asks for information",
       "Polite form"
     ],
-    "model_answer": "Ich brauche Informationen von meiner Krankenkasse. Könnten Sie mir diese bitte schicken?"
+    "model_answer": "Ich brauche Informationen von meiner Krankenkasse. Könnten Sie mir bitte erklären, welche Unterlagen ich brauche?"
   },
   {
     "id": "b1_vocab_versicherung_001",
@@ -2030,7 +2046,9 @@
     ],
     "useful_phrases": [
       "Übernimmt die Versicherung die Kosten?",
-      "Könnten Sie mir bitte sagen, ob ...?",
+      "Ich möchte wissen, ob ...",
+      "Können Sie mir bitte sagen, ob ...?",
+      "die Kosten übernehmen",
       "Vielen Dank im Voraus."
     ],
     "checklist": [
@@ -2843,9 +2861,11 @@
       "email"
     ],
     "useful_phrases": [
-      "Im Anhang finden Sie ...",
-      "meine Bewerbung",
-      "meine Unterlagen"
+      "Im Anhang finden Sie meine Bewerbung.",
+      "Im Anhang finden Sie meine Unterlagen.",
+      "Ich bewerbe mich um die Stelle.",
+      "Bei Fragen melden Sie sich gern.",
+      "Mit freundlichen Grüßen"
     ],
     "checklist": [
       "Mentions attachment",
@@ -3249,16 +3269,18 @@
       "email"
     ],
     "useful_phrases": [
-      "Ich bestätige den Termin ...",
-      "für das Vorstellungsgespräch",
-      "Vielen Dank für die Einladung."
+      "Vielen Dank für die Einladung.",
+      "Ich bestätige den Termin.",
+      "Der Termin für das Vorstellungsgespräch passt mir.",
+      "Ich freue mich auf das Gespräch.",
+      "Mit freundlichen Grüßen"
     ],
     "checklist": [
       "Mentions confirmation",
       "Mentions interview",
       "Polite tone"
     ],
-    "model_answer": "Vielen Dank für die Einladung. Ich bestätige den Termin für das Vorstellungsgespräch."
+    "model_answer": "Vielen Dank für die Einladung. Ich bestätige den Termin für das Vorstellungsgespräch und freue mich auf das Gespräch."
   },
   {
     "id": "b1_vocab_erfahrung_001",
@@ -3522,9 +3544,11 @@
       "course"
     ],
     "useful_phrases": [
-      "Ich verstehe die Aufgabe nicht.",
-      "Könnten Sie ... erklären?",
-      "noch einmal"
+      "Ich verstehe die Aufgabe leider nicht.",
+      "Könnten Sie die Aufgabe bitte erklären?",
+      "Können Sie das bitte noch einmal sagen?",
+      "Was soll ich genau machen?",
+      "Vielen Dank für Ihre Hilfe."
     ],
     "checklist": [
       "Says you do not understand",
@@ -3658,15 +3682,17 @@
     ],
     "useful_phrases": [
       "Können wir die Besprechung verschieben?",
-      "Wäre es möglich, ...?",
-      "auf morgen"
+      "Wäre es möglich, die Besprechung zu verschieben?",
+      "Passt Ihnen morgen?",
+      "Ich hätte am ... Zeit.",
+      "Vielen Dank für Ihr Verständnis."
     ],
     "checklist": [
       "Mentions Besprechung",
       "Requests rescheduling",
       "Polite enough"
     ],
-    "model_answer": "Wäre es möglich, die Besprechung auf morgen zu verschieben?"
+    "model_answer": "Wäre es möglich, die Besprechung auf morgen zu verschieben? Ich hätte am Nachmittag Zeit."
   },
   {
     "id": "b1_vocab_anmeldung_001",
@@ -3931,8 +3957,10 @@
     ],
     "useful_phrases": [
       "Ich habe meine Zugangsdaten noch nicht bekommen.",
-      "Könnten Sie mir diese bitte schicken?",
-      "Vielen Dank."
+      "Ich kann mich nicht einloggen.",
+      "Könnten Sie mir die Zugangsdaten bitte schicken?",
+      "Können Sie das bitte prüfen?",
+      "Vielen Dank für Ihre Hilfe."
     ],
     "checklist": [
       "Mentions missing login details",
@@ -4066,14 +4094,16 @@
     ],
     "useful_phrases": [
       "Ich bekomme eine Fehlermeldung.",
-      "wenn ich mich einlogge",
-      "Könnten Sie mir bitte helfen?"
+      "Die Fehlermeldung erscheint, wenn ich mich einlogge.",
+      "Ich kann das Programm nicht öffnen.",
+      "Könnten Sie mir bitte helfen?",
+      "Können Sie das bitte prüfen?"
     ],
     "checklist": [
       "Mentions error message",
       "Mentions when it happens",
       "Asks for help"
     ],
-    "model_answer": "Ich bekomme eine Fehlermeldung, wenn ich mich einlogge. Könnten Sie mir bitte helfen?"
+    "model_answer": "Ich bekomme eine Fehlermeldung, wenn ich mich einlogge. Könnten Sie das bitte prüfen?"
   }
 ]

@@ -17,9 +17,9 @@ Current priority order:
 
 ## Current Known Version
 
-Current working version: `v0.42.1`
+Current working version: `v0.42.3`
 
-Next planned patch: `v0.42.2`
+Next planned patch: `v0.42.4`
 
 Known current state:
 
@@ -51,6 +51,8 @@ Known current state:
 - v0.41 audits B1 skill tag and progress metadata coverage for future Learning Map, Skill Matrix, weakness repair, transfer testing, and interleaving work.
 - v0.42 adds versioned planning docs and a non-visual B1 Learning Map data scaffold for conservative evidence aggregation.
 - v0.42.1 adds an optional 18-item B1 Diagnostic Sprint that records diagnostic attempt evidence into the existing B1 evidence model.
+- v0.42.2 improves diagnostic explanation/exit/result framing, scroll/layout recovery, export/import status feedback, and repair-feedback clarity while documenting deferred connector, production-card, distractor, support, and contrast-feedback decisions.
+- v0.42.3 repairs useful phrases, self-check checklists, and model answers for existing production cards while keeping production cards self-marked and no more visible than before.
 - B1 progress persists under `ozmosis_b1_sprint_progress_v1`.
 - B1 progress evidence persists under `ozmosis_b1_progress_evidence_v1`.
 - Existing Case Trainer, Options, Dev Tools, export/import, and localStorage compatibility are preserved.

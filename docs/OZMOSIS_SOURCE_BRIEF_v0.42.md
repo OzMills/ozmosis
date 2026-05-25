@@ -1,10 +1,10 @@
-# OZMOSIS SOURCE BRIEF v0.42.1
+# OZMOSIS SOURCE BRIEF v0.42.3
 
 Version: Working Source Brief Update  
 Status: Current planning brief  
 Project: Ozmosis - Deutsch Lernen App  
-Current known development position: v0.42.1 completed  
-Next planned patch: v0.42.2 - Deferred Findings Recovery / Policy Decisions  
+Current known development position: v0.42.3 completed  
+Next planned patch: v0.42.4 - Debug Stamp + State Snapshot Export  
 
 Versioning rule:
 
@@ -705,8 +705,8 @@ You often choose accusative forms in location sentences.
 Current known development state:
 
 ```txt
-v0.42.1 completed
-Next planned patch: v0.42.2 - Deferred Findings Recovery / Policy Decisions
+v0.42.3 completed
+Next planned patch: v0.42.4 - Debug Stamp + State Snapshot Export
 ```
 
 The next work should not be a broad rewrite.
@@ -1419,7 +1419,7 @@ Do not assume v1.0 at any arbitrary milestone.
 
 # 21. IMMEDIATE NEXT STEP
 
-The next appropriate step is v0.42.2.
+The next appropriate step is v0.42.4.
 
 v0.40 added the first Progress Evidence Model and v0.40.1 added lightweight confidence/guess capture on top of that evidence model.
 
@@ -1429,31 +1429,33 @@ v0.42 added the non-visual Learning Map data scaffold without adding a learner-f
 
 v0.42.1 added the optional 18-item B1 Diagnostic Sprint using existing B1 banks and the existing progress evidence model. Diagnostic results are framed as a starting snapshot, not a test score, and diagnostic evidence feeds the internal Learning Map scaffold without exposing a learner-facing map.
 
-Safe v0.42.2 scope:
+v0.42.2 improved the diagnostic explanation, exit path, result framing, scroll/layout recovery, export/import feedback, and repair-feedback clarity. It also documented deferred decisions: connectors should not enter Today's B1 Sprint until diagnostic/Learning Map targeting can handle them intentionally, and production cards should not become more visible until usefulPhrases/checklists are repaired.
+
+v0.42.3 repaired production-card usefulPhrases/checklists/model answers for the existing Connector, Redemittel, and selected high-yield Wortschatz production cards. Production remains self-marked, conservative practice evidence only; no production route visibility, auto-grading, QR handoff, or Learning Map UI was added.
+
+Safe v0.42.4 scope:
 
 ```txt
-Review deferred findings from the v0.39-v0.42.1 QA passes.
-Decide connector inclusion policy for Today's B1 Sprint.
-Decide whether production-card usefulPhrases/content gaps need a repair pass.
-Record current live GitHub Pages deployment status.
-Record manual iPhone Safari keyboard testing status.
-Decide whether diagnostic evidence is clean enough before v0.43 Learning Map UI work.
-Avoid changing practice behaviour until those policy decisions are explicit.
+Add a small debug stamp and state snapshot export for better failure reports.
+Keep export/import compatibility intact.
+Do not change Today's B1 Sprint connector inclusion.
+Do not make production cards more visible.
+Do not build the learner-facing Learning Map UI yet.
+Preserve diagnostic, evidence, confidence, route, scoring, and content-bank behaviour.
 ```
 
-Suggested v0.42.2 Codex task summary:
+Suggested v0.42.4 Codex task summary:
 
 ```txt
-Review and document deferred v0.39-v0.42.1 findings for Ozmosis.
+Add lightweight debug-state reporting for Ozmosis QA and user bug reports.
 
 Do not build the learner-facing Learning Map UI yet.
 Do not introduce B2 content.
 Do not change the app architecture.
 Do not add backend, framework, build step, or external API dependency.
 
-Decide whether Connector items should remain outside Today's B1 Sprint.
-Decide whether production-card content gaps require repair before v0.43.
-Record live deployment and manual iOS Safari status.
+Do not change Today's B1 Sprint composition.
+Do not make production cards more prominent.
 Preserve all current functionality unless a change is explicitly requested.
 ```
 

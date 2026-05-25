@@ -1,3 +1,24 @@
+## v0.42.3 - Production Card UsefulPhrases / Checklist Repair
+
+- Repaired support fields for existing B1 production cards, focusing on Connector production cards plus selected Redemittel and high-yield Wortschatz production cards.
+- Added or improved useful phrases, production checklists, and model answers while keeping production cards self-marked.
+- Preserved production-card evidence as conservative practice evidence only; no automatic right/wrong grading or scoring changes were added.
+- Kept connector items outside Today's B1 Sprint and did not make production cards more visible.
+- Preserved Today's B1 Sprint composition, B1 registry policy, routes, scoring, item IDs, item statuses, item types, confidence tracking, diagnostic flow, Case Trainer, Options, Dev Tools, export/import compatibility, localStorage compatibility, and extracted static content banks.
+- Added no Learning Map UI, Skill Matrix UI, B2 content, Leitner, weakness repair, durability scheduling, QR/ChatGPT handoff, backend, framework, build step, fetch, module loading, dependencies, package manager, runtime AI generation, analytics, accounts, external calls, or broad redesign.
+
+## v0.42.2 - Diagnostic Flow Recovery + Deferred Findings Decisions
+
+- Improved the B1 Diagnostic Sprint explanation and result framing so the diagnostic is clearer as an evidence snapshot rather than a pass/fail test.
+- Added an `Exit diagnostic` control and clarified that retakes add evidence rather than resetting earlier snapshots.
+- Fixed or investigated reported scroll, focus, HUD/footer, and post-import/export layout issues, including making the bottom HUD opaque over practice content.
+- Added clearer export/import success/failure feedback with progress/evidence counts.
+- Investigated the reported long-answer submission issue; long multi-word answers ending in `mich` submit through both button and Enter paths in local validation.
+- Improved repair feedback clarity for the reported `Der Untersuchung dauert lange.` capitalisation case.
+- Documented deferred product decisions for connector inclusion in Today's B1 Sprint, production-card usefulPhrases/checklists, politeness distractor quality, English support visibility, connector contrast feedback, and future ChatGPT/tutor-review handoff.
+- Preserved Today's B1 Sprint composition, B1 registry policy, routes, scoring, item content, item IDs, item statuses, confidence tracking, production-card handling, Case Trainer, Options, Dev Tools, export/import compatibility, localStorage compatibility, and extracted static content banks.
+- Added no Learning Map UI, Skill Matrix UI, B2 content, Leitner, weakness repair, durability scheduling, connector Daily Sprint inclusion, backend, framework, build step, fetch, module loading, dependencies, package manager, runtime AI generation, analytics, accounts, external calls, or broad redesign.
+
 ## v0.42.1 - B1 Diagnostic Entry Sprint
 
 - Added an optional B1 Diagnostic Sprint route that creates a short 18-item starting snapshot across cases/articles, prepositions, word order, connectors, Redemittel, Wortschatz, repair, and production-readiness using existing B1 banks.

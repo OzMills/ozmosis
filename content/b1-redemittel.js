@@ -2534,16 +2534,19 @@
     ],
     "status": "active",
     "usefulPhrases": [
-      "Könnten wir den Termin verschieben?",
       "Der Termin passt mir leider nicht.",
-      "Hätten Sie vielleicht einen anderen Termin?"
+      "Könnten wir den Termin bitte verschieben?",
+      "Hätten Sie vielleicht einen anderen Termin frei?",
+      "Am ... könnte ich.",
+      "Vielen Dank für Ihr Verständnis."
     ],
     "productionChecklist": [
-      "Say why the appointment does not work.",
-      "Ask for a new appointment politely.",
-      "Use Sie-form."
+      "Name the appointment or date.",
+      "Say politely that the appointment does not work.",
+      "Ask for a new appointment.",
+      "Offer an alternative time if possible."
     ],
-    "modelAnswer_de": "Der Termin am Freitag passt mir leider nicht. Könnten wir den Termin verschieben? Hätten Sie vielleicht einen anderen Termin?"
+    "modelAnswer_de": "Guten Tag, der Termin am Freitag passt mir leider nicht. Könnten wir den Termin bitte verschieben? Am Montag könnte ich."
   },
   {
     "id": "b1_redemittel_085",
@@ -2574,16 +2577,19 @@
     ],
     "status": "active",
     "usefulPhrases": [
+      "Sehr geehrte Frau ...,",
       "Vielen Dank für Ihre Nachricht.",
       "Ich freue mich auf Ihre Antwort.",
+      "Vielen Dank im Voraus.",
       "Mit freundlichen Grüßen"
     ],
     "productionChecklist": [
       "Use a formal greeting or closing.",
       "Thank the person.",
-      "Keep it short."
+      "Add one clear sentence about the message or reply.",
+      "End with an appropriate closing phrase."
     ],
-    "modelAnswer_de": "Vielen Dank für Ihre Nachricht. Ich freue mich auf Ihre Antwort. Mit freundlichen Grüßen"
+    "modelAnswer_de": "Sehr geehrte Frau Müller, vielen Dank für Ihre Nachricht. Ich freue mich auf Ihre Antwort. Mit freundlichen Grüßen"
   },
   {
     "id": "b1_redemittel_086",
@@ -2616,14 +2622,17 @@
     "usefulPhrases": [
       "Ich muss mich leider krank melden.",
       "Ich bin krank und kann heute nicht kommen.",
-      "Ich kann erst morgen wieder kommen."
+      "Voraussichtlich komme ich morgen wieder.",
+      "Die Krankmeldung reiche ich nach.",
+      "Vielen Dank für Ihr Verständnis."
     ],
     "productionChecklist": [
       "Say you are sick.",
-      "Say you cannot come.",
-      "Give a return time if possible."
+      "Say that you cannot come today.",
+      "Give a return time if possible.",
+      "Mention a sick note only if relevant."
     ],
-    "modelAnswer_de": "Guten Morgen, ich muss mich leider krank melden. Ich bin krank und kann heute nicht kommen. Ich kann erst morgen wieder kommen."
+    "modelAnswer_de": "Guten Morgen, ich muss mich leider krank melden. Ich bin krank und kann heute nicht zur Arbeit kommen. Voraussichtlich komme ich morgen wieder."
   },
   {
     "id": "b1_redemittel_087",
@@ -2656,14 +2665,17 @@
     "usefulPhrases": [
       "Leider gibt es ein Problem mit der Lieferung.",
       "Die Lieferung ist noch nicht angekommen.",
+      "Die Bestellung ist beschädigt angekommen.",
+      "Könnten Sie das bitte prüfen?",
       "Ich bitte Sie um eine schnelle Lösung."
     ],
     "productionChecklist": [
-      "State the problem.",
-      "Stay polite.",
-      "Ask for a solution."
+      "State the delivery problem clearly.",
+      "Stay polite and factual.",
+      "Ask for checking or a solution.",
+      "Mention order/delivery details if needed."
     ],
-    "modelAnswer_de": "Leider gibt es ein Problem mit der Lieferung. Die Lieferung ist noch nicht angekommen. Ich bitte Sie um eine schnelle Lösung."
+    "modelAnswer_de": "Leider gibt es ein Problem mit der Lieferung. Die Lieferung ist noch nicht angekommen. Könnten Sie das bitte prüfen?"
   },
   {
     "id": "b1_redemittel_088",
@@ -2695,15 +2707,18 @@
     "status": "active",
     "usefulPhrases": [
       "Hiermit bewerbe ich mich um die Stelle.",
-      "Ich interessiere mich für die Ausbildung.",
+      "Ich interessiere mich sehr für die Arbeit.",
+      "Ich habe Erfahrung im Büro / Verkauf.",
+      "Im Anhang finden Sie meine Unterlagen.",
       "Über eine Einladung zum Gespräch würde ich mich freuen."
     ],
     "productionChecklist": [
       "Say what you apply for.",
-      "Say why or show interest.",
-      "Use a polite closing if possible."
+      "Show interest or one relevant strength.",
+      "Mention attachment only if appropriate.",
+      "Use a polite final sentence."
     ],
-    "modelAnswer_de": "Hiermit bewerbe ich mich um die Stelle. Ich interessiere mich für die Ausbildung und würde gern bei Ihnen arbeiten."
+    "modelAnswer_de": "Hiermit bewerbe ich mich um die Stelle. Ich interessiere mich sehr für die Arbeit und würde mich über eine Einladung zum Gespräch freuen."
   },
   {
     "id": "b1_redemittel_089",
@@ -2735,15 +2750,18 @@
     "status": "active",
     "usefulPhrases": [
       "Könnten Sie mir bitte helfen?",
-      "Ich brauche Hilfe bei dem Formular.",
-      "Ich hätte gern mehr Informationen."
+      "Ich habe ein Problem mit ...",
+      "Ich verstehe die Aufgabe leider nicht.",
+      "Wäre es möglich, dass Sie mir das erklären?",
+      "Vielen Dank für Ihre Hilfe."
     ],
     "productionChecklist": [
-      "Use Könnten Sie bitte ...",
+      "Ask politely for help.",
       "Name the problem.",
-      "Keep it polite."
+      "Use Sie-form if formal.",
+      "Keep the request short and clear."
     ],
-    "modelAnswer_de": "Könnten Sie mir bitte helfen? Ich brauche Hilfe bei dem Formular. Ich hätte gern mehr Informationen."
+    "modelAnswer_de": "Könnten Sie mir bitte helfen? Ich habe ein Problem mit dem Formular und verstehe eine Frage nicht."
   },
   {
     "id": "b1_redemittel_090",
@@ -2776,13 +2794,16 @@
     "status": "active",
     "usefulPhrases": [
       "Ich möchte mich erkundigen, ob ...",
-      "Dürfte ich kurz etwas fragen?",
-      "Könnten Sie mir bitte weitere Informationen schicken?"
+      "Ich habe eine Frage zu ...",
+      "Könnten Sie mir bitte mitteilen, ...?",
+      "Können Sie mir weitere Informationen schicken?",
+      "Vielen Dank im Voraus."
     ],
     "productionChecklist": [
       "Use a polite opener.",
       "Ask one clear question.",
-      "Use Sie-form."
+      "Use Sie-form.",
+      "Say what information you need."
     ],
     "modelAnswer_de": "Ich möchte mich erkundigen, ob der Kurs noch frei ist. Könnten Sie mir bitte weitere Informationen schicken?"
   }
