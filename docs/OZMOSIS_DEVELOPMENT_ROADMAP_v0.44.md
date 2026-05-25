@@ -1,8 +1,8 @@
-# Ozmosis Development Roadmap v0.43
+# Ozmosis Development Roadmap v0.44
 
 Status: current planning roadmap
-Current known development position: v0.43 completed
-Next planned patch: v0.44 - Skill Matrix Data Model
+Current known development position: v0.44 completed
+Next planned patch: v0.45 - Next Recommended Practice v1
 
 This roadmap is planning guidance only. Current repo files, `index.html`, `README.md`, `CHANGELOG.txt`, `AGENTS.md`, and the versioned source brief remain higher-trust sources for implementation state. Do not implement future items early.
 
@@ -10,7 +10,7 @@ This roadmap is planning guidance only. Current repo files, `index.html`, `READM
 
 - Current repo files beat old chats, screenshots, memory, and generated reports.
 - Repo-root `index.html` remains the main deployed app file.
-- `docs/OZMOSIS_SOURCE_BRIEF_v0.42.md` is the current strategic source brief.
+- `docs/OZMOSIS_SOURCE_BRIEF_v0.44.md` is the current strategic source brief.
 - This roadmap is not permission to broaden scope in any patch.
 
 ## Architecture Guardrails
@@ -47,6 +47,7 @@ This roadmap is planning guidance only. Current repo files, `index.html`, `READM
 - v0.42.3 repaired support fields for existing Connector, Redemittel, and selected high-yield Wortschatz production cards while keeping production self-marked and no more visible than before.
 - v0.42.4 added a visible debug stamp, structured debug snapshot export, and no-save Dev Tools manual item preview/search for QA and bug reports.
 - v0.43 added the first learner-facing B1 Learning Map route using the existing evidence scaffold, with conservative state labels, metadata provenance, not-enough-evidence handling, recent work, and review/durability limitations.
+- v0.44 added an internal / QA-facing B1 Skill Matrix data model that separates evidence by skill node and task depth while preserving conservative states, metadata provenance, diagnostic context, and production self-marking limitations.
 
 ## Current B1 Direction
 
@@ -78,7 +79,7 @@ Deferred decisions already recorded in v0.42.2:
 
 ### v0.44 - Skill Matrix Data Model
 
-Possible goal: model task-depth by skill-node evidence for internal QA and future UI.
+Completed goal: model task-depth by skill-node evidence for internal QA and future UI.
 
 Do not build weakness repair until the matrix can separate recognition, cloze, repair, and production evidence.
 

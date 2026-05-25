@@ -1,10 +1,10 @@
-# OZMOSIS SOURCE BRIEF v0.43
+# OZMOSIS SOURCE BRIEF v0.44
 
 Version: Working Source Brief Update  
 Status: Current planning brief  
 Project: Ozmosis - Deutsch Lernen App  
-Current known development position: v0.43 completed  
-Next planned patch: v0.44 - Skill Matrix Data Model  
+Current known development position: v0.44 completed  
+Next planned patch: v0.45 - Next Recommended Practice v1  
 
 Versioning rule:
 
@@ -106,7 +106,7 @@ But this should be introduced carefully and only when useful.
 
 The detailed version-by-version roadmap lives separately in:
 
-`docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.42.md`
+`docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.44.md`
 
 The Source Brief remains the strategic orientation document. The roadmap is a planning document, not permission for Codex to implement future versions early.
 
@@ -705,8 +705,8 @@ You often choose accusative forms in location sentences.
 Current known development state:
 
 ```txt
-v0.43 completed
-Next planned patch: v0.44 - Skill Matrix Data Model
+v0.44 completed
+Next planned patch: v0.45 - Next Recommended Practice v1
 ```
 
 The next work should not be a broad rewrite.
@@ -1421,7 +1421,7 @@ Do not assume v1.0 at any arbitrary milestone.
 
 # 21. IMMEDIATE NEXT STEP
 
-The next appropriate step is v0.44 - Skill Matrix Data Model, unless manual QA finds a blocking Learning Map route, responsive, debug/preview, storage, or export/import regression.
+The next appropriate step is v0.45 - Next Recommended Practice v1, unless QA finds a blocking Skill Matrix data, docs-reference, debug/preview, storage, or export/import regression.
 
 v0.40 added the first Progress Evidence Model and v0.40.1 added lightweight confidence/guess capture on top of that evidence model.
 
@@ -1439,23 +1439,24 @@ v0.42.4 added a small visible debug stamp, Dev Tools debug snapshot export, and 
 
 v0.43 added the first learner-facing B1 Learning Map UI using the existing internal scaffold. It shows conservative evidence states, not-enough-evidence handling, metadata provenance, recent work, review/durability limitations, and non-authoritative next-evidence actions without changing practice routing or adding mastery claims.
 
-Safe v0.44 scope:
+v0.44 added an internal / QA-facing Skill Matrix data model that separates existing evidence by B1 Learning Map skill node and task depth. The matrix preserves confidence counts, metadata provenance, diagnostic context, and production self-marking limitations without adding a full learner-facing Skill Matrix UI.
+
+Safe v0.45 scope:
 
 ```txt
-Prepare a Skill Matrix data model from existing Learning Map/evidence data.
-Keep the model internal or QA-facing unless a later UI patch is explicitly approved.
-Separate recognition, cloze, repair, sentence-building, and production evidence.
-Keep early states conservative and avoid mastery, durability, or transfer-ready claims.
-Keep export/import compatibility intact.
+Add cautious, non-authoritative next-practice suggestions using existing evidence, Learning Map state, and Skill Matrix summaries.
+Prefer transparent rules and visible limitations.
+Do not create an authoritative scheduler.
+Do not claim mastery, durability, readiness, or diagnosis without enough evidence.
 Do not change Today's B1 Sprint connector inclusion.
 Do not make production cards more visible.
 Preserve diagnostic, evidence, confidence, route, scoring, and content-bank behaviour.
 ```
 
-Suggested v0.44 Codex task summary:
+Suggested v0.45 Codex task summary:
 
 ```txt
-Prepare a B1 Skill Matrix data model from the existing Learning Map scaffold and B1 evidence.
+Add Next Recommended Practice v1 as cautious guidance from existing B1 evidence.
 
 Do not introduce B2 content.
 Do not change the app architecture.
@@ -1463,6 +1464,7 @@ Do not add backend, framework, build step, or external API dependency.
 
 Do not change Today's B1 Sprint composition.
 Do not make production cards more prominent.
+Do not implement weakness repair, Leitner, or durability scheduling.
 Preserve all current functionality unless a change is explicitly requested.
 ```
 

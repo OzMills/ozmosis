@@ -6057,6 +6057,7 @@ body.b1Mode.b1LongAnswer #answerInput {
         <p>Copy current route, item, viewport, storage, evidence, and layout warning data for troubleshooting.</p>
         <div class="devUtilityActions">
           <button id="copyDebugSnapshotBtn" type="button">Copy debug snapshot</button>
+          <button id="copySkillMatrixSnapshotBtn" type="button">Copy skill matrix snapshot</button>
         </div>
         <div class="devStatus" id="debugSnapshotStatus" aria-live="polite"></div>
         <textarea class="devSnapshotFallback" id="debugSnapshotFallback" readonly hidden aria-label="Debug snapshot fallback text"></textarea>
@@ -6243,8 +6244,8 @@ body.b1Mode.b1LongAnswer #answerInput {
   var B1_STORAGE_KEY = "ozmosis_b1_sprint_progress_v1";
   var B1_EVIDENCE_STORAGE_KEY = "ozmosis_b1_progress_evidence_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.43";
-  var OZMOSIS_EXPORT_VERSION = "v0.43-learning-map-ui-preparation";
+  var OZMOSIS_APP_VERSION = "v0.44";
+  var OZMOSIS_EXPORT_VERSION = "v0.44-skill-matrix-data-model";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
   var B1_DAILY_TOTAL = 12;
@@ -7155,6 +7156,245 @@ body.b1Mode.b1LongAnswer #answerInput {
       recommendedNextSeed:null,
       malformedEvidenceCount:malformedEvidenceCount,
       unmappedEvidenceCount:unmappedEvidenceCount,
+      limitations:limitations
+    };
+  }
+  const B1_SKILL_MATRIX_TASK_DEPTHS = [
+    "recognition",
+    "cloze",
+    "sentence_building",
+    "repair",
+    "transformation",
+    "contrast",
+    "controlled_production",
+    "free_production",
+    "review",
+    "diagnostic",
+    "unknown"
+  ];
+  function b1SkillMatrixEmptyCounts() {
+    return { sure:0, unsure:0, guessed:0, unset:0 };
+  }
+  function b1SkillMatrixEmptyProvenance() {
+    return { explicit:0, derived:0, unknown:0 };
+  }
+  function b1SkillMatrixEmptyCell(taskDepth) {
+    return {
+      taskDepth:taskDepth,
+      evidenceCount:0,
+      correctCount:0,
+      incorrectCount:0,
+      practisedCount:0,
+      productionEvidenceCount:0,
+      diagnosticEvidenceCount:0,
+      reviewEvidenceCount:0,
+      confidenceCounts:b1SkillMatrixEmptyCounts(),
+      metadataProvenance:b1SkillMatrixEmptyProvenance(),
+      bankCounts:{ core:0, connectors:0, redemittel:0, wortschatz:0, unknown:0 },
+      attemptContextCounts:{ diagnostic:0, production:0, retry:0, first_try:0, review:0, unknown:0 },
+      state:"not_enough_evidence",
+      hasEnoughEvidence:false,
+      limitations:[]
+    };
+  }
+  function b1SkillMatrixEmptyCells() {
+    return B1_SKILL_MATRIX_TASK_DEPTHS.reduce(function(cells, depth){
+      cells[depth] = b1SkillMatrixEmptyCell(depth);
+      return cells;
+    }, {});
+  }
+  function b1SkillMatrixNormalizeTaskDepth(record, item) {
+    var rawDepth = String(record && record.taskDepth || (item ? b1EvidenceTaskDepth(item) : "") || "");
+    var depth = rawDepth.replace(/-/g, "_");
+    if (B1_SKILL_MATRIX_TASK_DEPTHS.indexOf(depth) !== -1) return depth;
+    var taskType = String(record && record.taskType || (item ? b1EvidenceTaskType(item) : "") || "");
+    var context = String(record && record.attemptContext || "");
+    if (taskType === "production_card") return "controlled_production";
+    if (taskType === "error_repair") return "repair";
+    if (taskType === "word_order_cloze") return "sentence_building";
+    if (taskType === "connector_choice" || taskType === "phrase_choice") return "recognition";
+    if (/cloze/.test(taskType)) return "cloze";
+    if (context === "diagnostic" && !depth) return "diagnostic";
+    return "unknown";
+  }
+  function b1SkillMatrixIsProductionEvidence(record, item, taskDepth) {
+    var taskType = String(record && record.taskType || (item ? b1EvidenceTaskType(item) : "") || "");
+    return taskType === "production_card" || taskDepth === "controlled_production" || taskDepth === "free_production";
+  }
+  function b1SkillMatrixIsReviewEvidence(record, taskDepth) {
+    var context = String(record && record.attemptContext || "");
+    return taskDepth === "review" || context === "review" || record && record.reviewInterval != null;
+  }
+  function b1SkillMatrixStateForCell(cell) {
+    if (!cell || !cell.evidenceCount) return "not_enough_evidence";
+    if (cell.evidenceCount < 2) return "introduced";
+    var cautiousSignals = Number(cell.incorrectCount || 0) + Number(cell.confidenceCounts.unsure || 0) + Number(cell.confidenceCounts.guessed || 0);
+    var positiveEvidence = Number(cell.correctCount || 0) + Number(cell.practisedCount || 0);
+    if (cell.evidenceCount >= 3 && positiveEvidence >= cell.evidenceCount && cautiousSignals === 0) return "developing";
+    return "emerging";
+  }
+  function b1SkillMatrixFinalizeCell(cell) {
+    cell.state = b1SkillMatrixStateForCell(cell);
+    cell.hasEnoughEvidence = cell.evidenceCount >= 2;
+    cell.limitations = [];
+    if (!cell.evidenceCount) cell.limitations.push("No evidence in this skill/task cell yet.");
+    else if (cell.evidenceCount < 2) cell.limitations.push("Only one evidence record; too thin for a learner-facing claim.");
+    if (cell.metadataProvenance.derived > cell.metadataProvenance.explicit) cell.limitations.push("Mostly derived metadata.");
+    if (cell.metadataProvenance.unknown > 0) cell.limitations.push("Some evidence has unknown metadata provenance.");
+    if (cell.confidenceCounts.unsure > 0 || cell.confidenceCounts.guessed > 0) cell.limitations.push("Includes unsure or guessed confidence evidence.");
+    if (cell.productionEvidenceCount > 0) {
+      cell.limitations.push("Production is self-marked.");
+      cell.limitations.push("No automatic correctness evidence.");
+      cell.limitations.push("Treat as practice evidence only.");
+    }
+    if (cell.diagnosticEvidenceCount > 0) cell.limitations.push("Diagnostic evidence is a starting snapshot, not a placement result.");
+    if (cell.reviewEvidenceCount === 0 && cell.evidenceCount > 0) cell.limitations.push("No delayed review evidence yet.");
+    return cell;
+  }
+  function b1SkillMatrixRowSummary(row) {
+    var tested = [];
+    var missing = [];
+    var strengths = [];
+    var weak = [];
+    B1_SKILL_MATRIX_TASK_DEPTHS.forEach(function(depth){
+      var cell = row.cells[depth];
+      if (!cell || !cell.evidenceCount) {
+        missing.push(depth);
+        return;
+      }
+      tested.push(depth);
+      strengths.push({ depth:depth, score:Number(cell.correctCount || 0) + Number(cell.practisedCount || 0), count:cell.evidenceCount });
+      weak.push({ depth:depth, score:Number(cell.incorrectCount || 0) + Number(cell.confidenceCounts.unsure || 0) + Number(cell.confidenceCounts.guessed || 0), count:cell.evidenceCount });
+    });
+    strengths.sort(function(a,b){ return b.score - a.score || b.count - a.count; });
+    weak.sort(function(a,b){ return b.score - a.score || b.count - a.count; });
+    var limitations = [];
+    if (!tested.length) limitations.push("No evidence for this skill row yet.");
+    if (tested.some(function(depth){ return row.cells[depth].metadataProvenance.derived > row.cells[depth].metadataProvenance.explicit; })) limitations.push("Some tested cells are mostly derived metadata.");
+    if (tested.some(function(depth){ return row.cells[depth].productionEvidenceCount > 0; })) limitations.push("Production evidence in this row is self-marked practice evidence.");
+    return {
+      totalEvidence:tested.reduce(function(total, depth){ return total + row.cells[depth].evidenceCount; }, 0),
+      testedTaskDepths:tested.length,
+      missingTaskDepths:missing,
+      strongestTaskDepths:strengths.filter(function(entry){ return entry.score > 0; }).slice(0, 3).map(function(entry){ return entry.depth; }),
+      weakestTaskDepths:weak.filter(function(entry){ return entry.score > 0; }).slice(0, 3).map(function(entry){ return entry.depth; }),
+      limitations:limitations
+    };
+  }
+  function b1SkillMatrixData(options) {
+    options = options || {};
+    var evidenceStore = options.records ? { records:options.records } : safeGetB1Evidence();
+    var records = Array.isArray(evidenceStore.records) ? evidenceStore.records : [];
+    var scaffold = b1LearningMapScaffold();
+    var nodes = scaffold && Array.isArray(scaffold.nodes) && scaffold.nodes.length ? scaffold.nodes : b1LearningMapNodeDefinitions();
+    var rows = nodes.map(function(node){
+      return {
+        nodeKey:node.key,
+        label:node.label,
+        cluster:node.cluster || (B1_LEARNING_MAP_NODES[node.key] && B1_LEARNING_MAP_NODES[node.key].cluster) || "unknown",
+        cells:b1SkillMatrixEmptyCells(),
+        rowSummary:{
+          totalEvidence:0,
+          testedTaskDepths:0,
+          missingTaskDepths:B1_SKILL_MATRIX_TASK_DEPTHS.slice(),
+          strongestTaskDepths:[],
+          weakestTaskDepths:[],
+          limitations:[]
+        }
+      };
+    });
+    var rowMap = rows.reduce(function(map, row){ map[row.nodeKey] = row; return map; }, {});
+    var malformedEvidenceCount = 0;
+    var unmappedEvidenceCount = 0;
+    var diagnosticRecordCount = 0;
+    records.forEach(function(record){
+      if (!record || !record.itemId) {
+        malformedEvidenceCount += 1;
+        return;
+      }
+      if (String(record.attemptContext || "") === "diagnostic") diagnosticRecordCount += 1;
+      var item = b1LearningMapItemForEvidence(record);
+      var matches = b1LearningMapRecordNodeMatches(record, item);
+      if (!matches.length) {
+        unmappedEvidenceCount += 1;
+        return;
+      }
+      var taskDepth = b1SkillMatrixNormalizeTaskDepth(record, item);
+      if (B1_SKILL_MATRIX_TASK_DEPTHS.indexOf(taskDepth) === -1) taskDepth = "unknown";
+      matches.forEach(function(match){
+        var row = rowMap[match.key];
+        if (!row) return;
+        var cell = row.cells[taskDepth] || row.cells.unknown;
+        var productionEvidence = b1SkillMatrixIsProductionEvidence(record, item, taskDepth);
+        cell.evidenceCount += 1;
+        if (productionEvidence) {
+          cell.practisedCount += 1;
+          cell.productionEvidenceCount += 1;
+        } else if (record.result === "practised") {
+          cell.practisedCount += 1;
+        } else if (record.correct === true) {
+          cell.correctCount += 1;
+        } else if (record.correct === false) {
+          cell.incorrectCount += 1;
+        }
+        var confidence = record.confidence === "sure" || record.confidence === "unsure" || record.confidence === "guessed" ? record.confidence : "unset";
+        cell.confidenceCounts[confidence] = (cell.confidenceCounts[confidence] || 0) + 1;
+        var provenance = match.provenance || "unknown";
+        cell.metadataProvenance[provenance] = (cell.metadataProvenance[provenance] || 0) + 1;
+        var bank = String(record.bankKey || (item ? b1EvidenceBankKeyFor(item) : "unknown") || "unknown");
+        cell.bankCounts[bank] = (cell.bankCounts[bank] || 0) + 1;
+        var context = String(record.attemptContext || "unknown");
+        cell.attemptContextCounts[context] = (cell.attemptContextCounts[context] || 0) + 1;
+        if (context === "diagnostic") cell.diagnosticEvidenceCount += 1;
+        if (b1SkillMatrixIsReviewEvidence(record, taskDepth)) cell.reviewEvidenceCount += 1;
+      });
+    });
+    rows.forEach(function(row){
+      B1_SKILL_MATRIX_TASK_DEPTHS.forEach(function(depth){
+        row.cells[depth] = b1SkillMatrixFinalizeCell(row.cells[depth]);
+      });
+      row.rowSummary = b1SkillMatrixRowSummary(row);
+    });
+    var testedCells = 0;
+    var productionSelfMarkedCells = 0;
+    var mostlyDerivedCells = 0;
+    var diagnosticCellEvidenceCount = 0;
+    rows.forEach(function(row){
+      B1_SKILL_MATRIX_TASK_DEPTHS.forEach(function(depth){
+        var cell = row.cells[depth];
+        if (cell.evidenceCount > 0) testedCells += 1;
+        if (cell.productionEvidenceCount > 0) productionSelfMarkedCells += 1;
+        if (cell.evidenceCount > 0 && cell.metadataProvenance.derived > cell.metadataProvenance.explicit) mostlyDerivedCells += 1;
+        diagnosticCellEvidenceCount += Number(cell.diagnosticEvidenceCount || 0);
+      });
+    });
+    var limitations = [
+      "Matrix is computed from existing B1 evidence and Learning Map node matching; no persistent aggregate is stored.",
+      "Current metadata is often derived rather than canonical explicit item-level metadata.",
+      "No delayed review or durability evidence is available yet.",
+      "Production evidence remains self-marked practice evidence only."
+    ];
+    if (malformedEvidenceCount) limitations.push("Ignored " + malformedEvidenceCount + " malformed evidence records.");
+    if (unmappedEvidenceCount) limitations.push("Could not map " + unmappedEvidenceCount + " evidence records to a Skill Matrix row.");
+    return {
+      schemaVersion:1,
+      generatedAt:new Date().toISOString(),
+      levelTrack:"B1",
+      taskDepths:B1_SKILL_MATRIX_TASK_DEPTHS.slice(),
+      rows:rows,
+      globalSummary:{
+        rowCount:rows.length,
+        rowsWithEvidence:rows.filter(function(row){ return row.rowSummary.totalEvidence > 0; }).length,
+        emptyRows:rows.filter(function(row){ return row.rowSummary.totalEvidence === 0; }).length,
+        testedCells:testedCells,
+        emptyCells:(rows.length * B1_SKILL_MATRIX_TASK_DEPTHS.length) - testedCells,
+        productionSelfMarkedCells:productionSelfMarkedCells,
+        mostlyDerivedCells:mostlyDerivedCells,
+        diagnosticEvidenceCount:diagnosticRecordCount,
+        diagnosticCellEvidenceCount:diagnosticCellEvidenceCount,
+        malformedEvidenceCount:malformedEvidenceCount,
+        unmappedEvidenceCount:unmappedEvidenceCount
+      },
       limitations:limitations
     };
   }
@@ -9673,6 +9913,28 @@ body.b1Mode.b1LongAnswer #answerInput {
       return { error:"learning_map_summary_unavailable" };
     }
   }
+  function debugSkillMatrixSummary() {
+    try {
+      var matrix = b1SkillMatrixData();
+      var summary = matrix.globalSummary || {};
+      return {
+        schemaVersion:matrix.schemaVersion || null,
+        rowCount:Number(summary.rowCount || (Array.isArray(matrix.rows) ? matrix.rows.length : 0)),
+        taskDepthCount:Array.isArray(matrix.taskDepths) ? matrix.taskDepths.length : 0,
+        testedCells:Number(summary.testedCells || 0),
+        emptyCells:Number(summary.emptyCells || 0),
+        productionSelfMarkedCells:Number(summary.productionSelfMarkedCells || 0),
+        mostlyDerivedCells:Number(summary.mostlyDerivedCells || 0),
+        diagnosticEvidenceCount:Number(summary.diagnosticEvidenceCount || 0),
+        diagnosticCellEvidenceCount:Number(summary.diagnosticCellEvidenceCount || 0),
+        malformedEvidenceCount:Number(summary.malformedEvidenceCount || 0),
+        unmappedEvidenceCount:Number(summary.unmappedEvidenceCount || 0),
+        limitationsCount:Array.isArray(matrix.limitations) ? matrix.limitations.length : 0
+      };
+    } catch (e) {
+      return { error:"skill_matrix_summary_unavailable", message:String(e && e.message || e).slice(0, 160) };
+    }
+  }
   function isScrollLockedFor(node) {
     if (!node) return false;
     var style = window.getComputedStyle ? window.getComputedStyle(node) : null;
@@ -9757,6 +10019,7 @@ body.b1Mode.b1LongAnswer #answerInput {
         wortschatz:B1_WORTSCHATZ_ITEMS.length
       },
       learningMap:debugLearningMapSummary(),
+      skillMatrix:debugSkillMatrixSummary(),
       layout:{
         viewport:{ width:Math.round(window.innerWidth || 0), height:Math.round(window.innerHeight || 0) },
         mainBounds:safeBounds("main"),
@@ -9789,6 +10052,24 @@ body.b1Mode.b1LongAnswer #answerInput {
       return;
     }
     showDebugSnapshotFallback(text, "Clipboard unavailable. Select and copy the snapshot text.");
+  }
+  function copySkillMatrixSnapshot() {
+    var text = "";
+    try {
+      text = JSON.stringify(b1SkillMatrixData(), null, 2);
+    } catch (e) {
+      text = JSON.stringify({ error:"skill_matrix_snapshot_unavailable", message:String(e && e.message || e).slice(0, 220) }, null, 2);
+    }
+    if (el("debugSnapshotFallback")) el("debugSnapshotFallback").hidden = true;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function(){
+        if (el("debugSnapshotStatus")) el("debugSnapshotStatus").textContent = "Skill Matrix snapshot copied.";
+      }).catch(function(){
+        showDebugSnapshotFallback(text, "Clipboard blocked. Select and copy the Skill Matrix snapshot text.");
+      });
+      return;
+    }
+    showDebugSnapshotFallback(text, "Clipboard unavailable. Select and copy the Skill Matrix snapshot text.");
   }
   function devPreviewItemRows() {
     return b1RegistryBanks().reduce(function(out, bank){
@@ -12327,9 +12608,10 @@ body.b1Mode.b1LongAnswer #answerInput {
     newRound();
   }
   document.addEventListener("click", function(event){
-    var target = event.target && event.target.closest ? event.target.closest("#copyDebugSnapshotBtn, #devFindItemBtn, [data-dev-preview-id], #devPreviewShowModelBtn, #devPreviewMockMarkBtn, #devPreviewCopyItemIdBtn, #devPreviewClearBtn, #devPreviewCheckBtn") : null;
+    var target = event.target && event.target.closest ? event.target.closest("#copyDebugSnapshotBtn, #copySkillMatrixSnapshotBtn, #devFindItemBtn, [data-dev-preview-id], #devPreviewShowModelBtn, #devPreviewMockMarkBtn, #devPreviewCopyItemIdBtn, #devPreviewClearBtn, #devPreviewCheckBtn") : null;
     if (!target) return;
     if (target.id === "copyDebugSnapshotBtn") { copyDebugSnapshot(); return; }
+    if (target.id === "copySkillMatrixSnapshotBtn") { copySkillMatrixSnapshot(); return; }
     if (target.id === "devFindItemBtn") { renderDevPreviewResults(); return; }
     handleDevPreviewClick(event);
   }, false);
@@ -12344,7 +12626,7 @@ body.b1Mode.b1LongAnswer #answerInput {
   window.addEventListener("resize", updateDebugStamp, false);
   window.addEventListener("scroll", updateDebugStamp, false);
   if (!DEBUG_STAMP_TIMER) DEBUG_STAMP_TIMER = window.setInterval(updateDebugStamp, 1000);
-window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }; window.kasusNoArticle=function(){checkAnswer("none");}; window.kasusProceed=function(){proceed();}; window.kasusHint=function(){showHint();}; window.kasusNewRound=function(){showStartScreen();}; window.kasusStartRound=function(){startConfiguredRound();}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusSessionLog=function(){return sessionLog.slice();}; window.kasusCurrent=function(){return current ? cloneQuestion(current) : cloneB1Item(b1Runtime.current || {});}; window.kasusLeitnerDebug=function(){ return { storageKey:LEITNER_STORAGE_KEY, runtime:leitnerRuntime, progress:safeGetLeitner() }; }; window.ozmosisB1Debug=function(){ return { storageKey:B1_STORAGE_KEY, evidenceStorageKey:B1_EVIDENCE_STORAGE_KEY, itemCount:B1_ITEMS.length, connectorCount:B1_CONNECTOR_ITEMS.length, redemittelCount:B1_REDEMITTEL_ITEMS.length, wortschatzCount:B1_WORTSCHATZ_ITEMS.length, registry:b1RegistrySummary(), runtime:b1Runtime, progress:safeGetB1Progress(), evidence:b1EvidenceSummary(), learningMap:b1LearningMapScaffold(), diagnosticPlan:b1Runtime.diagnosticPlan, debugSnapshot:buildDebugSnapshot }; }; window.ozmosisStartDiagnostic=function(){ startB1DiagnosticSprint(); }; window.ozmosisStartConnector=function(family){ startConnectorSprint(family || "all"); }; window.ozmosisStartRedemittel=function(filter){ startRedemittelRound(filter || "mixed"); }; window.ozmosisStartWortschatz=function(filter){ startWortschatzRound(filter || "mixed"); }; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusResetBest=function(){ highScore=0; bestStreakAll=0; savePersistent(); if (state === "results") showResults(); else renderHud(); }; window.kasusResetProfile=function(){ resetLearnerModel(); }; window.kasusToggleMenu=function(){ var panel=el("settingsPanel"); panel.classList.toggle("open"); document.body.classList.toggle("menuOpen", panel.classList.contains("open")); };
+window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }; window.kasusNoArticle=function(){checkAnswer("none");}; window.kasusProceed=function(){proceed();}; window.kasusHint=function(){showHint();}; window.kasusNewRound=function(){showStartScreen();}; window.kasusStartRound=function(){startConfiguredRound();}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusSessionLog=function(){return sessionLog.slice();}; window.kasusCurrent=function(){return current ? cloneQuestion(current) : cloneB1Item(b1Runtime.current || {});}; window.kasusLeitnerDebug=function(){ return { storageKey:LEITNER_STORAGE_KEY, runtime:leitnerRuntime, progress:safeGetLeitner() }; }; window.ozmosisB1Debug=function(){ return { storageKey:B1_STORAGE_KEY, evidenceStorageKey:B1_EVIDENCE_STORAGE_KEY, itemCount:B1_ITEMS.length, connectorCount:B1_CONNECTOR_ITEMS.length, redemittelCount:B1_REDEMITTEL_ITEMS.length, wortschatzCount:B1_WORTSCHATZ_ITEMS.length, registry:b1RegistrySummary(), runtime:b1Runtime, progress:safeGetB1Progress(), evidence:b1EvidenceSummary(), learningMap:b1LearningMapScaffold(), skillMatrix:b1SkillMatrixData(), skillMatrixSummary:debugSkillMatrixSummary(), diagnosticPlan:b1Runtime.diagnosticPlan, debugSnapshot:buildDebugSnapshot }; }; window.ozmosisStartDiagnostic=function(){ startB1DiagnosticSprint(); }; window.ozmosisStartConnector=function(family){ startConnectorSprint(family || "all"); }; window.ozmosisStartRedemittel=function(filter){ startRedemittelRound(filter || "mixed"); }; window.ozmosisStartWortschatz=function(filter){ startWortschatzRound(filter || "mixed"); }; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusResetBest=function(){ highScore=0; bestStreakAll=0; savePersistent(); if (state === "results") showResults(); else renderHud(); }; window.kasusResetProfile=function(){ resetLearnerModel(); }; window.kasusToggleMenu=function(){ var panel=el("settingsPanel"); panel.classList.toggle("open"); document.body.classList.toggle("menuOpen", panel.classList.contains("open")); };
   window.ozmosisContentAudit = function(){ return b1ConnectorWordOrderIssues(); };
   function mountSettingsPanel() {
     var panel = el("settingsPanel");

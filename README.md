@@ -17,9 +17,9 @@ Current priority order:
 
 ## Current Known Version
 
-Current working version: `v0.43`
+Current working version: `v0.44`
 
-Next planned patch: `v0.44`
+Next planned patch: `v0.45 - Next Recommended Practice v1`
 
 Known current state:
 
@@ -55,6 +55,7 @@ Known current state:
 - v0.42.3 repairs useful phrases, self-check checklists, and model answers for existing production cards while keeping production cards self-marked and no more visible than before.
 - v0.42.4 adds a lightweight debug stamp, Dev Tools debug snapshot export, and no-save manual item preview for QA and bug reports.
 - v0.43 adds the first learner-facing B1 Learning Map using the existing evidence scaffold, with cautious evidence states, metadata provenance, not-enough-evidence handling, recent work, and review/durability limitations.
+- v0.44 adds an internal / QA-facing B1 Skill Matrix data model that separates evidence by skill node and task depth while keeping states conservative.
 - B1 progress persists under `ozmosis_b1_sprint_progress_v1`.
 - B1 progress evidence persists under `ozmosis_b1_progress_evidence_v1`.
 - Existing Case Trainer, Options, Dev Tools, export/import, and localStorage compatibility are preserved.
@@ -98,8 +99,8 @@ Recommended clean repo structure:
 |  |- ozmosis_b1_connector_sprint_v1_bank.json
 |  `- ozmosis_b1_wortschatz_survival_set_v1.json
 `- docs/
-   |- OZMOSIS_SOURCE_BRIEF_v0.42.md
-   |- OZMOSIS_DEVELOPMENT_ROADMAP_v0.42.md
+   |- OZMOSIS_SOURCE_BRIEF_v0.44.md
+   |- OZMOSIS_DEVELOPMENT_ROADMAP_v0.44.md
    |- OZMOSIS_B1_Test_Sprint_Pivot_Production_Plan.md
    |- OZMOSIS_Case_Teaching_Leitner_Iteration_Plan.md
    `- qa/
