@@ -1,3 +1,24 @@
+## v0.42.1 - B1 Diagnostic Entry Sprint
+
+- Added an optional B1 Diagnostic Sprint route that creates a short 18-item starting snapshot across cases/articles, prepositions, word order, connectors, Redemittel, Wortschatz, repair, and production-readiness using existing B1 banks.
+- Recorded diagnostic attempts through the existing B1 evidence system with diagnostic attempt context, preserving confidence/guess tracking and Learning Map scaffold compatibility.
+- Added a diagnostic result summary framed as a starting snapshot rather than a pass/fail score or mastery claim.
+- Verified that diagnostic evidence updates the internal Learning Map data scaffold without adding learner-facing Learning Map UI.
+- Preserved Today's B1 Sprint composition, B1 registry policy, routes, scoring, item content, item IDs, item statuses, feedback, Teach me, FIFO/simple retry, confidence tracking, production-card handling, Case Trainer, Options, Dev Tools, export/import, localStorage compatibility, and extracted static content banks.
+- Added no B2 content, Skill Matrix UI, Leitner, weakness repair, durable/reliable/transfer-ready claims, backend, framework, build step, fetch, module loading, dependencies, package manager, runtime AI generation, analytics, accounts, external calls, or broad UI redesign.
+
+## v0.42 - Versioned Docs Alignment + Learning Map Data Scaffold
+
+- Added the Ozmosis development roadmap to the repo and versioned the current planning documents.
+- Updated stale planning-document version references so the source brief and roadmap reflect v0.42 as current and v0.42.1 as next after successful validation.
+- Added a non-visual B1 Learning Map data scaffold that aggregates existing progress evidence into conservative skill-node summaries.
+- Added B1 skill-node definitions for coarse Learning Map aggregation.
+- Preserved explicit-vs-derived metadata provenance so derived evidence is not mistaken for canonical item metadata.
+- Added conservative early progress states such as `not_enough_evidence`, `introduced`, `emerging`, and `developing` without adding mastery, durability, or transfer-ready claims.
+- Included evidence counts, task-depth counts, confidence counts, bank contribution counts, and metadata-provenance summaries for future Learning Map work.
+- Preserved Today's B1 Sprint composition, B1 registry policy, routes, scoring, item content, item IDs, item statuses, feedback, Teach me, FIFO/simple retry, confidence tracking, production-card handling, Case Trainer, Options, Dev Tools, export/import, localStorage compatibility, and extracted static content banks.
+- Added no learner-facing Learning Map UI, B2 content, Skill Matrix UI, Leitner, weakness repair, diagnostic entry sprint, backend, framework, build step, fetch, module loading, dependencies, package manager, runtime AI generation, analytics, accounts, external calls, or UI redesign.
+
 ## v0.41 - B1 Skill Tag Audit
 
 - Added a B1 skill tag and progress metadata audit for the current core, Connector, Redemittel, and Wortschatz banks.

@@ -4593,6 +4593,16 @@ body.homeMode #settingsPanel {
   font-weight:800;
 }
 
+.homeRouteMeta {
+  display:block;
+  margin-top:.22rem;
+  color:var(--accent);
+  font-size:.78rem;
+  line-height:1.2;
+  font-weight:900;
+  text-transform:uppercase;
+}
+
 .homePill {
   justify-self:end;
   padding:.44rem .62rem;
@@ -4611,6 +4621,11 @@ body.homeMode #settingsPanel {
 .homePill.ready {
   color:var(--ok);
   border-color:var(--ok);
+}
+
+.homePill.new {
+  color:var(--warn);
+  border-color:var(--warn);
 }
 
 .homeChip {
@@ -5137,18 +5152,23 @@ body.b1Mode .clozeAnswerText.missed {
     <section class="homeSection practice" aria-labelledby="homePracticeTitle">
       <h3 class="homeSectionTitle" id="homePracticeTitle">Practice</h3>
       <div class="homeRouteGrid">
-        <button class="homeRouteCard" id="homeGrammarBtn" type="button">
+        <button class="homeRouteCard" id="homeDiagnosticBtn" type="button" aria-label="B1 Diagnostic Sprint. Find your starting points. 18 items, about 8 min. Start.">
           <span class="homeRouteNumber">1.</span>
+          <span class="homeRouteMain"><span class="homeRouteLabel">B1 Diagnostic Sprint</span><span class="homeRouteSub">Find your starting points</span><span class="homeRouteMeta">18 items &middot; about 8 min &middot; START</span></span>
+          <span class="homePill new">NEW</span>
+        </button>
+        <button class="homeRouteCard" id="homeGrammarBtn" type="button">
+          <span class="homeRouteNumber">2.</span>
           <span class="homeRouteMain"><span class="homeRouteLabel">Grammar</span><span class="homeRouteSub">Connectors · word order · cases</span></span>
           <span class="homePill ready">READY</span>
         </button>
         <button class="homeRouteCard" id="homeWortschatzBtn" type="button">
-          <span class="homeRouteNumber">2.</span>
+          <span class="homeRouteNumber">3.</span>
           <span class="homeRouteMain"><span class="homeRouteLabel">Wortschatz</span><span class="homeRouteSub">Work · illness · admin</span></span>
           <span class="homePill ready">READY</span>
         </button>
         <button class="homeRouteCard" id="homeRedemittelBtn" type="button">
-          <span class="homeRouteNumber">3.</span>
+          <span class="homeRouteNumber">4.</span>
           <span class="homeRouteMain"><span class="homeRouteLabel">Redemittel</span><span class="homeRouteSub">Email · appointments · complaints</span></span>
           <span class="homePill ready">READY</span>
         </button>
@@ -5159,17 +5179,17 @@ body.b1Mode .clozeAnswerText.missed {
       <h3 class="homeSectionTitle" id="homeComingSoonTitle">Coming Soon</h3>
       <div class="homeRouteGrid">
         <button class="homeRouteCard unavailable homePlaceholderBtn" id="homeSchreibenBtn" type="button" data-title="Schreiben">
-          <span class="homeRouteNumber">4.</span>
+          <span class="homeRouteNumber">5.</span>
           <span class="homeRouteMain"><span class="homeRouteLabel">Schreiben</span><span class="homeRouteSub">Production cards are not a full route yet</span></span>
           <span class="homePill soon">SOON</span>
         </button>
         <button class="homeRouteCard unavailable homePlaceholderBtn" id="homeSprechenBtn" type="button" data-title="Sprechen">
-          <span class="homeRouteNumber">5.</span>
+          <span class="homeRouteNumber">6.</span>
           <span class="homeRouteMain"><span class="homeRouteLabel">Sprechen</span><span class="homeRouteSub">Production cards are not a full route yet</span></span>
           <span class="homePill soon">SOON</span>
         </button>
         <button class="homeRouteCard unavailable homePlaceholderBtn" id="homeCourseMapBtn" type="button" data-title="Course Map">
-          <span class="homeRouteNumber">6.</span>
+          <span class="homeRouteNumber">7.</span>
           <span class="homeRouteMain"><span class="homeRouteLabel">Course Map</span><span class="homeRouteSub">Planned structure view</span></span>
           <span class="homePill soon">SOON</span>
         </button>
@@ -5614,8 +5634,8 @@ body.b1Mode .clozeAnswerText.missed {
   var B1_STORAGE_KEY = "ozmosis_b1_sprint_progress_v1";
   var B1_EVIDENCE_STORAGE_KEY = "ozmosis_b1_progress_evidence_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.40.1";
-  var OZMOSIS_EXPORT_VERSION = "v0.40.1-confidence-guess-tracking";
+  var OZMOSIS_APP_VERSION = "v0.42.1";
+  var OZMOSIS_EXPORT_VERSION = "v0.42.1-b1-diagnostic-entry-sprint";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
   var B1_DAILY_TOTAL = 12;
@@ -5660,7 +5680,10 @@ body.b1Mode .clozeAnswerText.missed {
     currentEvidenceRecordId:"",
     dailySprint:false,
     dailyDateKey:"",
-    assisted:0
+    assisted:0,
+    diagnosticPlan:null,
+    diagnosticItemIds:[],
+    diagnosticCategoryMap:{}
   };
 
   var supportLanguage = "en";
@@ -6318,6 +6341,210 @@ body.b1Mode .clozeAnswerText.missed {
         productionCount:items.filter(function(item){ return item && item.itemType === "production_card"; }).length
       };
     });
+  }
+  const B1_LEARNING_MAP_NODES = {
+    cases_articles:{
+      key:"cases_articles",
+      label:"Cases & Articles",
+      cluster:"grammar",
+      skillTags:["cases_articles", "nominative", "accusative", "dative", "genitive_optional", "article_gender", "pronoun_case", "dativ", "akkusativ", "nominativ", "genitiv"]
+    },
+    prepositions:{
+      key:"prepositions",
+      label:"Prepositions",
+      cluster:"grammar",
+      skillTags:["prepositions", "fixed_prepositions", "two_way_prepositions", "location_vs_movement", "temporal_prepositions", "wechselpraeposition", "praeposition", "preposition"]
+    },
+    word_order:{
+      key:"word_order",
+      label:"Word Order",
+      cluster:"grammar",
+      skillTags:["word_order", "v2_main_clause", "verb_final_subordinate", "modal_structure", "separable_verbs", "verb_end", "nebensatz", "satzbau"]
+    },
+    connectors:{
+      key:"connectors",
+      label:"Connectors",
+      cluster:"sentence_control",
+      skillTags:["connectors", "connector_meaning", "connector_word_order", "weil_denn_deshalb", "obwohl_trotzdem", "damit_um_zu", "temporal_connectors", "reason", "contrast", "purpose", "time", "weil", "denn", "deshalb", "obwohl", "trotzdem", "damit", "um_zu", "wenn", "als", "bevor", "nachdem"]
+    },
+    redemittel:{
+      key:"redemittel",
+      label:"Redemittel",
+      cluster:"communication",
+      skillTags:["redemittel", "formal_email", "appointments", "appointment", "requests", "request", "complaints", "complaint", "applications", "application", "illness_absence", "polite_requests", "formal", "email"]
+    },
+    wortschatz:{
+      key:"wortschatz",
+      label:"Wortschatz",
+      cluster:"vocabulary",
+      skillTags:["wortschatz", "workplace_vocab", "bureaucracy_vocab", "insurance_vocab", "orders_office_vocab", "technical_problem_vocab", "admin", "office_admin", "insurance", "documents", "applications", "technical_problem"]
+    },
+    repair:{
+      key:"repair",
+      label:"Repair",
+      cluster:"task_depth",
+      skillTags:["repair", "transformation", "error_repair"]
+    },
+    production:{
+      key:"production",
+      label:"Production",
+      cluster:"task_depth",
+      skillTags:["controlled_production", "free_production", "production"]
+    }
+  };
+  function b1LearningMapNodeDefinitions() {
+    return Object.keys(B1_LEARNING_MAP_NODES).map(function(key){
+      var node = B1_LEARNING_MAP_NODES[key];
+      return {
+        key:node.key,
+        label:node.label,
+        cluster:node.cluster,
+        skillTags:(node.skillTags || []).slice()
+      };
+    });
+  }
+  function b1LearningMapItemForEvidence(record) {
+    if (!record || !record.itemId) return null;
+    var banks = b1RegistryBanks();
+    for (var i = 0; i < banks.length; i++) {
+      var items = Array.isArray(banks[i].items) ? banks[i].items : [];
+      for (var j = 0; j < items.length; j++) {
+        if (items[j] && items[j].id === record.itemId) return items[j];
+      }
+    }
+    return null;
+  }
+  function b1LearningMapNormalizeTokens(values) {
+    var out = [];
+    (values || []).forEach(function(value){
+      String(value || "").toLowerCase().split(/[^a-z0-9_]+/).forEach(function(part){
+        if (part && out.indexOf(part) === -1) out.push(part);
+      });
+    });
+    return out;
+  }
+  function b1LearningMapEvidenceTokens(record, item) {
+    var values = [];
+    if (record && Array.isArray(record.skillTags)) values = values.concat(record.skillTags);
+    if (item && Array.isArray(item.skillTags)) values = values.concat(item.skillTags);
+    if (item && Array.isArray(item.tags)) values = values.concat(item.tags);
+    ["bankKey", "taskType", "taskDepth", "grammarFocus", "courseDomain", "grammarDomain", "section", "subtopic", "variantFamilyId"].forEach(function(field){
+      if (record && record[field]) values.push(record[field]);
+      if (item && item[field]) values.push(item[field]);
+    });
+    return b1LearningMapNormalizeTokens(values);
+  }
+  function b1LearningMapMetadataProvenance(record, item, matchedExplicit) {
+    if (matchedExplicit) return "explicit";
+    if (item || (record && (record.skillTags || record.bankKey || record.taskType || record.taskDepth || record.grammarFocus))) return "derived";
+    return "unknown";
+  }
+  function b1LearningMapRecordNodeMatches(record, item) {
+    var tokens = b1LearningMapEvidenceTokens(record, item);
+    var bankKey = String(record && record.bankKey || (item ? b1EvidenceBankKeyFor(item) : "") || "");
+    var taskDepth = String(record && record.taskDepth || (item ? b1EvidenceTaskDepth(item) : "") || "");
+    var taskType = String(record && record.taskType || (item ? b1EvidenceTaskType(item) : "") || "");
+    var explicitTags = b1LearningMapNormalizeTokens(item && Array.isArray(item.skillTags) ? item.skillTags : []);
+    var matches = [];
+    Object.keys(B1_LEARNING_MAP_NODES).forEach(function(key){
+      var node = B1_LEARNING_MAP_NODES[key];
+      var nodeTags = b1LearningMapNormalizeTokens(node.skillTags || []);
+      var matchedExplicit = explicitTags.some(function(tag){ return nodeTags.indexOf(tag) !== -1; });
+      var matchedDerived = ["connectors", "redemittel", "wortschatz"].indexOf(key) === -1 && tokens.some(function(tag){ return nodeTags.indexOf(tag) !== -1; });
+      if (key === "connectors" && bankKey === "connectors") matchedDerived = true;
+      if (key === "redemittel" && bankKey === "redemittel") matchedDerived = true;
+      if (key === "wortschatz" && bankKey === "wortschatz") matchedDerived = true;
+      if (key === "repair" && (taskDepth === "repair" || taskType === "error_repair")) matchedDerived = true;
+      if (key === "production" && (taskDepth === "controlled_production" || taskDepth === "free_production" || taskType === "production_card")) matchedDerived = true;
+      if (key === "word_order" && taskDepth === "sentence_building") matchedDerived = true;
+      if (matchedExplicit || matchedDerived) matches.push({ key:key, provenance:b1LearningMapMetadataProvenance(record, item, matchedExplicit) });
+    });
+    return matches;
+  }
+  function b1LearningMapEmptyNode(node) {
+    return {
+      key:node.key,
+      label:node.label,
+      cluster:node.cluster,
+      state:"not_enough_evidence",
+      evidenceCount:0,
+      correctCount:0,
+      incorrectCount:0,
+      confidenceCounts:{ sure:0, unsure:0, guessed:0, unset:0 },
+      taskDepthCounts:{ recognition:0, cloze:0, sentence_building:0, repair:0, controlled_production:0, contrast:0, unknown:0 },
+      bankCounts:{ core:0, connectors:0, redemittel:0, wortschatz:0, unknown:0 },
+      metadataProvenance:{ explicit:0, derived:0, unknown:0 },
+      lastPractisedAt:null,
+      hasEnoughEvidence:false,
+      limitations:[]
+    };
+  }
+  function b1LearningMapStateFor(node) {
+    if (node.evidenceCount === 0) return "not_enough_evidence";
+    if (node.evidenceCount < 3) return "introduced";
+    if (node.correctCount >= 3 && Object.keys(node.taskDepthCounts).filter(function(key){ return key !== "unknown" && node.taskDepthCounts[key] > 0; }).length >= 2) return "developing";
+    return "emerging";
+  }
+  function b1LearningMapFinalizeNode(node) {
+    node.state = b1LearningMapStateFor(node);
+    node.hasEnoughEvidence = node.evidenceCount >= 3;
+    if (!node.evidenceCount) node.limitations.push("No evidence recorded for this node yet.");
+    if (node.metadataProvenance.derived > node.metadataProvenance.explicit) node.limitations.push("Most or all metadata for this node is derived, not canonical item-level metadata.");
+    if (node.confidenceCounts.guessed > 0 || node.confidenceCounts.unsure > 0) node.limitations.push("Confidence evidence includes guessed or unsure answers.");
+    return node;
+  }
+  function b1LearningMapScaffold() {
+    var evidence = safeGetB1Evidence();
+    var records = Array.isArray(evidence.records) ? evidence.records : [];
+    var nodeMap = {};
+    b1LearningMapNodeDefinitions().forEach(function(node){
+      nodeMap[node.key] = b1LearningMapEmptyNode(node);
+    });
+    var limitations = [];
+    var malformedEvidenceCount = 0;
+    var unmappedEvidenceCount = 0;
+    records.forEach(function(record){
+      if (!record || !record.itemId) {
+        malformedEvidenceCount += 1;
+        return;
+      }
+      var item = b1LearningMapItemForEvidence(record);
+      var matches = b1LearningMapRecordNodeMatches(record, item);
+      if (!matches.length) {
+        unmappedEvidenceCount += 1;
+        return;
+      }
+      matches.forEach(function(match){
+        var node = nodeMap[match.key];
+        if (!node) return;
+        node.evidenceCount += 1;
+        if (record.correct === true) node.correctCount += 1;
+        else if (record.correct === false) node.incorrectCount += 1;
+        var confidence = record.confidence === "sure" || record.confidence === "unsure" || record.confidence === "guessed" ? record.confidence : "unset";
+        node.confidenceCounts[confidence] = (node.confidenceCounts[confidence] || 0) + 1;
+        var depth = String(record.taskDepth || (item ? b1EvidenceTaskDepth(item) : "unknown") || "unknown");
+        node.taskDepthCounts[depth] = (node.taskDepthCounts[depth] || 0) + 1;
+        var bank = String(record.bankKey || (item ? b1EvidenceBankKeyFor(item) : "unknown") || "unknown");
+        node.bankCounts[bank] = (node.bankCounts[bank] || 0) + 1;
+        node.metadataProvenance[match.provenance] = (node.metadataProvenance[match.provenance] || 0) + 1;
+        if (record.timestamp && (!node.lastPractisedAt || record.timestamp > node.lastPractisedAt)) node.lastPractisedAt = record.timestamp;
+      });
+    });
+    if (malformedEvidenceCount) limitations.push("Ignored " + malformedEvidenceCount + " malformed evidence records.");
+    if (unmappedEvidenceCount) limitations.push("Could not map " + unmappedEvidenceCount + " evidence records to a Learning Map node.");
+    limitations.push("Current node assignments are mostly derived because v0.41 found no canonical item-level skillTags.");
+    limitations.push("States are early evidence states only; no mastery, durability, or transfer-readiness claims are emitted.");
+    return {
+      schemaVersion:1,
+      generatedAt:new Date().toISOString(),
+      levelTrack:"B1",
+      nodes:Object.keys(nodeMap).map(function(key){ return b1LearningMapFinalizeNode(nodeMap[key]); }),
+      currentFocus:null,
+      recommendedNextSeed:null,
+      malformedEvidenceCount:malformedEvidenceCount,
+      unmappedEvidenceCount:unmappedEvidenceCount,
+      limitations:limitations
+    };
   }
   var genders = [
     { key: "Maskulinum", short: "M", en: "masculine" },
@@ -7887,6 +8114,7 @@ body.b1Mode .clozeAnswerText.missed {
     b1Runtime.currentAssisted = false;
     b1Runtime.currentEvidenceRecordId = "";
     b1Runtime.dailySprint = false;
+    clearB1DiagnosticRuntime();
     resetB1ConfidenceControls();
     clearMobileClozeFocus();
     state = "home";
@@ -8281,6 +8509,7 @@ body.b1Mode .clozeAnswerText.missed {
   }
   function b1EvidenceAttemptContext(item, store, options) {
     options = options || {};
+    if (options.attemptContext) return String(options.attemptContext);
     if (item && item.itemType === "production_card") return "production";
     var id = item && item.id;
     var daily = b1Runtime.dailySprint ? b1CurrentDailySprint() : null;
@@ -9120,6 +9349,178 @@ body.b1Mode .clozeAnswerText.missed {
     if (queue.length) rememberB1RoundStart("connector", family || "all", queue[0].id);
     return { queue:queue.map(cloneB1Item), seed:seed };
   }
+  const B1_DIAGNOSTIC_TOTAL = 18;
+  const B1_DIAGNOSTIC_QUOTAS = [
+    { key:"cases_articles", label:"Cases/articles", target:3 },
+    { key:"prepositions", label:"Prepositions", target:2 },
+    { key:"word_order", label:"Word order", target:2 },
+    { key:"connectors", label:"Connectors", target:3 },
+    { key:"redemittel", label:"Redemittel", target:3 },
+    { key:"wortschatz", label:"Wortschatz", target:3 },
+    { key:"repair", label:"Repair", target:1 },
+    { key:"production_readiness", label:"Production readiness", target:1 }
+  ];
+  function clearB1DiagnosticRuntime() {
+    b1Runtime.diagnosticPlan = null;
+    b1Runtime.diagnosticItemIds = [];
+    b1Runtime.diagnosticCategoryMap = {};
+  }
+  function b1DiagnosticTokenText(item) {
+    if (!item) return "";
+    return [
+      item.id, item.itemType, item.source, item.courseDomain, item.grammarDomain,
+      item.section, item.topic, item.subtopic, item.family, item.variantFamilyId,
+      item.microRule, item.prompt_de
+    ].concat(Array.isArray(item.tags) ? item.tags : []).join(" ").toLowerCase();
+  }
+  function b1DiagnosticHasAny(item, tokens) {
+    var text = b1DiagnosticTokenText(item);
+    return (tokens || []).some(function(token){ return text.indexOf(String(token || "").toLowerCase()) !== -1; });
+  }
+  function b1DiagnosticBankKey(item) {
+    return b1EvidenceBankKeyFor(item);
+  }
+  function b1DiagnosticEligibleItems(predicate, allowReview) {
+    return b1RegistryPracticeItems().filter(function(item){
+      if (!item || !item.id || item.status === "retired") return false;
+      if (!allowReview && !b1ItemIsNormalEligible(item)) return false;
+      if (allowReview && !(b1ItemIsNormalEligible(item) || item.status === "review")) return false;
+      return !predicate || predicate(item);
+    });
+  }
+  function b1DiagnosticClone(item, categoryKey) {
+    var copy = cloneB1Item(item);
+    copy._diagnosticCategory = categoryKey;
+    return copy;
+  }
+  function b1DiagnosticTypeCounts(items) {
+    return (items || []).reduce(function(counts, item){
+      var key = item && item.itemType || "unknown";
+      counts[key] = Number(counts[key] || 0) + 1;
+      return counts;
+    }, {});
+  }
+  function b1DiagnosticBankCounts(items) {
+    return (items || []).reduce(function(counts, item){
+      var key = b1DiagnosticBankKey(item);
+      counts[key] = Number(counts[key] || 0) + 1;
+      return counts;
+    }, {});
+  }
+  function b1DiagnosticPickCategory(config, primary, fallback, selectedIds, seed) {
+    var picked = [];
+    var fallbackUsed = 0;
+    function addFrom(items, isFallback) {
+      shuffleWithSeed(items, seed + "|" + config.key + "|" + (isFallback ? "fallback" : "primary")).forEach(function(item){
+        if (picked.length >= config.target) return;
+        if (!item || selectedIds[item.id]) return;
+        selectedIds[item.id] = true;
+        picked.push(b1DiagnosticClone(item, config.key));
+        if (isFallback) fallbackUsed += 1;
+      });
+    }
+    addFrom(b1DiagnosticEligibleItems(primary, false), false);
+    if (picked.length < config.target && fallback) addFrom(b1DiagnosticEligibleItems(fallback, false), true);
+    if (picked.length < config.target) addFrom(b1DiagnosticEligibleItems(primary, true), true);
+    return {
+      key:config.key,
+      label:config.label,
+      intended:config.target,
+      actual:picked.length,
+      fallbackUsed:fallbackUsed,
+      items:picked,
+      sourceBanks:b1DiagnosticBankCounts(picked),
+      itemTypes:b1DiagnosticTypeCounts(picked)
+    };
+  }
+  function b1DiagnosticBuildQueue() {
+    var seed = createRoundSeed("diagnostic", "entry");
+    var selectedIds = {};
+    function bankIs(key) { return function(item){ return b1DiagnosticBankKey(item) === key; }; }
+    function notProduction(item) { return item && item.itemType !== "production_card"; }
+    function bankAndNonProduction(key) { return function(item){ return bankIs(key)(item) && notProduction(item); }; }
+    var rules = {
+      cases_articles:{
+        primary:function(item){ return bankIs("core")(item) && item.itemType === "grammar_cloze" && b1DiagnosticHasAny(item, ["dativ", "akkusativ", "nominativ", "genitiv", "artikel", "article", "case", "wechselpraeposition"]); },
+        fallback:function(item){ return bankIs("core")(item) && item.itemType === "grammar_cloze"; }
+      },
+      prepositions:{
+        primary:function(item){ return notProduction(item) && b1DiagnosticHasAny(item, ["praeposition", "prÃ¤position", "preposition", "wechselpraeposition", " mit ", " auf ", " fÃ¼r ", " fuer "]); },
+        fallback:function(item){ return bankIs("core")(item) && item.itemType === "grammar_cloze"; }
+      },
+      word_order:{
+        primary:function(item){ return notProduction(item) && (item.itemType === "word_order_cloze" || b1EvidenceTaskDepth(item) === "sentence_building"); },
+        fallback:function(item){ return bankIs("connectors")(item) && notProduction(item); }
+      },
+      connectors:{
+        primary:function(item){ return bankAndNonProduction("connectors")(item); },
+        fallback:function(item){ return item.itemType === "connector_choice" || b1DiagnosticHasAny(item, ["weil", "denn", "deshalb", "obwohl", "trotzdem", "damit", "um_zu", "wenn"]); }
+      },
+      redemittel:{
+        primary:bankAndNonProduction("redemittel"),
+        fallback:function(item){ return notProduction(item) && b1DiagnosticHasAny(item, ["redemittel", "formal", "email", "appointment", "request", "complaint"]); }
+      },
+      wortschatz:{
+        primary:bankAndNonProduction("wortschatz"),
+        fallback:function(item){ return notProduction(item) && item.itemType === "vocab_cloze"; }
+      },
+      repair:{
+        primary:function(item){ return notProduction(item) && item.itemType === "error_repair"; },
+        fallback:function(item){ return notProduction(item) && b1DiagnosticHasAny(item, ["repair", "korrektur", "korrigiere"]); }
+      },
+      production_readiness:{
+        primary:function(item){ return item.itemType === "production_card" && (bankIs("redemittel")(item) || bankIs("wortschatz")(item)); },
+        fallback:function(item){ return item.itemType === "production_card"; }
+      }
+    };
+    var selected = [];
+    var coverage = [];
+    var limitations = [];
+    B1_DIAGNOSTIC_QUOTAS.forEach(function(config){
+      var rule = rules[config.key];
+      var result = b1DiagnosticPickCategory(config, rule.primary, rule.fallback, selectedIds, seed);
+      coverage.push({
+        key:result.key,
+        label:result.label,
+        intended:result.intended,
+        actual:result.actual,
+        fallbackUsed:result.fallbackUsed,
+        sourceBanks:result.sourceBanks,
+        itemTypes:result.itemTypes
+      });
+      if (result.actual < result.intended) limitations.push(result.label + " quota filled " + result.actual + " of " + result.intended + " items.");
+      if (result.fallbackUsed) limitations.push(result.label + " used " + result.fallbackUsed + " fallback item(s) because metadata is derived.");
+      selected = selected.concat(result.items);
+    });
+    if (selected.length < B1_DIAGNOSTIC_TOTAL) {
+      var fill = b1DiagnosticEligibleItems(function(item){ return item && item.itemType !== "production_card"; }, false);
+      shuffleWithSeed(fill, seed + "|fill").forEach(function(item){
+        if (selected.length >= B1_DIAGNOSTIC_TOTAL) return;
+        if (selectedIds[item.id]) return;
+        selectedIds[item.id] = true;
+        selected.push(b1DiagnosticClone(item, "fallback_b1"));
+      });
+      limitations.push("General B1 fallback filled the diagnostic to " + selected.length + " items.");
+    }
+    var queue = shuffleWithSeed(selected, seed + "|final").slice(0, B1_DIAGNOSTIC_TOTAL);
+    var categoryMap = {};
+    queue.forEach(function(item){ categoryMap[item.id] = item._diagnosticCategory || "unknown"; });
+    return {
+      queue:queue,
+      seed:seed,
+      summary:{
+        total:queue.length,
+        coverage:coverage,
+        itemIds:queue.map(function(item){ return item.id; }),
+        itemTypes:b1DiagnosticTypeCounts(queue),
+        bankCounts:b1DiagnosticBankCounts(queue),
+        productionCount:queue.filter(function(item){ return item.itemType === "production_card"; }).length,
+        duplicateIds:queue.length - b1UniqueIds(queue.map(function(item){ return item.id; })).length,
+        categoryMap:categoryMap,
+        limitations:limitations
+      }
+    };
+  }
   function b1AnsweredCount() {
     return b1Runtime.correct + b1Runtime.wrong + b1Runtime.practised + Number(b1Runtime.assisted || 0);
   }
@@ -9317,6 +9718,7 @@ body.b1Mode .clozeAnswerText.missed {
     b1Runtime.currentAssisted = false;
     b1Runtime.dailySprint = dailyMode;
     b1Runtime.dailyDateKey = dailyMode && daily ? daily.dateKey : "";
+    clearB1DiagnosticRuntime();
     state = "b1Checking";
     current = null;
     hintUsed = false;
@@ -9362,6 +9764,7 @@ body.b1Mode .clozeAnswerText.missed {
     b1Runtime.currentAssisted = false;
     b1Runtime.dailySprint = false;
     b1Runtime.dailyDateKey = "";
+    clearB1DiagnosticRuntime();
     state = "b1Checking";
     current = null;
     hintUsed = false;
@@ -9408,6 +9811,7 @@ body.b1Mode .clozeAnswerText.missed {
     b1Runtime.currentAssisted = false;
     b1Runtime.dailySprint = false;
     b1Runtime.dailyDateKey = "";
+    clearB1DiagnosticRuntime();
     state = "b1Checking";
     current = null;
     hintUsed = false;
@@ -9454,6 +9858,54 @@ body.b1Mode .clozeAnswerText.missed {
     b1Runtime.currentAssisted = false;
     b1Runtime.dailySprint = false;
     b1Runtime.dailyDateKey = "";
+    clearB1DiagnosticRuntime();
+    state = "b1Checking";
+    current = null;
+    hintUsed = false;
+    clearMobileClozeFocus();
+    document.body.classList.remove("b1TypedCloze");
+    setMenu(false);
+    setDevTools(false);
+    document.body.classList.add("b1Mode");
+    document.body.classList.remove("homeMode", "setupMode", "placeholderMode", "resultsMode");
+    if (el("homeScreen")) el("homeScreen").hidden = true;
+    if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
+    if (el("grammarHub")) el("grammarHub").hidden = true;
+    if (el("redemittelHub")) el("redemittelHub").hidden = true;
+    if (el("startScreen")) el("startScreen").hidden = true;
+    nextB1Question();
+  }
+  function startB1DiagnosticSprint() {
+    var plan = b1DiagnosticBuildQueue();
+    var queue = plan.queue || [];
+    if (!queue.length) {
+      showHubPlaceholder("B1 Diagnostic Sprint");
+      return;
+    }
+    b1Runtime.active = true;
+    b1Runtime.mode = "b1_diagnostic";
+    b1Runtime.title = "B1 Diagnostic Sprint";
+    b1Runtime.queue = queue;
+    b1Runtime.current = null;
+    b1Runtime.target = B1_DIAGNOSTIC_TOTAL;
+    b1Runtime.correct = 0;
+    b1Runtime.wrong = 0;
+    b1Runtime.practised = 0;
+    b1Runtime.assisted = 0;
+    b1Runtime.streak = 0;
+    b1Runtime.connectorFamily = "";
+    b1Runtime.deckKey = "diagnostic";
+    b1Runtime.filterKey = "entry";
+    b1Runtime.roundSeed = plan.seed;
+    b1Runtime.selectedChoice = "";
+    b1Runtime.translationOpen = false;
+    b1Runtime.currentExtraPractice = false;
+    b1Runtime.currentAssisted = false;
+    b1Runtime.dailySprint = false;
+    b1Runtime.dailyDateKey = "";
+    b1Runtime.diagnosticPlan = plan.summary;
+    b1Runtime.diagnosticItemIds = plan.summary.itemIds.slice();
+    b1Runtime.diagnosticCategoryMap = Object.assign({}, plan.summary.categoryMap);
     state = "b1Checking";
     current = null;
     hintUsed = false;
@@ -9695,7 +10147,7 @@ body.b1Mode .clozeAnswerText.missed {
   }
   function markB1ProductionPractised() {
     if (state !== "b1Checking" || !b1Runtime.current || b1Runtime.current.itemType !== "production_card") return;
-    var evidenceRecord = appendB1EvidenceRecord(b1Runtime.current, "practised", { extraPractice:b1Runtime.currentExtraPractice, answerMode:"mark_practised" });
+    var evidenceRecord = appendB1EvidenceRecord(b1Runtime.current, "practised", { extraPractice:b1Runtime.currentExtraPractice, answerMode:"mark_practised", attemptContext:b1Runtime.mode === "b1_diagnostic" ? "diagnostic" : "" });
     b1Runtime.currentEvidenceRecordId = evidenceRecord ? evidenceRecord.id : "";
     recordB1Progress(b1Runtime.current, "practised", { extraPractice:b1Runtime.currentExtraPractice });
     b1Runtime.practised += 1;
@@ -9739,7 +10191,8 @@ body.b1Mode .clozeAnswerText.missed {
       extraPractice:b1Runtime.currentExtraPractice,
       assisted:assisted,
       isCorrect:isCorrect,
-      answerMode:usesChoices ? "choice" : "typed"
+      answerMode:usesChoices ? "choice" : "typed",
+      attemptContext:b1Runtime.mode === "b1_diagnostic" ? "diagnostic" : ""
     });
     b1Runtime.currentEvidenceRecordId = evidenceRecord ? evidenceRecord.id : "";
     recordB1Progress(b1Runtime.current, assisted ? "assisted" : isCorrect, { extraPractice:b1Runtime.currentExtraPractice, assisted:assisted });
@@ -9807,6 +10260,57 @@ body.b1Mode .clozeAnswerText.missed {
     renderB1Question();
     renderHud();
   }
+  function b1DiagnosticCategoryLabel(key) {
+    for (var i = 0; i < B1_DIAGNOSTIC_QUOTAS.length; i += 1) {
+      if (B1_DIAGNOSTIC_QUOTAS[i].key === key) return B1_DIAGNOSTIC_QUOTAS[i].label;
+    }
+    if (key === "fallback_b1") return "General B1";
+    return "Unknown";
+  }
+  function b1DiagnosticEvidenceRecordsForResult() {
+    var ids = {};
+    (b1Runtime.diagnosticItemIds || []).forEach(function(id){ ids[id] = true; });
+    var records = safeGetB1Evidence().records || [];
+    return records.filter(function(record){
+      return record && record.attemptContext === "diagnostic" && ids[record.itemId] && record.sessionId === B1_EVIDENCE_SESSION_ID;
+    });
+  }
+  function b1DiagnosticResultData() {
+    var records = b1DiagnosticEvidenceRecordsForResult();
+    var weakByCategory = {};
+    var unsureGuessed = 0;
+    records.forEach(function(record){
+      var confidence = record.confidence;
+      if (confidence === "unsure" || confidence === "guessed") unsureGuessed += 1;
+      if (record.correct === false || confidence === "unsure" || confidence === "guessed") {
+        var category = (b1Runtime.diagnosticCategoryMap && b1Runtime.diagnosticCategoryMap[record.itemId]) || "unknown";
+        weakByCategory[category] = Number(weakByCategory[category] || 0) + 1;
+      }
+    });
+    var weakSignals = Object.keys(weakByCategory).sort(function(a, b){ return weakByCategory[b] - weakByCategory[a]; }).slice(0, 3).map(b1DiagnosticCategoryLabel);
+    var map = b1LearningMapScaffold();
+    var notEnough = map.nodes.filter(function(node){ return !node.hasEnoughEvidence; }).slice(0, 3).map(function(node){ return node.label; });
+    return {
+      attempted:b1AnsweredCount(),
+      correct:b1Runtime.correct,
+      target:b1Runtime.target || B1_DIAGNOSTIC_TOTAL,
+      unsureGuessed:unsureGuessed,
+      weakSignals:weakSignals,
+      notEnough:notEnough,
+      evidenceRecords:records.length
+    };
+  }
+  function b1DiagnosticResultHtml(data) {
+    var weak = data.weakSignals.length ? data.weakSignals.join(", ") : "No clear weak signal yet";
+    var notEnough = data.notEnough.length ? data.notEnough.join(", ") : "No broad area flagged";
+    return "<div class=\"sessionCoverage\">" +
+      "<strong>Items attempted</strong><span>" + data.attempted + " of " + data.target + "</span>" +
+      "<strong>Correct</strong><span>" + data.correct + " / " + data.target + "</span>" +
+      "<strong>Unsure / guessed</strong><span>" + data.unsureGuessed + "</span>" +
+      "<strong>Early weak signals</strong><span>" + escapeHtml(weak) + "</span>" +
+      "<strong>Not enough evidence remains</strong><span>" + escapeHtml(notEnough) + "</span>" +
+      "</div>";
+  }
   function showB1Results() {
     var answered = b1AnsweredCount();
     var scored = b1Runtime.correct + b1Runtime.wrong;
@@ -9839,15 +10343,25 @@ body.b1Mode .clozeAnswerText.missed {
     el("feedback").innerHTML = "";
     el("feedback").className = "feedback";
     el("rankText").textContent = b1Runtime.title;
-    if (b1Runtime.dailySprint) {
+    if (b1Runtime.mode === "b1_diagnostic") {
+      var diagnostic = b1DiagnosticResultData();
+      el("modeTitle").textContent = "B1 Diagnostic Sprint";
+      el("promptValue").textContent = "Diagnostic complete";
+      el("englishGloss").textContent = "This is a starting snapshot, not a test score.";
+      el("resultSummary").textContent = "Items attempted: " + diagnostic.attempted + " / " + diagnostic.target;
+      el("accuracySummary").textContent = "Correct: " + diagnostic.correct + " / " + diagnostic.target + " - Unsure / guessed: " + diagnostic.unsureGuessed;
+      el("weakSummary").innerHTML = b1DiagnosticResultHtml(diagnostic);
+    } else if (b1Runtime.dailySprint) {
       var dailyStats = b1DailyStats(b1CurrentDailySprint());
       el("resultSummary").textContent = dailyStats.success + " / " + dailyStats.total + " complete";
     } else {
       el("resultSummary").textContent = b1Runtime.correct + " / " + scored + " correct";
     }
-    el("accuracySummary").textContent = "Progress saved locally";
     el("bestSummary").textContent = "";
-    el("weakSummary").innerHTML = "<div class=\"sessionCoverage\"><strong>Items practised</strong><span>" + answered + " of " + b1Runtime.target + "</span><strong>Wrong</strong><span>" + b1Runtime.wrong + "</span><strong>Assisted</strong><span>" + b1Runtime.assisted + "</span><strong>Production</strong><span>" + b1Runtime.practised + "</span></div>";
+    if (b1Runtime.mode !== "b1_diagnostic") {
+      el("accuracySummary").textContent = "Progress saved locally";
+      el("weakSummary").innerHTML = "<div class=\"sessionCoverage\"><strong>Items practised</strong><span>" + answered + " of " + b1Runtime.target + "</span><strong>Wrong</strong><span>" + b1Runtime.wrong + "</span><strong>Assisted</strong><span>" + b1Runtime.assisted + "</span><strong>Production</strong><span>" + b1Runtime.practised + "</span></div>";
+    }
     var rp = el("resultPanel");
     rp.classList.add("visible");
     var next = el("nextBtn");
@@ -10440,7 +10954,7 @@ body.b1Mode .clozeAnswerText.missed {
     savePersistent();
     newRound();
   }
-window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }; window.kasusNoArticle=function(){checkAnswer("none");}; window.kasusProceed=function(){proceed();}; window.kasusHint=function(){showHint();}; window.kasusNewRound=function(){showStartScreen();}; window.kasusStartRound=function(){startConfiguredRound();}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusSessionLog=function(){return sessionLog.slice();}; window.kasusCurrent=function(){return current ? cloneQuestion(current) : cloneB1Item(b1Runtime.current || {});}; window.kasusLeitnerDebug=function(){ return { storageKey:LEITNER_STORAGE_KEY, runtime:leitnerRuntime, progress:safeGetLeitner() }; }; window.ozmosisB1Debug=function(){ return { storageKey:B1_STORAGE_KEY, evidenceStorageKey:B1_EVIDENCE_STORAGE_KEY, itemCount:B1_ITEMS.length, connectorCount:B1_CONNECTOR_ITEMS.length, redemittelCount:B1_REDEMITTEL_ITEMS.length, wortschatzCount:B1_WORTSCHATZ_ITEMS.length, registry:b1RegistrySummary(), runtime:b1Runtime, progress:safeGetB1Progress(), evidence:b1EvidenceSummary() }; }; window.ozmosisStartConnector=function(family){ startConnectorSprint(family || "all"); }; window.ozmosisStartRedemittel=function(filter){ startRedemittelRound(filter || "mixed"); }; window.ozmosisStartWortschatz=function(filter){ startWortschatzRound(filter || "mixed"); }; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusResetBest=function(){ highScore=0; bestStreakAll=0; savePersistent(); if (state === "results") showResults(); else renderHud(); }; window.kasusResetProfile=function(){ resetLearnerModel(); }; window.kasusToggleMenu=function(){ var panel=el("settingsPanel"); panel.classList.toggle("open"); document.body.classList.toggle("menuOpen", panel.classList.contains("open")); };
+window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }; window.kasusNoArticle=function(){checkAnswer("none");}; window.kasusProceed=function(){proceed();}; window.kasusHint=function(){showHint();}; window.kasusNewRound=function(){showStartScreen();}; window.kasusStartRound=function(){startConfiguredRound();}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusSessionLog=function(){return sessionLog.slice();}; window.kasusCurrent=function(){return current ? cloneQuestion(current) : cloneB1Item(b1Runtime.current || {});}; window.kasusLeitnerDebug=function(){ return { storageKey:LEITNER_STORAGE_KEY, runtime:leitnerRuntime, progress:safeGetLeitner() }; }; window.ozmosisB1Debug=function(){ return { storageKey:B1_STORAGE_KEY, evidenceStorageKey:B1_EVIDENCE_STORAGE_KEY, itemCount:B1_ITEMS.length, connectorCount:B1_CONNECTOR_ITEMS.length, redemittelCount:B1_REDEMITTEL_ITEMS.length, wortschatzCount:B1_WORTSCHATZ_ITEMS.length, registry:b1RegistrySummary(), runtime:b1Runtime, progress:safeGetB1Progress(), evidence:b1EvidenceSummary(), learningMap:b1LearningMapScaffold(), diagnosticPlan:b1Runtime.diagnosticPlan }; }; window.ozmosisStartDiagnostic=function(){ startB1DiagnosticSprint(); }; window.ozmosisStartConnector=function(family){ startConnectorSprint(family || "all"); }; window.ozmosisStartRedemittel=function(filter){ startRedemittelRound(filter || "mixed"); }; window.ozmosisStartWortschatz=function(filter){ startWortschatzRound(filter || "mixed"); }; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusResetBest=function(){ highScore=0; bestStreakAll=0; savePersistent(); if (state === "results") showResults(); else renderHud(); }; window.kasusResetProfile=function(){ resetLearnerModel(); }; window.kasusToggleMenu=function(){ var panel=el("settingsPanel"); panel.classList.toggle("open"); document.body.classList.toggle("menuOpen", panel.classList.contains("open")); };
   window.ozmosisContentAudit = function(){ return b1ConnectorWordOrderIssues(); };
   function mountSettingsPanel() {
     var panel = el("settingsPanel");
@@ -10499,7 +11013,7 @@ window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkA
     bind("genitiveHelpBtn","click",openGenitiveHelp);
     bind("startGenitiveHelpBtn","click",openGenitiveHelp);
     bind("genitiveHelpCloseBtn","click",closeGenitiveHelp);
-    if (el("genitiveHelpOverlay")) el("genitiveHelpOverlay").addEventListener("click",function(event){ if (event.target === el("genitiveHelpOverlay")) closeGenitiveHelp(); },false); bind("englishSupport","change",function(){ savePersistent(); if (b1Runtime.active) renderB1Translation(false); else if (current) renderQuestion(); }); bind("roundTarget","change",function(){ if (shouldApplyLiveSettings()) newRound(); else savePersistent(); }); bind("adaptiveMode","change",function(){ savePersistent(); if (shouldApplyLiveSettings()) newRound(); }); bind("menuHomeBtn","click",function(){ setMenu(false); showHomeScreen(); }); bind("menuSprintBtn","click",function(){ setMenu(false); startB1Round("mixed"); }); bind("menuGrammarBtn","click",function(){ setMenu(false); showGrammarHub(); }); bind("menuRedemittelBtn","click",function(){ setMenu(false); showRedemittelHub(); }); bind("menuCaseTrainerBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("restartBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("resetBestBtn","click",function(){window.kasusResetBest();}); bind("resetProfileBtn","click",function(){window.kasusResetProfile();}); bind("exportBtn","click",exportProgress); bind("importBtn","click",function(){el("importFile").click();}); bind("importFile","change",function(event){ importProgress(event.target.files && event.target.files[0]); event.target.value=""; }); bind("devToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("devMenuBtn","click",function(event){ event.stopPropagation(); setMenu(!el("settingsPanel").classList.contains("open")); }); bind("devCloseBtn","click",function(){ setDevTools(false); }); bind("newGameCloseBtn","click",function(){ setDevTools(false); }); bind("leitnerCloseBtn","click",closeLeitnerPrototype); bind("openNewGameMockBtn","click",showNewGameMock); bind("openLeitnerPrototypeBtn","click",showLeitnerPrototype); bind("resetLeitnerPrototypeBtn","click",showLeitnerResetConfirm); bind("backToDevListBtn","click",showDevList); bind("leitnerResetCloseBtn","click",showDevList); bind("cancelLeitnerResetBtn","click",showDevList); bind("confirmLeitnerResetBtn","click",resetLeitnerPrototypeProgress); bind("leitnerRestartBtn","click",startLeitnerQueue); bind("leitnerCheckBtn","click",checkLeitnerAnswer); bind("leitnerNextBtn","click",nextLeitnerCard); bind("leitnerAnswerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (leitnerRuntime.answered) nextLeitnerCard(); else checkLeitnerAnswer(); }); bind("applyNewGameMockBtn","click",applyNewGameMock); bind("homeSprintBtn","click",function(){ startB1Round("mixed"); }); bind("homeGrammarBtn","click",showGrammarHub); bind("grammarBackBtn","click",showHomeScreen); bind("grammarSeedBtn","click",function(){ startB1Round("grammar_cloze"); }); bind("connectorAllBtn","click",function(){ startConnectorSprint("all"); }); bind("connectorReasonBtn","click",function(){ startConnectorSprint("reason"); }); bind("connectorContrastBtn","click",function(){ startConnectorSprint("contrast"); }); bind("connectorPurposeBtn","click",function(){ startConnectorSprint("purpose"); }); bind("connectorTimeBtn","click",function(){ startConnectorSprint("time"); }); bind("connectorRepairBtn","click",function(){ startConnectorSprint("repair"); }); bind("homeWortschatzBtn","click",function(){ startWortschatzRound("mixed"); }); bind("homeRedemittelBtn","click",function(){ startB1Round("redemittel_cloze"); }); bind("homeCaseTrainerBtn","click",showStartScreen); bind("caseTrainerBackBtn","click",showHomeScreen); bind("homeOptionsBtn","click",function(event){ event.stopPropagation(); setDevTools(false); setMenu(!el("settingsPanel").classList.contains("open")); }); bind("homeDevToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("hubBackBtn","click",showHomeScreen); document.querySelectorAll(".homePlaceholderBtn").forEach(function(btn){ btn.addEventListener("click",function(){ showHubPlaceholder(btn.getAttribute("data-title") || btn.textContent.trim()); }); }); var devOverlay=el("devOverlay"); if (devOverlay) devOverlay.addEventListener("click",function(event){ if (event.target === devOverlay && !devOverlay.classList.contains("leitnerFullscreen")) setDevTools(false); },false); document.addEventListener("keydown",function(event){ if ((event.key === "Escape" || event.key === "Esc") && el("genitiveHelpOverlay") && !el("genitiveHelpOverlay").hidden) { el("genitiveHelpOverlay").hidden = true; return; } if ((event.key === "Escape" || event.key === "Esc") && el("devOverlay") && !el("devOverlay").hidden) { setDevTools(false); return; } if ((event.key === "Escape" || event.key === "Esc") && (state === "placeholder" || state === "grammarHub")) showHomeScreen(); }); bind("checkBtn","click",function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }); bind("noArticleBtn","click",function(){checkAnswer("none");}); bind("nextBtn","click",proceed); bind("hintBtn","click",showHint); bind("supportPlaceholder","click",showHint); bind("translationToggle","click",toggleB1Translation); bind("whyNoStarsBtn","click",explainExtraPracticeStars); bind("startRoundBtn","click",startConfiguredRound); document.querySelectorAll(".langBtn").forEach(function(btn){ btn.addEventListener("click",function(){ setSupportLanguage(btn.getAttribute("data-lang")); }); }); bind("answerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (state==="b1Checking") checkB1Answer(); else if (state==="checking") checkAnswer(); else proceed(); }); renderHud(); applyLanguage(); showHomeScreen(); }
+    if (el("genitiveHelpOverlay")) el("genitiveHelpOverlay").addEventListener("click",function(event){ if (event.target === el("genitiveHelpOverlay")) closeGenitiveHelp(); },false); bind("englishSupport","change",function(){ savePersistent(); if (b1Runtime.active) renderB1Translation(false); else if (current) renderQuestion(); }); bind("roundTarget","change",function(){ if (shouldApplyLiveSettings()) newRound(); else savePersistent(); }); bind("adaptiveMode","change",function(){ savePersistent(); if (shouldApplyLiveSettings()) newRound(); }); bind("menuHomeBtn","click",function(){ setMenu(false); showHomeScreen(); }); bind("menuSprintBtn","click",function(){ setMenu(false); startB1Round("mixed"); }); bind("menuGrammarBtn","click",function(){ setMenu(false); showGrammarHub(); }); bind("menuRedemittelBtn","click",function(){ setMenu(false); showRedemittelHub(); }); bind("menuCaseTrainerBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("restartBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("resetBestBtn","click",function(){window.kasusResetBest();}); bind("resetProfileBtn","click",function(){window.kasusResetProfile();}); bind("exportBtn","click",exportProgress); bind("importBtn","click",function(){el("importFile").click();}); bind("importFile","change",function(event){ importProgress(event.target.files && event.target.files[0]); event.target.value=""; }); bind("devToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("devMenuBtn","click",function(event){ event.stopPropagation(); setMenu(!el("settingsPanel").classList.contains("open")); }); bind("devCloseBtn","click",function(){ setDevTools(false); }); bind("newGameCloseBtn","click",function(){ setDevTools(false); }); bind("leitnerCloseBtn","click",closeLeitnerPrototype); bind("openNewGameMockBtn","click",showNewGameMock); bind("openLeitnerPrototypeBtn","click",showLeitnerPrototype); bind("resetLeitnerPrototypeBtn","click",showLeitnerResetConfirm); bind("backToDevListBtn","click",showDevList); bind("leitnerResetCloseBtn","click",showDevList); bind("cancelLeitnerResetBtn","click",showDevList); bind("confirmLeitnerResetBtn","click",resetLeitnerPrototypeProgress); bind("leitnerRestartBtn","click",startLeitnerQueue); bind("leitnerCheckBtn","click",checkLeitnerAnswer); bind("leitnerNextBtn","click",nextLeitnerCard); bind("leitnerAnswerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (leitnerRuntime.answered) nextLeitnerCard(); else checkLeitnerAnswer(); }); bind("applyNewGameMockBtn","click",applyNewGameMock); bind("homeSprintBtn","click",function(){ startB1Round("mixed"); }); bind("homeDiagnosticBtn","click",startB1DiagnosticSprint); bind("homeGrammarBtn","click",showGrammarHub); bind("grammarBackBtn","click",showHomeScreen); bind("grammarSeedBtn","click",function(){ startB1Round("grammar_cloze"); }); bind("connectorAllBtn","click",function(){ startConnectorSprint("all"); }); bind("connectorReasonBtn","click",function(){ startConnectorSprint("reason"); }); bind("connectorContrastBtn","click",function(){ startConnectorSprint("contrast"); }); bind("connectorPurposeBtn","click",function(){ startConnectorSprint("purpose"); }); bind("connectorTimeBtn","click",function(){ startConnectorSprint("time"); }); bind("connectorRepairBtn","click",function(){ startConnectorSprint("repair"); }); bind("homeWortschatzBtn","click",function(){ startWortschatzRound("mixed"); }); bind("homeRedemittelBtn","click",function(){ startB1Round("redemittel_cloze"); }); bind("homeCaseTrainerBtn","click",showStartScreen); bind("caseTrainerBackBtn","click",showHomeScreen); bind("homeOptionsBtn","click",function(event){ event.stopPropagation(); setDevTools(false); setMenu(!el("settingsPanel").classList.contains("open")); }); bind("homeDevToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("hubBackBtn","click",showHomeScreen); document.querySelectorAll(".homePlaceholderBtn").forEach(function(btn){ btn.addEventListener("click",function(){ showHubPlaceholder(btn.getAttribute("data-title") || btn.textContent.trim()); }); }); var devOverlay=el("devOverlay"); if (devOverlay) devOverlay.addEventListener("click",function(event){ if (event.target === devOverlay && !devOverlay.classList.contains("leitnerFullscreen")) setDevTools(false); },false); document.addEventListener("keydown",function(event){ if ((event.key === "Escape" || event.key === "Esc") && el("genitiveHelpOverlay") && !el("genitiveHelpOverlay").hidden) { el("genitiveHelpOverlay").hidden = true; return; } if ((event.key === "Escape" || event.key === "Esc") && el("devOverlay") && !el("devOverlay").hidden) { setDevTools(false); return; } if ((event.key === "Escape" || event.key === "Esc") && (state === "placeholder" || state === "grammarHub")) showHomeScreen(); }); bind("checkBtn","click",function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }); bind("noArticleBtn","click",function(){checkAnswer("none");}); bind("nextBtn","click",proceed); bind("hintBtn","click",showHint); bind("supportPlaceholder","click",showHint); bind("translationToggle","click",toggleB1Translation); bind("whyNoStarsBtn","click",explainExtraPracticeStars); bind("startRoundBtn","click",startConfiguredRound); document.querySelectorAll(".langBtn").forEach(function(btn){ btn.addEventListener("click",function(){ setSupportLanguage(btn.getAttribute("data-lang")); }); }); bind("answerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (state==="b1Checking") checkB1Answer(); else if (state==="checking") checkAnswer(); else proceed(); }); renderHud(); applyLanguage(); showHomeScreen(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
 }());
 </script>

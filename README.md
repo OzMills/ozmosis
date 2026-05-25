@@ -17,9 +17,9 @@ Current priority order:
 
 ## Current Known Version
 
-Current working version: `v0.41`
+Current working version: `v0.42.1`
 
-Next planned patch: `v0.42`
+Next planned patch: `v0.42.2`
 
 Known current state:
 
@@ -49,6 +49,8 @@ Known current state:
 - v0.40 adds the first additive B1 progress evidence model for attempt-level learning evidence, export/import support, and future Learning Map hooks without adding learner-facing mastery claims.
 - v0.40.1 adds optional Sure / Unsure / Guessed confidence capture to B1 evidence records without changing scoring, sprint composition, or routing.
 - v0.41 audits B1 skill tag and progress metadata coverage for future Learning Map, Skill Matrix, weakness repair, transfer testing, and interleaving work.
+- v0.42 adds versioned planning docs and a non-visual B1 Learning Map data scaffold for conservative evidence aggregation.
+- v0.42.1 adds an optional 18-item B1 Diagnostic Sprint that records diagnostic attempt evidence into the existing B1 evidence model.
 - B1 progress persists under `ozmosis_b1_sprint_progress_v1`.
 - B1 progress evidence persists under `ozmosis_b1_progress_evidence_v1`.
 - Existing Case Trainer, Options, Dev Tools, export/import, and localStorage compatibility are preserved.
@@ -80,23 +82,24 @@ Recommended clean repo structure:
 
 ```text
 /
-├─ index.html
-├─ README.md
-├─ CHANGELOG.txt
-├─ AGENTS.md
-├─ .gitignore
-├─ content/
-│  ├─ b1-connectors.js
-│  ├─ b1-redemittel.js
-│  ├─ b1-wortschatz.js
-│  ├─ ozmosis_b1_connector_sprint_v1_bank.json
-│  └─ ozmosis_b1_wortschatz_survival_set_v1.json
-└─ docs/
-   ├─ Kasuskonsole Source Brief.md
-   ├─ OZMOSIS_B1_Test_Sprint_Pivot_Production_Plan.md
-   ├─ OZMOSIS_Case_Teaching_Leitner_Iteration_Plan.md
-   └─ qa/
-      └─ ozmosis_b1_connector_sprint_v1_qa_protocol.md
+|- index.html
+|- README.md
+|- CHANGELOG.txt
+|- AGENTS.md
+|- .gitignore
+|- content/
+|  |- b1-connectors.js
+|  |- b1-redemittel.js
+|  |- b1-wortschatz.js
+|  |- ozmosis_b1_connector_sprint_v1_bank.json
+|  `- ozmosis_b1_wortschatz_survival_set_v1.json
+`- docs/
+   |- OZMOSIS_SOURCE_BRIEF_v0.42.md
+   |- OZMOSIS_DEVELOPMENT_ROADMAP_v0.42.md
+   |- OZMOSIS_B1_Test_Sprint_Pivot_Production_Plan.md
+   |- OZMOSIS_Case_Teaching_Leitner_Iteration_Plan.md
+   `- qa/
+      `- ozmosis_b1_connector_sprint_v1_qa_protocol.md
 ```
 
 Do not commit old version folders, screenshots, ZIP packages, generated test output, browser profiles, or temporary Codex artifacts.
