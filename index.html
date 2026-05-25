@@ -4456,7 +4456,8 @@ body.homeMode .startScreen {
 
 .homeScreen[hidden],
 .hubPlaceholder[hidden],
-.grammarHub[hidden] {
+.grammarHub[hidden],
+.learningMapScreen[hidden] {
   display:none !important;
 }
 
@@ -4819,6 +4820,12 @@ body.homeMode #settingsPanel {
   border-color:var(--warn);
 }
 
+.homePill.beta {
+  color:var(--accent);
+  border-color:var(--accent);
+  background:rgba(10,24,38,.78);
+}
+
 .homeChip {
   display:grid;
   grid-template-columns:1fr auto;
@@ -4962,17 +4969,242 @@ body.homeMode #settingsPanel {
   align-content:start;
 }
 
+.learningMapScreen {
+  position:relative;
+  z-index:1;
+  width:min(900px, 100%);
+  margin:0 auto;
+  display:grid;
+  gap:clamp(12px, 2.8vw, 18px);
+  padding-bottom:calc(30px + env(safe-area-inset-bottom));
+}
+
+.learningMapHeader {
+  display:grid;
+  gap:8px;
+}
+
+.learningMapHeader h2 {
+  margin:0;
+  color:var(--accent);
+  font-size:clamp(2.2rem, 10vw, 4.4rem);
+  line-height:.95;
+  font-weight:1000;
+}
+
+.learningMapSubtitle,
+.learningMapCaution,
+.learningMapText,
+.learningMapMeta,
+.learningMapRecentMeta {
+  margin:0;
+  color:var(--muted);
+  font-weight:850;
+  line-height:1.35;
+}
+
+.learningMapCaution {
+  color:color-mix(in srgb, var(--warn) 78%, var(--text));
+}
+
+.learningMapSummaryGrid,
+.learningMapActionGrid {
+  display:grid;
+  grid-template-columns:1fr;
+  gap:10px;
+}
+
+.learningMapChip,
+.learningMapPanel,
+.learningMapNodeCard,
+.learningMapRecentItem {
+  border:1.5px solid color-mix(in srgb, var(--accent) 38%, var(--line));
+  border-radius:16px;
+  background:linear-gradient(135deg, rgba(7,14,27,.86), rgba(8,18,31,.64));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+}
+
+.learningMapChip {
+  display:grid;
+  gap:4px;
+  min-height:66px;
+  padding:12px 13px;
+}
+
+.learningMapChip strong {
+  color:var(--text);
+  font-size:1.15rem;
+  line-height:1.1;
+  font-weight:1000;
+  font-variant-numeric:tabular-nums;
+}
+
+.learningMapChip span {
+  color:var(--muted);
+  font-size:.8rem;
+  line-height:1.2;
+  font-weight:850;
+}
+
+.learningMapPanel {
+  display:grid;
+  gap:10px;
+  padding:clamp(14px, 3.8vw, 18px);
+}
+
+.learningMapPanel h3 {
+  margin:0;
+  color:var(--accent);
+  font-size:clamp(1.05rem, 4.5vw, 1.32rem);
+  line-height:1.08;
+  font-weight:1000;
+}
+
+.learningMapNodeList,
+.learningMapRecentList,
+.learningMapSignalList {
+  display:grid;
+  gap:8px;
+}
+
+.learningMapNodeCard {
+  display:grid;
+  gap:8px;
+  padding:12px;
+}
+
+.learningMapNodeTop {
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:10px;
+  align-items:start;
+}
+
+.learningMapNodeTitle {
+  color:var(--text);
+  font-size:1.02rem;
+  line-height:1.1;
+  font-weight:1000;
+}
+
+.learningMapState {
+  justify-self:end;
+  max-width:100%;
+  padding:.36rem .5rem;
+  border:1.5px solid color-mix(in srgb, var(--accent) 46%, var(--line));
+  border-radius:10px;
+  color:var(--accent);
+  background:rgba(4,12,22,.74);
+  font-size:.68rem;
+  line-height:1;
+  font-weight:1000;
+  text-transform:uppercase;
+  white-space:normal;
+  text-align:right;
+}
+
+.learningMapState.not-enough {
+  color:var(--muted);
+  border-color:color-mix(in srgb, var(--muted) 48%, var(--line));
+}
+
+.learningMapState.emerging {
+  color:var(--warn);
+  border-color:var(--warn);
+}
+
+.learningMapState.developing {
+  color:var(--ok);
+  border-color:var(--ok);
+}
+
+.learningMapDetailGrid {
+  display:grid;
+  grid-template-columns:1fr;
+  gap:6px;
+}
+
+.learningMapDetail,
+.learningMapLimitation,
+.learningMapRecentItem {
+  color:var(--muted);
+  font-size:.82rem;
+  line-height:1.3;
+  font-weight:850;
+}
+
+.learningMapDetail strong,
+.learningMapRecentItem strong {
+  color:var(--text);
+}
+
+.learningMapLimitation {
+  color:color-mix(in srgb, var(--warn) 70%, var(--text));
+}
+
+.learningMapActionGrid {
+  margin-top:2px;
+}
+
+.learningMapAction {
+  min-height:46px;
+  border:1.5px solid color-mix(in srgb, var(--accent) 46%, var(--line));
+  border-radius:14px;
+  background:rgba(5,11,22,.76);
+  color:var(--text);
+  font-family:inherit;
+  font-size:.92rem;
+  font-weight:950;
+  cursor:pointer;
+}
+
+.learningMapAction:hover,
+.learningMapAction:focus-visible {
+  border-color:var(--accent);
+  outline:none;
+  box-shadow:0 0 16px rgba(125,227,255,.18), inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+.learningMapRecentItem {
+  padding:10px 11px;
+}
+
+.learningMapRecentMeta {
+  display:block;
+  margin-top:3px;
+  font-size:.78rem;
+}
+
+.learningMapEmptyLine {
+  color:var(--muted);
+  font-weight:900;
+}
+
 @supports (min-height: 100dvh) {
   .hubPlaceholder,
-  .grammarHub {
+  .grammarHub,
+  .learningMapScreen {
     min-height:calc(100dvh - 100px);
   }
 }
 
 @media (min-width:760px) {
   .homeScreen,
-  .grammarHub {
+  .grammarHub,
+  .learningMapScreen {
     width:min(860px, 100%);
+  }
+
+  .learningMapSummaryGrid {
+    grid-template-columns:repeat(5, minmax(0, 1fr));
+  }
+
+  .learningMapActionGrid {
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+  }
+
+  .learningMapDetailGrid {
+    grid-template-columns:repeat(2, minmax(0, 1fr));
   }
 
   .homeChipGrid {
@@ -5117,7 +5349,8 @@ body.menuOpen .bottomHud {
 .startScreen,
 .homeScreen,
 .hubPlaceholder,
-.grammarHub {
+.grammarHub,
+.learningMapScreen {
   padding-bottom:calc(22px + env(safe-area-inset-bottom));
 }
 
@@ -5491,18 +5724,23 @@ body.b1Mode.b1LongAnswer #answerInput {
           <span class="homeRouteMain"><span class="homeRouteLabel">B1 Diagnostic Sprint</span><span class="homeRouteSub">Find your starting points</span><span class="homeRouteMeta">18 items &middot; evidence snapshot &middot; START</span></span>
           <span class="homePill new">NEW</span>
         </button>
-        <button class="homeRouteCard" id="homeGrammarBtn" type="button">
+        <button class="homeRouteCard" id="homeLearningMapBtn" type="button" aria-label="Learning Map. B1 evidence overview. Shows what has evidence and what still needs testing. Open.">
           <span class="homeRouteNumber">2.</span>
+          <span class="homeRouteMain"><span class="homeRouteLabel">Learning Map</span><span class="homeRouteSub">B1 evidence overview</span><span class="homeRouteMeta">Shows evidence and gaps &middot; OPEN</span></span>
+          <span class="homePill beta">BETA</span>
+        </button>
+        <button class="homeRouteCard" id="homeGrammarBtn" type="button">
+          <span class="homeRouteNumber">3.</span>
           <span class="homeRouteMain"><span class="homeRouteLabel">Grammar</span><span class="homeRouteSub">Connectors · word order · cases</span></span>
           <span class="homePill ready">READY</span>
         </button>
         <button class="homeRouteCard" id="homeWortschatzBtn" type="button">
-          <span class="homeRouteNumber">3.</span>
+          <span class="homeRouteNumber">4.</span>
           <span class="homeRouteMain"><span class="homeRouteLabel">Wortschatz</span><span class="homeRouteSub">Work · illness · admin</span></span>
           <span class="homePill ready">READY</span>
         </button>
         <button class="homeRouteCard" id="homeRedemittelBtn" type="button">
-          <span class="homeRouteNumber">4.</span>
+          <span class="homeRouteNumber">5.</span>
           <span class="homeRouteMain"><span class="homeRouteLabel">Redemittel</span><span class="homeRouteSub">Email · appointments · complaints</span></span>
           <span class="homePill ready">READY</span>
         </button>
@@ -5513,17 +5751,17 @@ body.b1Mode.b1LongAnswer #answerInput {
       <h3 class="homeSectionTitle" id="homeComingSoonTitle">Coming Soon</h3>
       <div class="homeRouteGrid">
         <button class="homeRouteCard unavailable homePlaceholderBtn" id="homeSchreibenBtn" type="button" data-title="Schreiben">
-          <span class="homeRouteNumber">5.</span>
+          <span class="homeRouteNumber">6.</span>
           <span class="homeRouteMain"><span class="homeRouteLabel">Schreiben</span><span class="homeRouteSub">Production cards are not a full route yet</span></span>
           <span class="homePill soon">SOON</span>
         </button>
         <button class="homeRouteCard unavailable homePlaceholderBtn" id="homeSprechenBtn" type="button" data-title="Sprechen">
-          <span class="homeRouteNumber">6.</span>
+          <span class="homeRouteNumber">7.</span>
           <span class="homeRouteMain"><span class="homeRouteLabel">Sprechen</span><span class="homeRouteSub">Production cards are not a full route yet</span></span>
           <span class="homePill soon">SOON</span>
         </button>
         <button class="homeRouteCard unavailable homePlaceholderBtn" id="homeCourseMapBtn" type="button" data-title="Course Map">
-          <span class="homeRouteNumber">7.</span>
+          <span class="homeRouteNumber">8.</span>
           <span class="homeRouteMain"><span class="homeRouteLabel">Course Map</span><span class="homeRouteSub">Planned structure view</span></span>
           <span class="homePill soon">SOON</span>
         </button>
@@ -5580,6 +5818,16 @@ body.b1Mode.b1LongAnswer #answerInput {
       <button class="homeNavButton" id="redemittelProductionBtn" type="button"><span class="homeNavNumber">9.</span><span>Production Cards</span></button>
     </nav>
     <button class="homeBackButton" id="redemittelBackBtn" type="button">Back</button>
+  </section>
+
+  <section class="learningMapScreen" id="learningMapScreen" aria-labelledby="learningMapTitle" hidden>
+    <button class="homeBackButton" id="learningMapBackBtn" type="button">Back</button>
+    <div class="learningMapHeader">
+      <h2 id="learningMapTitle">B1 Learning Map</h2>
+      <p class="learningMapSubtitle">Evidence overview</p>
+      <p class="learningMapCaution">Early view. This shows evidence, not mastery.</p>
+    </div>
+    <div id="learningMapContent"></div>
   </section>
 
   <section class="startScreen" id="startScreen" aria-labelledby="startTitle">
@@ -5995,8 +6243,8 @@ body.b1Mode.b1LongAnswer #answerInput {
   var B1_STORAGE_KEY = "ozmosis_b1_sprint_progress_v1";
   var B1_EVIDENCE_STORAGE_KEY = "ozmosis_b1_progress_evidence_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.42.4";
-  var OZMOSIS_EXPORT_VERSION = "v0.42.4-debug-stamp-state-snapshot";
+  var OZMOSIS_APP_VERSION = "v0.43";
+  var OZMOSIS_EXPORT_VERSION = "v0.43-learning-map-ui-preparation";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
   var B1_DAILY_TOTAL = 12;
@@ -6909,6 +7157,214 @@ body.b1Mode.b1LongAnswer #answerInput {
       unmappedEvidenceCount:unmappedEvidenceCount,
       limitations:limitations
     };
+  }
+  function learningMapCountTotal(counts) {
+    return Object.keys(counts || {}).reduce(function(total, key){ return total + Number(counts[key] || 0); }, 0);
+  }
+  function learningMapStateLabel(state) {
+    var labels = {
+      not_enough_evidence:"not enough evidence",
+      introduced:"introduced",
+      emerging:"emerging",
+      developing:"developing"
+    };
+    return labels[state] || "not enough evidence";
+  }
+  function learningMapStateClass(state) {
+    if (state === "not_enough_evidence") return "not-enough";
+    if (state === "emerging") return "emerging";
+    if (state === "developing") return "developing";
+    return "introduced";
+  }
+  function learningMapDepthLabel(key) {
+    var labels = {
+      recognition:"recognition",
+      cloze:"cloze",
+      sentence_building:"sentence building",
+      repair:"repair",
+      controlled_production:"production",
+      free_production:"free production",
+      contrast:"contrast",
+      unknown:"unknown"
+    };
+    return labels[key] || key;
+  }
+  function learningMapTopCounts(counts, limit) {
+    return Object.keys(counts || {}).filter(function(key){ return Number(counts[key] || 0) > 0; }).sort(function(a,b){
+      return Number(counts[b] || 0) - Number(counts[a] || 0);
+    }).slice(0, limit || 3).map(function(key){ return learningMapDepthLabel(key) + " " + counts[key]; });
+  }
+  function learningMapNodeByKey(map, key) {
+    var nodes = map && Array.isArray(map.nodes) ? map.nodes : [];
+    for (var i = 0; i < nodes.length; i++) {
+      if (nodes[i] && nodes[i].key === key) return nodes[i];
+    }
+    return null;
+  }
+  function learningMapNodeWeaknessScore(node) {
+    if (!node || !node.evidenceCount) return 0;
+    return Number(node.incorrectCount || 0) + Number(node.confidenceCounts && node.confidenceCounts.unsure || 0) + Number(node.confidenceCounts && node.confidenceCounts.guessed || 0);
+  }
+  function learningMapProvenanceSummary(node) {
+    var provenance = node && node.metadataProvenance || {};
+    return "explicit " + Number(provenance.explicit || 0) + " / derived " + Number(provenance.derived || 0) + " / unknown " + Number(provenance.unknown || 0);
+  }
+  function learningMapConfidenceHint(node) {
+    var counts = node && node.confidenceCounts || {};
+    var unsure = Number(counts.unsure || 0);
+    var guessed = Number(counts.guessed || 0);
+    if (unsure || guessed) return "some unsure/guessed answers: " + (unsure + guessed);
+    if (!node || !node.evidenceCount) return "no confidence evidence yet";
+    return "confidence captured where selected";
+  }
+  function learningMapResultLabel(record) {
+    if (!record) return "unknown";
+    if (record.taskType === "production_card" || record.result === "practised") return "practised";
+    if (record.correct === true) return "correct";
+    if (record.correct === false) return "incorrect";
+    return "unscored";
+  }
+  function learningMapRecordNodeLabel(record) {
+    var item = b1LearningMapItemForEvidence(record);
+    var matches = b1LearningMapRecordNodeMatches(record, item);
+    if (!matches.length) return "Unmapped";
+    var node = B1_LEARNING_MAP_NODES[matches[0].key];
+    return node ? node.label : matches[0].key;
+  }
+  function learningMapRecentRecords(limit) {
+    var store = safeGetB1Evidence();
+    var records = Array.isArray(store.records) ? store.records.slice(-1 * (limit || 8)).reverse() : [];
+    return records.map(function(record){
+      return {
+        itemId:record.itemId || "unknown",
+        nodeLabel:learningMapRecordNodeLabel(record),
+        bankKey:record.bankKey || "unknown",
+        taskDepth:record.taskDepth || "unknown",
+        attemptContext:record.attemptContext || "unknown",
+        confidence:record.confidence || null,
+        result:learningMapResultLabel(record)
+      };
+    });
+  }
+  function learningMapSummaryFor(map, evidenceSummary) {
+    var nodes = map && Array.isArray(map.nodes) ? map.nodes : [];
+    var nodesWithEvidence = nodes.filter(function(node){ return Number(node.evidenceCount || 0) > 0; }).length;
+    var notEnough = nodes.filter(function(node){ return !node.hasEnoughEvidence; }).length;
+    var provenance = nodes.reduce(function(total, node){
+      var current = node.metadataProvenance || {};
+      total.explicit += Number(current.explicit || 0);
+      total.derived += Number(current.derived || 0);
+      total.unknown += Number(current.unknown || 0);
+      return total;
+    }, { explicit:0, derived:0, unknown:0 });
+    return {
+      evidenceCount:Number(evidenceSummary && evidenceSummary.count || 0),
+      nodesWithEvidence:nodesWithEvidence,
+      nodeTotal:nodes.length,
+      notEnough:notEnough,
+      provenance:provenance,
+      mostlyDerived:provenance.derived >= provenance.explicit,
+      confidenceCounts:evidenceSummary && evidenceSummary.confidenceCounts || { sure:0, unsure:0, guessed:0, null:0 }
+    };
+  }
+  function learningMapFocusHtml(map, summary) {
+    var nodes = map && Array.isArray(map.nodes) ? map.nodes : [];
+    if (!summary.evidenceCount) {
+      return '<h3>Current focus</h3><p class="learningMapText">Run the B1 Diagnostic Sprint to create a starting snapshot.</p>' +
+        '<div class="learningMapActionGrid"><button class="learningMapAction" id="learningMapDiagnosticBtn" type="button">Start B1 Diagnostic Sprint</button></div>';
+    }
+    var weakNodes = nodes.filter(function(node){ return learningMapNodeWeaknessScore(node) > 0; }).sort(function(a,b){ return learningMapNodeWeaknessScore(b) - learningMapNodeWeaknessScore(a); });
+    var thinNode = nodes.filter(function(node){ return !node.hasEnoughEvidence; }).sort(function(a,b){ return Number(a.evidenceCount || 0) - Number(b.evidenceCount || 0); })[0];
+    var focusNode = weakNodes[0] || thinNode || nodes[0];
+    if (!focusNode) return '<h3>Current focus</h3><p class="learningMapText">Collect more evidence before trusting the map.</p>';
+    return '<h3>Current focus</h3>' +
+      '<p class="learningMapText"><strong>' + escapeHtml(focusNode.label) + '</strong></p>' +
+      '<p class="learningMapMeta">Why: early evidence suggests this area needs more testing. This is not an automatic route change.</p>';
+  }
+  function learningMapNodeHtml(node) {
+    var depths = learningMapTopCounts(node.taskDepthCounts, 3).join(", ") || "no task depth evidence";
+    var banks = learningMapTopCounts(node.bankCounts, 3).join(", ") || "no bank evidence";
+    var limitations = Array.isArray(node.limitations) ? node.limitations.slice(0, 2) : [];
+    if (node.key === "production" && node.evidenceCount > 0) limitations.push("Production is self-marked and counts as practice evidence only.");
+    limitations.push("No delayed review evidence yet.");
+    return '<article class="learningMapNodeCard">' +
+      '<div class="learningMapNodeTop"><div class="learningMapNodeTitle">' + escapeHtml(node.label) + '</div><span class="learningMapState ' + learningMapStateClass(node.state) + '">' + escapeHtml(learningMapStateLabel(node.state)) + '</span></div>' +
+      '<div class="learningMapDetailGrid">' +
+        '<div class="learningMapDetail"><strong>Evidence:</strong> ' + Number(node.evidenceCount || 0) + ' records</div>' +
+        '<div class="learningMapDetail"><strong>Task depth:</strong> ' + escapeHtml(depths) + '</div>' +
+        '<div class="learningMapDetail"><strong>Confidence:</strong> ' + escapeHtml(learningMapConfidenceHint(node)) + '</div>' +
+        '<div class="learningMapDetail"><strong>Metadata:</strong> ' + escapeHtml(learningMapProvenanceSummary(node)) + '</div>' +
+        '<div class="learningMapDetail"><strong>Banks:</strong> ' + escapeHtml(banks) + '</div>' +
+      '</div>' +
+      limitations.map(function(text){ return '<div class="learningMapLimitation">' + escapeHtml(text) + '</div>'; }).join("") +
+    '</article>';
+  }
+  function learningMapSignalsHtml(map) {
+    var nodes = map && Array.isArray(map.nodes) ? map.nodes : [];
+    var signals = nodes.filter(function(node){ return learningMapNodeWeaknessScore(node) > 0; }).sort(function(a,b){
+      return learningMapNodeWeaknessScore(b) - learningMapNodeWeaknessScore(a);
+    }).slice(0, 3);
+    if (!signals.length) return '<p class="learningMapText">No strong weak signal yet. Keep practising or run the diagnostic.</p>';
+    return '<div class="learningMapSignalList">' + signals.map(function(node){
+      return '<p class="learningMapText"><strong>Early weak signal:</strong> ' + escapeHtml(node.label) + ' - ' + Number(node.incorrectCount || 0) + ' incorrect, ' + (Number(node.confidenceCounts && node.confidenceCounts.unsure || 0) + Number(node.confidenceCounts && node.confidenceCounts.guessed || 0)) + ' unsure/guessed.</p>';
+    }).join("") + '</div>';
+  }
+  function learningMapNotEnoughHtml(map) {
+    var nodes = map && Array.isArray(map.nodes) ? map.nodes : [];
+    var thin = nodes.filter(function(node){ return !node.hasEnoughEvidence; });
+    if (!thin.length) return '<p class="learningMapText">Every node has at least the early evidence threshold, but this still is not a mastery claim.</p>';
+    return '<p class="learningMapText">No evidence is not a failure. It means Ozmosis has not seen enough attempts yet.</p>' +
+      '<p class="learningMapEmptyLine">' + thin.map(function(node){ return escapeHtml(node.label); }).join(" / ") + '</p>';
+  }
+  function learningMapRecentHtml() {
+    var recent = learningMapRecentRecords(8);
+    if (!recent.length) return '<p class="learningMapText">No recent B1 evidence yet.</p>';
+    return '<div class="learningMapRecentList">' + recent.map(function(record){
+      var confidence = record.confidence ? " / " + record.confidence : "";
+      return '<div class="learningMapRecentItem"><strong>' + escapeHtml(record.itemId) + '</strong> - ' + escapeHtml(record.result) + confidence +
+        '<span class="learningMapRecentMeta">' + escapeHtml(record.nodeLabel) + ' / ' + escapeHtml(record.bankKey) + ' / ' + escapeHtml(learningMapDepthLabel(record.taskDepth)) + ' / ' + escapeHtml(record.attemptContext) + '</span></div>';
+    }).join("") + '</div>';
+  }
+  function learningMapNextEvidenceHtml(map, summary) {
+    if (!summary.evidenceCount) {
+      return '<p class="learningMapText">Suggested next evidence: start the B1 Diagnostic Sprint. It is optional and creates a starting snapshot.</p>';
+    }
+    var thin = (map.nodes || []).filter(function(node){ return !node.hasEnoughEvidence; })[0];
+    if (thin) return '<p class="learningMapText">Suggested next evidence: collect more attempts for ' + escapeHtml(thin.label) + '. Existing routes can add evidence without changing Today\'s B1 Sprint.</p>';
+    return '<p class="learningMapText">Useful next check: continue ordinary practice and let the map collect more varied evidence.</p>';
+  }
+  function renderLearningMapScreen() {
+    var map = b1LearningMapScaffold();
+    var evidenceSummary = b1EvidenceSummary();
+    var summary = learningMapSummaryFor(map, evidenceSummary);
+    var content = el("learningMapContent");
+    if (!content) return;
+    var provenanceText = summary.mostlyDerived ? "Mostly derived metadata" : "Mixed explicit/derived metadata";
+    var nodesHtml = (map.nodes || []).map(learningMapNodeHtml).join("");
+    content.innerHTML =
+      '<section class="learningMapSummaryGrid" aria-label="Learning Map evidence summary">' +
+        '<div class="learningMapChip"><strong>' + summary.evidenceCount + '</strong><span>Evidence records</span></div>' +
+        '<div class="learningMapChip"><strong>' + summary.nodesWithEvidence + ' / ' + summary.nodeTotal + '</strong><span>Nodes with evidence</span></div>' +
+        '<div class="learningMapChip"><strong>' + summary.notEnough + '</strong><span>Not enough evidence</span></div>' +
+        '<div class="learningMapChip"><strong>' + escapeHtml(provenanceText) + '</strong><span>Metadata provenance</span></div>' +
+        '<div class="learningMapChip"><strong>Not active</strong><span>Delayed review</span></div>' +
+      '</section>' +
+      '<section class="learningMapPanel">' + learningMapFocusHtml(map, summary) + '</section>' +
+      '<section class="learningMapPanel"><h3>Skill cluster status</h3><div class="learningMapNodeList">' + nodesHtml + '</div></section>' +
+      '<section class="learningMapPanel"><h3>Early weak signals</h3>' + learningMapSignalsHtml(map) + '</section>' +
+      '<section class="learningMapPanel"><h3>Not enough evidence</h3>' + learningMapNotEnoughHtml(map) + '</section>' +
+      '<section class="learningMapPanel"><h3>Recent work</h3>' + learningMapRecentHtml() + '</section>' +
+      '<section class="learningMapPanel"><h3>Review / durability</h3><p class="learningMapText">Delayed review states are not available yet. Due-review scheduling will need future review evidence.</p></section>' +
+      '<section class="learningMapPanel"><h3>Next evidence</h3>' + learningMapNextEvidenceHtml(map, summary) +
+        '<div class="learningMapActionGrid">' +
+          '<button class="learningMapAction" id="learningMapDiagnosticActionBtn" type="button">Start Diagnostic</button>' +
+          '<button class="learningMapAction" id="learningMapSprintBtn" type="button">Start Today\'s Sprint</button>' +
+          '<button class="learningMapAction" id="learningMapConnectorBtn" type="button">Open Connector Sprint</button>' +
+          '<button class="learningMapAction" id="learningMapRedemittelBtn" type="button">Open Redemittel</button>' +
+          '<button class="learningMapAction" id="learningMapWortschatzBtn" type="button">Open Wortschatz</button>' +
+          '<button class="learningMapAction" id="learningMapHomeBtn" type="button">Home</button>' +
+        '</div>' +
+      '</section>';
   }
   var genders = [
     { key: "Maskulinum", short: "M", en: "masculine" },
@@ -8511,6 +8967,44 @@ body.b1Mode.b1LongAnswer #answerInput {
     setHomeHeroProgress(fill, retryFill);
     setHomeStatus(summary);
   }
+  function setLearningMapVisible(visible) {
+    if (el("learningMapScreen")) el("learningMapScreen").hidden = !visible;
+  }
+  function hideHubScreens() {
+    if (el("homeScreen")) el("homeScreen").hidden = true;
+    if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
+    if (el("grammarHub")) el("grammarHub").hidden = true;
+    if (el("redemittelHub")) el("redemittelHub").hidden = true;
+    if (el("startScreen")) el("startScreen").hidden = true;
+    setLearningMapVisible(false);
+  }
+  function showLearningMapScreen() {
+    b1Runtime.active = false;
+    b1Runtime.selectedChoice = "";
+    b1Runtime.translationOpen = false;
+    b1Runtime.currentExtraPractice = false;
+    b1Runtime.currentAssisted = false;
+    b1Runtime.currentEvidenceRecordId = "";
+    b1Runtime.dailySprint = false;
+    clearB1DiagnosticRuntime();
+    resetB1ConfidenceControls();
+    setDiagnosticUiVisible(false);
+    clearMobileClozeFocus();
+    state = "learningMap";
+    current = null;
+    setMenu(false);
+    setDevTools(false);
+    document.body.classList.add("homeMode");
+    document.body.classList.remove("setupMode", "resultsMode", "placeholderMode", "b1Mode", "b1TypedCloze", "b1LongAnswer");
+    hideHubScreens();
+    renderLearningMapScreen();
+    setLearningMapVisible(true);
+    renderHud();
+    setTimeout(function(){
+      window.scrollTo(0, 0);
+      if (el("learningMapBackBtn")) el("learningMapBackBtn").focus();
+    }, 0);
+  }
   function showHomeScreen() {
     b1Runtime.active = false;
     b1Runtime.selectedChoice = "";
@@ -8532,8 +9026,10 @@ body.b1Mode.b1LongAnswer #answerInput {
     if (el("grammarHub")) el("grammarHub").hidden = true;
     if (el("redemittelHub")) el("redemittelHub").hidden = true;
     if (el("startScreen")) el("startScreen").hidden = true;
+    setLearningMapVisible(false);
     applyLanguage();
     renderHomeCommandScreen();
+    renderHud();
     setTimeout(function(){
       window.scrollTo(0, 0);
       if (el("homeSprintBtn")) el("homeSprintBtn").focus();
@@ -8550,8 +9046,10 @@ body.b1Mode.b1LongAnswer #answerInput {
     if (el("grammarHub")) el("grammarHub").hidden = true;
     if (el("redemittelHub")) el("redemittelHub").hidden = true;
     if (el("startScreen")) el("startScreen").hidden = true;
+    setLearningMapVisible(false);
     if (el("hubPlaceholderTitle")) el("hubPlaceholderTitle").textContent = title || "Ozmosis";
     if (el("hubPlaceholder")) el("hubPlaceholder").hidden = false;
+    renderHud();
     setTimeout(function(){
       window.scrollTo(0, 0);
       if (el("hubBackBtn")) el("hubBackBtn").focus();
@@ -8570,6 +9068,8 @@ body.b1Mode.b1LongAnswer #answerInput {
     if (el("grammarHub")) el("grammarHub").hidden = false;
     if (el("redemittelHub")) el("redemittelHub").hidden = true;
     if (el("startScreen")) el("startScreen").hidden = true;
+    setLearningMapVisible(false);
+    renderHud();
     setTimeout(function(){
       window.scrollTo(0, 0);
       if (el("grammarSeedBtn")) el("grammarSeedBtn").focus();
@@ -8588,6 +9088,8 @@ body.b1Mode.b1LongAnswer #answerInput {
     if (el("grammarHub")) el("grammarHub").hidden = true;
     if (el("redemittelHub")) el("redemittelHub").hidden = false;
     if (el("startScreen")) el("startScreen").hidden = true;
+    setLearningMapVisible(false);
+    renderHud();
     setTimeout(function(){
       window.scrollTo(0, 0);
       if (el("redemittelMixedBtn")) el("redemittelMixedBtn").focus();
@@ -8606,9 +9108,11 @@ body.b1Mode.b1LongAnswer #answerInput {
     if (el("grammarHub")) el("grammarHub").hidden = true;
     if (el("redemittelHub")) el("redemittelHub").hidden = true;
     if (el("startScreen")) el("startScreen").hidden = false;
+    setLearningMapVisible(false);
     syncStartFromSettings();
     syncStartAccordions();
     applyLanguage();
+    renderHud();
     setTimeout(function(){
       var shell = document.querySelector("main");
       if (shell) shell.scrollTop = 0;
@@ -8620,6 +9124,7 @@ body.b1Mode.b1LongAnswer #answerInput {
     setDiagnosticUiVisible(false);
     document.body.classList.remove("setupMode", "b1Mode", "b1TypedCloze", "b1LongAnswer");
     if (el("startScreen")) el("startScreen").hidden = true;
+    setLearningMapVisible(false);
   }
   function startConfiguredRound() {
     applyStartSettings();
@@ -10565,6 +11070,7 @@ body.b1Mode.b1LongAnswer #answerInput {
     if (el("grammarHub")) el("grammarHub").hidden = true;
     if (el("redemittelHub")) el("redemittelHub").hidden = true;
     if (el("startScreen")) el("startScreen").hidden = true;
+    setLearningMapVisible(false);
     nextB1Question();
   }
   function startConnectorSprint(family) {
@@ -10612,6 +11118,7 @@ body.b1Mode.b1LongAnswer #answerInput {
     if (el("grammarHub")) el("grammarHub").hidden = true;
     if (el("redemittelHub")) el("redemittelHub").hidden = true;
     if (el("startScreen")) el("startScreen").hidden = true;
+    setLearningMapVisible(false);
     nextB1Question();
   }
   function startWortschatzRound(filter) {
@@ -10660,6 +11167,7 @@ body.b1Mode.b1LongAnswer #answerInput {
     if (el("grammarHub")) el("grammarHub").hidden = true;
     if (el("redemittelHub")) el("redemittelHub").hidden = true;
     if (el("startScreen")) el("startScreen").hidden = true;
+    setLearningMapVisible(false);
     nextB1Question();
   }
   function startRedemittelRound(filter) {
@@ -10708,6 +11216,7 @@ body.b1Mode.b1LongAnswer #answerInput {
     if (el("grammarHub")) el("grammarHub").hidden = true;
     if (el("redemittelHub")) el("redemittelHub").hidden = true;
     if (el("startScreen")) el("startScreen").hidden = true;
+    setLearningMapVisible(false);
     nextB1Question();
   }
   function startB1DiagnosticSprint() {
@@ -10756,6 +11265,7 @@ body.b1Mode.b1LongAnswer #answerInput {
     if (el("grammarHub")) el("grammarHub").hidden = true;
     if (el("redemittelHub")) el("redemittelHub").hidden = true;
     if (el("startScreen")) el("startScreen").hidden = true;
+    setLearningMapVisible(false);
     nextB1Question();
   }
   function exitB1Diagnostic() {
@@ -11350,7 +11860,14 @@ body.b1Mode.b1LongAnswer #answerInput {
       redemittelApplicationBtn:function(){ startRedemittelRound("application"); },
       redemittelIllnessBtn:function(){ startRedemittelRound("illness_absence"); },
       redemittelPoliteBtn:function(){ startRedemittelRound("polite_requests"); },
-      redemittelProductionBtn:function(){ startRedemittelRound("production"); }
+      redemittelProductionBtn:function(){ startRedemittelRound("production"); },
+      learningMapDiagnosticBtn:function(){ startB1DiagnosticSprint(); },
+      learningMapDiagnosticActionBtn:function(){ startB1DiagnosticSprint(); },
+      learningMapSprintBtn:function(){ startB1Round("mixed"); },
+      learningMapConnectorBtn:function(){ startConnectorSprint("all"); },
+      learningMapRedemittelBtn:function(){ showRedemittelHub(); },
+      learningMapWortschatzBtn:function(){ startWortschatzRound("mixed"); },
+      learningMapHomeBtn:function(){ showHomeScreen(); }
     };
     if (!actions[target.id]) return;
     event.preventDefault();
@@ -11886,7 +12403,7 @@ window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkA
     bind("genitiveHelpBtn","click",openGenitiveHelp);
     bind("startGenitiveHelpBtn","click",openGenitiveHelp);
     bind("genitiveHelpCloseBtn","click",closeGenitiveHelp);
-    if (el("genitiveHelpOverlay")) el("genitiveHelpOverlay").addEventListener("click",function(event){ if (event.target === el("genitiveHelpOverlay")) closeGenitiveHelp(); },false); bind("englishSupport","change",function(){ savePersistent(); if (b1Runtime.active) renderB1Translation(false); else if (current) renderQuestion(); }); bind("roundTarget","change",function(){ if (shouldApplyLiveSettings()) newRound(); else savePersistent(); }); bind("adaptiveMode","change",function(){ savePersistent(); if (shouldApplyLiveSettings()) newRound(); }); bind("menuHomeBtn","click",function(){ setMenu(false); showHomeScreen(); }); bind("menuSprintBtn","click",function(){ setMenu(false); startB1Round("mixed"); }); bind("menuGrammarBtn","click",function(){ setMenu(false); showGrammarHub(); }); bind("menuRedemittelBtn","click",function(){ setMenu(false); showRedemittelHub(); }); bind("menuCaseTrainerBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("restartBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("resetBestBtn","click",function(){window.kasusResetBest();}); bind("resetProfileBtn","click",function(){window.kasusResetProfile();}); bind("exportBtn","click",exportProgress); bind("importBtn","click",function(){el("importFile").click();}); bind("importFile","change",function(event){ importProgress(event.target.files && event.target.files[0]); event.target.value=""; }); bind("devToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("devMenuBtn","click",function(event){ event.stopPropagation(); setMenu(!el("settingsPanel").classList.contains("open")); }); bind("devCloseBtn","click",function(){ setDevTools(false); }); bind("newGameCloseBtn","click",function(){ setDevTools(false); }); bind("leitnerCloseBtn","click",closeLeitnerPrototype); bind("openNewGameMockBtn","click",showNewGameMock); bind("openLeitnerPrototypeBtn","click",showLeitnerPrototype); bind("resetLeitnerPrototypeBtn","click",showLeitnerResetConfirm); bind("backToDevListBtn","click",showDevList); bind("leitnerResetCloseBtn","click",showDevList); bind("cancelLeitnerResetBtn","click",showDevList); bind("confirmLeitnerResetBtn","click",resetLeitnerPrototypeProgress); bind("leitnerRestartBtn","click",startLeitnerQueue); bind("leitnerCheckBtn","click",checkLeitnerAnswer); bind("leitnerNextBtn","click",nextLeitnerCard); bind("leitnerAnswerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (leitnerRuntime.answered) nextLeitnerCard(); else checkLeitnerAnswer(); }); bind("applyNewGameMockBtn","click",applyNewGameMock); bind("homeSprintBtn","click",function(){ startB1Round("mixed"); }); bind("homeDiagnosticBtn","click",startB1DiagnosticSprint); bind("diagnosticExitBtn","click",exitB1Diagnostic); bind("homeGrammarBtn","click",showGrammarHub); bind("grammarBackBtn","click",showHomeScreen); bind("grammarSeedBtn","click",function(){ startB1Round("grammar_cloze"); }); bind("connectorAllBtn","click",function(){ startConnectorSprint("all"); }); bind("connectorReasonBtn","click",function(){ startConnectorSprint("reason"); }); bind("connectorContrastBtn","click",function(){ startConnectorSprint("contrast"); }); bind("connectorPurposeBtn","click",function(){ startConnectorSprint("purpose"); }); bind("connectorTimeBtn","click",function(){ startConnectorSprint("time"); }); bind("connectorRepairBtn","click",function(){ startConnectorSprint("repair"); }); bind("homeWortschatzBtn","click",function(){ startWortschatzRound("mixed"); }); bind("homeRedemittelBtn","click",function(){ startB1Round("redemittel_cloze"); }); bind("homeCaseTrainerBtn","click",showStartScreen); bind("caseTrainerBackBtn","click",showHomeScreen); bind("homeOptionsBtn","click",function(event){ event.stopPropagation(); setDevTools(false); setMenu(!el("settingsPanel").classList.contains("open")); }); bind("homeDevToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("hubBackBtn","click",showHomeScreen); document.querySelectorAll(".homePlaceholderBtn").forEach(function(btn){ btn.addEventListener("click",function(){ showHubPlaceholder(btn.getAttribute("data-title") || btn.textContent.trim()); }); }); var devOverlay=el("devOverlay"); if (devOverlay) devOverlay.addEventListener("click",function(event){ if (event.target === devOverlay && !devOverlay.classList.contains("leitnerFullscreen")) setDevTools(false); },false); document.addEventListener("keydown",function(event){ if ((event.key === "Escape" || event.key === "Esc") && el("genitiveHelpOverlay") && !el("genitiveHelpOverlay").hidden) { el("genitiveHelpOverlay").hidden = true; return; } if ((event.key === "Escape" || event.key === "Esc") && el("devOverlay") && !el("devOverlay").hidden) { setDevTools(false); return; } if ((event.key === "Escape" || event.key === "Esc") && b1Runtime.mode === "b1_diagnostic" && (state === "b1Checking" || state === "b1Next")) { exitB1Diagnostic(); return; } if ((event.key === "Escape" || event.key === "Esc") && (state === "placeholder" || state === "grammarHub")) showHomeScreen(); }); bind("checkBtn","click",function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }); bind("noArticleBtn","click",function(){checkAnswer("none");}); bind("nextBtn","click",proceed); bind("hintBtn","click",showHint); bind("supportPlaceholder","click",showHint); bind("translationToggle","click",toggleB1Translation); bind("whyNoStarsBtn","click",explainExtraPracticeStars); bind("startRoundBtn","click",startConfiguredRound); document.querySelectorAll(".langBtn").forEach(function(btn){ btn.addEventListener("click",function(){ setSupportLanguage(btn.getAttribute("data-lang")); }); }); bind("answerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (state==="b1Checking") checkB1Answer(); else if (state==="checking") checkAnswer(); else proceed(); }); renderHud(); applyLanguage(); showHomeScreen(); }
+    if (el("genitiveHelpOverlay")) el("genitiveHelpOverlay").addEventListener("click",function(event){ if (event.target === el("genitiveHelpOverlay")) closeGenitiveHelp(); },false); bind("englishSupport","change",function(){ savePersistent(); if (b1Runtime.active) renderB1Translation(false); else if (current) renderQuestion(); }); bind("roundTarget","change",function(){ if (shouldApplyLiveSettings()) newRound(); else savePersistent(); }); bind("adaptiveMode","change",function(){ savePersistent(); if (shouldApplyLiveSettings()) newRound(); }); bind("menuHomeBtn","click",function(){ setMenu(false); showHomeScreen(); }); bind("menuSprintBtn","click",function(){ setMenu(false); startB1Round("mixed"); }); bind("menuGrammarBtn","click",function(){ setMenu(false); showGrammarHub(); }); bind("menuRedemittelBtn","click",function(){ setMenu(false); showRedemittelHub(); }); bind("menuCaseTrainerBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("restartBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("resetBestBtn","click",function(){window.kasusResetBest();}); bind("resetProfileBtn","click",function(){window.kasusResetProfile();}); bind("exportBtn","click",exportProgress); bind("importBtn","click",function(){el("importFile").click();}); bind("importFile","change",function(event){ importProgress(event.target.files && event.target.files[0]); event.target.value=""; }); bind("devToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("devMenuBtn","click",function(event){ event.stopPropagation(); setMenu(!el("settingsPanel").classList.contains("open")); }); bind("devCloseBtn","click",function(){ setDevTools(false); }); bind("newGameCloseBtn","click",function(){ setDevTools(false); }); bind("leitnerCloseBtn","click",closeLeitnerPrototype); bind("openNewGameMockBtn","click",showNewGameMock); bind("openLeitnerPrototypeBtn","click",showLeitnerPrototype); bind("resetLeitnerPrototypeBtn","click",showLeitnerResetConfirm); bind("backToDevListBtn","click",showDevList); bind("leitnerResetCloseBtn","click",showDevList); bind("cancelLeitnerResetBtn","click",showDevList); bind("confirmLeitnerResetBtn","click",resetLeitnerPrototypeProgress); bind("leitnerRestartBtn","click",startLeitnerQueue); bind("leitnerCheckBtn","click",checkLeitnerAnswer); bind("leitnerNextBtn","click",nextLeitnerCard); bind("leitnerAnswerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (leitnerRuntime.answered) nextLeitnerCard(); else checkLeitnerAnswer(); }); bind("applyNewGameMockBtn","click",applyNewGameMock); bind("homeSprintBtn","click",function(){ startB1Round("mixed"); }); bind("homeDiagnosticBtn","click",startB1DiagnosticSprint); bind("homeLearningMapBtn","click",showLearningMapScreen); bind("learningMapBackBtn","click",showHomeScreen); bind("diagnosticExitBtn","click",exitB1Diagnostic); bind("homeGrammarBtn","click",showGrammarHub); bind("grammarBackBtn","click",showHomeScreen); bind("grammarSeedBtn","click",function(){ startB1Round("grammar_cloze"); }); bind("connectorAllBtn","click",function(){ startConnectorSprint("all"); }); bind("connectorReasonBtn","click",function(){ startConnectorSprint("reason"); }); bind("connectorContrastBtn","click",function(){ startConnectorSprint("contrast"); }); bind("connectorPurposeBtn","click",function(){ startConnectorSprint("purpose"); }); bind("connectorTimeBtn","click",function(){ startConnectorSprint("time"); }); bind("connectorRepairBtn","click",function(){ startConnectorSprint("repair"); }); bind("homeWortschatzBtn","click",function(){ startWortschatzRound("mixed"); }); bind("homeRedemittelBtn","click",function(){ startB1Round("redemittel_cloze"); }); bind("homeCaseTrainerBtn","click",showStartScreen); bind("caseTrainerBackBtn","click",showHomeScreen); bind("homeOptionsBtn","click",function(event){ event.stopPropagation(); setDevTools(false); setMenu(!el("settingsPanel").classList.contains("open")); }); bind("homeDevToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("hubBackBtn","click",showHomeScreen); document.querySelectorAll(".homePlaceholderBtn").forEach(function(btn){ btn.addEventListener("click",function(){ showHubPlaceholder(btn.getAttribute("data-title") || btn.textContent.trim()); }); }); var devOverlay=el("devOverlay"); if (devOverlay) devOverlay.addEventListener("click",function(event){ if (event.target === devOverlay && !devOverlay.classList.contains("leitnerFullscreen")) setDevTools(false); },false); document.addEventListener("keydown",function(event){ if ((event.key === "Escape" || event.key === "Esc") && el("genitiveHelpOverlay") && !el("genitiveHelpOverlay").hidden) { el("genitiveHelpOverlay").hidden = true; return; } if ((event.key === "Escape" || event.key === "Esc") && el("devOverlay") && !el("devOverlay").hidden) { setDevTools(false); return; } if ((event.key === "Escape" || event.key === "Esc") && b1Runtime.mode === "b1_diagnostic" && (state === "b1Checking" || state === "b1Next")) { exitB1Diagnostic(); return; } if ((event.key === "Escape" || event.key === "Esc") && (state === "placeholder" || state === "grammarHub" || state === "learningMap")) showHomeScreen(); }); bind("checkBtn","click",function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }); bind("noArticleBtn","click",function(){checkAnswer("none");}); bind("nextBtn","click",proceed); bind("hintBtn","click",showHint); bind("supportPlaceholder","click",showHint); bind("translationToggle","click",toggleB1Translation); bind("whyNoStarsBtn","click",explainExtraPracticeStars); bind("startRoundBtn","click",startConfiguredRound); document.querySelectorAll(".langBtn").forEach(function(btn){ btn.addEventListener("click",function(){ setSupportLanguage(btn.getAttribute("data-lang")); }); }); bind("answerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (state==="b1Checking") checkB1Answer(); else if (state==="checking") checkAnswer(); else proceed(); }); renderHud(); applyLanguage(); showHomeScreen(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
 }());
 </script>

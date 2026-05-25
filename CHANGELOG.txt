@@ -1,3 +1,13 @@
+## v0.43 - Learning Map UI Preparation
+
+- Added the first learner-facing B1 Learning Map route using the existing internal Learning Map scaffold and progress evidence.
+- Added conservative B1 evidence overview sections for current focus, skill cluster states, not-enough-evidence areas, early weak signals, recent work, review/durability limitations, and next evidence/practice guidance.
+- Preserved explicit-vs-derived metadata provenance and avoided mastery, Reliable, Durable, Transfer-ready, B1-ready, or pass/fail claims.
+- Kept review/durability messaging cautious where delayed review evidence does not yet exist.
+- Preserved production-card self-marking limits and treated production evidence as conservative practice evidence only.
+- Preserved Today's B1 Sprint composition, connector exclusion policy, B1 registry policy, routes, scoring, item content, item IDs, item statuses, confidence tracking, diagnostic flow, debug stamp, debug snapshot export, Dev Tools no-save item preview, Case Trainer, Options, export/import compatibility, localStorage compatibility, and extracted static content banks.
+- Added no Skill Matrix UI, B2 content, Leitner, weakness repair, durability scheduling, connector Daily Sprint inclusion, production-card route visibility, backend, framework, build step, fetch, module loading, dependencies, package manager, runtime AI generation, analytics, accounts, external calls, or broad redesign.
+
 ## v0.42.4 - Debug Stamp + State Snapshot Export
 
 - Added a lightweight visible debug stamp so screenshots can identify the app version, current route/mode, active item, queue position, and viewport size.

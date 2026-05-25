@@ -1,8 +1,8 @@
-# Ozmosis Development Roadmap v0.42.4
+# Ozmosis Development Roadmap v0.43
 
 Status: current planning roadmap
-Current known development position: v0.42.4 completed
-Next planned patch: v0.43 - Learning Map UI Preparation
+Current known development position: v0.43 completed
+Next planned patch: v0.44 - Skill Matrix Data Model
 
 This roadmap is planning guidance only. Current repo files, `index.html`, `README.md`, `CHANGELOG.txt`, `AGENTS.md`, and the versioned source brief remain higher-trust sources for implementation state. Do not implement future items early.
 
@@ -46,6 +46,7 @@ This roadmap is planning guidance only. Current repo files, `index.html`, `READM
 - v0.42.2 recovered the diagnostic flow, added clearer exit/result/import/export feedback, improved repair feedback clarity, and documented deferred connector, production-card, distractor, support, and contrast-feedback decisions.
 - v0.42.3 repaired support fields for existing Connector, Redemittel, and selected high-yield Wortschatz production cards while keeping production self-marked and no more visible than before.
 - v0.42.4 added a visible debug stamp, structured debug snapshot export, and no-save Dev Tools manual item preview/search for QA and bug reports.
+- v0.43 added the first learner-facing B1 Learning Map route using the existing evidence scaffold, with conservative state labels, metadata provenance, not-enough-evidence handling, recent work, and review/durability limitations.
 
 ## Current B1 Direction
 
@@ -61,7 +62,7 @@ The B1 spine should remain evidence-first:
 
 ### v0.43 - Learning Map UI Preparation
 
-Possible goal: prepare the learner-facing Learning Map UI only after diagnostic data and scaffold behavior are validated.
+Completed goal: expose the existing Learning Map scaffold in a learner-facing B1 evidence overview while preserving conservative state language and avoiding mastery or durability claims.
 
 Requirements before learner-facing claims:
 

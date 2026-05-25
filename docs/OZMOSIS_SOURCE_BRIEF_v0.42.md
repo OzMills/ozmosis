@@ -1,10 +1,10 @@
-# OZMOSIS SOURCE BRIEF v0.42.4
+# OZMOSIS SOURCE BRIEF v0.43
 
 Version: Working Source Brief Update  
 Status: Current planning brief  
 Project: Ozmosis - Deutsch Lernen App  
-Current known development position: v0.42.4 completed  
-Next planned patch: v0.43 - Learning Map UI Preparation  
+Current known development position: v0.43 completed  
+Next planned patch: v0.44 - Skill Matrix Data Model  
 
 Versioning rule:
 
@@ -705,8 +705,8 @@ You often choose accusative forms in location sentences.
 Current known development state:
 
 ```txt
-v0.42.4 completed
-Next planned patch: v0.43 - Learning Map UI Preparation
+v0.43 completed
+Next planned patch: v0.44 - Skill Matrix Data Model
 ```
 
 The next work should not be a broad rewrite.
@@ -793,11 +793,13 @@ Review Due
 
 Keep it modest.
 
-### v0.44  -  Recent Work View
+### v0.44  -  Skill Matrix Data Model
 
-Show where the learner has been.
+Model task-depth by skill-node evidence for internal QA and future UI.
 
-Avoid calling recent activity "mastery."
+Separate recognition, cloze, repair, sentence-building, and production evidence.
+
+Avoid calling matrix activity "mastery."
 
 ### v0.45  -  Next Recommended Practice v1
 
@@ -1419,7 +1421,7 @@ Do not assume v1.0 at any arbitrary milestone.
 
 # 21. IMMEDIATE NEXT STEP
 
-The next appropriate step is v0.43 - Learning Map UI Preparation, unless manual QA finds a blocking debug/preview/export regression.
+The next appropriate step is v0.44 - Skill Matrix Data Model, unless manual QA finds a blocking Learning Map route, responsive, debug/preview, storage, or export/import regression.
 
 v0.40 added the first Progress Evidence Model and v0.40.1 added lightweight confidence/guess capture on top of that evidence model.
 
@@ -1435,10 +1437,14 @@ v0.42.3 repaired production-card usefulPhrases/checklists/model answers for the 
 
 v0.42.4 added a small visible debug stamp, Dev Tools debug snapshot export, and a no-save Dev Tools item preview/search path. It preserved existing B1 evidence, confidence, diagnostic, production-card self-marking, export/import, route, and content-bank behavior.
 
-Safe v0.43 scope:
+v0.43 added the first learner-facing B1 Learning Map UI using the existing internal scaffold. It shows conservative evidence states, not-enough-evidence handling, metadata provenance, recent work, review/durability limitations, and non-authoritative next-evidence actions without changing practice routing or adding mastery claims.
+
+Safe v0.44 scope:
 
 ```txt
-Prepare the learner-facing Learning Map UI using the existing internal scaffold.
+Prepare a Skill Matrix data model from existing Learning Map/evidence data.
+Keep the model internal or QA-facing unless a later UI patch is explicitly approved.
+Separate recognition, cloze, repair, sentence-building, and production evidence.
 Keep early states conservative and avoid mastery, durability, or transfer-ready claims.
 Keep export/import compatibility intact.
 Do not change Today's B1 Sprint connector inclusion.
@@ -1446,10 +1452,10 @@ Do not make production cards more visible.
 Preserve diagnostic, evidence, confidence, route, scoring, and content-bank behaviour.
 ```
 
-Suggested v0.43 Codex task summary:
+Suggested v0.44 Codex task summary:
 
 ```txt
-Prepare the learner-facing B1 Learning Map UI from the existing scaffold.
+Prepare a B1 Skill Matrix data model from the existing Learning Map scaffold and B1 evidence.
 
 Do not introduce B2 content.
 Do not change the app architecture.
