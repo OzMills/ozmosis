@@ -1,8 +1,24 @@
+## v0.40.1 - Confidence / Guess Tracking Spike
+
+- Added lightweight confidence/calibration capture for B1 practice evidence with stable values for `sure`, `unsure`, and `guessed`.
+- Updated existing v0.40 evidence records after answer feedback without changing scoring, correctness, routing, item content, sprint composition, or registry policy.
+- Preserved `ozmosis_b1_sprint_progress_v1`, `ozmosis_b1_progress_evidence_v1`, export/import compatibility, Today's B1 Sprint behaviour, Connector Sprint, Redemittel, Wortschatz, Case Trainer, Options, Dev Tools, and extracted static content banks.
+- Added no B2 content, Learning Map UI, Skill Matrix UI, Leitner, weakness repair, diagnostic entry sprint, backend, framework, build step, fetch, module loading, dependencies, package manager, runtime AI generation, analytics, accounts, external calls, or UI redesign.
+
+## v0.40 - Progress Evidence Model v1
+
+- Added the first B1 progress evidence model so Ozmosis can record what item was attempted, when it was attempted, what task type and skill metadata it represents, and whether the learner answered correctly.
+- Added future-proof evidence fields for confidence/calibration, attempt context, target/variant IDs, surface prompt hashes, error categories, near-miss categories, review interval, and days since last attempt, without making unsupported learner-facing claims.
+- Added additive localStorage evidence persistence while preserving `ozmosis_b1_sprint_progress_v1` and existing user progress compatibility.
+- Added backward-compatible export/import handling for the new evidence data.
+- Preserved Today's B1 Sprint composition, B1 registry policy, routes, scoring, item content, item IDs, item statuses, feedback, Teach me, FIFO/simple retry, production-card handling, Case Trainer, Options, Dev Tools, and extracted static content banks.
+- Added no B2 content, Learning Map UI, Skill Matrix UI, Leitner, weakness repair, diagnostic entry sprint, backend, framework, build step, fetch, module loading, dependencies, package manager, runtime AI generation, analytics, accounts, external calls, or UI redesign.
+
 ## v0.39.1 - Export Metadata / Deployment Readiness Cleanup
 
 - Updated stale export metadata so new progress exports no longer identify as `v0.34-wortschatz-survival-set-integration`.
 - Preserved import compatibility, localStorage compatibility, B1 registry behaviour, Today's B1 Sprint behaviour, route behaviour, item content, item IDs, item statuses, scoring, feedback, production-card handling, Case Trainer, Options, Dev Tools, and extracted static content banks.
-- Left the Today's B1 Sprint connector-inclusion policy unchanged for the planned v0.40 content usefulness decision.
+- Left the Today's B1 Sprint connector-inclusion policy unchanged for a later content usefulness decision.
 - Added no new content, backend, framework, build step, fetch, module loading, dependencies, package manager, runtime AI generation, analytics, accounts, external calls, or UI redesign.
 
 ## v0.39 - Static Content QA Pass

@@ -17,9 +17,9 @@ Current priority order:
 
 ## Current Known Version
 
-Current working version: `v0.39.1`
+Current working version: `v0.40.1`
 
-Next planned patch: `v0.40`
+Next planned patch: `v0.41`
 
 Known current state:
 
@@ -46,7 +46,10 @@ Known current state:
 - v0.38 adds a central B1 content registry for the existing core, Connector, Redemittel, and Wortschatz banks without changing learner-facing behaviour.
 - v0.39 adds a static content QA report for the existing B1 banks, registry metadata, Daily Sprint inclusion policy, UTF-8 safety, route smoke, persistence, export/import, responsive checks, and Arabic/German directionality.
 - v0.39.1 updates stale progress-export metadata while preserving import compatibility and app behaviour.
+- v0.40 adds the first additive B1 progress evidence model for attempt-level learning evidence, export/import support, and future Learning Map hooks without adding learner-facing mastery claims.
+- v0.40.1 adds optional Sure / Unsure / Guessed confidence capture to B1 evidence records without changing scoring, sprint composition, or routing.
 - B1 progress persists under `ozmosis_b1_sprint_progress_v1`.
+- B1 progress evidence persists under `ozmosis_b1_progress_evidence_v1`.
 - Existing Case Trainer, Options, Dev Tools, export/import, and localStorage compatibility are preserved.
 
 Use pre-1.0 version naming from this point onward: `v0.30`, `v0.31`, `v0.32`, `v0.32.1`, `v0.33`, and so on.

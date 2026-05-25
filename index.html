@@ -575,6 +575,39 @@ button {
 .feedback.missed { color:var(--bad); }
 .feedback.warn { color:var(--warn); }
 
+.b1ConfidenceRow {
+  width:min(420px,100%);
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:6px;
+}
+.b1ConfidenceRow[hidden] {
+  display:none !important;
+}
+.b1ConfidenceRow button {
+  min-height:40px;
+  border:1.5px solid color-mix(in srgb, var(--line) 78%, var(--mode));
+  border-radius:12px;
+  background:rgba(7,16,30,.62);
+  color:var(--muted);
+  font-weight:900;
+  letter-spacing:.03em;
+  text-transform:uppercase;
+  font-size:.72rem;
+}
+.b1ConfidenceRow button:hover,
+.b1ConfidenceRow button:focus-visible {
+  outline:none;
+  border-color:color-mix(in srgb, var(--accent) 66%, var(--line));
+  color:var(--text);
+  box-shadow:0 0 14px rgba(125,227,255,.12);
+}
+.b1ConfidenceRow button.selected {
+  border-color:color-mix(in srgb, var(--accent) 78%, var(--line));
+  color:var(--accent);
+  background:rgba(125,227,255,.1);
+}
+
 .miniTableWrap {
   min-height:clamp(132px,30vw,178px);
   width:min(560px,100%);
@@ -1676,6 +1709,9 @@ body.menuOpen .menuWrap { z-index:10001 !important; }
 .answerArea.answered #nextBtn.visible {
   margin-top: 0 !important;
 }
+.answerArea.answered .b1ConfidenceRow:not([hidden]) {
+  margin-top: 1px;
+}
 
 /* v5: cloze prompts should not reveal whether the answer is definite, indefinite, or negative. */
 body .modeTitle.clozeNeutral,
@@ -2504,6 +2540,9 @@ body[data-support-lang="ar"] .startSetting select,
 body[data-support-lang="ar"] .languagePanel,
 body[data-support-lang="ar"] .languageStrip,
 body[data-support-lang="ar"] .heatmapTabs {
+  direction:ltr;
+}
+body[data-support-lang="ar"] .b1ConfidenceRow {
   direction:ltr;
 }
 .resultHeatmap td.perfNone {
@@ -5323,6 +5362,11 @@ body.b1Mode .clozeAnswerText.missed {
 
         <div class="feedback" id="feedback"></div>
         <button class="whyNoStarsBtn" id="whyNoStarsBtn" type="button" hidden>Why no stars?</button>
+        <div class="b1ConfidenceRow" id="b1ConfidenceRow" aria-label="Answer confidence" hidden>
+          <button type="button" data-confidence="sure">Sure</button>
+          <button type="button" data-confidence="unsure">Unsure</button>
+          <button type="button" data-confidence="guessed">Guessed</button>
+        </div>
         <button id="nextBtn" type="button">Weiter</button>
       </section>
     </div>
@@ -5568,8 +5612,12 @@ body.b1Mode .clozeAnswerText.missed {
   var STORAGE_KEY = "kasuskonsoleOriginalLayoutClozeV4";
   var LEITNER_STORAGE_KEY = "kasuskonsole.leitner.v1";
   var B1_STORAGE_KEY = "ozmosis_b1_sprint_progress_v1";
-  var OZMOSIS_APP_VERSION = "v0.39.1";
-  var OZMOSIS_EXPORT_VERSION = "v0.39.1-export-metadata-cleanup";
+  var B1_EVIDENCE_STORAGE_KEY = "ozmosis_b1_progress_evidence_v1";
+  var B1_EVIDENCE_RECORD_LIMIT = 1000;
+  var OZMOSIS_APP_VERSION = "v0.40.1";
+  var OZMOSIS_EXPORT_VERSION = "v0.40.1-confidence-guess-tracking";
+  var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
+  var B1_EVIDENCE_SEQUENCE = 0;
   var B1_DAILY_TOTAL = 12;
   var LEITNER_INTERVALS = [
     0,
@@ -5609,6 +5657,7 @@ body.b1Mode .clozeAnswerText.missed {
     translationOpen:false,
     currentExtraPractice:false,
     currentAssisted:false,
+    currentEvidenceRecordId:"",
     dailySprint:false,
     dailyDateKey:"",
     assisted:0
@@ -7836,7 +7885,9 @@ body.b1Mode .clozeAnswerText.missed {
     b1Runtime.translationOpen = false;
     b1Runtime.currentExtraPractice = false;
     b1Runtime.currentAssisted = false;
+    b1Runtime.currentEvidenceRecordId = "";
     b1Runtime.dailySprint = false;
+    resetB1ConfidenceControls();
     clearMobileClozeFocus();
     state = "home";
     setMenu(false);
@@ -8111,6 +8162,258 @@ body.b1Mode .clozeAnswerText.missed {
       if (!obj.meta.recentRoundStarts || typeof obj.meta.recentRoundStarts !== "object") obj.meta.recentRoundStarts = {};
       window.localStorage.setItem(B1_STORAGE_KEY, JSON.stringify(obj));
     } catch (e) {}
+  }
+  function b1EvidenceDefaultStore() {
+    return { schemaVersion:1, records:[] };
+  }
+  function normaliseB1EvidenceStore(input) {
+    var source = Array.isArray(input) ? { records:input } : (input && typeof input === "object" ? input : {});
+    var records = Array.isArray(source.records) ? source.records.filter(function(record){
+      return record && typeof record === "object" && record.itemId;
+    }) : [];
+    if (records.length > B1_EVIDENCE_RECORD_LIMIT) records = records.slice(-B1_EVIDENCE_RECORD_LIMIT);
+    return {
+      schemaVersion:Number(source.schemaVersion || 1),
+      records:records
+    };
+  }
+  function safeGetB1Evidence() {
+    try {
+      var raw = window.localStorage.getItem(B1_EVIDENCE_STORAGE_KEY);
+      return normaliseB1EvidenceStore(raw ? JSON.parse(raw) : null);
+    } catch (e) {
+      return b1EvidenceDefaultStore();
+    }
+  }
+  function safeSetB1Evidence(obj) {
+    try {
+      window.localStorage.setItem(B1_EVIDENCE_STORAGE_KEY, JSON.stringify(normaliseB1EvidenceStore(obj)));
+    } catch (e) {}
+  }
+  function b1EvidenceUnique(values) {
+    var seen = {}, out = [];
+    (values || []).forEach(function(value){
+      var tag = String(value || "").trim();
+      if (!tag || seen[tag]) return;
+      seen[tag] = true;
+      out.push(tag);
+    });
+    return out;
+  }
+  function b1EvidenceBankKeyFor(item) {
+    if (!item || !item.id) return "unknown";
+    var id = item.id;
+    var banks = b1RegistryBanks();
+    for (var i = 0; i < banks.length; i++) {
+      var items = Array.isArray(banks[i].items) ? banks[i].items : [];
+      for (var j = 0; j < items.length; j++) {
+        if (items[j] && items[j].id === id) return banks[i].key || "unknown";
+      }
+    }
+    return "unknown";
+  }
+  function b1EvidenceTaskType(item) {
+    return String(item && (item.itemType || item.type) || "other");
+  }
+  function b1EvidenceTaskDepth(item) {
+    var type = b1EvidenceTaskType(item);
+    var tags = (item && Array.isArray(item.tags)) ? item.tags.join(" ").toLowerCase() : "";
+    if (type === "production_card") return "controlled_production";
+    if (type === "error_repair") return "repair";
+    if (type === "word_order_cloze") return "sentence_building";
+    if (type === "connector_choice") return (item && item.contrastTargets && item.contrastTargets.length) || tags.indexOf("contrast") !== -1 ? "contrast" : "recognition";
+    if (type === "phrase_choice") return tags.indexOf("contrast") !== -1 ? "contrast" : "recognition";
+    if (type === "grammar_cloze" || type === "vocab_cloze" || type === "redemittel_cloze" || type === "phrase_cloze" || type === "typed_cloze") return "cloze";
+    return "unknown";
+  }
+  function b1EvidenceSkillTags(item, bankKey) {
+    var tags = [];
+    function add(value) { if (value) tags.push(value); }
+    if (item && Array.isArray(item.skillTags)) tags = tags.concat(item.skillTags);
+    if (item && Array.isArray(item.tags)) tags = tags.concat(item.tags);
+    if (bankKey === "connectors") add("connectors");
+    else if (bankKey === "redemittel") add("redemittel");
+    else if (bankKey === "wortschatz") add("wortschatz");
+    else if (bankKey === "core") add("b1_core");
+    if (item && item.itemType === "word_order_cloze") add("word_order");
+    if (item && item.itemType === "error_repair") add("repair");
+    if (item && item.itemType === "production_card") add("production");
+    if (item && item.grammarDomain) add(item.grammarDomain);
+    if (item && item.courseDomain) add(item.courseDomain);
+    if (item && item.section) add(item.section);
+    return b1EvidenceUnique(tags);
+  }
+  function b1EvidenceGrammarFocus(item, bankKey) {
+    var fields = ["grammarFocus", "targetRule", "rule", "family", "variantFamilyId", "grammarDomain", "courseDomain", "section", "topic", "subtopic", "microRule"];
+    for (var i = 0; i < fields.length; i++) {
+      var value = item && item[fields[i]];
+      if (value) return String(value).slice(0, 220);
+    }
+    if (bankKey === "connectors") return "connectors";
+    if (bankKey === "redemittel") return "redemittel";
+    if (bankKey === "wortschatz") return "wortschatz";
+    if (bankKey === "core") return "b1_core";
+    return "unknown";
+  }
+  function b1EvidencePromptSurface(item) {
+    if (!item) return "";
+    return String(item.prompt_de || item.sentence || item.fullAnswer_de || item.id || "");
+  }
+  function b1EvidencePromptHash(text) {
+    text = String(text || "");
+    if (!text) return null;
+    var hash = 2166136261;
+    for (var i = 0; i < text.length; i++) {
+      hash ^= text.charCodeAt(i);
+      hash += (hash << 1) + (hash << 4) + (hash << 7) + (hash << 8) + (hash << 24);
+    }
+    return "h" + (hash >>> 0).toString(36);
+  }
+  function b1EvidenceDaysSinceLastAttempt(itemId, store, nowMs) {
+    var records = store && Array.isArray(store.records) ? store.records : [];
+    for (var i = records.length - 1; i >= 0; i--) {
+      if (records[i] && records[i].itemId === itemId && records[i].timestamp) {
+        var previousMs = Date.parse(records[i].timestamp);
+        if (!isNaN(previousMs)) return Math.max(0, Math.round(((nowMs - previousMs) / 86400000) * 1000) / 1000);
+      }
+    }
+    return null;
+  }
+  function b1EvidenceAttemptContext(item, store, options) {
+    options = options || {};
+    if (item && item.itemType === "production_card") return "production";
+    var id = item && item.id;
+    var daily = b1Runtime.dailySprint ? b1CurrentDailySprint() : null;
+    if (options.extraPractice || (daily && id && (daily.failedIds.indexOf(id) !== -1 || daily.assistedIds.indexOf(id) !== -1))) return "retry";
+    var existingEvidence = store && Array.isArray(store.records) && store.records.some(function(record){ return record && record.itemId === id; });
+    var progress = id ? b1ProgressRecordFor(safeGetB1Progress(), item) : null;
+    if (!existingEvidence && !(progress && Number(progress.attempts || 0))) return "first_try";
+    return "unknown";
+  }
+  function b1EvidenceCorrectValue(result, options) {
+    options = options || {};
+    if (result === "correct") return true;
+    if (result === "wrong") return false;
+    if (result === "assisted") return !!options.isCorrect;
+    return null;
+  }
+  function b1EvidenceAnswerMode(item) {
+    if (!item) return "unknown";
+    if (item.itemType === "production_card") return "mark_practised";
+    if (b1UsesChoices(item)) return "choice";
+    if (b1UsesInlineInput(item) || item.itemType === "error_repair") return "typed";
+    return "unknown";
+  }
+  function appendB1EvidenceRecord(item, result, options) {
+    if (!item || !item.id) return null;
+    options = options || {};
+    var store = safeGetB1Evidence();
+    var now = new Date();
+    var nowIso = now.toISOString();
+    var bankKey = b1EvidenceBankKeyFor(item);
+    var hintUsedValue = !!(options.hintUsed || options.assisted || result === "assisted");
+    var supportUsedValue = !!(options.supportUsed || hintUsedValue || b1Runtime.translationOpen || b1SupportMode() === "always");
+    var record = {
+      id:"b1ev_" + Date.now().toString(36) + "_" + (++B1_EVIDENCE_SEQUENCE).toString(36),
+      schemaVersion:1,
+      timestamp:nowIso,
+      sessionId:B1_EVIDENCE_SESSION_ID,
+      itemId:item.id,
+      bankKey:bankKey,
+      levelTrack:String(item.levelTrack || "B1"),
+      cefrTarget:String(item.cefrTarget || item.cefr || "B1"),
+      taskType:b1EvidenceTaskType(item),
+      taskDepth:b1EvidenceTaskDepth(item),
+      skillTags:b1EvidenceSkillTags(item, bankKey),
+      grammarFocus:b1EvidenceGrammarFocus(item, bankKey),
+      result:String(result || "unknown"),
+      correct:b1EvidenceCorrectValue(result, options),
+      supportUsed:supportUsedValue,
+      hintUsed:hintUsedValue,
+      answerMode:options.answerMode || b1EvidenceAnswerMode(item),
+      attemptContext:b1EvidenceAttemptContext(item, store, options),
+      confidence:null,
+      targetId:item.targetId || null,
+      variantId:item.variantId || null,
+      surfacePromptHash:b1EvidencePromptHash(b1EvidencePromptSurface(item)),
+      errorCategory:null,
+      nearMissType:null,
+      reviewInterval:null,
+      daysSinceLastAttempt:b1EvidenceDaysSinceLastAttempt(item.id, store, now.getTime()),
+      createdBy:OZMOSIS_APP_VERSION
+    };
+    store.records.push(record);
+    if (store.records.length > B1_EVIDENCE_RECORD_LIMIT) store.records = store.records.slice(-B1_EVIDENCE_RECORD_LIMIT);
+    safeSetB1Evidence(store);
+    return record;
+  }
+  function b1ConfidenceCounts(records) {
+    return (records || []).reduce(function(counts, record){
+      var value = record && record.confidence;
+      if (value === "sure" || value === "unsure" || value === "guessed") counts[value] += 1;
+      else counts.null += 1;
+      return counts;
+    }, { sure:0, unsure:0, guessed:0, null:0 });
+  }
+  function resetB1ConfidenceControls() {
+    var row = el("b1ConfidenceRow");
+    if (!row) return;
+    row.hidden = true;
+    row.removeAttribute("data-evidence-id");
+    row.querySelectorAll("button").forEach(function(btn){
+      btn.classList.remove("selected");
+      btn.setAttribute("aria-pressed", "false");
+    });
+  }
+  function renderB1ConfidenceControls(selected) {
+    var row = el("b1ConfidenceRow");
+    if (!row || !b1Runtime.currentEvidenceRecordId) return;
+    row.hidden = false;
+    row.setAttribute("data-evidence-id", b1Runtime.currentEvidenceRecordId);
+    row.querySelectorAll("button").forEach(function(btn){
+      var active = btn.getAttribute("data-confidence") === selected;
+      btn.classList.toggle("selected", active);
+      btn.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+  }
+  function updateLatestB1EvidenceConfidence(value) {
+    value = String(value || "");
+    if (["sure", "unsure", "guessed"].indexOf(value) === -1) return null;
+    if (!b1Runtime.active || !b1Runtime.current || !b1Runtime.currentEvidenceRecordId) return null;
+    var store = safeGetB1Evidence();
+    var record = null;
+    for (var i = store.records.length - 1; i >= 0; i--) {
+      var candidate = store.records[i];
+      if (candidate && candidate.id === b1Runtime.currentEvidenceRecordId && candidate.itemId === b1Runtime.current.id && candidate.sessionId === B1_EVIDENCE_SESSION_ID) {
+        record = candidate;
+        break;
+      }
+    }
+    if (!record) return null;
+    record.confidence = value;
+    safeSetB1Evidence(store);
+    renderB1ConfidenceControls(value);
+    return record;
+  }
+  function b1EvidenceSummary() {
+    var store = safeGetB1Evidence();
+    var byBank = {}, byTaskType = {}, byTaskDepth = {};
+    store.records.forEach(function(record){
+      byBank[record.bankKey || "unknown"] = (byBank[record.bankKey || "unknown"] || 0) + 1;
+      byTaskType[record.taskType || "unknown"] = (byTaskType[record.taskType || "unknown"] || 0) + 1;
+      byTaskDepth[record.taskDepth || "unknown"] = (byTaskDepth[record.taskDepth || "unknown"] || 0) + 1;
+    });
+    return {
+      storageKey:B1_EVIDENCE_STORAGE_KEY,
+      schemaVersion:store.schemaVersion,
+      recordLimit:B1_EVIDENCE_RECORD_LIMIT,
+      count:store.records.length,
+      latest:store.records.length ? store.records[store.records.length - 1] : null,
+      byBank:byBank,
+      byTaskType:byTaskType,
+      byTaskDepth:byTaskDepth,
+      confidenceCounts:b1ConfidenceCounts(store.records)
+    };
   }
   function safeGetLegacy(key) { try { return Number(window.localStorage.getItem(key) || 0); } catch (e) { return 0; } }
   function savePersistent() {
@@ -9276,6 +9579,8 @@ body.b1Mode .clozeAnswerText.missed {
     b1Runtime.selectedChoice = "";
     b1Runtime.translationOpen = false;
     b1Runtime.currentAssisted = false;
+    b1Runtime.currentEvidenceRecordId = "";
+    resetB1ConfidenceControls();
     document.body.setAttribute("data-mode", "definite");
     document.body.classList.remove("resultsMode");
     el("answerArea").classList.remove("answered", "resultsArea");
@@ -9390,6 +9695,8 @@ body.b1Mode .clozeAnswerText.missed {
   }
   function markB1ProductionPractised() {
     if (state !== "b1Checking" || !b1Runtime.current || b1Runtime.current.itemType !== "production_card") return;
+    var evidenceRecord = appendB1EvidenceRecord(b1Runtime.current, "practised", { extraPractice:b1Runtime.currentExtraPractice, answerMode:"mark_practised" });
+    b1Runtime.currentEvidenceRecordId = evidenceRecord ? evidenceRecord.id : "";
     recordB1Progress(b1Runtime.current, "practised", { extraPractice:b1Runtime.currentExtraPractice });
     b1Runtime.practised += 1;
     state = "b1Next";
@@ -9399,6 +9706,7 @@ body.b1Mode .clozeAnswerText.missed {
     block.innerHTML = "<div class=\"correctionTarget\" aria-label=\"Practised\">✓</div>" +
       "<div class=\"microRule\">Saved to local practice progress.</div>";
     block.querySelector(".correctionTarget").textContent = "Practised";
+    renderB1ConfidenceControls(null);
     var buttons = el("connectorChoiceGrid") ? el("connectorChoiceGrid").querySelectorAll("button") : [];
     buttons.forEach(function(btn){ btn.disabled = true; });
     el("nextBtn").textContent = b1RoundComplete() ? "Ergebnis" : "Weiter";
@@ -9427,6 +9735,13 @@ body.b1Mode .clozeAnswerText.missed {
     clearMobileClozeFocus();
     var isCorrect = b1AnswerMatches(b1Runtime.current, raw);
     var assisted = !!b1Runtime.currentAssisted;
+    var evidenceRecord = appendB1EvidenceRecord(b1Runtime.current, assisted ? "assisted" : (isCorrect ? "correct" : "wrong"), {
+      extraPractice:b1Runtime.currentExtraPractice,
+      assisted:assisted,
+      isCorrect:isCorrect,
+      answerMode:usesChoices ? "choice" : "typed"
+    });
+    b1Runtime.currentEvidenceRecordId = evidenceRecord ? evidenceRecord.id : "";
     recordB1Progress(b1Runtime.current, assisted ? "assisted" : isCorrect, { extraPractice:b1Runtime.currentExtraPractice, assisted:assisted });
     b1UpdateDailyAfterAnswer(b1Runtime.current, isCorrect, assisted);
     state = "b1Next";
@@ -9455,6 +9770,7 @@ body.b1Mode .clozeAnswerText.missed {
     el("feedback").innerHTML = "";
     el("feedback").className = "feedback";
     renderB1Feedback(isCorrect, assisted);
+    renderB1ConfidenceControls(null);
     if (!usesChoices) activeInput.disabled = true;
     el("checkBtn").disabled = true;
     el("noArticleBtn").disabled = true;
@@ -9485,6 +9801,7 @@ body.b1Mode .clozeAnswerText.missed {
     b1Runtime.current = b1Runtime.queue.shift();
     b1Runtime.currentAssisted = false;
     b1Runtime.currentExtraPractice = !!(b1Runtime.current && b1Runtime.current._extraPractice);
+    b1Runtime.currentEvidenceRecordId = "";
     if (b1Runtime.dailySprint && b1Runtime.current) b1DailySetCurrent(b1Runtime.current.id);
     state = "b1Checking";
     renderB1Question();
@@ -9496,6 +9813,8 @@ body.b1Mode .clozeAnswerText.missed {
     var pct = scored ? Math.round((b1Runtime.correct / scored) * 100) : 0;
     state = "b1Results";
     clearMobileClozeFocus();
+    b1Runtime.currentEvidenceRecordId = "";
+    resetB1ConfidenceControls();
     resetConnectorChoiceGrid();
     document.body.classList.remove("b1TypedCloze");
     document.body.classList.add("resultsMode");
@@ -9537,7 +9856,7 @@ body.b1Mode .clozeAnswerText.missed {
     next.classList.add("visible");
     renderHud();
   }
-  function renderQuestion() { renderMode(); resetConnectorChoiceGrid(); document.body.classList.remove("resultsMode"); el("answerArea").classList.remove("answered", "resultsArea"); var supportColumn=document.querySelector(".supportColumn"); var resultPanel=el("resultPanel"); if (supportColumn && resultPanel && resultPanel.parentElement !== supportColumn) supportColumn.appendChild(resultPanel); el("resultPanel").classList.remove("visible"); var prompt=el("promptValue"); prompt.className="promptWord" + (current.kind === "cloze" ? " clozePrompt" : ""); if (current.kind === "cloze") prompt.innerHTML=sentenceHtml(current.sentence); else prompt.textContent=current.caseKey+" "+current.genderKey; renderEnglishGloss(); var input=el("answerInput"); input.value=""; input.disabled=false; input.style.display=""; input.placeholder=current.kind === "cloze" ? "Lücke ausfüllen" : "Artikel eingeben"; input.classList.remove("correct","missed"); el("feedback").innerHTML=""; el("feedback").className="feedback"; el("practiceSurface").classList.add("hidden"); setSupportPlaceholder(true, false); el("miniTableWrap").innerHTML=""; el("correctionBlock").className="correctionBlock"; el("correctionBlock").innerHTML=""; if (currentShowMicroRule) { el("correctionBlock").innerHTML="<div class=\"microRule\"><strong>Repair rule</strong>" + escapeHtml(microRuleFor(current)) + "</div>"; el("correctionBlock").classList.add("visible"); } el("actionGrid").classList.remove("singleAction", "rightAction"); el("actionGrid").style.display="grid"; el("checkBtn").disabled=false; el("noArticleBtn").disabled=false; el("noArticleBtn").style.display=""; el("hintBtn").disabled=false; el("hintBtn").hidden=false; el("hintBtn").style.display=""; el("nextBtn").classList.remove("visible"); el("nextBtn").textContent="Weiter"; setTimeout(function(){ input.focus(); },0); }
+  function renderQuestion() { b1Runtime.currentEvidenceRecordId=""; resetB1ConfidenceControls(); renderMode(); resetConnectorChoiceGrid(); document.body.classList.remove("resultsMode"); el("answerArea").classList.remove("answered", "resultsArea"); var supportColumn=document.querySelector(".supportColumn"); var resultPanel=el("resultPanel"); if (supportColumn && resultPanel && resultPanel.parentElement !== supportColumn) supportColumn.appendChild(resultPanel); el("resultPanel").classList.remove("visible"); var prompt=el("promptValue"); prompt.className="promptWord" + (current.kind === "cloze" ? " clozePrompt" : ""); if (current.kind === "cloze") prompt.innerHTML=sentenceHtml(current.sentence); else prompt.textContent=current.caseKey+" "+current.genderKey; renderEnglishGloss(); var input=el("answerInput"); input.value=""; input.disabled=false; input.style.display=""; input.placeholder=current.kind === "cloze" ? "Lücke ausfüllen" : "Artikel eingeben"; input.classList.remove("correct","missed"); el("feedback").innerHTML=""; el("feedback").className="feedback"; el("practiceSurface").classList.add("hidden"); setSupportPlaceholder(true, false); el("miniTableWrap").innerHTML=""; el("correctionBlock").className="correctionBlock"; el("correctionBlock").innerHTML=""; if (currentShowMicroRule) { el("correctionBlock").innerHTML="<div class=\"microRule\"><strong>Repair rule</strong>" + escapeHtml(microRuleFor(current)) + "</div>"; el("correctionBlock").classList.add("visible"); } el("actionGrid").classList.remove("singleAction", "rightAction"); el("actionGrid").style.display="grid"; el("checkBtn").disabled=false; el("noArticleBtn").disabled=false; el("noArticleBtn").style.display=""; el("hintBtn").disabled=false; el("hintBtn").hidden=false; el("hintBtn").style.display=""; el("nextBtn").classList.remove("visible"); el("nextBtn").textContent="Weiter"; setTimeout(function(){ input.focus(); },0); }
   function checkAnswer(overrideChoice) {
     if (state !== "checking") return;
     var input=el("answerInput"), choice=overrideChoice === "none" ? "kein artikel" : normalise(input.value);
@@ -9599,6 +9918,8 @@ body.b1Mode .clozeAnswerText.missed {
   function rankName(acc, mistakes, finalStreak) { if (acc===100 && finalStreak>=targetCount()) return "Perfekter Lauf"; if (acc>=95) return "Kasuskommandant"; if (acc>=85) return "Formstabil"; if (acc>=70) return "Auf Kurs"; if (mistakes<=targetCount()/2) return "Wacklig, aber lebendig"; return "Reparaturmodus"; }
   function showResults() {
     state="results";
+    b1Runtime.currentEvidenceRecordId="";
+    resetB1ConfidenceControls();
     resetConnectorChoiceGrid();
     document.body.classList.add("resultsMode");
     el("answerArea").classList.remove("answered");
@@ -9639,8 +9960,13 @@ body.b1Mode .clozeAnswerText.missed {
   function newRound() { b1Runtime.active=false; hideStartScreen(); score=0; correct=0; wrong=0; streak=0; bestStreakRound=0; mistakeCounts={}; retryQueue=[]; sessionLog=[]; sessionMisses={}; sessionPromptCounts={}; currentWasRetry=false; currentShowMicroRule=false; state="checking"; hintUsed=false; lastKey=null; savePersistent(); pickQuestion(); }
   function proceed() { if (state === "b1Next") nextB1Question(); else if (state === "b1Results") { if (b1Runtime.mode === "connector_sprint") showGrammarHub(); else if (b1Runtime.mode === "redemittel") showRedemittelHub(); else showHomeScreen(); } else if (state === "next") pickQuestion(); else if (state === "results") showStartScreen(); }
   function bind(id,event,fn){ var node=el(id); if (node) node.addEventListener(event,fn,false); }
-  function exportProgress(){ savePersistent(); var payload={app:"Ozmosis",appVersion:OZMOSIS_APP_VERSION,version:OZMOSIS_EXPORT_VERSION,exportedAt:new Date().toISOString(),sessionLog:sessionLog.slice(-80),data:safeGetObject(),leitner:safeGetLeitner(),b1:safeGetB1Progress()}; var blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"}); var url=URL.createObjectURL(blob); var a=document.createElement("a"); a.href=url; a.download="ozmosis-progress.json"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){ URL.revokeObjectURL(url); },250); }
-  function importProgress(file){ if (!file) return; var reader=new FileReader(); reader.onload=function(){ try { var parsed=JSON.parse(String(reader.result || "{}")), data=parsed.data || parsed; safeSetObject(data); if (parsed.leitner && typeof parsed.leitner === "object") safeSetLeitner(parsed.leitner); if (parsed.b1 && typeof parsed.b1 === "object") safeSetB1Progress(parsed.b1); loadPersistent(); newRound(); } catch(e){ el("feedback").textContent="Import fehlgeschlagen: ungültige JSON-Datei."; el("feedback").className="feedback missed"; } }; reader.readAsText(file); }
+  function exportProgress(){ savePersistent(); var payload={app:"Ozmosis",appVersion:OZMOSIS_APP_VERSION,version:OZMOSIS_EXPORT_VERSION,exportedAt:new Date().toISOString(),sessionLog:sessionLog.slice(-80),data:safeGetObject(),leitner:safeGetLeitner(),b1:safeGetB1Progress(),evidence:safeGetB1Evidence()}; var blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"}); var url=URL.createObjectURL(blob); var a=document.createElement("a"); a.href=url; a.download="ozmosis-progress.json"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){ URL.revokeObjectURL(url); },250); }
+  function importProgress(file){ if (!file) return; var reader=new FileReader(); reader.onload=function(){ try { var parsed=JSON.parse(String(reader.result || "{}")), data=parsed.data || parsed; safeSetObject(data); if (parsed.leitner && typeof parsed.leitner === "object") safeSetLeitner(parsed.leitner); if (parsed.b1 && typeof parsed.b1 === "object") safeSetB1Progress(parsed.b1); if (parsed.evidence && typeof parsed.evidence === "object") safeSetB1Evidence(parsed.evidence); loadPersistent(); newRound(); } catch(e){ el("feedback").textContent="Import fehlgeschlagen: ungültige JSON-Datei."; el("feedback").className="feedback missed"; } }; reader.readAsText(file); }
+  document.addEventListener("click", function(event){
+    var target = event.target && event.target.closest ? event.target.closest("#b1ConfidenceRow button[data-confidence]") : null;
+    if (!target) return;
+    updateLatestB1EvidenceConfidence(target.getAttribute("data-confidence"));
+  }, false);
   document.addEventListener("click", function(event){
     var target = event.target && event.target.closest ? event.target.closest("button") : null;
     if (!target) return;
@@ -10114,7 +10440,7 @@ body.b1Mode .clozeAnswerText.missed {
     savePersistent();
     newRound();
   }
-  window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }; window.kasusNoArticle=function(){checkAnswer("none");}; window.kasusProceed=function(){proceed();}; window.kasusHint=function(){showHint();}; window.kasusNewRound=function(){showStartScreen();}; window.kasusStartRound=function(){startConfiguredRound();}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusSessionLog=function(){return sessionLog.slice();}; window.kasusCurrent=function(){return current ? cloneQuestion(current) : cloneB1Item(b1Runtime.current || {});}; window.kasusLeitnerDebug=function(){ return { storageKey:LEITNER_STORAGE_KEY, runtime:leitnerRuntime, progress:safeGetLeitner() }; }; window.ozmosisB1Debug=function(){ return { storageKey:B1_STORAGE_KEY, itemCount:B1_ITEMS.length, connectorCount:B1_CONNECTOR_ITEMS.length, redemittelCount:B1_REDEMITTEL_ITEMS.length, wortschatzCount:B1_WORTSCHATZ_ITEMS.length, registry:b1RegistrySummary(), runtime:b1Runtime, progress:safeGetB1Progress() }; }; window.ozmosisStartConnector=function(family){ startConnectorSprint(family || "all"); }; window.ozmosisStartRedemittel=function(filter){ startRedemittelRound(filter || "mixed"); }; window.ozmosisStartWortschatz=function(filter){ startWortschatzRound(filter || "mixed"); }; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusResetBest=function(){ highScore=0; bestStreakAll=0; savePersistent(); if (state === "results") showResults(); else renderHud(); }; window.kasusResetProfile=function(){ resetLearnerModel(); }; window.kasusToggleMenu=function(){ var panel=el("settingsPanel"); panel.classList.toggle("open"); document.body.classList.toggle("menuOpen", panel.classList.contains("open")); };
+window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }; window.kasusNoArticle=function(){checkAnswer("none");}; window.kasusProceed=function(){proceed();}; window.kasusHint=function(){showHint();}; window.kasusNewRound=function(){showStartScreen();}; window.kasusStartRound=function(){startConfiguredRound();}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusSessionLog=function(){return sessionLog.slice();}; window.kasusCurrent=function(){return current ? cloneQuestion(current) : cloneB1Item(b1Runtime.current || {});}; window.kasusLeitnerDebug=function(){ return { storageKey:LEITNER_STORAGE_KEY, runtime:leitnerRuntime, progress:safeGetLeitner() }; }; window.ozmosisB1Debug=function(){ return { storageKey:B1_STORAGE_KEY, evidenceStorageKey:B1_EVIDENCE_STORAGE_KEY, itemCount:B1_ITEMS.length, connectorCount:B1_CONNECTOR_ITEMS.length, redemittelCount:B1_REDEMITTEL_ITEMS.length, wortschatzCount:B1_WORTSCHATZ_ITEMS.length, registry:b1RegistrySummary(), runtime:b1Runtime, progress:safeGetB1Progress(), evidence:b1EvidenceSummary() }; }; window.ozmosisStartConnector=function(family){ startConnectorSprint(family || "all"); }; window.ozmosisStartRedemittel=function(filter){ startRedemittelRound(filter || "mixed"); }; window.ozmosisStartWortschatz=function(filter){ startWortschatzRound(filter || "mixed"); }; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusResetBest=function(){ highScore=0; bestStreakAll=0; savePersistent(); if (state === "results") showResults(); else renderHud(); }; window.kasusResetProfile=function(){ resetLearnerModel(); }; window.kasusToggleMenu=function(){ var panel=el("settingsPanel"); panel.classList.toggle("open"); document.body.classList.toggle("menuOpen", panel.classList.contains("open")); };
   window.ozmosisContentAudit = function(){ return b1ConnectorWordOrderIssues(); };
   function mountSettingsPanel() {
     var panel = el("settingsPanel");
