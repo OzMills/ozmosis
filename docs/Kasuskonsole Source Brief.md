@@ -3,8 +3,8 @@
 Version: Working Source Brief Update  
 Status: Current planning brief  
 Project: Ozmosis — Deutsch Lernen App  
-Current known development position: v0.40.1 completed  
-Next planned patch: v0.41  
+Current known development position: v0.41 completed  
+Next planned patch: v0.42  
 
 Versioning rule:
 
@@ -705,8 +705,8 @@ You often choose accusative forms in location sentences.
 Current known development state:
 
 ```txt
-v0.40.1 completed
-Next planned patch: v0.41
+v0.41 completed
+Next planned patch: v0.42
 ```
 
 The next work should not be a broad rewrite.
@@ -1419,29 +1419,32 @@ Do not assume v1.0 at any arbitrary milestone.
 
 # 21. IMMEDIATE NEXT STEP
 
-The next appropriate step is v0.41.
+The next appropriate step is v0.42.
 
 v0.40 added the first Progress Evidence Model and v0.40.1 added lightweight confidence/guess capture on top of that evidence model.
 
-v0.41 should audit B1 skill tags and metadata without building the full Learning Map.
+v0.41 audited B1 skill tags and metadata without building the full Learning Map.
 
-Safe v0.41 scope:
+v0.42 should add the Learning Map data scaffold without adding a learner-facing Learning Map UI.
+
+Safe v0.42 scope:
 
 ```txt
-Audit B1 skillTags/taskType/grammarFocus/levelTrack coverage.
-Identify metadata gaps per bank and task type.
-Prepare structured skill-node mapping recommendations.
+Build a non-visual Learning Map data scaffold.
+Preserve explicit-vs-derived metadata provenance.
+Use the v0.41 audit findings as constraints.
+Avoid learner-facing mastery claims.
 Avoid major UI overhaul.
 Avoid B2 implementation.
 Avoid changing unrelated behaviours.
 ```
 
-Suggested v0.41 Codex task summary:
+Suggested v0.42 Codex task summary:
 
 ```txt
-Audit B1 skill tags and progress metadata for Ozmosis.
+Add a Learning Map data scaffold for Ozmosis.
 
-Do not build the full Learning Map yet.
+Do not build the learner-facing Learning Map UI yet.
 Do not introduce B2 content.
 Do not change the app architecture.
 Do not add backend, framework, build step, or external API dependency.

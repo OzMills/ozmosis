@@ -1,3 +1,11 @@
+## v0.41 - B1 Skill Tag Audit
+
+- Added a B1 skill tag and progress metadata audit for the current core, Connector, Redemittel, and Wortschatz banks.
+- Documented skill tag coverage, grammar focus coverage, task type coverage, task-depth coverage, level/CEFR coverage, confidence-evidence relevance, and metadata readiness for future Learning Map, Skill Matrix, weakness-repair, transfer-testing, and structured-interleaving work.
+- Proposed a B1 skill taxonomy and future metadata schema additions without changing learner-facing behaviour.
+- Preserved Today's B1 Sprint composition, B1 registry policy, routes, scoring, item content, item IDs, item statuses, feedback, Teach me, FIFO/simple retry, confidence tracking, production-card handling, Case Trainer, Options, Dev Tools, export/import, localStorage compatibility, and extracted static content banks.
+- Added no B2 content, Learning Map UI, Skill Matrix UI, Leitner, weakness repair, diagnostic entry sprint, backend, framework, build step, fetch, module loading, dependencies, package manager, runtime AI generation, analytics, accounts, external calls, or UI redesign.
+
 ## v0.40.1 - Confidence / Guess Tracking Spike
 
 - Added lightweight confidence/calibration capture for B1 practice evidence with stable values for `sure`, `unsure`, and `guessed`.
