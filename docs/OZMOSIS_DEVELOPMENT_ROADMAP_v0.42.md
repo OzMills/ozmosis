@@ -1,8 +1,8 @@
-# Ozmosis Development Roadmap v0.42.3
+# Ozmosis Development Roadmap v0.42.4
 
 Status: current planning roadmap
-Current known development position: v0.42.3 completed
-Next planned patch: v0.42.4 - Debug Stamp + State Snapshot Export
+Current known development position: v0.42.4 completed
+Next planned patch: v0.43 - Learning Map UI Preparation
 
 This roadmap is planning guidance only. Current repo files, `index.html`, `README.md`, `CHANGELOG.txt`, `AGENTS.md`, and the versioned source brief remain higher-trust sources for implementation state. Do not implement future items early.
 
@@ -45,6 +45,7 @@ This roadmap is planning guidance only. Current repo files, `index.html`, `READM
 - v0.42.1 added an optional B1 Diagnostic Sprint that records diagnostic evidence into the existing progress evidence and Learning Map scaffold.
 - v0.42.2 recovered the diagnostic flow, added clearer exit/result/import/export feedback, improved repair feedback clarity, and documented deferred connector, production-card, distractor, support, and contrast-feedback decisions.
 - v0.42.3 repaired support fields for existing Connector, Redemittel, and selected high-yield Wortschatz production cards while keeping production self-marked and no more visible than before.
+- v0.42.4 added a visible debug stamp, structured debug snapshot export, and no-save Dev Tools manual item preview/search for QA and bug reports.
 
 ## Current B1 Direction
 
@@ -58,35 +59,6 @@ The B1 spine should remain evidence-first:
 
 ## Near-Term Roadmap
 
-### v0.42.4 - Debug Stamp + State Snapshot Export
-
-Goal: add lightweight failure-reporting instrumentation before learner-facing Learning Map work.
-
-Scope constraints:
-
-- no Learning Map UI;
-- no Skill Matrix UI;
-- no weakness repair;
-- no new content banks;
-- do not change connector inclusion for Today's B1 Sprint;
-- do not make production cards a new primary route;
-- do not change production-card support content unless a regression is found;
-- preserve diagnostic/evidence/confidence/export/import behavior;
-- no B2 content.
-
-Instrumentation topics:
-
-- current route/mode/debug stamp;
-- app version, export version, storage key names, registry counts, and evidence counts;
-- optional state snapshot export for QA reports;
-- no sensitive user data beyond existing local progress export semantics.
-
-Deferred decisions already recorded in v0.42.2:
-
-- Connector items should remain outside Today's B1 Sprint until diagnostic/Learning Map targeting can add them intentionally.
-- Production cards should not become more visible until usefulPhrases/checklists are repaired.
-- Politeness distractor quality, English support visibility, `obwohl`/`trotzdem` contrast feedback, and ChatGPT/tutor-review handoff require separate patches.
-
 ### v0.43 - Learning Map UI Preparation
 
 Possible goal: prepare the learner-facing Learning Map UI only after diagnostic data and scaffold behavior are validated.
@@ -96,6 +68,12 @@ Requirements before learner-facing claims:
 - clear `not_enough_evidence` handling;
 - visible distinction between derived and explicit metadata;
 - no Reliable/Durable/Transfer-ready language without delayed review evidence.
+
+Deferred decisions already recorded in v0.42.2:
+
+- Connector items should remain outside Today's B1 Sprint until diagnostic/Learning Map targeting can add them intentionally.
+- Production cards should not become more visible until usefulPhrases/checklists are repaired and a later visibility policy is approved.
+- Politeness distractor quality, English support visibility, `obwohl`/`trotzdem` contrast feedback, and ChatGPT/tutor-review handoff require separate patches.
 
 ### v0.44 - Skill Matrix Data Model
 

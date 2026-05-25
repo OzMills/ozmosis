@@ -1,10 +1,10 @@
-# OZMOSIS SOURCE BRIEF v0.42.3
+# OZMOSIS SOURCE BRIEF v0.42.4
 
 Version: Working Source Brief Update  
 Status: Current planning brief  
 Project: Ozmosis - Deutsch Lernen App  
-Current known development position: v0.42.3 completed  
-Next planned patch: v0.42.4 - Debug Stamp + State Snapshot Export  
+Current known development position: v0.42.4 completed  
+Next planned patch: v0.43 - Learning Map UI Preparation  
 
 Versioning rule:
 
@@ -705,8 +705,8 @@ You often choose accusative forms in location sentences.
 Current known development state:
 
 ```txt
-v0.42.3 completed
-Next planned patch: v0.42.4 - Debug Stamp + State Snapshot Export
+v0.42.4 completed
+Next planned patch: v0.43 - Learning Map UI Preparation
 ```
 
 The next work should not be a broad rewrite.
@@ -1419,7 +1419,7 @@ Do not assume v1.0 at any arbitrary milestone.
 
 # 21. IMMEDIATE NEXT STEP
 
-The next appropriate step is v0.42.4.
+The next appropriate step is v0.43 - Learning Map UI Preparation, unless manual QA finds a blocking debug/preview/export regression.
 
 v0.40 added the first Progress Evidence Model and v0.40.1 added lightweight confidence/guess capture on top of that evidence model.
 
@@ -1433,23 +1433,24 @@ v0.42.2 improved the diagnostic explanation, exit path, result framing, scroll/l
 
 v0.42.3 repaired production-card usefulPhrases/checklists/model answers for the existing Connector, Redemittel, and selected high-yield Wortschatz production cards. Production remains self-marked, conservative practice evidence only; no production route visibility, auto-grading, QR handoff, or Learning Map UI was added.
 
-Safe v0.42.4 scope:
+v0.42.4 added a small visible debug stamp, Dev Tools debug snapshot export, and a no-save Dev Tools item preview/search path. It preserved existing B1 evidence, confidence, diagnostic, production-card self-marking, export/import, route, and content-bank behavior.
+
+Safe v0.43 scope:
 
 ```txt
-Add a small debug stamp and state snapshot export for better failure reports.
+Prepare the learner-facing Learning Map UI using the existing internal scaffold.
+Keep early states conservative and avoid mastery, durability, or transfer-ready claims.
 Keep export/import compatibility intact.
 Do not change Today's B1 Sprint connector inclusion.
 Do not make production cards more visible.
-Do not build the learner-facing Learning Map UI yet.
 Preserve diagnostic, evidence, confidence, route, scoring, and content-bank behaviour.
 ```
 
-Suggested v0.42.4 Codex task summary:
+Suggested v0.43 Codex task summary:
 
 ```txt
-Add lightweight debug-state reporting for Ozmosis QA and user bug reports.
+Prepare the learner-facing B1 Learning Map UI from the existing scaffold.
 
-Do not build the learner-facing Learning Map UI yet.
 Do not introduce B2 content.
 Do not change the app architecture.
 Do not add backend, framework, build step, or external API dependency.

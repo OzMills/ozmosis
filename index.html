@@ -1925,6 +1925,197 @@ body .modeTitle.clozeNeutral,
   font-weight:760;
 }
 
+.debugStamp {
+  position:fixed;
+  top:calc(8px + env(safe-area-inset-top));
+  right:8px;
+  z-index:12000;
+  max-width:min(78vw, 620px);
+  padding:5px 7px;
+  border:1px solid color-mix(in srgb, var(--mode) 30%, var(--line));
+  border-radius:9px;
+  background:rgba(5,9,19,.86);
+  color:color-mix(in srgb, var(--text) 68%, var(--muted));
+  font:800 .62rem/1.15 ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  letter-spacing:0;
+  direction:ltr;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  pointer-events:none;
+  box-shadow:0 6px 18px rgba(0,0,0,.24);
+}
+
+.devUtilityBlock {
+  display:grid;
+  gap:10px;
+  margin:0 0 12px;
+  padding:12px;
+  border:1px solid color-mix(in srgb, var(--mode) 34%, var(--line));
+  border-radius:16px;
+  background:rgba(7,12,21,.78);
+}
+
+.devUtilityBlock h3 {
+  margin:0;
+  color:var(--text);
+  font-size:1rem;
+  letter-spacing:0;
+}
+
+.devUtilityBlock p {
+  margin:0;
+  color:var(--muted);
+  font-size:.88rem;
+  font-weight:760;
+  line-height:1.35;
+}
+
+.devUtilityActions,
+.devSearchRow,
+.devPreviewActions {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
+}
+
+.devUtilityActions button,
+.devSearchRow button,
+.devPreviewActions button {
+  min-height:40px;
+  border-radius:12px;
+  border:1px solid color-mix(in srgb, var(--mode) 40%, var(--line));
+  background:#070c15;
+  color:var(--text);
+  font:inherit;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.devSearchRow input,
+.devPreviewPanel input {
+  flex:1 1 210px;
+  min-width:0;
+  min-height:40px;
+  border-radius:12px;
+  border:1px solid color-mix(in srgb, var(--mode) 40%, var(--line));
+  background:#050913;
+  color:var(--text);
+  font:inherit;
+}
+
+.devStatus {
+  color:var(--accent);
+  font-size:.82rem;
+  font-weight:850;
+  min-height:1.1em;
+}
+
+.devSnapshotFallback {
+  width:100%;
+  min-height:140px;
+  resize:vertical;
+  border-radius:12px;
+  border:1px solid color-mix(in srgb, var(--warn) 38%, var(--line));
+  background:#050913;
+  color:var(--text);
+  font:700 .75rem/1.35 ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+.devSnapshotFallback[hidden],
+.devItemResults[hidden],
+.devPreviewPanel[hidden] {
+  display:none !important;
+}
+
+.devItemResults {
+  display:grid;
+  gap:7px;
+}
+
+.devResultButton {
+  width:100%;
+  display:grid;
+  gap:3px;
+  padding:9px 10px;
+  border-radius:12px;
+  border:1px solid color-mix(in srgb, var(--mode) 30%, var(--line));
+  background:rgba(5,9,19,.82);
+  color:var(--text);
+  text-align:left;
+  font:inherit;
+  cursor:pointer;
+}
+
+.devResultButton strong {
+  font-size:.9rem;
+  font-weight:950;
+}
+
+.devResultButton span {
+  color:var(--muted);
+  font-size:.78rem;
+  font-weight:760;
+}
+
+.devPreviewPanel {
+  display:grid;
+  gap:10px;
+  padding:12px;
+  border:1px dashed color-mix(in srgb, var(--warn) 52%, var(--line));
+  border-radius:14px;
+  background:rgba(246,193,92,.055);
+}
+
+.devPreviewNotice {
+  color:var(--warn);
+  font:900 .72rem/1.25 ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.devPreviewMeta,
+.devPreviewText,
+.devPreviewList {
+  color:var(--muted);
+  font-size:.86rem;
+  font-weight:760;
+  line-height:1.35;
+}
+
+.devPreviewText,
+.devPreviewList {
+  direction:ltr;
+  unicode-bidi:isolate;
+}
+
+.devPreviewText strong,
+.devPreviewList strong {
+  color:var(--text);
+}
+
+.devPreviewList ul {
+  margin:6px 0 0 18px;
+  padding:0;
+}
+
+.devPreviewChoices {
+  display:grid;
+  gap:6px;
+}
+
+.devPreviewChoices button {
+  border-radius:12px;
+  border:1px solid color-mix(in srgb, var(--mode) 30%, var(--line));
+  background:#050913;
+  color:var(--text);
+  text-align:left;
+  font:inherit;
+  font-weight:850;
+  cursor:default;
+}
+
 .devDangerItem {
   border-color:color-mix(in srgb, var(--bad) 50%, var(--line));
 }
@@ -5572,6 +5763,8 @@ body.b1Mode.b1LongAnswer #answerInput {
 
 <div class="appStatus" id="appStatus" role="status" aria-live="polite" hidden></div>
 
+<div class="debugStamp" id="debugStamp" aria-label="Debug state stamp"></div>
+
 <div id="genitiveHelpOverlay" class="genitiveHelpOverlay" hidden>
   <div class="genitiveHelpCard" role="dialog" aria-modal="true" aria-labelledby="genitiveHelpTitle">
     <div class="genitiveHelpTop">
@@ -5611,6 +5804,27 @@ body.b1Mode.b1LongAnswer #answerInput {
         </div>
       </div>
       <p class="devIntro">Temporäre Prototypen, bevor sie in den normalen Lernfluss eingebaut werden.</p>
+      <section class="devUtilityBlock" aria-labelledby="debugSnapshotTitle">
+        <h3 id="debugSnapshotTitle">Debug snapshot</h3>
+        <p>Copy current route, item, viewport, storage, evidence, and layout warning data for troubleshooting.</p>
+        <div class="devUtilityActions">
+          <button id="copyDebugSnapshotBtn" type="button">Copy debug snapshot</button>
+        </div>
+        <div class="devStatus" id="debugSnapshotStatus" aria-live="polite"></div>
+        <textarea class="devSnapshotFallback" id="debugSnapshotFallback" readonly hidden aria-label="Debug snapshot fallback text"></textarea>
+      </section>
+      <section class="devUtilityBlock" aria-labelledby="devItemPreviewTitle">
+        <h3 id="devItemPreviewTitle">Manual item preview</h3>
+        <p>Find a B1 item by ID or text and inspect it in DEV PREVIEW mode. No progress or evidence is saved.</p>
+        <label class="srOnly" for="devItemSearchInput">Item ID or text</label>
+        <div class="devSearchRow">
+          <input id="devItemSearchInput" type="search" autocomplete="off" spellcheck="false" placeholder="Item ID or text">
+          <button id="devFindItemBtn" type="button">Find item</button>
+        </div>
+        <div class="devStatus" id="devItemPreviewStatus" aria-live="polite"></div>
+        <div class="devItemResults" id="devItemResults" hidden></div>
+        <div class="devPreviewPanel" id="devItemPreviewPanel" hidden></div>
+      </section>
       <div class="devTestList">
         <button class="devTestItem" id="openNewGameMockBtn" type="button">
           <strong>New Game Screen Mock</strong>
@@ -5781,12 +5995,14 @@ body.b1Mode.b1LongAnswer #answerInput {
   var B1_STORAGE_KEY = "ozmosis_b1_sprint_progress_v1";
   var B1_EVIDENCE_STORAGE_KEY = "ozmosis_b1_progress_evidence_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.42.3";
-  var OZMOSIS_EXPORT_VERSION = "v0.42.3-production-card-support-repair";
+  var OZMOSIS_APP_VERSION = "v0.42.4";
+  var OZMOSIS_EXPORT_VERSION = "v0.42.4-debug-stamp-state-snapshot";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
   var B1_DAILY_TOTAL = 12;
   var APP_STATUS_TIMER = 0;
+  var DEBUG_STAMP_TIMER = 0;
+  var devPreviewSelectedItemId = null;
   var LEITNER_INTERVALS = [
     0,
     10 * 60 * 1000,
@@ -8839,6 +9055,379 @@ body.b1Mode.b1LongAnswer #answerInput {
       confidenceCounts:b1ConfidenceCounts(store.records)
     };
   }
+  function debugCurrentRoute() {
+    if (b1Runtime.active) return b1Runtime.mode || "b1";
+    return state || "unknown";
+  }
+  function debugCurrentItem() {
+    if (b1Runtime.active && b1Runtime.current) return b1Runtime.current;
+    return current || null;
+  }
+  function debugRoundPosition() {
+    if (b1Runtime.active) {
+      var total = Number(b1Runtime.target || 0);
+      var index = total ? Math.max(0, Math.min(total, total - b1Runtime.queue.length)) : 0;
+      return { index:index, total:total, label:total ? index + "/" + total : "" };
+    }
+    var articleTotal = targetCount ? Number(targetCount() || 0) : 0;
+    var articleIndex = answeredCount ? Number(answeredCount() || 0) + ((state === "checking" && current) ? 1 : 0) : 0;
+    return { index:articleIndex, total:articleTotal, label:articleTotal ? articleIndex + "/" + articleTotal : "" };
+  }
+  function debugViewportLabel() {
+    return Math.round(window.innerWidth || 0) + "x" + Math.round(window.innerHeight || 0);
+  }
+  function debugItemMeta(item) {
+    if (!item) return null;
+    var bankKey = item.id ? b1EvidenceBankKeyFor(item) : "unknown";
+    var taskType = item.itemType || item.kind || item.type || "unknown";
+    var taskDepth = item.id ? b1EvidenceTaskDepth(item) : "unknown";
+    return {
+      itemId:item.id || null,
+      bankKey:bankKey,
+      taskType:taskType,
+      taskDepth:taskDepth,
+      cefrTarget:item.cefr || "B1",
+      grammarFocus:item.id ? b1EvidenceGrammarFocus(item, bankKey) : (item.caseKey || item.type || null),
+      skillTags:item.id ? b1EvidenceSkillTags(item, bankKey) : []
+    };
+  }
+  function updateDebugStamp() {
+    var stamp = el("debugStamp");
+    if (!stamp) return;
+    var item = debugCurrentItem();
+    var position = debugRoundPosition();
+    var parts = [OZMOSIS_APP_VERSION, debugCurrentRoute()];
+    if (position.label) parts.push(position.label);
+    if (item && item.id) parts.push(item.id);
+    parts.push(debugViewportLabel());
+    stamp.textContent = parts.join(" | ");
+  }
+  function safeLocalStorageValue(key) {
+    try { return window.localStorage.getItem(key); } catch (e) { return null; }
+  }
+  function storageKeyExists(key) {
+    try { return window.localStorage.getItem(key) !== null; } catch (e) { return false; }
+  }
+  function safeBounds(selectorOrElement) {
+    var node = typeof selectorOrElement === "string" ? document.querySelector(selectorOrElement) : selectorOrElement;
+    if (!node || !node.getBoundingClientRect) return null;
+    var rect = node.getBoundingClientRect();
+    return {
+      top:Math.round(rect.top),
+      right:Math.round(rect.right),
+      bottom:Math.round(rect.bottom),
+      left:Math.round(rect.left),
+      width:Math.round(rect.width),
+      height:Math.round(rect.height)
+    };
+  }
+  function debugActiveElementInfo() {
+    var active = document.activeElement;
+    if (!active || active === document.body || active === document.documentElement) return null;
+    return {
+      tag:String(active.tagName || "").toLowerCase(),
+      id:active.id || null,
+      type:active.getAttribute ? active.getAttribute("type") || null : null,
+      role:active.getAttribute ? active.getAttribute("role") || null : null
+    };
+  }
+  function debugSelectedConfidence() {
+    var row = el("b1ConfidenceRow");
+    if (!row || row.hidden) return null;
+    var selected = row.querySelector("button.selected, button[aria-pressed='true']");
+    return selected ? selected.getAttribute("data-confidence") || null : null;
+  }
+  function debugLatestEvidence() {
+    var store = safeGetB1Evidence();
+    var latest = store.records && store.records.length ? store.records[store.records.length - 1] : null;
+    if (!latest) return null;
+    return {
+      id:latest.id || null,
+      itemId:latest.itemId || null,
+      timestamp:latest.timestamp || null,
+      correct:typeof latest.correct === "boolean" ? latest.correct : latest.correct === null ? null : undefined,
+      confidence:latest.confidence || null,
+      attemptContext:latest.attemptContext || null,
+      taskType:latest.taskType || null,
+      taskDepth:latest.taskDepth || null,
+      bankKey:latest.bankKey || null
+    };
+  }
+  function debugLearningMapSummary() {
+    try {
+      var map = b1LearningMapScaffold();
+      var nodes = Array.isArray(map.nodes) ? map.nodes : [];
+      var nodeLimitations = nodes.reduce(function(total, node){ return total + (Array.isArray(node.limitations) ? node.limitations.length : 0); }, 0);
+      return {
+        schemaVersion:map.schemaVersion || null,
+        nodeCount:nodes.length,
+        unmappedEvidenceCount:Number(map.unmappedEvidenceCount || map.unmappedCount || 0),
+        limitationsCount:(Array.isArray(map.limitations) ? map.limitations.length : 0) + nodeLimitations
+      };
+    } catch (e) {
+      return { error:"learning_map_summary_unavailable" };
+    }
+  }
+  function isScrollLockedFor(node) {
+    if (!node) return false;
+    var style = window.getComputedStyle ? window.getComputedStyle(node) : null;
+    if (!style) return false;
+    var locked = /hidden|clip/.test(String(style.overflowY || style.overflow || ""));
+    return locked && node.scrollHeight > node.clientHeight + 2;
+  }
+  function rectsOverlap(a, b) {
+    if (!a || !b) return false;
+    return a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top;
+  }
+  function debugLayoutWarnings() {
+    var active = document.activeElement && document.activeElement !== document.body ? document.activeElement : null;
+    var activeBounds = safeBounds(active);
+    var footerBounds = safeBounds(".bottomHud");
+    var progressExists = storageKeyExists(B1_STORAGE_KEY);
+    var evidenceExists = storageKeyExists(B1_EVIDENCE_STORAGE_KEY);
+    return {
+      footerOverlapPossible:rectsOverlap(activeBounds, footerBounds),
+      activeElementNearViewportBottom:!!activeBounds && activeBounds.bottom > (window.innerHeight || 0) - 72,
+      horizontalOverflowDetected:document.documentElement.scrollWidth > document.documentElement.clientWidth + 2,
+      bodyScrollLocked:isScrollLockedFor(document.body),
+      mainScrollLocked:isScrollLockedFor(document.querySelector("main")),
+      unknownActiveItem:b1Runtime.active && !b1Runtime.current,
+      missingEvidenceKey:!evidenceExists,
+      missingProgressKey:!progressExists
+    };
+  }
+  function buildDebugSnapshot() {
+    var item = debugCurrentItem();
+    var itemMeta = debugItemMeta(item);
+    var round = debugRoundPosition();
+    var progressStore = safeGetB1Progress();
+    var evidenceStore = safeGetB1Evidence();
+    return {
+      app:"Ozmosis",
+      appVersion:OZMOSIS_APP_VERSION,
+      exportVersion:OZMOSIS_EXPORT_VERSION,
+      timestamp:new Date().toISOString(),
+      route:debugCurrentRoute(),
+      mode:b1Runtime.active ? b1Runtime.mode : state,
+      activeRoundType:b1Runtime.active ? b1Runtime.title || b1Runtime.mode : null,
+      viewport:{
+        width:Math.round(window.innerWidth || 0),
+        height:Math.round(window.innerHeight || 0),
+        devicePixelRatio:Number(window.devicePixelRatio || 1),
+        scrollX:Math.round(window.scrollX || 0),
+        scrollY:Math.round(window.scrollY || 0)
+      },
+      document:{
+        language:document.documentElement.lang || null,
+        direction:document.documentElement.dir || (window.getComputedStyle ? window.getComputedStyle(document.body).direction : null)
+      },
+      activeElement:debugActiveElementInfo(),
+      round:{
+        active:!!b1Runtime.active,
+        currentIndex:round.index,
+        total:round.total,
+        queueRemaining:b1Runtime.active ? b1Runtime.queue.length : null,
+        dailySprint:!!b1Runtime.dailySprint,
+        diagnostic:b1Runtime.mode === "b1_diagnostic"
+      },
+      currentItem:itemMeta,
+      feedbackVisible:!!(el("feedback") && el("feedback").textContent.trim()),
+      confidenceRowVisible:!!(el("b1ConfidenceRow") && !el("b1ConfidenceRow").hidden),
+      selectedConfidence:debugSelectedConfidence(),
+      hudFooterVisible:!!document.querySelector(".bottomHud"),
+      storage:{
+        progressKey:B1_STORAGE_KEY,
+        progressKeyExists:storageKeyExists(B1_STORAGE_KEY),
+        progressCount:b1ProgressCount(progressStore),
+        evidenceKey:B1_EVIDENCE_STORAGE_KEY,
+        evidenceKeyExists:storageKeyExists(B1_EVIDENCE_STORAGE_KEY),
+        evidenceCount:b1EvidenceCount(evidenceStore),
+        latestEvidence:debugLatestEvidence()
+      },
+      registry:b1RegistrySummary(),
+      contentBankCounts:{
+        core:B1_ITEMS.length,
+        connectors:B1_CONNECTOR_ITEMS.length,
+        redemittel:B1_REDEMITTEL_ITEMS.length,
+        wortschatz:B1_WORTSCHATZ_ITEMS.length
+      },
+      learningMap:debugLearningMapSummary(),
+      layout:{
+        viewport:{ width:Math.round(window.innerWidth || 0), height:Math.round(window.innerHeight || 0) },
+        mainBounds:safeBounds("main"),
+        appContainerBounds:safeBounds(".appShell") || safeBounds("main"),
+        hudFooterBounds:safeBounds(".bottomHud"),
+        activeInputBounds:safeBounds(document.activeElement && /input|textarea|select/i.test(document.activeElement.tagName || "") ? document.activeElement : null),
+        warnings:debugLayoutWarnings()
+      }
+    };
+  }
+  function showDebugSnapshotFallback(text, message) {
+    var fallback = el("debugSnapshotFallback");
+    if (fallback) {
+      fallback.hidden = false;
+      fallback.value = text;
+      fallback.focus();
+      fallback.select();
+    }
+    if (el("debugSnapshotStatus")) el("debugSnapshotStatus").textContent = message || "Clipboard unavailable. Select and copy the snapshot text.";
+  }
+  function copyDebugSnapshot() {
+    var text = JSON.stringify(buildDebugSnapshot(), null, 2);
+    if (el("debugSnapshotFallback")) el("debugSnapshotFallback").hidden = true;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function(){
+        if (el("debugSnapshotStatus")) el("debugSnapshotStatus").textContent = "Debug snapshot copied.";
+      }).catch(function(){
+        showDebugSnapshotFallback(text, "Clipboard blocked. Select and copy the snapshot text.");
+      });
+      return;
+    }
+    showDebugSnapshotFallback(text, "Clipboard unavailable. Select and copy the snapshot text.");
+  }
+  function devPreviewItemRows() {
+    return b1RegistryBanks().reduce(function(out, bank){
+      (Array.isArray(bank.items) ? bank.items : []).forEach(function(item){
+        if (item && item.id) out.push({ bank:bank, item:item });
+      });
+      return out;
+    }, []);
+  }
+  function devPreviewChoiceText(choice) {
+    if (choice == null) return "";
+    if (typeof choice === "string") return choice;
+    return choice.label || choice.text || choice.value || JSON.stringify(choice);
+  }
+  function devPreviewSearchText(item, bankKey) {
+    var fields = [
+      item.id,
+      bankKey,
+      item.itemType,
+      item.prompt_de,
+      item.sentence,
+      item.fullAnswer_de,
+      item.modelAnswer_de,
+      item.support_en,
+      item.microRule,
+      item.courseDomain,
+      item.grammarDomain,
+      item.category,
+      item.section,
+      item.title
+    ];
+    ["tags", "skillTags", "usefulPhrases", "productionChecklist", "choices", "acceptedAnswers"].forEach(function(key){
+      var value = item[key];
+      if (!Array.isArray(value)) return;
+      value.forEach(function(entry){ fields.push(devPreviewChoiceText(entry)); });
+    });
+    return fields.filter(Boolean).join(" ").toLowerCase();
+  }
+  function findDevPreviewItems(query) {
+    var normalized = String(query || "").trim().toLowerCase();
+    if (!normalized) return [];
+    var rows = devPreviewItemRows().map(function(row){
+      var item = row.item;
+      var exact = String(item.id || "").toLowerCase() === normalized;
+      var idMatch = String(item.id || "").toLowerCase().indexOf(normalized) !== -1;
+      var textMatch = devPreviewSearchText(item, row.bank.key).indexOf(normalized) !== -1;
+      return { bank:row.bank, item:item, exact:exact, matched:exact || idMatch || textMatch };
+    }).filter(function(row){ return row.matched; });
+    rows.sort(function(a, b){
+      if (a.exact !== b.exact) return a.exact ? -1 : 1;
+      return String(a.item.id).localeCompare(String(b.item.id));
+    });
+    return rows.slice(0, 20);
+  }
+  function renderDevPreviewResults() {
+    var input = el("devItemSearchInput");
+    var results = el("devItemResults");
+    var status = el("devItemPreviewStatus");
+    if (!input || !results) return;
+    var matches = findDevPreviewItems(input.value);
+    results.innerHTML = "";
+    results.hidden = !matches.length;
+    if (status) status.textContent = matches.length ? matches.length + " item(s) found. Select one to preview." : "No matching B1 item found.";
+    matches.forEach(function(row){
+      var item = row.item;
+      var bankKey = row.bank.key;
+      var taskType = item.itemType || "unknown";
+      var button = document.createElement("button");
+      button.type = "button";
+      button.className = "devResultButton";
+      button.setAttribute("data-dev-preview-id", item.id);
+      button.innerHTML = "<strong>" + escapeHtml(item.id) + "</strong><span>" + escapeHtml(bankKey + " | " + taskType + " | " + (item.prompt_de || item.fullAnswer_de || item.modelAnswer_de || "").slice(0, 90)) + "</span>";
+      results.appendChild(button);
+    });
+  }
+  function devPreviewListHtml(label, values) {
+    if (!Array.isArray(values) || !values.length) return "";
+    return '<div class="devPreviewList"><strong>' + escapeHtml(label) + '</strong><ul>' + values.map(function(value){ return "<li>" + escapeHtml(devPreviewChoiceText(value)) + "</li>"; }).join("") + "</ul></div>";
+  }
+  function renderDevPreviewItem(itemId) {
+    var row = devPreviewItemRows().filter(function(candidate){ return candidate.item.id === itemId; })[0];
+    var panel = el("devItemPreviewPanel");
+    if (!row || !panel) return;
+    var item = row.item;
+    devPreviewSelectedItemId = item.id;
+    var taskType = item.itemType || "unknown";
+    var taskDepth = b1EvidenceTaskDepth(item);
+    var prompt = item.prompt_de || item.sentence || item.fullAnswer_de || item.modelAnswer_de || "[no prompt text]";
+    var choices = Array.isArray(item.choices) && item.choices.length ? '<div class="devPreviewChoices">' + item.choices.map(function(choice){ return '<button type="button" disabled>' + escapeHtml(devPreviewChoiceText(choice)) + '</button>'; }).join("") + "</div>" : "";
+    var checkControls = taskType !== "production_card" ? '<div class="devSearchRow"><input id="devPreviewAnswerInput" type="text" autocomplete="off" spellcheck="false" placeholder="Mock answer - not saved"><button id="devPreviewCheckBtn" type="button">Check preview</button></div>' : "";
+    var modelAnswer = item.modelAnswer_de || item.fullAnswer_de || item.answer || "";
+    panel.innerHTML =
+      '<div class="devPreviewNotice">DEV PREVIEW - no progress saved</div>' +
+      '<div class="devPreviewMeta">' + escapeHtml(row.bank.key + " | " + taskType + " | " + taskDepth + " | " + item.id) + '</div>' +
+      '<div class="devPreviewText"><strong>Prompt:</strong> ' + escapeHtml(prompt) + '</div>' +
+      (item.support_en ? '<div class="devPreviewText"><strong>Support:</strong> ' + escapeHtml(item.support_en) + '</div>' : "") +
+      choices +
+      devPreviewListHtml("Useful phrases", item.usefulPhrases) +
+      devPreviewListHtml("Checklist", item.productionChecklist) +
+      '<div class="devPreviewText" id="devPreviewModel" hidden><strong>Model / answer:</strong> ' + escapeHtml(modelAnswer) + '</div>' +
+      checkControls +
+      '<div class="devStatus" id="devPreviewActionStatus"></div>' +
+      '<div class="devPreviewActions"><button id="devPreviewShowModelBtn" type="button">Show model</button><button id="devPreviewMockMarkBtn" type="button">Mark practised preview</button><button id="devPreviewCopyItemIdBtn" type="button">Copy item ID</button><button id="devPreviewClearBtn" type="button">Exit preview</button></div>';
+    panel.hidden = false;
+    if (el("devItemPreviewStatus")) el("devItemPreviewStatus").textContent = "Previewing " + item.id + ". No progress or evidence will be saved.";
+  }
+  function checkDevPreviewAnswer() {
+    var row = devPreviewItemRows().filter(function(candidate){ return candidate.item.id === devPreviewSelectedItemId; })[0];
+    var input = el("devPreviewAnswerInput");
+    var status = el("devPreviewActionStatus");
+    if (!row || !input || !status) return;
+    var result = false;
+    try { result = b1AnswerMatches(row.item, input.value); } catch (e) { status.textContent = "Preview check unavailable for this item. No progress/evidence saved."; return; }
+    status.textContent = result ? "Preview check: would match. No progress/evidence saved." : "Preview check: would not match. No progress/evidence saved.";
+  }
+  function handleDevPreviewClick(event) {
+    var target = event.target && event.target.closest ? event.target.closest("[data-dev-preview-id], #devPreviewShowModelBtn, #devPreviewMockMarkBtn, #devPreviewCopyItemIdBtn, #devPreviewClearBtn, #devPreviewCheckBtn") : null;
+    if (!target) return;
+    if (target.hasAttribute("data-dev-preview-id")) { renderDevPreviewItem(target.getAttribute("data-dev-preview-id")); return; }
+    if (target.id === "devPreviewShowModelBtn") {
+      if (el("devPreviewModel")) el("devPreviewModel").hidden = false;
+      if (el("devPreviewActionStatus")) el("devPreviewActionStatus").textContent = "Model displayed in preview only. No progress/evidence saved.";
+      return;
+    }
+    if (target.id === "devPreviewMockMarkBtn") {
+      if (el("devPreviewActionStatus")) el("devPreviewActionStatus").textContent = "Mark practised preview only. No progress/evidence saved.";
+      return;
+    }
+    if (target.id === "devPreviewCopyItemIdBtn") {
+      var text = devPreviewSelectedItemId || "";
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).catch(function(){});
+      }
+      if (el("devPreviewActionStatus")) el("devPreviewActionStatus").textContent = "Item ID: " + text;
+      return;
+    }
+    if (target.id === "devPreviewClearBtn") {
+      devPreviewSelectedItemId = null;
+      if (el("devItemPreviewPanel")) el("devItemPreviewPanel").hidden = true;
+      if (el("devItemPreviewStatus")) el("devItemPreviewStatus").textContent = "Preview closed.";
+      return;
+    }
+    if (target.id === "devPreviewCheckBtn") checkDevPreviewAnswer();
+  }
   function safeGetLegacy(key) { try { return Number(window.localStorage.getItem(key) || 0); } catch (e) { return 0; } }
   function savePersistent() {
     learnerModel.lastSessionLog = sessionLog.slice(-80);
@@ -9222,6 +9811,7 @@ body.b1Mode.b1LongAnswer #answerInput {
       el("correctValue").textContent = b1Runtime.correct;
       el("wrongValue").textContent = b1Runtime.wrong;
       el("streakValue").textContent = b1Answered + " / " + b1Target;
+      updateDebugStamp();
       return;
     }
     var target = targetCount(), answered = answeredCount();
@@ -9231,6 +9821,7 @@ body.b1Mode.b1LongAnswer #answerInput {
     el("correctValue").textContent = correct;
     el("wrongValue").textContent = wrong;
     el("streakValue").textContent = answered + " / " + target;
+    updateDebugStamp();
   }
   function renderMode() {
     if (current && current.kind === "cloze") {
@@ -11218,7 +11809,25 @@ body.b1Mode.b1LongAnswer #answerInput {
     savePersistent();
     newRound();
   }
-window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }; window.kasusNoArticle=function(){checkAnswer("none");}; window.kasusProceed=function(){proceed();}; window.kasusHint=function(){showHint();}; window.kasusNewRound=function(){showStartScreen();}; window.kasusStartRound=function(){startConfiguredRound();}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusSessionLog=function(){return sessionLog.slice();}; window.kasusCurrent=function(){return current ? cloneQuestion(current) : cloneB1Item(b1Runtime.current || {});}; window.kasusLeitnerDebug=function(){ return { storageKey:LEITNER_STORAGE_KEY, runtime:leitnerRuntime, progress:safeGetLeitner() }; }; window.ozmosisB1Debug=function(){ return { storageKey:B1_STORAGE_KEY, evidenceStorageKey:B1_EVIDENCE_STORAGE_KEY, itemCount:B1_ITEMS.length, connectorCount:B1_CONNECTOR_ITEMS.length, redemittelCount:B1_REDEMITTEL_ITEMS.length, wortschatzCount:B1_WORTSCHATZ_ITEMS.length, registry:b1RegistrySummary(), runtime:b1Runtime, progress:safeGetB1Progress(), evidence:b1EvidenceSummary(), learningMap:b1LearningMapScaffold(), diagnosticPlan:b1Runtime.diagnosticPlan }; }; window.ozmosisStartDiagnostic=function(){ startB1DiagnosticSprint(); }; window.ozmosisStartConnector=function(family){ startConnectorSprint(family || "all"); }; window.ozmosisStartRedemittel=function(filter){ startRedemittelRound(filter || "mixed"); }; window.ozmosisStartWortschatz=function(filter){ startWortschatzRound(filter || "mixed"); }; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusResetBest=function(){ highScore=0; bestStreakAll=0; savePersistent(); if (state === "results") showResults(); else renderHud(); }; window.kasusResetProfile=function(){ resetLearnerModel(); }; window.kasusToggleMenu=function(){ var panel=el("settingsPanel"); panel.classList.toggle("open"); document.body.classList.toggle("menuOpen", panel.classList.contains("open")); };
+  document.addEventListener("click", function(event){
+    var target = event.target && event.target.closest ? event.target.closest("#copyDebugSnapshotBtn, #devFindItemBtn, [data-dev-preview-id], #devPreviewShowModelBtn, #devPreviewMockMarkBtn, #devPreviewCopyItemIdBtn, #devPreviewClearBtn, #devPreviewCheckBtn") : null;
+    if (!target) return;
+    if (target.id === "copyDebugSnapshotBtn") { copyDebugSnapshot(); return; }
+    if (target.id === "devFindItemBtn") { renderDevPreviewResults(); return; }
+    handleDevPreviewClick(event);
+  }, false);
+  document.addEventListener("keydown", function(event){
+    var target = event.target;
+    if (!target || target.id !== "devItemSearchInput") return;
+    var isEnter = event.key === "Enter" || event.key === "Return" || event.keyCode === 13 || event.which === 13;
+    if (!isEnter) return;
+    event.preventDefault();
+    renderDevPreviewResults();
+  }, false);
+  window.addEventListener("resize", updateDebugStamp, false);
+  window.addEventListener("scroll", updateDebugStamp, false);
+  if (!DEBUG_STAMP_TIMER) DEBUG_STAMP_TIMER = window.setInterval(updateDebugStamp, 1000);
+window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }; window.kasusNoArticle=function(){checkAnswer("none");}; window.kasusProceed=function(){proceed();}; window.kasusHint=function(){showHint();}; window.kasusNewRound=function(){showStartScreen();}; window.kasusStartRound=function(){startConfiguredRound();}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusSessionLog=function(){return sessionLog.slice();}; window.kasusCurrent=function(){return current ? cloneQuestion(current) : cloneB1Item(b1Runtime.current || {});}; window.kasusLeitnerDebug=function(){ return { storageKey:LEITNER_STORAGE_KEY, runtime:leitnerRuntime, progress:safeGetLeitner() }; }; window.ozmosisB1Debug=function(){ return { storageKey:B1_STORAGE_KEY, evidenceStorageKey:B1_EVIDENCE_STORAGE_KEY, itemCount:B1_ITEMS.length, connectorCount:B1_CONNECTOR_ITEMS.length, redemittelCount:B1_REDEMITTEL_ITEMS.length, wortschatzCount:B1_WORTSCHATZ_ITEMS.length, registry:b1RegistrySummary(), runtime:b1Runtime, progress:safeGetB1Progress(), evidence:b1EvidenceSummary(), learningMap:b1LearningMapScaffold(), diagnosticPlan:b1Runtime.diagnosticPlan, debugSnapshot:buildDebugSnapshot }; }; window.ozmosisStartDiagnostic=function(){ startB1DiagnosticSprint(); }; window.ozmosisStartConnector=function(family){ startConnectorSprint(family || "all"); }; window.ozmosisStartRedemittel=function(filter){ startRedemittelRound(filter || "mixed"); }; window.ozmosisStartWortschatz=function(filter){ startWortschatzRound(filter || "mixed"); }; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusResetBest=function(){ highScore=0; bestStreakAll=0; savePersistent(); if (state === "results") showResults(); else renderHud(); }; window.kasusResetProfile=function(){ resetLearnerModel(); }; window.kasusToggleMenu=function(){ var panel=el("settingsPanel"); panel.classList.toggle("open"); document.body.classList.toggle("menuOpen", panel.classList.contains("open")); };
   window.ozmosisContentAudit = function(){ return b1ConnectorWordOrderIssues(); };
   function mountSettingsPanel() {
     var panel = el("settingsPanel");

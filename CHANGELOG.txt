@@ -1,3 +1,12 @@
+## v0.42.4 - Debug Stamp + State Snapshot Export
+
+- Added a lightweight visible debug stamp so screenshots can identify the app version, current route/mode, active item, queue position, and viewport size.
+- Added a Dev Tools debug snapshot export that copies structured current-state information for troubleshooting without dumping full localStorage or full evidence history.
+- Added Dev Tools manual item preview/search so specific B1 items can be found and rendered in a mock QA mode without saving progress or evidence.
+- Added basic layout/state warning data for debugging footer overlap, scroll, viewport, and active-item issues.
+- Preserved Today's B1 Sprint composition, connector exclusion policy, B1 registry policy, routes, scoring, item content, item IDs, item statuses, confidence tracking, diagnostic flow, production-card self-marking, Case Trainer, Options, export/import compatibility, localStorage compatibility, and extracted static content banks.
+- Added no Learning Map UI, Skill Matrix UI, B2 content, Leitner, weakness repair, durability scheduling, QR/ChatGPT handoff, backend, framework, build step, fetch, module loading, dependencies, package manager, runtime AI generation, analytics, accounts, external calls, or broad redesign.
+
 ## v0.42.3 - Production Card UsefulPhrases / Checklist Repair
 
 - Repaired support fields for existing B1 production cards, focusing on Connector production cards plus selected Redemittel and high-yield Wortschatz production cards.
