@@ -1,8 +1,8 @@
-# Ozmosis Development Roadmap v0.45
+# Ozmosis Development Roadmap v0.46
 
 Status: current planning roadmap
-Current known development position: v0.45 completed
-Next planned patch: v0.46 - Progress State Labels v1
+Current known development position: v0.46 completed
+Next planned patch: v0.47 - Not Enough Evidence Handling
 
 This roadmap is planning guidance only. Current repo files, `index.html`, `README.md`, `CHANGELOG.txt`, `AGENTS.md`, and the versioned source brief remain higher-trust sources for implementation state. Do not implement future items early.
 
@@ -10,7 +10,7 @@ This roadmap is planning guidance only. Current repo files, `index.html`, `READM
 
 - Current repo files beat old chats, screenshots, memory, and generated reports.
 - Repo-root `index.html` remains the main deployed app file.
-- `docs/OZMOSIS_SOURCE_BRIEF_v0.45.md` is the current strategic source brief.
+- `docs/OZMOSIS_SOURCE_BRIEF_v0.46.md` is the current strategic source brief.
 - This roadmap is not permission to broaden scope in any patch.
 
 ## Architecture Guardrails
@@ -49,6 +49,7 @@ This roadmap is planning guidance only. Current repo files, `index.html`, `READM
 - v0.43 added the first learner-facing B1 Learning Map route using the existing evidence scaffold, with conservative state labels, metadata provenance, not-enough-evidence handling, recent work, and review/durability limitations.
 - v0.44 added an internal / QA-facing B1 Skill Matrix data model that separates evidence by skill node and task depth while preserving conservative states, metadata provenance, diagnostic context, and production self-marking limitations.
 - v0.45 added a cautious rules-based Next Recommended Practice helper and compact Learning Map recommendation card, plus UX recovery for diagnostic pre-start explanation, universal practice exit confirmation, and main-page scrolling.
+- v0.46 standardised learner-facing Progress State Labels v1 around Not tested, Not enough evidence, Introduced, Emerging, and Developing while keeping production self-marked and delayed review inactive.
 
 ## Current B1 Direction
 
@@ -76,7 +77,7 @@ Deferred decisions already recorded in v0.42.2:
 
 - Connector items should remain outside Today's B1 Sprint until diagnostic/Learning Map targeting can add them intentionally.
 - Production cards should not become more visible until usefulPhrases/checklists are repaired and a later visibility policy is approved.
-- Politeness distractor quality, English support visibility, `obwohl`/`trotzdem` contrast feedback, and ChatGPT/tutor-review handoff require separate patches.
+- Politeness distractor quality, English support visibility, `obwohl`/`trotzdem` contrast feedback, and the future External AI Review Handoff / Tutor Review Code require separate patches.
 
 ### v0.44 - Skill Matrix Data Model
 
@@ -92,9 +93,15 @@ Recommendations must not claim mastery or diagnose misconceptions without enough
 
 ### v0.46 - Progress State Labels v1
 
-Next goal: clarify learner-facing state labels without changing the evidence model, scheduler, scoring, or existing practice routes.
+Completed goal: clarify learner-facing state labels without changing the evidence model, scheduler, scoring, or existing practice routes.
 
-State labels must remain conservative and must not imply mastery, durability, readiness, or diagnosis without delayed evidence.
+State labels remain conservative and do not imply mastery, durability, readiness, or diagnosis without delayed evidence.
+
+### v0.47 - Not Enough Evidence Handling
+
+Next goal: make Not tested and Not enough evidence clearer in learner-facing progress surfaces without changing scoring, routing, Today’s Sprint composition, connector inclusion, or production-card visibility.
+
+This should improve empty/thin evidence explanations, not create a new scheduler or weakness-repair route.
 
 ### Later B1 Work
 
@@ -106,6 +113,13 @@ State labels must remain conservative and must not imply mastery, durability, re
 - weakness repair;
 - worked-example fading;
 - production-card expansion once self-marking limits are clear.
+- External Review Handoff Spike:
+  - define a standard prompt format for external AI/tutor review;
+  - define a strict review-code schema;
+  - define local validation and import rules;
+  - record imported review as external reviewed evidence only;
+  - preserve the distinction between self-marked, auto-graded, and externally reviewed evidence;
+  - add no runtime AI, backend, API calls, accounts, analytics, dependencies, or QR generation in the foundation pass.
 
 ## B2 Position
 

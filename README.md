@@ -11,15 +11,15 @@ Build the fastest useful personal B1 test-prep tool.
 Current priority order:
 
 1. Keep B1 progress evidence honest and learner-readable.
-2. Clarify cautious progress state labels.
-3. Add future practice guidance only when evidence supports it.
+2. Keep cautious progress state labels consistent.
+3. Improve not-enough-evidence handling without overclaiming.
 4. Later: weakness repair, full Leitner, import tools, B2 expansion.
 
 ## Current Known Version
 
-Current working version: `v0.45`
+Current working version: `v0.46`
 
-Next planned patch: `v0.46 - Progress State Labels v1`
+Next planned patch: `v0.47 - Not Enough Evidence Handling`
 
 Known current state:
 
@@ -57,6 +57,7 @@ Known current state:
 - v0.43 adds the first learner-facing B1 Learning Map using the existing evidence scaffold, with cautious evidence states, metadata provenance, not-enough-evidence handling, recent work, and review/durability limitations.
 - v0.44 adds an internal / QA-facing B1 Skill Matrix data model that separates evidence by skill node and task depth while keeping states conservative.
 - v0.45 adds cautious rules-based Next Recommended Practice guidance to the Learning Map, moves Diagnostic Sprint explanation into a pre-start step, adds universal active-practice exit confirmation, and recovers main-page scrolling.
+- v0.46 standardises learner-facing progress labels around Not tested, Not enough evidence, Introduced, Emerging, and Developing, and documents External AI Review Handoff as a roadmap-only future concept.
 - B1 progress persists under `ozmosis_b1_sprint_progress_v1`.
 - B1 progress evidence persists under `ozmosis_b1_progress_evidence_v1`.
 - Existing Case Trainer, Options, Dev Tools, export/import, and localStorage compatibility are preserved.
@@ -100,8 +101,8 @@ Recommended clean repo structure:
 |  |- ozmosis_b1_connector_sprint_v1_bank.json
 |  `- ozmosis_b1_wortschatz_survival_set_v1.json
 `- docs/
-   |- OZMOSIS_SOURCE_BRIEF_v0.45.md
-   |- OZMOSIS_DEVELOPMENT_ROADMAP_v0.45.md
+   |- OZMOSIS_SOURCE_BRIEF_v0.46.md
+   |- OZMOSIS_DEVELOPMENT_ROADMAP_v0.46.md
    |- OZMOSIS_B1_Test_Sprint_Pivot_Production_Plan.md
    |- OZMOSIS_Case_Teaching_Leitner_Iteration_Plan.md
    `- qa/

@@ -1,10 +1,10 @@
-# OZMOSIS SOURCE BRIEF v0.45
+# OZMOSIS SOURCE BRIEF v0.46
 
 Version: Working Source Brief Update  
 Status: Current planning brief  
 Project: Ozmosis - Deutsch Lernen App  
-Current known development position: v0.45 completed  
-Next planned patch: v0.46 - Progress State Labels v1  
+Current known development position: v0.46 completed  
+Next planned patch: v0.47 - Not Enough Evidence Handling  
 
 Versioning rule:
 
@@ -106,7 +106,7 @@ But this should be introduced carefully and only when useful.
 
 The detailed version-by-version roadmap lives separately in:
 
-`docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.45.md`
+`docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.46.md`
 
 The Source Brief remains the strategic orientation document. The roadmap is a planning document, not permission for Codex to implement future versions early.
 
@@ -705,8 +705,8 @@ You often choose accusative forms in location sentences.
 Current known development state:
 
 ```txt
-v0.45 completed
-Next planned patch: v0.46 - Progress State Labels v1
+v0.46 completed
+Next planned patch: v0.47 - Not Enough Evidence Handling
 ```
 
 The next work should not be a broad rewrite.
@@ -817,20 +817,21 @@ current focus continuation
 
 ### v0.46  -  Progress State Labels v1
 
-Add early states:
+Completed: standardise learner-facing progress labels around:
 
 ```txt
 Not tested
+Not enough evidence
 Introduced
 Emerging
 Developing
 ```
 
-Do not yet use Reliable/Durable unless review evidence exists.
+Do not yet use Reliable/Durable/Transfer-ready unless valid delayed review evidence exists and a later roadmap item explicitly enables those claims.
 
 ### v0.47  -  "Not Enough Evidence" Handling
 
-Add explicit "not enough evidence" state.
+Next: make Not tested and Not enough evidence explanations clearer across progress surfaces.
 
 Do not fake precision.
 
@@ -1421,7 +1422,7 @@ Do not assume v1.0 at any arbitrary milestone.
 
 # 21. IMMEDIATE NEXT STEP
 
-The next appropriate step is v0.46 - Progress State Labels v1, unless QA finds a blocking recommendation, scroll/exit, diagnostic pre-start, Learning Map, Skill Matrix, debug/preview, storage, or export/import regression.
+The next appropriate step is v0.47 - Not Enough Evidence Handling, unless QA finds a blocking progress-label, recommendation, scroll/exit, diagnostic pre-start, Learning Map, Skill Matrix, debug/preview, storage, or export/import regression.
 
 v0.40 added the first Progress Evidence Model and v0.40.1 added lightweight confidence/guess capture on top of that evidence model.
 
@@ -1443,10 +1444,12 @@ v0.44 added an internal / QA-facing Skill Matrix data model that separates exist
 
 v0.45 added a cautious rules-based Next Recommended Practice helper using existing B1 evidence, Learning Map data, and Skill Matrix data. It also moved the Diagnostic Sprint explanation into a pre-start step, added a universal practice exit confirmation, recovered main-page scrolling, and kept the Learning Map recommendation card compact and non-authoritative.
 
-Safe v0.46 scope:
+v0.46 standardised learner-facing Progress State Labels v1 around Not tested, Not enough evidence, Introduced, Emerging, and Developing. It kept delayed review inactive where no delayed evidence exists, kept production self-marked, and added External AI Review Handoff only as a future roadmap/source-brief concept.
+
+Safe v0.47 scope:
 
 ```txt
-Clarify learner-facing progress state labels without changing evidence semantics.
+Improve Not tested / Not enough evidence handling and explanations without changing evidence semantics.
 Keep states conservative and evidence-based.
 Do not claim mastery, durability, readiness, or diagnosis without enough evidence.
 Do not change Today's B1 Sprint connector inclusion.
@@ -1454,10 +1457,10 @@ Do not make production cards more visible.
 Preserve diagnostic, evidence, confidence, route, scoring, and content-bank behaviour.
 ```
 
-Suggested v0.46 Codex task summary:
+Suggested v0.47 Codex task summary:
 
 ```txt
-Add Progress State Labels v1 as cautious display language for existing B1 evidence states.
+Improve Not Enough Evidence handling as cautious display language for existing B1 evidence states.
 
 Do not introduce B2 content.
 Do not change the app architecture.
@@ -1468,6 +1471,70 @@ Do not make production cards more prominent.
 Do not implement weakness repair, Leitner, recommendations beyond v0.45, or durability scheduling.
 Preserve all current functionality unless a change is explicitly requested.
 ```
+
+## Future Capability: External AI Review Handoff / Tutor Review Code
+
+This is roadmap-only as of v0.46. It is not implemented in app code, UI, import logic, QR generation, runtime AI, API calls, or dependencies.
+
+Purpose:
+
+```txt
+Support structured external review of open production tasks later without adding runtime AI, backend services, accounts, analytics, or API calls.
+```
+
+Intended future flow:
+
+1. Ozmosis shows a production task.
+2. The learner writes or prepares an answer.
+3. Ozmosis generates a standard review prompt for an external AI or human tutor.
+4. The learner copies the prompt and answer outside Ozmosis.
+5. The external reviewer returns a strict structured review code.
+6. The learner pastes/imports the code back into Ozmosis.
+7. Ozmosis validates the code and records it as external reviewed evidence.
+
+Evidence principle:
+
+- External review must be stored separately from auto-graded evidence, self-marked production evidence, diagnostic evidence, and review/durability evidence.
+- Suggested future evidence source: `external_ai_reviewed`.
+- External AI review is not official exam marking.
+- One reviewed answer is one sample only.
+- It must not create mastery claims by itself.
+- It may contribute to Emerging or Developing evidence only when repeated across relevant tasks.
+- It must retain claim limits and reviewer confidence.
+- Production evidence must remain distinct from auto-graded correctness.
+
+Suggested future review payload fields:
+
+```txt
+schemaVersion
+reviewedAt
+itemId
+levelTrack
+taskType
+evidenceSource
+rubricVersion
+rubric ratings
+errorCategories
+strengths
+nextPractice suggestions
+reviewConfidence
+claimLimits
+storedAnswer false/true
+privacy mode
+```
+
+Suggested future import validation should reject or warn on unknown schema versions, unknown item IDs, unsupported level tracks or task types, forbidden state labels such as mastered/fluent/B2-passed, missing review confidence, malformed JSON/base64, oversized payloads, unsupported rubric fields, and unsupported B2 evidence before B2 is unlocked.
+
+Privacy principle:
+
+- Default future import should not require storing the learner's full written answer.
+- Prefer storing structured review results only.
+- If answer storage is ever added, it must be local-only and clearly optional.
+
+Recommended placement:
+
+- Treat this as a later B1/B2 bridge or production-evidence spike after progress labels, not-enough-evidence handling, Skill Matrix/task-depth tracking, and learner-readable export/import foundations are stable.
+- Do not schedule it before the v0.50-v0.59 Skill Matrix/task-depth track is stable unless a future prompt explicitly changes priorities.
 
 ---
 

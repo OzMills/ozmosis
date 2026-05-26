@@ -1,3 +1,14 @@
+## v0.46 - Progress State Labels v1
+
+- Added a consistent conservative Progress State Labels v1 vocabulary for current learner-facing progress surfaces.
+- Standardised progress language around Not tested, Not enough evidence, Introduced, Emerging, and Developing.
+- Audited Learning Map, Suggested Next Practice, diagnostic/result copy, production evidence wording, and review/durability wording to avoid unsupported mastery, reliable, durable, transfer-ready, B1-ready, fluent, pass/fail, overdue-review, or misconception claims.
+- Preserved production-card evidence as self-marked practice evidence only.
+- Preserved delayed review/durability as inactive where no delayed review evidence exists.
+- Added External AI Review Handoff / Tutor Review Code as a roadmap-only future capability, without implementing UI, import, QR, runtime AI, API calls, dependencies, or production-card behaviour changes.
+- Preserved the learner-facing Learning Map, internal Skill Matrix model, Next Recommended Practice helper, Today’s B1 Sprint composition, connector exclusion policy, B1 registry policy, routes, scoring, item content, item IDs, item statuses, confidence tracking, diagnostic flow, diagnostic pre-start explanation, universal exit confirmation, mousewheel scrolling, debug stamp, debug snapshot export, Dev Tools no-save item preview, Case Trainer, Options, export/import compatibility, localStorage compatibility, and extracted static content banks.
+- Added no full Skill Matrix UI, B2 content, Leitner, durability scheduling, connector Daily Sprint inclusion, production-card route visibility, backend, framework, build step, fetch, module loading, dependencies, package manager, runtime AI generation, analytics, accounts, external calls, or broad redesign.
+
 ## v0.45 - Next Recommended Practice v1
 
 - Added a cautious rules-based Next Recommended Practice helper using existing B1 evidence, Learning Map data, and Skill Matrix data.
