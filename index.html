@@ -5493,6 +5493,185 @@ body:not(.homeMode) main {
   display:none !important;
 }
 
+/* v0.45: scroll recovery, diagnostic pre-start, universal practice exit, and recommendation card. */
+html {
+  min-height:100%;
+  overflow-y:auto !important;
+}
+
+body:not(.menuOpen) {
+  min-height:100vh;
+  overflow-y:auto !important;
+}
+
+body.b1Mode,
+body.setupMode {
+  display:block;
+  place-items:initial;
+}
+
+body.b1Mode main,
+body.setupMode main {
+  max-height:none !important;
+  overflow:visible !important;
+}
+
+body.b1Mode main {
+  margin:0 auto;
+  padding-bottom:calc(var(--hudHeight) + 44px + env(safe-area-inset-bottom));
+}
+
+.diagnosticIntroOverlay,
+.practiceExitOverlay {
+  position:fixed;
+  inset:0;
+  z-index:31000;
+  display:grid;
+  place-items:center;
+  padding:18px;
+  background:rgba(2,6,13,.74);
+}
+
+.diagnosticIntroOverlay[hidden],
+.practiceExitOverlay[hidden] {
+  display:none !important;
+}
+
+.diagnosticIntroCard,
+.practiceExitCard {
+  width:min(460px, 100%);
+  display:grid;
+  gap:12px;
+  border:1.5px solid color-mix(in srgb, var(--accent) 48%, var(--line));
+  border-radius:18px;
+  padding:clamp(16px, 4vw, 22px);
+  background:#050913;
+  box-shadow:0 24px 80px rgba(0,0,0,.58), 0 0 30px var(--modeShadow);
+}
+
+.diagnosticIntroCard h2,
+.practiceExitCard h2 {
+  margin:0;
+  color:var(--text);
+  font-size:clamp(1.28rem, 5vw, 1.72rem);
+  line-height:1.05;
+  font-weight:1000;
+}
+
+.diagnosticIntroCard p,
+.practiceExitCard p {
+  margin:0;
+  color:var(--muted);
+  font-size:.94rem;
+  line-height:1.42;
+  font-weight:780;
+}
+
+.diagnosticIntroActions,
+.practiceExitActions {
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:flex-end;
+}
+
+.diagnosticIntroActions button,
+.practiceExitActions button,
+.practiceExitControl {
+  border:1.5px solid color-mix(in srgb, var(--accent) 46%, var(--line));
+  background:rgba(5,11,22,.92);
+  color:var(--text);
+  font:inherit;
+  font-weight:950;
+  cursor:pointer;
+}
+
+.diagnosticIntroActions button,
+.practiceExitActions button {
+  min-height:44px;
+  border-radius:14px;
+  padding:9px 14px;
+}
+
+.diagnosticIntroActions .primaryAction,
+.practiceExitActions .primaryAction {
+  border-color:var(--accent);
+  background:linear-gradient(135deg, color-mix(in srgb, var(--accent) 24%, transparent), rgba(5,11,22,.92));
+}
+
+.practiceExitControl {
+  position:fixed;
+  top:max(10px, env(safe-area-inset-top));
+  left:max(10px, env(safe-area-inset-left));
+  z-index:20020;
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  font-size:1.35rem;
+  line-height:1;
+  box-shadow:0 10px 24px rgba(0,0,0,.34);
+}
+
+.practiceExitControl[hidden] {
+  display:none !important;
+}
+
+.practiceExitControl:hover,
+.practiceExitControl:focus-visible,
+.diagnosticIntroActions button:hover,
+.diagnosticIntroActions button:focus-visible,
+.practiceExitActions button:hover,
+.practiceExitActions button:focus-visible {
+  border-color:var(--accent);
+  outline:none;
+  box-shadow:0 0 18px rgba(125,227,255,.18);
+}
+
+.learningMapRecommendationPanel {
+  border-color:color-mix(in srgb, var(--ok) 44%, var(--line));
+}
+
+.learningMapRecommendationTitle {
+  margin:0;
+  color:var(--text);
+  font-size:1.08rem;
+  line-height:1.2;
+  font-weight:1000;
+}
+
+.learningMapRecommendationMeta,
+.learningMapRecommendationNote {
+  margin:0;
+  color:var(--muted);
+  font-size:.86rem;
+  line-height:1.35;
+  font-weight:830;
+}
+
+.learningMapRecommendationNote {
+  color:color-mix(in srgb, var(--warn) 74%, var(--text));
+}
+
+.learningMapDisclosure {
+  border:1px solid color-mix(in srgb, var(--accent) 28%, var(--line));
+  border-radius:12px;
+  padding:8px 10px;
+  background:rgba(5,11,22,.46);
+}
+
+.learningMapDisclosure summary {
+  color:var(--accent);
+  font-size:.82rem;
+  font-weight:950;
+  cursor:pointer;
+}
+
+.learningMapDisclosure[open] {
+  background:rgba(5,11,22,.66);
+}
+
 .appStatus {
   position:fixed;
   left:50%;
@@ -6011,6 +6190,32 @@ body.b1Mode.b1LongAnswer #answerInput {
 
 <div class="appStatus" id="appStatus" role="status" aria-live="polite" hidden></div>
 
+<button class="practiceExitControl" id="practiceExitControl" type="button" aria-label="Exit practice" hidden>&lt;</button>
+
+<div class="diagnosticIntroOverlay" id="diagnosticIntroOverlay" hidden role="dialog" aria-modal="true" aria-labelledby="diagnosticIntroTitle">
+  <div class="diagnosticIntroCard" role="document">
+    <h2 id="diagnosticIntroTitle">Diagnostic Sprint</h2>
+    <p>18 short items across B1 grammar, connectors, phrases, vocabulary, repair, and production-readiness.</p>
+    <p>This is not a score or exam. It gives Ozmosis early evidence for future practice and Learning Map views.</p>
+    <p>Retakes add more evidence; they do not reset the earlier snapshot.</p>
+    <div class="diagnosticIntroActions">
+      <button id="diagnosticIntroCancelBtn" type="button">Cancel</button>
+      <button class="primaryAction" id="diagnosticIntroStartBtn" type="button">Start diagnostic</button>
+    </div>
+  </div>
+</div>
+
+<div class="practiceExitOverlay" id="practiceExitOverlay" hidden role="dialog" aria-modal="true" aria-labelledby="practiceExitTitle">
+  <div class="practiceExitCard" role="document">
+    <h2 id="practiceExitTitle">Exit practice?</h2>
+    <p>Your saved progress will stay. This round may not be complete.</p>
+    <div class="practiceExitActions">
+      <button id="practiceExitStayBtn" type="button">Stay</button>
+      <button class="primaryAction" id="practiceExitConfirmBtn" type="button">Exit</button>
+    </div>
+  </div>
+</div>
+
 <div class="debugStamp" id="debugStamp" aria-label="Debug state stamp"></div>
 
 <div id="genitiveHelpOverlay" class="genitiveHelpOverlay" hidden>
@@ -6244,8 +6449,8 @@ body.b1Mode.b1LongAnswer #answerInput {
   var B1_STORAGE_KEY = "ozmosis_b1_sprint_progress_v1";
   var B1_EVIDENCE_STORAGE_KEY = "ozmosis_b1_progress_evidence_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.44";
-  var OZMOSIS_EXPORT_VERSION = "v0.44-skill-matrix-data-model";
+  var OZMOSIS_APP_VERSION = "v0.45";
+  var OZMOSIS_EXPORT_VERSION = "v0.45-next-recommended-practice";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
   var B1_DAILY_TOTAL = 12;
@@ -7398,6 +7603,222 @@ body.b1Mode.b1LongAnswer #answerInput {
       limitations:limitations
     };
   }
+  function b1RecommendationRouteForNode(nodeKey) {
+    var routes = {
+      connectors:{ routeKey:"connectors", routeLabel:"Open Connector Sprint", shortLabel:"Connector practice" },
+      redemittel:{ routeKey:"redemittel", routeLabel:"Open Redemittel", shortLabel:"Redemittel practice" },
+      wortschatz:{ routeKey:"wortschatz", routeLabel:"Open Wortschatz", shortLabel:"Wortschatz practice" },
+      cases_articles:{ routeKey:"case_trainer", routeLabel:"Open Case Trainer", shortLabel:"Case practice" },
+      word_order:{ routeKey:"connectors", routeLabel:"Open Connector Sprint", shortLabel:"Word order practice" },
+      prepositions:{ routeKey:"today", routeLabel:"Start Today's Sprint", shortLabel:"B1 practice" },
+      repair:{ routeKey:"today", routeLabel:"Start Today's Sprint", shortLabel:"Repair evidence" },
+      production:{ routeKey:"today", routeLabel:"Start Today's Sprint", shortLabel:"More evidence" }
+    };
+    return routes[nodeKey] || { routeKey:"today", routeLabel:"Start Today's Sprint", shortLabel:"B1 practice" };
+  }
+  function b1RecommendationDepthPreference() {
+    return ["repair", "sentence_building", "contrast", "cloze", "recognition", "controlled_production", "free_production"];
+  }
+  function b1RecommendationEvidenceBasis(row, taskDepth, cell) {
+    cell = cell || (row && row.cells && row.cells[taskDepth]) || null;
+    return {
+      totalEvidence:Number(row && row.rowSummary && row.rowSummary.totalEvidence || 0),
+      relevantEvidence:Number(cell && cell.evidenceCount || 0),
+      skillMatrixCellState:cell && cell.state || "not_enough_evidence",
+      metadataProvenance:cell && cell.metadataProvenance ? {
+        explicit:Number(cell.metadataProvenance.explicit || 0),
+        derived:Number(cell.metadataProvenance.derived || 0),
+        unknown:Number(cell.metadataProvenance.unknown || 0)
+      } : { explicit:0, derived:0, unknown:0 },
+      confidenceCounts:cell && cell.confidenceCounts ? {
+        sure:Number(cell.confidenceCounts.sure || 0),
+        unsure:Number(cell.confidenceCounts.unsure || 0),
+        guessed:Number(cell.confidenceCounts.guessed || 0),
+        unset:Number(cell.confidenceCounts.unset || 0)
+      } : { sure:0, unsure:0, guessed:0, unset:0 }
+    };
+  }
+  function b1RecommendationBase(primary, inactiveRules, globalLimitations) {
+    return {
+      schemaVersion:1,
+      generatedAt:new Date().toISOString(),
+      levelTrack:"B1",
+      primary:primary,
+      alternatives:[],
+      inactiveRules:inactiveRules || [],
+      globalLimitations:globalLimitations || []
+    };
+  }
+  function b1RecommendationInactiveRules() {
+    return [
+      { rule:"overdue_review", status:"not_active", reason:"No delayed review system is active yet." },
+      { rule:"recent_misconception_pattern", status:"not_active", reason:"Robust repeated error-pattern recommendations are not active yet." }
+    ];
+  }
+  function b1RecommendationThinEvidence(evidenceCount, matrix) {
+    var summary = matrix && matrix.globalSummary || {};
+    return !evidenceCount || evidenceCount < 3 || Number(summary.rowsWithEvidence || 0) === 0;
+  }
+  function b1RecommendationWeakCandidate(matrix) {
+    var rows = matrix && Array.isArray(matrix.rows) ? matrix.rows : [];
+    var candidates = [];
+    rows.forEach(function(row){
+      var rowWeak = 0;
+      var bestDepth = "unknown";
+      var bestDepthScore = 0;
+      Object.keys(row.cells || {}).forEach(function(depth){
+        var cell = row.cells[depth];
+        if (!cell || !cell.evidenceCount) return;
+        var score = Number(cell.incorrectCount || 0) + Number(cell.confidenceCounts && cell.confidenceCounts.unsure || 0) + Number(cell.confidenceCounts && cell.confidenceCounts.guessed || 0);
+        rowWeak += score;
+        if (score > bestDepthScore) {
+          bestDepthScore = score;
+          bestDepth = depth;
+        }
+      });
+      if (rowWeak > 0) candidates.push({ row:row, taskDepth:bestDepth, score:rowWeak, depthScore:bestDepthScore });
+    });
+    candidates.sort(function(a,b){
+      return b.score - a.score || Number(a.row.rowSummary.totalEvidence || 0) - Number(b.row.rowSummary.totalEvidence || 0) || String(a.row.nodeKey).localeCompare(String(b.row.nodeKey));
+    });
+    return candidates[0] && candidates[0].score >= 2 ? candidates[0] : null;
+  }
+  function b1RecommendationUnderTestedCandidate(matrix) {
+    var rows = matrix && Array.isArray(matrix.rows) ? matrix.rows : [];
+    var depthOrder = b1RecommendationDepthPreference();
+    var candidates = [];
+    rows.forEach(function(row){
+      var total = Number(row && row.rowSummary && row.rowSummary.totalEvidence || 0);
+      if (!total) return;
+      depthOrder.forEach(function(depth, index){
+        var cell = row.cells && row.cells[depth];
+        if (!cell) return;
+        if (cell.evidenceCount < 2) {
+          candidates.push({ row:row, taskDepth:depth, cell:cell, priority:index, total:total });
+        }
+      });
+    });
+    candidates.sort(function(a,b){
+      return a.priority - b.priority || a.total - b.total || String(a.row.nodeKey).localeCompare(String(b.row.nodeKey));
+    });
+    return candidates[0] || null;
+  }
+  function b1RecommendationForRow(rule, row, taskDepth, cell, confidence) {
+    var route = b1RecommendationRouteForNode(row.nodeKey);
+    var depthLabel = learningMapDepthLabel(taskDepth);
+    var basis = b1RecommendationEvidenceBasis(row, taskDepth, cell);
+    var limitations = ["This is a rules-based suggestion.", "No delayed review evidence yet."];
+    if (basis.metadataProvenance.derived > basis.metadataProvenance.explicit) limitations.push("Metadata may be derived.");
+    if (cell && cell.productionEvidenceCount > 0 || /production/.test(taskDepth)) limitations.push("Production is self-marked.");
+    var unsureTotal = basis.confidenceCounts.unsure + basis.confidenceCounts.guessed;
+    var why = [];
+    if (rule === "weak_skill") {
+      why.push("This area has an early weak signal.");
+      if (unsureTotal) why.push("Several answers were marked unsure or guessed.");
+      why.push("More controlled evidence would make the Learning Map more useful.");
+    } else {
+      why.push("This area has little " + depthLabel + " evidence.");
+      if (Number(row.rowSummary.totalEvidence || 0) > 0) why.push("Other evidence exists, but this task type is still thin.");
+      why.push("More evidence would make the Learning Map more useful.");
+    }
+    return {
+      id:"rec_" + rule + "_" + String(row.nodeKey || "unknown") + "_" + String(taskDepth || "unknown"),
+      title:rule === "weak_skill" ? "Collect steadier evidence for " + row.label : "Try " + row.label + " " + depthLabel + " practice",
+      shortLabel:route.shortLabel,
+      routeKey:route.routeKey,
+      routeLabel:route.routeLabel,
+      nodeKey:row.nodeKey,
+      taskDepth:taskDepth,
+      priorityRule:rule === "weak_skill" ? "weak_skill" : "under_tested_task_type",
+      confidence:confidence || "low",
+      evidenceBasis:basis,
+      why:why.slice(0, 3),
+      limitations:limitations,
+      action:{ type:"existing_route", routeKey:route.routeKey, label:route.routeLabel }
+    };
+  }
+  function b1NextRecommendedPractice(options) {
+    options = options || {};
+    var map = options.map || b1LearningMapScaffold();
+    var matrix = options.matrix || b1SkillMatrixData();
+    var evidenceSummary = options.evidenceSummary || b1EvidenceSummary();
+    var evidenceCount = Number(evidenceSummary && evidenceSummary.count || 0);
+    var inactiveRules = b1RecommendationInactiveRules();
+    var globalLimitations = ["Recommendations are early, rules-based suggestions.", "No custom queue or scheduler is created."];
+    if (matrix && Array.isArray(matrix.limitations)) globalLimitations = globalLimitations.concat(matrix.limitations.slice(0, 2));
+    if (b1RecommendationThinEvidence(evidenceCount, matrix)) {
+      return b1RecommendationBase({
+        id:"rec_create_starting_snapshot",
+        title:"Create a starting snapshot",
+        shortLabel:"Diagnostic snapshot",
+        routeKey:"diagnostic",
+        routeLabel:"Start B1 Diagnostic Sprint",
+        nodeKey:null,
+        taskDepth:null,
+        priorityRule:"current_focus_continuation",
+        confidence:"medium",
+        evidenceBasis:{
+          totalEvidence:evidenceCount,
+          relevantEvidence:evidenceCount,
+          skillMatrixCellState:"not_enough_evidence",
+          metadataProvenance:{ explicit:0, derived:0, unknown:0 },
+          confidenceCounts:{ sure:0, unsure:0, guessed:0, unset:evidenceCount }
+        },
+        why:[
+          "Ozmosis does not have enough B1 evidence yet.",
+          "The diagnostic gives the Learning Map a baseline.",
+          "Retakes add evidence without resetting earlier records."
+        ],
+        limitations:[
+          "This is a rules-based suggestion.",
+          "No delayed review evidence yet.",
+          "This is not a score or exam."
+        ],
+        action:{ type:"existing_route", routeKey:"diagnostic", label:"Start B1 Diagnostic Sprint" }
+      }, inactiveRules, globalLimitations);
+    }
+    var weak = b1RecommendationWeakCandidate(matrix);
+    if (weak) return b1RecommendationBase(b1RecommendationForRow("weak_skill", weak.row, weak.taskDepth, weak.row.cells[weak.taskDepth], "low"), inactiveRules, globalLimitations);
+    var underTested = b1RecommendationUnderTestedCandidate(matrix);
+    if (underTested) return b1RecommendationBase(b1RecommendationForRow("under_tested_task_type", underTested.row, underTested.taskDepth, underTested.cell, "low"), inactiveRules, globalLimitations);
+    var focusNode = map && Array.isArray(map.nodes) ? map.nodes.filter(function(node){ return node && node.evidenceCount; })[0] : null;
+    var route = b1RecommendationRouteForNode(focusNode && focusNode.key || "today");
+    return b1RecommendationBase({
+      id:"rec_keep_collecting_evidence",
+      title:"Keep collecting evidence",
+      shortLabel:"B1 practice",
+      routeKey:route.routeKey,
+      routeLabel:route.routeLabel,
+      nodeKey:focusNode && focusNode.key || null,
+      taskDepth:null,
+      priorityRule:"current_focus_continuation",
+      confidence:"low",
+      evidenceBasis:{
+        totalEvidence:evidenceCount,
+        relevantEvidence:evidenceCount,
+        skillMatrixCellState:"introduced",
+        metadataProvenance:{ explicit:0, derived:0, unknown:0 },
+        confidenceCounts:evidenceSummary && evidenceSummary.confidenceCounts || { sure:0, unsure:0, guessed:0, unset:0 }
+      },
+      why:[
+        "The map needs more varied attempts before suggestions become stronger.",
+        "Ordinary practice can add evidence without changing Today's B1 Sprint.",
+        "This is not a mastery judgement."
+      ],
+      limitations:["This is a rules-based suggestion.", "No delayed review evidence yet."],
+      action:{ type:"existing_route", routeKey:route.routeKey, label:route.routeLabel }
+    }, inactiveRules, globalLimitations);
+  }
+  function openB1RecommendationRoute(routeKey) {
+    if (routeKey === "diagnostic") { startB1DiagnosticSprint(); return; }
+    if (routeKey === "connectors") { startConnectorSprint("all"); return; }
+    if (routeKey === "redemittel") { showRedemittelHub(); return; }
+    if (routeKey === "wortschatz") { startWortschatzRound("mixed"); return; }
+    if (routeKey === "case_trainer") { showStartScreen(); return; }
+    if (routeKey === "learning_map") { showLearningMapScreen(); return; }
+    if (routeKey === "home") { showHomeScreen(); return; }
+    startB1Round("mixed");
+  }
   function learningMapCountTotal(counts) {
     return Object.keys(counts || {}).reduce(function(total, key){ return total + Number(counts[key] || 0); }, 0);
   }
@@ -7529,14 +7950,15 @@ body.b1Mode.b1LongAnswer #answerInput {
     limitations.push("No delayed review evidence yet.");
     return '<article class="learningMapNodeCard">' +
       '<div class="learningMapNodeTop"><div class="learningMapNodeTitle">' + escapeHtml(node.label) + '</div><span class="learningMapState ' + learningMapStateClass(node.state) + '">' + escapeHtml(learningMapStateLabel(node.state)) + '</span></div>' +
-      '<div class="learningMapDetailGrid">' +
-        '<div class="learningMapDetail"><strong>Evidence:</strong> ' + Number(node.evidenceCount || 0) + ' records</div>' +
-        '<div class="learningMapDetail"><strong>Task depth:</strong> ' + escapeHtml(depths) + '</div>' +
-        '<div class="learningMapDetail"><strong>Confidence:</strong> ' + escapeHtml(learningMapConfidenceHint(node)) + '</div>' +
-        '<div class="learningMapDetail"><strong>Metadata:</strong> ' + escapeHtml(learningMapProvenanceSummary(node)) + '</div>' +
-        '<div class="learningMapDetail"><strong>Banks:</strong> ' + escapeHtml(banks) + '</div>' +
-      '</div>' +
-      limitations.map(function(text){ return '<div class="learningMapLimitation">' + escapeHtml(text) + '</div>'; }).join("") +
+      '<div class="learningMapDetail"><strong>Evidence:</strong> ' + Number(node.evidenceCount || 0) + ' records / ' + escapeHtml(learningMapConfidenceHint(node)) + '</div>' +
+      '<details class="learningMapDisclosure"><summary>Evidence details</summary>' +
+        '<div class="learningMapDetailGrid">' +
+          '<div class="learningMapDetail"><strong>Task depth:</strong> ' + escapeHtml(depths) + '</div>' +
+          '<div class="learningMapDetail"><strong>Metadata:</strong> ' + escapeHtml(learningMapProvenanceSummary(node)) + '</div>' +
+          '<div class="learningMapDetail"><strong>Banks:</strong> ' + escapeHtml(banks) + '</div>' +
+        '</div>' +
+        limitations.map(function(text){ return '<div class="learningMapLimitation">' + escapeHtml(text) + '</div>'; }).join("") +
+      '</details>' +
     '</article>';
   }
   function learningMapSignalsHtml(map) {
@@ -7557,7 +7979,7 @@ body.b1Mode.b1LongAnswer #answerInput {
       '<p class="learningMapEmptyLine">' + thin.map(function(node){ return escapeHtml(node.label); }).join(" / ") + '</p>';
   }
   function learningMapRecentHtml() {
-    var recent = learningMapRecentRecords(8);
+    var recent = learningMapRecentRecords(5);
     if (!recent.length) return '<p class="learningMapText">No recent B1 evidence yet.</p>';
     return '<div class="learningMapRecentList">' + recent.map(function(record){
       var confidence = record.confidence ? " / " + record.confidence : "";
@@ -7565,18 +7987,32 @@ body.b1Mode.b1LongAnswer #answerInput {
         '<span class="learningMapRecentMeta">' + escapeHtml(record.nodeLabel) + ' / ' + escapeHtml(record.bankKey) + ' / ' + escapeHtml(learningMapDepthLabel(record.taskDepth)) + ' / ' + escapeHtml(record.attemptContext) + '</span></div>';
     }).join("") + '</div>';
   }
-  function learningMapNextEvidenceHtml(map, summary) {
-    if (!summary.evidenceCount) {
-      return '<p class="learningMapText">Suggested next evidence: start the B1 Diagnostic Sprint. It is optional and creates a starting snapshot.</p>';
-    }
-    var thin = (map.nodes || []).filter(function(node){ return !node.hasEnoughEvidence; })[0];
-    if (thin) return '<p class="learningMapText">Suggested next evidence: collect more attempts for ' + escapeHtml(thin.label) + '. Existing routes can add evidence without changing Today\'s B1 Sprint.</p>';
-    return '<p class="learningMapText">Useful next check: continue ordinary practice and let the map collect more varied evidence.</p>';
+  function learningMapRecommendationHtml(recommendation) {
+    var primary = recommendation && recommendation.primary || b1NextRecommendedPractice().primary;
+    var why = Array.isArray(primary.why) && primary.why.length ? primary.why[0] : "The map needs more evidence before suggestions become stronger.";
+    var notes = Array.isArray(primary.why) ? primary.why.slice(1, 3) : [];
+    var limitations = Array.isArray(primary.limitations) ? primary.limitations.slice(0, 2) : [];
+    var basis = primary.evidenceBasis || {};
+    var route = primary.action && primary.action.routeKey || primary.routeKey || "today";
+    return '<h3>Suggested next practice</h3>' +
+      '<p class="learningMapRecommendationTitle">' + escapeHtml(primary.title || "Keep collecting evidence") + '</p>' +
+      '<p class="learningMapRecommendationMeta"><strong>Why:</strong> ' + escapeHtml(why) + '</p>' +
+      notes.map(function(note){ return '<p class="learningMapRecommendationMeta">' + escapeHtml(note) + '</p>'; }).join("") +
+      '<p class="learningMapRecommendationNote">Limit: ' + escapeHtml((limitations[0] || "This is an early rules-based suggestion, not a mastery judgement.")) + '</p>' +
+      '<div class="learningMapActionGrid"><button class="learningMapAction" id="learningMapRecommendationActionBtn" type="button" data-route-key="' + escapeHtml(route) + '">' + escapeHtml(primary.routeLabel || (primary.action && primary.action.label) || "Start practice") + '</button></div>' +
+      '<details class="learningMapDisclosure"><summary>Why this appears</summary>' +
+        '<div class="learningMapDetail"><strong>Rule:</strong> ' + escapeHtml(primary.priorityRule || "current_focus_continuation") + '</div>' +
+        '<div class="learningMapDetail"><strong>Evidence:</strong> total ' + Number(basis.totalEvidence || 0) + ' / relevant ' + Number(basis.relevantEvidence || 0) + '</div>' +
+        '<div class="learningMapDetail"><strong>Task depth:</strong> ' + escapeHtml(primary.taskDepth ? learningMapDepthLabel(primary.taskDepth) : "not selected") + '</div>' +
+        limitations.slice(1).map(function(text){ return '<div class="learningMapLimitation">' + escapeHtml(text) + '</div>'; }).join("") +
+      '</details>';
   }
   function renderLearningMapScreen() {
     var map = b1LearningMapScaffold();
+    var matrix = b1SkillMatrixData();
     var evidenceSummary = b1EvidenceSummary();
     var summary = learningMapSummaryFor(map, evidenceSummary);
+    var recommendation = b1NextRecommendedPractice({ map:map, matrix:matrix, evidenceSummary:evidenceSummary });
     var content = el("learningMapContent");
     if (!content) return;
     var provenanceText = summary.mostlyDerived ? "Mostly derived metadata" : "Mixed explicit/derived metadata";
@@ -7589,13 +8025,14 @@ body.b1Mode.b1LongAnswer #answerInput {
         '<div class="learningMapChip"><strong>' + escapeHtml(provenanceText) + '</strong><span>Metadata provenance</span></div>' +
         '<div class="learningMapChip"><strong>Not active</strong><span>Delayed review</span></div>' +
       '</section>' +
+      '<section class="learningMapPanel learningMapRecommendationPanel">' + learningMapRecommendationHtml(recommendation) + '</section>' +
       '<section class="learningMapPanel">' + learningMapFocusHtml(map, summary) + '</section>' +
       '<section class="learningMapPanel"><h3>Skill cluster status</h3><div class="learningMapNodeList">' + nodesHtml + '</div></section>' +
-      '<section class="learningMapPanel"><h3>Early weak signals</h3>' + learningMapSignalsHtml(map) + '</section>' +
       '<section class="learningMapPanel"><h3>Not enough evidence</h3>' + learningMapNotEnoughHtml(map) + '</section>' +
+      '<section class="learningMapPanel"><h3>Early weak signals</h3>' + learningMapSignalsHtml(map) + '</section>' +
       '<section class="learningMapPanel"><h3>Recent work</h3>' + learningMapRecentHtml() + '</section>' +
-      '<section class="learningMapPanel"><h3>Review / durability</h3><p class="learningMapText">Delayed review states are not available yet. Due-review scheduling will need future review evidence.</p></section>' +
-      '<section class="learningMapPanel"><h3>Next evidence</h3>' + learningMapNextEvidenceHtml(map, summary) +
+      '<section class="learningMapPanel"><h3>Review / durability</h3><p class="learningMapText">Delayed review states are not available yet. Due-review scheduling will need future review evidence.</p>' +
+        '<details class="learningMapDisclosure"><summary>Other existing routes</summary>' +
         '<div class="learningMapActionGrid">' +
           '<button class="learningMapAction" id="learningMapDiagnosticActionBtn" type="button">Start Diagnostic</button>' +
           '<button class="learningMapAction" id="learningMapSprintBtn" type="button">Start Today\'s Sprint</button>' +
@@ -7604,6 +8041,7 @@ body.b1Mode.b1LongAnswer #answerInput {
           '<button class="learningMapAction" id="learningMapWortschatzBtn" type="button">Open Wortschatz</button>' +
           '<button class="learningMapAction" id="learningMapHomeBtn" type="button">Home</button>' +
         '</div>' +
+        '</details>' +
       '</section>';
   }
   var genders = [
@@ -8656,12 +9094,60 @@ body.b1Mode.b1LongAnswer #answerInput {
     var info = el("diagnosticInfo");
     var exit = el("diagnosticExitBtn");
     if (info) {
-      info.hidden = !visible;
-      if (visible) {
-        info.innerHTML = "<strong>Diagnostic Sprint</strong><span>18 short items across B1 grammar, connectors, phrases, vocabulary, repair, and production-readiness.</span><span>This is not a score or exam. It gives Ozmosis early evidence for future practice and Learning Map views.</span><span>Retakes add more evidence; they do not reset the earlier snapshot.</span>";
-      }
+      info.hidden = true;
+      info.innerHTML = "";
     }
-    if (exit) exit.hidden = !visible;
+    if (exit) exit.hidden = true;
+  }
+  function closeDiagnosticIntro() {
+    var overlay = el("diagnosticIntroOverlay");
+    if (overlay) overlay.hidden = true;
+  }
+  function showDiagnosticIntro() {
+    setMenu(false);
+    setDevTools(false);
+    closePracticeExitConfirm();
+    var overlay = el("diagnosticIntroOverlay");
+    if (!overlay) {
+      beginB1DiagnosticSprint();
+      return;
+    }
+    overlay.hidden = false;
+    setTimeout(function(){
+      if (el("diagnosticIntroStartBtn")) el("diagnosticIntroStartBtn").focus();
+    }, 0);
+  }
+  function isPracticeExitAvailable() {
+    if (b1Runtime.active && (state === "b1Checking" || state === "b1Next")) return true;
+    if (!b1Runtime.active && current && (state === "checking" || state === "next")) return true;
+    return false;
+  }
+  function updatePracticeExitControl() {
+    var btn = el("practiceExitControl");
+    if (!btn) return;
+    btn.hidden = !isPracticeExitAvailable();
+  }
+  function closePracticeExitConfirm() {
+    var overlay = el("practiceExitOverlay");
+    if (overlay) overlay.hidden = true;
+  }
+  function showPracticeExitConfirm() {
+    if (!isPracticeExitAvailable()) return;
+    closeDiagnosticIntro();
+    var overlay = el("practiceExitOverlay");
+    if (!overlay) return;
+    overlay.hidden = false;
+    setTimeout(function(){
+      if (el("practiceExitStayBtn")) el("practiceExitStayBtn").focus();
+    }, 0);
+  }
+  function confirmPracticeExit() {
+    var wasDiagnostic = b1Runtime.active && b1Runtime.mode === "b1_diagnostic";
+    closePracticeExitConfirm();
+    b1Runtime.currentEvidenceRecordId = "";
+    resetB1ConfidenceControls();
+    showHomeScreen();
+    showAppStatus(wasDiagnostic ? "Diagnostic exited. Answers already checked remain saved as evidence." : "Practice exited. Saved progress remains available.", "warn");
   }
   function setSupportPlaceholder(show, expanded) {
     var node = el("supportPlaceholder");
@@ -9229,6 +9715,8 @@ body.b1Mode.b1LongAnswer #answerInput {
     clearB1DiagnosticRuntime();
     resetB1ConfidenceControls();
     setDiagnosticUiVisible(false);
+    closeDiagnosticIntro();
+    closePracticeExitConfirm();
     clearMobileClozeFocus();
     state = "learningMap";
     current = null;
@@ -9256,6 +9744,8 @@ body.b1Mode.b1LongAnswer #answerInput {
     clearB1DiagnosticRuntime();
     resetB1ConfidenceControls();
     setDiagnosticUiVisible(false);
+    closeDiagnosticIntro();
+    closePracticeExitConfirm();
     clearMobileClozeFocus();
     state = "home";
     setMenu(false);
@@ -9935,6 +10425,26 @@ body.b1Mode.b1LongAnswer #answerInput {
       return { error:"skill_matrix_summary_unavailable", message:String(e && e.message || e).slice(0, 160) };
     }
   }
+  function debugRecommendationSummary() {
+    try {
+      var rec = b1NextRecommendedPractice();
+      var primary = rec && rec.primary || {};
+      return {
+        schemaVersion:rec.schemaVersion || null,
+        primaryId:primary.id || null,
+        title:primary.title || null,
+        priorityRule:primary.priorityRule || null,
+        nodeKey:primary.nodeKey || null,
+        taskDepth:primary.taskDepth || null,
+        routeKey:primary.routeKey || (primary.action && primary.action.routeKey) || null,
+        confidence:primary.confidence || null,
+        inactiveRulesCount:Array.isArray(rec.inactiveRules) ? rec.inactiveRules.length : 0,
+        limitationsCount:(Array.isArray(primary.limitations) ? primary.limitations.length : 0) + (Array.isArray(rec.globalLimitations) ? rec.globalLimitations.length : 0)
+      };
+    } catch (e) {
+      return { error:"recommendation_summary_unavailable", message:String(e && e.message || e).slice(0, 160) };
+    }
+  }
   function isScrollLockedFor(node) {
     if (!node) return false;
     var style = window.getComputedStyle ? window.getComputedStyle(node) : null;
@@ -10020,6 +10530,7 @@ body.b1Mode.b1LongAnswer #answerInput {
       },
       learningMap:debugLearningMapSummary(),
       skillMatrix:debugSkillMatrixSummary(),
+      recommendation:debugRecommendationSummary(),
       layout:{
         viewport:{ width:Math.round(window.innerWidth || 0), height:Math.round(window.innerHeight || 0) },
         mainBounds:safeBounds("main"),
@@ -10597,6 +11108,7 @@ body.b1Mode.b1LongAnswer #answerInput {
       el("correctValue").textContent = b1Runtime.correct;
       el("wrongValue").textContent = b1Runtime.wrong;
       el("streakValue").textContent = b1Answered + " / " + b1Target;
+      updatePracticeExitControl();
       updateDebugStamp();
       return;
     }
@@ -10607,6 +11119,7 @@ body.b1Mode.b1LongAnswer #answerInput {
     el("correctValue").textContent = correct;
     el("wrongValue").textContent = wrong;
     el("streakValue").textContent = answered + " / " + target;
+    updatePracticeExitControl();
     updateDebugStamp();
   }
   function renderMode() {
@@ -11501,6 +12014,9 @@ body.b1Mode.b1LongAnswer #answerInput {
     nextB1Question();
   }
   function startB1DiagnosticSprint() {
+    showDiagnosticIntro();
+  }
+  function beginB1DiagnosticSprint() {
     var plan = b1DiagnosticBuildQueue();
     var queue = plan.queue || [];
     if (!queue.length) {
@@ -11535,7 +12051,7 @@ body.b1Mode.b1LongAnswer #answerInput {
     current = null;
     hintUsed = false;
     clearMobileClozeFocus();
-    setDiagnosticUiVisible(true);
+    setDiagnosticUiVisible(false);
     document.body.classList.remove("b1TypedCloze", "b1LongAnswer");
     setMenu(false);
     setDevTools(false);
@@ -12123,6 +12639,46 @@ body.b1Mode.b1LongAnswer #answerInput {
   function importProgressWithFeedback(file){ if (!file) { showAppStatus("No import file selected.", "warn"); return; } var reader=new FileReader(); reader.onload=function(){ try { var parsed=JSON.parse(String(reader.result || "{}")), data=parsed.data || parsed; safeSetObject(data); if (parsed.leitner && typeof parsed.leitner === "object") safeSetLeitner(parsed.leitner); if (parsed.b1 && typeof parsed.b1 === "object") safeSetB1Progress(parsed.b1); if (parsed.evidence && typeof parsed.evidence === "object") safeSetB1Evidence(parsed.evidence); loadPersistent(); setMenu(false); showHomeScreen(); showAppStatus("Import successful: " + b1ProgressCount() + " B1 progress items and " + b1EvidenceCount() + " evidence records available.", "good"); } catch(e){ showAppStatus("Import failed: invalid JSON file.", "bad"); if (el("feedback")) { el("feedback").textContent="Import failed: invalid JSON file."; el("feedback").className="feedback missed"; } } }; reader.readAsText(file); }
   importProgress = importProgressWithFeedback;
   document.addEventListener("click", function(event){
+    var target = event.target && event.target.closest ? event.target.closest("#diagnosticIntroStartBtn, #diagnosticIntroCancelBtn, #diagnosticIntroOverlay, #practiceExitControl, #practiceExitStayBtn, #practiceExitConfirmBtn, #practiceExitOverlay") : null;
+    if (!target) return;
+    if (target.id === "diagnosticIntroOverlay" && event.target !== target) return;
+    if (target.id === "practiceExitOverlay" && event.target !== target) return;
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+    if (target.id === "diagnosticIntroStartBtn") { closeDiagnosticIntro(); beginB1DiagnosticSprint(); return; }
+    if (target.id === "diagnosticIntroCancelBtn" || target.id === "diagnosticIntroOverlay") { closeDiagnosticIntro(); return; }
+    if (target.id === "practiceExitControl") { showPracticeExitConfirm(); return; }
+    if (target.id === "practiceExitStayBtn" || target.id === "practiceExitOverlay") { closePracticeExitConfirm(); renderHud(); return; }
+    if (target.id === "practiceExitConfirmBtn") { confirmPracticeExit(); return; }
+  }, true);
+  document.addEventListener("keydown", function(event){
+    if (!(event.key === "Escape" || event.key === "Esc")) return;
+    if (el("diagnosticIntroOverlay") && !el("diagnosticIntroOverlay").hidden) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+      closeDiagnosticIntro();
+      return;
+    }
+    if (el("practiceExitOverlay") && !el("practiceExitOverlay").hidden) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+      closePracticeExitConfirm();
+      renderHud();
+      return;
+    }
+    if (el("devOverlay") && !el("devOverlay").hidden) return;
+    if (el("genitiveHelpOverlay") && !el("genitiveHelpOverlay").hidden) return;
+    if (isPracticeExitAvailable()) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+      showPracticeExitConfirm();
+    }
+  }, true);
+  document.addEventListener("click", function(event){
     var target = event.target && event.target.closest ? event.target.closest("#b1ConfidenceRow button[data-confidence]") : null;
     if (!target) return;
     updateLatestB1EvidenceConfidence(target.getAttribute("data-confidence"));
@@ -12142,6 +12698,7 @@ body.b1Mode.b1LongAnswer #answerInput {
       redemittelIllnessBtn:function(){ startRedemittelRound("illness_absence"); },
       redemittelPoliteBtn:function(){ startRedemittelRound("polite_requests"); },
       redemittelProductionBtn:function(){ startRedemittelRound("production"); },
+      learningMapRecommendationActionBtn:function(node){ openB1RecommendationRoute(node.getAttribute("data-route-key") || "today"); },
       learningMapDiagnosticBtn:function(){ startB1DiagnosticSprint(); },
       learningMapDiagnosticActionBtn:function(){ startB1DiagnosticSprint(); },
       learningMapSprintBtn:function(){ startB1Round("mixed"); },
@@ -12154,7 +12711,7 @@ body.b1Mode.b1LongAnswer #answerInput {
     event.preventDefault();
     event.stopPropagation();
     event.stopImmediatePropagation();
-    actions[target.id]();
+    actions[target.id](target);
   }, true);
   document.addEventListener("keydown", function(event){
     if ((event.key === "Escape" || event.key === "Esc") && state === "redemittelHub") showHomeScreen();
@@ -12626,7 +13183,7 @@ body.b1Mode.b1LongAnswer #answerInput {
   window.addEventListener("resize", updateDebugStamp, false);
   window.addEventListener("scroll", updateDebugStamp, false);
   if (!DEBUG_STAMP_TIMER) DEBUG_STAMP_TIMER = window.setInterval(updateDebugStamp, 1000);
-window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }; window.kasusNoArticle=function(){checkAnswer("none");}; window.kasusProceed=function(){proceed();}; window.kasusHint=function(){showHint();}; window.kasusNewRound=function(){showStartScreen();}; window.kasusStartRound=function(){startConfiguredRound();}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusSessionLog=function(){return sessionLog.slice();}; window.kasusCurrent=function(){return current ? cloneQuestion(current) : cloneB1Item(b1Runtime.current || {});}; window.kasusLeitnerDebug=function(){ return { storageKey:LEITNER_STORAGE_KEY, runtime:leitnerRuntime, progress:safeGetLeitner() }; }; window.ozmosisB1Debug=function(){ return { storageKey:B1_STORAGE_KEY, evidenceStorageKey:B1_EVIDENCE_STORAGE_KEY, itemCount:B1_ITEMS.length, connectorCount:B1_CONNECTOR_ITEMS.length, redemittelCount:B1_REDEMITTEL_ITEMS.length, wortschatzCount:B1_WORTSCHATZ_ITEMS.length, registry:b1RegistrySummary(), runtime:b1Runtime, progress:safeGetB1Progress(), evidence:b1EvidenceSummary(), learningMap:b1LearningMapScaffold(), skillMatrix:b1SkillMatrixData(), skillMatrixSummary:debugSkillMatrixSummary(), diagnosticPlan:b1Runtime.diagnosticPlan, debugSnapshot:buildDebugSnapshot }; }; window.ozmosisStartDiagnostic=function(){ startB1DiagnosticSprint(); }; window.ozmosisStartConnector=function(family){ startConnectorSprint(family || "all"); }; window.ozmosisStartRedemittel=function(filter){ startRedemittelRound(filter || "mixed"); }; window.ozmosisStartWortschatz=function(filter){ startWortschatzRound(filter || "mixed"); }; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusResetBest=function(){ highScore=0; bestStreakAll=0; savePersistent(); if (state === "results") showResults(); else renderHud(); }; window.kasusResetProfile=function(){ resetLearnerModel(); }; window.kasusToggleMenu=function(){ var panel=el("settingsPanel"); panel.classList.toggle("open"); document.body.classList.toggle("menuOpen", panel.classList.contains("open")); };
+window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }; window.kasusNoArticle=function(){checkAnswer("none");}; window.kasusProceed=function(){proceed();}; window.kasusHint=function(){showHint();}; window.kasusNewRound=function(){showStartScreen();}; window.kasusStartRound=function(){startConfiguredRound();}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusSessionLog=function(){return sessionLog.slice();}; window.kasusCurrent=function(){return current ? cloneQuestion(current) : cloneB1Item(b1Runtime.current || {});}; window.kasusLeitnerDebug=function(){ return { storageKey:LEITNER_STORAGE_KEY, runtime:leitnerRuntime, progress:safeGetLeitner() }; }; window.ozmosisB1Debug=function(){ return { storageKey:B1_STORAGE_KEY, evidenceStorageKey:B1_EVIDENCE_STORAGE_KEY, itemCount:B1_ITEMS.length, connectorCount:B1_CONNECTOR_ITEMS.length, redemittelCount:B1_REDEMITTEL_ITEMS.length, wortschatzCount:B1_WORTSCHATZ_ITEMS.length, registry:b1RegistrySummary(), runtime:b1Runtime, progress:safeGetB1Progress(), evidence:b1EvidenceSummary(), learningMap:b1LearningMapScaffold(), skillMatrix:b1SkillMatrixData(), skillMatrixSummary:debugSkillMatrixSummary(), recommendation:b1NextRecommendedPractice(), recommendationSummary:debugRecommendationSummary(), diagnosticPlan:b1Runtime.diagnosticPlan, debugSnapshot:buildDebugSnapshot }; }; window.ozmosisStartDiagnostic=function(){ startB1DiagnosticSprint(); }; window.ozmosisStartConnector=function(family){ startConnectorSprint(family || "all"); }; window.ozmosisStartRedemittel=function(filter){ startRedemittelRound(filter || "mixed"); }; window.ozmosisStartWortschatz=function(filter){ startWortschatzRound(filter || "mixed"); }; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusResetBest=function(){ highScore=0; bestStreakAll=0; savePersistent(); if (state === "results") showResults(); else renderHud(); }; window.kasusResetProfile=function(){ resetLearnerModel(); }; window.kasusToggleMenu=function(){ var panel=el("settingsPanel"); panel.classList.toggle("open"); document.body.classList.toggle("menuOpen", panel.classList.contains("open")); };
   window.ozmosisContentAudit = function(){ return b1ConnectorWordOrderIssues(); };
   function mountSettingsPanel() {
     var panel = el("settingsPanel");

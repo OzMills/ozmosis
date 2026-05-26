@@ -1,3 +1,16 @@
+## v0.45 - Next Recommended Practice v1
+
+- Added a cautious rules-based Next Recommended Practice helper using existing B1 evidence, Learning Map data, and Skill Matrix data.
+- Added a modest learner-facing Suggested Next Practice section to the Learning Map with transparent reasons, evidence basis, limitations, and existing-route actions.
+- Moved Diagnostic Sprint explanatory text into a pre-start confirmation step so active diagnostic questions remain uncluttered.
+- Added a consistent top-left exit control with confirmation across active practice/test routes.
+- Fixed main-page mousewheel/document scrolling rules across Home, Learning Map, Dev Tools, and practice screens.
+- Kept Learning Map recommendation presentation compact and learner-facing, with technical details kept secondary where safe.
+- Preserved conservative recommendation language and avoided mastery, Reliable, Durable, Transfer-ready, B1-ready, pass/fail, fluent, opaque AI, overdue-review, or misconception claims where evidence does not support them.
+- Kept delayed review, robust misconception detection, weakness repair, custom queue generation, and full recommendation scheduling deferred.
+- Preserved the learner-facing Learning Map, internal Skill Matrix model, Today's B1 Sprint composition, connector exclusion policy, B1 registry policy, routes, scoring, item content, item IDs, item statuses, confidence tracking, diagnostic evidence, debug stamp, debug snapshot export, Dev Tools no-save item preview, Case Trainer, Options, export/import compatibility, localStorage compatibility, and extracted static content banks.
+- Added no full Skill Matrix UI, B2 content, Leitner, durability scheduling, connector Daily Sprint inclusion, production-card route visibility, backend, framework, build step, fetch, module loading, dependencies, package manager, runtime AI generation, analytics, accounts, external calls, or broad redesign.
+
 ## v0.44 - Canonical Docs Versioning + Skill Matrix Data Model
 
 - Created canonical v0.44 source brief and roadmap files and corrected stale planning-document references to older v0.42/v0.43 filenames.
