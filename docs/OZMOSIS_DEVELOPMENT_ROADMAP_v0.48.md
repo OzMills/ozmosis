@@ -1,8 +1,8 @@
 # Ozmosis Development Roadmap v0.48
 
 Status: current planning roadmap
-Current known development position: v0.48.1 completed
-Next planned patch: v0.49 - Progress Foundation QA
+Current known development position: v0.50 completed
+Next planned patch: v0.51 - Skill Matrix v1
 
 This roadmap is planning guidance only. Current repo files, `index.html`, `README.md`, `CHANGELOG.txt`, `AGENTS.md`, and the versioned source brief remain higher-trust sources for implementation state. Do not implement future items early.
 
@@ -116,6 +116,18 @@ Scope includes Home hierarchy, tester guidance, Known Bugs / Tester Notes, teste
 Completed goal: reduce post-feedback friction by allowing confidence selection to record confidence and advance to the next item where this is safe.
 
 Do not change confidence storage values, scoring, evidence semantics, production-card self-marking, diagnostic evidence, export/import shape, or Today’s Sprint composition. If the evidence flow cannot avoid duplicate evidence or scoring changes, defer this patch.
+
+### v0.49 - Progress Foundation QA
+
+Completed goal: audit active learner-facing progress claims, diagnostic framing, recommendation wording, production self-marking language, debug/tester-report privacy, storage compatibility, and content-bank impact before the task-depth track.
+
+### v0.50 - Formalise Task Depth
+
+Completed goal: formalise the internal B1 task-depth vocabulary and add read-time canonicalisation for known and legacy values without changing stored evidence, scoring, route composition, or content banks.
+
+### v0.51 - Skill Matrix v1
+
+Next goal: expose a modest learner-facing Skill Matrix view only if browser/responsive validation is available and the UI can remain conservative, mobile-safe, and evidence-limited.
 
 ### Later B1 Work
 

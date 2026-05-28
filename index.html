@@ -6023,17 +6023,17 @@ body.b1Mode.b1LongAnswer #answerInput {
         <button class="homeRouteCard" id="homeGrammarBtn" type="button">
           <span class="homeRouteNumber">3.</span>
           <span class="homeRouteMain"><span class="homeRouteLabel">Grammar</span><span class="homeRouteSub">Connectors · word order · cases</span></span>
-          <span class="homePill ready">READY</span>
+          <span class="homePill ready">OPEN</span>
         </button>
         <button class="homeRouteCard" id="homeWortschatzBtn" type="button">
           <span class="homeRouteNumber">4.</span>
           <span class="homeRouteMain"><span class="homeRouteLabel">Wortschatz</span><span class="homeRouteSub">Work · illness · admin</span></span>
-          <span class="homePill ready">READY</span>
+          <span class="homePill ready">OPEN</span>
         </button>
         <button class="homeRouteCard" id="homeRedemittelBtn" type="button">
           <span class="homeRouteNumber">5.</span>
           <span class="homeRouteMain"><span class="homeRouteLabel">Redemittel</span><span class="homeRouteSub">Email · appointments · complaints</span></span>
-          <span class="homePill ready">READY</span>
+          <span class="homePill ready">OPEN</span>
         </button>
       </div>
     </section>
@@ -6593,8 +6593,8 @@ body.b1Mode.b1LongAnswer #answerInput {
   var B1_STORAGE_KEY = "ozmosis_b1_sprint_progress_v1";
   var B1_EVIDENCE_STORAGE_KEY = "ozmosis_b1_progress_evidence_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.48.1";
-  var OZMOSIS_EXPORT_VERSION = "v0.48.1-confidence-as-next";
+  var OZMOSIS_APP_VERSION = "v0.50";
+  var OZMOSIS_EXPORT_VERSION = "v0.50-task-depth-formalisation";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -7405,7 +7405,7 @@ body.b1Mode.b1LongAnswer #answerInput {
   function b1LearningMapRecordNodeMatches(record, item) {
     var tokens = b1LearningMapEvidenceTokens(record, item);
     var bankKey = String(record && record.bankKey || (item ? b1EvidenceBankKeyFor(item) : "") || "");
-    var taskDepth = String(record && record.taskDepth || (item ? b1EvidenceTaskDepth(item) : "") || "");
+    var taskDepth = b1CanonicalTaskDepth(record && record.taskDepth || (item ? b1EvidenceTaskDepth(item) : ""));
     var taskType = String(record && record.taskType || (item ? b1EvidenceTaskType(item) : "") || "");
     var explicitTags = b1LearningMapNormalizeTokens(item && Array.isArray(item.skillTags) ? item.skillTags : []);
     var matches = [];
@@ -7434,7 +7434,7 @@ body.b1Mode.b1LongAnswer #answerInput {
       correctCount:0,
       incorrectCount:0,
       confidenceCounts:{ sure:0, unsure:0, guessed:0, unset:0 },
-      taskDepthCounts:{ recognition:0, cloze:0, sentence_building:0, repair:0, controlled_production:0, contrast:0, unknown:0 },
+      taskDepthCounts:b1EmptyTaskDepthCounts(),
       bankCounts:{ core:0, connectors:0, redemittel:0, wortschatz:0, unknown:0 },
       metadataProvenance:{ explicit:0, derived:0, unknown:0 },
       lastPractisedAt:null,
@@ -7485,7 +7485,7 @@ body.b1Mode.b1LongAnswer #answerInput {
         else if (record.correct === false) node.incorrectCount += 1;
         var confidence = record.confidence === "sure" || record.confidence === "unsure" || record.confidence === "guessed" ? record.confidence : "unset";
         node.confidenceCounts[confidence] = (node.confidenceCounts[confidence] || 0) + 1;
-        var depth = String(record.taskDepth || (item ? b1EvidenceTaskDepth(item) : "unknown") || "unknown");
+        var depth = b1CanonicalTaskDepth(record.taskDepth || (item ? b1EvidenceTaskDepth(item) : "unknown"));
         node.taskDepthCounts[depth] = (node.taskDepthCounts[depth] || 0) + 1;
         var bank = String(record.bankKey || (item ? b1EvidenceBankKeyFor(item) : "unknown") || "unknown");
         node.bankCounts[bank] = (node.bankCounts[bank] || 0) + 1;
@@ -7509,19 +7509,93 @@ body.b1Mode.b1LongAnswer #answerInput {
       limitations:limitations
     };
   }
-  const B1_SKILL_MATRIX_TASK_DEPTHS = [
-    "recognition",
-    "cloze",
-    "sentence_building",
-    "repair",
-    "transformation",
-    "contrast",
-    "controlled_production",
-    "free_production",
-    "review",
-    "diagnostic",
-    "unknown"
+  const B1_TASK_DEPTH_SCHEMA_VERSION = "v1";
+  const B1_TASK_DEPTH_DEFINITIONS = [
+    { key:"recognition", shortLabel:"Rec", label:"Recognition", learnerLabel:"Recognition", description:"Choosing or identifying the right form, phrase, connector, or meaning.", evidenceMeaning:"Shows recognition in a constrained task.", limitations:["Recognition evidence does not prove repair, production, or durable recall."] },
+    { key:"cloze", shortLabel:"Cloze", label:"Cloze", learnerLabel:"Cloze", description:"Filling a blank in a sentence or phrase.", evidenceMeaning:"Shows controlled recall in a local context.", limitations:["Cloze evidence does not prove free production."] },
+    { key:"sentence_building", shortLabel:"Build", label:"Sentence building", learnerLabel:"Sentence build", description:"Building or completing sentence order and structure.", evidenceMeaning:"Shows sentence-control evidence beyond isolated recognition.", limitations:["Sentence-building evidence is still not a durability claim."] },
+    { key:"repair", shortLabel:"Repair", label:"Repair", learnerLabel:"Repair", description:"Finding or fixing an error.", evidenceMeaning:"Shows evidence of noticing and repairing a specific issue.", limitations:["Repair evidence does not by itself prove spontaneous production."] },
+    { key:"transformation", shortLabel:"Transform", label:"Transformation", learnerLabel:"Transform", description:"Changing a sentence or form while preserving meaning.", evidenceMeaning:"Shows controlled manipulation evidence.", limitations:["Transformation evidence is limited by the prompt and support context."] },
+    { key:"contrast", shortLabel:"Contrast", label:"Contrast", learnerLabel:"Contrast", description:"Choosing between nearby meanings, forms, or functions.", evidenceMeaning:"Shows discrimination between alternatives.", limitations:["Contrast evidence may be narrow to the contrasted options."] },
+    { key:"controlled_production", shortLabel:"Prod", label:"Controlled production", learnerLabel:"Production", description:"Producing language with clear prompts, checklists, or model support.", evidenceMeaning:"Shows practice evidence for constrained production.", limitations:["Production evidence is self-marked unless explicitly reviewed elsewhere."] },
+    { key:"free_production", shortLabel:"Free", label:"Free production", learnerLabel:"Free production", description:"Producing freer language with less scaffolding.", evidenceMeaning:"Shows open production evidence when available.", limitations:["Free production requires cautious review and is not auto-graded here."] },
+    { key:"review", shortLabel:"Review", label:"Review", learnerLabel:"Review", description:"Delayed review or revisit evidence.", evidenceMeaning:"Reserved for valid delayed-review evidence.", limitations:["Delayed review is not active yet unless real review evidence exists."] },
+    { key:"diagnostic", shortLabel:"Diag", label:"Diagnostic", learnerLabel:"Diagnostic", description:"Evidence whose task depth cannot be identified beyond diagnostic context.", evidenceMeaning:"Shows diagnostic-context evidence only when no more specific task depth is available.", limitations:["Diagnostic evidence is a snapshot, not a placement result."] },
+    { key:"unknown", shortLabel:"?", label:"Unknown", learnerLabel:"Unknown", description:"Task depth is missing or cannot be mapped safely.", evidenceMeaning:"Usable only as unknown evidence until metadata is repaired.", limitations:["Unknown task-depth evidence cannot support a precise learner-facing claim."] }
   ];
+  const B1_SKILL_MATRIX_TASK_DEPTHS = B1_TASK_DEPTH_DEFINITIONS.map(function(def){ return def.key; });
+  const B1_TASK_DEPTH_ALIAS_MAP = {
+    connector_choice:"recognition",
+    phrase_choice:"recognition",
+    multiple_choice:"recognition",
+    choice:"recognition",
+    matching:"recognition",
+    grammar_cloze:"cloze",
+    vocab_cloze:"cloze",
+    redemittel_cloze:"cloze",
+    phrase_cloze:"cloze",
+    typed_cloze:"cloze",
+    word_order_cloze:"sentence_building",
+    word_order:"sentence_building",
+    sentence_build:"sentence_building",
+    satzbau:"sentence_building",
+    error_repair:"repair",
+    korrektur:"repair",
+    correction:"repair",
+    umformen:"transformation",
+    transform:"transformation",
+    kontrast:"contrast",
+    connector_contrast:"contrast",
+    production_card:"controlled_production",
+    self_check:"controlled_production",
+    controlled:"controlled_production",
+    free:"free_production",
+    delayed_review:"review"
+  };
+  function b1TaskDepthKeys() {
+    return B1_SKILL_MATRIX_TASK_DEPTHS.slice();
+  }
+  function b1CanonicalTaskDepth(value) {
+    var raw = String(value || "").trim().toLowerCase().replace(/[\s-]+/g, "_");
+    if (!raw) return "unknown";
+    if (B1_SKILL_MATRIX_TASK_DEPTHS.indexOf(raw) !== -1) return raw;
+    return B1_TASK_DEPTH_ALIAS_MAP[raw] || "unknown";
+  }
+  function b1TaskDepthDefinition(value) {
+    var key = b1CanonicalTaskDepth(value);
+    for (var i = 0; i < B1_TASK_DEPTH_DEFINITIONS.length; i += 1) {
+      if (B1_TASK_DEPTH_DEFINITIONS[i].key === key) return B1_TASK_DEPTH_DEFINITIONS[i];
+    }
+    return B1_TASK_DEPTH_DEFINITIONS[B1_TASK_DEPTH_DEFINITIONS.length - 1];
+  }
+  function b1TaskDepthDefinitions() {
+    return B1_TASK_DEPTH_DEFINITIONS.map(function(def){
+      return {
+        key:def.key,
+        shortLabel:def.shortLabel,
+        label:def.label,
+        learnerLabel:def.learnerLabel,
+        description:def.description,
+        evidenceMeaning:def.evidenceMeaning,
+        limitations:(def.limitations || []).slice()
+      };
+    });
+  }
+  function b1TaskDepthLabel(value) {
+    return b1TaskDepthDefinition(value).label || b1CanonicalTaskDepth(value);
+  }
+  function b1TaskDepthShortLabel(value) {
+    return b1TaskDepthDefinition(value).shortLabel || b1TaskDepthLabel(value);
+  }
+  function b1TaskDepthDescription(value) {
+    return b1TaskDepthDefinition(value).description || "";
+  }
+  function b1EmptyTaskDepthCounts() {
+    return b1TaskDepthKeys().reduce(function(counts, key){
+      counts[key] = 0;
+      return counts;
+    }, {});
+  }
   function b1SkillMatrixEmptyCounts() {
     return { sure:0, unsure:0, guessed:0, unset:0 };
   }
@@ -7548,23 +7622,19 @@ body.b1Mode.b1LongAnswer #answerInput {
     };
   }
   function b1SkillMatrixEmptyCells() {
-    return B1_SKILL_MATRIX_TASK_DEPTHS.reduce(function(cells, depth){
+    return b1TaskDepthKeys().reduce(function(cells, depth){
       cells[depth] = b1SkillMatrixEmptyCell(depth);
       return cells;
     }, {});
   }
   function b1SkillMatrixNormalizeTaskDepth(record, item) {
-    var rawDepth = String(record && record.taskDepth || (item ? b1EvidenceTaskDepth(item) : "") || "");
-    var depth = rawDepth.replace(/-/g, "_");
-    if (B1_SKILL_MATRIX_TASK_DEPTHS.indexOf(depth) !== -1) return depth;
+    var depth = b1CanonicalTaskDepth(record && record.taskDepth || (item ? b1EvidenceTaskDepth(item) : ""));
+    if (depth !== "unknown") return depth;
     var taskType = String(record && record.taskType || (item ? b1EvidenceTaskType(item) : "") || "");
     var context = String(record && record.attemptContext || "");
-    if (taskType === "production_card") return "controlled_production";
-    if (taskType === "error_repair") return "repair";
-    if (taskType === "word_order_cloze") return "sentence_building";
-    if (taskType === "connector_choice" || taskType === "phrase_choice") return "recognition";
-    if (/cloze/.test(taskType)) return "cloze";
-    if (context === "diagnostic" && !depth) return "diagnostic";
+    var taskTypeDepth = b1CanonicalTaskDepth(taskType);
+    if (taskTypeDepth !== "unknown") return taskTypeDepth;
+    if (context === "diagnostic") return "diagnostic";
     return "unknown";
   }
   function b1SkillMatrixIsProductionEvidence(record, item, taskDepth) {
@@ -7728,9 +7798,11 @@ body.b1Mode.b1LongAnswer #answerInput {
     if (unmappedEvidenceCount) limitations.push("Could not map " + unmappedEvidenceCount + " evidence records to a Skill Matrix row.");
     return {
       schemaVersion:1,
+      taskDepthSchemaVersion:B1_TASK_DEPTH_SCHEMA_VERSION,
       generatedAt:new Date().toISOString(),
       levelTrack:"B1",
       taskDepths:B1_SKILL_MATRIX_TASK_DEPTHS.slice(),
+      taskDepthDefinitions:b1TaskDepthDefinitions(),
       rows:rows,
       globalSummary:{
         rowCount:rows.length,
@@ -8085,17 +8157,7 @@ body.b1Mode.b1LongAnswer #answerInput {
     return "introduced";
   }
   function learningMapDepthLabel(key) {
-    var labels = {
-      recognition:"recognition",
-      cloze:"cloze",
-      sentence_building:"sentence building",
-      repair:"repair",
-      controlled_production:"production",
-      free_production:"free production",
-      contrast:"contrast",
-      unknown:"unknown"
-    };
-    return labels[key] || key;
+    return b1TaskDepthDefinition(key).learnerLabel || b1TaskDepthLabel(key);
   }
   function learningMapTopCounts(counts, limit) {
     return Object.keys(counts || {}).filter(function(key){ return Number(counts[key] || 0) > 0; }).sort(function(a,b){
@@ -10463,12 +10525,12 @@ body.b1Mode.b1LongAnswer #answerInput {
   function b1EvidenceTaskDepth(item) {
     var type = b1EvidenceTaskType(item);
     var tags = (item && Array.isArray(item.tags)) ? item.tags.join(" ").toLowerCase() : "";
-    if (type === "production_card") return "controlled_production";
-    if (type === "error_repair") return "repair";
-    if (type === "word_order_cloze") return "sentence_building";
-    if (type === "connector_choice") return (item && item.contrastTargets && item.contrastTargets.length) || tags.indexOf("contrast") !== -1 ? "contrast" : "recognition";
-    if (type === "phrase_choice") return tags.indexOf("contrast") !== -1 ? "contrast" : "recognition";
-    if (type === "grammar_cloze" || type === "vocab_cloze" || type === "redemittel_cloze" || type === "phrase_cloze" || type === "typed_cloze") return "cloze";
+    if (type === "production_card") return b1CanonicalTaskDepth("controlled_production");
+    if (type === "error_repair") return b1CanonicalTaskDepth("repair");
+    if (type === "word_order_cloze") return b1CanonicalTaskDepth("sentence_building");
+    if (type === "connector_choice") return b1CanonicalTaskDepth((item && item.contrastTargets && item.contrastTargets.length) || tags.indexOf("contrast") !== -1 ? "contrast" : "recognition");
+    if (type === "phrase_choice") return b1CanonicalTaskDepth(tags.indexOf("contrast") !== -1 ? "contrast" : "recognition");
+    if (type === "grammar_cloze" || type === "vocab_cloze" || type === "redemittel_cloze" || type === "phrase_cloze" || type === "typed_cloze") return b1CanonicalTaskDepth("cloze");
     return "unknown";
   }
   function b1EvidenceSkillTags(item, bankKey) {
@@ -10695,9 +10757,10 @@ body.b1Mode.b1LongAnswer #answerInput {
     var store = safeGetB1Evidence();
     var byBank = {}, byTaskType = {}, byTaskDepth = {};
     store.records.forEach(function(record){
+      var taskDepth = b1CanonicalTaskDepth(record && record.taskDepth);
       byBank[record.bankKey || "unknown"] = (byBank[record.bankKey || "unknown"] || 0) + 1;
       byTaskType[record.taskType || "unknown"] = (byTaskType[record.taskType || "unknown"] || 0) + 1;
-      byTaskDepth[record.taskDepth || "unknown"] = (byTaskDepth[record.taskDepth || "unknown"] || 0) + 1;
+      byTaskDepth[taskDepth] = (byTaskDepth[taskDepth] || 0) + 1;
     });
     return {
       storageKey:B1_EVIDENCE_STORAGE_KEY,
@@ -10736,7 +10799,7 @@ body.b1Mode.b1LongAnswer #answerInput {
     if (!item) return null;
     var bankKey = item.id ? b1EvidenceBankKeyFor(item) : "unknown";
     var taskType = item.itemType || item.kind || item.type || "unknown";
-    var taskDepth = item.id ? b1EvidenceTaskDepth(item) : "unknown";
+    var taskDepth = item.id ? b1CanonicalTaskDepth(b1EvidenceTaskDepth(item)) : "unknown";
     return {
       itemId:item.id || null,
       bankKey:bankKey,
@@ -10806,6 +10869,7 @@ body.b1Mode.b1LongAnswer #answerInput {
       attemptContext:latest.attemptContext || null,
       taskType:latest.taskType || null,
       taskDepth:latest.taskDepth || null,
+      canonicalTaskDepth:b1CanonicalTaskDepth(latest.taskDepth),
       bankKey:latest.bankKey || null
     };
   }
@@ -10829,7 +10893,8 @@ body.b1Mode.b1LongAnswer #answerInput {
       var matrix = b1SkillMatrixData();
       var summary = matrix.globalSummary || {};
       return {
-        schemaVersion:matrix.schemaVersion || null,
+      schemaVersion:matrix.schemaVersion || null,
+      taskDepthSchemaVersion:matrix.taskDepthSchemaVersion || B1_TASK_DEPTH_SCHEMA_VERSION,
         rowCount:Number(summary.rowCount || (Array.isArray(matrix.rows) ? matrix.rows.length : 0)),
         taskDepthCount:Array.isArray(matrix.taskDepths) ? matrix.taskDepths.length : 0,
         testedCells:Number(summary.testedCells || 0),
@@ -10905,6 +10970,7 @@ body.b1Mode.b1LongAnswer #answerInput {
       appVersion:OZMOSIS_APP_VERSION,
       exportVersion:OZMOSIS_EXPORT_VERSION,
       progressStateLabelVersion:PROGRESS_STATE_LABEL_VERSION,
+      taskDepthSchemaVersion:B1_TASK_DEPTH_SCHEMA_VERSION,
       timestamp:new Date().toISOString(),
       route:debugCurrentRoute(),
       mode:b1Runtime.active ? b1Runtime.mode : state,
@@ -13065,7 +13131,7 @@ body.b1Mode.b1LongAnswer #answerInput {
   function newRound() { b1Runtime.active=false; hideStartScreen(); score=0; correct=0; wrong=0; streak=0; bestStreakRound=0; mistakeCounts={}; retryQueue=[]; sessionLog=[]; sessionMisses={}; sessionPromptCounts={}; currentWasRetry=false; currentShowMicroRule=false; state="checking"; hintUsed=false; lastKey=null; savePersistent(); pickQuestion(); }
   function proceed() { if (state === "b1Next") nextB1Question(); else if (state === "b1Results") { if (b1Runtime.mode === "connector_sprint") showGrammarHub(); else if (b1Runtime.mode === "redemittel") showRedemittelHub(); else showHomeScreen(); } else if (state === "next") pickQuestion(); else if (state === "results") showStartScreen(); }
   function bind(id,event,fn){ var node=el(id); if (node) node.addEventListener(event,fn,false); }
-  function exportProgress(){ savePersistent(); var b1Store=safeGetB1Progress(); var evidenceStore=safeGetB1Evidence(); var payload={app:"Ozmosis",appVersion:OZMOSIS_APP_VERSION,version:OZMOSIS_EXPORT_VERSION,exportedAt:new Date().toISOString(),sessionLog:sessionLog.slice(-80),data:safeGetObject(),leitner:safeGetLeitner(),b1:b1Store,evidence:evidenceStore}; var blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"}); var url=URL.createObjectURL(blob); var a=document.createElement("a"); a.href=url; a.download="ozmosis-progress.json"; document.body.appendChild(a); a.click(); a.remove(); showAppStatus("Export created: " + b1ProgressCount(b1Store) + " B1 progress items and " + b1EvidenceCount(evidenceStore) + " evidence records.", "good"); setTimeout(function(){ URL.revokeObjectURL(url); },250); }
+  function exportProgress(){ savePersistent(); var b1Store=safeGetB1Progress(); var evidenceStore=safeGetB1Evidence(); var payload={app:"Ozmosis",appVersion:OZMOSIS_APP_VERSION,version:OZMOSIS_EXPORT_VERSION,taskDepthSchemaVersion:B1_TASK_DEPTH_SCHEMA_VERSION,exportedAt:new Date().toISOString(),sessionLog:sessionLog.slice(-80),data:safeGetObject(),leitner:safeGetLeitner(),b1:b1Store,evidence:evidenceStore}; var blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"}); var url=URL.createObjectURL(blob); var a=document.createElement("a"); a.href=url; a.download="ozmosis-progress.json"; document.body.appendChild(a); a.click(); a.remove(); showAppStatus("Export created: " + b1ProgressCount(b1Store) + " B1 progress items and " + b1EvidenceCount(evidenceStore) + " evidence records.", "good"); setTimeout(function(){ URL.revokeObjectURL(url); },250); }
   function importProgress(file){ if (!file) return; var reader=new FileReader(); reader.onload=function(){ try { var parsed=JSON.parse(String(reader.result || "{}")), data=parsed.data || parsed; safeSetObject(data); if (parsed.leitner && typeof parsed.leitner === "object") safeSetLeitner(parsed.leitner); if (parsed.b1 && typeof parsed.b1 === "object") safeSetB1Progress(parsed.b1); if (parsed.evidence && typeof parsed.evidence === "object") safeSetB1Evidence(parsed.evidence); loadPersistent(); newRound(); } catch(e){ el("feedback").textContent="Import fehlgeschlagen: ungültige JSON-Datei."; el("feedback").className="feedback missed"; } }; reader.readAsText(file); }
   function importProgressWithFeedback(file){ if (!file) { showAppStatus("No import file selected.", "warn"); return; } var reader=new FileReader(); reader.onload=function(){ try { var parsed=JSON.parse(String(reader.result || "{}")), data=parsed.data || parsed; safeSetObject(data); if (parsed.leitner && typeof parsed.leitner === "object") safeSetLeitner(parsed.leitner); if (parsed.b1 && typeof parsed.b1 === "object") safeSetB1Progress(parsed.b1); if (parsed.evidence && typeof parsed.evidence === "object") safeSetB1Evidence(parsed.evidence); loadPersistent(); setMenu(false); showHomeScreen(); showAppStatus("Import successful: " + b1ProgressCount() + " B1 progress items and " + b1EvidenceCount() + " evidence records available.", "good"); } catch(e){ showAppStatus("Import failed: invalid JSON file.", "bad"); if (el("feedback")) { el("feedback").textContent="Import failed: invalid JSON file."; el("feedback").className="feedback missed"; } } }; reader.readAsText(file); }
   importProgress = importProgressWithFeedback;
@@ -13631,7 +13697,7 @@ body.b1Mode.b1LongAnswer #answerInput {
   window.addEventListener("resize", updateDebugStamp, false);
   window.addEventListener("scroll", updateDebugStamp, false);
   if (!DEBUG_STAMP_TIMER) DEBUG_STAMP_TIMER = window.setInterval(updateDebugStamp, 1000);
-window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }; window.kasusNoArticle=function(){checkAnswer("none");}; window.kasusProceed=function(){proceed();}; window.kasusHint=function(){showHint();}; window.kasusNewRound=function(){showStartScreen();}; window.kasusStartRound=function(){startConfiguredRound();}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusSessionLog=function(){return sessionLog.slice();}; window.kasusCurrent=function(){return current ? cloneQuestion(current) : cloneB1Item(b1Runtime.current || {});}; window.kasusLeitnerDebug=function(){ return { storageKey:LEITNER_STORAGE_KEY, runtime:leitnerRuntime, progress:safeGetLeitner() }; }; window.ozmosisB1Debug=function(){ return { storageKey:B1_STORAGE_KEY, evidenceStorageKey:B1_EVIDENCE_STORAGE_KEY, progressStateLabelVersion:PROGRESS_STATE_LABEL_VERSION, itemCount:B1_ITEMS.length, connectorCount:B1_CONNECTOR_ITEMS.length, redemittelCount:B1_REDEMITTEL_ITEMS.length, wortschatzCount:B1_WORTSCHATZ_ITEMS.length, registry:b1RegistrySummary(), runtime:b1Runtime, progress:safeGetB1Progress(), evidence:b1EvidenceSummary(), learningMap:b1LearningMapScaffold(), skillMatrix:b1SkillMatrixData(), skillMatrixSummary:debugSkillMatrixSummary(), recommendation:b1NextRecommendedPractice(), recommendationSummary:debugRecommendationSummary(), diagnosticPlan:b1Runtime.diagnosticPlan, debugSnapshot:buildDebugSnapshot }; }; window.ozmosisStartDiagnostic=function(){ startB1DiagnosticSprint(); }; window.ozmosisStartConnector=function(family){ startConnectorSprint(family || "all"); }; window.ozmosisStartRedemittel=function(filter){ startRedemittelRound(filter || "mixed"); }; window.ozmosisStartWortschatz=function(filter){ startWortschatzRound(filter || "mixed"); }; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusResetBest=function(){ highScore=0; bestStreakAll=0; savePersistent(); if (state === "results") showResults(); else renderHud(); }; window.kasusResetProfile=function(){ resetLearnerModel(); }; window.kasusToggleMenu=function(){ var panel=el("settingsPanel"); panel.classList.toggle("open"); document.body.classList.toggle("menuOpen", panel.classList.contains("open")); };
+window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }; window.kasusNoArticle=function(){checkAnswer("none");}; window.kasusProceed=function(){proceed();}; window.kasusHint=function(){showHint();}; window.kasusNewRound=function(){showStartScreen();}; window.kasusStartRound=function(){startConfiguredRound();}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusSessionLog=function(){return sessionLog.slice();}; window.kasusCurrent=function(){return current ? cloneQuestion(current) : cloneB1Item(b1Runtime.current || {});}; window.kasusLeitnerDebug=function(){ return { storageKey:LEITNER_STORAGE_KEY, runtime:leitnerRuntime, progress:safeGetLeitner() }; }; window.ozmosisB1Debug=function(){ return { storageKey:B1_STORAGE_KEY, evidenceStorageKey:B1_EVIDENCE_STORAGE_KEY, progressStateLabelVersion:PROGRESS_STATE_LABEL_VERSION, taskDepthSchemaVersion:B1_TASK_DEPTH_SCHEMA_VERSION, taskDepthDefinitions:b1TaskDepthDefinitions(), itemCount:B1_ITEMS.length, connectorCount:B1_CONNECTOR_ITEMS.length, redemittelCount:B1_REDEMITTEL_ITEMS.length, wortschatzCount:B1_WORTSCHATZ_ITEMS.length, registry:b1RegistrySummary(), runtime:b1Runtime, progress:safeGetB1Progress(), evidence:b1EvidenceSummary(), learningMap:b1LearningMapScaffold(), skillMatrix:b1SkillMatrixData(), skillMatrixSummary:debugSkillMatrixSummary(), recommendation:b1NextRecommendedPractice(), recommendationSummary:debugRecommendationSummary(), diagnosticPlan:b1Runtime.diagnosticPlan, debugSnapshot:buildDebugSnapshot }; }; window.ozmosisStartDiagnostic=function(){ startB1DiagnosticSprint(); }; window.ozmosisStartConnector=function(family){ startConnectorSprint(family || "all"); }; window.ozmosisStartRedemittel=function(filter){ startRedemittelRound(filter || "mixed"); }; window.ozmosisStartWortschatz=function(filter){ startWortschatzRound(filter || "mixed"); }; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusResetBest=function(){ highScore=0; bestStreakAll=0; savePersistent(); if (state === "results") showResults(); else renderHud(); }; window.kasusResetProfile=function(){ resetLearnerModel(); }; window.kasusToggleMenu=function(){ var panel=el("settingsPanel"); panel.classList.toggle("open"); document.body.classList.toggle("menuOpen", panel.classList.contains("open")); };
   window.ozmosisContentAudit = function(){ return b1ConnectorWordOrderIssues(); };
   function mountSettingsPanel() {
     var panel = el("settingsPanel");

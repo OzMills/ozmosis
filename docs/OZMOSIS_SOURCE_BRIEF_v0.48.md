@@ -3,8 +3,8 @@
 Version: Working Source Brief Update  
 Status: Current planning brief  
 Project: Ozmosis - Deutsch Lernen App  
-Current known development position: v0.48.1 completed  
-Next planned patch: v0.49 - Progress Foundation QA  
+Current known development position: v0.50 completed  
+Next planned patch: v0.51 - Skill Matrix v1  
 
 Versioning rule:
 
@@ -705,8 +705,8 @@ You often choose accusative forms in location sentences.
 Current known development state:
 
 ```txt
-v0.48.1 completed
-Next planned patch: v0.49 - Progress Foundation QA
+v0.50 completed
+Next planned patch: v0.51 - Skill Matrix v1
 ```
 
 The next work should not be a broad rewrite.
@@ -1422,7 +1422,7 @@ Do not assume v1.0 at any arbitrary milestone.
 
 # 21. IMMEDIATE NEXT STEP
 
-The next appropriate step is v0.49 - Progress Foundation QA, unless QA finds a blocking confidence-as-next, tester-ready UX, report-copy, scroll/exit, diagnostic pre-start, Learning Map, Skill Matrix, debug/preview, storage, or export/import regression.
+The next appropriate step is v0.51 - Skill Matrix v1, unless QA finds a blocking task-depth, confidence-as-next, tester-ready UX, report-copy, scroll/exit, diagnostic pre-start, Learning Map, Skill Matrix, debug/preview, storage, or export/import regression.
 
 v0.40 added the first Progress Evidence Model and v0.40.1 added lightweight confidence/guess capture on top of that evidence model.
 
@@ -1451,6 +1451,10 @@ v0.47 clarified Not tested and Not enough evidence across learner-facing progres
 v0.48 made Ozmosis more tester-ready without changing evidence semantics. It added session-only first-use tester guidance, a Known Bugs / Tester Notes surface, a safe tester report copy path, a recommendation-driven Home hero that opens existing routes only, clearer sprint-complete hierarchy, compact Learning Map ordering, and Dev Tools access to tester reporting. Browser execution was blocked in the local Codex environment during QA, so v0.48 browser-dependent checks are documented as blocked rather than passed.
 
 v0.48.1 added confidence-as-next for supported B1 auto-graded practice feedback. Selecting a confidence button now updates the existing evidence record and advances through the existing `proceed()` path, while the `Weiter` path remains available for `confidence:null`. Production cards and assisted records remain on the existing conservative `Weiter` path.
+
+v0.49 audited the active B1 progress foundation for unsupported learner-facing progress claims, diagnostic framing, recommendation overconfidence, production self-marking ambiguity, not-tested/not-enough-evidence clarity, debug/tester-report privacy, storage compatibility, and content-bank impact. It made only a small availability-label copy clarification and did not change scoring, evidence semantics, storage keys, content banks, or route composition.
+
+v0.50 formalised the internal B1 task-depth vocabulary used by evidence summaries, Learning Map, Skill Matrix, recommendations, debug snapshots, and exports. It added read-time canonicalisation for known and legacy values while preserving existing evidence records, storage keys, scoring, route composition, and content banks.
 
 Completed v0.48.1 scope:
 

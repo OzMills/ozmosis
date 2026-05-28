@@ -1,3 +1,19 @@
+## v0.50 - Task Depth Formalisation
+
+- Formalised the internal B1 task-depth vocabulary used by evidence, Learning Map, Skill Matrix, recommendations, debug snapshots, and future QA.
+- Added safe canonicalisation for known and legacy task-depth values while preserving existing evidence records.
+- Added task-depth schema metadata to debug/export surfaces additively without changing storage keys or import requirements.
+- Preserved scoring, storage keys, export/import compatibility, Learning Map behaviour, internal Skill Matrix behaviour, diagnostic context, production-card self-marking, and content banks.
+- Added QA documentation at `docs/qa/v0.50_task_depth_formalisation.md`.
+
+## v0.49 - Progress Foundation QA
+
+- Audited active learner-facing progress claims across Learning Map, Suggested Next Practice, diagnostic framing, production evidence copy, debug/tester flows, and related progress surfaces.
+- Preserved conservative Progress State Labels v1: Not tested, Not enough evidence, Introduced, Emerging, and Developing.
+- Clarified route availability labels so they do not read as learner readiness claims.
+- Preserved scoring, evidence semantics, confidence values, localStorage keys, export/import compatibility, Today's B1 Sprint composition, production-card self-marking, Case Trainer, Options, Dev Tools, and content banks.
+- Added QA documentation at `docs/qa/v0.49_progress_foundation_qa.md`.
+
 ## v0.48.1 - Confidence-as-Next Interaction
 
 - Updated supported B1 auto-graded practice feedback so selecting a confidence button records confidence and advances to the next item or results.

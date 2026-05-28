@@ -17,9 +17,9 @@ Current priority order:
 
 ## Current Known Version
 
-Current working version: `v0.48.1`
+Current working version: `v0.50`
 
-Next planned patch: `v0.49 - Progress Foundation QA`
+Next planned patch: `v0.51 - Skill Matrix v1`
 
 Known current state:
 
