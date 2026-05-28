@@ -1,8 +1,8 @@
 # Ozmosis Development Roadmap v0.48
 
 Status: current planning roadmap
-Current known development position: v0.48 completed
-Next planned patch: v0.48.1 - Confidence-as-Next Interaction
+Current known development position: v0.48.1 completed
+Next planned patch: v0.49 - Progress Foundation QA
 
 This roadmap is planning guidance only. Current repo files, `index.html`, `README.md`, `CHANGELOG.txt`, `AGENTS.md`, and the versioned source brief remain higher-trust sources for implementation state. Do not implement future items early.
 
@@ -113,7 +113,7 @@ Scope includes Home hierarchy, tester guidance, Known Bugs / Tester Notes, teste
 
 ### v0.48.1 - Confidence-as-Next Interaction
 
-Next goal: reduce post-feedback friction by allowing confidence selection to record confidence and advance to the next item where this is safe.
+Completed goal: reduce post-feedback friction by allowing confidence selection to record confidence and advance to the next item where this is safe.
 
 Do not change confidence storage values, scoring, evidence semantics, production-card self-marking, diagnostic evidence, export/import shape, or Today’s Sprint composition. If the evidence flow cannot avoid duplicate evidence or scoring changes, defer this patch.
 

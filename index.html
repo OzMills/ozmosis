@@ -601,6 +601,7 @@ button {
 }
 .b1ConfidenceRow button {
   min-height:40px;
+  padding:8px 6px;
   border:1.5px solid color-mix(in srgb, var(--line) 78%, var(--mode));
   border-radius:12px;
   background:rgba(7,16,30,.62);
@@ -609,6 +610,8 @@ button {
   letter-spacing:.03em;
   text-transform:uppercase;
   font-size:.72rem;
+  line-height:1.15;
+  white-space:normal;
 }
 .b1ConfidenceRow button:hover,
 .b1ConfidenceRow button:focus-visible {
@@ -621,6 +624,10 @@ button {
   border-color:color-mix(in srgb, var(--accent) 78%, var(--line));
   color:var(--accent);
   background:rgba(125,227,255,.1);
+}
+.b1ConfidenceRow button:disabled {
+  opacity:.64;
+  cursor:default;
 }
 
 .miniTableWrap {
@@ -6586,8 +6593,8 @@ body.b1Mode.b1LongAnswer #answerInput {
   var B1_STORAGE_KEY = "ozmosis_b1_sprint_progress_v1";
   var B1_EVIDENCE_STORAGE_KEY = "ozmosis_b1_progress_evidence_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.48";
-  var OZMOSIS_EXPORT_VERSION = "v0.48-tester-ready-ux";
+  var OZMOSIS_APP_VERSION = "v0.48.1";
+  var OZMOSIS_EXPORT_VERSION = "v0.48.1-confidence-as-next";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -10599,18 +10606,54 @@ body.b1Mode.b1LongAnswer #answerInput {
     if (!row) return;
     row.hidden = true;
     row.removeAttribute("data-evidence-id");
+    row.removeAttribute("data-advancing");
+    row.removeAttribute("data-confidence-next");
     row.querySelectorAll("button").forEach(function(btn){
       btn.classList.remove("selected");
       btn.setAttribute("aria-pressed", "false");
+      btn.disabled = false;
     });
+  }
+  function b1CurrentEvidenceRecord() {
+    if (!b1Runtime.active || !b1Runtime.current || !b1Runtime.currentEvidenceRecordId) return null;
+    var records = safeGetB1Evidence().records || [];
+    for (var i = records.length - 1; i >= 0; i -= 1) {
+      var candidate = records[i];
+      if (candidate && candidate.id === b1Runtime.currentEvidenceRecordId && candidate.itemId === b1Runtime.current.id && candidate.sessionId === B1_EVIDENCE_SESSION_ID) {
+        return candidate;
+      }
+    }
+    return null;
+  }
+  function b1ConfidenceLabelsForRecord(record) {
+    if (record && record.result === "correct") {
+      return { sure:"I knew it", unsure:"I was unsure", guessed:"I guessed" };
+    }
+    if (record && record.result === "wrong") {
+      return { sure:"I thought I knew it", unsure:"I was unsure", guessed:"I guessed" };
+    }
+    return { sure:"Sure", unsure:"Unsure", guessed:"Guessed" };
+  }
+  function b1ConfidenceAutoAdvanceAllowed(record) {
+    if (!record || state !== "b1Next") return false;
+    if (record.result === "practised" || record.answerMode === "mark_practised") return false;
+    if (record.result === "assisted") return false;
+    return record.result === "correct" || record.result === "wrong";
   }
   function renderB1ConfidenceControls(selected) {
     var row = el("b1ConfidenceRow");
     if (!row || !b1Runtime.currentEvidenceRecordId) return;
+    var record = b1CurrentEvidenceRecord();
+    var labels = b1ConfidenceLabelsForRecord(record);
     row.hidden = false;
     row.setAttribute("data-evidence-id", b1Runtime.currentEvidenceRecordId);
+    row.setAttribute("data-confidence-next", b1ConfidenceAutoAdvanceAllowed(record) ? "true" : "false");
+    row.removeAttribute("data-advancing");
     row.querySelectorAll("button").forEach(function(btn){
-      var active = btn.getAttribute("data-confidence") === selected;
+      var value = btn.getAttribute("data-confidence");
+      var active = value === selected;
+      btn.textContent = labels[value] || value || "";
+      btn.disabled = false;
       btn.classList.toggle("selected", active);
       btn.setAttribute("aria-pressed", active ? "true" : "false");
     });
@@ -10633,6 +10676,20 @@ body.b1Mode.b1LongAnswer #answerInput {
     safeSetB1Evidence(store);
     renderB1ConfidenceControls(value);
     return record;
+  }
+  function handleB1ConfidenceSelection(value) {
+    var row = el("b1ConfidenceRow");
+    if (row && row.getAttribute("data-advancing") === "true") return;
+    var record = updateLatestB1EvidenceConfidence(value);
+    if (!record || !b1ConfidenceAutoAdvanceAllowed(record)) return;
+    if (row) {
+      row.setAttribute("data-advancing", "true");
+      row.querySelectorAll("button").forEach(function(btn){ btn.disabled = true; });
+    }
+    setTimeout(function(){
+      if (row && row.getAttribute("data-advancing") !== "true") return;
+      if (state === "b1Next" && b1Runtime.currentEvidenceRecordId === record.id) proceed();
+    }, 0);
   }
   function b1EvidenceSummary() {
     var store = safeGetB1Evidence();
@@ -13066,7 +13123,7 @@ body.b1Mode.b1LongAnswer #answerInput {
   document.addEventListener("click", function(event){
     var target = event.target && event.target.closest ? event.target.closest("#b1ConfidenceRow button[data-confidence]") : null;
     if (!target) return;
-    updateLatestB1EvidenceConfidence(target.getAttribute("data-confidence"));
+    handleB1ConfidenceSelection(target.getAttribute("data-confidence"));
   }, false);
   document.addEventListener("click", function(event){
     var target = event.target && event.target.closest ? event.target.closest("button") : null;

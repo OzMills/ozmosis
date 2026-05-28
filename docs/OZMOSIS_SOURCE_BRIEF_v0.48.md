@@ -3,8 +3,8 @@
 Version: Working Source Brief Update  
 Status: Current planning brief  
 Project: Ozmosis - Deutsch Lernen App  
-Current known development position: v0.48 completed  
-Next planned patch: v0.48.1 - Confidence-as-Next Interaction  
+Current known development position: v0.48.1 completed  
+Next planned patch: v0.49 - Progress Foundation QA  
 
 Versioning rule:
 
@@ -106,7 +106,7 @@ But this should be introduced carefully and only when useful.
 
 The detailed version-by-version roadmap lives separately in:
 
-`docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.47.md`
+`docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.48.md`
 
 The Source Brief remains the strategic orientation document. The roadmap is a planning document, not permission for Codex to implement future versions early.
 
@@ -705,8 +705,8 @@ You often choose accusative forms in location sentences.
 Current known development state:
 
 ```txt
-v0.48 completed
-Next planned patch: v0.48.1 - Confidence-as-Next Interaction
+v0.48.1 completed
+Next planned patch: v0.49 - Progress Foundation QA
 ```
 
 The next work should not be a broad rewrite.
@@ -1422,7 +1422,7 @@ Do not assume v1.0 at any arbitrary milestone.
 
 # 21. IMMEDIATE NEXT STEP
 
-The next appropriate step is v0.48.1 - Confidence-as-Next Interaction, unless QA finds a blocking tester-ready UX, report-copy, scroll/exit, diagnostic pre-start, Learning Map, Skill Matrix, debug/preview, storage, or export/import regression.
+The next appropriate step is v0.49 - Progress Foundation QA, unless QA finds a blocking confidence-as-next, tester-ready UX, report-copy, scroll/exit, diagnostic pre-start, Learning Map, Skill Matrix, debug/preview, storage, or export/import regression.
 
 v0.40 added the first Progress Evidence Model and v0.40.1 added lightweight confidence/guess capture on top of that evidence model.
 
@@ -1450,7 +1450,9 @@ v0.47 clarified Not tested and Not enough evidence across learner-facing progres
 
 v0.48 made Ozmosis more tester-ready without changing evidence semantics. It added session-only first-use tester guidance, a Known Bugs / Tester Notes surface, a safe tester report copy path, a recommendation-driven Home hero that opens existing routes only, clearer sprint-complete hierarchy, compact Learning Map ordering, and Dev Tools access to tester reporting. Browser execution was blocked in the local Codex environment during QA, so v0.48 browser-dependent checks are documented as blocked rather than passed.
 
-Safe v0.48.1 scope:
+v0.48.1 added confidence-as-next for supported B1 auto-graded practice feedback. Selecting a confidence button now updates the existing evidence record and advances through the existing `proceed()` path, while the `Weiter` path remains available for `confidence:null`. Production cards and assisted records remain on the existing conservative `Weiter` path.
+
+Completed v0.48.1 scope:
 
 ```txt
 Turn confidence selection into the next interaction only if the current evidence flow can support it without duplicate evidence, scoring changes, or storage-key changes.
@@ -1460,10 +1462,10 @@ Do not make production cards more visible.
 Preserve diagnostic, evidence, route, scoring, and content-bank behaviour.
 ```
 
-Suggested v0.48.1 Codex task summary:
+v0.48.1 implementation summary:
 
 ```txt
-Evaluate and, only if safe, implement confidence-as-next for supported practice routes.
+Implemented confidence-as-next for supported B1 auto-graded practice routes.
 
 Do not introduce B2 content.
 Do not change the app architecture.

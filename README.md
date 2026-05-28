@@ -17,9 +17,9 @@ Current priority order:
 
 ## Current Known Version
 
-Current working version: `v0.48`
+Current working version: `v0.48.1`
 
-Next planned patch: `v0.48.1 - Confidence-as-Next Interaction`
+Next planned patch: `v0.49 - Progress Foundation QA`
 
 Known current state:
 

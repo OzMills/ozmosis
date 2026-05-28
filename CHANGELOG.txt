@@ -1,3 +1,13 @@
+## v0.48.1 - Confidence-as-Next Interaction
+
+- Updated supported B1 auto-graded practice feedback so selecting a confidence button records confidence and advances to the next item or results.
+- Preserved the existing Weiter path as the skip-confidence fallback, keeping `confidence:null` valid.
+- Added dynamic confidence labels for correct and incorrect answers while preserving stored confidence values: `sure`, `unsure`, `guessed`, and `null`.
+- Kept assisted and production-card records on the existing conservative Weiter path to avoid implying unassisted knowledge or auto-graded production correctness.
+- Preserved existing scoring, evidence semantics, diagnostic evidence, Today's B1 Sprint behaviour, export/import compatibility, localStorage keys, production-card self-marking, Case Trainer, Options, Dev Tools, tester report, debug snapshot, and content banks.
+- Cleaned stale v0.48 documentation pointers where present.
+- Added no B2 content, review scheduling, weakness repair, full Skill Matrix UI, production auto-grading, runtime AI, backend, framework, build step, dependencies, analytics, accounts, external API calls, or content-bank changes.
+
 ## v0.48 - Tester-Ready UX / Visual System Pass
 
 - Added session-only first-use tester guidance on Home and a Tester Notes / Known Bugs surface for private test builds.
