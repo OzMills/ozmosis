@@ -1,10 +1,8 @@
-# Ozmosis Development Roadmap v0.48
+# Ozmosis Development Roadmap v0.53
 
-Status: historical copy superseded by `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.53.md`
+Status: current planning roadmap
 Current known development position: v0.53 completed
 Next planned patch: v0.54 - Repair Mode Strengthening
-
-> Historical copy. Current canonical roadmap is `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.53.md`.
 
 This roadmap is planning guidance only. Current repo files, `index.html`, `README.md`, `CHANGELOG.txt`, `AGENTS.md`, and the versioned source brief remain higher-trust sources for implementation state. Do not implement future items early.
 
@@ -12,7 +10,7 @@ This roadmap is planning guidance only. Current repo files, `index.html`, `READM
 
 - Current repo files beat old chats, screenshots, memory, and generated reports.
 - Repo-root `index.html` remains the main deployed app file.
-- This is a historical copy; `docs/OZMOSIS_SOURCE_BRIEF_v0.53.md` is the current strategic source brief.
+- `docs/OZMOSIS_SOURCE_BRIEF_v0.53.md` is the current strategic source brief.
 - This roadmap is not permission to broaden scope in any patch.
 
 ## Architecture Guardrails

@@ -1,3 +1,37 @@
+## v0.53 - Controlled Production Tracking
+
+- Added clearer controlled-production evidence metadata for self-marked production cards.
+- Preserved production as self-marked practice evidence only.
+- Tracked model answer / useful phrase / checklist exposure only where safely detectable.
+- Preserved scoring, confidence values, support-level semantics, storage keys, export/import compatibility, route composition, and content banks.
+- Added QA documentation at `docs/qa/v0.53_controlled_production_tracking.md`.
+
+## v0.52.1 - Item-Level Support Visibility Policy
+
+- Added a conservative item-level support visibility policy so support can remain visible where needed and be collapsed or delayed where it would give away the target.
+- Preserved default support behaviour unless item metadata explicitly overrides it.
+- Connected support visibility conservatively with support-level evidence where safe.
+- Preserved scoring, route composition, Today’s B1 Sprint, storage keys, export/import compatibility, and content-bank integrity.
+- Added QA documentation at `docs/qa/v0.52.1_support_visibility_policy.md`.
+
+## v0.52 - Support-Level Tracking
+
+- Added additive B1 support-level metadata for new evidence records where support can be detected safely.
+- Preserved legacy evidence handling by treating missing supportLevel as unknown or safely derived at read time.
+- Kept support level as evidence context only, not a scoring change.
+- Preserved scoring, confidence values, storage keys, export/import compatibility, production-card self-marking, diagnostic behaviour, Skill Matrix conservatism, and content banks.
+- Added QA documentation at `docs/qa/v0.52_support_level_tracking.md`.
+- Added no B2 content, delayed review, weakness repair, misconception diagnosis, runtime AI, backend, framework, build step, dependencies, analytics, accounts, or external API calls.
+
+## v0.51 - Skill Matrix v1
+
+- Added a modest learner-facing Task-depth matrix inside the existing Learning Map, using the v0.50 Skill Matrix data model without changing storage, scoring, recommendations, or content banks.
+- Kept matrix states conservative: Not tested, Not enough evidence, Emerging, and Developing only appeared in validation, with empty cells framed as non-failure.
+- Added concise limitations for early evidence, derived metadata, inactive delayed review evidence, production self-marking, and diagnostic snapshot evidence.
+- Added responsive table behavior, keyboard-visible focus states, and LTR isolation for matrix skill/task labels.
+- Validated v0.51 with Microsoft Edge headless via Chrome DevTools Protocol because the in-app Browser plugin and bundled Playwright path remain unavailable in this environment.
+- Added QA documentation at `docs/qa/v0.51_skill_matrix_v1.md`.
+
 ## v0.50 - Task Depth Formalisation
 
 - Formalised the internal B1 task-depth vocabulary used by evidence, Learning Map, Skill Matrix, recommendations, debug snapshots, and future QA.

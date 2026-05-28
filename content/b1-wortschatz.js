@@ -565,6 +565,7 @@
       "Beschwerde"
     ],
     "translation_en": "The customer is dissatisfied and writes a complaint.",
+    "supportVisibility": "visible",
     "choices": [],
     "correct_choice": "",
     "micro_rule": "die Beschwerde = complaint.",

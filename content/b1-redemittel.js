@@ -285,6 +285,7 @@
     ],
     "fullAnswer_de": "Mit freundlichen Grüßen",
     "support_en": "Choose the formal closing.",
+    "supportVisibility": "collapsed",
     "microRule": "Mit freundlichen Grüßen is neutral and formal.",
     "variantFamilyId": "red_formal_closing",
     "variantRole": "survival",

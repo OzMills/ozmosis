@@ -1239,6 +1239,7 @@
       ],
       "fullAnswer_de": "Die Ware ist teuer, obwohl die Qualität nicht gut ist.",
       "support_en": "The goods are expensive although the quality is not good.",
+      "supportVisibility": "after_answer",
       "microRule": "obwohl introduces a subordinate contrast clause; the finite verb goes to the end.",
       "tags": [
         "contrast",

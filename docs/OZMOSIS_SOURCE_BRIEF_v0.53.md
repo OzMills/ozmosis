@@ -1,12 +1,10 @@
-# OZMOSIS SOURCE BRIEF v0.48
+# OZMOSIS SOURCE BRIEF v0.53
 
 Version: Working Source Brief Update  
-Status: Historical copy superseded by `docs/OZMOSIS_SOURCE_BRIEF_v0.53.md`  
+Status: Current planning brief  
 Project: Ozmosis - Deutsch Lernen App  
 Current known development position: v0.53 completed  
 Next planned patch: v0.54 - Repair Mode Strengthening  
-
-> Historical copy. Current canonical document is `docs/OZMOSIS_SOURCE_BRIEF_v0.53.md`.
 
 Versioning rule:
 
@@ -108,7 +106,7 @@ But this should be introduced carefully and only when useful.
 
 The detailed version-by-version roadmap lives separately in:
 
-This historical copy is superseded by `docs/OZMOSIS_SOURCE_BRIEF_v0.53.md` and `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.53.md`.
+`docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.53.md`
 
 The Source Brief remains the strategic orientation document. The roadmap is a planning document, not permission for Codex to implement future versions early.
 
