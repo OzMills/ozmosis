@@ -1,3 +1,19 @@
+## v0.48 - Tester-Ready UX / Visual System Pass
+
+- Added session-only first-use tester guidance on Home and a Tester Notes / Known Bugs surface for private test builds.
+- Added a safe tester report copy path with version, route, item, viewport, browser, timestamp, and compact debug summary without dumping full localStorage, full evidence history, or private typed answers.
+- Updated the Home hero to show the current rules-based Suggested Next Practice and open existing routes only, without creating custom queues or changing Today's B1 Sprint composition.
+- Improved sprint-complete copy, Learning Map section ordering/density, production-card self-marked practice copy, and Dev Tools tester-report access.
+- Preserved scoring, confidence values, progress/evidence storage keys, export/import compatibility, Today’s B1 Sprint composition, connector exclusion policy, production-card self-marking, no-save Dev Preview, static architecture, and extracted content banks.
+- Added no B2 content, full Skill Matrix UI, review scheduling, weakness repair, custom queues, runtime AI, backend, framework, build step, fetch/module loading, package manager, dependencies, analytics, accounts, external calls, QR/code import, or External AI Review Handoff implementation.
+
+## v0.47 - Not Enough Evidence Handling
+
+- Improved learner-facing handling of Not tested and Not enough evidence states across progress surfaces.
+- Clarified that missing or thin evidence is not failure and does not imply weakness.
+- Improved thin-evidence copy in Learning Map, Suggested Next Practice, Diagnostic results, and production-evidence contexts.
+- Preserved scoring, routes, Today’s B1 Sprint composition, connector exclusion policy, production-card self-marking, localStorage compatibility, export/import compatibility, and static app architecture.
+
 ## v0.46 - Progress State Labels v1
 
 - Added a consistent conservative Progress State Labels v1 vocabulary for current learner-facing progress surfaces.

@@ -502,6 +502,21 @@ select, .menuButton {
   direction:ltr;
 }
 
+.productionEvidenceNote {
+  width:min(520px,100%);
+  margin:0;
+  padding:10px 12px;
+  border:1px solid color-mix(in srgb, var(--warn) 30%, var(--line));
+  border-radius:14px;
+  background:rgba(246,193,92,.08);
+  color:var(--muted);
+  font-size:.86rem;
+  font-weight:850;
+  line-height:1.35;
+  text-align:left;
+  direction:ltr;
+}
+
 button {
   -webkit-tap-highlight-color: transparent;
 }
@@ -4645,6 +4660,10 @@ body.homeMode #settingsPanel {
   width:100%;
 }
 
+.homeHeroProgress[hidden] {
+  display:none !important;
+}
+
 .homeHeroProgress span {
   height:12px;
   border:1px solid color-mix(in srgb, var(--accent) 34%, var(--line));
@@ -4698,6 +4717,53 @@ body.homeMode #settingsPanel {
   font-size:1rem;
   font-weight:1000;
   font-variant-numeric:tabular-nums;
+}
+
+.homeTesterCard {
+  display:grid;
+  gap:10px;
+  margin:0 0 clamp(16px, 4vw, 24px);
+  padding:clamp(14px, 4vw, 18px);
+  border:1.5px solid color-mix(in srgb, var(--warn) 48%, var(--line));
+  border-radius:18px;
+  background:linear-gradient(135deg, rgba(246,193,92,.12), rgba(7,14,27,.82));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+}
+
+.homeTesterCard[hidden] {
+  display:none !important;
+}
+
+.homeTesterCard strong {
+  color:var(--text);
+  font-size:clamp(1rem, 4vw, 1.18rem);
+  line-height:1.12;
+  font-weight:1000;
+}
+
+.homeTesterCard p {
+  margin:0;
+  color:var(--muted);
+  font-size:.9rem;
+  line-height:1.35;
+  font-weight:820;
+}
+
+.homeTesterActions {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.homeTesterActions button {
+  min-height:42px;
+  border:1.5px solid color-mix(in srgb, var(--accent) 44%, var(--line));
+  border-radius:13px;
+  background:rgba(5,11,22,.82);
+  color:var(--text);
+  font:inherit;
+  font-weight:950;
+  cursor:pointer;
 }
 
 .homeStatusStrip.single {
@@ -5522,7 +5588,8 @@ body.b1Mode main {
 }
 
 .diagnosticIntroOverlay,
-.practiceExitOverlay {
+.practiceExitOverlay,
+.testerNotesOverlay {
   position:fixed;
   inset:0;
   z-index:31000;
@@ -5533,12 +5600,14 @@ body.b1Mode main {
 }
 
 .diagnosticIntroOverlay[hidden],
-.practiceExitOverlay[hidden] {
+.practiceExitOverlay[hidden],
+.testerNotesOverlay[hidden] {
   display:none !important;
 }
 
 .diagnosticIntroCard,
-.practiceExitCard {
+.practiceExitCard,
+.testerNotesCard {
   width:min(460px, 100%);
   display:grid;
   gap:12px;
@@ -5550,7 +5619,8 @@ body.b1Mode main {
 }
 
 .diagnosticIntroCard h2,
-.practiceExitCard h2 {
+.practiceExitCard h2,
+.testerNotesCard h2 {
   margin:0;
   color:var(--text);
   font-size:clamp(1.28rem, 5vw, 1.72rem);
@@ -5559,7 +5629,8 @@ body.b1Mode main {
 }
 
 .diagnosticIntroCard p,
-.practiceExitCard p {
+.practiceExitCard p,
+.testerNotesCard p {
   margin:0;
   color:var(--muted);
   font-size:.94rem;
@@ -5568,7 +5639,8 @@ body.b1Mode main {
 }
 
 .diagnosticIntroActions,
-.practiceExitActions {
+.practiceExitActions,
+.testerNotesActions {
   display:flex;
   flex-wrap:wrap;
   gap:10px;
@@ -5577,6 +5649,7 @@ body.b1Mode main {
 
 .diagnosticIntroActions button,
 .practiceExitActions button,
+.testerNotesActions button,
 .practiceExitControl {
   border:1.5px solid color-mix(in srgb, var(--accent) 46%, var(--line));
   background:rgba(5,11,22,.92);
@@ -5587,14 +5660,16 @@ body.b1Mode main {
 }
 
 .diagnosticIntroActions button,
-.practiceExitActions button {
+.practiceExitActions button,
+.testerNotesActions button {
   min-height:44px;
   border-radius:14px;
   padding:9px 14px;
 }
 
 .diagnosticIntroActions .primaryAction,
-.practiceExitActions .primaryAction {
+.practiceExitActions .primaryAction,
+.testerNotesActions .primaryAction {
   border-color:var(--accent);
   background:linear-gradient(135deg, color-mix(in srgb, var(--accent) 24%, transparent), rgba(5,11,22,.92));
 }
@@ -5623,10 +5698,31 @@ body.b1Mode main {
 .diagnosticIntroActions button:hover,
 .diagnosticIntroActions button:focus-visible,
 .practiceExitActions button:hover,
-.practiceExitActions button:focus-visible {
+.practiceExitActions button:focus-visible,
+.testerNotesActions button:hover,
+.testerNotesActions button:focus-visible,
+.homeTesterActions button:hover,
+.homeTesterActions button:focus-visible {
   border-color:var(--accent);
   outline:none;
   box-shadow:0 0 18px rgba(125,227,255,.18);
+}
+
+.testerNotesCard {
+  width:min(560px, 100%);
+}
+
+.testerNotesList {
+  margin:0;
+  padding-left:1.1rem;
+  color:var(--muted);
+  font-size:.9rem;
+  line-height:1.36;
+  font-weight:780;
+}
+
+.testerNotesList li + li {
+  margin-top:4px;
 }
 
 .learningMapRecommendationPanel {
@@ -5875,6 +5971,15 @@ body.b1Mode.b1LongAnswer #answerInput {
       <p class="homeSubtitle">B1 Test Sprint</p>
     </div>
 
+    <section class="homeTesterCard" id="homeTesterCard" aria-labelledby="homeTesterTitle" hidden>
+      <strong id="homeTesterTitle">New to this test build?</strong>
+      <p>Best first path: run the diagnostic snapshot, try suggested practice, open the Learning Map, report anything confusing. This is not an exam score.</p>
+      <div class="homeTesterActions">
+        <button id="homeTesterDiagnosticBtn" type="button">Start diagnostic</button>
+        <button id="homeTesterSkipBtn" type="button">Skip for now</button>
+      </div>
+    </section>
+
     <button class="homeHero" id="homeSprintBtn" type="button" aria-describedby="homeHeroMeta">
       <span class="homeHeroTop">
         <span>
@@ -5891,8 +5996,8 @@ body.b1Mode.b1LongAnswer #answerInput {
 
     <div class="homeStatusStrip" id="homeStatusStrip" aria-label="Local B1 practice status">
       <div class="homeStatusItem"><span>Today</span><span class="homeStatusValue" id="homeStatusToday">Ready</span></div>
-      <div class="homeStatusItem"><span>Review</span><span class="homeStatusValue" id="homeStatusDue">--</span></div>
-      <div class="homeStatusItem"><span>Early signals</span><span class="homeStatusValue" id="homeStatusWeak">--</span></div>
+      <div class="homeStatusItem"><span>Current focus</span><span class="homeStatusValue" id="homeStatusDue">--</span></div>
+      <div class="homeStatusItem"><span>Thin areas</span><span class="homeStatusValue" id="homeStatusWeak">--</span></div>
     </div>
 
     <section class="homeSection practice" aria-labelledby="homePracticeTitle">
@@ -5951,6 +6056,13 @@ body.b1Mode.b1LongAnswer #answerInput {
       <h3 class="homeSectionTitle" id="homeToolsTitle">Tools</h3>
       <div class="homeChipGrid">
         <button class="homeChip" id="homeCaseTrainerBtn" type="button"><span>Case Trainer</span><span class="homeChipArrow">›</span></button>
+      </div>
+    </section>
+
+    <section class="homeSection tester" aria-labelledby="homeTesterNotesTitle">
+      <h3 class="homeSectionTitle" id="homeTesterNotesTitle">Tester</h3>
+      <div class="homeChipGrid">
+        <button class="homeChip" id="homeTesterNotesBtn" type="button"><span>Tester Notes / Known Bugs</span><span class="homeChipArrow">&gt;</span></button>
       </div>
     </section>
 
@@ -6216,6 +6328,28 @@ body.b1Mode.b1LongAnswer #answerInput {
   </div>
 </div>
 
+<div class="testerNotesOverlay" id="testerNotesOverlay" hidden role="dialog" aria-modal="true" aria-labelledby="testerNotesTitle">
+  <div class="testerNotesCard" role="document">
+    <h2 id="testerNotesTitle">Tester Notes / Known Bugs</h2>
+    <p>This is a private test build. Some areas are unfinished, and progress wording is intentionally cautious.</p>
+    <ul class="testerNotesList">
+      <li>Some question banks are still small, so items may repeat.</li>
+      <li>Production cards are self-marked practice only; Ozmosis does not auto-grade them.</li>
+      <li>The Learning Map shows evidence, not mastery.</li>
+      <li>Delayed review is not active yet.</li>
+      <li>Suggestions are early and rules-based.</li>
+    </ul>
+    <p>Please report screens you cannot leave, hidden buttons, blocked footers, confusing feedback, repeated or unfair questions, misleading progress labels, and keyboard or scroll problems.</p>
+    <div class="testerNotesActions">
+      <button id="testerNotesCopyReportBtn" type="button">Copy tester report</button>
+      <button id="testerNotesCopyDebugBtn" type="button">Copy debug snapshot</button>
+      <button class="primaryAction" id="testerNotesCloseBtn" type="button">Close</button>
+    </div>
+    <div class="devStatus" id="testerNotesStatus" aria-live="polite"></div>
+    <textarea class="devSnapshotFallback" id="testerNotesFallback" readonly hidden aria-label="Tester notes fallback text"></textarea>
+  </div>
+</div>
+
 <div class="debugStamp" id="debugStamp" aria-label="Debug state stamp"></div>
 
 <div id="genitiveHelpOverlay" class="genitiveHelpOverlay" hidden>
@@ -6263,9 +6397,12 @@ body.b1Mode.b1LongAnswer #answerInput {
         <div class="devUtilityActions">
           <button id="copyDebugSnapshotBtn" type="button">Copy debug snapshot</button>
           <button id="copySkillMatrixSnapshotBtn" type="button">Copy skill matrix snapshot</button>
+          <button id="copyTesterReportBtn" type="button">Copy tester report</button>
+          <button id="openTesterNotesBtn" type="button">Tester Notes / Known Bugs</button>
         </div>
         <div class="devStatus" id="debugSnapshotStatus" aria-live="polite"></div>
         <textarea class="devSnapshotFallback" id="debugSnapshotFallback" readonly hidden aria-label="Debug snapshot fallback text"></textarea>
+        <textarea class="devSnapshotFallback" id="testerReportFallback" readonly hidden aria-label="Tester report fallback text"></textarea>
       </section>
       <section class="devUtilityBlock" aria-labelledby="devItemPreviewTitle">
         <h3 id="devItemPreviewTitle">Manual item preview</h3>
@@ -6449,8 +6586,8 @@ body.b1Mode.b1LongAnswer #answerInput {
   var B1_STORAGE_KEY = "ozmosis_b1_sprint_progress_v1";
   var B1_EVIDENCE_STORAGE_KEY = "ozmosis_b1_progress_evidence_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.46";
-  var OZMOSIS_EXPORT_VERSION = "v0.46-progress-state-labels";
+  var OZMOSIS_APP_VERSION = "v0.48";
+  var OZMOSIS_EXPORT_VERSION = "v0.48-tester-ready-ux";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -7607,17 +7744,17 @@ body.b1Mode.b1LongAnswer #answerInput {
   const PROGRESS_STATE_LABELS = {
     not_tested:{
       label:"Not tested",
-      description:"Ozmosis has not seen you try this yet.",
-      limitation:"No evidence is not a failure."
+      description:"Ozmosis has not seen this task type yet.",
+      limitation:"Not tested is not weakness."
     },
     not_enough_evidence:{
       label:"Not enough evidence",
-      description:"Evidence is still thin.",
-      limitation:"More attempts are needed before this is useful."
+      description:"Ozmosis has seen something, but too little for a useful judgement.",
+      limitation:"This is not a failure; more attempts are needed before this is useful."
     },
     introduced:{
       label:"Introduced",
-      description:"You have started this area.",
+      description:"First evidence only; this still needs more attempts.",
       limitation:"Early evidence only."
     },
     emerging:{
@@ -7815,7 +7952,7 @@ body.b1Mode.b1LongAnswer #answerInput {
       if (unsureTotal) why.push("Several answers were marked unsure or guessed.");
       why.push("More controlled evidence would make the Learning Map more useful.");
     } else {
-      why.push("This area has little " + depthLabel + " evidence.");
+      why.push("Ozmosis has not seen enough " + depthLabel + " attempts here yet.");
       if (Number(row.rowSummary.totalEvidence || 0) > 0) why.push("Other evidence exists, but this task type is still thin.");
       why.push("More evidence would make the Learning Map more useful.");
     }
@@ -7863,7 +8000,7 @@ body.b1Mode.b1LongAnswer #answerInput {
           confidenceCounts:{ sure:0, unsure:0, guessed:0, unset:evidenceCount }
         },
         why:[
-          "Ozmosis does not have enough B1 evidence yet.",
+          "Not enough evidence yet. This is not a failure.",
           "The diagnostic gives the Learning Map a baseline.",
           "Retakes add evidence without resetting earlier records."
         ],
@@ -8014,7 +8151,7 @@ body.b1Mode.b1LongAnswer #answerInput {
     var nodes = map && Array.isArray(map.nodes) ? map.nodes : [];
     var nodesWithEvidence = nodes.filter(function(node){ return Number(node.evidenceCount || 0) > 0; }).length;
     var notTested = nodes.filter(function(node){ return Number(node.evidenceCount || 0) === 0; }).length;
-    var notEnough = nodes.filter(function(node){ return !node.hasEnoughEvidence; }).length;
+    var notEnough = nodes.filter(function(node){ return Number(node.evidenceCount || 0) > 0 && !node.hasEnoughEvidence; }).length;
     var provenance = nodes.reduce(function(total, node){
       var current = node.metadataProvenance || {};
       total.explicit += Number(current.explicit || 0);
@@ -8036,13 +8173,13 @@ body.b1Mode.b1LongAnswer #answerInput {
   function learningMapFocusHtml(map, summary) {
     var nodes = map && Array.isArray(map.nodes) ? map.nodes : [];
     if (!summary.evidenceCount) {
-      return '<h3>Current focus</h3><p class="learningMapText">Run the B1 Diagnostic Sprint to create a starting snapshot.</p>' +
+      return '<h3>Current focus</h3><p class="learningMapText">Not tested yet. Run the B1 Diagnostic Sprint to create a starting snapshot.</p>' +
         '<div class="learningMapActionGrid"><button class="learningMapAction" id="learningMapDiagnosticBtn" type="button">Start B1 Diagnostic Sprint</button></div>';
     }
     var weakNodes = nodes.filter(function(node){ return learningMapNodeWeaknessScore(node) > 0; }).sort(function(a,b){ return learningMapNodeWeaknessScore(b) - learningMapNodeWeaknessScore(a); });
     var thinNode = nodes.filter(function(node){ return !node.hasEnoughEvidence; }).sort(function(a,b){ return Number(a.evidenceCount || 0) - Number(b.evidenceCount || 0); })[0];
     var focusNode = weakNodes[0] || thinNode || nodes[0];
-    if (!focusNode) return '<h3>Current focus</h3><p class="learningMapText">Collect more evidence before trusting the map.</p>';
+    if (!focusNode) return '<h3>Current focus</h3><p class="learningMapText">Collect more evidence before using the map for decisions.</p>';
     return '<h3>Current focus</h3>' +
       '<p class="learningMapText"><strong>' + escapeHtml(focusNode.label) + '</strong></p>' +
       '<p class="learningMapMeta">Why: early evidence suggests this area needs more testing. This is not an automatic route change.</p>';
@@ -8074,7 +8211,7 @@ body.b1Mode.b1LongAnswer #answerInput {
     var signals = nodes.filter(function(node){ return learningMapNodeWeaknessScore(node) > 0; }).sort(function(a,b){
       return learningMapNodeWeaknessScore(b) - learningMapNodeWeaknessScore(a);
     }).slice(0, 3);
-    if (!signals.length) return '<p class="learningMapText">No strong weak signal yet. Keep practising or run the diagnostic.</p>';
+    if (!signals.length) return '<p class="learningMapText">No clear early weak signal yet. Keep practising or run the diagnostic.</p>';
     return '<div class="learningMapSignalList">' + signals.map(function(node){
       return '<p class="learningMapText"><strong>Early weak signal:</strong> ' + escapeHtml(node.label) + ' - ' + Number(node.incorrectCount || 0) + ' incorrect, ' + (Number(node.confidenceCounts && node.confidenceCounts.unsure || 0) + Number(node.confidenceCounts && node.confidenceCounts.guessed || 0)) + ' unsure/guessed.</p>';
     }).join("") + '</div>';
@@ -8083,10 +8220,10 @@ body.b1Mode.b1LongAnswer #answerInput {
     var nodes = map && Array.isArray(map.nodes) ? map.nodes : [];
     var notTested = nodes.filter(function(node){ return Number(node.evidenceCount || 0) === 0; });
     var thin = nodes.filter(function(node){ return Number(node.evidenceCount || 0) > 0 && !node.hasEnoughEvidence; });
-    if (!notTested.length && !thin.length) return '<p class="learningMapText">Every node has at least the early evidence threshold, but this still is not a mastery claim.</p>';
-    var html = '<p class="learningMapText">No evidence is not a failure. Thin evidence means Ozmosis needs more attempts before this is useful.</p>';
-    if (notTested.length) html += '<p class="learningMapEmptyLine"><strong>Not tested:</strong> ' + notTested.map(function(node){ return escapeHtml(node.label); }).join(" / ") + '</p>';
-    if (thin.length) html += '<p class="learningMapEmptyLine"><strong>Not enough evidence:</strong> ' + thin.map(function(node){ return escapeHtml(node.label); }).join(" / ") + '</p>';
+    if (!notTested.length && !thin.length) return '<p class="learningMapText">Every node has early evidence, but this still is not a mastery claim.</p>';
+    var html = '<p class="learningMapText">Not tested means Ozmosis has not seen this yet. Not enough evidence means it has seen something, but too little for a useful judgement. Neither is a failure.</p>';
+    if (notTested.length) html += '<p class="learningMapEmptyLine"><strong>Not tested yet:</strong> ' + notTested.map(function(node){ return escapeHtml(node.label); }).join(" / ") + '</p>';
+    if (thin.length) html += '<p class="learningMapEmptyLine"><strong>Not enough evidence yet:</strong> ' + thin.map(function(node){ return escapeHtml(node.label); }).join(" / ") + '</p>';
     return html;
   }
   function learningMapRecentHtml() {
@@ -8110,6 +8247,7 @@ body.b1Mode.b1LongAnswer #answerInput {
       '<p class="learningMapRecommendationTitle">' + escapeHtml(primary.title || "Keep collecting evidence") + '</p>' +
       '<p class="learningMapRecommendationMeta"><strong>Why:</strong> ' + escapeHtml(why) + '</p>' +
       notes.map(function(note){ return '<p class="learningMapRecommendationMeta">' + escapeHtml(note) + '</p>'; }).join("") +
+      '<p class="learningMapRecommendationNote">Evidence note: ' + escapeHtml(basisState.label + " - " + basisState.description) + '</p>' +
       '<p class="learningMapRecommendationNote">Limit: ' + escapeHtml((limitations[0] || "This is an early rules-based suggestion, not a mastery judgement.")) + '</p>' +
       '<div class="learningMapActionGrid"><button class="learningMapAction" id="learningMapRecommendationActionBtn" type="button" data-route-key="' + escapeHtml(route) + '">' + escapeHtml(primary.routeLabel || (primary.action && primary.action.label) || "Start practice") + '</button></div>' +
       '<details class="learningMapDisclosure"><summary>Why this appears</summary>' +
@@ -8134,13 +8272,14 @@ body.b1Mode.b1LongAnswer #answerInput {
       '<section class="learningMapSummaryGrid" aria-label="Learning Map evidence summary">' +
         '<div class="learningMapChip"><strong>' + summary.evidenceCount + '</strong><span>Evidence records</span></div>' +
         '<div class="learningMapChip"><strong>' + summary.nodesWithEvidence + ' / ' + summary.nodeTotal + '</strong><span>Nodes with evidence</span></div>' +
-        '<div class="learningMapChip"><strong>' + summary.notTested + ' / ' + summary.notEnough + '</strong><span>Not tested / thin evidence</span></div>' +
+        '<div class="learningMapChip"><strong>' + summary.notTested + '</strong><span>Not tested</span></div>' +
+        '<div class="learningMapChip"><strong>' + summary.notEnough + '</strong><span>Not enough evidence</span></div>' +
         '<div class="learningMapChip"><strong>' + escapeHtml(provenanceText) + '</strong><span>Metadata provenance</span></div>' +
         '<div class="learningMapChip"><strong>Not active</strong><span>Delayed review</span></div>' +
       '</section>' +
-      '<section class="learningMapPanel learningMapRecommendationPanel">' + learningMapRecommendationHtml(recommendation) + '</section>' +
       '<section class="learningMapPanel">' + learningMapFocusHtml(map, summary) + '</section>' +
-      '<section class="learningMapPanel"><h3>Skill cluster status</h3><div class="learningMapNodeList">' + nodesHtml + '</div></section>' +
+      '<section class="learningMapPanel learningMapRecommendationPanel">' + learningMapRecommendationHtml(recommendation) + '</section>' +
+      '<section class="learningMapPanel"><h3>Skill overview</h3><div class="learningMapNodeList">' + nodesHtml + '</div></section>' +
       '<section class="learningMapPanel"><h3>Not enough evidence</h3>' + learningMapNotEnoughHtml(map) + '</section>' +
       '<section class="learningMapPanel"><h3>Early weak signals</h3>' + learningMapSignalsHtml(map) + '</section>' +
       '<section class="learningMapPanel"><h3>Recent work</h3>' + learningMapRecentHtml() + '</section>' +
@@ -9171,6 +9310,8 @@ body.b1Mode.b1LongAnswer #answerInput {
   var currentWasRetry = false, currentShowMicroRule = false;
   var resultHeatmapType = "definite";
   var learnerModel = defaultLearnerModel();
+  var homeRecommendedRouteKey = "today";
+  var testerIntroDismissed = false;
 
   function el(id) { return document.getElementById(id); }
   function focusWithoutScroll(node) {
@@ -9194,6 +9335,94 @@ body.b1Mode.b1LongAnswer #answerInput {
     node.hidden = !message;
     if (APP_STATUS_TIMER) window.clearTimeout(APP_STATUS_TIMER);
     if (message) APP_STATUS_TIMER = window.setTimeout(function(){ node.hidden = true; }, 5200);
+  }
+  function copyTextWithFallback(text, fallbackId, statusId, successMessage, fallbackMessage) {
+    var fallback = el(fallbackId);
+    var status = el(statusId);
+    if (fallback) fallback.hidden = true;
+    function showFallback(message) {
+      if (fallback) {
+        fallback.hidden = false;
+        fallback.value = text;
+        fallback.focus();
+        fallback.select();
+      }
+      if (status) status.textContent = message || fallbackMessage || "Clipboard unavailable. Select and copy the text.";
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function(){
+        if (status) status.textContent = successMessage || "Copied.";
+      }).catch(function(){
+        showFallback(fallbackMessage || "Clipboard blocked. Select and copy the text.");
+      });
+      return;
+    }
+    showFallback(fallbackMessage || "Clipboard unavailable. Select and copy the text.");
+  }
+  function testerReportSummary() {
+    var snapshot = buildDebugSnapshot();
+    return {
+      appVersion:OZMOSIS_APP_VERSION,
+      route:snapshot.route,
+      mode:snapshot.mode,
+      currentItem:snapshot.currentItem && snapshot.currentItem.id || null,
+      viewport:snapshot.viewport,
+      storage:{
+        progressKeyExists:snapshot.storage && snapshot.storage.progressKeyExists,
+        evidenceKeyExists:snapshot.storage && snapshot.storage.evidenceKeyExists,
+        evidenceCount:snapshot.storage && snapshot.storage.evidenceCount
+      },
+      recommendation:snapshot.recommendation,
+      layoutWarnings:snapshot.layout && snapshot.layout.warnings
+    };
+  }
+  function buildTesterReport() {
+    var item = debugCurrentItem();
+    var summary = testerReportSummary();
+    return [
+      "Ozmosis tester report",
+      "",
+      "What happened:",
+      "",
+      "What did you expect:",
+      "",
+      "Could you continue? Yes/No",
+      "",
+      "Screen: " + debugCurrentRoute(),
+      "Mode: " + (b1Runtime.active ? b1Runtime.mode : state),
+      "Current item: " + (item && item.id ? item.id : "none"),
+      "App version: " + OZMOSIS_APP_VERSION,
+      "Timestamp: " + new Date().toISOString(),
+      "Viewport: " + Math.round(window.innerWidth || 0) + "x" + Math.round(window.innerHeight || 0) + " DPR " + Number(window.devicePixelRatio || 1),
+      "Device/browser: " + String(navigator.userAgent || "unknown"),
+      "Debug summary: " + JSON.stringify(summary)
+    ].join("\n");
+  }
+  function copyTesterReport(target) {
+    var fallbackId = target === "notes" ? "testerNotesFallback" : "testerReportFallback";
+    var statusId = target === "notes" ? "testerNotesStatus" : "debugSnapshotStatus";
+    copyTextWithFallback(buildTesterReport(), fallbackId, statusId, "Tester report copied.", "Clipboard blocked. Select and copy the tester report.");
+  }
+  function copyTesterDebugSnapshot(target) {
+    var fallbackId = target === "notes" ? "testerNotesFallback" : "debugSnapshotFallback";
+    var statusId = target === "notes" ? "testerNotesStatus" : "debugSnapshotStatus";
+    copyTextWithFallback(JSON.stringify(buildDebugSnapshot(), null, 2), fallbackId, statusId, "Debug snapshot copied.", "Clipboard blocked. Select and copy the debug snapshot.");
+  }
+  function showTesterNotes() {
+    setMenu(false);
+    setDevTools(false);
+    closeDiagnosticIntro();
+    closePracticeExitConfirm();
+    var overlay = el("testerNotesOverlay");
+    if (!overlay) return;
+    overlay.hidden = false;
+    if (el("testerNotesFallback")) el("testerNotesFallback").hidden = true;
+    if (el("testerNotesStatus")) el("testerNotesStatus").textContent = "";
+    setTimeout(function(){ if (el("testerNotesCopyReportBtn")) el("testerNotesCopyReportBtn").focus(); }, 0);
+  }
+  function closeTesterNotes() {
+    var overlay = el("testerNotesOverlay");
+    if (overlay) overlay.hidden = true;
   }
   function b1ProgressCount(store) {
     store = store && typeof store === "object" ? store : safeGetB1Progress();
@@ -9750,7 +9979,7 @@ body.b1Mode.b1LongAnswer #answerInput {
     summary.todayCount = Math.min(B1_DAILY_TOTAL, summary.todayCount);
     return summary;
   }
-  function setHomeStatus(summary) {
+  function setHomeStatus(summary, mapSummary, recommendation) {
     var strip = el("homeStatusStrip");
     if (!strip) return;
     strip.classList.remove("single");
@@ -9760,13 +9989,20 @@ body.b1Mode.b1LongAnswer #answerInput {
       return;
     }
     if (!summary.hasProgress) {
-      strip.classList.add("single");
-      if (el("homeStatusToday")) el("homeStatusToday").textContent = "Ready for B1 practice";
+      if (el("homeStatusToday")) el("homeStatusToday").textContent = "Ready";
+      if (el("homeStatusDue")) el("homeStatusDue").textContent = "Diagnostic";
+      if (el("homeStatusWeak")) el("homeStatusWeak").textContent = "Not tested";
       return;
     }
     if (el("homeStatusToday")) el("homeStatusToday").textContent = summary.todayCount ? summary.todayCount + "/12" : (summary.latestLabel ? "Last: " + summary.latestLabel : "Ready");
-    if (el("homeStatusDue")) el("homeStatusDue").textContent = summary.daily ? String(summary.retryCount) : String(summary.dueCount);
-    if (el("homeStatusWeak")) el("homeStatusWeak").textContent = String(summary.weakCount);
+    if (el("homeStatusDue")) {
+      var primary = recommendation && recommendation.primary || {};
+      el("homeStatusDue").textContent = primary.shortLabel || primary.title || "B1 practice";
+    }
+    if (el("homeStatusWeak")) {
+      var thin = Number(mapSummary && mapSummary.notTested || 0) + Number(mapSummary && mapSummary.notEnough || 0);
+      el("homeStatusWeak").textContent = thin ? thin + " thin" : "Early evidence";
+    }
   }
   function setHomeHeroProgress(count, retryCount) {
     var nodes = el("homeHeroProgress") ? el("homeHeroProgress").querySelectorAll("span") : [];
@@ -9778,33 +10014,48 @@ body.b1Mode.b1LongAnswer #answerInput {
   }
   function renderHomeCommandScreen() {
     var summary = b1HomeProgressSummary();
+    var map = b1LearningMapScaffold();
+    var evidenceSummary = b1EvidenceSummary();
+    var mapSummary = learningMapSummaryFor(map, evidenceSummary);
+    var recommendation = b1NextRecommendedPractice({ map:map, matrix:b1SkillMatrixData(), evidenceSummary:evidenceSummary });
+    var primary = recommendation && recommendation.primary || {};
+    var route = primary.action && primary.action.routeKey || primary.routeKey || "today";
     var title = "Start Today’s B1 Sprint";
     var meta = "12 mixed B1 items · fast practice";
     var cta = "START";
     var fill = 0;
     var retryFill = 0;
+    title = primary.title || title;
+    meta = Array.isArray(primary.why) && primary.why.length ? primary.why[0] : "Use existing B1 routes to collect evidence.";
+    cta = primary.routeLabel || (primary.action && primary.action.label) || "OPEN";
+    homeRecommendedRouteKey = route || "today";
     if (!summary.storageAvailable || !summary.parseOk) {
       title = "Start B1 practice";
       meta = "Local progress unavailable";
       cta = "START";
+      homeRecommendedRouteKey = "today";
     } else if (summary.daily && summary.dailyFinished) {
       title = "Today's sprint complete";
       meta = "12 / 12 done - extra practice available";
       cta = "EXTRA ROUND";
       fill = 12;
+      homeRecommendedRouteKey = "today";
     } else if (summary.daily) {
       title = "Continue today's practice";
       meta = summary.todayCount + " / 12 complete - " + summary.retryCount + " waiting for retry";
       cta = "CONTINUE";
       fill = summary.todayCount;
       retryFill = summary.retryCount;
+      homeRecommendedRouteKey = "today";
     }
     if (el("homeHeroTitle")) el("homeHeroTitle").textContent = title;
     if (el("homeHeroMeta")) el("homeHeroMeta").textContent = meta;
     if (el("homeHeroCta")) el("homeHeroCta").textContent = cta;
     if (el("homeSprintBtn")) el("homeSprintBtn").setAttribute("aria-label", title + ". " + meta);
+    if (el("homeHeroProgress")) el("homeHeroProgress").hidden = homeRecommendedRouteKey !== "today";
     setHomeHeroProgress(fill, retryFill);
-    setHomeStatus(summary);
+    setHomeStatus(summary, mapSummary, recommendation);
+    if (el("homeTesterCard")) el("homeTesterCard").hidden = testerIntroDismissed || b1EvidenceCount() > 0;
   }
   function setLearningMapVisible(visible) {
     if (el("learningMapScreen")) el("learningMapScreen").hidden = !visible;
@@ -12256,6 +12507,10 @@ body.b1Mode.b1LongAnswer #answerInput {
     var grid = el("connectorChoiceGrid");
     if (!grid) return;
     grid.innerHTML = "";
+    var note = document.createElement("div");
+    note.className = "productionEvidenceNote";
+    note.textContent = "Self-marked practice. Ozmosis does not auto-grade this.";
+    grid.appendChild(note);
     if (item.usefulPhrases && item.usefulPhrases.length) {
       var phrases = document.createElement("ul");
       phrases.className = "productionChecklist";
@@ -12561,26 +12816,30 @@ body.b1Mode.b1LongAnswer #answerInput {
     });
     var weakSignals = Object.keys(weakByCategory).sort(function(a, b){ return weakByCategory[b] - weakByCategory[a]; }).slice(0, 3).map(b1DiagnosticCategoryLabel);
     var map = b1LearningMapScaffold();
-    var notEnough = map.nodes.filter(function(node){ return !node.hasEnoughEvidence; }).slice(0, 3).map(function(node){ return node.label; });
+    var notTested = map.nodes.filter(function(node){ return Number(node.evidenceCount || 0) === 0; }).slice(0, 3).map(function(node){ return node.label; });
+    var notEnough = map.nodes.filter(function(node){ return Number(node.evidenceCount || 0) > 0 && !node.hasEnoughEvidence; }).slice(0, 3).map(function(node){ return node.label; });
     return {
       attempted:b1AnsweredCount(),
       correct:b1Runtime.correct,
       target:b1Runtime.target || B1_DIAGNOSTIC_TOTAL,
       unsureGuessed:unsureGuessed,
       weakSignals:weakSignals,
+      notTested:notTested,
       notEnough:notEnough,
       evidenceRecords:records.length
     };
   }
   function b1DiagnosticResultHtml(data) {
     var weak = data.weakSignals.length ? data.weakSignals.join(", ") : "No clear weak signal yet";
+    var notTested = data.notTested && data.notTested.length ? data.notTested.join(", ") : "No broad area flagged";
     var notEnough = data.notEnough.length ? data.notEnough.join(", ") : "No broad area flagged";
     return "<div class=\"sessionCoverage\">" +
       "<strong>Items attempted</strong><span>" + data.attempted + " of " + data.target + "</span>" +
       "<strong>Correct this time</strong><span>" + data.correct + " / " + data.target + "</span>" +
       "<strong>Unsure / guessed</strong><span>" + data.unsureGuessed + "</span>" +
       "<strong>Early weak signals</strong><span>" + escapeHtml(weak) + "</span>" +
-      "<strong>Evidence still thin</strong><span>" + escapeHtml(notEnough) + "</span>" +
+      "<strong>Not tested yet</strong><span>" + escapeHtml(notTested) + "</span>" +
+      "<strong>Not enough evidence yet</strong><span>" + escapeHtml(notEnough) + "</span>" +
       "</div>";
   }
   function showB1Results() {
@@ -12600,7 +12859,7 @@ body.b1Mode.b1LongAnswer #answerInput {
     document.body.setAttribute("data-mode", "definite");
     el("modeTitle").textContent = "B1 Sprint";
     el("promptValue").className = "promptWord";
-    el("promptValue").textContent = pct + "% accuracy";
+    el("promptValue").textContent = "Sprint complete";
     el("englishGloss").textContent = b1Runtime.title;
     if (el("translationToggle")) el("translationToggle").hidden = true;
     if (el("b1PracticeTag")) el("b1PracticeTag").hidden = true;
@@ -12620,20 +12879,21 @@ body.b1Mode.b1LongAnswer #answerInput {
       var diagnostic = b1DiagnosticResultData();
       el("modeTitle").textContent = "B1 Diagnostic Sprint";
       el("promptValue").textContent = "Diagnostic complete";
-      el("englishGloss").textContent = "This is an evidence snapshot. It helps Ozmosis see what has been tested, what looks unstable, and where more evidence is still needed.";
+      el("englishGloss").textContent = "This is an evidence snapshot, not a score. It helps Ozmosis see what has been tested and where evidence is still thin.";
       el("resultSummary").textContent = "Items attempted: " + diagnostic.attempted + " / " + diagnostic.target;
       el("accuracySummary").textContent = "Correct this time: " + diagnostic.correct + " / " + diagnostic.target + " - Unsure / guessed: " + diagnostic.unsureGuessed;
       el("weakSummary").innerHTML = b1DiagnosticResultHtml(diagnostic);
     } else if (b1Runtime.dailySprint) {
       var dailyStats = b1DailyStats(b1CurrentDailySprint());
-      el("resultSummary").textContent = dailyStats.success + " / " + dailyStats.total + " complete";
+      el("resultSummary").textContent = "Correct this time: " + b1Runtime.correct + " / " + scored;
+      el("bestSummary").textContent = "Today: " + dailyStats.success + " / " + dailyStats.total + " complete. Retry items stay in today's queue.";
     } else {
-      el("resultSummary").textContent = b1Runtime.correct + " / " + scored + " correct";
+      el("resultSummary").textContent = "Correct this time: " + b1Runtime.correct + " / " + scored;
     }
-    el("bestSummary").textContent = b1Runtime.mode === "b1_diagnostic" ? "Retaking adds another evidence snapshot; it does not erase this one." : "";
+    if (b1Runtime.mode === "b1_diagnostic") el("bestSummary").textContent = "Retaking adds another evidence snapshot; it does not erase this one.";
     if (b1Runtime.mode !== "b1_diagnostic") {
-      el("accuracySummary").textContent = "Progress saved locally";
-      el("weakSummary").innerHTML = "<div class=\"sessionCoverage\"><strong>Items practised</strong><span>" + answered + " of " + b1Runtime.target + "</span><strong>Wrong</strong><span>" + b1Runtime.wrong + "</span><strong>Assisted</strong><span>" + b1Runtime.assisted + "</span><strong>Production</strong><span>" + b1Runtime.practised + "</span></div>";
+      el("accuracySummary").textContent = "Progress saved locally. This is evidence, not mastery.";
+      el("weakSummary").innerHTML = "<div class=\"sessionCoverage\"><strong>Items practised</strong><span>" + answered + " of " + b1Runtime.target + "</span><strong>Incorrect this time</strong><span>" + b1Runtime.wrong + "</span><strong>Assisted</strong><span>" + b1Runtime.assisted + "</span><strong>Production</strong><span>Self-marked practice: " + b1Runtime.practised + "</span></div>";
     }
     var rp = el("resultPanel");
     rp.classList.add("visible");
@@ -12753,10 +13013,11 @@ body.b1Mode.b1LongAnswer #answerInput {
   function importProgressWithFeedback(file){ if (!file) { showAppStatus("No import file selected.", "warn"); return; } var reader=new FileReader(); reader.onload=function(){ try { var parsed=JSON.parse(String(reader.result || "{}")), data=parsed.data || parsed; safeSetObject(data); if (parsed.leitner && typeof parsed.leitner === "object") safeSetLeitner(parsed.leitner); if (parsed.b1 && typeof parsed.b1 === "object") safeSetB1Progress(parsed.b1); if (parsed.evidence && typeof parsed.evidence === "object") safeSetB1Evidence(parsed.evidence); loadPersistent(); setMenu(false); showHomeScreen(); showAppStatus("Import successful: " + b1ProgressCount() + " B1 progress items and " + b1EvidenceCount() + " evidence records available.", "good"); } catch(e){ showAppStatus("Import failed: invalid JSON file.", "bad"); if (el("feedback")) { el("feedback").textContent="Import failed: invalid JSON file."; el("feedback").className="feedback missed"; } } }; reader.readAsText(file); }
   importProgress = importProgressWithFeedback;
   document.addEventListener("click", function(event){
-    var target = event.target && event.target.closest ? event.target.closest("#diagnosticIntroStartBtn, #diagnosticIntroCancelBtn, #diagnosticIntroOverlay, #practiceExitControl, #practiceExitStayBtn, #practiceExitConfirmBtn, #practiceExitOverlay") : null;
+    var target = event.target && event.target.closest ? event.target.closest("#diagnosticIntroStartBtn, #diagnosticIntroCancelBtn, #diagnosticIntroOverlay, #practiceExitControl, #practiceExitStayBtn, #practiceExitConfirmBtn, #practiceExitOverlay, #testerNotesCopyReportBtn, #testerNotesCopyDebugBtn, #testerNotesCloseBtn, #testerNotesOverlay") : null;
     if (!target) return;
     if (target.id === "diagnosticIntroOverlay" && event.target !== target) return;
     if (target.id === "practiceExitOverlay" && event.target !== target) return;
+    if (target.id === "testerNotesOverlay" && event.target !== target) return;
     event.preventDefault();
     event.stopPropagation();
     event.stopImmediatePropagation();
@@ -12765,9 +13026,19 @@ body.b1Mode.b1LongAnswer #answerInput {
     if (target.id === "practiceExitControl") { showPracticeExitConfirm(); return; }
     if (target.id === "practiceExitStayBtn" || target.id === "practiceExitOverlay") { closePracticeExitConfirm(); renderHud(); return; }
     if (target.id === "practiceExitConfirmBtn") { confirmPracticeExit(); return; }
+    if (target.id === "testerNotesCopyReportBtn") { copyTesterReport("notes"); return; }
+    if (target.id === "testerNotesCopyDebugBtn") { copyTesterDebugSnapshot("notes"); return; }
+    if (target.id === "testerNotesCloseBtn" || target.id === "testerNotesOverlay") { closeTesterNotes(); return; }
   }, true);
   document.addEventListener("keydown", function(event){
     if (!(event.key === "Escape" || event.key === "Esc")) return;
+    if (el("testerNotesOverlay") && !el("testerNotesOverlay").hidden) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+      closeTesterNotes();
+      return;
+    }
     if (el("diagnosticIntroOverlay") && !el("diagnosticIntroOverlay").hidden) {
       event.preventDefault();
       event.stopPropagation();
@@ -12801,6 +13072,10 @@ body.b1Mode.b1LongAnswer #answerInput {
     var target = event.target && event.target.closest ? event.target.closest("button") : null;
     if (!target) return;
     var actions = {
+      homeSprintBtn:function(){ openB1RecommendationRoute(homeRecommendedRouteKey || "today"); },
+      homeTesterNotesBtn:function(){ showTesterNotes(); },
+      homeTesterDiagnosticBtn:function(){ testerIntroDismissed = true; startB1DiagnosticSprint(); },
+      homeTesterSkipBtn:function(){ testerIntroDismissed = true; if (el("homeTesterCard")) el("homeTesterCard").hidden = true; },
       homeRedemittelBtn:function(){ showRedemittelHub(); },
       redemittelBackBtn:function(){ showHomeScreen(); },
       redemittelMixedBtn:function(){ startRedemittelRound("mixed"); },
@@ -13279,10 +13554,12 @@ body.b1Mode.b1LongAnswer #answerInput {
     newRound();
   }
   document.addEventListener("click", function(event){
-    var target = event.target && event.target.closest ? event.target.closest("#copyDebugSnapshotBtn, #copySkillMatrixSnapshotBtn, #devFindItemBtn, [data-dev-preview-id], #devPreviewShowModelBtn, #devPreviewMockMarkBtn, #devPreviewCopyItemIdBtn, #devPreviewClearBtn, #devPreviewCheckBtn") : null;
+    var target = event.target && event.target.closest ? event.target.closest("#copyDebugSnapshotBtn, #copySkillMatrixSnapshotBtn, #copyTesterReportBtn, #openTesterNotesBtn, #devFindItemBtn, [data-dev-preview-id], #devPreviewShowModelBtn, #devPreviewMockMarkBtn, #devPreviewCopyItemIdBtn, #devPreviewClearBtn, #devPreviewCheckBtn") : null;
     if (!target) return;
     if (target.id === "copyDebugSnapshotBtn") { copyDebugSnapshot(); return; }
     if (target.id === "copySkillMatrixSnapshotBtn") { copySkillMatrixSnapshot(); return; }
+    if (target.id === "copyTesterReportBtn") { copyTesterReport("dev"); return; }
+    if (target.id === "openTesterNotesBtn") { showTesterNotes(); return; }
     if (target.id === "devFindItemBtn") { renderDevPreviewResults(); return; }
     handleDevPreviewClick(event);
   }, false);

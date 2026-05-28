@@ -17,9 +17,9 @@ Current priority order:
 
 ## Current Known Version
 
-Current working version: `v0.46`
+Current working version: `v0.48`
 
-Next planned patch: `v0.47 - Not Enough Evidence Handling`
+Next planned patch: `v0.48.1 - Confidence-as-Next Interaction`
 
 Known current state:
 
@@ -58,6 +58,8 @@ Known current state:
 - v0.44 adds an internal / QA-facing B1 Skill Matrix data model that separates evidence by skill node and task depth while keeping states conservative.
 - v0.45 adds cautious rules-based Next Recommended Practice guidance to the Learning Map, moves Diagnostic Sprint explanation into a pre-start step, adds universal active-practice exit confirmation, and recovers main-page scrolling.
 - v0.46 standardises learner-facing progress labels around Not tested, Not enough evidence, Introduced, Emerging, and Developing, and documents External AI Review Handoff as a roadmap-only future concept.
+- v0.47 clarifies Not tested and Not enough evidence messaging across Learning Map, Suggested Next Practice, Diagnostic results, and production-card evidence copy.
+- v0.48 adds tester-ready Home guidance, Known Bugs / Tester Notes, safe tester-report copy, clearer sprint-complete copy, compact Learning Map ordering, and Dev Tools tester-report access without changing evidence semantics.
 - B1 progress persists under `ozmosis_b1_sprint_progress_v1`.
 - B1 progress evidence persists under `ozmosis_b1_progress_evidence_v1`.
 - Existing Case Trainer, Options, Dev Tools, export/import, and localStorage compatibility are preserved.
@@ -101,8 +103,8 @@ Recommended clean repo structure:
 |  |- ozmosis_b1_connector_sprint_v1_bank.json
 |  `- ozmosis_b1_wortschatz_survival_set_v1.json
 `- docs/
-   |- OZMOSIS_SOURCE_BRIEF_v0.46.md
-   |- OZMOSIS_DEVELOPMENT_ROADMAP_v0.46.md
+   |- OZMOSIS_SOURCE_BRIEF_v0.48.md
+   |- OZMOSIS_DEVELOPMENT_ROADMAP_v0.48.md
    |- OZMOSIS_B1_Test_Sprint_Pivot_Production_Plan.md
    |- OZMOSIS_Case_Teaching_Leitner_Iteration_Plan.md
    `- qa/
