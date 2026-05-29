@@ -1,9 +1,9 @@
-# OZMOSIS SOURCE BRIEF v0.57.1
+# OZMOSIS SOURCE BRIEF v0.57.2
 
 Version: Working Source Brief Update  
 Status: Current planning brief  
 Project: Ozmosis - Deutsch Lernen App  
-Current known development position: v0.57.1 completed  
+Current known development position: v0.57.2 completed  
 Next planned patch: v0.58 - Skill Matrix QA  
 
 Versioning rule:
@@ -51,8 +51,8 @@ When Codex, ChatGPT, or any future production chat works on Ozmosis, use this hi
 
 1. Latest uploaded current project files/package in the active chat.
 2. Current repo-root `index.html`.
-3. Current versioned README, currently `README-v0_57_1.md`.
-4. Current versioned changelog, currently `CHANGELOG-v0_57_1.txt`.
+3. Current versioned README, currently `README-v0_57_2.md`.
+4. Current versioned changelog, currently `CHANGELOG-v0_57_2.txt`.
 5. Current `AGENTS.md`.
 6. Current Codex / Antigravity reports and logs.
 7. Current generated content-bank files.
@@ -95,8 +95,8 @@ Preferred long-term structure:
   source-brief.md
   roadmap.md
   changelog-notes.md
-README-v0_57_1.md
-CHANGELOG-v0_57_1.txt
+README-v0_57_2.md
+CHANGELOG-v0_57_2.txt
 AGENTS.md
 ```
 
@@ -106,7 +106,7 @@ But this should be introduced carefully and only when useful.
 
 The detailed version-by-version roadmap lives separately in:
 
-`docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.57.1.md`
+`docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.57.2.md`
 
 The Source Brief remains the strategic orientation document. The roadmap is a planning document, not permission for Codex to implement future versions early.
 
@@ -705,7 +705,7 @@ You often choose accusative forms in location sentences.
 Current known development state:
 
 ```txt
-v0.57.1 completed
+v0.57.2 completed
 Next planned patch: v0.58 - Skill Matrix QA
 ```
 
@@ -993,6 +993,16 @@ Completed in v0.57.1:
 
 ```txt
 Ozmosis received a scoped mobile-first UX, interaction-flow, visual-system, accessibility, and learner-cognition pass across Home, menu, Options, route pages, active practice, feedback, production cards, diagnostic flow, Learning Map, Skill Matrix, Case Trainer, Dev Tools, and tester surfaces. The dark neon console identity was consolidated with responsive tokens, calmer layout hierarchy, clearer cloze and feedback states, a navigation-focused menu drawer, grouped/collapsed Options, stronger focus visibility, safer HUD clearance, and responsive validation. v0.57 recommendation hardening, scoring, evidence semantics, storage keys, export/import compatibility, content banks, B1-only scope, and Today's B1 Sprint composition remain unchanged.
+```
+
+### v0.57.2  -  Flow, Navigation, and Mobile UX Corrections
+
+Correct the remaining post-v0.57.1 mobile navigation, information-architecture, and activity-flow issues without changing learning semantics.
+
+Completed in v0.57.2:
+
+```txt
+Ozmosis now groups Home actions by learner purpose instead of false numbering, keeps route hubs unnumbered and activity-labelled, fixes mobile menu scroll and Settings reachability, prevents the menu Close control from clipping, moves production-card scaffolding behind learner-controlled reveals, adds a no-evidence production skip path, simplifies Diagnostic Sprint result hierarchy, makes Learning Map recommendation/details less debug-like, adds mobile Skill Matrix cards without changing matrix evidence logic, harmonises Case Trainer setup/help labels, refines cloze/input sizing, demotes Continue without confidence after feedback, moves toast/status messages away from primary content, and preserves Arabic UI with German learning content LTR. v0.57 recommendation hardening, scoring, evidence semantics, storage keys, export/import compatibility, content banks, route inventory, B1-only scope, and Today's B1 Sprint composition remain unchanged.
 ```
 
 ### v0.58  -  Skill Matrix QA

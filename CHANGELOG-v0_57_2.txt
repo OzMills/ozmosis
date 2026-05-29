@@ -1,3 +1,19 @@
+## v0.57.2 - Flow, Navigation, and Mobile UX Corrections
+
+- Corrected post-v0.57.1 mobile navigation and flow issues found in live screenshot review.
+- Fixed menu drawer scrollability so Settings remains reachable on mobile and the Close control is not clipped.
+- Reworked Home and route hubs so cards no longer use numbering that implies a false sequence; sections now group actions by purpose.
+- Clarified route and activity types so learners can distinguish diagnostics, evidence views, mixed practice, topic drills, tools, and self-marked production.
+- Tightened production cards by moving useful phrases, self-check, and example answers behind learner-controlled reveals where safe.
+- Added a production-card "I can't do this now" skip path that advances without creating production-practice evidence.
+- Simplified Diagnostic Sprint explanation/result hierarchy while preserving diagnostic evidence semantics.
+- Reduced learner-facing debug-like wording in Learning Map recommendation/details while preserving Dev Tools/debug access to technical rationale.
+- Added a mobile-readable Skill Matrix card presentation without changing matrix evidence logic.
+- Harmonised Case Trainer setup naming, help/action labels, and feedback layout with the rest of Ozmosis while preserving Case Trainer logic and storage.
+- Improved cloze/input blank sizing, feedback hierarchy, confidence/Weiter action hierarchy, toast placement, HUD clearance, and Arabic/LTR smoke behaviour.
+- Preserved v0.57 recommendation hardening, scoring, evidence semantics, confidence values, support-level semantics, task-depth semantics, diagnostic semantics, production self-marking, storage keys, export/import compatibility, route composition, Today's B1 Sprint composition, content banks, and B1-only scope.
+- Added QA documentation at `docs/qa/v0.57.2_flow_navigation_mobile_ux_corrections.md`.
+
 ## v0.57.1 - Big UX Update
 
 - Performed a full mobile-first UX and visual-system audit across Home, route screens, active practice, feedback, menu, Options, Learning Map, Skill Matrix, Case Trainer, Dev Tools, and tester surfaces.

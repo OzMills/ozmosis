@@ -17,13 +17,13 @@ Current priority order:
 
 ## Current Known Version
 
-Current working version: `v0.57.1`
+Current working version: `v0.57.2`
 
 Next planned patch: `v0.58 - Skill Matrix QA`
 
-Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.57.1.md`
+Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.57.2.md`
 
-Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.57.1.md`
+Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.57.2.md`
 
 Known current state:
 
@@ -72,6 +72,7 @@ Known current state:
 - v0.56 improves Suggested Next Practice so recommendations can consider task-depth gaps, repair evidence, contrast evidence, support-level context, and production self-marking limits while routing only to existing practice screens.
 - v0.57 audits and hardens Suggested Next Practice against evidence inflation from thin, easy, scaffolded, diagnostic-only, self-marked production, repair/contrast, and broad Wortschatz evidence while preserving routes, scoring, storage, content banks, and Today's B1 Sprint composition.
 - v0.57.1 performs the Big UX Update: a mobile-first visual-system, menu, Home, route-page, active-practice, cloze, feedback, Options, Learning Map, Skill Matrix, Case Trainer, Dev Tools, responsive, keyboard/focus, and Arabic/LTR pass while preserving v0.57 recommendation hardening and all learning/storage semantics.
+- v0.57.2 corrects the remaining post-v0.57.1 flow, navigation, and mobile UX issues: scrollable menu/settings access, unnumbered purpose-based Home and route hubs, production-card reveals and skip path, simpler diagnostic results, learner-friendly Learning Map copy, mobile Skill Matrix cards, Case Trainer harmonisation, cloze/feedback/toast/HUD refinements, and Arabic/LTR validation without changing scoring, evidence, storage, route inventory, content banks, or Today's B1 Sprint composition.
 - v0.54 strengthens repair feedback with safer corrected-sentence feedback, derived repair categories, nonsense-answer fallback, capitalisation hints, and word-order micro-feedback where metadata supports it.
 - v0.53.1 stabilised mobile/tablet/desktop UX by fixing header/menu/home clipping, active-practice spacing, support labelling, repair nonsense feedback, and safe-area/HUD behaviour without changing learning semantics.
 - B1 progress persists under `ozmosis_b1_sprint_progress_v1`.

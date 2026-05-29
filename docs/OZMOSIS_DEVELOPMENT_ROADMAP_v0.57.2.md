@@ -1,16 +1,16 @@
-# Ozmosis Development Roadmap v0.57.1
+# Ozmosis Development Roadmap v0.57.2
 
 Status: current planning roadmap
-Current known development position: v0.57.1 completed
+Current known development position: v0.57.2 completed
 Next planned patch: v0.58 - Skill Matrix QA
 
-This roadmap is planning guidance only. Current repo files, `index.html`, `README-v0_57_1.md`, `CHANGELOG-v0_57_1.txt`, `AGENTS.md`, and the versioned source brief remain higher-trust sources for implementation state. Do not implement future items early.
+This roadmap is planning guidance only. Current repo files, `index.html`, `README-v0_57_2.md`, `CHANGELOG-v0_57_2.txt`, `AGENTS.md`, and the versioned source brief remain higher-trust sources for implementation state. Do not implement future items early.
 
 ## Source-Of-Truth Rules
 
 - Current repo files beat old chats, screenshots, memory, and generated reports.
 - Repo-root `index.html` remains the main deployed app file.
-- `docs/OZMOSIS_SOURCE_BRIEF_v0.57.1.md` is the current strategic source brief.
+- `docs/OZMOSIS_SOURCE_BRIEF_v0.57.2.md` is the current strategic source brief.
 - This roadmap is not permission to broaden scope in any patch.
 
 ## Architecture Guardrails
@@ -64,6 +64,7 @@ This roadmap is planning guidance only. Current repo files, `index.html`, `READM
 - v0.56 improved Suggested Next Practice so it can account for task-depth gaps, repair evidence, contrast evidence, support-level context, and production self-marking limits while routing only to existing practice screens.
 - v0.57 audited and hardened Suggested Next Practice against evidence inflation from thin, easy, scaffolded, diagnostic-only, self-marked production, repair/contrast, and broad Wortschatz evidence without changing scoring, storage, content banks, routes, B1 scope, or Today's B1 Sprint composition.
 - v0.57.1 completed a scoped Big UX Update across Home, menu, Options, route pages, active practice, feedback, production cards, diagnostic flow, Learning Map, Skill Matrix, Case Trainer, Dev Tools, and tester surfaces while preserving v0.57 recommendation semantics, scoring, evidence, storage keys, content banks, route inventory, B1-only scope, and Today's B1 Sprint composition.
+- v0.57.2 corrected post-v0.57.1 flow, navigation, and mobile UX issues: unnumbered purpose-based Home and route hubs, scrollable mobile menu and Settings access, production-card reveals and skip path, simplified diagnostic results, learner-friendly Learning Map copy, mobile Skill Matrix cards, Case Trainer harmonisation, cloze/feedback/toast/HUD refinements, and Arabic/LTR validation while preserving all learning/storage semantics.
 
 ## Current B1 Direction
 
@@ -144,6 +145,18 @@ Completed goal: expose a modest learner-facing Task-depth matrix inside the exis
 ### v0.57.1 - Big UX Update
 
 Completed goal: consolidate the mobile-first interaction and visual system so the current B1 app feels calmer, clearer, more compact, and more deliberate without changing learning semantics.
+
+Preserved:
+
+- v0.57 recommendation hardening and QA metadata;
+- scoring and correctness semantics;
+- confidence, support-level, task-depth, diagnostic, and production self-marking semantics;
+- localStorage keys and export/import compatibility;
+- current routes, content banks, B1-only scope, and Today's B1 Sprint composition.
+
+### v0.57.2 - Flow, Navigation, and Mobile UX Corrections
+
+Completed goal: correct the remaining post-v0.57.1 mobile navigation, information-architecture, route-hub, production-card, diagnostic-result, Learning Map, Skill Matrix presentation, Case Trainer, cloze, feedback, toast, HUD, and Arabic/LTR issues without changing evidence or scoring semantics.
 
 Preserved:
 

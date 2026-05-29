@@ -6873,6 +6873,287 @@ body[data-support-lang="ar"] .productionChecklist {
   }
 }
 
+/* v0.57.2: flow, navigation, and mobile UX corrections. */
+#settingsPanel.open {
+  overflow:hidden !important;
+}
+
+#settingsPanel .menuHeader {
+  flex:0 0 auto;
+}
+
+.menuScroll {
+  flex:1 1 auto;
+  min-height:0;
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  display:grid;
+  gap:9px;
+  padding-right:2px;
+}
+
+.menuCloseBtn {
+  width:48px !important;
+  min-width:48px !important;
+  min-height:44px !important;
+  padding:0 !important;
+  overflow:visible !important;
+  font-size:1.35rem !important;
+  line-height:1 !important;
+  letter-spacing:0 !important;
+  text-transform:none !important;
+}
+
+.homeRouteBadge,
+.homeNavBadge {
+  min-width:64px;
+  justify-self:start;
+  align-self:start;
+  display:inline-grid;
+  place-items:center;
+  padding:.36rem .45rem;
+  border:1px solid color-mix(in srgb, var(--accent) 36%, var(--line));
+  border-radius:999px;
+  color:var(--accent);
+  background:rgba(0,229,255,.06);
+  font:950 .62rem/1 var(--mono);
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  white-space:normal;
+  text-align:center;
+}
+
+.homeRouteNumber,
+.homeNavNumber {
+  display:none !important;
+}
+
+.homeNavButton {
+  display:grid;
+  grid-template-columns:minmax(86px, auto) minmax(0, 1fr);
+  align-items:start;
+  gap:10px;
+  text-align:left;
+}
+
+.homeNavMain {
+  display:grid;
+  gap:4px;
+  min-width:0;
+}
+
+.homeNavTitle {
+  color:var(--text);
+  font-size:clamp(.96rem, 3.6vw, 1.12rem);
+  font-weight:1000;
+}
+
+.homeNavSub {
+  color:var(--mutedText);
+  font-size:clamp(.78rem, 2.8vw, .9rem);
+  line-height:1.25;
+}
+
+.homeSection.planned .homeRouteCard {
+  min-height:54px;
+  padding:9px 11px;
+  opacity:.72;
+}
+
+.homeSection.planned .homeRouteBadge {
+  border-color:color-mix(in srgb, var(--muted) 32%, var(--line));
+  color:var(--muted);
+  background:rgba(130,150,180,.04);
+}
+
+.productionGrid {
+  align-items:stretch;
+}
+
+.productionReveal {
+  width:min(560px, 100%);
+  border:1px solid color-mix(in srgb, var(--accent) 28%, var(--line));
+  border-radius:var(--cardRadius);
+  background:rgba(5,11,22,.56);
+  overflow:hidden;
+}
+
+.productionReveal > summary {
+  min-height:44px;
+  display:grid;
+  align-items:center;
+  padding:10px 12px;
+  cursor:pointer;
+  color:var(--text);
+  font-weight:950;
+  list-style:none;
+}
+
+.productionReveal > summary::-webkit-details-marker {
+  display:none;
+}
+
+.productionRevealBody {
+  padding:0 12px 12px;
+}
+
+.productionActionRow {
+  width:min(560px, 100%);
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:8px;
+}
+
+.productionActionRow button {
+  min-width:0;
+  white-space:normal;
+}
+
+.productionSkipBtn {
+  border-color:color-mix(in srgb, var(--muted) 38%, var(--line)) !important;
+  color:var(--mutedText) !important;
+  background:rgba(7,13,24,.7) !important;
+  box-shadow:none !important;
+}
+
+.diagnosticResultSummary {
+  grid-template-columns:minmax(0, 1fr) !important;
+  gap:8px !important;
+}
+
+.diagnosticResultSummary .diagnosticResultGroup {
+  display:grid;
+  gap:4px;
+  padding:9px 10px;
+  border:1px solid color-mix(in srgb, var(--accent) 24%, var(--line));
+  border-radius:var(--cardRadius);
+  background:rgba(5,11,22,.48);
+}
+
+.diagnosticResultActions {
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:8px;
+  margin-top:10px;
+}
+
+.diagnosticResultActions button {
+  min-height:44px;
+}
+
+.learningMapMatrixMobileList {
+  display:none;
+  gap:10px;
+}
+
+.learningMapMatrixCard {
+  display:grid;
+  gap:9px;
+  padding:12px;
+  border:1px solid color-mix(in srgb, var(--accent) 25%, var(--line));
+  border-radius:var(--cardRadius);
+  background:rgba(5,11,22,.52);
+}
+
+.learningMapMatrixCardTop {
+  display:grid;
+  gap:3px;
+}
+
+.learningMapMatrixCardTitle {
+  font-size:1rem;
+  color:var(--text);
+  font-weight:1000;
+}
+
+.learningMapMatrixCardMeta,
+.learningMapMatrixCardRow {
+  color:var(--mutedText);
+  font-size:.84rem;
+}
+
+.learningMapMatrixCardRows {
+  display:grid;
+  gap:6px;
+}
+
+.learningMapMatrixCardRow {
+  display:grid;
+  grid-template-columns:minmax(92px, auto) minmax(0, 1fr);
+  gap:8px;
+  align-items:start;
+}
+
+.learningMapMatrixCardRow strong {
+  color:var(--text);
+}
+
+.appStatus {
+  top:max(12px, env(safe-area-inset-top)) !important;
+  bottom:auto !important;
+  left:50% !important;
+  transform:translateX(-50%) !important;
+  max-width:min(440px, calc(100vw - 24px)) !important;
+  pointer-events:none !important;
+}
+
+body.resultsMode .bottomHud {
+  display:none !important;
+}
+
+@media (max-width:759px) {
+  .homeRouteCard {
+    grid-template-columns:minmax(64px, auto) minmax(0, 1fr);
+  }
+
+  .homeRouteBadge {
+    min-width:58px;
+    font-size:.58rem;
+  }
+
+  .homeNavButton {
+    grid-template-columns:minmax(76px, auto) minmax(0, 1fr);
+  }
+
+  .homeNavBadge {
+    min-width:70px;
+    font-size:.58rem;
+  }
+
+  .productionActionRow {
+    grid-template-columns:1fr;
+  }
+
+  .diagnosticResultActions {
+    grid-template-columns:1fr;
+  }
+
+  .learningMapMatrixMobileList {
+    display:grid;
+  }
+
+  .learningMapMatrixTableDetails .learningMapMatrixWrap {
+    max-height:60vh;
+  }
+
+  body.b1Mode .inlineClozeInput,
+  body.b1Mode.b1TypedCloze .inlineClozeInput,
+  body.b1Mode.b1TypedCloze .blankSlot.answerSlot,
+  body.b1Mode.b1TypedCloze .clozeAnswerText {
+    max-width:min(var(--clozeWidth, 16ch), 72vw) !important;
+    min-width:min(max(var(--clozeWidth, 8ch), 6ch), 72vw) !important;
+  }
+
+  .b1ConfidenceRow {
+    grid-template-columns:repeat(3, minmax(0,1fr));
+    gap:6px;
+  }
+
+  .b1ConfidenceRow button {
+    padding-inline:6px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -6897,8 +7178,9 @@ body[data-support-lang="ar"] .productionChecklist {
             <div class="menuSectionTitle">Ozmosis</div>
             <div class="homeFeedback">Feedback: ozmillsrpg@gmail.com</div>
           </div>
-          <button class="menuCloseBtn" id="menuCloseBtn" type="button" aria-label="Close menu">Close</button>
+          <button class="menuCloseBtn" id="menuCloseBtn" type="button" aria-label="Close menu">×</button>
         </div>
+        <div class="menuScroll" id="menuScroll">
         <div class="menuSectionTitle">Practice</div>
         <div class="menuNavGroup" aria-label="Practice routes">
           <button class="menuButton" id="menuHomeBtn" type="button">Home</button>
@@ -6918,8 +7200,11 @@ body[data-support-lang="ar"] .productionChecklist {
         </div>
         <div class="menuDivider"></div>
         <div class="menuSectionTitle">Settings</div>
+        <div class="menuNavGroup" aria-label="Settings shortcut">
+          <button class="menuButton" id="menuSettingsBtn" type="button">Open Settings</button>
+        </div>
         <details class="menuDetails menuOptionsDetails" id="menuOptionsDetails">
-          <summary>Options</summary>
+          <summary>Quick settings</summary>
           <div class="menuDetailsBody">
             <details class="menuSubDetails" open>
               <summary>Learning style</summary>
@@ -7004,6 +7289,7 @@ body[data-support-lang="ar"] .productionChecklist {
             </details>
           </div>
         </details>
+        </div>
       </div>
     </div>
   </div>
@@ -7023,6 +7309,8 @@ body[data-support-lang="ar"] .productionChecklist {
       </div>
     </section>
 
+    <section class="homeSection recommended" aria-labelledby="homeRecommendedTitle">
+      <h3 class="homeSectionTitle" id="homeRecommendedTitle">Recommended next</h3>
     <button class="homeHero" id="homeSprintBtn" type="button" aria-describedby="homeHeroMeta">
       <span class="homeHeroTop">
         <span>
@@ -7036,6 +7324,7 @@ body[data-support-lang="ar"] .productionChecklist {
         <span></span><span></span><span></span><span></span><span></span><span></span>
       </span>
     </button>
+    </section>
 
     <div class="homeStatusStrip" id="homeStatusStrip" aria-label="Local B1 practice status">
       <div class="homeStatusItem"><span>Today</span><span class="homeStatusValue" id="homeStatusToday">Ready</span></div>
@@ -7043,52 +7332,58 @@ body[data-support-lang="ar"] .productionChecklist {
       <div class="homeStatusItem"><span>Thin areas</span><span class="homeStatusValue" id="homeStatusWeak">--</span></div>
     </div>
 
-    <section class="homeSection practice" aria-labelledby="homePracticeTitle">
-      <h3 class="homeSectionTitle" id="homePracticeTitle">Practice</h3>
+    <section class="homeSection checkProgress" aria-labelledby="homeCheckTitle">
+      <h3 class="homeSectionTitle" id="homeCheckTitle">Check progress</h3>
       <div class="homeRouteGrid">
         <button class="homeRouteCard" id="homeDiagnosticBtn" type="button" aria-label="B1 Diagnostic Sprint. Find your starting points. 18 short items across B1 grammar, connectors, phrases, vocabulary, repair, and production readiness. Start.">
-          <span class="homeRouteNumber">1.</span>
+          <span class="homeRouteBadge">CHECK</span>
           <span class="homeRouteMain"><span class="homeRouteLabel">B1 Diagnostic Sprint</span><span class="homeRouteSub">Find your starting points</span><span class="homeRouteMeta">18 items &middot; evidence snapshot &middot; START</span></span>
           <span class="homePill new">NEW</span>
         </button>
         <button class="homeRouteCard" id="homeLearningMapBtn" type="button" aria-label="Learning Map. B1 evidence overview. Shows what has evidence and what still needs testing. Open.">
-          <span class="homeRouteNumber">2.</span>
-          <span class="homeRouteMain"><span class="homeRouteLabel">Learning Map</span><span class="homeRouteSub">B1 evidence overview</span><span class="homeRouteMeta">Shows evidence and gaps &middot; OPEN</span></span>
+          <span class="homeRouteBadge">EVIDENCE</span>
+          <span class="homeRouteMain"><span class="homeRouteLabel">Learning Map</span><span class="homeRouteSub">See what has evidence and what is still thin</span><span class="homeRouteMeta">Evidence overview &middot; OPEN</span></span>
           <span class="homePill beta">BETA</span>
         </button>
+      </div>
+    </section>
+
+    <section class="homeSection practice" aria-labelledby="homePracticeTitle">
+      <h3 class="homeSectionTitle" id="homePracticeTitle">Practice</h3>
+      <div class="homeRouteGrid">
         <button class="homeRouteCard" id="homeGrammarBtn" type="button">
-          <span class="homeRouteNumber">3.</span>
+          <span class="homeRouteBadge">PRACTICE</span>
           <span class="homeRouteMain"><span class="homeRouteLabel">Grammar</span><span class="homeRouteSub">Connectors · word order · cases</span></span>
           <span class="homePill ready">OPEN</span>
         </button>
         <button class="homeRouteCard" id="homeWortschatzBtn" type="button">
-          <span class="homeRouteNumber">4.</span>
+          <span class="homeRouteBadge">PRACTICE</span>
           <span class="homeRouteMain"><span class="homeRouteLabel">Wortschatz</span><span class="homeRouteSub">Work · illness · admin</span></span>
           <span class="homePill ready">OPEN</span>
         </button>
         <button class="homeRouteCard" id="homeRedemittelBtn" type="button">
-          <span class="homeRouteNumber">5.</span>
+          <span class="homeRouteBadge">PRACTICE</span>
           <span class="homeRouteMain"><span class="homeRouteLabel">Redemittel</span><span class="homeRouteSub">Email · appointments · complaints</span></span>
           <span class="homePill ready">OPEN</span>
         </button>
       </div>
     </section>
 
-    <section class="homeSection production comingSoonRoutes" aria-labelledby="homeComingSoonTitle">
-      <h3 class="homeSectionTitle" id="homeComingSoonTitle">Coming Soon</h3>
+    <section class="homeSection production comingSoonRoutes planned" aria-labelledby="homeComingSoonTitle">
+      <h3 class="homeSectionTitle" id="homeComingSoonTitle">Planned</h3>
       <div class="homeRouteGrid">
         <button class="homeRouteCard unavailable homePlaceholderBtn" id="homeSchreibenBtn" type="button" data-title="Schreiben">
-          <span class="homeRouteNumber">6.</span>
+          <span class="homeRouteBadge">PLANNED</span>
           <span class="homeRouteMain"><span class="homeRouteLabel">Schreiben</span><span class="homeRouteSub">Production cards are not a full route yet</span></span>
           <span class="homePill soon">SOON</span>
         </button>
         <button class="homeRouteCard unavailable homePlaceholderBtn" id="homeSprechenBtn" type="button" data-title="Sprechen">
-          <span class="homeRouteNumber">7.</span>
+          <span class="homeRouteBadge">PLANNED</span>
           <span class="homeRouteMain"><span class="homeRouteLabel">Sprechen</span><span class="homeRouteSub">Production cards are not a full route yet</span></span>
           <span class="homePill soon">SOON</span>
         </button>
         <button class="homeRouteCard unavailable homePlaceholderBtn" id="homeCourseMapBtn" type="button" data-title="Course Map">
-          <span class="homeRouteNumber">8.</span>
+          <span class="homeRouteBadge">PLANNED</span>
           <span class="homeRouteMain"><span class="homeRouteLabel">Course Map</span><span class="homeRouteSub">Planned structure view</span></span>
           <span class="homePill soon">SOON</span>
         </button>
@@ -7097,8 +7392,12 @@ body[data-support-lang="ar"] .productionChecklist {
 
     <section class="homeSection tools" aria-labelledby="homeToolsTitle">
       <h3 class="homeSectionTitle" id="homeToolsTitle">Tools</h3>
-      <div class="homeChipGrid">
-        <button class="homeChip" id="homeCaseTrainerBtn" type="button"><span>Case Trainer</span><span class="homeChipArrow">›</span></button>
+      <div class="homeRouteGrid">
+        <button class="homeRouteCard" id="homeCaseTrainerBtn" type="button">
+          <span class="homeRouteBadge">TOOL</span>
+          <span class="homeRouteMain"><span class="homeRouteLabel">Case Trainer</span><span class="homeRouteSub">Articles and cases</span></span>
+          <span class="homePill ready">OPEN</span>
+        </button>
       </div>
     </section>
 
@@ -7112,7 +7411,7 @@ body[data-support-lang="ar"] .productionChecklist {
     <section class="homeSection system" aria-labelledby="homeSystemTitle">
       <h3 class="homeSectionTitle" id="homeSystemTitle">System</h3>
       <div class="homeChipGrid">
-        <button class="homeChip system" id="homeOptionsBtn" type="button"><span>Options</span></button>
+        <button class="homeChip system" id="homeOptionsBtn" type="button"><span>Settings</span></button>
         <button class="homeChip system" id="homeDevToolsBtn" type="button"><span>Dev Tools</span></button>
       </div>
     </section>
@@ -7127,13 +7426,13 @@ body[data-support-lang="ar"] .productionChecklist {
   <section class="grammarHub" id="grammarHub" aria-labelledby="grammarHubTitle" hidden>
     <h2 id="grammarHubTitle">Grammar</h2>
     <nav class="homeNav" aria-label="Grammar tools">
-      <button class="homeNavButton" id="grammarSeedBtn" type="button"><span class="homeNavNumber">1.</span><span>Mixed Grammar</span></button>
-      <button class="homeNavButton" id="connectorAllBtn" type="button"><span class="homeNavNumber">2.</span><span>Connector Sprint</span></button>
-      <button class="homeNavButton" id="connectorReasonBtn" type="button"><span class="homeNavNumber">3.</span><span>Reason</span></button>
-      <button class="homeNavButton" id="connectorContrastBtn" type="button"><span class="homeNavNumber">4.</span><span>Contrast</span></button>
-      <button class="homeNavButton" id="connectorPurposeBtn" type="button"><span class="homeNavNumber">5.</span><span>Purpose</span></button>
-      <button class="homeNavButton" id="connectorTimeBtn" type="button"><span class="homeNavNumber">6.</span><span>Time</span></button>
-      <button class="homeNavButton" id="connectorRepairBtn" type="button"><span class="homeNavNumber">7.</span><span>Repair</span></button>
+      <button class="homeNavButton" id="grammarSeedBtn" type="button"><span class="homeNavBadge">Mixed practice</span><span class="homeNavMain"><span class="homeNavTitle">Mixed Grammar</span><span class="homeNavSub">Broad B1 grammar practice</span></span></button>
+      <button class="homeNavButton" id="connectorAllBtn" type="button"><span class="homeNavBadge">Topic drill</span><span class="homeNavMain"><span class="homeNavTitle">Connectors</span><span class="homeNavSub">weil · denn · deshalb · obwohl · trotzdem</span></span></button>
+      <button class="homeNavButton" id="connectorReasonBtn" type="button"><span class="homeNavBadge">Topic drill</span><span class="homeNavMain"><span class="homeNavTitle">Reason</span><span class="homeNavSub">weil · denn · deshalb</span></span></button>
+      <button class="homeNavButton" id="connectorContrastBtn" type="button"><span class="homeNavBadge">Contrast</span><span class="homeNavMain"><span class="homeNavTitle">Contrast</span><span class="homeNavSub">obwohl · trotzdem</span></span></button>
+      <button class="homeNavButton" id="connectorPurposeBtn" type="button"><span class="homeNavBadge">Topic drill</span><span class="homeNavMain"><span class="homeNavTitle">Purpose</span><span class="homeNavSub">damit · um ... zu</span></span></button>
+      <button class="homeNavButton" id="connectorTimeBtn" type="button"><span class="homeNavBadge">Topic drill</span><span class="homeNavMain"><span class="homeNavTitle">Time</span><span class="homeNavSub">wenn · als · bevor · nachdem</span></span></button>
+      <button class="homeNavButton" id="connectorRepairBtn" type="button"><span class="homeNavBadge">Repair</span><span class="homeNavMain"><span class="homeNavTitle">Repair</span><span class="homeNavSub">Fix sentence errors</span></span></button>
     </nav>
     <button class="homeBackButton" id="grammarBackBtn" type="button">Back</button>
   </section>
@@ -7141,15 +7440,15 @@ body[data-support-lang="ar"] .productionChecklist {
   <section class="grammarHub redemittelHub" id="redemittelHub" aria-labelledby="redemittelHubTitle" hidden>
     <h2 id="redemittelHubTitle">Redemittel</h2>
     <nav class="homeNav" aria-label="Redemittel tools">
-      <button class="homeNavButton" id="redemittelMixedBtn" type="button"><span class="homeNavNumber">1.</span><span>Mixed Redemittel</span></button>
-      <button class="homeNavButton" id="redemittelFormalBtn" type="button"><span class="homeNavNumber">2.</span><span>Formal Email</span></button>
-      <button class="homeNavButton" id="redemittelAppointmentBtn" type="button"><span class="homeNavNumber">3.</span><span>Appointment</span></button>
-      <button class="homeNavButton" id="redemittelRequestBtn" type="button"><span class="homeNavNumber">4.</span><span>Request</span></button>
-      <button class="homeNavButton" id="redemittelComplaintBtn" type="button"><span class="homeNavNumber">5.</span><span>Complaint</span></button>
-      <button class="homeNavButton" id="redemittelApplicationBtn" type="button"><span class="homeNavNumber">6.</span><span>Application</span></button>
-      <button class="homeNavButton" id="redemittelIllnessBtn" type="button"><span class="homeNavNumber">7.</span><span>Illness / Absence</span></button>
-      <button class="homeNavButton" id="redemittelPoliteBtn" type="button"><span class="homeNavNumber">8.</span><span>Polite Requests</span></button>
-      <button class="homeNavButton" id="redemittelProductionBtn" type="button"><span class="homeNavNumber">9.</span><span>Production Cards</span></button>
+      <button class="homeNavButton" id="redemittelMixedBtn" type="button"><span class="homeNavBadge">Mixed practice</span><span class="homeNavMain"><span class="homeNavTitle">Mixed Redemittel</span><span class="homeNavSub">Mixed phrases and short responses</span></span></button>
+      <button class="homeNavButton" id="redemittelFormalBtn" type="button"><span class="homeNavBadge">Topic drill</span><span class="homeNavMain"><span class="homeNavTitle">Formal Email</span><span class="homeNavSub">Openings · attachments · closing phrases</span></span></button>
+      <button class="homeNavButton" id="redemittelAppointmentBtn" type="button"><span class="homeNavBadge">Topic drill</span><span class="homeNavMain"><span class="homeNavTitle">Appointment</span><span class="homeNavSub">Arrange · move · confirm</span></span></button>
+      <button class="homeNavButton" id="redemittelRequestBtn" type="button"><span class="homeNavBadge">Topic drill</span><span class="homeNavMain"><span class="homeNavTitle">Request</span><span class="homeNavSub">Polite requests and support messages</span></span></button>
+      <button class="homeNavButton" id="redemittelComplaintBtn" type="button"><span class="homeNavBadge">Topic drill</span><span class="homeNavMain"><span class="homeNavTitle">Complaint</span><span class="homeNavSub">Problems · missing documents · delays</span></span></button>
+      <button class="homeNavButton" id="redemittelApplicationBtn" type="button"><span class="homeNavBadge">Topic drill</span><span class="homeNavMain"><span class="homeNavTitle">Application</span><span class="homeNavSub">Experience · strengths · documents</span></span></button>
+      <button class="homeNavButton" id="redemittelIllnessBtn" type="button"><span class="homeNavBadge">Topic drill</span><span class="homeNavMain"><span class="homeNavTitle">Illness / Absence</span><span class="homeNavSub">Sick note · absence · appointment</span></span></button>
+      <button class="homeNavButton" id="redemittelPoliteBtn" type="button"><span class="homeNavBadge">Topic drill</span><span class="homeNavMain"><span class="homeNavTitle">Polite Requests</span><span class="homeNavSub">Konjunktiv II request forms</span></span></button>
+      <button class="homeNavButton" id="redemittelProductionBtn" type="button"><span class="homeNavBadge">Self-marked</span><span class="homeNavMain"><span class="homeNavTitle">Production Cards</span><span class="homeNavSub">Writing and speaking prompts</span></span></button>
     </nav>
     <button class="homeBackButton" id="redemittelBackBtn" type="button">Back</button>
   </section>
@@ -7179,8 +7478,8 @@ body[data-support-lang="ar"] .productionChecklist {
     </div>
 
     <div class="startHero">
-      <h2 id="startTitle">New Practice</h2>
-      <p id="startIntro">Choose a drill.</p>
+      <h2 id="startTitle">Case Trainer Setup</h2>
+      <p id="startIntro">Article and case drill settings.</p>
     </div>
 
     <button class="startButton" id="startRoundBtn" type="button">Start</button>
@@ -7188,7 +7487,7 @@ body[data-support-lang="ar"] .productionChecklist {
     <div class="startOptions" aria-label="New game options">
       <details class="startAccordion" id="practiceAccordion" open>
         <summary>
-          <span id="startOptionsTitle">Options</span>
+          <span id="startOptionsTitle">Round options</span>
         </summary>
         <div class="startAccordionGrid">
           <div class="startSetting">
@@ -7293,16 +7592,16 @@ body[data-support-lang="ar"] .productionChecklist {
           <button id="checkBtn" type="button">Prüfen</button>
         </div>
 
-        <button id="hintBtn" type="button">Hilfe</button>
+        <button id="hintBtn" type="button">Show table</button>
 
         <div class="correctionBlock" id="correctionBlock"></div>
 
         <div class="feedback" id="feedback"></div>
         <button class="whyNoStarsBtn" id="whyNoStarsBtn" type="button" hidden>Why limited evidence?</button>
         <div class="b1ConfidenceRow" id="b1ConfidenceRow" aria-label="Answer confidence" hidden>
-          <button type="button" data-confidence="sure">Sure</button>
-          <button type="button" data-confidence="unsure">Unsure</button>
-          <button type="button" data-confidence="guessed">Guessed</button>
+          <button type="button" data-confidence="sure" aria-label="I knew it">Knew it</button>
+          <button type="button" data-confidence="unsure" aria-label="I was unsure">Unsure</button>
+          <button type="button" data-confidence="guessed" aria-label="I guessed">Guessed</button>
         </div>
         <button id="nextBtn" type="button">Weiter</button>
         <button class="diagnosticExitBtn" id="diagnosticExitBtn" type="button" hidden>Exit diagnostic</button>
@@ -7311,8 +7610,8 @@ body[data-support-lang="ar"] .productionChecklist {
 
     <div class="supportColumn">
       <button class="supportPlaceholder" id="supportPlaceholder" type="button" aria-controls="miniTableWrap" aria-expanded="false">
-        <span>Hilfe anzeigen</span>
-        <small>Tabelle und Regel einblenden</small>
+        <span>Article table</span>
+        <small>Show article forms and rule</small>
       </button>
 
       <div class="practiceSurface" id="practiceSurface"></div>
@@ -7350,9 +7649,9 @@ body[data-support-lang="ar"] .productionChecklist {
 <div class="diagnosticIntroOverlay" id="diagnosticIntroOverlay" hidden role="dialog" aria-modal="true" aria-labelledby="diagnosticIntroTitle">
   <div class="diagnosticIntroCard" role="document">
     <h2 id="diagnosticIntroTitle">Diagnostic Sprint</h2>
-    <p>18 short items across B1 grammar, connectors, phrases, vocabulary, repair, and production-readiness.</p>
-    <p>This is not a score or exam. It gives Ozmosis early evidence for future practice and Learning Map views.</p>
-    <p>Retakes add more evidence; they do not reset the earlier snapshot.</p>
+    <p>18 short B1 items.</p>
+    <p>This is not a score or exam. It gives Ozmosis an early evidence snapshot.</p>
+    <p>Retakes add evidence; they do not erase earlier attempts.</p>
     <div class="diagnosticIntroActions">
       <button id="diagnosticIntroCancelBtn" type="button">Cancel</button>
       <button class="primaryAction" id="diagnosticIntroStartBtn" type="button">Start diagnostic</button>
@@ -7629,8 +7928,8 @@ body[data-support-lang="ar"] .productionChecklist {
   var B1_STORAGE_KEY = "ozmosis_b1_sprint_progress_v1";
   var B1_EVIDENCE_STORAGE_KEY = "ozmosis_b1_progress_evidence_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.57.1";
-  var OZMOSIS_EXPORT_VERSION = "v0.57.1-big-ux-update";
+  var OZMOSIS_APP_VERSION = "v0.57.2";
+  var OZMOSIS_EXPORT_VERSION = "v0.57.2-flow-navigation-mobile-ux-corrections";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -7699,8 +7998,8 @@ body[data-support-lang="ar"] .productionChecklist {
   };
   var I18N = {
     en: {
-      startTitle:"New Practice",
-      startIntro:"Choose a drill.",
+      startTitle:"Case Trainer Setup",
+      startIntro:"Article and case drill settings.",
       language:"Sprache",
       feedbackNote:"I made this tool for my own German learning. Feedback is welcome:",
       taskType:"Learning style", table:"Out of Context", cloze:"In Context [Default]", mixed:"Mixed",
@@ -9801,7 +10100,9 @@ body[data-support-lang="ar"] .productionChecklist {
     limitations = limitations.filter(function(text, index, arr){ return text && arr.indexOf(text) === index; });
     return '<article class="learningMapNodeCard">' +
       '<div class="learningMapNodeTop"><div class="learningMapNodeTitle">' + escapeHtml(node.label) + '</div><span class="learningMapState ' + learningMapStateClass(state.key) + '">' + escapeHtml(state.label) + '</span></div>' +
-      '<div class="learningMapDetail"><strong>Evidence:</strong> ' + Number(node.evidenceCount || 0) + ' records / ' + escapeHtml(state.description) + ' / ' + escapeHtml(learningMapConfidenceHint(node)) + '</div>' +
+      '<div class="learningMapDetail"><strong>' + Number(node.evidenceCount || 0) + ' evidence records.</strong></div>' +
+      '<div class="learningMapDetail">' + escapeHtml(state.description) + '</div>' +
+      '<div class="learningMapDetail">' + escapeHtml(learningMapConfidenceHint(node)) + '</div>' +
       '<details class="learningMapDisclosure"><summary>Evidence details</summary>' +
         '<div class="learningMapDetailGrid">' +
           '<div class="learningMapDetail"><strong>Task depth:</strong> ' + escapeHtml(depths) + '</div>' +
@@ -9844,24 +10145,24 @@ body[data-support-lang="ar"] .productionChecklist {
   function learningMapRecommendationHtml(recommendation) {
     var primary = recommendation && recommendation.primary || b1NextRecommendedPractice().primary;
     var why = Array.isArray(primary.why) && primary.why.length ? primary.why[0] : "The map needs more evidence before suggestions become stronger.";
-    var notes = Array.isArray(primary.why) ? primary.why.slice(1, 3) : [];
+    var notes = Array.isArray(primary.why) ? primary.why.slice(1, 4) : [];
     var limitations = Array.isArray(primary.limitations) ? primary.limitations.slice(0, 2) : [];
     var basis = primary.evidenceBasis || {};
     var basisState = progressStateView(basis.skillMatrixCellState || "not_enough_evidence", { evidenceCount:Number(basis.relevantEvidence || 0), metadataProvenance:basis.metadataProvenance, delayedReviewInactive:true });
     var route = primary.action && primary.action.routeKey || primary.routeKey || "today";
+    var detailNotes = notes.concat(limitations).filter(function(text, index, arr){
+      return text && arr.indexOf(text) === index;
+    });
+    detailNotes.unshift("Ozmosis is choosing the closest available route, not diagnosing mastery.");
+    detailNotes.push("No delayed review evidence exists yet.");
     return '<h3>Suggested next practice</h3>' +
       '<p class="learningMapRecommendationTitle">' + escapeHtml(primary.title || "Keep collecting evidence") + '</p>' +
-      '<p class="learningMapRecommendationMeta"><strong>Why:</strong> ' + escapeHtml(why) + '</p>' +
-      notes.map(function(note){ return '<p class="learningMapRecommendationMeta">' + escapeHtml(note) + '</p>'; }).join("") +
-      '<p class="learningMapRecommendationNote">Evidence note: ' + escapeHtml(basisState.label + " - " + basisState.description) + '</p>' +
-      '<p class="learningMapRecommendationNote">Limit: ' + escapeHtml((limitations[0] || "This is an early rules-based suggestion, not a final progress judgement.")) + '</p>' +
+      '<p class="learningMapRecommendationMeta"><strong>Reason:</strong> ' + escapeHtml(why) + '</p>' +
       '<div class="learningMapActionGrid"><button class="learningMapAction" id="learningMapRecommendationActionBtn" type="button" data-route-key="' + escapeHtml(route) + '">' + escapeHtml(primary.routeLabel || (primary.action && primary.action.label) || "Start practice") + '</button></div>' +
       '<details class="learningMapDisclosure"><summary>Why this appears</summary>' +
-        '<div class="learningMapDetail"><strong>Rule:</strong> ' + escapeHtml(b1RecommendationRuleLabel(primary.priorityRule || "current_focus_continuation")) + '</div>' +
-        '<div class="learningMapDetail"><strong>Evidence:</strong> total ' + Number(basis.totalEvidence || 0) + ' / relevant ' + Number(basis.relevantEvidence || 0) + '</div>' +
-        '<div class="learningMapDetail"><strong>State:</strong> ' + escapeHtml(basisState.label) + ' - ' + escapeHtml(basisState.description) + '</div>' +
-        '<div class="learningMapDetail"><strong>Task depth:</strong> ' + escapeHtml(primary.taskDepth ? learningMapDepthLabel(primary.taskDepth) : "not selected") + '</div>' +
-        limitations.slice(1).map(function(text){ return '<div class="learningMapLimitation">' + escapeHtml(text) + '</div>'; }).join("") +
+        '<div class="learningMapDetail">This is a rules-based suggestion from current local evidence.</div>' +
+        '<div class="learningMapDetail">' + escapeHtml(basisState.label + ": " + basisState.description) + '</div>' +
+        detailNotes.map(function(text){ return '<div class="learningMapLimitation">' + escapeHtml(text) + '</div>'; }).join("") +
       '</details>';
   }
   function learningMapMatrixDepthColumns(matrix) {
@@ -9985,6 +10286,34 @@ body[data-support-lang="ar"] .productionChecklist {
       return '<div class="learningMapMatrixDefinition"><strong>' + escapeHtml(column.label) + ':</strong> ' + escapeHtml(text) + '</div>';
     }).join("") + '</div>';
   }
+  function learningMapMatrixMobileCardsHtml(rows, columns) {
+    if (!rows.length) return "";
+    return '<div class="learningMapMatrixMobileList" aria-label="Mobile task-depth matrix">' + rows.map(function(row){
+      var rowEvidence = Number(row.rowSummary && row.rowSummary.totalEvidence || 0);
+      var tested = Number(row.rowSummary && row.rowSummary.testedTaskDepths || 0);
+      var rowsHtml = columns.map(function(column){
+        var cell = learningMapMatrixDisplayCell(row, column);
+        var state = learningMapMatrixCellStateView(cell);
+        var count = Number(cell.evidenceCount || 0);
+        var badges = [];
+        if (cell.diagnosticEvidenceCount > 0) badges.push("Diagnostic snapshot");
+        if (cell.productionEvidenceCount > 0) badges.push("Self-marked");
+        if (count > 0 && Number(cell.metadataProvenance.derived || 0) > Number(cell.metadataProvenance.explicit || 0)) badges.push("Derived metadata");
+        if (Object.keys(cell.supportLevelCounts || {}).some(function(key){ return b1SupportLevelIsScaffolded(key) && Number(cell.supportLevelCounts[key] || 0) > 0; })) badges.push("Scaffolded");
+        return '<div class="learningMapMatrixCardRow">' +
+          '<strong>' + escapeHtml(column.label) + '</strong>' +
+          '<span>' + escapeHtml(state.label) + (count ? ' · ' + count + ' evidence' : '') + (badges.length ? ' · ' + escapeHtml(badges.join(" · ")) : '') + '</span>' +
+        '</div>';
+      }).join("");
+      return '<article class="learningMapMatrixCard">' +
+        '<div class="learningMapMatrixCardTop">' +
+          '<div class="learningMapMatrixCardTitle">' + escapeHtml(row.label) + '</div>' +
+          '<div class="learningMapMatrixCardMeta">' + rowEvidence + ' evidence records · ' + tested + ' task types</div>' +
+        '</div>' +
+        '<div class="learningMapMatrixCardRows">' + rowsHtml + '</div>' +
+      '</article>';
+    }).join("") + '</div>';
+  }
   function learningMapSkillMatrixHtml(matrix) {
     var rows = matrix && Array.isArray(matrix.rows) ? matrix.rows : [];
     var columns = learningMapMatrixDepthColumns(matrix);
@@ -9995,6 +10324,7 @@ body[data-support-lang="ar"] .productionChecklist {
         return inner + (learningMapMatrixDisplayCell(row, column).evidenceCount > 0 ? 1 : 0);
       }, 0);
     }, 0);
+    var tableOpen = !window.matchMedia || !window.matchMedia("(max-width: 759px)").matches ? " open" : "";
     var body = rows.map(function(row){
       var rowEvidence = Number(row.rowSummary && row.rowSummary.totalEvidence || 0);
       var tested = Number(row.rowSummary && row.rowSummary.testedTaskDepths || 0);
@@ -10024,6 +10354,8 @@ body[data-support-lang="ar"] .productionChecklist {
         '<li>Production is self-marked.</li>' +
         '<li>Support level is evidence context, not score.</li>' +
       '</ul>' +
+      learningMapMatrixMobileCardsHtml(rows, columns) +
+      '<details class="learningMapDisclosure learningMapMatrixTableDetails"' + tableOpen + '><summary>Matrix table</summary>' +
       '<div class="learningMapMatrixWrap" tabindex="0" role="region" aria-label="Task-depth matrix table">' +
         '<table class="learningMapMatrixTable">' +
           '<caption class="srOnly">Task-depth matrix: early evidence by skill and task type.</caption>' +
@@ -10031,6 +10363,7 @@ body[data-support-lang="ar"] .productionChecklist {
           '<tbody>' + body + '</tbody>' +
         '</table>' +
       '</div>' +
+      '</details>' +
       '<details class="learningMapDisclosure learningMapMatrixDetails"><summary>Matrix details</summary>' +
         '<div class="learningMapDetailGrid">' +
           '<div class="learningMapDetail"><strong>Source:</strong> existing B1 evidence and Learning Map node matching.</div>' +
@@ -11123,7 +11456,7 @@ body[data-support-lang="ar"] .productionChecklist {
     node.className = "appStatus" + (tone ? " " + tone : "");
     node.hidden = !message;
     if (APP_STATUS_TIMER) window.clearTimeout(APP_STATUS_TIMER);
-    if (message) APP_STATUS_TIMER = window.setTimeout(function(){ node.hidden = true; }, 5200);
+    if (message) APP_STATUS_TIMER = window.setTimeout(function(){ node.hidden = true; }, 3600);
   }
   function copyTextWithFallback(text, fallbackId, statusId, successMessage, fallbackMessage) {
     var fallback = el(fallbackId);
@@ -11278,7 +11611,7 @@ body[data-support-lang="ar"] .productionChecklist {
     b1Runtime.currentEvidenceRecordId = "";
     resetB1ConfidenceControls();
     showHomeScreen();
-    showAppStatus(wasDiagnostic ? "Diagnostic exited. Answers already checked remain saved as evidence." : "Practice exited. Saved progress remains available.", "warn");
+    showAppStatus(wasDiagnostic ? "Diagnostic exited. Checked answers saved." : "Practice exited. Progress saved.", "warn");
   }
   function setSupportPlaceholder(show, expanded) {
     var node = el("supportPlaceholder");
@@ -13943,7 +14276,7 @@ body[data-support-lang="ar"] .productionChecklist {
   }
   function b1ClozeWidthStyle(item) {
     var answerLength = b1CleanAnswer(item && item.answer || "").length;
-    var chars = Math.max(9, Math.min(22, answerLength + 3));
+    var chars = Math.max(6, Math.min(18, answerLength + 2));
     return "--clozeWidth:" + chars + "ch";
   }
   function b1PromptHtml(item, resultClass) {
@@ -14447,7 +14780,7 @@ body[data-support-lang="ar"] .productionChecklist {
       b1Runtime.currentEvidenceRecordId = "";
       resetB1ConfidenceControls();
       showHomeScreen();
-      showAppStatus("Diagnostic exited. Answers already checked remain saved as evidence.", "warn");
+      showAppStatus("Diagnostic exited. Checked answers saved.", "warn");
       return;
     }
     showHomeScreen();
@@ -14567,32 +14900,41 @@ body[data-support-lang="ar"] .productionChecklist {
     var grid = el("connectorChoiceGrid");
     if (!grid) return;
     grid.innerHTML = "";
+    grid.classList.add("productionGrid");
     b1Runtime.currentProductionModelShown = false;
-    b1Runtime.currentProductionUsefulPhrasesShown = !!(item.usefulPhrases && item.usefulPhrases.length);
-    b1Runtime.currentProductionChecklistShown = !!(item.productionChecklist && item.productionChecklist.length);
+    b1Runtime.currentProductionUsefulPhrasesShown = false;
+    b1Runtime.currentProductionChecklistShown = false;
+    function appendReveal(label, bodyNode, onOpen) {
+      var details = document.createElement("details");
+      details.className = "productionReveal";
+      var summary = document.createElement("summary");
+      summary.textContent = label;
+      var body = document.createElement("div");
+      body.className = "productionRevealBody";
+      body.appendChild(bodyNode);
+      details.appendChild(summary);
+      details.appendChild(body);
+      details.addEventListener("toggle", function(){
+        if (details.open && onOpen) onOpen();
+      }, false);
+      grid.appendChild(details);
+    }
     var note = document.createElement("div");
     note.className = "productionEvidenceNote";
-    note.textContent = "Self-marked practice. Ozmosis does not auto-grade this.";
+    note.textContent = "Self-marked production. No auto-grading.";
     grid.appendChild(note);
     if (item.usefulPhrases && item.usefulPhrases.length) {
-      var phraseTitle = document.createElement("div");
-      phraseTitle.className = "productionSectionTitle";
-      phraseTitle.textContent = "Useful phrases";
-      grid.appendChild(phraseTitle);
       var phrases = document.createElement("ul");
       phrases.className = "productionChecklist";
+      phrases.setAttribute("dir", "ltr");
       item.usefulPhrases.forEach(function(line){
         var li = document.createElement("li");
         li.textContent = line;
         phrases.appendChild(li);
       });
-      grid.appendChild(phrases);
+      appendReveal("Useful phrases", phrases, function(){ b1Runtime.currentProductionUsefulPhrasesShown = true; });
     }
     if (item.productionChecklist && item.productionChecklist.length) {
-      var checklistTitle = document.createElement("div");
-      checklistTitle.className = "productionSectionTitle";
-      checklistTitle.textContent = "Self-check";
-      grid.appendChild(checklistTitle);
       var checklist = document.createElement("ul");
       checklist.className = "productionChecklist";
       item.productionChecklist.forEach(function(line){
@@ -14600,7 +14942,7 @@ body[data-support-lang="ar"] .productionChecklist {
         li.textContent = line;
         checklist.appendChild(li);
       });
-      grid.appendChild(checklist);
+      appendReveal("Self-check", checklist, function(){ b1Runtime.currentProductionChecklistShown = true; });
     }
     var model = document.createElement("button");
     model.type = "button";
@@ -14609,16 +14951,26 @@ body[data-support-lang="ar"] .productionChecklist {
       var block = el("correctionBlock");
       block.className = "correctionBlock success visible";
       block.innerHTML = "<div class=\"correctionTarget\">Example answer</div>" +
-        "<div class=\"correctionPattern\">" + escapeHtml(item.modelAnswer_de || item.fullAnswer_de || "") + "</div>";
+        "<div class=\"microRule\">This is one possible answer. Yours can be different.</div>" +
+        "<div class=\"correctionPattern\" dir=\"ltr\">" + escapeHtml(item.modelAnswer_de || item.fullAnswer_de || "") + "</div>";
       b1Runtime.currentProductionModelShown = true;
       model.disabled = true;
     }, false);
+    var skip = document.createElement("button");
+    skip.type = "button";
+    skip.className = "productionSkipBtn";
+    skip.textContent = "I can't do this now";
+    skip.addEventListener("click", skipB1ProductionCard, false);
     var mark = document.createElement("button");
     mark.type = "button";
     mark.textContent = "I practised this";
     mark.addEventListener("click", markB1ProductionPractised, false);
-    grid.appendChild(model);
-    grid.appendChild(mark);
+    var actionRow = document.createElement("div");
+    actionRow.className = "productionActionRow";
+    actionRow.appendChild(model);
+    actionRow.appendChild(skip);
+    actionRow.appendChild(mark);
+    grid.appendChild(actionRow);
     grid.classList.add("visible");
   }
   function renderB1Question() {
@@ -14711,8 +15063,8 @@ body[data-support-lang="ar"] .productionChecklist {
     var assistedLine = assisted ? "<div class=\"microRule\">Assisted practice - try it again later.</div>" : "";
     var repairLine = (item.itemType === "error_repair") ? "<div class=\"microRule\">" + b1RepairFeedbackHtml(item, rawAnswer, isCorrect) + "</div>" : "";
     var contrastLine = renderB1ContrastNote(item, rawAnswer, isCorrect);
-    var ruleLine = (!isCorrect && item.microRule && !repairLine && !contrastLine) ? "<div class=\"microRule\">" + escapeHtml(item.microRule) + "</div>" : "";
-    var label = assisted ? "Assisted practice" : (isCorrect ? "Correct" : "Wrong");
+    var ruleLine = (item.microRule && !repairLine && !contrastLine) ? "<div class=\"microRule\">" + escapeHtml(item.microRule) + "</div>" : "";
+    var label = assisted ? "Assisted practice" : (isCorrect ? "Correct" : "Not quite");
     var resultClass = assisted ? "assisted" : (isCorrect ? "correct" : "wrong");
     block.className = "correctionBlock" + (isCorrect && !assisted ? " success" : "");
     block.innerHTML = "<div class=\"correctionTarget feedbackResultLine " + resultClass + "\" aria-label=\"" + label + "\">" + label + "</div>" +
@@ -14750,6 +15102,23 @@ body[data-support-lang="ar"] .productionChecklist {
     }
     return b1AnsweredCount() >= b1Runtime.target;
   }
+  function skipB1ProductionCard() {
+    if (state !== "b1Checking" || !b1Runtime.current || b1Runtime.current.itemType !== "production_card") return;
+    b1Runtime.currentEvidenceRecordId = "";
+    state = "b1Next";
+    el("answerArea").classList.add("answered");
+    var block = el("correctionBlock");
+    block.className = "correctionBlock visible";
+    block.innerHTML = "<div class=\"correctionTarget\" aria-label=\"Skipped\">Skipped</div>" +
+      "<div class=\"microRule\">No production evidence was recorded.</div>";
+    resetB1ConfidenceControls();
+    var buttons = el("connectorChoiceGrid") ? el("connectorChoiceGrid").querySelectorAll("button") : [];
+    buttons.forEach(function(btn){ btn.disabled = true; });
+    el("nextBtn").textContent = b1Runtime.queue.length ? "Weiter" : "Ergebnis";
+    el("nextBtn").classList.add("visible");
+    renderHud();
+    focusWithoutScroll(el("nextBtn"));
+  }
   function markB1ProductionPractised() {
     if (state !== "b1Checking" || !b1Runtime.current || b1Runtime.current.itemType !== "production_card") return;
     var evidenceRecord = appendB1EvidenceRecord(b1Runtime.current, "practised", {
@@ -14776,7 +15145,7 @@ body[data-support-lang="ar"] .productionChecklist {
     renderB1ConfidenceControls(null);
     var buttons = el("connectorChoiceGrid") ? el("connectorChoiceGrid").querySelectorAll("button") : [];
     buttons.forEach(function(btn){ btn.disabled = true; });
-    el("nextBtn").textContent = b1RoundComplete() ? "Ergebnis" : "Weiter";
+    el("nextBtn").textContent = b1RoundComplete() ? "Ergebnis" : "Continue without confidence";
     el("nextBtn").classList.add("visible");
     renderHud();
     focusWithoutScroll(el("nextBtn"));
@@ -14848,7 +15217,7 @@ body[data-support-lang="ar"] .productionChecklist {
     el("hintBtn").style.display = "none";
     el("actionGrid").style.display = "none";
     setSupportPlaceholder(false, false);
-    el("nextBtn").textContent = b1RoundComplete() ? "Ergebnis" : "Weiter";
+    el("nextBtn").textContent = b1RoundComplete() ? "Ergebnis" : "Continue without confidence";
     el("nextBtn").classList.add("visible");
     renderHud();
     focusWithoutScroll(el("nextBtn"));
@@ -14919,17 +15288,13 @@ body[data-support-lang="ar"] .productionChecklist {
     };
   }
   function b1DiagnosticResultHtml(data) {
-    var weak = data.weakSignals.length ? data.weakSignals.join(", ") : "No clear caution signal yet";
-    var notTested = data.notTested && data.notTested.length ? data.notTested.join(", ") : "No broad area flagged";
-    var notEnough = data.notEnough.length ? data.notEnough.join(", ") : "No broad area flagged";
-    return "<div class=\"sessionCoverage\">" +
-      "<strong>Items attempted</strong><span>" + data.attempted + " of " + data.target + "</span>" +
-      "<strong>Correct this time</strong><span>" + data.correct + " / " + data.target + "</span>" +
-      "<strong>Unsure / guessed</strong><span>" + data.unsureGuessed + "</span>" +
-      "<strong>Caution signals</strong><span>" + escapeHtml(weak) + "</span>" +
-      "<strong>Not tested yet</strong><span>" + escapeHtml(notTested) + "</span>" +
-      "<strong>Not enough evidence yet</strong><span>" + escapeHtml(notEnough) + "</span>" +
-      "</div>";
+    var caution = data.weakSignals.length ? data.weakSignals.join(", ") : "No clear caution signal yet";
+    var moreEvidence = data.notEnough.length ? data.notEnough.join(", ") : (data.notTested && data.notTested.length ? data.notTested.join(", ") : "Production and delayed review need more evidence over time.");
+    return "<div class=\"sessionCoverage diagnosticResultSummary\">" +
+      "<div class=\"diagnosticResultGroup\"><strong>Snapshot summary</strong><span>" + data.attempted + " / " + data.target + " attempted</span><span>" + data.correct + " / " + data.target + " correct this time</span><span>" + data.unsureGuessed + " unsure / guessed</span></div>" +
+      "<div class=\"diagnosticResultGroup\"><strong>Caution signals</strong><span>" + escapeHtml(caution) + "</span></div>" +
+      "<div class=\"diagnosticResultGroup\"><strong>Needs more evidence</strong><span>" + escapeHtml(moreEvidence) + "</span></div>" +
+      "</div><div class=\"diagnosticResultActions\"><button class=\"learningMapAction\" id=\"diagnosticResultMapBtn\" type=\"button\">Open Learning Map</button><button class=\"learningMapAction secondary\" id=\"diagnosticResultHomeBtn\" type=\"button\">Home</button></div>";
   }
   function showB1Results() {
     var answered = b1AnsweredCount();
@@ -14969,8 +15334,8 @@ body[data-support-lang="ar"] .productionChecklist {
       el("modeTitle").textContent = "B1 Diagnostic Sprint";
       el("promptValue").textContent = "Diagnostic complete";
       el("englishGloss").textContent = "This is an evidence snapshot, not a score. It helps Ozmosis see what has been tested and where evidence is still thin.";
-      el("resultSummary").textContent = "Items attempted: " + diagnostic.attempted + " / " + diagnostic.target;
-      el("accuracySummary").textContent = "Correct this time: " + diagnostic.correct + " / " + diagnostic.target + " - Unsure / guessed: " + diagnostic.unsureGuessed;
+      el("resultSummary").textContent = "This is an evidence snapshot, not a score.";
+      el("accuracySummary").textContent = "Retakes add evidence; they do not erase earlier attempts.";
       el("weakSummary").innerHTML = b1DiagnosticResultHtml(diagnostic);
     } else if (b1Runtime.dailySprint) {
       var dailyStats = b1DailyStats(b1CurrentDailySprint());
@@ -14979,7 +15344,7 @@ body[data-support-lang="ar"] .productionChecklist {
     } else {
       el("resultSummary").textContent = "Correct this time: " + b1Runtime.correct + " / " + scored;
     }
-    if (b1Runtime.mode === "b1_diagnostic") el("bestSummary").textContent = "Retaking adds another evidence snapshot; it does not erase this one.";
+    if (b1Runtime.mode === "b1_diagnostic") el("bestSummary").textContent = "";
     if (b1Runtime.mode !== "b1_diagnostic") {
       el("accuracySummary").textContent = "Progress saved locally. This is evidence, not mastery.";
       el("weakSummary").innerHTML = "<div class=\"sessionCoverage\"><strong>Items practised</strong><span>" + answered + " of " + b1Runtime.target + "</span><strong>Incorrect this time</strong><span>" + b1Runtime.wrong + "</span><strong>Assisted</strong><span>" + b1Runtime.assisted + "</span><strong>Production</strong><span>Self-marked practice: " + b1Runtime.practised + "</span></div>";
@@ -14988,7 +15353,7 @@ body[data-support-lang="ar"] .productionChecklist {
     rp.classList.add("visible");
     var next = el("nextBtn");
     el("answerArea").insertBefore(rp, next);
-    next.textContent = b1Runtime.mode === "connector_sprint" ? "Grammar" : (b1Runtime.mode === "redemittel" ? "Redemittel" : "Home");
+    next.textContent = b1Runtime.mode === "b1_diagnostic" ? "Open Learning Map" : (b1Runtime.mode === "connector_sprint" ? "Grammar" : (b1Runtime.mode === "redemittel" ? "Redemittel" : "Home"));
     next.classList.add("visible");
     renderHud();
     scrollAppPanelToTop();
@@ -15050,7 +15415,7 @@ body[data-support-lang="ar"] .productionChecklist {
     savePersistent();
     el("nextBtn").focus();
   }
-  function showHint() { if (state !== "checking" || hintUsed) return; hintUsed=true; setSupportPlaceholder(false, true); el("feedback").innerHTML=current.kind === "cloze" ? escapeHtml(current.hint || "Tabelle eingeblendet.") : "Tabelle eingeblendet."; el("feedback").className="feedback warn"; el("hintBtn").disabled=true; renderMiniTable("hint"); el("answerInput").focus(); }
+  function showHint() { if (state !== "checking" || hintUsed) return; hintUsed=true; setSupportPlaceholder(false, true); el("feedback").innerHTML=current.kind === "cloze" ? escapeHtml(current.hint || "Article table shown.") : "Article table shown."; el("feedback").className="feedback warn"; el("hintBtn").disabled=true; renderMiniTable("hint"); el("answerInput").focus(); }
   function renderMiniTable(mode) { var wrap=el("miniTableWrap"); wrap.innerHTML=""; if (!current || !paradigms[current.type]) return; var table=document.createElement("table"); table.className="miniTable"; var thead=document.createElement("thead"), headRow=document.createElement("tr"); headRow.appendChild(document.createElement("th")); genders.forEach(function(g){ var th=document.createElement("th"); th.textContent=g.short; headRow.appendChild(th); }); thead.appendChild(headRow); table.appendChild(thead); var tbody=document.createElement("tbody"); activeCases().forEach(function(c){ var row=document.createElement("tr"), th=document.createElement("th"); th.textContent=c.short; row.appendChild(th); genders.forEach(function(g){ var td=document.createElement("td"), value=paradigms[current.type].table[c.key+"|"+g.key], isTarget=c.key===current.caseKey && g.key===current.genderKey; if (mode === "hint" && isTarget) { td.textContent="???"; td.className="target"; } else td.textContent=displayAnswer(value); if (mode === "correct" && isTarget) td.className="hitCorrect"; if (mode === "missed" && isTarget) td.className="hitMissed"; row.appendChild(td); }); tbody.appendChild(row); }); table.appendChild(tbody); wrap.appendChild(table); setTimeout(function(){ table.classList.add("visible"); },0); }
   function rankName(acc, mistakes, finalStreak) { if (acc===100 && finalStreak>=targetCount()) return "Perfekter Lauf"; if (acc>=95) return "Kasuskommandant"; if (acc>=85) return "Formstabil"; if (acc>=70) return "Auf Kurs"; if (mistakes<=targetCount()/2) return "Wacklig, aber lebendig"; return "Reparaturmodus"; }
   function showResults() {
@@ -15095,7 +15460,7 @@ body[data-support-lang="ar"] .productionChecklist {
     renderHud();
   }
   function newRound() { b1Runtime.active=false; hideStartScreen(); score=0; correct=0; wrong=0; streak=0; bestStreakRound=0; mistakeCounts={}; retryQueue=[]; sessionLog=[]; sessionMisses={}; sessionPromptCounts={}; currentWasRetry=false; currentShowMicroRule=false; state="checking"; hintUsed=false; lastKey=null; savePersistent(); pickQuestion(); }
-  function proceed() { if (state === "b1Next") nextB1Question(); else if (state === "b1Results") { if (b1Runtime.mode === "connector_sprint") showGrammarHub(); else if (b1Runtime.mode === "redemittel") showRedemittelHub(); else showHomeScreen(); } else if (state === "next") pickQuestion(); else if (state === "results") showStartScreen(); }
+  function proceed() { if (state === "b1Next") nextB1Question(); else if (state === "b1Results") { if (b1Runtime.mode === "b1_diagnostic") showLearningMapScreen(); else if (b1Runtime.mode === "connector_sprint") showGrammarHub(); else if (b1Runtime.mode === "redemittel") showRedemittelHub(); else showHomeScreen(); } else if (state === "next") pickQuestion(); else if (state === "results") showStartScreen(); }
   function bind(id,event,fn){ var node=el(id); if (node) node.addEventListener(event,fn,false); }
   function exportProgress(){ savePersistent(); var b1Store=safeGetB1Progress(); var evidenceStore=safeGetB1Evidence(); var payload={app:"Ozmosis",appVersion:OZMOSIS_APP_VERSION,version:OZMOSIS_EXPORT_VERSION,taskDepthSchemaVersion:B1_TASK_DEPTH_SCHEMA_VERSION,supportLevelSchemaVersion:B1_SUPPORT_LEVEL_SCHEMA_VERSION,exportedAt:new Date().toISOString(),sessionLog:sessionLog.slice(-80),data:safeGetObject(),leitner:safeGetLeitner(),b1:b1Store,evidence:evidenceStore}; var blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"}); var url=URL.createObjectURL(blob); var a=document.createElement("a"); a.href=url; a.download="ozmosis-progress.json"; document.body.appendChild(a); a.click(); a.remove(); showAppStatus("Export created: " + b1ProgressCount(b1Store) + " B1 progress items and " + b1EvidenceCount(evidenceStore) + " evidence records.", "good"); setTimeout(function(){ URL.revokeObjectURL(url); },250); }
   function importProgress(file){ if (!file) return; var reader=new FileReader(); reader.onload=function(){ try { var parsed=JSON.parse(String(reader.result || "{}")), data=parsed.data || parsed; safeSetObject(data); if (parsed.leitner && typeof parsed.leitner === "object") safeSetLeitner(parsed.leitner); if (parsed.b1 && typeof parsed.b1 === "object") safeSetB1Progress(parsed.b1); if (parsed.evidence && typeof parsed.evidence === "object") safeSetB1Evidence(parsed.evidence); loadPersistent(); newRound(); } catch(e){ el("feedback").textContent="Import fehlgeschlagen: ungültige JSON-Datei."; el("feedback").className="feedback missed"; } }; reader.readAsText(file); }
@@ -15687,12 +16052,24 @@ window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkA
   }
   function toggleMenu() { setMenu(!el("settingsPanel").classList.contains("open")); }
   document.addEventListener("click", function(event){
-    var target = event.target && event.target.closest ? event.target.closest("#menuCloseBtn, #menuDiagnosticBtn, #menuLearningMapBtn, #menuWortschatzBtn, #menuTesterNotesBtn") : null;
+    var target = event.target && event.target.closest ? event.target.closest("#menuCloseBtn, #menuDiagnosticBtn, #menuLearningMapBtn, #menuWortschatzBtn, #menuTesterNotesBtn, #menuSettingsBtn, #diagnosticResultMapBtn, #diagnosticResultHomeBtn") : null;
     if (!target) return;
     if (target.id === "menuCloseBtn") { setMenu(false); return; }
     if (target.id === "menuDiagnosticBtn") { setMenu(false); startB1DiagnosticSprint(); return; }
     if (target.id === "menuLearningMapBtn") { setMenu(false); showLearningMapScreen(); return; }
     if (target.id === "menuWortschatzBtn") { setMenu(false); startWortschatzRound("mixed"); return; }
+    if (target.id === "menuSettingsBtn") {
+      var details = el("menuOptionsDetails");
+      if (details) {
+        details.open = true;
+        try { details.scrollIntoView({ block:"start", inline:"nearest" }); } catch (e) { details.scrollIntoView(); }
+        var summary = details.querySelector("summary");
+        if (summary) focusWithoutScroll(summary);
+      }
+      return;
+    }
+    if (target.id === "diagnosticResultMapBtn") { showLearningMapScreen(); return; }
+    if (target.id === "diagnosticResultHomeBtn") { showHomeScreen(); return; }
     if (target.id === "menuTesterNotesBtn") { setMenu(false); showTesterNotes(); }
   }, false);
   document.addEventListener("keydown", function(event){
