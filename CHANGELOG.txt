@@ -1,3 +1,15 @@
+## v0.53.1 - Mobile UX Stabilisation / Visual Recovery
+
+- Stabilised the mobile app shell so the top status chip, logo, back/exit control, and menu no longer collide on small screens or the 1365x599 laptop-like viewport.
+- Fixed Home/tool-hub horizontal clipping, including route-card action pills and Coming Soon cards.
+- Improved hamburger/menu layout so route navigation is usable on mobile without trapping scroll or duplicating the full Options screen.
+- Improved active-practice spacing, safe-area handling, and fixed HUD/footer clearance so answer controls, feedback, confidence buttons, and continue controls remain reachable.
+- Clarified support/translation labelling so English support is not labelled as "Correct" before answer.
+- Made repair feedback safer by avoiding misleading pseudo-diffs for nonsense answers and preserving concise corrected-sentence feedback.
+- Preserved the dark neon console identity, answer -> feedback -> confidence/continue rhythm, B1 route structure, scoring, evidence semantics, confidence values, support-level metadata, production self-marking, diagnostic semantics, export/import compatibility, localStorage keys, and content banks.
+- Added QA documentation at docs/qa/v0.53.1_mobile_ux_stabilisation.md.
+- Added no backend, framework, build step, dependencies, analytics, accounts, external API calls, runtime AI, B2 content, weakness repair, delayed review, or new practice modes.
+
 ## v0.53 - Controlled Production Tracking
 
 - Added clearer controlled-production evidence metadata for self-marked production cards.

@@ -1,7 +1,9 @@
 # OZMOSIS SOURCE BRIEF v0.53
 
+Historical copy. Current canonical document is `docs/OZMOSIS_SOURCE_BRIEF_v0.53.1.md`.
+
 Version: Working Source Brief Update  
-Status: Current planning brief  
+Status: Historical planning brief superseded by v0.53.1  
 Project: Ozmosis - Deutsch Lernen App  
 Current known development position: v0.53 completed  
 Next planned patch: v0.54 - Repair Mode Strengthening  

@@ -1,10 +1,10 @@
-# OZMOSIS SOURCE BRIEF v0.46
+# OZMOSIS SOURCE BRIEF v0.53.1
 
 Version: Working Source Brief Update  
 Status: Current planning brief  
 Project: Ozmosis - Deutsch Lernen App  
-Current known development position: v0.46 completed  
-Next planned patch: v0.47 - Not Enough Evidence Handling  
+Current known development position: v0.53.1 completed  
+Next planned patch: v0.54 - Repair Mode Strengthening  
 
 Versioning rule:
 
@@ -106,7 +106,7 @@ But this should be introduced carefully and only when useful.
 
 The detailed version-by-version roadmap lives separately in:
 
-`docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.46.md`
+`docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.53.1.md`
 
 The Source Brief remains the strategic orientation document. The roadmap is a planning document, not permission for Codex to implement future versions early.
 
@@ -705,8 +705,8 @@ You often choose accusative forms in location sentences.
 Current known development state:
 
 ```txt
-v0.46 completed
-Next planned patch: v0.47 - Not Enough Evidence Handling
+v0.53.1 completed
+Next planned patch: v0.54 - Repair Mode Strengthening
 ```
 
 The next work should not be a broad rewrite.
@@ -831,13 +831,13 @@ Do not yet use Reliable/Durable/Transfer-ready unless valid delayed review evide
 
 ### v0.47  -  "Not Enough Evidence" Handling
 
-Next: make Not tested and Not enough evidence explanations clearer across progress surfaces.
+Completed: make Not tested and Not enough evidence explanations clearer across progress surfaces.
 
 Do not fake precision.
 
-### v0.48  -  Mobile Layout Pass
+### v0.48  -  Tester-Ready UX / Visual System Pass
 
-Make Learning Map and progress views usable on mobile.
+Completed: make the app tester-ready with a controlled UX / visual-system pass across Home, Known Bugs / Tester Notes, active practice, feedback, sprint complete, Learning Map, production-card clarity, Dev Tools, scrolling, and mobile layout.
 
 ### v0.49  -  Progress Foundation QA
 
@@ -891,6 +891,12 @@ Verb-final clauses: developing in sentence-building, weak in production.
 
 ### v0.52  -  Support-Level Tracking
 
+Completed in v0.52:
+
+```txt
+Support level is now additive evidence context for safely detected support exposure. It does not change correctness scoring, confidence values, storage keys, or import requirements.
+```
+
 Distinguish:
 
 ```txt
@@ -904,9 +910,23 @@ free production
 
 ### v0.53  -  Controlled Production Tracking
 
+Completed in v0.53:
+
+```txt
+Production cards now record explicit self-marked production metadata, model answer exposure, useful phrase exposure, and checklist exposure where the existing UI can detect it. Free text remains ungraded.
+```
+
 Add careful tracking for production tasks.
 
 Do not over-score free text if checking is not robust.
+
+### v0.53.1 - Mobile UX Stabilisation / Visual Recovery
+
+Completed in v0.53.1:
+
+```txt
+The mobile/tablet/desktop shell was stabilised before v0.54. Header controls, the menu drawer, Home route cards, active-practice spacing, support labels, repair nonsense feedback, and fixed HUD clearance were tightened without changing scoring, evidence semantics, storage keys, export/import, content banks, or route composition.
+```
 
 ### v0.54  -  Repair Mode Strengthening
 
@@ -1422,7 +1442,7 @@ Do not assume v1.0 at any arbitrary milestone.
 
 # 21. IMMEDIATE NEXT STEP
 
-The next appropriate step is v0.47 - Not Enough Evidence Handling, unless QA finds a blocking progress-label, recommendation, scroll/exit, diagnostic pre-start, Learning Map, Skill Matrix, debug/preview, storage, or export/import regression.
+The next appropriate step is v0.54 - Repair Mode Strengthening, unless QA finds a blocking production-tracking, support visibility, support-level, Skill Matrix, task-depth, confidence-as-next, tester-ready UX, report-copy, scroll/exit, diagnostic pre-start, Learning Map, debug/preview, storage, or export/import regression.
 
 v0.40 added the first Progress Evidence Model and v0.40.1 added lightweight confidence/guess capture on top of that evidence model.
 
@@ -1446,21 +1466,32 @@ v0.45 added a cautious rules-based Next Recommended Practice helper using existi
 
 v0.46 standardised learner-facing Progress State Labels v1 around Not tested, Not enough evidence, Introduced, Emerging, and Developing. It kept delayed review inactive where no delayed evidence exists, kept production self-marked, and added External AI Review Handoff only as a future roadmap/source-brief concept.
 
-Safe v0.47 scope:
+v0.47 clarified Not tested and Not enough evidence across learner-facing progress surfaces. It split no-evidence from thin-evidence messaging, improved diagnostic and recommendation thin-evidence copy, and clarified that production remains self-marked practice evidence only.
+
+v0.48 made Ozmosis more tester-ready without changing evidence semantics. It added session-only first-use tester guidance, a Known Bugs / Tester Notes surface, a safe tester report copy path, a recommendation-driven Home hero that opens existing routes only, clearer sprint-complete hierarchy, compact Learning Map ordering, and Dev Tools access to tester reporting. Browser execution was blocked in the local Codex environment during QA, so v0.48 browser-dependent checks are documented as blocked rather than passed.
+
+v0.48.1 added confidence-as-next for supported B1 auto-graded practice feedback. Selecting a confidence button now updates the existing evidence record and advances through the existing `proceed()` path, while the `Weiter` path remains available for `confidence:null`. Production cards and assisted records remain on the existing conservative `Weiter` path.
+
+v0.49 audited the active B1 progress foundation for unsupported learner-facing progress claims, diagnostic framing, recommendation overconfidence, production self-marking ambiguity, not-tested/not-enough-evidence clarity, debug/tester-report privacy, storage compatibility, and content-bank impact. It made only a small availability-label copy clarification and did not change scoring, evidence semantics, storage keys, content banks, or route composition.
+
+v0.50 formalised the internal B1 task-depth vocabulary used by evidence summaries, Learning Map, Skill Matrix, recommendations, debug snapshots, and exports. It added read-time canonicalisation for known and legacy values while preserving existing evidence records, storage keys, scoring, route composition, and content banks.
+
+v0.51 exposed a modest learner-facing Task-depth matrix inside the existing Learning Map. It uses existing Skill Matrix data, keeps empty cells non-judgemental, shows only conservative evidence states, and marks production, diagnostic, derived-metadata, and no-delayed-review limits without changing scoring, storage keys, export/import shape, recommendations, or content banks.
+
+Completed v0.48.1 scope:
 
 ```txt
-Improve Not tested / Not enough evidence handling and explanations without changing evidence semantics.
-Keep states conservative and evidence-based.
-Do not claim mastery, durability, readiness, or diagnosis without enough evidence.
+Turn confidence selection into the next interaction only if the current evidence flow can support it without duplicate evidence, scoring changes, or storage-key changes.
+Keep existing confidence values: sure, unsure, guessed, and null where already supported.
 Do not change Today's B1 Sprint connector inclusion.
 Do not make production cards more visible.
-Preserve diagnostic, evidence, confidence, route, scoring, and content-bank behaviour.
+Preserve diagnostic, evidence, route, scoring, and content-bank behaviour.
 ```
 
-Suggested v0.47 Codex task summary:
+v0.48.1 implementation summary:
 
 ```txt
-Improve Not Enough Evidence handling as cautious display language for existing B1 evidence states.
+Implemented confidence-as-next for supported B1 auto-graded practice routes.
 
 Do not introduce B2 content.
 Do not change the app architecture.
@@ -1468,7 +1499,7 @@ Do not add backend, framework, build step, or external API dependency.
 
 Do not change Today's B1 Sprint composition.
 Do not make production cards more prominent.
-Do not implement weakness repair, Leitner, recommendations beyond v0.45, or durability scheduling.
+Do not implement weakness repair, Leitner, new recommendation logic, or durability scheduling.
 Preserve all current functionality unless a change is explicitly requested.
 ```
 

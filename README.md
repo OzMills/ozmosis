@@ -17,13 +17,13 @@ Current priority order:
 
 ## Current Known Version
 
-Current working version: `v0.53`
+Current working version: `v0.53.1`
 
 Next planned patch: `v0.54 - Repair Mode Strengthening`
 
-Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.53.md`
+Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.53.1.md`
 
-Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.53.md`
+Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.53.1.md`
 
 Known current state:
 
@@ -68,6 +68,7 @@ Known current state:
 - v0.52 adds additive support-level metadata to new B1 evidence where support exposure can be detected safely; support level is evidence context, not a score.
 - v0.52.1 adds a conservative item-level support visibility policy so support can remain visible by default and be collapsed or delayed only where tiny metadata explicitly asks for it.
 - v0.53 adds clearer controlled-production evidence metadata for self-marked production cards without auto-grading free text or changing production route visibility.
+- v0.53.1 stabilises mobile/tablet/desktop UX by fixing header/menu/home clipping, active-practice spacing, support labelling, repair nonsense feedback, and safe-area/HUD behaviour without changing learning semantics.
 - B1 progress persists under `ozmosis_b1_sprint_progress_v1`.
 - B1 progress evidence persists under `ozmosis_b1_progress_evidence_v1`.
 - Existing Case Trainer, Options, Dev Tools, export/import, and localStorage compatibility are preserved.
@@ -111,8 +112,8 @@ Recommended clean repo structure:
 |  |- ozmosis_b1_connector_sprint_v1_bank.json
 |  `- ozmosis_b1_wortschatz_survival_set_v1.json
 `- docs/
-   |- OZMOSIS_SOURCE_BRIEF_v0.53.md
-   |- OZMOSIS_DEVELOPMENT_ROADMAP_v0.53.md
+   |- OZMOSIS_SOURCE_BRIEF_v0.53.1.md
+   |- OZMOSIS_DEVELOPMENT_ROADMAP_v0.53.1.md
    |- OZMOSIS_B1_Test_Sprint_Pivot_Production_Plan.md
    |- OZMOSIS_Case_Teaching_Leitner_Iteration_Plan.md
    `- qa/

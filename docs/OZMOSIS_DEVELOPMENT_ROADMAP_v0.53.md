@@ -1,6 +1,8 @@
 # Ozmosis Development Roadmap v0.53
 
-Status: current planning roadmap
+Historical copy. Current canonical roadmap is `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.53.1.md`.
+
+Status: historical planning roadmap superseded by v0.53.1
 Current known development position: v0.53 completed
 Next planned patch: v0.54 - Repair Mode Strengthening
 

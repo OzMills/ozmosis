@@ -6147,6 +6147,177 @@ body.b1Mode.b1LongAnswer #answerInput {
   }
 }
 
+/* v0.53.1 mobile UX stabilisation */
+.debugStamp {
+  max-width:min(46vw, 520px);
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+body.b1Mode .debugStamp {
+  display:none !important;
+}
+
+.menuHeader {
+  display:grid;
+  grid-template-columns:minmax(0, 1fr) auto;
+  gap:10px;
+  align-items:start;
+}
+
+.menuCloseBtn {
+  min-width:44px;
+  min-height:44px;
+  border:1px solid color-mix(in srgb, var(--cyan) 42%, var(--line));
+  border-radius:14px;
+  background:rgba(0, 229, 255, .1);
+  color:var(--cyan);
+  font:800 .74rem/1 var(--mono);
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  box-shadow:0 0 16px rgba(0,229,255,.12);
+  cursor:pointer;
+}
+
+.menuNavGroup {
+  display:grid;
+  grid-template-columns:1fr;
+  gap:7px;
+}
+
+#settingsPanel .menuButton {
+  min-height:44px;
+  white-space:normal;
+  overflow-wrap:anywhere;
+}
+
+#settingsPanel.open {
+  display:flex !important;
+  flex-direction:column;
+  gap:10px;
+  max-height:calc(100dvh - 20px - env(safe-area-inset-top) - env(safe-area-inset-bottom)) !important;
+  overflow-y:auto !important;
+  overscroll-behavior:contain;
+  padding-bottom:max(16px, env(safe-area-inset-bottom)) !important;
+}
+
+.homeRouteCard,
+.homeChip,
+.homeHero,
+.homeStatusStrip {
+  max-width:100%;
+  min-width:0;
+  overflow:hidden;
+}
+
+.homeRouteMain,
+.homeHeroTop > span:first-child {
+  min-width:0;
+}
+
+.answerArea.answered .b1ConfidenceRow:not([hidden]) ~ #nextBtn.visible {
+  background:rgba(130,150,180,.1);
+  border-color:rgba(150,170,200,.3);
+  color:var(--muted);
+  box-shadow:none;
+}
+
+@media (max-width:759px) {
+  .debugStamp {
+    display:none !important;
+  }
+
+  body.b1Mode .header {
+    min-height:44px;
+    grid-template-columns:minmax(0, 1fr) auto;
+    gap:8px;
+    padding-left:54px;
+    margin-bottom:8px;
+  }
+
+  body.b1Mode .header h1 {
+    min-width:0;
+    text-align:center;
+    font-size:clamp(.9rem, 4.8vw, 1.1rem);
+    letter-spacing:.08em;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
+
+  body.b1Mode #menuToggle {
+    width:44px;
+    height:44px;
+    min-width:44px;
+    min-height:44px;
+    border-radius:15px;
+    font-size:1.18rem;
+  }
+
+  body.b1Mode .practiceExitControl {
+    top:max(10px, env(safe-area-inset-top));
+    left:max(10px, env(safe-area-inset-left));
+    width:44px;
+    height:44px;
+  }
+
+  body.b1Mode.b1TypedCloze .content,
+  body.b1Mode.b1LongAnswer .content {
+    align-content:start !important;
+    justify-content:start !important;
+    min-height:auto !important;
+  }
+}
+
+@media (max-width:480px) {
+  #settingsPanel.open {
+    top:max(8px, env(safe-area-inset-top)) !important;
+    right:max(8px, env(safe-area-inset-right)) !important;
+    bottom:max(8px, env(safe-area-inset-bottom)) !important;
+    left:max(8px, env(safe-area-inset-left)) !important;
+    width:auto !important;
+    max-height:none !important;
+  }
+}
+
+@media (max-width:430px) {
+  .homeRouteCard {
+    grid-template-columns:auto minmax(0, 1fr);
+    align-items:start;
+    gap:9px 12px;
+    padding:12px;
+  }
+
+  .homeRouteMain {
+    min-width:0;
+  }
+
+  .homePill {
+    grid-column:2;
+    justify-self:start;
+    max-width:100%;
+    white-space:normal;
+    text-align:left;
+  }
+
+  .homeRouteNumber {
+    font-size:clamp(1.45rem, 7vw, 1.95rem);
+  }
+
+  .homeRouteLabel {
+    font-size:clamp(.98rem, 4.5vw, 1.18rem);
+  }
+
+  .homeRouteSub {
+    font-size:clamp(.78rem, 3.3vw, .9rem);
+  }
+
+  .homeChip {
+    grid-template-columns:minmax(0, 1fr) auto;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -6166,13 +6337,30 @@ body.b1Mode.b1LongAnswer #answerInput {
     <div class="menuWrap">
       <button id="menuToggle" type="button" aria-label="Einstellungen öffnen">☰</button>
       <div id="settingsPanel">
-        <div class="menuSectionTitle">Ozmosis</div>
-        <div class="homeFeedback">Feedback: ozmillsrpg@gmail.com</div>
-        <button class="menuButton" id="menuHomeBtn" type="button">Home</button>
-        <button class="menuButton" id="menuSprintBtn" type="button">Today's B1 Sprint</button>
-        <button class="menuButton" id="menuGrammarBtn" type="button">Grammar</button>
-        <button class="menuButton" id="menuRedemittelBtn" type="button">Redemittel</button>
-        <button class="menuButton" id="menuCaseTrainerBtn" type="button">Case Trainer</button>
+        <div class="menuHeader">
+          <div>
+            <div class="menuSectionTitle">Ozmosis</div>
+            <div class="homeFeedback">Feedback: ozmillsrpg@gmail.com</div>
+          </div>
+          <button class="menuCloseBtn" id="menuCloseBtn" type="button" aria-label="Close menu">Close</button>
+        </div>
+        <div class="menuSectionTitle">Practice</div>
+        <div class="menuNavGroup" aria-label="Practice routes">
+          <button class="menuButton" id="menuHomeBtn" type="button">Home</button>
+          <button class="menuButton" id="menuSprintBtn" type="button">Today's B1 Sprint</button>
+          <button class="menuButton" id="menuDiagnosticBtn" type="button">Diagnostic Sprint</button>
+          <button class="menuButton" id="menuLearningMapBtn" type="button">Learning Map</button>
+          <button class="menuButton" id="menuGrammarBtn" type="button">Grammar</button>
+          <button class="menuButton" id="menuWortschatzBtn" type="button">Wortschatz</button>
+          <button class="menuButton" id="menuRedemittelBtn" type="button">Redemittel</button>
+          <button class="menuButton" id="menuCaseTrainerBtn" type="button">Case Trainer</button>
+        </div>
+        <div class="menuDivider"></div>
+        <div class="menuSectionTitle">Tools</div>
+        <div class="menuNavGroup" aria-label="Tools">
+          <button class="menuButton" id="menuTesterNotesBtn" type="button">Tester Notes / Known Bugs</button>
+          <button class="menuButton devToolsBtn" id="devToolsBtn" type="button">Dev Tools</button>
+        </div>
         <div class="menuDivider"></div>
         <div class="menuSectionTitle">Options</div>
         <label>Aufgabentyp
@@ -6247,8 +6435,6 @@ body.b1Mode.b1LongAnswer #answerInput {
             <li>Custom cloze import</li>
           </ul>
         </div>
-        <div class="menuDivider"></div>
-        <button class="menuButton devToolsBtn" id="devToolsBtn" type="button">Dev Tools</button>
       </div>
     </div>
   </div>
@@ -6874,8 +7060,8 @@ body.b1Mode.b1LongAnswer #answerInput {
   var B1_STORAGE_KEY = "ozmosis_b1_sprint_progress_v1";
   var B1_EVIDENCE_STORAGE_KEY = "ozmosis_b1_progress_evidence_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.53";
-  var OZMOSIS_EXPORT_VERSION = "v0.53-controlled-production-tracking";
+  var OZMOSIS_APP_VERSION = "v0.53.1";
+  var OZMOSIS_EXPORT_VERSION = "v0.53.1-mobile-ux-stabilisation";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -11263,6 +11449,7 @@ body.b1Mode.b1LongAnswer #answerInput {
       btn.setAttribute("aria-pressed", "false");
       btn.disabled = false;
     });
+    if (el("nextBtn")) el("nextBtn").textContent = "Weiter";
   }
   function b1CurrentEvidenceRecord() {
     if (!b1Runtime.active || !b1Runtime.current || !b1Runtime.currentEvidenceRecordId) return null;
@@ -11298,6 +11485,7 @@ body.b1Mode.b1LongAnswer #answerInput {
     row.hidden = false;
     row.setAttribute("data-evidence-id", b1Runtime.currentEvidenceRecordId);
     row.setAttribute("data-confidence-next", b1ConfidenceAutoAdvanceAllowed(record) ? "true" : "false");
+    if (el("nextBtn")) el("nextBtn").textContent = b1ConfidenceAutoAdvanceAllowed(record) ? "Skip confidence / Weiter" : "Weiter";
     row.removeAttribute("data-advancing");
     row.querySelectorAll("button").forEach(function(btn){
       var value = btn.getAttribute("data-confidence");
@@ -12755,11 +12943,16 @@ body.b1Mode.b1LongAnswer #answerInput {
   function b1RepairTokenDiff(userAnswer, correctAnswer) {
     var userTokens = b1CleanRepairSentence(userAnswer).split(/\s+/).filter(Boolean);
     var correctTokens = b1CleanRepairSentence(correctAnswer).split(/\s+/).filter(Boolean);
+    if (!userTokens.length || !correctTokens.length) return "";
+    if (userTokens.length < 2 && correctTokens.length > 2) return "";
+    if (userTokens.length < Math.max(2, Math.floor(correctTokens.length * .45))) return "";
+    if (Math.abs(userTokens.length - correctTokens.length) > Math.max(2, Math.ceil(correctTokens.length * .4))) return "";
     var len = Math.max(userTokens.length, correctTokens.length);
     for (var i = 0; i < len; i += 1) {
       var userToken = userTokens[i] || "";
       var correctToken = correctTokens[i] || "";
       if (userToken === correctToken) continue;
+      if (userToken.length <= 1 && correctToken.length > 2) return "";
       if (userToken.toLowerCase() === correctToken.toLowerCase()) {
         return "Capitalisation: " + userToken + " -> " + correctToken;
       }
@@ -12784,6 +12977,7 @@ body.b1Mode.b1LongAnswer #answerInput {
     var html = "<span class=\"repairFeedbackLine\">Correct sentence:<span class=\"repairAnswerLine\">" + escapeHtml(correctSentence) + "</span></span>";
     if (userSentence) html += "<span class=\"repairFeedbackLine\">Your answer: " + escapeHtml(userSentence) + "</span>";
     if (tokenDiff) html += "<span class=\"repairTokenIssue\">" + escapeHtml(tokenDiff) + "</span>";
+    else if (userSentence && lowerUser !== lowerCorrect) html += "<span class=\"repairFeedbackLine\">Try rewriting the whole sentence.</span>";
     if (capHint) html += "<span class=\"repairFeedbackLine\">" + escapeHtml(capHint) + "</span>";
     if (micro && micro.indexOf("→") === -1 && lowerCorrect.indexOf(micro.toLowerCase()) === -1) {
       html += "<span class=\"repairFeedbackLine\">Rule: " + escapeHtml(micro) + "</span>";
@@ -13200,6 +13394,11 @@ body.b1Mode.b1LongAnswer #answerInput {
     if (policy === "collapsed") return !!(context && (context.open || context.forceOpen));
     return true;
   }
+  function b1SupportDisplayText(text, answered) {
+    var value = String(text || "");
+    if (!answered) return value.replace(/^Correct:\s*/i, "Meaning: ");
+    return value;
+  }
   function renderB1Translation(forceOpen) {
     var gloss = el("englishGloss");
     var toggle = el("translationToggle");
@@ -13228,7 +13427,7 @@ body.b1Mode.b1LongAnswer #answerInput {
       }
       return;
     }
-    gloss.textContent = text;
+    gloss.textContent = b1SupportDisplayText(text, answered);
     if (state === "b1Checking") b1Runtime.translationOpen = true;
     if (toggle) {
       toggle.hidden = policy !== "collapsed";
@@ -13391,6 +13590,7 @@ body.b1Mode.b1LongAnswer #answerInput {
     el("hintBtn").style.display = "none";
     el("nextBtn").classList.remove("visible");
     el("nextBtn").textContent = "Weiter";
+    updatePracticeExitControl();
     scrollAppPanelToTop();
     setTimeout(function(){
       var firstChoice = el("connectorChoiceGrid") && el("connectorChoiceGrid").querySelector("button");
@@ -14373,6 +14573,20 @@ window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkA
   }
   function setMenu(open) { el("settingsPanel").classList.toggle("open", open); document.body.classList.toggle("menuOpen", open); }
   function toggleMenu() { setMenu(!el("settingsPanel").classList.contains("open")); }
+  document.addEventListener("click", function(event){
+    var target = event.target && event.target.closest ? event.target.closest("#menuCloseBtn, #menuDiagnosticBtn, #menuLearningMapBtn, #menuWortschatzBtn, #menuTesterNotesBtn") : null;
+    if (!target) return;
+    if (target.id === "menuCloseBtn") { setMenu(false); return; }
+    if (target.id === "menuDiagnosticBtn") { setMenu(false); startB1DiagnosticSprint(); return; }
+    if (target.id === "menuLearningMapBtn") { setMenu(false); showLearningMapScreen(); return; }
+    if (target.id === "menuWortschatzBtn") { setMenu(false); startWortschatzRound("mixed"); return; }
+    if (target.id === "menuTesterNotesBtn") { setMenu(false); showTesterNotes(); }
+  }, false);
+  document.addEventListener("keydown", function(event){
+    if ((event.key === "Escape" || event.key === "Esc") && el("settingsPanel") && el("settingsPanel").classList.contains("open")) {
+      setMenu(false);
+    }
+  }, false);
   function isMobileClozeViewport() {
     return !window.matchMedia || window.matchMedia("(max-width: 759px)").matches;
   }
