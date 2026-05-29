@@ -1,3 +1,49 @@
+## v0.57.1 - Big UX Update
+
+- Performed a full mobile-first UX and visual-system audit across Home, route screens, active practice, feedback, menu, Options, Learning Map, Skill Matrix, Case Trainer, Dev Tools, and tester surfaces.
+- Refined the dark neon console visual system with cleaner responsive type scales, spacing, card rhythm, focus states, safe-area handling, and route hierarchy.
+- Improved Home recommendation-card layout, stat-strip readability, route-card density, and lower-page structure.
+- Simplified the menu drawer so learner navigation remains clear and heavy Options content is collapsed by default.
+- Cleaned Options grouping and moved roadmap noise under collapsed Roadmap notes.
+- Improved secondary route pages, including heading scale, menu spacing, route-list density, and back-action hierarchy.
+- Improved active-practice readability, cloze blank appearance, translation/support presentation, keyboard-state safety, and fixed-HUD clearance.
+- Simplified post-answer feedback by reducing decorative star noise, clarifying result/rule hierarchy, and keeping confidence buttons as the primary next action.
+- Clarified production-card scaffolds with Useful phrases, Self-check, Example answer, and I practised this labels while preserving self-marked semantics.
+- Preserved v0.57 recommendation hardening, including cautious recommendation copy and recommendation QA metadata.
+- Preserved scoring, evidence semantics, confidence values, support-level semantics, task-depth semantics, production self-marking, storage keys, export/import compatibility, route composition, Today's B1 Sprint composition, content banks, and B1-only scope.
+- Added reusable local Edge/CDP UX QA harness coverage at `_development-files/v0571_big_ux_gate.cjs`.
+- Added QA documentation at `docs/qa/v0.57.1_big_ux_update.md`.
+
+## v0.57 - Recommendation QA and Evidence Inflation Audit
+
+- Hardened Suggested Next Practice so thin, diagnostic-only, self-marked production-only, scaffolded-majority, recognition-only, and broad Wortschatz evidence cannot produce overconfident task-gap recommendations.
+- Added additive recommendation QA metadata in debug output: `evidenceQuality` and `inflationRisk`.
+- Kept learner-facing recommendation copy short and cautious, including explicit closest-route wording when the exact task route is unavailable.
+- Replaced learner-facing `weak signal` copy with caution/practice-signal wording while preserving internal scoring and retry behaviour.
+- Preserved scoring, storage keys, export/import compatibility, B1-only scope, content banks, routes, and Today's B1 Sprint composition.
+- Added QA documentation at `docs/qa/v0.57_recommendation_qa_evidence_inflation_audit.md`.
+
+## v0.56 - Skill-Task Recommendations
+
+- Improved Suggested Next Practice so recommendations can consider task-depth gaps, repair evidence, contrast evidence, support-level limitations, and production self-marking limits.
+- Kept recommendations cautious, explanation-based, and routed only to existing supported practice screens.
+- Preserved scoring, evidence semantics, confidence values, support-level metadata, storage keys, export/import compatibility, content banks, and B1-only scope.
+- Added QA documentation at docs/qa/v0.56_skill_task_recommendations.md.
+
+## v0.55 - Contrast Tasks
+
+- Added conservative contrast-task handling for high-yield B1 confusions where current metadata supports it.
+- Improved concise contrast feedback for connector choice, word-order, repair, case, and location/movement contrasts without adding new routes.
+- Preserved Today's B1 Sprint composition, scoring, evidence semantics, support-level tracking, storage keys, export/import compatibility, route composition, and content banks.
+- Added QA documentation at docs/qa/v0.55_contrast_tasks.md.
+
+## v0.54 - Repair Mode Strengthening
+
+- Strengthened repair-mode feedback and evidence handling so repair tasks remain distinct from ordinary cloze items.
+- Improved corrected-sentence feedback, safe nonsense-answer handling, derived repair/category handling, and capitalisation or word-order micro-feedback where current metadata supports it.
+- Preserved long-answer submission, support-level tracking, confidence behaviour, scoring, localStorage keys, export/import compatibility, route composition, Today's B1 Sprint composition, production self-marking, and content banks.
+- Added QA documentation at docs/qa/v0.54_repair_mode_strengthening.md.
+
 ## v0.53.1 - Mobile UX Stabilisation / Visual Recovery
 
 - Stabilised the mobile app shell so the top status chip, logo, back/exit control, and menu no longer collide on small screens or the 1365x599 laptop-like viewport.

@@ -15,6 +15,7 @@
   --muted:#96a4bb;
   --line:#2d3a53;
   --accent:#7de3ff;
+  --cyan:#7de3ff;
   --good:#58e39a;
   --bad:#ff6d7a;
   --warn:#f6c15c;
@@ -31,6 +32,24 @@
   --keyboardHeight:0px;
   --keyboardInset:0px;
   --safeBottom:max(12px, env(safe-area-inset-bottom));
+  --pagePad:clamp(12px,4vw,34px);
+  --safeTop:max(0px, env(safe-area-inset-top));
+  --headerHeight:56px;
+  --hudClearance:calc(var(--hudHeight) + var(--safeBottom) + 18px);
+  --cardPad:clamp(12px,3vw,20px);
+  --cardRadius:16px;
+  --routeTitleSize:clamp(1.9rem,8.4vw,4.2rem);
+  --practicePromptSize:clamp(1.12rem,4.8vw,2.1rem);
+  --bodyTextSize:clamp(.88rem,3.2vw,1rem);
+  --buttonHeight:48px;
+  --buttonGap:8px;
+  --panelBorder:1px solid color-mix(in srgb, var(--accent) 34%, var(--line));
+  --focusRing:0 0 0 3px color-mix(in srgb, var(--accent) 30%, transparent), 0 0 20px rgba(125,227,255,.18);
+  --mutedText:color-mix(in srgb, var(--muted) 86%, var(--text));
+  --stateSuccess:var(--good);
+  --stateError:var(--bad);
+  --stateAssist:var(--warn);
+  --mono:ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
 }
 
 body[data-mode="definite"] {
@@ -6281,6 +6300,542 @@ body.b1Mode .debugStamp {
   }
 }
 
+/* v0.57.1: Big UX Update - consolidated visual rhythm and mobile-first interaction polish. */
+:where(button, select, input, summary, a, [tabindex]):focus-visible {
+  outline:2px solid var(--accent) !important;
+  outline-offset:3px !important;
+  box-shadow:var(--focusRing) !important;
+}
+
+:where(button, select, input, summary) {
+  touch-action:manipulation;
+}
+
+body {
+  scroll-padding-top:calc(var(--safeTop) + var(--headerHeight) + 12px);
+  scroll-padding-bottom:var(--hudClearance);
+}
+
+body.homeMode main,
+body.setupMode main,
+body.b1Mode main {
+  padding-left:var(--pagePad);
+  padding-right:var(--pagePad);
+}
+
+#settingsPanel.open {
+  gap:9px !important;
+  width:min(360px, calc(100vw - 20px)) !important;
+  padding:12px !important;
+}
+
+.menuHeader {
+  align-items:center;
+  padding-bottom:2px;
+}
+
+.menuCloseBtn {
+  min-width:44px;
+  width:44px;
+  padding:0 8px;
+  border-radius:12px;
+  overflow:hidden;
+  white-space:nowrap;
+}
+
+.menuToolsGroup .menuButton,
+.menuRoadmapNotes summary {
+  border-color:color-mix(in srgb, var(--muted) 28%, var(--line));
+  color:var(--muted);
+  background:rgba(5,10,18,.52);
+}
+
+.menuDetails,
+.menuSubDetails {
+  display:grid;
+  gap:8px;
+  border:var(--panelBorder);
+  border-radius:var(--cardRadius);
+  background:rgba(5,11,22,.6);
+  overflow:hidden;
+}
+
+.menuDetails > summary,
+.menuSubDetails > summary {
+  min-height:44px;
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:center;
+  gap:10px;
+  padding:10px 12px;
+  color:var(--text);
+  cursor:pointer;
+  font-weight:950;
+  letter-spacing:0;
+  list-style:none;
+}
+
+.menuDetails > summary::-webkit-details-marker,
+.menuSubDetails > summary::-webkit-details-marker {
+  display:none;
+}
+
+.menuDetails > summary::after,
+.menuSubDetails > summary::after {
+  content:"+";
+  width:24px;
+  height:24px;
+  display:grid;
+  place-items:center;
+  border:1px solid color-mix(in srgb, var(--accent) 42%, var(--line));
+  border-radius:50%;
+  color:var(--accent);
+  background:#07101b;
+  font:900 .9rem/1 var(--mono);
+}
+
+.menuDetails[open] > summary::after,
+.menuSubDetails[open] > summary::after {
+  content:"-";
+}
+
+.menuDetailsBody {
+  display:grid;
+  gap:8px;
+  padding:0 8px 8px;
+}
+
+.menuSubDetails {
+  border-color:color-mix(in srgb, var(--accent) 24%, var(--line));
+  background:rgba(3,8,16,.42);
+}
+
+.menuSubDetails > label,
+.menuSubDetails > .genitiveOptions,
+.menuSubDetails > .menuButton,
+.menuSubDetails > .hiddenFileInput,
+.menuSubDetails > .menuDestructiveActions,
+.menuSubDetails > .comingSoon {
+  margin:0 8px 8px;
+}
+
+.menuSubDetails > label:first-of-type,
+.menuSubDetails > .menuButton:first-of-type {
+  margin-top:0;
+}
+
+.menuDestructiveActions {
+  display:grid;
+  gap:8px;
+  padding-top:8px;
+  border-top:1px solid color-mix(in srgb, var(--bad) 28%, var(--line));
+}
+
+.menuDestructiveActions .danger {
+  border-color:color-mix(in srgb, var(--bad) 46%, var(--line));
+  background:rgba(255,109,122,.06);
+}
+
+.menuRoadmapNotes .comingSoon {
+  border-style:dashed;
+  background:rgba(5,11,22,.36);
+}
+
+.homeIntro {
+  margin-bottom:clamp(14px,3vw,22px);
+}
+
+.homeScreen h2 {
+  font-size:clamp(2.6rem,11vw,4.8rem);
+}
+
+.hubPlaceholder h2,
+.grammarHub h2,
+.learningMapHeader h2 {
+  font-size:var(--routeTitleSize);
+  letter-spacing:0;
+}
+
+.homeHero {
+  min-height:0;
+  gap:10px;
+  padding:clamp(14px,3.8vw,22px);
+  border-width:1.5px;
+  border-radius:var(--cardRadius);
+}
+
+.homeHeroTitle {
+  font-size:clamp(1.12rem,4.9vw,1.72rem);
+  line-height:1.12;
+}
+
+.homeHeroMeta,
+.homeTesterCard p,
+.learningMapRecommendationMeta,
+.learningMapRecommendationNote {
+  font-size:var(--bodyTextSize);
+}
+
+.homeHeroCta,
+.homePill,
+.homeRouteMeta {
+  letter-spacing:0;
+}
+
+.homeStatusStrip {
+  grid-template-columns:repeat(auto-fit, minmax(96px, 1fr));
+  border-width:1px;
+  border-radius:var(--cardRadius);
+  overflow:hidden;
+}
+
+.homeStatusItem {
+  min-width:0;
+}
+
+.homeStatusItem + .homeStatusItem {
+  border-left:1px solid color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+.homeSection {
+  margin-top:clamp(16px,3vw,24px);
+}
+
+.homeSectionTitle {
+  font-size:clamp(1rem,3.8vw,1.28rem);
+}
+
+.homeRouteCard,
+.homeChip,
+.learningMapPanel,
+.learningMapNodeCard,
+.learningMapChip,
+.homeTesterCard,
+.startAccordion,
+.startSetting,
+.languagePanel,
+.diagnosticIntroCard,
+.practiceExitCard,
+.testerNotesCard,
+.devPanel,
+.devUtilityBlock {
+  border-radius:var(--cardRadius);
+}
+
+.homeRouteCard {
+  min-height:64px;
+  padding:12px 13px;
+  gap:10px;
+  border-width:1px;
+}
+
+.homeRouteNumber {
+  font-size:clamp(1.25rem,5vw,1.75rem);
+}
+
+.homeRouteLabel {
+  font-size:clamp(.98rem,3.7vw,1.18rem);
+}
+
+.homeRouteSub {
+  font-size:clamp(.78rem,2.9vw,.9rem);
+}
+
+.homePill {
+  padding:.38rem .48rem;
+  font-size:.66rem;
+}
+
+.homeSection.system,
+.homeSection.tester,
+.homeSection.production {
+  opacity:.88;
+}
+
+.homeSection.system .homeChip,
+.homeSection.tester .homeChip {
+  min-height:48px;
+  border-color:color-mix(in srgb, var(--accent) 28%, var(--line));
+  background:rgba(5,11,22,.44);
+}
+
+.homeFeedback {
+  margin-top:clamp(12px,3vw,20px);
+  font-size:.76rem;
+}
+
+.homeNavButton,
+.homeBackButton {
+  min-height:var(--buttonHeight);
+  border-radius:var(--cardRadius);
+  letter-spacing:0;
+}
+
+.homeBackButton {
+  width:min(180px,100%);
+  justify-self:start;
+}
+
+.grammarHub,
+.hubPlaceholder {
+  width:min(860px,100%);
+  gap:clamp(10px,2vw,14px);
+}
+
+.learningMapScreen {
+  gap:clamp(10px,2vw,16px);
+}
+
+.learningMapMatrixWrap {
+  border-radius:var(--cardRadius);
+}
+
+.learningMapMatrixTable {
+  min-width:760px;
+}
+
+.learningMapMatrixCell {
+  min-height:50px;
+}
+
+.promptWord,
+.promptWord.clozePrompt,
+body.b1Mode .promptWord.clozePrompt {
+  font-size:var(--practicePromptSize) !important;
+  letter-spacing:0 !important;
+  line-height:1.2 !important;
+}
+
+body.b1Mode .challengeCard {
+  padding-top:clamp(6px,1.5vh,12px) !important;
+  padding-bottom:clamp(6px,1.5vh,12px) !important;
+}
+
+body.b1Mode .englishGloss {
+  color:var(--mutedText);
+  font-size:clamp(.84rem,3.1vw,.98rem);
+}
+
+body.b1Mode .inlineClozeInput,
+body.b1Mode.b1TypedCloze .inlineClozeInput,
+body.b1Mode.b1TypedCloze .blankSlot.answerSlot,
+body.b1Mode.b1TypedCloze .clozeAnswerText {
+  display:inline-block !important;
+  min-height:44px !important;
+  margin:0 .12em .08em !important;
+  padding:.08em .44em .1em !important;
+  border:1px solid color-mix(in srgb, var(--mode) 46%, var(--line)) !important;
+  border-bottom:3px solid var(--mode) !important;
+  border-radius:10px !important;
+  background:rgba(7,12,21,.82) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04) !important;
+  font-size:.96em !important;
+  line-height:1.08 !important;
+  vertical-align:baseline !important;
+}
+
+body.b1Mode .inlineClozeInput:focus,
+body.b1Mode.b1TypedCloze .inlineClozeInput:focus {
+  border-color:var(--accent) !important;
+  border-bottom-color:var(--accent) !important;
+  box-shadow:var(--focusRing) !important;
+}
+
+.blankSlot {
+  border-radius:10px;
+}
+
+.connectorChoiceGrid {
+  gap:var(--buttonGap);
+}
+
+.connectorChoiceGrid button {
+  min-height:var(--buttonHeight);
+  border-width:1px;
+  border-radius:var(--cardRadius);
+}
+
+#noArticleBtn,
+#checkBtn,
+#nextBtn,
+.b1ConfidenceRow button {
+  min-height:var(--buttonHeight);
+  border-radius:var(--cardRadius);
+  letter-spacing:0;
+}
+
+.answerArea .correctionBlock,
+.correctionBlock {
+  border-radius:var(--cardRadius);
+  text-align:left !important;
+}
+
+.answerArea .correctionTarget {
+  font-size:clamp(.96rem,3.4vw,1.1rem);
+}
+
+.feedbackResultLine {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:34px;
+  padding:5px 8px;
+  border-radius:12px;
+  background:rgba(5,11,22,.62);
+  color:var(--text);
+  font-weight:1000;
+}
+
+.feedbackResultLine.correct {
+  color:var(--stateSuccess);
+}
+
+.feedbackResultLine.wrong {
+  color:var(--stateError);
+}
+
+.feedbackResultLine.assisted {
+  color:var(--stateAssist);
+}
+
+.b1ConfidenceRow {
+  gap:8px;
+}
+
+.b1ConfidenceRow button {
+  border-color:color-mix(in srgb, var(--accent) 44%, var(--line));
+  color:var(--text);
+  background:rgba(125,227,255,.08);
+  font-size:clamp(.72rem,2.7vw,.82rem);
+}
+
+.answerArea.answered .b1ConfidenceRow:not([hidden]) ~ #nextBtn.visible,
+.answerArea.answered #nextBtn.visible {
+  border:1px solid color-mix(in srgb, var(--muted) 34%, var(--line)) !important;
+  background:rgba(6,12,22,.72) !important;
+  color:var(--mutedText) !important;
+}
+
+.productionSectionTitle {
+  width:min(520px,100%);
+  color:var(--accent);
+  font-size:.78rem;
+  font-weight:1000;
+  text-transform:uppercase;
+}
+
+.productionEvidenceNote,
+.productionChecklist {
+  border-radius:var(--cardRadius);
+}
+
+.devOverlay,
+.testerNotesOverlay {
+  align-items:start;
+  overflow:auto;
+}
+
+.devPanel,
+.testerNotesCard {
+  max-height:calc(100dvh - 28px);
+  overflow:auto;
+}
+
+.devSnapshotFallback,
+.devPreviewText,
+.devPreviewList,
+.learningMapDetail,
+.learningMapLimitation {
+  overflow-wrap:anywhere;
+}
+
+body[data-support-lang="ar"] .promptWord,
+body[data-support-lang="ar"] .inlineClozeInput,
+body[data-support-lang="ar"] .connectorChoiceGrid,
+body[data-support-lang="ar"] .learningMapMatrixTable,
+body[data-support-lang="ar"] .resultHeatmap,
+body[data-support-lang="ar"] .modelAnswer,
+body[data-support-lang="ar"] .productionChecklist {
+  direction:ltr;
+  unicode-bidi:isolate;
+}
+
+@media (min-width:760px) {
+  .homeSection.practice .homeRouteGrid {
+    grid-template-columns:repeat(2, minmax(0,1fr));
+  }
+
+  .homeSection.practice .homeRouteCard:first-child,
+  .homeSection.practice .homeRouteCard:nth-child(2) {
+    min-height:74px;
+  }
+
+  .grammarHub .homeNav,
+  .redemittelHub .homeNav {
+    grid-template-columns:repeat(2, minmax(0,1fr));
+  }
+}
+
+@media (min-width:1180px) {
+  body.homeMode main {
+    width:min(1120px, calc(100vw - 64px));
+  }
+
+  .homeScreen {
+    width:min(980px,100%);
+  }
+}
+
+@media (max-width:520px) {
+  .homeHeroTop {
+    grid-template-columns:1fr;
+    align-items:start;
+  }
+
+  .homeHeroCta {
+    width:100%;
+    justify-self:stretch;
+  }
+
+  .homeStatusItem + .homeStatusItem {
+    border-left:0;
+    border-top:1px solid color-mix(in srgb, var(--accent) 14%, transparent);
+  }
+
+  .homeStatusStrip {
+    grid-template-columns:1fr;
+  }
+
+  .menuDetailsBody {
+    padding-left:6px;
+    padding-right:6px;
+  }
+}
+
+@media (max-width:759px) {
+  body.b1Mode.b1TypedCloze .content {
+    align-content:start !important;
+    align-items:start !important;
+    justify-content:stretch !important;
+  }
+
+  body.b1Mode.b1TypedCloze .taskColumn {
+    align-content:start;
+  }
+
+  body.b1Mode.b1TypedCloze .promptWord.clozePrompt {
+    font-size:clamp(1.18rem,5.6vw,1.72rem) !important;
+  }
+
+  body.mobileClozeFocus.b1Mode.b1TypedCloze .promptWord.clozePrompt {
+    font-size:clamp(1.08rem,5.2vw,1.46rem) !important;
+  }
+
+  .learningMapMatrixTable {
+    min-width:700px;
+  }
+}
+
 @media (max-width:430px) {
   .homeRouteCard {
     grid-template-columns:auto minmax(0, 1fr);
@@ -6357,12 +6912,17 @@ body.b1Mode .debugStamp {
         </div>
         <div class="menuDivider"></div>
         <div class="menuSectionTitle">Tools</div>
-        <div class="menuNavGroup" aria-label="Tools">
+        <div class="menuNavGroup menuToolsGroup" aria-label="Tools">
           <button class="menuButton" id="menuTesterNotesBtn" type="button">Tester Notes / Known Bugs</button>
           <button class="menuButton devToolsBtn" id="devToolsBtn" type="button">Dev Tools</button>
         </div>
         <div class="menuDivider"></div>
-        <div class="menuSectionTitle">Options</div>
+        <div class="menuSectionTitle">Settings</div>
+        <details class="menuDetails menuOptionsDetails" id="menuOptionsDetails">
+          <summary>Options</summary>
+          <div class="menuDetailsBody">
+            <details class="menuSubDetails" open>
+              <summary>Learning style</summary>
         <label>Aufgabentyp
           <select id="taskType">
             <option value="cloze" selected>In Context [Default]</option>
@@ -6370,6 +6930,9 @@ body.b1Mode .debugStamp {
             <option value="mixed">Gemischt</option>
           </select>
         </label>
+            </details>
+            <details class="menuSubDetails">
+              <summary>Articles / Genitive</summary>
         <label>Artikelmodus
           <select id="articleType">
             <option value="mixed">Gemischte Artikel</option>
@@ -6391,6 +6954,9 @@ body.b1Mode .debugStamp {
             <option value="on">Ein</option>
           </select>
         </div>
+            </details>
+            <details class="menuSubDetails">
+              <summary>Support &amp; pace</summary>
         <label id="menuSupportLabel">Meaning Support
           <select id="englishSupport">
             <option value="smart" selected>Smart</option>
@@ -6413,28 +6979,31 @@ body.b1Mode .debugStamp {
             <option value="off">Aus / Zufall</option>
           </select>
         </label>
+            </details>
         <button class="menuButton" id="restartBtn" type="button">Neue Runde / New Game</button>
-        <div class="menuDivider"></div>
-        <div class="menuSectionTitle">Daten</div>
+            <details class="menuSubDetails menuDataDetails">
+              <summary>Data</summary>
         <button class="menuButton" id="exportBtn" type="button">Fortschritt exportieren</button>
         <button class="menuButton" id="importBtn" type="button">Fortschritt importieren</button>
         <input class="hiddenFileInput" id="importFile" type="file" accept="application/json,.json">
+              <div class="menuDestructiveActions" aria-label="Destructive data actions">
         <button class="menuButton danger" id="resetBestBtn" type="button">Bestwerte löschen</button>
         <button class="menuButton danger" id="resetProfileBtn" type="button">Lernprofil löschen</button>
-        <div class="menuDivider"></div>
+              </div>
+            </details>
+            <details class="menuSubDetails menuRoadmapNotes">
+              <summary>Roadmap notes</summary>
         <div class="comingSoon">
-          <div class="menuSectionTitle">To come</div>
           <ul>
-            <li>Focused repair mode</li>
-            <li>Contrast drills: der / den / dem</li>
-            <li>Contrast drills: ein / einen / einem</li>
-            <li>Contrast drills: kein / keinen / keinem</li>
             <li>Possessive articles: mein / dein / sein / ihr</li>
             <li>Adjective endings</li>
             <li>Error-type session insights</li>
             <li>Custom cloze import</li>
           </ul>
         </div>
+            </details>
+          </div>
+        </details>
       </div>
     </div>
   </div>
@@ -6729,7 +7298,7 @@ body.b1Mode .debugStamp {
         <div class="correctionBlock" id="correctionBlock"></div>
 
         <div class="feedback" id="feedback"></div>
-        <button class="whyNoStarsBtn" id="whyNoStarsBtn" type="button" hidden>Why no stars?</button>
+        <button class="whyNoStarsBtn" id="whyNoStarsBtn" type="button" hidden>Why limited evidence?</button>
         <div class="b1ConfidenceRow" id="b1ConfidenceRow" aria-label="Answer confidence" hidden>
           <button type="button" data-confidence="sure">Sure</button>
           <button type="button" data-confidence="unsure">Unsure</button>
@@ -7060,8 +7629,8 @@ body.b1Mode .debugStamp {
   var B1_STORAGE_KEY = "ozmosis_b1_sprint_progress_v1";
   var B1_EVIDENCE_STORAGE_KEY = "ozmosis_b1_progress_evidence_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.56";
-  var OZMOSIS_EXPORT_VERSION = "v0.56-skill-task-recommendations";
+  var OZMOSIS_APP_VERSION = "v0.57.1";
+  var OZMOSIS_EXPORT_VERSION = "v0.57.1-big-ux-update";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -7967,7 +8536,7 @@ body.b1Mode .debugStamp {
     if (malformedEvidenceCount) limitations.push("Ignored " + malformedEvidenceCount + " malformed evidence records.");
     if (unmappedEvidenceCount) limitations.push("Could not map " + unmappedEvidenceCount + " evidence records to a Learning Map node.");
     limitations.push("Current node assignments are mostly derived because v0.41 found no canonical item-level skillTags.");
-    limitations.push("States are early evidence states only; no mastery, durability, or transfer-readiness claims are emitted.");
+    limitations.push("States are early evidence states only; no mastery, long-term recall, or transfer-readiness claims are emitted.");
     return {
       schemaVersion:1,
       generatedAt:new Date().toISOString(),
@@ -7982,9 +8551,9 @@ body.b1Mode .debugStamp {
   }
   const B1_TASK_DEPTH_SCHEMA_VERSION = "v1";
   const B1_TASK_DEPTH_DEFINITIONS = [
-    { key:"recognition", shortLabel:"Rec", label:"Recognition", learnerLabel:"Recognition", description:"Choosing or identifying the right form, phrase, connector, or meaning.", evidenceMeaning:"Shows recognition in a constrained task.", limitations:["Recognition evidence does not prove repair, production, or durable recall."] },
+    { key:"recognition", shortLabel:"Rec", label:"Recognition", learnerLabel:"Recognition", description:"Choosing or identifying the right form, phrase, connector, or meaning.", evidenceMeaning:"Shows recognition in a constrained task.", limitations:["Recognition evidence does not prove repair, production, or long-term recall."] },
     { key:"cloze", shortLabel:"Cloze", label:"Cloze", learnerLabel:"Cloze", description:"Filling a blank in a sentence or phrase.", evidenceMeaning:"Shows controlled recall in a local context.", limitations:["Cloze evidence does not prove free production."] },
-    { key:"sentence_building", shortLabel:"Build", label:"Sentence building", learnerLabel:"Sentence build", description:"Building or completing sentence order and structure.", evidenceMeaning:"Shows sentence-control evidence beyond isolated recognition.", limitations:["Sentence-building evidence is still not a durability claim."] },
+    { key:"sentence_building", shortLabel:"Build", label:"Sentence building", learnerLabel:"Sentence build", description:"Building or completing sentence order and structure.", evidenceMeaning:"Shows sentence-control evidence beyond isolated recognition.", limitations:["Sentence-building evidence is still not a long-term recall claim."] },
     { key:"repair", shortLabel:"Repair", label:"Repair", learnerLabel:"Repair", description:"Finding or fixing an error.", evidenceMeaning:"Shows evidence of noticing and repairing a specific issue.", limitations:["Repair evidence does not by itself prove spontaneous production."] },
     { key:"transformation", shortLabel:"Transform", label:"Transformation", learnerLabel:"Transform", description:"Changing a sentence or form while preserving meaning.", evidenceMeaning:"Shows controlled manipulation evidence.", limitations:["Transformation evidence is limited by the prompt and support context."] },
     { key:"contrast", shortLabel:"Contrast", label:"Contrast", learnerLabel:"Contrast", description:"Choosing between nearby meanings, forms, or functions.", evidenceMeaning:"Shows discrimination between alternatives.", limitations:["Contrast evidence may be narrow to the contrasted options."] },
@@ -8365,7 +8934,7 @@ body.b1Mode .debugStamp {
     var limitations = [
       "Matrix is computed from existing B1 evidence and Learning Map node matching; no persistent aggregate is stored.",
       "Current metadata is often derived rather than canonical explicit item-level metadata.",
-      "No delayed review or durability evidence is available yet.",
+      "No delayed review or long-term recall evidence is available yet.",
       "Production evidence remains self-marked practice evidence only."
     ];
     if (malformedEvidenceCount) limitations.push("Ignored " + malformedEvidenceCount + " malformed evidence records.");
@@ -8399,7 +8968,7 @@ body.b1Mode .debugStamp {
     not_tested:{
       label:"Not tested",
       description:"Ozmosis has not seen this task type yet.",
-      limitation:"Not tested is not weakness."
+      limitation:"Not tested is not a problem by itself."
     },
     not_enough_evidence:{
       label:"Not enough evidence",
@@ -8419,7 +8988,7 @@ body.b1Mode .debugStamp {
     developing:{
       label:"Developing",
       description:"More stable evidence here.",
-      limitation:"Still not a delayed-review, durability, or transfer claim."
+      limitation:"Still not a delayed-review, long-term recall, or transfer claim."
     }
   };
   const PROGRESS_STATE_FUTURE_RAW = [
@@ -8519,10 +9088,16 @@ body.b1Mode .debugStamp {
     if (grammarTask && nodeKey === "prepositions") {
       return { routeKey:"today", routeLabel:"Start Today's Sprint", shortLabel:"B1 practice", closestAvailable:true };
     }
+    if (grammarTask && (nodeKey === "redemittel" || nodeKey === "wortschatz")) {
+      return { routeKey:base.routeKey, routeLabel:base.routeLabel, shortLabel:base.shortLabel, closestAvailable:true };
+    }
     if (/production/.test(depth)) {
       if (nodeKey === "redemittel") return { routeKey:"redemittel", routeLabel:"Open Redemittel", shortLabel:"Production practice", closestAvailable:true };
       if (nodeKey === "wortschatz") return { routeKey:"wortschatz", routeLabel:"Open Wortschatz", shortLabel:"Production practice", closestAvailable:true };
       return { routeKey:"today", routeLabel:"Start Today's Sprint", shortLabel:"Production practice", closestAvailable:true };
+    }
+    if ((nodeKey === "redemittel" || nodeKey === "wortschatz") && depth !== "unknown") {
+      return { routeKey:base.routeKey, routeLabel:base.routeLabel, shortLabel:base.shortLabel, closestAvailable:true };
     }
     return base;
   }
@@ -8568,6 +9143,139 @@ body.b1Mode .debugStamp {
     }, 0);
     return { unassisted:unassisted, scaffolded:scaffolded, unknown:Number(counts.unknown || 0) };
   }
+  function b1RecommendationCellUsableEvidence(cell) {
+    if (!cell) return 0;
+    return Math.max(0, Number(cell.evidenceCount || 0) - Number(cell.diagnosticEvidenceCount || 0) - Number(cell.productionEvidenceCount || 0));
+  }
+  function b1RecommendationCellSupportContext(cell) {
+    return b1RecommendationSupportContext(cell && cell.supportLevelCounts || {});
+  }
+  function b1RecommendationCellQuality(cell) {
+    var evidenceCount = Number(cell && cell.evidenceCount || 0);
+    var diagnosticEvidence = Number(cell && cell.diagnosticEvidenceCount || 0);
+    var productionEvidence = Number(cell && cell.productionEvidenceCount || 0);
+    var support = b1RecommendationCellSupportContext(cell);
+    return {
+      evidenceCount:evidenceCount,
+      usableEvidence:b1RecommendationCellUsableEvidence(cell),
+      sampleSize:evidenceCount === 0 ? "empty" : evidenceCount < 3 ? "thin" : "early",
+      diagnosticOnly:evidenceCount > 0 && diagnosticEvidence >= evidenceCount,
+      productionSelfMarkedOnly:evidenceCount > 0 && productionEvidence >= evidenceCount,
+      scaffoldedMajority:evidenceCount > 0 && support.scaffolded >= 2 && support.scaffolded > support.unassisted,
+      supportContext:support
+    };
+  }
+  function b1RecommendationRowQuality(row) {
+    var cells = row && row.cells || {};
+    var supportCounts = b1SupportLevelEmptyCounts();
+    var total = 0;
+    var usable = 0;
+    var diagnostic = 0;
+    var production = 0;
+    var testedDepths = 0;
+    Object.keys(cells).forEach(function(depth){
+      var cell = cells[depth];
+      var count = Number(cell && cell.evidenceCount || 0);
+      if (count > 0) testedDepths += 1;
+      total += count;
+      usable += b1RecommendationCellUsableEvidence(cell);
+      diagnostic += Number(cell && cell.diagnosticEvidenceCount || 0);
+      production += Number(cell && cell.productionEvidenceCount || 0);
+      Object.keys(cell && cell.supportLevelCounts || {}).forEach(function(key){
+        supportCounts[key] = (supportCounts[key] || 0) + Number(cell.supportLevelCounts[key] || 0);
+      });
+    });
+    var support = b1RecommendationSupportContext(supportCounts);
+    var recognitionCount = b1RecommendationCellCount(row, "recognition");
+    var clozeCount = b1RecommendationCellCount(row, "cloze");
+    var sentenceCount = b1RecommendationCellCount(row, "sentence_building");
+    var contrastCount = b1RecommendationCellCount(row, "contrast");
+    return {
+      totalEvidence:total,
+      usableEvidence:usable,
+      diagnosticEvidence:diagnostic,
+      productionEvidence:production,
+      testedTaskDepths:testedDepths,
+      diagnosticOnly:total > 0 && diagnostic >= total,
+      productionSelfMarkedOnly:total > 0 && production >= total,
+      scaffoldedMajority:total > 0 && support.scaffolded >= 2 && support.scaffolded > support.unassisted,
+      recognitionOnly:total > 0 && recognitionCount >= total,
+      shallowOnly:total > 0 && recognitionCount + clozeCount >= total && sentenceCount + contrastCount === 0,
+      broadCategory:row && row.nodeKey === "wortschatz",
+      supportContext:support,
+      supportLevelCounts:supportCounts
+    };
+  }
+  function b1RecommendationRowEligibleForOrdinaryGap(row) {
+    var quality = b1RecommendationRowQuality(row);
+    return quality.usableEvidence >= 3 && !quality.diagnosticOnly && !quality.productionSelfMarkedOnly && !quality.scaffoldedMajority;
+  }
+  function b1RecommendationBroadBucketRisk(row, taskDepth) {
+    var depth = b1CanonicalTaskDepth(taskDepth);
+    var quality = b1RecommendationRowQuality(row);
+    return !!(row && row.nodeKey === "wortschatz" && ["repair", "contrast", "sentence_building", "controlled_production", "free_production"].indexOf(depth) !== -1 && quality.usableEvidence < 5);
+  }
+  function b1RecommendationEvidenceQuality(row, taskDepth, cell) {
+    var rowQuality = b1RecommendationRowQuality(row);
+    var cellQuality = b1RecommendationCellQuality(cell);
+    return {
+      rowEvidence:rowQuality.totalEvidence,
+      rowUsableEvidence:rowQuality.usableEvidence,
+      relevantEvidence:cellQuality.evidenceCount,
+      relevantUsableEvidence:cellQuality.usableEvidence,
+      sampleSize:cellQuality.sampleSize,
+      diagnosticOnly:rowQuality.diagnosticOnly || cellQuality.diagnosticOnly,
+      productionSelfMarkedOnly:rowQuality.productionSelfMarkedOnly || cellQuality.productionSelfMarkedOnly,
+      scaffoldedMajority:rowQuality.scaffoldedMajority || cellQuality.scaffoldedMajority,
+      recognitionOnly:rowQuality.recognitionOnly,
+      broadCategory:rowQuality.broadCategory,
+      broadCategoryRisk:b1RecommendationBroadBucketRisk(row, taskDepth),
+      supportContext:rowQuality.supportContext
+    };
+  }
+  function b1RecommendationInflationRisk(row, taskDepth, cell) {
+    var quality = b1RecommendationEvidenceQuality(row, taskDepth, cell);
+    var risks = [];
+    if (quality.rowUsableEvidence < 3 || quality.relevantEvidence > 0 && quality.relevantUsableEvidence < 2) risks.push("thin_sample");
+    if (quality.diagnosticOnly) risks.push("diagnostic_only");
+    if (quality.productionSelfMarkedOnly) risks.push("production_self_marked_only");
+    if (quality.scaffoldedMajority) risks.push("scaffolded_majority");
+    if (quality.recognitionOnly && ["repair", "contrast", "sentence_building", "controlled_production", "free_production"].indexOf(b1CanonicalTaskDepth(taskDepth)) !== -1) risks.push("recognition_only");
+    if (quality.broadCategoryRisk) risks.push("broad_wortschatz_bucket");
+    return risks;
+  }
+  function b1RecommendationGlobalEvidenceQuality(records, evidenceSummary) {
+    records = Array.isArray(records) ? records : [];
+    var total = Number(evidenceSummary && evidenceSummary.count || records.length || 0);
+    var diagnostic = 0;
+    var production = 0;
+    var supportCounts = b1SupportLevelEmptyCounts();
+    records.forEach(function(record){
+      if (!record) return;
+      if (String(record.attemptContext || "") === "diagnostic") diagnostic += 1;
+      var supportLevel = b1EvidenceSupportLevel(record, b1LearningMapItemForEvidence(record));
+      supportCounts[supportLevel] = (supportCounts[supportLevel] || 0) + 1;
+      if (supportLevel === "self_marked_production" || record.selfMarked === true || record.answerMode === "mark_practised" || record.taskType === "production_card") production += 1;
+    });
+    var support = b1RecommendationSupportContext(supportCounts);
+    var risks = [];
+    if (total > 0 && total < 3) risks.push("thin_sample");
+    if (total > 0 && diagnostic >= total) risks.push("diagnostic_only");
+    if (total > 0 && production >= total) risks.push("production_self_marked_only");
+    if (total > 0 && support.scaffolded >= 2 && support.scaffolded > support.unassisted) risks.push("scaffolded_majority");
+    return {
+      totalEvidence:total,
+      usableEvidence:Math.max(0, total - diagnostic - production),
+      diagnosticEvidence:diagnostic,
+      productionEvidence:production,
+      diagnosticOnly:total > 0 && diagnostic >= total,
+      productionSelfMarkedOnly:total > 0 && production >= total,
+      scaffoldedMajority:total > 0 && support.scaffolded >= 2 && support.scaffolded > support.unassisted,
+      supportContext:support,
+      supportLevelCounts:supportCounts,
+      inflationRisk:risks
+    };
+  }
   function b1RecommendationEvidenceBasis(row, taskDepth, cell) {
     cell = cell || (row && row.cells && row.cells[taskDepth]) || null;
     return {
@@ -8587,7 +9295,9 @@ body.b1Mode .debugStamp {
         guessed:Number(cell.confidenceCounts.guessed || 0),
         unset:Number(cell.confidenceCounts.unset || 0)
       } : { sure:0, unsure:0, guessed:0, unset:0 },
-      supportLevelCounts:cell && cell.supportLevelCounts ? Object.assign(b1SupportLevelEmptyCounts(), cell.supportLevelCounts) : b1SupportLevelEmptyCounts()
+      supportLevelCounts:cell && cell.supportLevelCounts ? Object.assign(b1SupportLevelEmptyCounts(), cell.supportLevelCounts) : b1SupportLevelEmptyCounts(),
+      evidenceQuality:b1RecommendationEvidenceQuality(row, taskDepth, cell),
+      inflationRisk:b1RecommendationInflationRisk(row, taskDepth, cell)
     };
   }
   function b1RecommendationBase(primary, inactiveRules, globalLimitations) {
@@ -8607,6 +9317,60 @@ body.b1Mode .debugStamp {
       { rule:"recent_misconception_pattern", status:"not_active", reason:"Robust repeated error-pattern recommendations are not active yet." }
     ];
   }
+  function b1RecommendationGlobalEvidencePrimary(rule, evidenceCount, evidenceSummary, globalQuality) {
+    var diagnosticOnly = rule === "diagnostic_only";
+    var productionOnly = rule === "production_self_marked_only";
+    var why = diagnosticOnly ? [
+      "Only diagnostic snapshot evidence is available so far.",
+      "Use a normal B1 route before reading task gaps strongly.",
+      "This is not a score or placement result."
+    ] : productionOnly ? [
+      "Only self-marked production practice is available so far.",
+      "Add auto-checked practice before reading this as a pattern.",
+      "Production remains practice evidence only."
+    ] : [
+      "Most evidence so far used visible support.",
+      "Try a small less-supported round before reading this as a pattern.",
+      "Support level is evidence context, not a score."
+    ];
+    return {
+      id:"rec_" + rule,
+      title:diagnosticOnly ? "Add ordinary practice evidence" : productionOnly ? "Add auto-checked practice evidence" : "Add less-supported practice evidence",
+      shortLabel:"B1 practice",
+      routeKey:"today",
+      routeLabel:"Start Today's Sprint",
+      nodeKey:null,
+      taskDepth:null,
+      priorityRule:rule,
+      confidence:"low",
+      evidenceBasis:{
+        totalEvidence:evidenceCount,
+        relevantEvidence:evidenceCount,
+        skillMatrixCellState:"not_enough_evidence",
+        metadataProvenance:{ explicit:0, derived:0, unknown:0 },
+        confidenceCounts:evidenceSummary && evidenceSummary.confidenceCounts || { sure:0, unsure:0, guessed:0, unset:0 },
+        supportLevelCounts:globalQuality.supportLevelCounts || b1SupportLevelEmptyCounts(),
+        evidenceQuality:{
+          rowEvidence:evidenceCount,
+          rowUsableEvidence:globalQuality.usableEvidence,
+          relevantEvidence:evidenceCount,
+          relevantUsableEvidence:globalQuality.usableEvidence,
+          sampleSize:evidenceCount < 3 ? "thin" : "early",
+          diagnosticOnly:globalQuality.diagnosticOnly,
+          productionSelfMarkedOnly:globalQuality.productionSelfMarkedOnly,
+          scaffoldedMajority:globalQuality.scaffoldedMajority,
+          recognitionOnly:false,
+          broadCategory:false,
+          broadCategoryRisk:false,
+          supportContext:globalQuality.supportContext
+        },
+        inflationRisk:globalQuality.inflationRisk || []
+      },
+      why:why,
+      limitations:["This is a rules-based suggestion.", "No delayed review evidence yet.", "No scoring change."],
+      action:{ type:"existing_route", routeKey:"today", label:"Start Today's Sprint" }
+    };
+  }
   function b1RecommendationThinEvidence(evidenceCount, matrix) {
     var summary = matrix && matrix.globalSummary || {};
     return !evidenceCount || evidenceCount < 3 || Number(summary.rowsWithEvidence || 0) === 0;
@@ -8615,12 +9379,14 @@ body.b1Mode .debugStamp {
     var rows = matrix && Array.isArray(matrix.rows) ? matrix.rows : [];
     var candidates = [];
     rows.forEach(function(row){
+      if (!b1RecommendationRowEligibleForOrdinaryGap(row)) return;
       var rowWeak = 0;
       var bestDepth = "unknown";
       var bestDepthScore = 0;
       Object.keys(row.cells || {}).forEach(function(depth){
         var cell = row.cells[depth];
         if (!cell || !cell.evidenceCount) return;
+        if (b1RecommendationCellQuality(cell).diagnosticOnly || b1RecommendationCellQuality(cell).productionSelfMarkedOnly) return;
         var score = Number(cell.incorrectCount || 0) + Number(cell.confidenceCounts && cell.confidenceCounts.unsure || 0) + Number(cell.confidenceCounts && cell.confidenceCounts.guessed || 0);
         rowWeak += score;
         if (score > bestDepthScore) {
@@ -8642,9 +9408,11 @@ body.b1Mode .debugStamp {
     rows.forEach(function(row){
       var total = Number(row && row.rowSummary && row.rowSummary.totalEvidence || 0);
       if (!total) return;
+      if (!b1RecommendationRowEligibleForOrdinaryGap(row)) return;
       depthOrder.forEach(function(depth, index){
         var cell = row.cells && row.cells[depth];
         if (!cell) return;
+        if (b1RecommendationBroadBucketRisk(row, depth)) return;
         if (cell.evidenceCount < 2) {
           candidates.push({ row:row, taskDepth:depth, cell:cell, priority:index, total:total });
         }
@@ -8660,22 +9428,23 @@ body.b1Mode .debugStamp {
     var candidates = [];
     rows.forEach(function(row){
       var total = Number(row && row.rowSummary && row.rowSummary.totalEvidence || 0);
-      if (total < 2) return;
+      if (total < 3 || !b1RecommendationRowEligibleForOrdinaryGap(row)) return;
       var nodeKey = row.nodeKey || "unknown";
       var recognitionLike = b1RecommendationCombinedPositive(row, ["recognition", "cloze", "sentence_building"]);
+      var nonRecognitionRecall = b1RecommendationCombinedPositive(row, ["cloze", "sentence_building"]);
       var clozeLike = b1RecommendationCombinedPositive(row, ["cloze", "sentence_building"]);
       var meaningLike = b1RecommendationCombinedCount(row, ["recognition", "cloze", "contrast"]);
       var wordOrderLike = b1RecommendationCombinedCount(row, ["sentence_building", "repair"]);
       var repairCount = b1RecommendationCellCount(row, "repair");
       var contrastCount = b1RecommendationCellCount(row, "contrast");
       var connectorWordOrderMissing = (nodeKey === "connectors" || nodeKey === "word_order") && meaningLike >= 2 && wordOrderLike < 2;
-      if (recognitionLike >= 2 && repairCount < 2 && nodeKey !== "production" && !connectorWordOrderMissing) {
+      if (recognitionLike >= 3 && nonRecognitionRecall >= 1 && repairCount < 2 && nodeKey !== "production" && !connectorWordOrderMissing && !b1RecommendationBroadBucketRisk(row, "repair")) {
         candidates.push({ row:row, taskDepth:"repair", cell:b1RecommendationCell(row, "repair"), priority:10, score:recognitionLike - repairCount, rule:"task_depth_repair_gap" });
       }
-      if (clozeLike >= 2 && contrastCount < 2 && nodeKey !== "production") {
+      if (clozeLike >= 3 && contrastCount < 2 && nodeKey !== "production" && !b1RecommendationBroadBucketRisk(row, "contrast")) {
         candidates.push({ row:row, taskDepth:"contrast", cell:b1RecommendationCell(row, "contrast"), priority:20, score:clozeLike - contrastCount, rule:"task_depth_contrast_gap" });
       }
-      if ((nodeKey === "connectors" || nodeKey === "word_order") && meaningLike >= 2 && wordOrderLike < 2) {
+      if ((nodeKey === "connectors" || nodeKey === "word_order") && meaningLike >= 3 && !b1RecommendationRowQuality(row).recognitionOnly && wordOrderLike < 2) {
         candidates.push({ row:row, taskDepth:"sentence_building", cell:b1RecommendationCell(row, "sentence_building"), priority:30, score:meaningLike - wordOrderLike, rule:"connector_word_order_gap" });
       }
     });
@@ -8689,10 +9458,12 @@ body.b1Mode .debugStamp {
     var candidates = [];
     rows.forEach(function(row){
       var total = Number(row && row.rowSummary && row.rowSummary.totalEvidence || 0);
-      if (total < 2) return;
-      var support = b1RecommendationSupportContext(b1RecommendationRowSupportCounts(row));
+      var quality = b1RecommendationRowQuality(row);
+      if (total < 3 || quality.usableEvidence < 1 || quality.diagnosticOnly || quality.productionSelfMarkedOnly) return;
+      var support = quality.supportContext;
       if (support.scaffolded < 2 || support.scaffolded <= support.unassisted) return;
       var targetDepth = b1RecommendationCellCount(row, "repair") < 2 ? "repair" : b1RecommendationCellCount(row, "cloze") < 2 ? "cloze" : "recognition";
+      if (b1RecommendationBroadBucketRisk(row, targetDepth)) targetDepth = "cloze";
       candidates.push({ row:row, taskDepth:targetDepth, cell:b1RecommendationCell(row, targetDepth), priority:40, score:support.scaffolded - support.unassisted, support:support, rule:"support_context_gap" });
     });
     candidates.sort(function(a,b){
@@ -8709,10 +9480,22 @@ body.b1Mode .debugStamp {
     if (cell && cell.productionEvidenceCount > 0 || /production/.test(taskDepth)) limitations.push("Production is self-marked practice evidence only.");
     if (basis.diagnosticEvidenceCount > 0) limitations.push("Diagnostic evidence is a snapshot only.");
     if (route.closestAvailable) limitations.push("Closest available route: " + route.routeLabel.replace(/^Open\s+/i, "") + ".");
+    if (row.nodeKey === "wortschatz") limitations.push("Wortschatz is a broad bucket; this is only a small next step.");
+    (basis.inflationRisk || []).forEach(function(risk){
+      var labels = {
+        thin_sample:"Evidence sample is still thin.",
+        scaffolded_majority:"Most evidence here is scaffolded.",
+        production_self_marked_only:"Production evidence is self-marked only.",
+        diagnostic_only:"Diagnostic evidence is a snapshot only.",
+        recognition_only:"Recognition evidence does not prove repair or production.",
+        broad_wortschatz_bucket:"Wortschatz evidence is sparse within a broad bucket."
+      };
+      if (labels[risk]) limitations.push(labels[risk]);
+    });
     var unsureTotal = basis.confidenceCounts.unsure + basis.confidenceCounts.guessed;
     var why = [];
     if (rule === "weak_skill") {
-      why.push("This area has an early weak signal.");
+      why.push("This area has a cautious practice signal.");
       if (unsureTotal) why.push("Several answers were marked unsure or guessed.");
       why.push("More controlled evidence would make the Learning Map more useful.");
     } else if (rule === "task_depth_repair_gap") {
@@ -8736,9 +9519,15 @@ body.b1Mode .debugStamp {
       if (Number(row.rowSummary.totalEvidence || 0) > 0) why.push("Other evidence exists, but this task type is still thin.");
       why.push("More evidence would make the Learning Map more useful.");
     }
+    if (route.closestAvailable && why.join(" ").indexOf("Closest available route:") === -1) {
+      why.splice(Math.min(1, why.length), 0, "Closest available route: " + route.routeLabel.replace(/^Open\s+/i, "") + ".");
+    }
+    if (row.nodeKey === "wortschatz" && why.join(" ").indexOf("Wortschatz is broad") === -1) {
+      why.splice(Math.min(1, why.length), 0, "Wortschatz is broad, so this is only a small next step.");
+    }
     return {
       id:"rec_" + rule + "_" + String(row.nodeKey || "unknown") + "_" + String(taskDepth || "unknown"),
-      title:rule === "weak_skill" ? "Collect steadier evidence for " + row.label : "Try " + row.label + " " + depthLabel + " practice",
+      title:rule === "weak_skill" ? "Collect steadier evidence for " + row.label : route.closestAvailable ? "Try " + row.label + " practice" : "Try " + row.label + " " + depthLabel + " practice",
       shortLabel:route.shortLabel,
       routeKey:route.routeKey,
       routeLabel:route.routeLabel,
@@ -8757,7 +9546,9 @@ body.b1Mode .debugStamp {
     var map = options.map || b1LearningMapScaffold();
     var matrix = options.matrix || b1SkillMatrixData();
     var evidenceSummary = options.evidenceSummary || b1EvidenceSummary();
+    var records = Array.isArray(options.records) ? options.records : (safeGetB1Evidence().records || []);
     var evidenceCount = Number(evidenceSummary && evidenceSummary.count || 0);
+    var globalQuality = b1RecommendationGlobalEvidenceQuality(records, evidenceSummary);
     var inactiveRules = b1RecommendationInactiveRules();
     var globalLimitations = ["Recommendations are early, rules-based suggestions.", "No custom queue or scheduler is created."];
     if (matrix && Array.isArray(matrix.limitations)) globalLimitations = globalLimitations.concat(matrix.limitations.slice(0, 2));
@@ -8777,7 +9568,23 @@ body.b1Mode .debugStamp {
           relevantEvidence:evidenceCount,
           skillMatrixCellState:"not_tested",
           metadataProvenance:{ explicit:0, derived:0, unknown:0 },
-          confidenceCounts:{ sure:0, unsure:0, guessed:0, unset:evidenceCount }
+          confidenceCounts:{ sure:0, unsure:0, guessed:0, unset:evidenceCount },
+          supportLevelCounts:globalQuality.supportLevelCounts || b1SupportLevelEmptyCounts(),
+          evidenceQuality:{
+            rowEvidence:evidenceCount,
+            rowUsableEvidence:globalQuality.usableEvidence,
+            relevantEvidence:evidenceCount,
+            relevantUsableEvidence:globalQuality.usableEvidence,
+            sampleSize:evidenceCount === 0 ? "empty" : evidenceCount < 3 ? "thin" : "early",
+            diagnosticOnly:globalQuality.diagnosticOnly,
+            productionSelfMarkedOnly:globalQuality.productionSelfMarkedOnly,
+            scaffoldedMajority:globalQuality.scaffoldedMajority,
+            recognitionOnly:false,
+            broadCategory:false,
+            broadCategoryRisk:false,
+            supportContext:globalQuality.supportContext
+          },
+          inflationRisk:globalQuality.inflationRisk || (evidenceCount < 3 ? ["thin_sample"] : [])
         },
         why:[
           "Not enough evidence yet. This is not a failure.",
@@ -8792,6 +9599,8 @@ body.b1Mode .debugStamp {
         action:{ type:"existing_route", routeKey:"diagnostic", label:"Start B1 Diagnostic Sprint" }
       }, inactiveRules, globalLimitations);
     }
+    if (globalQuality.diagnosticOnly) return b1RecommendationBase(b1RecommendationGlobalEvidencePrimary("diagnostic_only", evidenceCount, evidenceSummary, globalQuality), inactiveRules, globalLimitations);
+    if (globalQuality.productionSelfMarkedOnly) return b1RecommendationBase(b1RecommendationGlobalEvidencePrimary("production_self_marked_only", evidenceCount, evidenceSummary, globalQuality), inactiveRules, globalLimitations);
     var taskGap = b1RecommendationTaskGapCandidate(matrix);
     if (taskGap) return b1RecommendationBase(b1RecommendationForRow(taskGap.rule, taskGap.row, taskGap.taskDepth, taskGap.cell, "medium"), inactiveRules, globalLimitations);
     var weak = b1RecommendationWeakCandidate(matrix);
@@ -8817,12 +9626,28 @@ body.b1Mode .debugStamp {
         relevantEvidence:evidenceCount,
         skillMatrixCellState:"introduced",
         metadataProvenance:{ explicit:0, derived:0, unknown:0 },
-        confidenceCounts:evidenceSummary && evidenceSummary.confidenceCounts || { sure:0, unsure:0, guessed:0, unset:0 }
+        confidenceCounts:evidenceSummary && evidenceSummary.confidenceCounts || { sure:0, unsure:0, guessed:0, unset:0 },
+        supportLevelCounts:globalQuality.supportLevelCounts || b1SupportLevelEmptyCounts(),
+        evidenceQuality:{
+          rowEvidence:evidenceCount,
+          rowUsableEvidence:globalQuality.usableEvidence,
+          relevantEvidence:evidenceCount,
+          relevantUsableEvidence:globalQuality.usableEvidence,
+          sampleSize:evidenceCount < 3 ? "thin" : "early",
+          diagnosticOnly:globalQuality.diagnosticOnly,
+          productionSelfMarkedOnly:globalQuality.productionSelfMarkedOnly,
+          scaffoldedMajority:globalQuality.scaffoldedMajority,
+          recognitionOnly:false,
+          broadCategory:false,
+          broadCategoryRisk:false,
+          supportContext:globalQuality.supportContext
+        },
+        inflationRisk:globalQuality.inflationRisk || []
       },
       why:[
         "The map needs more varied attempts before suggestions become stronger.",
         "Ordinary practice can add evidence without changing Today's B1 Sprint.",
-        "This is not a mastery judgement."
+        "This is not a final progress judgement."
       ],
       limitations:["This is a rules-based suggestion.", "No delayed review evidence yet."],
       action:{ type:"existing_route", routeKey:route.routeKey, label:route.routeLabel }
@@ -8830,12 +9655,14 @@ body.b1Mode .debugStamp {
   }
   function b1RecommendationRuleLabel(rule) {
     var labels = {
-      weak_skill:"Early weak signal",
+      weak_skill:"Cautious practice signal",
       under_tested_task_type:"Under-tested task type",
       task_depth_repair_gap:"Repair evidence gap",
       task_depth_contrast_gap:"Contrast evidence gap",
       connector_word_order_gap:"Connector word-order gap",
       support_context_gap:"Support-context gap",
+      diagnostic_only:"Diagnostic-only evidence",
+      production_self_marked_only:"Self-marked production only",
       current_focus_continuation:"Current focus continuation",
       overdue_review:"Delayed review inactive",
       recent_misconception_pattern:"Error-pattern checks inactive"
@@ -8990,9 +9817,9 @@ body.b1Mode .debugStamp {
     var signals = nodes.filter(function(node){ return learningMapNodeWeaknessScore(node) > 0; }).sort(function(a,b){
       return learningMapNodeWeaknessScore(b) - learningMapNodeWeaknessScore(a);
     }).slice(0, 3);
-    if (!signals.length) return '<p class="learningMapText">No clear early weak signal yet. Keep practising or run the diagnostic.</p>';
+    if (!signals.length) return '<p class="learningMapText">No clear caution signal yet. Keep practising or run the diagnostic.</p>';
     return '<div class="learningMapSignalList">' + signals.map(function(node){
-      return '<p class="learningMapText"><strong>Early weak signal:</strong> ' + escapeHtml(node.label) + ' - ' + Number(node.incorrectCount || 0) + ' incorrect, ' + (Number(node.confidenceCounts && node.confidenceCounts.unsure || 0) + Number(node.confidenceCounts && node.confidenceCounts.guessed || 0)) + ' unsure/guessed.</p>';
+      return '<p class="learningMapText"><strong>Caution signal:</strong> ' + escapeHtml(node.label) + ' - ' + Number(node.incorrectCount || 0) + ' incorrect, ' + (Number(node.confidenceCounts && node.confidenceCounts.unsure || 0) + Number(node.confidenceCounts && node.confidenceCounts.guessed || 0)) + ' unsure/guessed.</p>';
     }).join("") + '</div>';
   }
   function learningMapNotEnoughHtml(map) {
@@ -9027,7 +9854,7 @@ body.b1Mode .debugStamp {
       '<p class="learningMapRecommendationMeta"><strong>Why:</strong> ' + escapeHtml(why) + '</p>' +
       notes.map(function(note){ return '<p class="learningMapRecommendationMeta">' + escapeHtml(note) + '</p>'; }).join("") +
       '<p class="learningMapRecommendationNote">Evidence note: ' + escapeHtml(basisState.label + " - " + basisState.description) + '</p>' +
-      '<p class="learningMapRecommendationNote">Limit: ' + escapeHtml((limitations[0] || "This is an early rules-based suggestion, not a mastery judgement.")) + '</p>' +
+      '<p class="learningMapRecommendationNote">Limit: ' + escapeHtml((limitations[0] || "This is an early rules-based suggestion, not a final progress judgement.")) + '</p>' +
       '<div class="learningMapActionGrid"><button class="learningMapAction" id="learningMapRecommendationActionBtn" type="button" data-route-key="' + escapeHtml(route) + '">' + escapeHtml(primary.routeLabel || (primary.action && primary.action.label) || "Start practice") + '</button></div>' +
       '<details class="learningMapDisclosure"><summary>Why this appears</summary>' +
         '<div class="learningMapDetail"><strong>Rule:</strong> ' + escapeHtml(b1RecommendationRuleLabel(primary.priorityRule || "current_focus_continuation")) + '</div>' +
@@ -9243,9 +10070,9 @@ body.b1Mode .debugStamp {
       learningMapSkillMatrixHtml(matrix) +
       '<section class="learningMapPanel"><h3>Skill overview</h3><div class="learningMapNodeList">' + nodesHtml + '</div></section>' +
       '<section class="learningMapPanel"><h3>Not enough evidence</h3>' + learningMapNotEnoughHtml(map) + '</section>' +
-      '<section class="learningMapPanel"><h3>Early weak signals</h3>' + learningMapSignalsHtml(map) + '</section>' +
+      '<section class="learningMapPanel"><h3>Caution signals</h3>' + learningMapSignalsHtml(map) + '</section>' +
       '<section class="learningMapPanel"><h3>Recent work</h3>' + learningMapRecentHtml() + '</section>' +
-      '<section class="learningMapPanel"><h3>Review / durability</h3><p class="learningMapText">Delayed review states are not available yet. Due-review scheduling will need future review evidence.</p>' +
+      '<section class="learningMapPanel"><h3>Review / long-term evidence</h3><p class="learningMapText">Delayed review states are not available yet. Due-review scheduling will need future review evidence.</p>' +
         '<details class="learningMapDisclosure"><summary>Other existing routes</summary>' +
         '<div class="learningMapActionGrid">' +
           '<button class="learningMapAction" id="learningMapDiagnosticActionBtn" type="button">Start Diagnostic</button>' +
@@ -11920,6 +12747,8 @@ body.b1Mode .debugStamp {
         why:Array.isArray(primary.why) ? primary.why.slice(0, 3) : [],
         limitations:Array.isArray(primary.limitations) ? primary.limitations.slice(0, 4) : [],
         evidenceBasis:primary.evidenceBasis || null,
+        evidenceQuality:primary.evidenceBasis && primary.evidenceBasis.evidenceQuality || null,
+        inflationRisk:primary.evidenceBasis && primary.evidenceBasis.inflationRisk || [],
         inactiveRulesCount:Array.isArray(rec.inactiveRules) ? rec.inactiveRules.length : 0,
         limitationsCount:(Array.isArray(primary.limitations) ? primary.limitations.length : 0) + (Array.isArray(rec.globalLimitations) ? rec.globalLimitations.length : 0)
       };
@@ -13684,11 +14513,11 @@ body.b1Mode .debugStamp {
     }
     if (!showSupport) {
       if (state === "b1Checking") b1Runtime.translationOpen = false;
-      gloss.textContent = policy === "after_answer" ? "Support after answer." : "";
+      gloss.textContent = policy === "after_answer" ? "Meaning after answer." : "";
       if (gloss.textContent) gloss.classList.add("hiddenGloss");
       if (toggle) {
         toggle.hidden = policy !== "collapsed";
-        toggle.textContent = policy === "collapsed" ? "Support" : "";
+        toggle.textContent = policy === "collapsed" ? "Meaning" : "";
         toggle.setAttribute("aria-expanded", "false");
       }
       return;
@@ -13697,7 +14526,7 @@ body.b1Mode .debugStamp {
     if (state === "b1Checking") b1Runtime.translationOpen = true;
     if (toggle) {
       toggle.hidden = policy !== "collapsed";
-      toggle.textContent = policy === "collapsed" ? "Support shown" : "";
+      toggle.textContent = policy === "collapsed" ? "Meaning shown" : "";
       toggle.setAttribute("aria-expanded", "true");
     }
   }
@@ -13746,6 +14575,10 @@ body.b1Mode .debugStamp {
     note.textContent = "Self-marked practice. Ozmosis does not auto-grade this.";
     grid.appendChild(note);
     if (item.usefulPhrases && item.usefulPhrases.length) {
+      var phraseTitle = document.createElement("div");
+      phraseTitle.className = "productionSectionTitle";
+      phraseTitle.textContent = "Useful phrases";
+      grid.appendChild(phraseTitle);
       var phrases = document.createElement("ul");
       phrases.className = "productionChecklist";
       item.usefulPhrases.forEach(function(line){
@@ -13755,28 +14588,34 @@ body.b1Mode .debugStamp {
       });
       grid.appendChild(phrases);
     }
-    var checklist = document.createElement("ul");
-    checklist.className = "productionChecklist";
-    (item.productionChecklist || []).forEach(function(line){
-      var li = document.createElement("li");
-      li.textContent = line;
-      checklist.appendChild(li);
-    });
-    grid.appendChild(checklist);
+    if (item.productionChecklist && item.productionChecklist.length) {
+      var checklistTitle = document.createElement("div");
+      checklistTitle.className = "productionSectionTitle";
+      checklistTitle.textContent = "Self-check";
+      grid.appendChild(checklistTitle);
+      var checklist = document.createElement("ul");
+      checklist.className = "productionChecklist";
+      item.productionChecklist.forEach(function(line){
+        var li = document.createElement("li");
+        li.textContent = line;
+        checklist.appendChild(li);
+      });
+      grid.appendChild(checklist);
+    }
     var model = document.createElement("button");
     model.type = "button";
-    model.textContent = "Show model";
+    model.textContent = "Show example answer";
     model.addEventListener("click", function(){
       var block = el("correctionBlock");
       block.className = "correctionBlock success visible";
-      block.innerHTML = "<div class=\"correctionTarget\">Model</div>" +
+      block.innerHTML = "<div class=\"correctionTarget\">Example answer</div>" +
         "<div class=\"correctionPattern\">" + escapeHtml(item.modelAnswer_de || item.fullAnswer_de || "") + "</div>";
       b1Runtime.currentProductionModelShown = true;
       model.disabled = true;
     }, false);
     var mark = document.createElement("button");
     mark.type = "button";
-    mark.textContent = "Mark practised";
+    mark.textContent = "I practised this";
     mark.addEventListener("click", markB1ProductionPractised, false);
     grid.appendChild(model);
     grid.appendChild(mark);
@@ -13868,17 +14707,15 @@ body.b1Mode .debugStamp {
   function renderB1Feedback(isCorrect, assisted, rawAnswer) {
     var item = b1Runtime.current;
     var block = el("correctionBlock");
-    var stars = b1StarsHtml(b1StepFor(item));
-    var extraLine = b1Runtime.currentExtraPractice ? "<div class=\"microRule\">Extra practice: stars stay on the spaced-review schedule.</div>" : "";
+    var extraLine = b1Runtime.currentExtraPractice ? "<div class=\"microRule\">Extra practice helps rehearsal, but it does not move review timing early.</div>" : "";
     var assistedLine = assisted ? "<div class=\"microRule\">Assisted practice - try it again later.</div>" : "";
     var repairLine = (item.itemType === "error_repair") ? "<div class=\"microRule\">" + b1RepairFeedbackHtml(item, rawAnswer, isCorrect) + "</div>" : "";
     var contrastLine = renderB1ContrastNote(item, rawAnswer, isCorrect);
     var ruleLine = (!isCorrect && item.microRule && !repairLine && !contrastLine) ? "<div class=\"microRule\">" + escapeHtml(item.microRule) + "</div>" : "";
-    var marker = isCorrect ? "✓" : "✕";
     var label = assisted ? "Assisted practice" : (isCorrect ? "Correct" : "Wrong");
+    var resultClass = assisted ? "assisted" : (isCorrect ? "correct" : "wrong");
     block.className = "correctionBlock" + (isCorrect && !assisted ? " success" : "");
-    block.innerHTML = "<div class=\"correctionTarget\" aria-label=\"" + label + "\">" + marker + "</div>" +
-      stars +
+    block.innerHTML = "<div class=\"correctionTarget feedbackResultLine " + resultClass + "\" aria-label=\"" + label + "\">" + label + "</div>" +
       assistedLine +
       extraLine +
       repairLine +
@@ -13904,8 +14741,8 @@ body.b1Mode .debugStamp {
     var block = el("correctionBlock");
     if (!block) return;
     block.className = "correctionBlock info visible";
-    block.innerHTML = "<div class=\"correctionTarget\">Why no stars?</div>" +
-      "<div class=\"microRule\">Stars are earned when a card is new or due for review. This one is extra practice, so it helps you rehearse but does not move the card forward early. That keeps the spaced-repetition timing honest.</div>";
+    block.innerHTML = "<div class=\"correctionTarget\">Why limited evidence?</div>" +
+      "<div class=\"microRule\">This is extra practice, so it helps rehearsal but does not move the card forward early. That keeps review timing honest.</div>";
   }
   function b1RoundComplete() {
     if (b1Runtime.dailySprint) {
@@ -14082,14 +14919,14 @@ body.b1Mode .debugStamp {
     };
   }
   function b1DiagnosticResultHtml(data) {
-    var weak = data.weakSignals.length ? data.weakSignals.join(", ") : "No clear weak signal yet";
+    var weak = data.weakSignals.length ? data.weakSignals.join(", ") : "No clear caution signal yet";
     var notTested = data.notTested && data.notTested.length ? data.notTested.join(", ") : "No broad area flagged";
     var notEnough = data.notEnough.length ? data.notEnough.join(", ") : "No broad area flagged";
     return "<div class=\"sessionCoverage\">" +
       "<strong>Items attempted</strong><span>" + data.attempted + " of " + data.target + "</span>" +
       "<strong>Correct this time</strong><span>" + data.correct + " / " + data.target + "</span>" +
       "<strong>Unsure / guessed</strong><span>" + data.unsureGuessed + "</span>" +
-      "<strong>Early weak signals</strong><span>" + escapeHtml(weak) + "</span>" +
+      "<strong>Caution signals</strong><span>" + escapeHtml(weak) + "</span>" +
       "<strong>Not tested yet</strong><span>" + escapeHtml(notTested) + "</span>" +
       "<strong>Not enough evidence yet</strong><span>" + escapeHtml(notEnough) + "</span>" +
       "</div>";
@@ -14840,7 +15677,14 @@ window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkA
     var panel = el("settingsPanel");
     if (panel && panel.parentElement !== document.body) document.body.appendChild(panel);
   }
-  function setMenu(open) { el("settingsPanel").classList.toggle("open", open); document.body.classList.toggle("menuOpen", open); }
+  function setMenu(open) {
+    var panel = el("settingsPanel");
+    if (!panel) return;
+    var hadFocus = panel.contains(document.activeElement);
+    panel.classList.toggle("open", open);
+    document.body.classList.toggle("menuOpen", open);
+    if (!open && hadFocus && el("menuToggle")) focusWithoutScroll(el("menuToggle"));
+  }
   function toggleMenu() { setMenu(!el("settingsPanel").classList.contains("open")); }
   document.addEventListener("click", function(event){
     var target = event.target && event.target.closest ? event.target.closest("#menuCloseBtn, #menuDiagnosticBtn, #menuLearningMapBtn, #menuWortschatzBtn, #menuTesterNotesBtn") : null;
@@ -14907,7 +15751,7 @@ window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkA
     bind("genitiveHelpBtn","click",openGenitiveHelp);
     bind("startGenitiveHelpBtn","click",openGenitiveHelp);
     bind("genitiveHelpCloseBtn","click",closeGenitiveHelp);
-    if (el("genitiveHelpOverlay")) el("genitiveHelpOverlay").addEventListener("click",function(event){ if (event.target === el("genitiveHelpOverlay")) closeGenitiveHelp(); },false); bind("englishSupport","change",function(){ savePersistent(); if (b1Runtime.active) renderB1Translation(false); else if (current) renderQuestion(); }); bind("roundTarget","change",function(){ if (shouldApplyLiveSettings()) newRound(); else savePersistent(); }); bind("adaptiveMode","change",function(){ savePersistent(); if (shouldApplyLiveSettings()) newRound(); }); bind("menuHomeBtn","click",function(){ setMenu(false); showHomeScreen(); }); bind("menuSprintBtn","click",function(){ setMenu(false); startB1Round("mixed"); }); bind("menuGrammarBtn","click",function(){ setMenu(false); showGrammarHub(); }); bind("menuRedemittelBtn","click",function(){ setMenu(false); showRedemittelHub(); }); bind("menuCaseTrainerBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("restartBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("resetBestBtn","click",function(){window.kasusResetBest();}); bind("resetProfileBtn","click",function(){window.kasusResetProfile();}); bind("exportBtn","click",exportProgress); bind("importBtn","click",function(){el("importFile").click();}); bind("importFile","change",function(event){ importProgress(event.target.files && event.target.files[0]); event.target.value=""; }); bind("devToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("devMenuBtn","click",function(event){ event.stopPropagation(); setMenu(!el("settingsPanel").classList.contains("open")); }); bind("devCloseBtn","click",function(){ setDevTools(false); }); bind("newGameCloseBtn","click",function(){ setDevTools(false); }); bind("leitnerCloseBtn","click",closeLeitnerPrototype); bind("openNewGameMockBtn","click",showNewGameMock); bind("openLeitnerPrototypeBtn","click",showLeitnerPrototype); bind("resetLeitnerPrototypeBtn","click",showLeitnerResetConfirm); bind("backToDevListBtn","click",showDevList); bind("leitnerResetCloseBtn","click",showDevList); bind("cancelLeitnerResetBtn","click",showDevList); bind("confirmLeitnerResetBtn","click",resetLeitnerPrototypeProgress); bind("leitnerRestartBtn","click",startLeitnerQueue); bind("leitnerCheckBtn","click",checkLeitnerAnswer); bind("leitnerNextBtn","click",nextLeitnerCard); bind("leitnerAnswerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (leitnerRuntime.answered) nextLeitnerCard(); else checkLeitnerAnswer(); }); bind("applyNewGameMockBtn","click",applyNewGameMock); bind("homeSprintBtn","click",function(){ startB1Round("mixed"); }); bind("homeDiagnosticBtn","click",startB1DiagnosticSprint); bind("homeLearningMapBtn","click",showLearningMapScreen); bind("learningMapBackBtn","click",showHomeScreen); bind("diagnosticExitBtn","click",exitB1Diagnostic); bind("homeGrammarBtn","click",showGrammarHub); bind("grammarBackBtn","click",showHomeScreen); bind("grammarSeedBtn","click",function(){ startB1Round("grammar_cloze"); }); bind("connectorAllBtn","click",function(){ startConnectorSprint("all"); }); bind("connectorReasonBtn","click",function(){ startConnectorSprint("reason"); }); bind("connectorContrastBtn","click",function(){ startConnectorSprint("contrast"); }); bind("connectorPurposeBtn","click",function(){ startConnectorSprint("purpose"); }); bind("connectorTimeBtn","click",function(){ startConnectorSprint("time"); }); bind("connectorRepairBtn","click",function(){ startConnectorSprint("repair"); }); bind("homeWortschatzBtn","click",function(){ startWortschatzRound("mixed"); }); bind("homeRedemittelBtn","click",function(){ startB1Round("redemittel_cloze"); }); bind("homeCaseTrainerBtn","click",showStartScreen); bind("caseTrainerBackBtn","click",showHomeScreen); bind("homeOptionsBtn","click",function(event){ event.stopPropagation(); setDevTools(false); setMenu(!el("settingsPanel").classList.contains("open")); }); bind("homeDevToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("hubBackBtn","click",showHomeScreen); document.querySelectorAll(".homePlaceholderBtn").forEach(function(btn){ btn.addEventListener("click",function(){ showHubPlaceholder(btn.getAttribute("data-title") || btn.textContent.trim()); }); }); var devOverlay=el("devOverlay"); if (devOverlay) devOverlay.addEventListener("click",function(event){ if (event.target === devOverlay && !devOverlay.classList.contains("leitnerFullscreen")) setDevTools(false); },false); document.addEventListener("keydown",function(event){ if ((event.key === "Escape" || event.key === "Esc") && el("genitiveHelpOverlay") && !el("genitiveHelpOverlay").hidden) { el("genitiveHelpOverlay").hidden = true; return; } if ((event.key === "Escape" || event.key === "Esc") && el("devOverlay") && !el("devOverlay").hidden) { setDevTools(false); return; } if ((event.key === "Escape" || event.key === "Esc") && b1Runtime.mode === "b1_diagnostic" && (state === "b1Checking" || state === "b1Next")) { exitB1Diagnostic(); return; } if ((event.key === "Escape" || event.key === "Esc") && (state === "placeholder" || state === "grammarHub" || state === "learningMap")) showHomeScreen(); }); bind("checkBtn","click",function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }); bind("noArticleBtn","click",function(){checkAnswer("none");}); bind("nextBtn","click",proceed); bind("hintBtn","click",showHint); bind("supportPlaceholder","click",showHint); bind("translationToggle","click",toggleB1Translation); bind("whyNoStarsBtn","click",explainExtraPracticeStars); bind("startRoundBtn","click",startConfiguredRound); document.querySelectorAll(".langBtn").forEach(function(btn){ btn.addEventListener("click",function(){ setSupportLanguage(btn.getAttribute("data-lang")); }); }); bind("answerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (state==="b1Checking") checkB1Answer(); else if (state==="checking") checkAnswer(); else proceed(); }); renderHud(); applyLanguage(); showHomeScreen(); }
+    if (el("genitiveHelpOverlay")) el("genitiveHelpOverlay").addEventListener("click",function(event){ if (event.target === el("genitiveHelpOverlay")) closeGenitiveHelp(); },false); bind("englishSupport","change",function(){ savePersistent(); if (b1Runtime.active) renderB1Translation(false); else if (current) renderQuestion(); }); bind("roundTarget","change",function(){ if (shouldApplyLiveSettings()) newRound(); else savePersistent(); }); bind("adaptiveMode","change",function(){ savePersistent(); if (shouldApplyLiveSettings()) newRound(); }); bind("menuHomeBtn","click",function(){ setMenu(false); showHomeScreen(); }); bind("menuSprintBtn","click",function(){ setMenu(false); startB1Round("mixed"); }); bind("menuGrammarBtn","click",function(){ setMenu(false); showGrammarHub(); }); bind("menuRedemittelBtn","click",function(){ setMenu(false); showRedemittelHub(); }); bind("menuCaseTrainerBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("restartBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("resetBestBtn","click",function(){window.kasusResetBest();}); bind("resetProfileBtn","click",function(){window.kasusResetProfile();}); bind("exportBtn","click",exportProgress); bind("importBtn","click",function(){el("importFile").click();}); bind("importFile","change",function(event){ importProgress(event.target.files && event.target.files[0]); event.target.value=""; }); bind("devToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("devMenuBtn","click",function(event){ event.stopPropagation(); setMenu(!el("settingsPanel").classList.contains("open")); }); bind("devCloseBtn","click",function(){ setDevTools(false); }); bind("newGameCloseBtn","click",function(){ setDevTools(false); }); bind("leitnerCloseBtn","click",closeLeitnerPrototype); bind("openNewGameMockBtn","click",showNewGameMock); bind("openLeitnerPrototypeBtn","click",showLeitnerPrototype); bind("resetLeitnerPrototypeBtn","click",showLeitnerResetConfirm); bind("backToDevListBtn","click",showDevList); bind("leitnerResetCloseBtn","click",showDevList); bind("cancelLeitnerResetBtn","click",showDevList); bind("confirmLeitnerResetBtn","click",resetLeitnerPrototypeProgress); bind("leitnerRestartBtn","click",startLeitnerQueue); bind("leitnerCheckBtn","click",checkLeitnerAnswer); bind("leitnerNextBtn","click",nextLeitnerCard); bind("leitnerAnswerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (leitnerRuntime.answered) nextLeitnerCard(); else checkLeitnerAnswer(); }); bind("applyNewGameMockBtn","click",applyNewGameMock); bind("homeSprintBtn","click",function(){ startB1Round("mixed"); }); bind("homeDiagnosticBtn","click",startB1DiagnosticSprint); bind("homeLearningMapBtn","click",showLearningMapScreen); bind("learningMapBackBtn","click",showHomeScreen); bind("diagnosticExitBtn","click",exitB1Diagnostic); bind("homeGrammarBtn","click",showGrammarHub); bind("grammarBackBtn","click",showHomeScreen); bind("grammarSeedBtn","click",function(){ startB1Round("grammar_cloze"); }); bind("connectorAllBtn","click",function(){ startConnectorSprint("all"); }); bind("connectorReasonBtn","click",function(){ startConnectorSprint("reason"); }); bind("connectorContrastBtn","click",function(){ startConnectorSprint("contrast"); }); bind("connectorPurposeBtn","click",function(){ startConnectorSprint("purpose"); }); bind("connectorTimeBtn","click",function(){ startConnectorSprint("time"); }); bind("connectorRepairBtn","click",function(){ startConnectorSprint("repair"); }); bind("homeWortschatzBtn","click",function(){ startWortschatzRound("mixed"); }); bind("homeRedemittelBtn","click",function(){ startB1Round("redemittel_cloze"); }); bind("homeCaseTrainerBtn","click",showStartScreen); bind("caseTrainerBackBtn","click",showHomeScreen); bind("homeOptionsBtn","click",function(event){ event.stopPropagation(); setDevTools(false); setMenu(true); if (el("menuOptionsDetails")) el("menuOptionsDetails").open = true; setTimeout(function(){ var summary = el("menuOptionsDetails") && el("menuOptionsDetails").querySelector("summary"); if (summary) focusWithoutScroll(summary); }, 0); }); bind("homeDevToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("hubBackBtn","click",showHomeScreen); document.querySelectorAll(".homePlaceholderBtn").forEach(function(btn){ btn.addEventListener("click",function(){ showHubPlaceholder(btn.getAttribute("data-title") || btn.textContent.trim()); }); }); var devOverlay=el("devOverlay"); if (devOverlay) devOverlay.addEventListener("click",function(event){ if (event.target === devOverlay && !devOverlay.classList.contains("leitnerFullscreen")) setDevTools(false); },false); document.addEventListener("keydown",function(event){ if ((event.key === "Escape" || event.key === "Esc") && el("genitiveHelpOverlay") && !el("genitiveHelpOverlay").hidden) { el("genitiveHelpOverlay").hidden = true; return; } if ((event.key === "Escape" || event.key === "Esc") && el("devOverlay") && !el("devOverlay").hidden) { setDevTools(false); return; } if ((event.key === "Escape" || event.key === "Esc") && b1Runtime.mode === "b1_diagnostic" && (state === "b1Checking" || state === "b1Next")) { exitB1Diagnostic(); return; } if ((event.key === "Escape" || event.key === "Esc") && (state === "placeholder" || state === "grammarHub" || state === "learningMap")) showHomeScreen(); }); bind("checkBtn","click",function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }); bind("noArticleBtn","click",function(){checkAnswer("none");}); bind("nextBtn","click",proceed); bind("hintBtn","click",showHint); bind("supportPlaceholder","click",showHint); bind("translationToggle","click",toggleB1Translation); bind("whyNoStarsBtn","click",explainExtraPracticeStars); bind("startRoundBtn","click",startConfiguredRound); document.querySelectorAll(".langBtn").forEach(function(btn){ btn.addEventListener("click",function(){ setSupportLanguage(btn.getAttribute("data-lang")); }); }); bind("answerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (state==="b1Checking") checkB1Answer(); else if (state==="checking") checkAnswer(); else proceed(); }); renderHud(); applyLanguage(); showHomeScreen(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
 }());
 </script>
