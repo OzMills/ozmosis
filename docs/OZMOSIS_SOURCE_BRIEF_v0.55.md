@@ -1,12 +1,12 @@
-# OZMOSIS SOURCE BRIEF v0.53.1
+# OZMOSIS SOURCE BRIEF v0.55
 
-Historical copy. Current canonical source brief is `docs/OZMOSIS_SOURCE_BRIEF_v0.54.md`.
+Historical copy. Current canonical source brief is `docs/OZMOSIS_SOURCE_BRIEF_v0.56.md`.
 
 Version: Working Source Brief Update  
-Status: Historical planning brief  
+Status: Historical planning brief superseded by v0.56  
 Project: Ozmosis - Deutsch Lernen App  
-Current known development position: v0.53.1 completed  
-Next planned patch: v0.54 - Repair Mode Strengthening  
+Current known development position: v0.55 completed  
+Next planned patch: v0.56 - Skill-Task Recommendations  
 
 Versioning rule:
 
@@ -108,7 +108,7 @@ But this should be introduced carefully and only when useful.
 
 The detailed version-by-version roadmap lives separately in:
 
-`docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.53.1.md`
+`docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.55.md`
 
 The Source Brief remains the strategic orientation document. The roadmap is a planning document, not permission for Codex to implement future versions early.
 
@@ -707,8 +707,8 @@ You often choose accusative forms in location sentences.
 Current known development state:
 
 ```txt
-v0.53.1 completed
-Next planned patch: v0.54 - Repair Mode Strengthening
+v0.55 completed
+Next planned patch: v0.56 - Skill-Task Recommendations
 ```
 
 The next work should not be a broad rewrite.
@@ -932,7 +932,11 @@ The mobile/tablet/desktop shell was stabilised before v0.54. Header controls, th
 
 ### v0.54  -  Repair Mode Strengthening
 
-Ensure repair mode actually tests identifying and fixing errors.
+Completed in v0.54:
+
+```txt
+Repair-mode feedback now keeps a concise corrected sentence visible, avoids misleading pseudo-diffs for nonsense answers, records derived repair categories additively on new repair evidence, and shows capitalisation or word-order micro-feedback where current metadata supports it. Scoring, storage keys, export/import, support-level semantics, Today’s B1 Sprint composition, production self-marking, and content banks remain unchanged.
+```
 
 It should not just be another cloze task.
 
@@ -947,6 +951,12 @@ weil vs deshalb
 obwohl vs trotzdem
 V2 vs verb-final
 fixed preposition vs two-way preposition
+```
+
+Completed in v0.55:
+
+```txt
+Contrast handling now uses existing metadata to add concise contrast feedback for supported connector choice, word-order, repair, case, and location/movement contrasts. New evidence receives additive contrastGroup and contrastTargets context. Today's B1 Sprint composition, scoring, storage keys, support-level semantics, export/import, route composition, and content banks remain unchanged.
 ```
 
 ### v0.56  -  Skill-Task Recommendations
@@ -1444,7 +1454,7 @@ Do not assume v1.0 at any arbitrary milestone.
 
 # 21. IMMEDIATE NEXT STEP
 
-The next appropriate step is v0.54 - Repair Mode Strengthening, unless QA finds a blocking production-tracking, support visibility, support-level, Skill Matrix, task-depth, confidence-as-next, tester-ready UX, report-copy, scroll/exit, diagnostic pre-start, Learning Map, debug/preview, storage, or export/import regression.
+The next appropriate step is v0.56 - Skill-Task Recommendations, unless QA finds a blocking contrast-task, repair-mode, production-tracking, support visibility, support-level, Skill Matrix, task-depth, confidence-as-next, tester-ready UX, report-copy, scroll/exit, diagnostic pre-start, Learning Map, debug/preview, storage, or export/import regression.
 
 v0.40 added the first Progress Evidence Model and v0.40.1 added lightweight confidence/guess capture on top of that evidence model.
 

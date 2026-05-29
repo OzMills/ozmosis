@@ -7060,8 +7060,8 @@ body.b1Mode .debugStamp {
   var B1_STORAGE_KEY = "ozmosis_b1_sprint_progress_v1";
   var B1_EVIDENCE_STORAGE_KEY = "ozmosis_b1_progress_evidence_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.53.1";
-  var OZMOSIS_EXPORT_VERSION = "v0.53.1-mobile-ux-stabilisation";
+  var OZMOSIS_APP_VERSION = "v0.56";
+  var OZMOSIS_EXPORT_VERSION = "v0.56-skill-task-recommendations";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -8495,6 +8495,7 @@ body.b1Mode .debugStamp {
   function b1RecommendationRouteForNode(nodeKey) {
     var routes = {
       connectors:{ routeKey:"connectors", routeLabel:"Open Connector Sprint", shortLabel:"Connector practice" },
+      grammar:{ routeKey:"grammar", routeLabel:"Open Grammar", shortLabel:"Grammar practice" },
       redemittel:{ routeKey:"redemittel", routeLabel:"Open Redemittel", shortLabel:"Redemittel practice" },
       wortschatz:{ routeKey:"wortschatz", routeLabel:"Open Wortschatz", shortLabel:"Wortschatz practice" },
       cases_articles:{ routeKey:"case_trainer", routeLabel:"Open Case Trainer", shortLabel:"Case practice" },
@@ -8505,14 +8506,75 @@ body.b1Mode .debugStamp {
     };
     return routes[nodeKey] || { routeKey:"today", routeLabel:"Start Today's Sprint", shortLabel:"B1 practice" };
   }
+  function b1RecommendationRouteForTask(nodeKey, taskDepth) {
+    var base = b1RecommendationRouteForNode(nodeKey);
+    var depth = b1CanonicalTaskDepth(taskDepth);
+    var grammarTask = depth === "repair" || depth === "contrast" || depth === "sentence_building";
+    if (grammarTask && (nodeKey === "connectors" || nodeKey === "word_order")) {
+      return { routeKey:"grammar", routeLabel:"Open Grammar", shortLabel:depth === "repair" ? "Repair practice" : depth === "contrast" ? "Contrast practice" : "Word order practice", closestAvailable:true };
+    }
+    if (grammarTask && nodeKey === "cases_articles") {
+      return { routeKey:"case_trainer", routeLabel:"Open Case Trainer", shortLabel:"Case practice", closestAvailable:true };
+    }
+    if (grammarTask && nodeKey === "prepositions") {
+      return { routeKey:"today", routeLabel:"Start Today's Sprint", shortLabel:"B1 practice", closestAvailable:true };
+    }
+    if (/production/.test(depth)) {
+      if (nodeKey === "redemittel") return { routeKey:"redemittel", routeLabel:"Open Redemittel", shortLabel:"Production practice", closestAvailable:true };
+      if (nodeKey === "wortschatz") return { routeKey:"wortschatz", routeLabel:"Open Wortschatz", shortLabel:"Production practice", closestAvailable:true };
+      return { routeKey:"today", routeLabel:"Start Today's Sprint", shortLabel:"Production practice", closestAvailable:true };
+    }
+    return base;
+  }
   function b1RecommendationDepthPreference() {
     return ["repair", "sentence_building", "contrast", "cloze", "recognition", "controlled_production", "free_production"];
+  }
+  function b1RecommendationCell(row, depth) {
+    return row && row.cells && row.cells[depth] || null;
+  }
+  function b1RecommendationCellCount(row, depth) {
+    var cell = b1RecommendationCell(row, depth);
+    return Number(cell && cell.evidenceCount || 0);
+  }
+  function b1RecommendationCellPositive(row, depth) {
+    var cell = b1RecommendationCell(row, depth);
+    return Number(cell && cell.correctCount || 0) + Number(cell && cell.practisedCount || 0);
+  }
+  function b1RecommendationCellCautious(row, depth) {
+    var cell = b1RecommendationCell(row, depth);
+    return Number(cell && cell.incorrectCount || 0) + Number(cell && cell.confidenceCounts && cell.confidenceCounts.unsure || 0) + Number(cell && cell.confidenceCounts && cell.confidenceCounts.guessed || 0);
+  }
+  function b1RecommendationCombinedCount(row, depths) {
+    return (depths || []).reduce(function(total, depth){ return total + b1RecommendationCellCount(row, depth); }, 0);
+  }
+  function b1RecommendationCombinedPositive(row, depths) {
+    return (depths || []).reduce(function(total, depth){ return total + b1RecommendationCellPositive(row, depth); }, 0);
+  }
+  function b1RecommendationRowSupportCounts(row) {
+    var counts = b1SupportLevelEmptyCounts();
+    Object.keys(row && row.cells || {}).forEach(function(depth){
+      var cell = row.cells[depth];
+      Object.keys(cell && cell.supportLevelCounts || {}).forEach(function(key){
+        counts[key] = (counts[key] || 0) + Number(cell.supportLevelCounts[key] || 0);
+      });
+    });
+    return counts;
+  }
+  function b1RecommendationSupportContext(counts) {
+    counts = counts || {};
+    var unassisted = Number(counts.unassisted_typed || 0) + Number(counts.unassisted_choice || 0);
+    var scaffolded = Object.keys(counts).reduce(function(total, key){
+      return total + (b1SupportLevelIsScaffolded(key) ? Number(counts[key] || 0) : 0);
+    }, 0);
+    return { unassisted:unassisted, scaffolded:scaffolded, unknown:Number(counts.unknown || 0) };
   }
   function b1RecommendationEvidenceBasis(row, taskDepth, cell) {
     cell = cell || (row && row.cells && row.cells[taskDepth]) || null;
     return {
       totalEvidence:Number(row && row.rowSummary && row.rowSummary.totalEvidence || 0),
       relevantEvidence:Number(cell && cell.evidenceCount || 0),
+      productionEvidenceCount:Number(cell && cell.productionEvidenceCount || 0),
+      diagnosticEvidenceCount:Number(cell && cell.diagnosticEvidenceCount || 0),
       skillMatrixCellState:cell && cell.state || "not_tested",
       metadataProvenance:cell && cell.metadataProvenance ? {
         explicit:Number(cell.metadataProvenance.explicit || 0),
@@ -8524,7 +8586,8 @@ body.b1Mode .debugStamp {
         unsure:Number(cell.confidenceCounts.unsure || 0),
         guessed:Number(cell.confidenceCounts.guessed || 0),
         unset:Number(cell.confidenceCounts.unset || 0)
-      } : { sure:0, unsure:0, guessed:0, unset:0 }
+      } : { sure:0, unsure:0, guessed:0, unset:0 },
+      supportLevelCounts:cell && cell.supportLevelCounts ? Object.assign(b1SupportLevelEmptyCounts(), cell.supportLevelCounts) : b1SupportLevelEmptyCounts()
     };
   }
   function b1RecommendationBase(primary, inactiveRules, globalLimitations) {
@@ -8592,19 +8655,82 @@ body.b1Mode .debugStamp {
     });
     return candidates[0] || null;
   }
+  function b1RecommendationTaskGapCandidate(matrix) {
+    var rows = matrix && Array.isArray(matrix.rows) ? matrix.rows : [];
+    var candidates = [];
+    rows.forEach(function(row){
+      var total = Number(row && row.rowSummary && row.rowSummary.totalEvidence || 0);
+      if (total < 2) return;
+      var nodeKey = row.nodeKey || "unknown";
+      var recognitionLike = b1RecommendationCombinedPositive(row, ["recognition", "cloze", "sentence_building"]);
+      var clozeLike = b1RecommendationCombinedPositive(row, ["cloze", "sentence_building"]);
+      var meaningLike = b1RecommendationCombinedCount(row, ["recognition", "cloze", "contrast"]);
+      var wordOrderLike = b1RecommendationCombinedCount(row, ["sentence_building", "repair"]);
+      var repairCount = b1RecommendationCellCount(row, "repair");
+      var contrastCount = b1RecommendationCellCount(row, "contrast");
+      var connectorWordOrderMissing = (nodeKey === "connectors" || nodeKey === "word_order") && meaningLike >= 2 && wordOrderLike < 2;
+      if (recognitionLike >= 2 && repairCount < 2 && nodeKey !== "production" && !connectorWordOrderMissing) {
+        candidates.push({ row:row, taskDepth:"repair", cell:b1RecommendationCell(row, "repair"), priority:10, score:recognitionLike - repairCount, rule:"task_depth_repair_gap" });
+      }
+      if (clozeLike >= 2 && contrastCount < 2 && nodeKey !== "production") {
+        candidates.push({ row:row, taskDepth:"contrast", cell:b1RecommendationCell(row, "contrast"), priority:20, score:clozeLike - contrastCount, rule:"task_depth_contrast_gap" });
+      }
+      if ((nodeKey === "connectors" || nodeKey === "word_order") && meaningLike >= 2 && wordOrderLike < 2) {
+        candidates.push({ row:row, taskDepth:"sentence_building", cell:b1RecommendationCell(row, "sentence_building"), priority:30, score:meaningLike - wordOrderLike, rule:"connector_word_order_gap" });
+      }
+    });
+    candidates.sort(function(a,b){
+      return a.priority - b.priority || b.score - a.score || Number(b.row.rowSummary.totalEvidence || 0) - Number(a.row.rowSummary.totalEvidence || 0) || String(a.row.nodeKey).localeCompare(String(b.row.nodeKey));
+    });
+    return candidates[0] || null;
+  }
+  function b1RecommendationSupportCandidate(matrix) {
+    var rows = matrix && Array.isArray(matrix.rows) ? matrix.rows : [];
+    var candidates = [];
+    rows.forEach(function(row){
+      var total = Number(row && row.rowSummary && row.rowSummary.totalEvidence || 0);
+      if (total < 2) return;
+      var support = b1RecommendationSupportContext(b1RecommendationRowSupportCounts(row));
+      if (support.scaffolded < 2 || support.scaffolded <= support.unassisted) return;
+      var targetDepth = b1RecommendationCellCount(row, "repair") < 2 ? "repair" : b1RecommendationCellCount(row, "cloze") < 2 ? "cloze" : "recognition";
+      candidates.push({ row:row, taskDepth:targetDepth, cell:b1RecommendationCell(row, targetDepth), priority:40, score:support.scaffolded - support.unassisted, support:support, rule:"support_context_gap" });
+    });
+    candidates.sort(function(a,b){
+      return b.score - a.score || Number(b.row.rowSummary.totalEvidence || 0) - Number(a.row.rowSummary.totalEvidence || 0) || String(a.row.nodeKey).localeCompare(String(b.row.nodeKey));
+    });
+    return candidates[0] || null;
+  }
   function b1RecommendationForRow(rule, row, taskDepth, cell, confidence) {
-    var route = b1RecommendationRouteForNode(row.nodeKey);
+    var route = b1RecommendationRouteForTask(row.nodeKey, taskDepth);
     var depthLabel = learningMapDepthLabel(taskDepth);
     var basis = b1RecommendationEvidenceBasis(row, taskDepth, cell);
     var limitations = ["This is a rules-based suggestion.", "No delayed review evidence yet."];
     if (basis.metadataProvenance.derived > basis.metadataProvenance.explicit) limitations.push("Metadata may be derived.");
-    if (cell && cell.productionEvidenceCount > 0 || /production/.test(taskDepth)) limitations.push("Production is self-marked.");
+    if (cell && cell.productionEvidenceCount > 0 || /production/.test(taskDepth)) limitations.push("Production is self-marked practice evidence only.");
+    if (basis.diagnosticEvidenceCount > 0) limitations.push("Diagnostic evidence is a snapshot only.");
+    if (route.closestAvailable) limitations.push("Closest available route: " + route.routeLabel.replace(/^Open\s+/i, "") + ".");
     var unsureTotal = basis.confidenceCounts.unsure + basis.confidenceCounts.guessed;
     var why = [];
     if (rule === "weak_skill") {
       why.push("This area has an early weak signal.");
       if (unsureTotal) why.push("Several answers were marked unsure or guessed.");
       why.push("More controlled evidence would make the Learning Map more useful.");
+    } else if (rule === "task_depth_repair_gap") {
+      why.push("You have some constrained evidence here, but little repair evidence yet.");
+      why.push("Repair practice checks whether you can notice and fix the issue.");
+      if (route.closestAvailable) why.push("Closest available route: " + route.routeLabel.replace(/^Open\s+/i, "") + ".");
+    } else if (rule === "task_depth_contrast_gap") {
+      why.push("You have some cloze or sentence evidence, but little contrast evidence yet.");
+      why.push("Contrast practice checks whether nearby forms or meanings stay distinct.");
+      if (route.closestAvailable) why.push("Closest available route: " + route.routeLabel.replace(/^Open\s+/i, "") + ".");
+    } else if (rule === "connector_word_order_gap") {
+      why.push("You have some connector evidence, but little word-order evidence yet.");
+      why.push("Word-order practice checks V2 versus verb-final control.");
+      if (route.closestAvailable) why.push("Closest available route: " + route.routeLabel.replace(/^Open\s+/i, "") + ".");
+    } else if (rule === "support_context_gap") {
+      why.push("Much of the evidence here is scaffolded or self-marked.");
+      why.push("Support level is evidence context, not a score.");
+      why.push("Try a small less-supported " + depthLabel + " attempt if the route offers one.");
     } else {
       why.push("Ozmosis has not seen enough " + depthLabel + " attempts here yet.");
       if (Number(row.rowSummary.totalEvidence || 0) > 0) why.push("Other evidence exists, but this task type is still thin.");
@@ -8618,7 +8744,7 @@ body.b1Mode .debugStamp {
       routeLabel:route.routeLabel,
       nodeKey:row.nodeKey,
       taskDepth:taskDepth,
-      priorityRule:rule === "weak_skill" ? "weak_skill" : "under_tested_task_type",
+      priorityRule:rule === "weak_skill" ? "weak_skill" : rule || "under_tested_task_type",
       confidence:confidence || "low",
       evidenceBasis:basis,
       why:why.slice(0, 3),
@@ -8666,8 +8792,12 @@ body.b1Mode .debugStamp {
         action:{ type:"existing_route", routeKey:"diagnostic", label:"Start B1 Diagnostic Sprint" }
       }, inactiveRules, globalLimitations);
     }
+    var taskGap = b1RecommendationTaskGapCandidate(matrix);
+    if (taskGap) return b1RecommendationBase(b1RecommendationForRow(taskGap.rule, taskGap.row, taskGap.taskDepth, taskGap.cell, "medium"), inactiveRules, globalLimitations);
     var weak = b1RecommendationWeakCandidate(matrix);
     if (weak) return b1RecommendationBase(b1RecommendationForRow("weak_skill", weak.row, weak.taskDepth, weak.row.cells[weak.taskDepth], "low"), inactiveRules, globalLimitations);
+    var supportGap = b1RecommendationSupportCandidate(matrix);
+    if (supportGap) return b1RecommendationBase(b1RecommendationForRow(supportGap.rule, supportGap.row, supportGap.taskDepth, supportGap.cell, "low"), inactiveRules, globalLimitations);
     var underTested = b1RecommendationUnderTestedCandidate(matrix);
     if (underTested) return b1RecommendationBase(b1RecommendationForRow("under_tested_task_type", underTested.row, underTested.taskDepth, underTested.cell, "low"), inactiveRules, globalLimitations);
     var focusNode = map && Array.isArray(map.nodes) ? map.nodes.filter(function(node){ return node && node.evidenceCount; })[0] : null;
@@ -8702,6 +8832,10 @@ body.b1Mode .debugStamp {
     var labels = {
       weak_skill:"Early weak signal",
       under_tested_task_type:"Under-tested task type",
+      task_depth_repair_gap:"Repair evidence gap",
+      task_depth_contrast_gap:"Contrast evidence gap",
+      connector_word_order_gap:"Connector word-order gap",
+      support_context_gap:"Support-context gap",
       current_focus_continuation:"Current focus continuation",
       overdue_review:"Delayed review inactive",
       recent_misconception_pattern:"Error-pattern checks inactive"
@@ -8710,6 +8844,7 @@ body.b1Mode .debugStamp {
   }
   function openB1RecommendationRoute(routeKey) {
     if (routeKey === "diagnostic") { startB1DiagnosticSprint(); return; }
+    if (routeKey === "grammar") { showGrammarHub(); return; }
     if (routeKey === "connectors") { startConnectorSprint("all"); return; }
     if (routeKey === "redemittel") { showRedemittelHub(); return; }
     if (routeKey === "wortschatz") { startWortschatzRound("mixed"); return; }
@@ -11291,6 +11426,70 @@ body.b1Mode .debugStamp {
     if (type === "grammar_cloze" || type === "vocab_cloze" || type === "redemittel_cloze" || type === "phrase_cloze" || type === "typed_cloze") return b1CanonicalTaskDepth("cloze");
     return "unknown";
   }
+  function b1NormalizeContrastTerm(value) {
+    var raw = String(value || "").toLowerCase().replace(/\s+/g, " ").trim();
+    if (!raw) return "";
+    if (/um\s+\.*\s*zu/.test(raw) || raw === "um zu") return "um_zu";
+    if (/w.hrend|waehrend/.test(raw)) return "waehrend";
+    return raw.replace(/[.,;:!?()[\]{}"']/g, "").replace(/\s+/g, "_");
+  }
+  function b1ContrastTargets(item) {
+    if (!item) return [];
+    var raw = [];
+    if (Array.isArray(item.contrastTargets)) raw = raw.concat(item.contrastTargets);
+    if (Array.isArray(item.contrastAgainst)) raw = raw.concat(item.contrastAgainst);
+    else if (item.contrastAgainst) raw.push(item.contrastAgainst);
+    return raw.map(b1NormalizeContrastTerm).filter(Boolean).filter(function(term, index, arr){ return arr.indexOf(term) === index; });
+  }
+  function b1ContrastText(item, rawAnswer) {
+    return [
+      item && item.answer,
+      rawAnswer,
+      item && item.targetRule,
+      item && item.microRule,
+      item && item.prompt_de,
+      item && item.variantFamilyId,
+      item && item.grammarDomain
+    ].concat(item && Array.isArray(item.tags) ? item.tags : [])
+      .concat(b1ContrastTargets(item)).join(" ").toLowerCase();
+  }
+  function b1ContrastGroup(item, rawAnswer) {
+    var text = b1ContrastText(item, rawAnswer);
+    if (!text) return "";
+    if (item && (item.itemType === "word_order_cloze" || item.itemType === "error_repair") && /(finite verb goes to the end|verb goes to the end|subordinate|nebensatz|position 2|verb in position 2|v2|main clause)/i.test(text)) return "word_order";
+    if (/(weil|denn|deshalb|sodass)/.test(text)) return "weil_denn_deshalb";
+    if (/(obwohl|trotzdem)/.test(text)) return "obwohl_trotzdem";
+    if (/(damit|um_zu|um \.\.\. zu|um zu)/.test(text)) return "damit_um_zu";
+    if (/(wenn|als)/.test(text)) return "wenn_als";
+    if (/(bevor|nachdem)/.test(text)) return "bevor_nachdem";
+    if (/(waehrend|w.hrend|solange)/.test(text)) return "waehrend_solange";
+    if (/(two-way|wechselpraeposition|wechselpr|where\?|wo\b|movement|direction|location)/.test(text)) return "location_movement";
+    if (/(dative|dativ|accusative|akkusativ|\bcase\b)/.test(text)) return "dative_accusative";
+    return "";
+  }
+  function b1ContrastFeedback(item, rawAnswer, isCorrect) {
+    if (isCorrect || !item) return "";
+    var group = b1ContrastGroup(item, rawAnswer);
+    if (!group) return "";
+    if (group === "word_order") {
+      var text = b1ContrastText(item, rawAnswer);
+      if (/position 2|verb in position 2|main clause|v2/.test(text)) return "Main-clause connectors keep the conjugated verb in position 2; subordinate connectors send it to the end.";
+      return "Subordinate connectors send the conjugated verb to the end; main-clause connectors keep verb position 2.";
+    }
+    if (group === "weil_denn_deshalb") return "weil gives a reason in a subordinate clause; denn connects main clauses; deshalb starts the consequence.";
+    if (group === "obwohl_trotzdem") return "obwohl starts a subordinate contrast clause; trotzdem starts a main clause.";
+    if (group === "damit_um_zu") return "um ... zu uses an infinitive with the same subject; damit can introduce a purpose clause with its own subject.";
+    if (group === "wenn_als") return "wenn fits future or repeated situations; als points to one past time or event.";
+    if (group === "bevor_nachdem") return "bevor means before; nachdem means after.";
+    if (group === "waehrend_solange") return "Use the time connector that matches the relation: simultaneous action, duration, or condition.";
+    if (group === "location_movement") return "Location after a two-way preposition uses dative; movement or direction uses accusative.";
+    if (group === "dative_accusative") return "This contrast is about case: dative and accusative answer different grammar jobs.";
+    return "";
+  }
+  function renderB1ContrastNote(item, rawAnswer, isCorrect) {
+    var note = b1ContrastFeedback(item, rawAnswer, isCorrect);
+    return note ? "<div class=\"microRule\"><strong>Contrast</strong> " + escapeHtml(note) + "</div>" : "";
+  }
   function b1EvidenceSkillTags(item, bankKey) {
     var tags = [];
     function add(value) { if (value) tags.push(value); }
@@ -11399,6 +11598,8 @@ body.b1Mode .debugStamp {
       taskDepth:b1EvidenceTaskDepth(item),
       skillTags:b1EvidenceSkillTags(item, bankKey),
       grammarFocus:b1EvidenceGrammarFocus(item, bankKey),
+      contrastGroup:b1ContrastGroup(item, options.rawAnswer) || null,
+      contrastTargets:b1ContrastTargets(item),
       result:String(result || "unknown"),
       correct:b1EvidenceCorrectValue(result, options),
       supportUsed:supportUsedValue,
@@ -11411,7 +11612,7 @@ body.b1Mode .debugStamp {
       targetId:item.targetId || null,
       variantId:item.variantId || null,
       surfacePromptHash:b1EvidencePromptHash(b1EvidencePromptSurface(item)),
-      errorCategory:null,
+      errorCategory:item.itemType === "error_repair" ? b1RepairCategory(item, options.rawAnswer) : null,
       nearMissType:null,
       reviewInterval:null,
       daysSinceLastAttempt:b1EvidenceDaysSinceLastAttempt(item.id, store, now.getTime()),
@@ -11583,6 +11784,9 @@ body.b1Mode .debugStamp {
       bankKey:bankKey,
       taskType:taskType,
       taskDepth:taskDepth,
+      repairCategory:item.itemType === "error_repair" ? b1RepairCategory(item) : null,
+      contrastGroup:item.id ? b1ContrastGroup(item) || null : null,
+      contrastTargets:item.id ? b1ContrastTargets(item) : [],
       supportVisibilityPolicy:item.id ? b1SupportVisibilityPolicy(item) : null,
       cefrTarget:item.cefr || "B1",
       grammarFocus:item.id ? b1EvidenceGrammarFocus(item, bankKey) : (item.caseKey || item.type || null),
@@ -11649,6 +11853,8 @@ body.b1Mode .debugStamp {
       taskType:latest.taskType || null,
       taskDepth:latest.taskDepth || null,
       canonicalTaskDepth:b1CanonicalTaskDepth(latest.taskDepth),
+      contrastGroup:latest.contrastGroup || null,
+      contrastTargets:Array.isArray(latest.contrastTargets) ? latest.contrastTargets.slice() : [],
       supportLevel:b1EvidenceSupportLevel(latest, b1LearningMapItemForEvidence(latest)),
       productionAction:latest.productionAction || null,
       modelShown:latest.modelShown === true,
@@ -11709,7 +11915,11 @@ body.b1Mode .debugStamp {
         nodeKey:primary.nodeKey || null,
         taskDepth:primary.taskDepth || null,
         routeKey:primary.routeKey || (primary.action && primary.action.routeKey) || null,
+        routeLabel:primary.routeLabel || (primary.action && primary.action.label) || null,
         confidence:primary.confidence || null,
+        why:Array.isArray(primary.why) ? primary.why.slice(0, 3) : [],
+        limitations:Array.isArray(primary.limitations) ? primary.limitations.slice(0, 4) : [],
+        evidenceBasis:primary.evidenceBasis || null,
         inactiveRulesCount:Array.isArray(rec.inactiveRules) ? rec.inactiveRules.length : 0,
         limitationsCount:(Array.isArray(primary.limitations) ? primary.limitations.length : 0) + (Array.isArray(rec.globalLimitations) ? rec.globalLimitations.length : 0)
       };
@@ -12940,9 +13150,69 @@ body.b1Mode .debugStamp {
     var value = b1CleanAnswer(raw).toLowerCase();
     return accepted.some(function(answer){ return value === b1CleanAnswer(answer).toLowerCase(); });
   }
+  function b1RepairContextText(item) {
+    return [
+      item && item.repairCategory,
+      item && item.errorFocus,
+      item && item.expectedChange,
+      item && item.repairTarget,
+      item && item.repairFeedback,
+      item && item.errorCategory,
+      item && item.microRule,
+      item && item.targetRule,
+      item && item.prompt_de,
+      item && item.target
+    ].join(" ").toLowerCase();
+  }
+  function b1RepairCategory(item) {
+    if (!item || item.itemType !== "error_repair") return "";
+    var explicit = item.repairCategory || item.errorFocus || item.errorCategory || item.repairTarget || "";
+    if (explicit) return String(explicit).trim().toLowerCase().replace(/[\s-]+/g, "_");
+    var text = b1RepairContextText(item);
+    var tags = Array.isArray(item.tags) ? item.tags.join(" ").toLowerCase() : "";
+    var all = text + " " + tags;
+    if (/position 2|verb stays|finite verb comes directly|main clause|\bdenn\b|\bdeshalb\b|\btrotzdem\b/.test(all)) return "word_order_main_clause";
+    if (/subordinate|verb goes to the end|verb-final|\bweil\b|\bobwohl\b|\bdamit\b|\bsodass\b|\bbevor\b|\bnachdem\b|\bwenn\b|\bals\b/.test(all)) return "word_order_subordinate";
+    if (/reflexive|sich\b|\bmich\b/.test(all)) return "reflexive";
+    if (/accusative|akkusativ|dative|dativ|f.r \+|mit \+|case/.test(all)) return "case";
+    if (/plural|singular|agreement|verb_agreement/.test(all)) return "number_agreement";
+    if (/article|possessive|\bder\b|\bdie\b|\bdas\b|\bein\b|\beine\b|\beinen\b/.test(all)) return "article";
+    if (/word_choice|collocation|natural german/.test(all)) return "word_choice";
+    return "repair";
+  }
+  function b1RepairTokens(value) {
+    return b1CleanRepairSentence(value).split(/\s+/).filter(Boolean);
+  }
+  function b1RepairCapitalisationHint(userAnswer, correctAnswer) {
+    var userTokens = b1RepairTokens(userAnswer);
+    var correctTokens = b1RepairTokens(correctAnswer);
+    var len = Math.min(userTokens.length, correctTokens.length);
+    for (var i = 0; i < len; i += 1) {
+      var userToken = userTokens[i] || "";
+      var correctToken = correctTokens[i] || "";
+      if (userToken === correctToken) continue;
+      if (userToken.toLowerCase() === correctToken.toLowerCase() && /^[A-Z]/.test(correctToken) && /^[a-z]/.test(userToken)) {
+        if (i === 0 && correctTokens.length > 1 && userToken.length <= 3) continue;
+        return correctToken + " is a noun and needs a capital letter.";
+      }
+    }
+    return "";
+  }
+  function b1RepairRuleHint(item, userAnswer, correctAnswer, tokenDiff) {
+    var capHint = b1RepairCapitalisationHint(userAnswer, correctAnswer);
+    if (capHint) return capHint;
+    var category = b1RepairCategory(item);
+    if (category === "word_order_subordinate") return "In a subordinate clause, the conjugated verb goes to the end.";
+    if (category === "word_order_main_clause") return "In a main clause, the conjugated verb stays in position 2.";
+    var micro = String(item && item.microRule || "").replace(/\s+/g, " ").trim();
+    if (!micro) return "";
+    if (category === "case" || category === "article" || category === "reflexive" || category === "number_agreement" || category === "word_choice") return micro;
+    if (tokenDiff) return micro;
+    return "";
+  }
   function b1RepairTokenDiff(userAnswer, correctAnswer) {
-    var userTokens = b1CleanRepairSentence(userAnswer).split(/\s+/).filter(Boolean);
-    var correctTokens = b1CleanRepairSentence(correctAnswer).split(/\s+/).filter(Boolean);
+    var userTokens = b1RepairTokens(userAnswer);
+    var correctTokens = b1RepairTokens(correctAnswer);
     if (!userTokens.length || !correctTokens.length) return "";
     if (userTokens.length < 2 && correctTokens.length > 2) return "";
     if (userTokens.length < Math.max(2, Math.floor(correctTokens.length * .45))) return "";
@@ -12960,25 +13230,21 @@ body.b1Mode .debugStamp {
     }
     return "";
   }
-  function b1RepairFeedbackHtml(item, rawAnswer) {
+  function b1RepairFeedbackHtml(item, rawAnswer, isCorrect) {
     var accepted = item && item.acceptedAnswers && item.acceptedAnswers.length ? item.acceptedAnswers : [item && item.answer];
     var correctSentence = b1CleanAnswer(accepted[0] || item && item.answer || "");
     var userSentence = b1CleanAnswer(rawAnswer || "");
     var tokenDiff = b1RepairTokenDiff(userSentence, correctSentence);
     var lowerUser = userSentence.toLowerCase();
     var lowerCorrect = correctSentence.toLowerCase();
-    var capHint = "";
-    if (lowerUser.indexOf("untersuchung") !== -1 && correctSentence.indexOf("Untersuchung") !== -1 && userSentence.indexOf("untersuchung") !== -1) {
-      capHint = "Untersuchung is a noun, so it needs a capital letter.";
-    } else if (tokenDiff.indexOf("Capitalisation:") === 0) {
-      capHint = "This repair item checks capitalisation in the corrected sentence.";
-    }
-    var micro = String(item && item.microRule || "");
+    var ruleHint = !isCorrect ? b1RepairRuleHint(item, userSentence, correctSentence, tokenDiff) : "";
+    var micro = "";
+    if (ruleHint && tokenDiff.indexOf("Capitalisation:") === 0) tokenDiff = "";
     var html = "<span class=\"repairFeedbackLine\">Correct sentence:<span class=\"repairAnswerLine\">" + escapeHtml(correctSentence) + "</span></span>";
-    if (userSentence) html += "<span class=\"repairFeedbackLine\">Your answer: " + escapeHtml(userSentence) + "</span>";
-    if (tokenDiff) html += "<span class=\"repairTokenIssue\">" + escapeHtml(tokenDiff) + "</span>";
-    else if (userSentence && lowerUser !== lowerCorrect) html += "<span class=\"repairFeedbackLine\">Try rewriting the whole sentence.</span>";
-    if (capHint) html += "<span class=\"repairFeedbackLine\">" + escapeHtml(capHint) + "</span>";
+    if (userSentence && !isCorrect) html += "<span class=\"repairFeedbackLine\">Your answer: " + escapeHtml(userSentence) + "</span>";
+    if (tokenDiff && !ruleHint && !isCorrect) html += "<span class=\"repairTokenIssue\">" + escapeHtml(tokenDiff) + "</span>";
+    else if (userSentence && !isCorrect && lowerUser !== lowerCorrect) html += "<span class=\"repairFeedbackLine\">Try rewriting the whole sentence.</span>";
+    if (ruleHint && lowerCorrect.indexOf(ruleHint.toLowerCase()) === -1) html += "<span class=\"repairFeedbackLine\">Rule: " + escapeHtml(ruleHint) + "</span>";
     if (micro && micro.indexOf("→") === -1 && lowerCorrect.indexOf(micro.toLowerCase()) === -1) {
       html += "<span class=\"repairFeedbackLine\">Rule: " + escapeHtml(micro) + "</span>";
     }
@@ -13605,8 +13871,9 @@ body.b1Mode .debugStamp {
     var stars = b1StarsHtml(b1StepFor(item));
     var extraLine = b1Runtime.currentExtraPractice ? "<div class=\"microRule\">Extra practice: stars stay on the spaced-review schedule.</div>" : "";
     var assistedLine = assisted ? "<div class=\"microRule\">Assisted practice - try it again later.</div>" : "";
-    var repairLine = (!isCorrect && item.itemType === "error_repair") ? "<div class=\"microRule\">" + b1RepairFeedbackHtml(item, rawAnswer) + "</div>" : "";
-    var ruleLine = (!isCorrect && item.microRule && !repairLine) ? "<div class=\"microRule\">" + escapeHtml(item.microRule) + "</div>" : "";
+    var repairLine = (item.itemType === "error_repair") ? "<div class=\"microRule\">" + b1RepairFeedbackHtml(item, rawAnswer, isCorrect) + "</div>" : "";
+    var contrastLine = renderB1ContrastNote(item, rawAnswer, isCorrect);
+    var ruleLine = (!isCorrect && item.microRule && !repairLine && !contrastLine) ? "<div class=\"microRule\">" + escapeHtml(item.microRule) + "</div>" : "";
     var marker = isCorrect ? "✓" : "✕";
     var label = assisted ? "Assisted practice" : (isCorrect ? "Correct" : "Wrong");
     block.className = "correctionBlock" + (isCorrect && !assisted ? " success" : "");
@@ -13615,6 +13882,7 @@ body.b1Mode .debugStamp {
       assistedLine +
       extraLine +
       repairLine +
+      contrastLine +
       ruleLine;
     block.classList.add("visible");
   }
@@ -13702,6 +13970,7 @@ body.b1Mode .debugStamp {
       assisted:assisted,
       isCorrect:isCorrect,
       answerMode:usesChoices ? "choice" : "typed",
+      rawAnswer:raw,
       attemptContext:b1Runtime.mode === "b1_diagnostic" ? "diagnostic" : ""
     });
     b1Runtime.currentEvidenceRecordId = evidenceRecord ? evidenceRecord.id : "";

@@ -1,12 +1,10 @@
-# OZMOSIS SOURCE BRIEF v0.53.1
-
-Historical copy. Current canonical source brief is `docs/OZMOSIS_SOURCE_BRIEF_v0.54.md`.
+# OZMOSIS SOURCE BRIEF v0.56
 
 Version: Working Source Brief Update  
-Status: Historical planning brief  
+Status: Current planning brief  
 Project: Ozmosis - Deutsch Lernen App  
-Current known development position: v0.53.1 completed  
-Next planned patch: v0.54 - Repair Mode Strengthening  
+Current known development position: v0.56 completed  
+Next planned patch: v0.57 - Recommendation QA and Evidence Inflation Audit  
 
 Versioning rule:
 
@@ -53,8 +51,8 @@ When Codex, ChatGPT, or any future production chat works on Ozmosis, use this hi
 
 1. Latest uploaded current project files/package in the active chat.
 2. Current repo-root `index.html`.
-3. Current `README.md`.
-4. Current `CHANGELOG.txt`.
+3. Current versioned README, currently `README-v0_56.md`.
+4. Current versioned changelog, currently `CHANGELOG-v0_56.txt`.
 5. Current `AGENTS.md`.
 6. Current Codex / Antigravity reports and logs.
 7. Current generated content-bank files.
@@ -97,8 +95,8 @@ Preferred long-term structure:
   source-brief.md
   roadmap.md
   changelog-notes.md
-README.md
-CHANGELOG.txt
+README-v0_56.md
+CHANGELOG-v0_56.txt
 AGENTS.md
 ```
 
@@ -108,7 +106,7 @@ But this should be introduced carefully and only when useful.
 
 The detailed version-by-version roadmap lives separately in:
 
-`docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.53.1.md`
+`docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.56.md`
 
 The Source Brief remains the strategic orientation document. The roadmap is a planning document, not permission for Codex to implement future versions early.
 
@@ -707,13 +705,13 @@ You often choose accusative forms in location sentences.
 Current known development state:
 
 ```txt
-v0.53.1 completed
-Next planned patch: v0.54 - Repair Mode Strengthening
+v0.56 completed
+Next planned patch: v0.57 - Recommendation QA and Evidence Inflation Audit
 ```
 
 The next work should not be a broad rewrite.
 
-The next work should begin the progress-evidence / Learning Map foundation carefully.
+The next work should audit recommendation quality carefully without adding unsupported progress states or scheduling.
 
 ---
 
@@ -932,7 +930,11 @@ The mobile/tablet/desktop shell was stabilised before v0.54. Header controls, th
 
 ### v0.54  -  Repair Mode Strengthening
 
-Ensure repair mode actually tests identifying and fixing errors.
+Completed in v0.54:
+
+```txt
+Repair-mode feedback now keeps a concise corrected sentence visible, avoids misleading pseudo-diffs for nonsense answers, records derived repair categories additively on new repair evidence, and shows capitalisation or word-order micro-feedback where current metadata supports it. Scoring, storage keys, export/import, support-level semantics, Today’s B1 Sprint composition, production self-marking, and content banks remain unchanged.
+```
 
 It should not just be another cloze task.
 
@@ -949,20 +951,32 @@ V2 vs verb-final
 fixed preposition vs two-way preposition
 ```
 
+Completed in v0.55:
+
+```txt
+Contrast handling now uses existing metadata to add concise contrast feedback for supported connector choice, word-order, repair, case, and location/movement contrasts. New evidence receives additive contrastGroup and contrastTargets context. Today's B1 Sprint composition, scoring, storage keys, support-level semantics, export/import, route composition, and content banks remain unchanged.
+```
+
 ### v0.56  -  Skill-Task Recommendations
 
 If recognition is strong but repair is weak, recommend repair.
 
 If cloze is strong but production is weak, recommend production.
 
-### v0.57  -  Over-Practised Detection
+Completed in v0.56:
 
-Flag tasks that are becoming low-yield.
+```txt
+Suggested Next Practice now considers task-depth gaps, repair evidence, contrast evidence, support-level context, and production self-marking limits. Recommendation copy stays cautious and routes only to existing screens such as Diagnostic Sprint, Grammar, Connector Sprint, Wortschatz, Redemittel, Case Trainer, and Today's B1 Sprint. No scheduler, weakness repair queue, delayed review, B2 content, scoring change, storage-key change, or content-bank rewrite was added.
+```
+
+### v0.57  -  Recommendation QA and Evidence Inflation Audit
+
+Audit recommendation quality and evidence inflation risks before adding broader recommendation behaviour.
 
 Example:
 
 ```txt
-You are repeatedly passing this task type. Try repair or production next.
+This suggestion is based on a small amount of evidence. Check whether it still stays useful with mixed scaffolded, diagnostic, repair, contrast, and production records.
 ```
 
 ### v0.58  -  Skill Matrix QA
@@ -1444,7 +1458,7 @@ Do not assume v1.0 at any arbitrary milestone.
 
 # 21. IMMEDIATE NEXT STEP
 
-The next appropriate step is v0.54 - Repair Mode Strengthening, unless QA finds a blocking production-tracking, support visibility, support-level, Skill Matrix, task-depth, confidence-as-next, tester-ready UX, report-copy, scroll/exit, diagnostic pre-start, Learning Map, debug/preview, storage, or export/import regression.
+The next appropriate step is v0.57 - Recommendation QA and Evidence Inflation Audit, unless QA finds a blocking recommendation, contrast-task, repair-mode, production-tracking, support visibility, support-level, Skill Matrix, task-depth, confidence-as-next, tester-ready UX, report-copy, scroll/exit, diagnostic pre-start, Learning Map, debug/preview, storage, or export/import regression.
 
 v0.40 added the first Progress Evidence Model and v0.40.1 added lightweight confidence/guess capture on top of that evidence model.
 

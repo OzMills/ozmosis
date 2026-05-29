@@ -1,18 +1,16 @@
-# Ozmosis Development Roadmap v0.53.1
+# Ozmosis Development Roadmap v0.56
 
-Historical copy. Current canonical roadmap is `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.54.md`.
+Status: current planning roadmap
+Current known development position: v0.56 completed
+Next planned patch: v0.57 - Recommendation QA and Evidence Inflation Audit
 
-Status: historical planning roadmap
-Current known development position: v0.53.1 completed
-Next planned patch: v0.54 - Repair Mode Strengthening
-
-This roadmap is planning guidance only. Current repo files, `index.html`, `README.md`, `CHANGELOG.txt`, `AGENTS.md`, and the versioned source brief remain higher-trust sources for implementation state. Do not implement future items early.
+This roadmap is planning guidance only. Current repo files, `index.html`, `README-v0_56.md`, `CHANGELOG-v0_56.txt`, `AGENTS.md`, and the versioned source brief remain higher-trust sources for implementation state. Do not implement future items early.
 
 ## Source-Of-Truth Rules
 
 - Current repo files beat old chats, screenshots, memory, and generated reports.
 - Repo-root `index.html` remains the main deployed app file.
-- `docs/OZMOSIS_SOURCE_BRIEF_v0.53.1.md` is the current strategic source brief.
+- `docs/OZMOSIS_SOURCE_BRIEF_v0.56.md` is the current strategic source brief.
 - This roadmap is not permission to broaden scope in any patch.
 
 ## Architecture Guardrails
@@ -61,6 +59,9 @@ This roadmap is planning guidance only. Current repo files, `index.html`, `READM
 - v0.52.1 added item-level support visibility policy infrastructure with tiny additive metadata for after-answer connector support, collapsed Redemittel support, and visible Wortschatz support.
 - v0.53 added explicit controlled-production metadata for self-marked production evidence, including model answer exposure and visible useful phrase/checklist context where safely detectable.
 - v0.53.1 stabilised mobile/tablet/desktop UX before repair-mode strengthening, including header/menu collisions, Home clipping, active-practice density, support labelling, repair nonsense feedback, safe-area handling, and HUD clearance, without changing scoring or evidence semantics.
+- v0.54 strengthened repair-mode feedback with safe nonsense-answer fallback, corrected-sentence feedback, derived repair categories, and concise capitalisation or word-order hints where current metadata supports them, without changing scoring or storage semantics.
+- v0.55 added conservative contrast feedback and additive contrast metadata for supported connector, word-order, repair, case, and location/movement contrasts, without changing scoring, storage semantics, content banks, or Today's B1 Sprint composition.
+- v0.56 improved Suggested Next Practice so it can account for task-depth gaps, repair evidence, contrast evidence, support-level context, and production self-marking limits while routing only to existing practice screens.
 
 ## Current B1 Direction
 
