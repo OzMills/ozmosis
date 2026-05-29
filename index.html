@@ -7928,8 +7928,8 @@ body.resultsMode .bottomHud {
   var B1_STORAGE_KEY = "ozmosis_b1_sprint_progress_v1";
   var B1_EVIDENCE_STORAGE_KEY = "ozmosis_b1_progress_evidence_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.57.2";
-  var OZMOSIS_EXPORT_VERSION = "v0.57.2-flow-navigation-mobile-ux-corrections";
+  var OZMOSIS_APP_VERSION = "v0.60";
+  var OZMOSIS_EXPORT_VERSION = "v0.60-error-pattern-detection-v1";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -9055,6 +9055,11 @@ body.resultsMode .bottomHud {
       supportLevelCounts:b1SupportLevelEmptyCounts(),
       state:"not_tested",
       hasEnoughEvidence:false,
+      sampleSize:"empty",
+      evidenceQuality:null,
+      supportMix:null,
+      inflationRisk:[],
+      cellLimitations:[],
       limitations:[]
     };
   }
@@ -9082,31 +9087,127 @@ body.resultsMode .bottomHud {
     var context = String(record && record.attemptContext || "");
     return taskDepth === "review" || context === "review" || record && record.reviewInterval != null;
   }
+  function b1SkillMatrixAddUnique(list, text) {
+    if (!text) return list;
+    if (list.indexOf(text) === -1) list.push(text);
+    return list;
+  }
+  function b1SkillMatrixSupportContextSummary(counts) {
+    counts = counts || {};
+    var total = Object.keys(counts).reduce(function(sum, key){
+      return sum + Number(counts[key] || 0);
+    }, 0);
+    var unassisted = Number(counts.unassisted_typed || 0) + Number(counts.unassisted_choice || 0);
+    var scaffolded = Object.keys(counts).reduce(function(sum, key){
+      return sum + (b1SupportLevelIsScaffolded(key) ? Number(counts[key] || 0) : 0);
+    }, 0);
+    var unknown = Number(counts.unknown || 0);
+    return {
+      total:total,
+      unassisted:unassisted,
+      scaffolded:scaffolded,
+      unknown:unknown,
+      hasScaffolded:scaffolded > 0,
+      scaffoldedMajority:total > 0 && scaffolded >= 2 && scaffolded > unassisted,
+      noUnassistedEvidence:total > 0 && unassisted === 0
+    };
+  }
+  function b1SkillMatrixSampleSizeLabel(cell) {
+    var count = Number(cell && cell.evidenceCount || 0);
+    if (!count) return "empty";
+    if (count === 1) return "single";
+    if (count < 3) return "thin";
+    if (count < 5) return "early";
+    return "broader";
+  }
+  function b1SkillMatrixEvidenceQuality(cell) {
+    var evidenceCount = Number(cell && cell.evidenceCount || 0);
+    var diagnosticEvidence = Number(cell && cell.diagnosticEvidenceCount || 0);
+    var productionEvidence = Number(cell && cell.productionEvidenceCount || 0);
+    var correctEvidence = Number(cell && cell.correctCount || 0);
+    var practisedEvidence = Number(cell && cell.practisedCount || 0);
+    var incorrectEvidence = Number(cell && cell.incorrectCount || 0);
+    var confidence = cell && cell.confidenceCounts || {};
+    var unsureOrGuessed = Number(confidence.unsure || 0) + Number(confidence.guessed || 0);
+    var provenance = cell && cell.metadataProvenance || {};
+    var derivedEvidence = Number(provenance.derived || 0);
+    var explicitEvidence = Number(provenance.explicit || 0);
+    var unknownProvenance = Number(provenance.unknown || 0);
+    var support = b1SkillMatrixSupportContextSummary(cell && cell.supportLevelCounts);
+    var usableEvidence = Math.max(0, evidenceCount - diagnosticEvidence - productionEvidence);
+    var sampleSize = b1SkillMatrixSampleSizeLabel(cell);
+    var taskDepth = String(cell && cell.taskDepth || "");
+    var derivedOnly = evidenceCount > 0 && derivedEvidence >= evidenceCount && explicitEvidence === 0;
+    var diagnosticOnly = evidenceCount > 0 && diagnosticEvidence >= evidenceCount;
+    var selfMarkedOnly = evidenceCount > 0 && productionEvidence >= evidenceCount;
+    var legacyTaskDepthDetected = evidenceCount > 0 && (taskDepth === "unknown" || unknownProvenance > 0);
+    return {
+      evidenceCount:evidenceCount,
+      usableEvidence:usableEvidence,
+      positiveEvidence:correctEvidence + practisedEvidence,
+      incorrectEvidence:incorrectEvidence,
+      unsureOrGuessed:unsureOrGuessed,
+      sampleSize:sampleSize,
+      thinSample:evidenceCount > 0 && (evidenceCount < 3 || usableEvidence < 2),
+      diagnosticOnly:diagnosticOnly,
+      selfMarkedOnly:selfMarkedOnly,
+      derivedOnly:derivedOnly,
+      legacyTaskDepthDetected:legacyTaskDepthDetected,
+      supportMix:support,
+      supportLevelCounts:cell && cell.supportLevelCounts ? Object.assign(b1SupportLevelEmptyCounts(), cell.supportLevelCounts) : b1SupportLevelEmptyCounts(),
+      canSupportProgress:evidenceCount >= 3 && usableEvidence >= 2 && !diagnosticOnly && !selfMarkedOnly && !derivedOnly && taskDepth !== "unknown",
+      canSupportDeveloping:evidenceCount >= 5 && usableEvidence >= 3 && support.unassisted >= 2 && !support.scaffoldedMajority && !legacyTaskDepthDetected
+    };
+  }
+  function b1SkillMatrixCellInflationRisk(cell) {
+    var quality = b1SkillMatrixEvidenceQuality(cell);
+    var risks = [];
+    if (quality.evidenceCount > 0 && quality.thinSample) risks.push("thin_sample");
+    if (quality.diagnosticOnly) risks.push("diagnostic_only");
+    if (quality.selfMarkedOnly) risks.push("self_marked_only");
+    if (quality.supportMix.scaffoldedMajority) risks.push("scaffolded_majority");
+    if (quality.derivedOnly) risks.push("derived_only");
+    if (quality.legacyTaskDepthDetected) risks.push("unknown_or_legacy_task_depth");
+    if (quality.evidenceCount > 0 && quality.supportMix.noUnassistedEvidence && !quality.selfMarkedOnly) risks.push("no_unassisted_evidence");
+    return risks;
+  }
+  function b1SkillMatrixCellLimitations(cell) {
+    var quality = b1SkillMatrixEvidenceQuality(cell);
+    var limitations = [];
+    if (!quality.evidenceCount) b1SkillMatrixAddUnique(limitations, "Not tested.");
+    if (quality.evidenceCount > 0 && quality.thinSample) b1SkillMatrixAddUnique(limitations, "Thin sample.");
+    if (quality.supportMix.hasScaffolded) b1SkillMatrixAddUnique(limitations, "Scaffolded evidence.");
+    if (quality.diagnosticOnly || Number(cell && cell.diagnosticEvidenceCount || 0) > 0) b1SkillMatrixAddUnique(limitations, "Diagnostic snapshot.");
+    if (quality.selfMarkedOnly || Number(cell && cell.productionEvidenceCount || 0) > 0) {
+      b1SkillMatrixAddUnique(limitations, "Self-marked practice.");
+      b1SkillMatrixAddUnique(limitations, "No automatic correctness evidence.");
+    }
+    if (quality.derivedOnly || Number(cell && cell.metadataProvenance && cell.metadataProvenance.derived || 0) > Number(cell && cell.metadataProvenance && cell.metadataProvenance.explicit || 0)) b1SkillMatrixAddUnique(limitations, "Derived metadata.");
+    if (quality.legacyTaskDepthDetected) b1SkillMatrixAddUnique(limitations, "Unknown or legacy task type.");
+    if (quality.unsureOrGuessed > 0) b1SkillMatrixAddUnique(limitations, "Includes unsure or guessed confidence.");
+    if (quality.evidenceCount > 0 && Number(cell && cell.reviewEvidenceCount || 0) === 0) b1SkillMatrixAddUnique(limitations, "No delayed review evidence yet.");
+    return limitations;
+  }
   function b1SkillMatrixStateForCell(cell) {
     if (!cell || !cell.evidenceCount) return "not_tested";
-    if (cell.evidenceCount < 2) return "introduced";
-    var cautiousSignals = Number(cell.incorrectCount || 0) + Number(cell.confidenceCounts.unsure || 0) + Number(cell.confidenceCounts.guessed || 0);
-    var positiveEvidence = Number(cell.correctCount || 0) + Number(cell.practisedCount || 0);
-    if (cell.evidenceCount >= 3 && positiveEvidence >= cell.evidenceCount && cautiousSignals === 0) return "developing";
-    return "emerging";
+    var quality = b1SkillMatrixEvidenceQuality(cell);
+    if (!quality.canSupportProgress) return quality.thinSample || quality.diagnosticOnly || quality.selfMarkedOnly ? "not_enough_evidence" : "introduced";
+    if (quality.supportMix.scaffoldedMajority || quality.supportMix.noUnassistedEvidence || quality.legacyTaskDepthDetected) return "introduced";
+    if (quality.canSupportDeveloping && quality.positiveEvidence >= 4 && quality.incorrectEvidence === 0 && quality.unsureOrGuessed === 0) return "developing";
+    if (quality.positiveEvidence >= 2) return "emerging";
+    return "introduced";
   }
   function b1SkillMatrixFinalizeCell(cell) {
+    var quality = b1SkillMatrixEvidenceQuality(cell);
+    var risks = b1SkillMatrixCellInflationRisk(cell);
     cell.state = b1SkillMatrixStateForCell(cell);
-    cell.hasEnoughEvidence = cell.evidenceCount >= 2;
-    cell.limitations = [];
-    if (!cell.evidenceCount) cell.limitations.push("No evidence in this skill/task cell yet.");
-    else if (cell.evidenceCount < 2) cell.limitations.push("Only one evidence record; too thin for a learner-facing claim.");
-    if (cell.metadataProvenance.derived > cell.metadataProvenance.explicit) cell.limitations.push("Mostly derived metadata.");
-    if (cell.metadataProvenance.unknown > 0) cell.limitations.push("Some evidence has unknown metadata provenance.");
-    if (cell.confidenceCounts.unsure > 0 || cell.confidenceCounts.guessed > 0) cell.limitations.push("Includes unsure or guessed confidence evidence.");
-    if (Object.keys(cell.supportLevelCounts || {}).some(function(key){ return b1SupportLevelIsScaffolded(key) && Number(cell.supportLevelCounts[key] || 0) > 0; })) cell.limitations.push("Includes scaffolded/self-marked evidence; support level is evidence context, not score.");
-    if (cell.productionEvidenceCount > 0) {
-      cell.limitations.push("Production is self-marked.");
-      cell.limitations.push("No automatic correctness evidence.");
-      cell.limitations.push("Treat as practice evidence only.");
-    }
-    if (cell.diagnosticEvidenceCount > 0) cell.limitations.push("Diagnostic evidence is a starting snapshot, not a placement result.");
-    if (cell.reviewEvidenceCount === 0 && cell.evidenceCount > 0) cell.limitations.push("No delayed review evidence yet.");
+    cell.hasEnoughEvidence = quality.canSupportProgress;
+    cell.sampleSize = quality.sampleSize;
+    cell.evidenceQuality = quality;
+    cell.supportMix = quality.supportMix;
+    cell.inflationRisk = risks;
+    cell.cellLimitations = b1SkillMatrixCellLimitations(cell);
+    cell.limitations = cell.cellLimitations.slice();
     return cell;
   }
   function b1SkillMatrixRowSummary(row) {
@@ -9221,6 +9322,13 @@ body.resultsMode .bottomHud {
     var productionSelfMarkedCells = 0;
     var mostlyDerivedCells = 0;
     var diagnosticCellEvidenceCount = 0;
+    var thinSampleCells = 0;
+    var scaffoldedCells = 0;
+    var diagnosticOnlyCells = 0;
+    var selfMarkedOnlyCells = 0;
+    var derivedOnlyCells = 0;
+    var legacyTaskDepthCells = 0;
+    var inflationRiskCounts = {};
     rows.forEach(function(row){
       B1_SKILL_MATRIX_TASK_DEPTHS.forEach(function(depth){
         var cell = row.cells[depth];
@@ -9228,6 +9336,15 @@ body.resultsMode .bottomHud {
         if (cell.productionEvidenceCount > 0) productionSelfMarkedCells += 1;
         if (cell.evidenceCount > 0 && cell.metadataProvenance.derived > cell.metadataProvenance.explicit) mostlyDerivedCells += 1;
         diagnosticCellEvidenceCount += Number(cell.diagnosticEvidenceCount || 0);
+        if (cell.evidenceQuality && cell.evidenceQuality.thinSample) thinSampleCells += 1;
+        if (cell.evidenceQuality && cell.evidenceQuality.supportMix && cell.evidenceQuality.supportMix.hasScaffolded) scaffoldedCells += 1;
+        if (cell.evidenceQuality && cell.evidenceQuality.diagnosticOnly) diagnosticOnlyCells += 1;
+        if (cell.evidenceQuality && cell.evidenceQuality.selfMarkedOnly) selfMarkedOnlyCells += 1;
+        if (cell.evidenceQuality && cell.evidenceQuality.derivedOnly) derivedOnlyCells += 1;
+        if (cell.evidenceQuality && cell.evidenceQuality.legacyTaskDepthDetected) legacyTaskDepthCells += 1;
+        (cell.inflationRisk || []).forEach(function(risk){
+          inflationRiskCounts[risk] = (inflationRiskCounts[risk] || 0) + 1;
+        });
       });
     });
     var limitations = [
@@ -9254,6 +9371,13 @@ body.resultsMode .bottomHud {
         emptyCells:(rows.length * B1_SKILL_MATRIX_TASK_DEPTHS.length) - testedCells,
         productionSelfMarkedCells:productionSelfMarkedCells,
         mostlyDerivedCells:mostlyDerivedCells,
+        thinSampleCells:thinSampleCells,
+        scaffoldedCells:scaffoldedCells,
+        diagnosticOnlyCells:diagnosticOnlyCells,
+        selfMarkedOnlyCells:selfMarkedOnlyCells,
+        derivedOnlyCells:derivedOnlyCells,
+        legacyTaskDepthCells:legacyTaskDepthCells,
+        inflationRiskCounts:inflationRiskCounts,
         diagnosticEvidenceCount:diagnosticRecordCount,
         diagnosticCellEvidenceCount:diagnosticCellEvidenceCount,
         supportLevelCounts:supportLevelCounts,
@@ -10201,6 +10325,11 @@ body.resultsMode .bottomHud {
       supportLevelCounts:b1SupportLevelEmptyCounts(),
       state:"not_tested",
       hasEnoughEvidence:false,
+      sampleSize:"empty",
+      evidenceQuality:null,
+      supportMix:null,
+      inflationRisk:[],
+      cellLimitations:[],
       limitations:[]
     };
   }
@@ -10231,17 +10360,18 @@ body.resultsMode .bottomHud {
         if (text && out.limitations.indexOf(text) === -1) out.limitations.push(text);
       });
     });
-    out.state = b1SkillMatrixStateForCell(out);
-    out.hasEnoughEvidence = out.evidenceCount >= 2;
+    var inheritedLimitations = out.limitations.slice();
+    out = b1SkillMatrixFinalizeCell(out);
+    inheritedLimitations.forEach(function(text){
+      b1SkillMatrixAddUnique(out.limitations, text);
+      b1SkillMatrixAddUnique(out.cellLimitations, text);
+    });
     if (column.production && out.productionEvidenceCount > 0) {
-      out.limitations.push("Production is self-marked practice evidence only.");
+      b1SkillMatrixAddUnique(out.limitations, "Self-marked practice.");
+      b1SkillMatrixAddUnique(out.cellLimitations, "Self-marked practice.");
     }
-    if (Object.keys(out.supportLevelCounts || {}).some(function(key){ return b1SupportLevelIsScaffolded(key) && Number(out.supportLevelCounts[key] || 0) > 0; })) {
-      out.limitations.push("Includes scaffolded/self-marked evidence; support level is evidence context, not score.");
-    }
-    if (out.diagnosticEvidenceCount > 0) out.limitations.push("Diagnostic evidence is diagnostic snapshot evidence.");
-    if (out.evidenceCount > 0 && out.reviewEvidenceCount === 0) out.limitations.push("No delayed review evidence yet.");
     out.limitations = out.limitations.filter(function(text, index, arr){ return text && arr.indexOf(text) === index; });
+    out.cellLimitations = out.cellLimitations.filter(function(text, index, arr){ return text && arr.indexOf(text) === index; });
     return out;
   }
   function learningMapMatrixCellStateView(cell) {
@@ -10259,9 +10389,13 @@ body.resultsMode .bottomHud {
     var state = learningMapMatrixCellStateView(cell);
     var count = Number(cell.evidenceCount || 0);
     var badges = [];
+    var risks = cell.inflationRisk || [];
+    if (cell.evidenceQuality && cell.evidenceQuality.thinSample) badges.push({ text:"Thin sample", warn:false });
     if (cell.productionEvidenceCount > 0) badges.push({ text:"Self-marked practice", warn:true });
     if (cell.diagnosticEvidenceCount > 0) badges.push({ text:"Diagnostic snapshot", warn:false });
-    if (count > 0 && Number(cell.metadataProvenance.derived || 0) > Number(cell.metadataProvenance.explicit || 0)) badges.push({ text:"Derived metadata", warn:false });
+    if (count > 0 && (risks.indexOf("derived_only") !== -1 || Number(cell.metadataProvenance.derived || 0) > Number(cell.metadataProvenance.explicit || 0))) badges.push({ text:"Derived metadata", warn:false });
+    if (risks.indexOf("scaffolded_majority") !== -1 || risks.indexOf("no_unassisted_evidence") !== -1) badges.push({ text:"Scaffolded", warn:false });
+    if (risks.indexOf("unknown_or_legacy_task_depth") !== -1) badges.push({ text:"Legacy metadata", warn:false });
     var aria = row.label + " / " + column.label + ": " + state.label + (count ? ", " + count + " evidence records" : ", no evidence") +
       (cell.productionEvidenceCount > 0 ? ", self-marked practice evidence only" : "") +
       (cell.diagnosticEvidenceCount > 0 ? ", diagnostic snapshot evidence" : "") +
@@ -10296,10 +10430,13 @@ body.resultsMode .bottomHud {
         var state = learningMapMatrixCellStateView(cell);
         var count = Number(cell.evidenceCount || 0);
         var badges = [];
+        var risks = cell.inflationRisk || [];
+        if (cell.evidenceQuality && cell.evidenceQuality.thinSample) badges.push("Thin sample");
         if (cell.diagnosticEvidenceCount > 0) badges.push("Diagnostic snapshot");
         if (cell.productionEvidenceCount > 0) badges.push("Self-marked");
-        if (count > 0 && Number(cell.metadataProvenance.derived || 0) > Number(cell.metadataProvenance.explicit || 0)) badges.push("Derived metadata");
-        if (Object.keys(cell.supportLevelCounts || {}).some(function(key){ return b1SupportLevelIsScaffolded(key) && Number(cell.supportLevelCounts[key] || 0) > 0; })) badges.push("Scaffolded");
+        if (count > 0 && (risks.indexOf("derived_only") !== -1 || Number(cell.metadataProvenance.derived || 0) > Number(cell.metadataProvenance.explicit || 0))) badges.push("Derived metadata");
+        if (risks.indexOf("scaffolded_majority") !== -1 || risks.indexOf("no_unassisted_evidence") !== -1 || Object.keys(cell.supportLevelCounts || {}).some(function(key){ return b1SupportLevelIsScaffolded(key) && Number(cell.supportLevelCounts[key] || 0) > 0; })) badges.push("Scaffolded");
+        if (risks.indexOf("unknown_or_legacy_task_depth") !== -1) badges.push("Legacy metadata");
         return '<div class="learningMapMatrixCardRow">' +
           '<strong>' + escapeHtml(column.label) + '</strong>' +
           '<span>' + escapeHtml(state.label) + (count ? ' · ' + count + ' evidence' : '') + (badges.length ? ' · ' + escapeHtml(badges.join(" · ")) : '') + '</span>' +
@@ -10369,6 +10506,8 @@ body.resultsMode .bottomHud {
           '<div class="learningMapDetail"><strong>Source:</strong> existing B1 evidence and Learning Map node matching.</div>' +
           '<div class="learningMapDetail"><strong>Task-depth schema:</strong> ' + escapeHtml(matrix && matrix.taskDepthSchemaVersion || B1_TASK_DEPTH_SCHEMA_VERSION) + '</div>' +
           '<div class="learningMapDetail"><strong>Support-level schema:</strong> ' + escapeHtml(B1_SUPPORT_LEVEL_SCHEMA_VERSION) + '</div>' +
+          '<div class="learningMapDetail"><strong>Matrix QA:</strong> ' + Number(summary.thinSampleCells || 0) + ' thin sample cells; ' + Number(summary.scaffoldedCells || 0) + ' scaffolded cells.</div>' +
+          '<div class="learningMapDetail"><strong>Limit flags:</strong> ' + Number(summary.diagnosticOnlyCells || 0) + ' diagnostic-only; ' + Number(summary.selfMarkedOnlyCells || 0) + ' self-marked-only; ' + Number(summary.legacyTaskDepthCells || 0) + ' unknown/legacy.</div>' +
           '<div class="learningMapDetail"><strong>Diagnostic:</strong> diagnostic snapshot evidence only.</div>' +
           '<div class="learningMapDetail"><strong>Production:</strong> self-marked practice evidence only.</div>' +
         '</div>' +
@@ -10379,12 +10518,206 @@ body.resultsMode .bottomHud {
       '<details class="learningMapDisclosure learningMapMatrixDetails"><summary>Task type notes</summary>' + learningMapMatrixDefinitionsHtml(columns) + '</details>' +
     '</section>';
   }
+  function b1ErrorPatternHasAnyToken(tokens, expected) {
+    tokens = tokens || [];
+    return (expected || []).some(function(token){ return tokens.indexOf(token) !== -1; });
+  }
+  function b1ErrorPatternRouteForSignal(id, family, skillNode) {
+    if (family === "case_article") return { routeKey:"case_trainer", label:"Open Case Trainer" };
+    if (family === "repair") return { routeKey:"grammar", label:"Open Grammar" };
+    if (skillNode === "redemittel") return { routeKey:"redemittel", label:"Open Redemittel" };
+    if (skillNode === "wortschatz") return { routeKey:"wortschatz", label:"Open Wortschatz" };
+    if (family === "support_confidence") return { routeKey:"learning_map", label:"Open Learning Map" };
+    return { routeKey:"grammar", label:"Open Grammar" };
+  }
+  function b1ErrorPatternMetadataQuality(counts) {
+    counts = counts || {};
+    var explicit = Number(counts.explicit || 0);
+    var derived = Number(counts.derived || 0);
+    var unknown = Number(counts.unknown || 0);
+    if (explicit > 0 && derived === 0 && unknown === 0) return "explicit";
+    if (explicit > 0 || derived > 0) return "mixed";
+    return "insufficient";
+  }
+  function b1ErrorPatternRecordBase(record) {
+    var item = b1LearningMapItemForEvidence(record);
+    var tokens = b1LearningMapEvidenceTokens(record, item);
+    var depth = b1SkillMatrixNormalizeTaskDepth(record, item);
+    var taskType = String(record && record.taskType || (item ? b1EvidenceTaskType(item) : "") || "");
+    var supportLevel = b1EvidenceSupportLevel(record, item);
+    var matches = b1LearningMapRecordNodeMatches(record, item);
+    return { record:record, item:item, tokens:tokens, depth:depth, taskType:taskType, supportLevel:supportLevel, matches:matches };
+  }
+  function b1ErrorPatternIsIncorrect(entry) {
+    var record = entry && entry.record;
+    return !!(record && record.correct === false);
+  }
+  function b1ErrorPatternSignalFromEntries(config, entries) {
+    var relevant = [];
+    var errors = [];
+    var taskDepths = {};
+    var supportCounts = b1SupportLevelEmptyCounts();
+    var confidenceCounts = b1SkillMatrixEmptyCounts();
+    var provenance = b1SkillMatrixEmptyProvenance();
+    entries.forEach(function(entry){
+      if (!config.relevant(entry)) return;
+      relevant.push(entry);
+      taskDepths[entry.depth] = (taskDepths[entry.depth] || 0) + 1;
+      supportCounts[entry.supportLevel] = (supportCounts[entry.supportLevel] || 0) + 1;
+      var confidence = entry.record && ["sure", "unsure", "guessed"].indexOf(entry.record.confidence) !== -1 ? entry.record.confidence : "unset";
+      confidenceCounts[confidence] = (confidenceCounts[confidence] || 0) + 1;
+      (entry.matches || []).forEach(function(match){
+        var key = match.provenance || "unknown";
+        provenance[key] = (provenance[key] || 0) + 1;
+      });
+      if ((config.error || b1ErrorPatternIsIncorrect)(entry)) errors.push(entry);
+    });
+    if (relevant.length < 3 || errors.length < 2) return null;
+    var route = b1ErrorPatternRouteForSignal(config.id, config.family, config.skillNode);
+    return {
+      id:config.id,
+      label:config.label,
+      family:config.family,
+      skillNode:config.skillNode,
+      taskDepths:Object.keys(taskDepths),
+      evidenceCount:relevant.length,
+      errorCount:errors.length,
+      recentExamplesCount:Math.min(3, errors.length),
+      confidenceContext:confidenceCounts,
+      supportContext:b1SkillMatrixSupportContextSummary(supportCounts),
+      sourceMetadataQuality:b1ErrorPatternMetadataQuality(provenance),
+      learnerSummary:config.learnerSummary,
+      debugSummary:config.debugSummary,
+      recommendedExistingRoute:route,
+      limitationText:"This is an early rules-based signal, not a diagnosis."
+    };
+  }
+  function b1ErrorPatternSupportConfidenceSignal(entries) {
+    var relevant = entries.filter(function(entry){
+      return entry.depth !== "diagnostic" && entry.depth !== "controlled_production" && entry.depth !== "free_production";
+    });
+    if (relevant.length < 4) return null;
+    var supportCounts = b1SupportLevelEmptyCounts();
+    var confidenceCounts = b1SkillMatrixEmptyCounts();
+    var lowContext = 0;
+    relevant.forEach(function(entry){
+      supportCounts[entry.supportLevel] = (supportCounts[entry.supportLevel] || 0) + 1;
+      var confidence = entry.record && ["sure", "unsure", "guessed"].indexOf(entry.record.confidence) !== -1 ? entry.record.confidence : "unset";
+      confidenceCounts[confidence] = (confidenceCounts[confidence] || 0) + 1;
+      if (entry.record && entry.record.correct === false || confidence === "unsure" || confidence === "guessed") lowContext += 1;
+    });
+    var support = b1SkillMatrixSupportContextSummary(supportCounts);
+    if (!(support.scaffolded >= 3 && support.scaffolded > support.unassisted || lowContext >= 3)) return null;
+    return {
+      id:"support_confidence_context",
+      label:"Support/confidence context",
+      family:"support_confidence",
+      skillNode:"mixed",
+      taskDepths:[],
+      evidenceCount:relevant.length,
+      errorCount:lowContext,
+      recentExamplesCount:Math.min(3, lowContext),
+      confidenceContext:confidenceCounts,
+      supportContext:support,
+      sourceMetadataQuality:"mixed",
+      learnerSummary:"Several attempts used support, low confidence, or errors. Treat this as context for the next small practice step.",
+      debugSummary:"Support/confidence signal from scaffolded or low-confidence evidence.",
+      recommendedExistingRoute:b1ErrorPatternRouteForSignal("support_confidence_context", "support_confidence", "mixed"),
+      limitationText:"This is a rules-based context signal, not a score."
+    };
+  }
+  function b1ErrorPatternSignals(options) {
+    options = options || {};
+    var records = Array.isArray(options.records) ? options.records : safeGetB1Evidence().records || [];
+    var entries = records.filter(function(record){ return record && record.itemId; }).map(b1ErrorPatternRecordBase);
+    var configs = [
+      {
+        id:"connector_word_order_pattern",
+        label:"Word order after connectors",
+        family:"word_order",
+        skillNode:"connectors",
+        learnerSummary:"Several connector items had word-order or repair trouble.",
+        debugSummary:"Repeated incorrect connector evidence in sentence-building, word-order, or repair contexts.",
+        relevant:function(entry){
+          return b1ErrorPatternHasAnyToken(entry.tokens, ["connectors", "connector_word_order", "word_order", "verb_final_subordinate", "nebensatz"]) &&
+            (entry.depth === "sentence_building" || entry.taskType === "word_order_cloze" || entry.depth === "repair");
+        }
+      },
+      {
+        id:"connector_meaning_syntax_pattern",
+        label:"Connector meaning or syntax",
+        family:"connector_confusion",
+        skillNode:"connectors",
+        learnerSummary:"Several connector attempts missed the selected connector or the sentence control around it.",
+        debugSummary:"Repeated incorrect connector evidence outside pure production.",
+        relevant:function(entry){
+          return b1ErrorPatternHasAnyToken(entry.tokens, ["connectors", "weil", "denn", "deshalb", "obwohl", "trotzdem", "damit", "um_zu", "wenn", "als"]) &&
+            ["recognition", "cloze", "contrast", "transformation"].indexOf(entry.depth) !== -1;
+        }
+      },
+      {
+        id:"case_article_pattern",
+        label:"Case or article forms",
+        family:"case_article",
+        skillNode:"cases_articles",
+        learnerSummary:"Several article or case items had trouble where current metadata supports that signal.",
+        debugSummary:"Repeated incorrect case/article evidence with matching metadata.",
+        relevant:function(entry){
+          return b1ErrorPatternHasAnyToken(entry.tokens, ["cases_articles", "article_gender", "pronoun_case", "dativ", "akkusativ", "nominativ", "case", "article"]);
+        }
+      },
+      {
+        id:"repair_pattern",
+        label:"Repair practice pattern",
+        family:"repair",
+        skillNode:"repair",
+        learnerSummary:"Several repair items needed correction in the same task context.",
+        debugSummary:"Repeated incorrect evidence in repair task depth.",
+        relevant:function(entry){
+          return entry.depth === "repair" || entry.taskType === "error_repair" || b1ErrorPatternHasAnyToken(entry.tokens, ["repair", "error_repair"]);
+        }
+      }
+    ];
+    var signals = configs.map(function(config){ return b1ErrorPatternSignalFromEntries(config, entries); }).filter(Boolean);
+    var supportSignal = b1ErrorPatternSupportConfidenceSignal(entries);
+    if (supportSignal) signals.push(supportSignal);
+    return {
+      schemaVersion:1,
+      generatedAt:new Date().toISOString(),
+      levelTrack:"B1",
+      signals:signals.slice(0, 5),
+      limitations:[
+        "Signals require repeated evidence and enough metadata.",
+        "Production self-marking is not correctness evidence.",
+        "No weakness repair queue or review scheduler is active."
+      ]
+    };
+  }
+  function learningMapErrorPatternsHtml(patterns) {
+    var signals = patterns && Array.isArray(patterns.signals) ? patterns.signals : [];
+    if (!signals.length) return "";
+    return '<section class="learningMapPanel" aria-labelledby="learningMapPatternsTitle">' +
+      '<h3 id="learningMapPatternsTitle">Possible patterns</h3>' +
+      '<p class="learningMapText">Repeated signals only. This is not a diagnosis.</p>' +
+      '<div class="learningMapNodeList">' + signals.map(function(signal){
+        var route = signal.recommendedExistingRoute || {};
+        return '<article class="learningMapNodeCard">' +
+          '<div class="learningMapNodeTop"><strong>' + escapeHtml(signal.label) + '</strong><span>Possible pattern</span></div>' +
+          '<p class="learningMapText">' + escapeHtml(signal.learnerSummary || "Repeated evidence suggests a small area to recheck.") + '</p>' +
+          '<div class="learningMapMeta">' + Number(signal.evidenceCount || 0) + ' relevant attempts; ' + Number(signal.errorCount || 0) + ' pattern signals.</div>' +
+          '<div class="learningMapLimitation">' + escapeHtml(signal.limitationText || "This is an early rules-based signal, not a diagnosis.") + '</div>' +
+          (route.routeKey ? '<div class="learningMapActionGrid"><button class="learningMapAction learningMapPatternAction" type="button" data-route-key="' + escapeHtml(route.routeKey) + '">' + escapeHtml(route.label || "Open route") + '</button></div>' : '') +
+        '</article>';
+      }).join("") + '</div>' +
+    '</section>';
+  }
   function renderLearningMapScreen() {
     var map = b1LearningMapScaffold();
     var matrix = b1SkillMatrixData();
     var evidenceSummary = b1EvidenceSummary();
     var summary = learningMapSummaryFor(map, evidenceSummary);
     var recommendation = b1NextRecommendedPractice({ map:map, matrix:matrix, evidenceSummary:evidenceSummary });
+    var errorPatterns = b1ErrorPatternSignals();
     var content = el("learningMapContent");
     if (!content) return;
     var provenanceText = summary.mostlyDerived ? "Mostly derived metadata" : "Mixed explicit/derived metadata";
@@ -10400,6 +10733,7 @@ body.resultsMode .bottomHud {
       '</section>' +
       '<section class="learningMapPanel">' + learningMapFocusHtml(map, summary) + '</section>' +
       '<section class="learningMapPanel learningMapRecommendationPanel">' + learningMapRecommendationHtml(recommendation) + '</section>' +
+      learningMapErrorPatternsHtml(errorPatterns) +
       learningMapSkillMatrixHtml(matrix) +
       '<section class="learningMapPanel"><h3>Skill overview</h3><div class="learningMapNodeList">' + nodesHtml + '</div></section>' +
       '<section class="learningMapPanel"><h3>Not enough evidence</h3>' + learningMapNotEnoughHtml(map) + '</section>' +
@@ -11485,6 +11819,7 @@ body.resultsMode .bottomHud {
     var snapshot = buildDebugSnapshot();
     return {
       appVersion:OZMOSIS_APP_VERSION,
+      exportVersion:OZMOSIS_EXPORT_VERSION,
       route:snapshot.route,
       mode:snapshot.mode,
       currentItem:snapshot.currentItem && snapshot.currentItem.id || null,
@@ -11494,6 +11829,8 @@ body.resultsMode .bottomHud {
         evidenceKeyExists:snapshot.storage && snapshot.storage.evidenceKeyExists,
         evidenceCount:snapshot.storage && snapshot.storage.evidenceCount
       },
+      learningMap:snapshot.learningMap,
+      skillMatrix:snapshot.skillMatrix,
       recommendation:snapshot.recommendation,
       layoutWarnings:snapshot.layout && snapshot.layout.warnings
     };
@@ -13045,6 +13382,7 @@ body.resultsMode .bottomHud {
       var summary = matrix.globalSummary || {};
       return {
       schemaVersion:matrix.schemaVersion || null,
+      qaSchemaVersion:1,
       taskDepthSchemaVersion:matrix.taskDepthSchemaVersion || B1_TASK_DEPTH_SCHEMA_VERSION,
         rowCount:Number(summary.rowCount || (Array.isArray(matrix.rows) ? matrix.rows.length : 0)),
         taskDepthCount:Array.isArray(matrix.taskDepths) ? matrix.taskDepths.length : 0,
@@ -13052,6 +13390,13 @@ body.resultsMode .bottomHud {
         emptyCells:Number(summary.emptyCells || 0),
         productionSelfMarkedCells:Number(summary.productionSelfMarkedCells || 0),
         mostlyDerivedCells:Number(summary.mostlyDerivedCells || 0),
+        thinSampleCells:Number(summary.thinSampleCells || 0),
+        scaffoldedCells:Number(summary.scaffoldedCells || 0),
+        diagnosticOnlyCells:Number(summary.diagnosticOnlyCells || 0),
+        selfMarkedOnlyCells:Number(summary.selfMarkedOnlyCells || 0),
+        derivedOnlyCells:Number(summary.derivedOnlyCells || 0),
+        legacyTaskDepthCells:Number(summary.legacyTaskDepthCells || 0),
+        inflationRiskCounts:summary.inflationRiskCounts || {},
         diagnosticEvidenceCount:Number(summary.diagnosticEvidenceCount || 0),
         diagnosticCellEvidenceCount:Number(summary.diagnosticCellEvidenceCount || 0),
         supportLevelCounts:summary.supportLevelCounts || b1SupportLevelEmptyCounts(),
@@ -13087,6 +13432,33 @@ body.resultsMode .bottomHud {
       };
     } catch (e) {
       return { error:"recommendation_summary_unavailable", message:String(e && e.message || e).slice(0, 160) };
+    }
+  }
+  function debugErrorPatternSummary() {
+    try {
+      var patterns = b1ErrorPatternSignals();
+      return {
+        schemaVersion:patterns.schemaVersion || null,
+        signalCount:Array.isArray(patterns.signals) ? patterns.signals.length : 0,
+        signals:(patterns.signals || []).map(function(signal){
+          return {
+            id:signal.id,
+            label:signal.label,
+            family:signal.family,
+            skillNode:signal.skillNode,
+            evidenceCount:Number(signal.evidenceCount || 0),
+            errorCount:Number(signal.errorCount || 0),
+            recentExamplesCount:Number(signal.recentExamplesCount || 0),
+            taskDepths:Array.isArray(signal.taskDepths) ? signal.taskDepths.slice(0, 6) : [],
+            sourceMetadataQuality:signal.sourceMetadataQuality || "insufficient",
+            recommendedExistingRoute:signal.recommendedExistingRoute || null,
+            limitationText:signal.limitationText || ""
+          };
+        }),
+        limitations:Array.isArray(patterns.limitations) ? patterns.limitations.slice() : []
+      };
+    } catch (e) {
+      return { error:"error_pattern_summary_unavailable", message:String(e && e.message || e).slice(0, 160) };
     }
   }
   function isScrollLockedFor(node) {
@@ -13179,6 +13551,7 @@ body.resultsMode .bottomHud {
       learningMap:debugLearningMapSummary(),
       skillMatrix:debugSkillMatrixSummary(),
       recommendation:debugRecommendationSummary(),
+      errorPatterns:debugErrorPatternSummary(),
       layout:{
         viewport:{ width:Math.round(window.innerWidth || 0), height:Math.round(window.innerHeight || 0) },
         mainBounds:safeBounds("main"),
@@ -15525,6 +15898,13 @@ body.resultsMode .bottomHud {
   document.addEventListener("click", function(event){
     var target = event.target && event.target.closest ? event.target.closest("button") : null;
     if (!target) return;
+    if (target.classList && target.classList.contains("learningMapPatternAction")) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+      openB1RecommendationRoute(target.getAttribute("data-route-key") || "learning_map");
+      return;
+    }
     var actions = {
       homeSprintBtn:function(){ openB1RecommendationRoute(homeRecommendedRouteKey || "today"); },
       homeTesterNotesBtn:function(){ showTesterNotes(); },
@@ -16036,7 +16416,7 @@ body.resultsMode .bottomHud {
   window.addEventListener("resize", updateDebugStamp, false);
   window.addEventListener("scroll", updateDebugStamp, false);
   if (!DEBUG_STAMP_TIMER) DEBUG_STAMP_TIMER = window.setInterval(updateDebugStamp, 1000);
-window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }; window.kasusNoArticle=function(){checkAnswer("none");}; window.kasusProceed=function(){proceed();}; window.kasusHint=function(){showHint();}; window.kasusNewRound=function(){showStartScreen();}; window.kasusStartRound=function(){startConfiguredRound();}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusSessionLog=function(){return sessionLog.slice();}; window.kasusCurrent=function(){return current ? cloneQuestion(current) : cloneB1Item(b1Runtime.current || {});}; window.kasusLeitnerDebug=function(){ return { storageKey:LEITNER_STORAGE_KEY, runtime:leitnerRuntime, progress:safeGetLeitner() }; }; window.ozmosisB1Debug=function(){ return { storageKey:B1_STORAGE_KEY, evidenceStorageKey:B1_EVIDENCE_STORAGE_KEY, progressStateLabelVersion:PROGRESS_STATE_LABEL_VERSION, taskDepthSchemaVersion:B1_TASK_DEPTH_SCHEMA_VERSION, taskDepthDefinitions:b1TaskDepthDefinitions(), supportLevelSchemaVersion:B1_SUPPORT_LEVEL_SCHEMA_VERSION, supportLevelDefinitions:b1SupportLevelDefinitions(), itemCount:B1_ITEMS.length, connectorCount:B1_CONNECTOR_ITEMS.length, redemittelCount:B1_REDEMITTEL_ITEMS.length, wortschatzCount:B1_WORTSCHATZ_ITEMS.length, registry:b1RegistrySummary(), runtime:b1Runtime, progress:safeGetB1Progress(), evidence:b1EvidenceSummary(), supportLevelSummary:b1SupportLevelSummaryForRecords(safeGetB1Evidence().records), learningMap:b1LearningMapScaffold(), skillMatrix:b1SkillMatrixData(), skillMatrixSummary:debugSkillMatrixSummary(), recommendation:b1NextRecommendedPractice(), recommendationSummary:debugRecommendationSummary(), diagnosticPlan:b1Runtime.diagnosticPlan, debugSnapshot:buildDebugSnapshot }; }; window.ozmosisStartDiagnostic=function(){ startB1DiagnosticSprint(); }; window.ozmosisStartConnector=function(family){ startConnectorSprint(family || "all"); }; window.ozmosisStartRedemittel=function(filter){ startRedemittelRound(filter || "mixed"); }; window.ozmosisStartWortschatz=function(filter){ startWortschatzRound(filter || "mixed"); }; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusResetBest=function(){ highScore=0; bestStreakAll=0; savePersistent(); if (state === "results") showResults(); else renderHud(); }; window.kasusResetProfile=function(){ resetLearnerModel(); }; window.kasusToggleMenu=function(){ var panel=el("settingsPanel"); panel.classList.toggle("open"); document.body.classList.toggle("menuOpen", panel.classList.contains("open")); };
+window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }; window.kasusNoArticle=function(){checkAnswer("none");}; window.kasusProceed=function(){proceed();}; window.kasusHint=function(){showHint();}; window.kasusNewRound=function(){showStartScreen();}; window.kasusStartRound=function(){startConfiguredRound();}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusSessionLog=function(){return sessionLog.slice();}; window.kasusCurrent=function(){return current ? cloneQuestion(current) : cloneB1Item(b1Runtime.current || {});}; window.kasusLeitnerDebug=function(){ return { storageKey:LEITNER_STORAGE_KEY, runtime:leitnerRuntime, progress:safeGetLeitner() }; }; window.ozmosisB1Debug=function(){ return { storageKey:B1_STORAGE_KEY, evidenceStorageKey:B1_EVIDENCE_STORAGE_KEY, progressStateLabelVersion:PROGRESS_STATE_LABEL_VERSION, taskDepthSchemaVersion:B1_TASK_DEPTH_SCHEMA_VERSION, taskDepthDefinitions:b1TaskDepthDefinitions(), supportLevelSchemaVersion:B1_SUPPORT_LEVEL_SCHEMA_VERSION, supportLevelDefinitions:b1SupportLevelDefinitions(), itemCount:B1_ITEMS.length, connectorCount:B1_CONNECTOR_ITEMS.length, redemittelCount:B1_REDEMITTEL_ITEMS.length, wortschatzCount:B1_WORTSCHATZ_ITEMS.length, registry:b1RegistrySummary(), runtime:b1Runtime, progress:safeGetB1Progress(), evidence:b1EvidenceSummary(), supportLevelSummary:b1SupportLevelSummaryForRecords(safeGetB1Evidence().records), learningMap:b1LearningMapScaffold(), skillMatrix:b1SkillMatrixData(), skillMatrixSummary:debugSkillMatrixSummary(), recommendation:b1NextRecommendedPractice(), recommendationSummary:debugRecommendationSummary(), errorPatterns:b1ErrorPatternSignals(), errorPatternSummary:debugErrorPatternSummary(), diagnosticPlan:b1Runtime.diagnosticPlan, debugSnapshot:buildDebugSnapshot }; }; window.ozmosisStartDiagnostic=function(){ startB1DiagnosticSprint(); }; window.ozmosisStartConnector=function(family){ startConnectorSprint(family || "all"); }; window.ozmosisStartRedemittel=function(filter){ startRedemittelRound(filter || "mixed"); }; window.ozmosisStartWortschatz=function(filter){ startWortschatzRound(filter || "mixed"); }; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusResetBest=function(){ highScore=0; bestStreakAll=0; savePersistent(); if (state === "results") showResults(); else renderHud(); }; window.kasusResetProfile=function(){ resetLearnerModel(); }; window.kasusToggleMenu=function(){ var panel=el("settingsPanel"); panel.classList.toggle("open"); document.body.classList.toggle("menuOpen", panel.classList.contains("open")); };
   window.ozmosisContentAudit = function(){ return b1ConnectorWordOrderIssues(); };
   function mountSettingsPanel() {
     var panel = el("settingsPanel");
