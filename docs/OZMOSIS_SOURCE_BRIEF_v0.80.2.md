@@ -1,10 +1,10 @@
-# OZMOSIS SOURCE BRIEF v0.60
+# OZMOSIS SOURCE BRIEF v0.80.2
 
 Version: Working Source Brief Update  
 Status: Current planning brief  
 Project: Ozmosis - Deutsch Lernen App  
-Current known development position: v0.60 completed  
-Next planned patch: v0.61 - Error Pattern QA / Weakness Repair Preparation  
+Current known development position: v0.80.2 completed  
+Next planned patch: v0.81 - Cases and Articles Completion Pass  
 
 Versioning rule:
 
@@ -51,8 +51,8 @@ When Codex, ChatGPT, or any future production chat works on Ozmosis, use this hi
 
 1. Latest uploaded current project files/package in the active chat.
 2. Current repo-root `index.html`.
-3. Current versioned README, currently `README-v0_60.md`.
-4. Current versioned changelog, currently `CHANGELOG-v0_60.txt`.
+3. Current versioned README, currently `README-v0_80_2.md`.
+4. Current versioned changelog, currently `CHANGELOG-v0_80_2.txt`.
 5. Current `AGENTS.md`.
 6. Current Codex / Antigravity reports and logs.
 7. Current generated content-bank files.
@@ -95,8 +95,8 @@ Preferred long-term structure:
   source-brief.md
   roadmap.md
   changelog-notes.md
-README-v0_60.md
-CHANGELOG-v0_60.txt
+README-v0_80_2.md
+CHANGELOG-v0_80_2.txt
 AGENTS.md
 ```
 
@@ -106,7 +106,7 @@ But this should be introduced carefully and only when useful.
 
 The detailed version-by-version roadmap lives separately in:
 
-`docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.60.md`
+`docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.80.2.md`
 
 The Source Brief remains the strategic orientation document. The roadmap is a planning document, not permission for Codex to implement future versions early.
 
@@ -687,13 +687,13 @@ You often choose accusative forms in location sentences.
 Current known development state:
 
 ```txt
-v0.60 completed
-Next planned patch: v0.61 - Error Pattern QA / Weakness Repair Preparation
+v0.80.2 completed
+Next planned patch: v0.81 - Cases and Articles Completion Pass
 ```
 
 The next work should not be a broad rewrite.
 
-The next work should be Error Pattern QA and preparation only. Do not implement weakness repair queues, delayed review, B2 content, scheduling, new routes, or new learner-facing progress states early.
+The next work should begin the first focused content-coverage pass while preserving the audit categories from v0.80. Do not implement learner-facing durability states, spaced review scheduling, B2 content, broad new routes, or mastery/readiness claims early.
 
 ---
 
@@ -1021,54 +1021,58 @@ Completed in v0.60:
 Ozmosis added a cautious rules-based Error Pattern Detection v1 layer derived from existing evidence and metadata. Signals require repeated evidence and remain separate from progress states, scoring, storage, and routes. Supported signal families cover connector meaning/syntax, word order after connectors, case/article metadata, repair task depth, and support/confidence context. Production remains self-marked practice evidence only and does not create correctness or error-pattern claims by itself.
 ```
 
+### v0.60.1  -  Repair Feedback Precision and Correct-with-Note
+
+Completed in v0.60.1:
+
+```txt
+Ozmosis made repair feedback more concise and precise, added safe correct-with-note handling for target-correct capitalisation-only repair answers, moved longer repair explanation into an Explain reveal, and changed English support labels from Correct to Meaning at render time.
+```
+
 ### v0.61  -  Error Pattern QA / Weakness Repair Preparation
 
-QA the v0.60 possible-pattern signal layer, tune thresholds, document false-positive risks, and prepare repair requirements without implementing repair queues.
+Completed in v0.61:
+
+```txt
+Ozmosis QA-hardened the v0.60 possible-pattern signal layer, suppressed diagnostic-only and self-marked-production-only claims, added signal-quality and limitation metadata, kept learner-facing pattern cards compact, and added internal weakness-repair readiness metadata without implementing a queue or scheduler.
+```
 
 ### v0.62  -  Recurring Error Summaries
 
-Show most frequent recent error categories using cautious possible-pattern language.
-
-### v0.63  -  Pattern Explanation Cards
-
-Explain repeated possible patterns in plain English without diagnosis language.
-
-### v0.64  -  Targeted Repair Queue
-
-Route learners from weakness patterns into specific practice.
-
-### v0.65  -  Weakness Explanation Cards
-
-Explain the pattern in plain English.
-
-Example:
+Completed in v0.62:
 
 ```txt
-You are choosing accusative in location sentences after two-way prepositions.
+Ozmosis added concise Recent error type summaries derived from repeated QA-hardened possible-pattern signals and repeated correct-with-note capitalisation evidence. Summaries use existing-route hints and details reveals, remain separate from scoring and diagnosis, and do not create weakness repair queues.
 ```
 
-### v0.65  -  Case / Article Diagnostic Cards
+### v0.63  -  Weakness Repair Design Gate
 
-Track:
+Completed in v0.63:
 
 ```txt
-wrong case
-wrong gender
-wrong article family
-right case but wrong gender
-right gender but wrong case
+Ozmosis added a conservative repair-candidate readiness gate that classifies repeated pattern/error-type signals as watch, candidate, routeable, or not ready. It checks existing-route fit, matching-item counts, and missing metadata without creating a repair queue or targeted session.
 ```
 
-### v0.66  -  Word Order Diagnostic Cards
+### v0.64  -  Weakness Repair Queue Scaffold
 
-Track:
+Completed in v0.64:
 
 ```txt
-V2 error
-verb-final error
-connector-driven word-order error
-modal structure error
-separable verb error
+Ozmosis added an internal/no-save repair queue scaffold that maps routeable repair candidates to existing matching items, exposes Dev Tools and Learning Map previews, and refuses queues when there are not enough matching existing items.
+```
+
+### v0.65  -  Targeted Repair Practice v1
+
+Completed in v0.65:
+
+```txt
+Ozmosis added a narrow targeted repair practice path for high-quality queues using existing items only, normal evidence recording with additive queue metadata, optional confidence capture, and completion copy that does not claim mastery.
+```
+
+### v0.66  -  Targeted Repair QA / Route Expansion
+
+```txt
+Completed: audited targeted repair practice across candidate families, route-fit edge cases, mobile/focus states, evidence recording, and existing-route expansion decisions. Targeted repair remains limited to high-quality queues using existing items only.
 ```
 
 ### v0.67  -  Connector Diagnostic Cards
@@ -1082,9 +1086,21 @@ register mismatch
 connector position error
 ```
 
+Completed in v0.67:
+
+```txt
+Ozmosis added concise connector diagnostic cards for repeated connector meaning, word-order, and connector-position signals. Cards stay thresholded, explainable, and routed only to existing Grammar/Connector practice. Register mismatch is deferred until metadata supports it safely.
+```
+
 ### v0.68  -  Diagnostic QA
 
 Ensure app does not overdiagnose from limited data.
+
+Completed in v0.68:
+
+```txt
+Ozmosis audited the diagnostic/repair layer, suppressed scaffolded-only learner-facing pattern cards, tightened copy, and added debug QA summaries for thresholds, route hints, privacy, scoring, and suppression reasons.
+```
 
 ### v0.69  -  Stabilise Diagnostic Repair
 
@@ -1092,6 +1108,86 @@ Deliverable:
 
 ```txt
 B1 can identify recurring weaknesses and recommend targeted repair.
+```
+
+Completed in v0.69:
+
+```txt
+Ozmosis stabilised the current diagnostic repair band. B1 can conservatively turn repeated evidence into possible patterns, recent error types, connector diagnostic cards, repair candidates, queue previews, and targeted repair using existing items only. Durability and review remain deferred to v0.70 as a separate design gate.
+```
+
+### v0.69.1  -  Holistic UX Legibility and Access Hierarchy Pass
+
+Completed in v0.69.1:
+
+```txt
+Ozmosis made the current diagnostic-repair foundation calmer and more legible before durability/review work. First-run language selection moved into app setup and Settings, the menu became navigation-only, Home was rebalanced around next action and practice agency, Learning Map now layers recommendation/repair/patterns before collapsed evidence details, and planned routes point to current usable alternatives. Scoring, evidence, storage keys, export/import, content banks, Today's B1 Sprint, and B1-only scope remain unchanged.
+```
+
+### v0.69.2  -  v0.69.1 Completion Fix
+
+Completed in v0.69.2:
+
+```txt
+Ozmosis completed the v0.69.1 gate by adding true boot/first-paint protection, making Settings the static owner of support-language selection, correcting first-run language labels, cleaning generated browser-profile artefacts, and updating ignore rules. The patch preserved scoring, evidence semantics, storage keys, export/import, content banks, targeted repair, production self-marking, Today's B1 Sprint, and B1-only scope.
+```
+
+### v0.70  -  Durability / Review Design Gate
+
+Completed in v0.70:
+
+```txt
+Ozmosis added a QA-only durability/review readiness snapshot in Dev Tools, debug snapshot output, and tester-report summaries. It summarises evidence timestamp coverage, current item mapping, repeated attempts, possible delayed attempt pairs, task-depth spread, source limits, confidence/support coverage, and blockers before active review. No review route, review schedule, Leitner activation, learner-facing durability states, mastery claim, B1-readiness claim, scoring change, storage migration, or content-bank edit was added.
+```
+
+### v0.71  -  Review Eligibility Rules v1
+
+Completed in v0.71:
+
+```txt
+Ozmosis added conservative internal review eligibility rules and a Dev Tools-only eligibility summary. Eligibility is computed at read time, excludes missing/unmapped items, missing timestamps, diagnostic-only records, self-marked production-only records, original non-auto-graded records, same-session attempts, and unsupported production-card tasks, and does not create learner-facing review routes, schedules, due/overdue copy, durability labels, mastery claims, storage migrations, scoring changes, or content-bank edits.
+```
+
+### v0.72  -  Review Candidate Preview v1
+
+Completed in v0.72:
+
+```txt
+Ozmosis added a Dev Tools-only, no-save review candidate preview using the v0.71 eligibility rules. Preview rows show safe item labels, task/depth context, candidate quality, route-fit checks, candidate reasons, exclusion reasons, content availability, and limitations. The patch does not add a learner-facing review route, Home recommendation, scheduler, due/overdue copy, durability labels, storage mutation, scoring changes, evidence recording, or content-bank edits.
+```
+
+### v0.73  -  Opt-in Review Practice v1
+
+Completed in v0.73:
+
+```txt
+Ozmosis added a narrow opt-in Review Practice route, currently startable from Dev Tools, using preview-ready existing B1 items only. Review attempts save normal item evidence with additive review context metadata and cautious completion copy. The patch does not add a scheduler, due/overdue learner copy, durability labels, mastery claims, generated content, storage migrations, scoring changes, Today’s B1 Sprint changes, or content-bank edits.
+```
+
+---
+
+### v0.74  -  Review UX Integration v1
+
+Completed in v0.74:
+
+```txt
+Ozmosis integrated opt-in Review Practice into Home, Menu, and Learning Map only when older auto-graded review candidates are available. The learner-facing copy frames review as optional checking of older items again, not as mastery, durability, due/overdue scheduling, Leitner, or readiness.
+```
+
+### v0.75  -  Review/Durability QA Stabilisation
+
+Completed in v0.75:
+
+```txt
+Ozmosis stabilised the review/durability foundation with QA copy hardening, tester-note clarity, review readiness/eligibility/candidate-preview/practice audits, import/export checks, responsive browser smoke, and documentation filename hygiene. Review remains optional, existing-item-only, non-scheduled, non-durability, and non-mastery.
+```
+
+### v0.75.1  -  Holistic UX Redesign / Access Hierarchy / Visual System Pass
+
+Completed in v0.75.1:
+
+```txt
+Ozmosis completed a holistic UX/access-hierarchy pass before metadata repair. Home now starts with one primary recommended action and a reason disclosure, Menu is grouped by Continue/Practice/Progress/Settings/Advanced, Advanced/QA is collapsed from the learner's default Home surface, Learning Map is summary-first with drill-down evidence details, desktop/short-height layouts are more intentional, and the screenshot QA harness captures named states. No scoring, evidence, storage, export/import, content-bank, review-practice, targeted-repair, Case Trainer, or production self-marking semantics changed.
 ```
 
 ---
@@ -1104,71 +1200,45 @@ Primary goal:
 Distinguish short-term correctness from durable learning.
 ```
 
-### v0.70  -  Durability States v1
+### v0.70  -  Durability / Review Design Gate
 
-Add:
+Completed: QA-only readiness analysis. No review system is active.
 
-```txt
-Fresh
-Recalled
-Stabilising
-Durable
-Slipping
-Overdue
-```
+### v0.71  -  Review Eligibility Rules v1
 
-### v0.71  -  Spaced Review Rules v1
+Define conservative internal eligibility rules for future review candidates without activating a learner-facing review route or scheduler.
 
-Implement simple transparent review scheduling.
+### v0.72  -  Review Candidate Preview v1
 
-Prefer understandable rules over opaque scoring.
+Create a Dev Tools-only, no-save preview of eligible/excluded review candidates with reasons and route-fit checks.
 
-### v0.72  -  Retention-Aware Learning Map
+### v0.73  -  Opt-in Review Practice v1
 
-Allow skills to slip if delayed recall fails.
+If v0.71 and v0.72 are clean, add a narrow opt-in practice route using existing eligible items only. This must not be Leitner, a scheduler, a mastery claim, or a durability proof.
 
-### v0.73  -  Review Debt Display
+### v0.74  -  Review UX Integration v1
 
-Show due and overdue review.
+Expose opt-in review only where actionable and with cautious copy: older items can be checked again, but this does not prove mastery.
 
-Keep wording neutral.
+### v0.75  -  Review/Durability QA Stabilisation
 
-### v0.74  -  Retention Column in Skill Matrix
+Audit review eligibility, candidate preview, opt-in review practice, evidence recording, import/export, copy safety, responsive behaviour, Arabic/LTR, and documentation before any stronger durability claims.
 
-Add retention as a visible dimension.
+### v0.76  -  B1 Content Metadata Repair / Review Coverage Pass
 
-### v0.75  -  Local Progress Export / Import
-
-Preserve learner progress between devices/builds where practical.
-
-### v0.76  -  Progress Data Integrity Checks
-
-Prevent broken imports from corrupting progress.
+Completed: added read-time B1 metadata review-coverage audit/repair metadata, Dev Tools coverage summary, debug/tester metadata output, and derived review candidate metadata while preserving content banks, scoring, storage keys, evidence semantics, production self-marking, and B1-only scope.
 
 ### v0.77  -  Learner-Readable Progress Export
 
-Optional but valuable.
-
-Could support:
-
-```txt
-ChatGPT tutoring
-teacher review
-self-reflection
-debugging
-```
+Completed: added an optional learner-readable Markdown progress summary for self-reflection, tutor handoff, and debugging while preserving existing JSON export/import compatibility and avoiding raw localStorage, typed answers, broad percentages, and unsupported mastery/readiness claims.
 
 ### v0.78  -  Durability QA
 
-Check that durability claims are supported by delayed attempts.
+Completed: added internal durability QA audit output for timestamp coverage, delayed attempt context, review-practice evidence, claim safety, learner-readable export caution, and blockers before stronger labels. Scheduler, due/overdue UI, Leitner review, and learner-facing durability/readiness states remain inactive.
 
 ### v0.79  -  Stabilise B1 Review System
 
-Deliverable:
-
-```txt
-B1 progress includes memory over time.
-```
+Completed: added review-system stability audit output for optional Review Practice visibility, empty state, evidence context, confidence-update policy, duplicate checks, and export/import preservation while keeping review optional, existing-item-only, non-scheduled, and non-mastery.
 
 ---
 
@@ -1182,7 +1252,15 @@ Make B1 broad enough and coherent enough to be a real product spine.
 
 ### v0.80  -  B1 Coverage Audit
 
-Audit B1 content against planned skill clusters.
+Completed: added a read-time item-count and metadata coverage audit for planned B1 skill clusters, including coverage categories, priority gaps, self-marked/diagnostic/review limitations, and Dev Tools/debug/tester exposure. No content banks, scoring, storage, routes, or evidence records changed.
+
+### v0.80.1  -  Live / Real Device / Screenshot Harness Stabilisation
+
+Completed: stabilised the local screenshot/QA harness with exact named screenshot assertions, documented supplied v0.80 screenshot/UX audit inputs, added a real-device/manual QA checklist, and recorded the live deployment verification limit. No learner-facing learning semantics, content banks, scoring, storage, routes, or evidence records changed.
+
+### v0.80.2  -  Multiple-Choice Choice Shuffling Safety
+
+Completed: added render-time shuffling for learner-facing B1 multiple-choice options, stable active-item choice order, correctness by stable choice identity/canonical answer value, additive diagnostic choice-order metadata, and a focused Edge/CDP QA harness. Case Trainer article buttons, content banks, scoring, storage keys, evidence semantics, production self-marking, and static deployment remain unchanged.
 
 ### v0.81  -  Cases and Articles Completion Pass
 
@@ -1476,7 +1554,7 @@ Do not assume v1.0 at any arbitrary milestone.
 
 # 21. IMMEDIATE NEXT STEP
 
-The next appropriate step is v0.61 - Error Pattern QA / Weakness Repair Preparation, unless QA finds a blocking recommendation, contrast-task, repair-mode, production-tracking, support visibility, support-level, Skill Matrix, task-depth, confidence-as-next, tester-ready UX, report-copy, scroll/exit, diagnostic pre-start, Learning Map, debug/preview, storage, or export/import regression.
+The next appropriate step is v0.81 - Cases and Articles Completion Pass, unless QA finds a blocking B1 coverage audit, review-system stability, durability QA, learner-readable export, metadata coverage, opt-in-review-practice, review-candidate-preview, review-eligibility, durability-readiness, diagnostic repair, recommendation, connector diagnostic, targeted repair, Skill Matrix, Learning Map, debug/preview, storage, or export/import regression.
 
 v0.40 added the first Progress Evidence Model and v0.40.1 added lightweight confidence/guess capture on top of that evidence model.
 

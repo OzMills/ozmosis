@@ -1,3 +1,265 @@
+## v0.80.2 - Multiple-Choice Choice Shuffling Safety
+
+- Added render-time shuffling for learner-facing B1 multiple-choice options so authored A/B/C order no longer creates answer-position bias.
+- Correctness is resolved from the selected choice value or stable choice identity rather than displayed position.
+- The displayed order remains stable for the active question and does not reshuffle after answer submission, feedback, confidence selection, or active-item re-render.
+- Added additive diagnostic metadata for choice attempts, including authored/displayed choice order and selected/correct choice text/id, while preserving existing evidence fields.
+- Added a focused Edge/CDP choice-shuffle QA harness covering string choices, future object-choice shapes, correct/wrong shuffled selections, confidence stability, route coverage, responsive choice rendering, Arabic/LTR, and export/import tolerance.
+- Preserved scoring, evidence semantics, storage keys, export/import compatibility, B1-only scope, production self-marking, Case Trainer article buttons, content banks, route inventory, static GitHub Pages deployment, and dependency-free operation.
+- Added QA documentation at `docs/qa/v0.80.2_mc_choice_shuffle_safety.md`.
+
+## v0.80.1 - Live / Real Device / Screenshot Harness Stabilisation
+
+- Stabilised the local Edge/CDP screenshot QA harness with an exact named screenshot manifest for first-run, Home, Menu, Settings, practice, Diagnostic, route hubs, production cards, Case Trainer, Learning Map, Skill Matrix, review practice, learner-readable export, B1 coverage audit, Dev Tools, Tester Notes, Arabic/LTR, desktop, and short-laptop states.
+- Added screenshot-manifest assertions so missing required states fail the gate instead of silently producing partial screenshot packs.
+- Added a real-device/manual QA checklist covering iOS Safari, Android Chrome, desktop Chrome/Edge, live GitHub Pages, first-run boot, localStorage persistence, export/import, keyboard input, soft keyboard coverage, safe-area behaviour, and Arabic support with German LTR.
+- Documented the supplied v0.80 UX audit and screenshot/contact-sheet findings as validation inputs for the stabilisation pass.
+- Preserved content banks, scoring, evidence semantics, confidence values, storage keys, export/import compatibility, route inventory, B1-only scope, review practice, targeted repair behaviour, and production self-marking.
+- Added QA documentation at `docs/qa/v0.80.1_live_device_screenshot_qa.md`.
+
+## v0.80 - B1 Coverage Audit
+
+- Added a read-time B1 coverage audit for the planned B1 skill spine, including cases/articles, pronoun case, prepositions, word order, connector families, repair, transformation, contrast, controlled production, Redemittel, Wortschatz, and workplace/practical German clusters.
+- Added coverage categories for Covered enough for now, Present but thin, Metadata too weak to judge, Missing / future bank needed, Self-marked only, Diagnostic only, and Review coverage limited.
+- Exposed the audit in Dev Tools, debug snapshots, and tester report summaries as an item-count/metadata audit only, not learner progress, mastery, readiness, scoring, or review scheduling.
+- Preserved content banks, item IDs, answers, scoring, confidence values, evidence semantics, storage keys, export/import compatibility, route inventory, B1-only scope, review practice, targeted repair behaviour, and production self-marking.
+- Added QA documentation at `docs/qa/v0.80_b1_coverage_audit.md`.
+
+## v0.79 - Stabilise B1 Review System
+
+- Added a Dev Tools/debug review-system stability audit for optional Review Practice visibility, empty state, evidence context, confidence-update policy, duplicate checks, and export/import preservation.
+- Confirmed Review Practice remains optional, existing-item-only, auto-graded only where eligibility permits, non-scheduled, and non-mastery.
+- Preserved review empty-state copy, Home/Menu/Learning Map actionable visibility, additive review context metadata, and existing JSON export/import compatibility.
+- Preserved scoring, evidence semantics, confidence values, storage keys, content banks, B1-only scope, learner-readable export, durability QA, targeted repair behaviour, and production self-marking.
+- Added QA documentation at `docs/qa/v0.79_stabilise_b1_review_system.md`.
+
+## v0.78 - Durability QA
+
+- Added an internal Dev Tools durability QA audit for timestamp coverage, delayed attempt context, review-practice evidence, claim safety, learner-readable export caution, and blockers before stronger labels.
+- Exposed durability QA metadata in debug snapshots and tester report summaries.
+- Kept scheduler, due/overdue UI, Leitner review activation, learner-facing durability states, mastery claims, and B1-readiness claims inactive.
+- Preserved scoring, evidence semantics, confidence values, storage keys, export/import compatibility, content banks, B1-only scope, optional Review Practice, targeted repair behaviour, and production self-marking.
+- Added QA documentation at `docs/qa/v0.78_durability_qa.md`.
+
+## v0.77 - Learner-Readable Progress Export
+
+- Added an optional learner-readable Markdown progress summary for self-reflection, tutor handoff, and debugging.
+- Included app version, export time, current focus, recent practice context, skill overview, task-depth evidence summary, optional review-practice status, production self-marking limits, suggested next practice, limitations, and a safe tutor note.
+- Added copy and download actions in Settings/Data while preserving the existing JSON export/import buttons and compatibility.
+- Avoided raw localStorage dumps, private typed-answer exposure, broad completion percentages, and mastery/durability/B1-readiness claims.
+- Preserved scoring, evidence semantics, confidence values, storage keys, export/import compatibility, content banks, B1-only scope, review practice, targeted repair behaviour, and production self-marking.
+- Added QA documentation at `docs/qa/v0.77_learner_readable_progress_export.md`.
+
+## v0.76 - B1 Content Metadata Repair / Review Coverage Pass
+
+- Added a read-time B1 metadata review-coverage audit for item IDs, level/CEFR, task type/depth, skill tags, grammar focus, difficulty, error categories, review group, target ID, variant family, contrast/repair group, support policy, answer shape, and production self-marking metadata.
+- Added derived metadata coverage for review candidate previews where safe, including metadata provenance and limitations, without rewriting content bank files.
+- Added a Dev Tools metadata coverage panel plus debug snapshot/tester report metadata coverage output.
+- Kept self-marked production excluded from auto-graded review coverage and preserved review-practice caution.
+- Preserved item IDs, answers, scoring, confidence values, evidence semantics, storage keys, export/import compatibility, content banks, B1-only scope, route inventory, targeted repair behaviour, and production self-marking.
+- Added QA documentation at `docs/qa/v0.76_b1_content_metadata_review_coverage.md`.
+
+## v0.75.1 - Holistic UX Redesign / Access Hierarchy / Visual System Pass
+
+- Reworked Home into a calmer tutor-style start screen with one dominant “What should I do now?” action, a learner-readable reason disclosure, a dedicated Today’s B1 Sprint secondary action, practice/progress/production groups, Settings, and collapsed Advanced / QA access.
+- Reworked the menu into Continue, Practice, Progress, Settings, and Advanced / QA groups, including a routeable Recommended next shortcut and Review Practice only when actionable.
+- Refined Learning Map into a summary-first layout with a desktop lead grid, cautious review visibility, collapsed evidence details, and less visual weight on technical evidence surfaces.
+- Consolidated the dark neon visual system with calmer borders, reduced all-caps pressure, more intentional desktop layouts, short-height laptop adjustments, and clearer Settings/Advanced separation.
+- Added a v0.75.1 screenshot/visual QA harness for named states while preserving static deployment and local-only browser validation.
+- Preserved scoring, evidence semantics, confidence values, storage keys, export/import compatibility, content banks, B1-only scope, review-practice semantics, targeted repair behaviour, Case Trainer, and production self-marking.
+- Added QA documentation at `docs/qa/v0.75.1_holistic_ux_redesign_access_hierarchy.md`.
+
+## v0.75 - Review/Durability QA Stabilisation
+
+- Stabilised the review/durability foundation after v0.70-v0.74 by auditing review readiness, eligibility, candidate preview, opt-in practice, learner-facing copy, debug/tester output, import/export behaviour, responsive behaviour, and documentation hygiene.
+- Clarified tester notes and Dev Tools review copy so Review practice is described as optional older-item checking, not a schedule, due/overdue state, mastery, readiness, or durability label.
+- Preserved the v0.74 Home/Menu/Learning Map review integration and the v0.73 opt-in Review Practice evidence path.
+- Preserved scoring, evidence semantics, additive review context metadata, storage keys, export/import compatibility, content banks, B1-only scope, targeted repair behaviour, and production self-marking.
+- Added QA documentation at `docs/qa/v0.75_review_durability_qa_stabilisation.md`.
+
+## v0.74 - Review UX Integration v1
+
+- Integrated opt-in Review Practice into learner-facing Home, Menu, and Learning Map surfaces only when older auto-graded review candidates are available.
+- Added cautious Home and Learning Map copy: review checks older items again and is extra practice, not a mastery or durability claim.
+- Kept Review Practice optional and existing-item-only; no scheduler, due/overdue learner copy, Leitner activation, streak, reminder, generated content, or review percentage was added.
+- Preserved scoring, evidence semantics, additive review context metadata, storage keys, export/import compatibility, content banks, B1-only scope, targeted repair behaviour, and production self-marking.
+- Added QA documentation at `docs/qa/v0.74_review_ux_integration_v1.md`.
+
+## v0.73 - Opt-in Review Practice v1
+
+- Added a narrow opt-in Review Practice route startable from Dev Tools using preview-ready existing items only.
+- Added normal evidence recording with additive review context metadata: `reviewContext`, review candidate reason, review delay bucket, and days since last attempt where safely known.
+- Added honest empty and completion copy: review checks older items again and does not prove mastery.
+- Kept review cautious: no scheduler, Leitner activation, due/overdue learner copy, durability labels, Home recommendation, generated content, storage migration, or scoring change was added.
+- Preserved scoring, evidence semantics, storage keys, export/import compatibility, content banks, B1-only scope, targeted repair behaviour, and production self-marking.
+- Added QA documentation at `docs/qa/v0.73_opt_in_review_practice_v1.md`.
+
+## v0.72 - Review Candidate Preview v1
+
+- Added a Dev Tools-only no-save review candidate preview using v0.71 eligibility rules.
+- Preview rows include safe item labels, task/depth context, candidate quality, route-fit checks, candidate reasons, exclusion reasons, content availability, and no-save limitations.
+- Kept preview QA/debug-facing only: no learner-facing review route, Home recommendation, scheduler, due/overdue copy, durability label, storage mutation, or evidence recording was added.
+- Preserved scoring, evidence semantics, storage keys, export/import compatibility, content banks, B1-only scope, targeted repair behaviour, and production self-marking.
+- Added QA documentation at `docs/qa/v0.72_review_candidate_preview_v1.md`.
+
+## v0.71 - Review Eligibility Rules v1
+
+- Added conservative internal review eligibility rules for future review candidates.
+- Added a Dev Tools-only eligibility summary with eligible/excluded counts, interval buckets, exclusion reasons, and no-save limitations.
+- Excluded missing/unmapped items, missing timestamps, diagnostic-only records, self-marked production-only records, original non-auto-graded records, same-session attempts, and unsupported production-card tasks from eligibility.
+- Kept eligibility read-only and QA/debug-facing: no learner-facing review route, scheduler, due/overdue copy, durability labels, mastery claims, storage migration, or scoring change was added.
+- Preserved scoring, evidence semantics, storage keys, export/import compatibility, content banks, B1-only scope, targeted repair behaviour, and production self-marking.
+- Added QA documentation at `docs/qa/v0.71_review_eligibility_rules_v1.md`.
+
+## v0.70 - Durability / Review Design Gate
+
+- Added QA-only durability/review readiness analysis for current B1 evidence.
+- Exposed a Dev Tools-only readiness snapshot plus debug snapshot and tester-report metadata.
+- Summarised timestamp coverage, itemId/content mapping, repeated item attempts, possible delayed attempt pairs, task-depth spread, auto-graded versus self-marked/diagnostic evidence, confidence coverage, support-level coverage, and blockers before active review.
+- Kept review inactive: no review route, scheduler, Leitner activation, due/overdue learner copy, learner-facing durability states, mastery claims, or B1-readiness claims were added.
+- Preserved scoring, evidence semantics, storage keys, export/import compatibility, content banks, B1-only scope, targeted repair behaviour, and production self-marking.
+- Added QA documentation at `docs/qa/v0.70_durability_review_design_gate.md`.
+
+## v0.69.2 - v0.69.1 Completion Fix
+
+- Fixed remaining v0.69.1 UX/access-hierarchy issues around true boot routing, static support-language ownership, first-run language labels, docs hygiene, QA route coverage, and browser-profile artefact cleanup.
+- Added a tiny boot shell so Case Trainer setup or other functional routes are not visible before app routing completes.
+- Moved the visible global support-language selector into Settings in static markup instead of moving it from Case Trainer at runtime.
+- Corrected first-run support-language labels to English, Türkçe, العربية, 中文, and Українська.
+- Removed generated Edge/CDP profile artefact directories and expanded `.gitignore` coverage for browser profile debris.
+- Preserved scoring, evidence semantics, storage keys, export/import compatibility, content banks, B1-only scope, targeted repair behaviour, and production self-marking.
+- Added QA documentation at `docs/qa/v0.69.2_v0691_completion_fix.md`.
+
+## v0.69.1 - Holistic UX Legibility and Access Hierarchy Pass
+
+- Added first-run support-language selection using the existing Settings/localStorage path; German learning content remains LTR.
+- Moved global language/support/data settings into a Settings route and kept the menu as navigation-only.
+- Rebalanced Home hierarchy around recommended next action, practice, production, progress, and system/advanced access without adding routes.
+- Simplified Learning Map default structure so recommendation, repair, possible patterns, and skill overview appear before collapsed evidence details and matrix output.
+- Clarified targeted repair presentation as an empowering practice option while keeping queue previews behind details and preserving existing item-only repair.
+- Clarified planned-route placeholders with current available alternatives, including Redemittel production cards.
+- Kept production cards self-marked and clarified the task instruction without changing evidence semantics.
+- Preserved scoring, evidence semantics, storage keys, export/import compatibility, content banks, route composition, Today's B1 Sprint composition, and B1-only scope.
+- Added QA documentation at `docs/qa/v0.69.1_holistic_ux_legibility_access_hierarchy.md`.
+
+## v0.69 - Stabilise Diagnostic Repair
+
+- Stabilised the v0.60-v0.69 diagnostic repair band across possible patterns, recent error types, connector diagnostic cards, repair candidates, repair queue previews, targeted repair, Learning Map, Suggested Next Practice, and Dev Tools summaries.
+- Added a diagnostic repair stability summary to debug output, explicitly confirming no durability states, review scheduler, generated content, or B2 activation.
+- Kept learner-facing diagnostic/repair copy concise and conservative, with details behind Explain/Why where appropriate.
+- Preserved targeted repair completion copy so it never claims fixed, mastered, durable, or B1-ready outcomes.
+- Documented that v0.70 must be a separate Durability / Review Design Gate.
+- Preserved scoring, evidence semantics, storage keys, export/import compatibility, content banks, route composition, Today's B1 Sprint composition, and B1-only scope.
+- Added QA documentation at `docs/qa/v0.69_diagnostic_repair_stabilisation.md`.
+
+## v0.68 - Diagnostic QA
+
+- Ran a diagnostic QA pass across possible patterns, recent error types, connector diagnostic cards, repair candidates, repair queues, targeted repair, and recommendation route hints.
+- Suppressed scaffolded-only repeated evidence from learner-facing possible-pattern and connector diagnostic cards.
+- Tightened learner-facing copy to avoid diagnosis-like or trouble-framed language.
+- Added diagnostic/repair QA summary metadata to Dev Tools/debug snapshot, including threshold summaries, route-hint validation, suppression counts, and privacy/scoring notes.
+- Preserved v0.66 targeted repair safeguards and v0.67 connector diagnostic cards while keeping default Learning Map copy compact.
+- Preserved scoring, evidence semantics, storage keys, export/import compatibility, content banks, route composition, Today's B1 Sprint composition, and B1-only scope.
+- Added QA documentation at `docs/qa/v0.68_diagnostic_qa.md`.
+
+## v0.67 - Connector Diagnostic Cards
+
+- Added concise Learning Map connector diagnostic cards for repeated connector-related evidence where current metadata supports a cautious signal.
+- Covered connector meaning, connector word order, and connector position/verb-placement families while deferring register mismatch until metadata is explicit enough.
+- Suppressed cards for no evidence, one wrong answer, thin evidence, diagnostic-only evidence, and self-marked production-only evidence.
+- Kept connector card details behind Explain, with existing-route hints only.
+- Exposed connector diagnostic metadata in Dev Tools/debug snapshot without storing pattern data or dumping learner answer text.
+- Preserved scoring, evidence semantics, storage keys, export/import compatibility, content banks, route composition, Today's B1 Sprint composition, targeted repair safeguards, and B1-only scope.
+- Added QA documentation at `docs/qa/v0.67_connector_diagnostic_cards.md`.
+
+## v0.66 - Targeted Repair QA / Route Expansion
+
+- Audited and hardened targeted repair practice against no-queue, low-quality queue, duplicate-evidence, confidence, continue-without-confidence, exit, completion-copy, mobile, keyboard, Arabic/LTR, export/import, and content-bank risks.
+- Added stricter queue-quality metadata so targeted repair starts only when routeable candidates have enough relevant existing items, exact route fit, and safe metadata.
+- Improved Learning Map and Dev Tools repair queue copy with concise route-fit language, matching-item counts, and item-selection reasons.
+- Audited word order, connector meaning/syntax, case/article, repair accuracy, support/confidence, and capitalisation/orthography routeability; support/confidence remains context-only rather than a targeted repair route.
+- Preserved scoring, evidence semantics, storage keys, export/import compatibility, content banks, route composition, Today's B1 Sprint composition, and B1-only scope.
+- Added QA documentation at `docs/qa/v0.66_targeted_repair_qa_route_expansion.md`.
+
+## v0.65 - Targeted Repair Practice v1
+
+- Added a narrow learner-facing targeted repair practice path for high-quality repair queues using existing items only.
+- Added cautious Learning Map and Suggested Next Practice entry points when a queue is routeable.
+- Records normal item evidence with additive repair queue metadata, preserves confidence flow, and avoids duplicate evidence.
+- Keeps completion copy concise and non-mastery.
+- Preserved scoring semantics, storage keys, export/import compatibility, content banks, Today's B1 Sprint composition, and B1-only scope.
+- Added QA documentation at `docs/qa/v0.65_targeted_repair_practice_v1.md`.
+
+## v0.64 - Weakness Repair Queue Scaffold
+
+- Added an internal/no-save repair queue scaffold that maps routeable repair candidates to existing matching items.
+- Added honest fallback handling for candidates that are not routeable or do not have enough matching existing items.
+- Added Dev Tools repair queue preview and Learning Map preview details without starting learner-facing targeted repair practice.
+- Preserved scoring, storage keys, export/import compatibility, content banks, route composition, Today's B1 Sprint composition, and B1-only scope.
+- Added QA documentation at `docs/qa/v0.64_weakness_repair_queue_scaffold.md`.
+
+## v0.63 - Weakness Repair Design Gate
+
+- Added a conservative repair-candidate design gate that classifies repeated possible-pattern/error-type signals as watch, candidate, routeable, or not ready.
+- Added existing-route fit, matching-item count, and missing-metadata handling so repairable signals stay separate from thin or vague evidence.
+- Exposed cautious Repair candidates information in the Learning Map and debug/tester output without creating a learner-facing repair queue or targeted repair session.
+- Preserved scoring, storage keys, export/import compatibility, content banks, route composition, Today's B1 Sprint composition, and B1-only scope.
+- Added QA documentation at `docs/qa/v0.63_weakness_repair_design_gate.md`.
+
+## v0.62 - Error-Type Summaries v1
+
+- Added concise learner-facing Recent error type summaries derived from existing evidence and QA-hardened possible-pattern signals.
+- Kept summaries cautious, thresholded, and separate from diagnosis, scoring, mastery, and repair scheduling.
+- Added Explain/details reveals and existing-route hints where safe.
+- Integrated repeated correct-with-note capitalisation evidence into a capitalisation summary only after repeated notes.
+- Preserved scoring, storage keys, export/import compatibility, content banks, route composition, Today's B1 Sprint composition, and B1-only scope.
+- Added QA documentation at `docs/qa/v0.62_error_type_summaries_v1.md`.
+
+## v0.61 - Error Pattern QA / Weakness Repair Preparation
+
+- Audited and hardened v0.60 possible-pattern signals against thin evidence, diagnostic-only evidence, scaffolded support, self-marked production, and overconfident copy.
+- Added conservative pattern-signal quality, limitation, debug-audit, and weakness-repair readiness metadata.
+- Kept the Learning Map possible-pattern UI compact, with fuller reasoning behind details.
+- Added internal weakness-repair readiness metadata without implementing a repair queue, scheduler, or new route.
+- Preserved scoring, storage keys, export/import compatibility, content banks, route composition, Today's B1 Sprint composition, and B1-only scope.
+- Added QA documentation at `docs/qa/v0.61_error_pattern_qa_weakness_repair_preparation.md`.
+
+## v0.60.1 - Repair Feedback Precision and Correct-with-Note
+
+- Improved repair feedback so the smallest useful correction is shown first.
+- Added correct-with-note handling for target-correct answers with minor capitalisation issues where safe.
+- Added concise capitalisation notes for German nouns and sentence-initial capitalisation.
+- Moved longer repair rules and contrast explanations behind an Explain reveal where safe.
+- Replaced misleading English Correct labels with Meaning language where applicable.
+- Preserved storage keys, confidence values, support-level semantics, task-depth semantics, production self-marking, diagnostic semantics, export/import compatibility, content banks, route composition, Today's B1 Sprint composition, and B1-only scope.
+- Added QA documentation at `docs/qa/v0.60.1_repair_feedback_precision.md`.
+
+## v0.60 - Error Pattern Detection v1
+
+- Added a conservative rules-based Error Pattern Detection v1 layer using existing evidence and metadata where sufficient repeated evidence exists.
+- Introduced cautious possible-pattern signals for supported connector, word-order, case/article, repair, support, and confidence contexts where metadata supports them.
+- Kept pattern signals thresholded, evidence-limited, derived at read/render time, and separate from progress states, scoring, storage, and mastery claims.
+- Preserved production self-marking limits and did not infer correctness or error patterns from self-marked production alone.
+- Preserved scoring, evidence semantics, storage keys, export/import compatibility, content banks, route composition, Today's B1 Sprint composition, and B1-only scope.
+- Added QA documentation at `docs/qa/v0.60_error_pattern_detection_v1.md`.
+
+## v0.59 - Stabilise Skill Matrix
+
+- Stabilised the Learning Map, Skill Matrix, and Suggested Next Practice foundation before error-pattern detection.
+- Aligned matrix QA metadata, recommendation summaries, debug snapshot output, tester report summary output, documentation, and export metadata around the current conservative evidence model.
+- Confirmed v0.57.2 flow/navigation/mobile UX corrections remained intact.
+- Preserved scoring, evidence semantics, storage keys, export/import compatibility, content banks, route composition, Today's B1 Sprint composition, and B1-only scope.
+- Added QA documentation at `docs/qa/v0.59_skill_matrix_stabilisation.md`.
+
+## v0.58 - Skill Matrix QA
+
+- Audited the Skill Matrix for evidence-inflation risks from tiny samples, scaffolded evidence, diagnostic records, self-marked production, easy task types, derived metadata, and unknown/legacy task depths.
+- Added additive matrix QA metadata for sample size, evidence quality, support mix, inflation risks, and cell limitations.
+- Tightened Skill Matrix state handling so thin, diagnostic-only, self-marked-only, derived-only, scaffolded-majority, and unknown/legacy evidence cannot produce overconfident learner-facing states.
+- Preserved the v0.57.2 mobile matrix card presentation while ensuring cells and cards show compact limitation labels.
+- Preserved scoring, evidence semantics, storage keys, export/import compatibility, content banks, route composition, Today's B1 Sprint composition, and B1-only scope.
+- Added QA documentation at `docs/qa/v0.58_skill_matrix_qa.md`.
+
 ## v0.57.2 - Flow, Navigation, and Mobile UX Corrections
 
 - Corrected post-v0.57.1 mobile navigation and flow issues found in live screenshot review.

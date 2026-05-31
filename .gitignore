@@ -3,6 +3,9 @@ screenshots/
 test-results/
 playwright-report/
 _development-files/
+_development-files/*cdp-profile*/
+_development-files/*browser-profile*/
+_development-files/*profile*/
 Kasuskonsole Versions/
 repo-all-files.txt
 dirlist.txt
