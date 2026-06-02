@@ -7911,6 +7911,7 @@ body.b1Mode .promptWord {
     <h2 id="grammarHubTitle">Grammar</h2>
     <nav class="homeNav" aria-label="Grammar tools">
       <button class="homeNavButton" id="grammarSeedBtn" type="button"><span class="homeNavBadge">Mixed practice</span><span class="homeNavMain"><span class="homeNavTitle">Mixed Grammar</span><span class="homeNavSub">Broad B1 grammar practice</span></span></button>
+      <button class="homeNavButton" id="grammarB101Btn" type="button"><span class="homeNavBadge">Module practice</span><span class="homeNavMain"><span class="homeNavTitle">B1-01 Getting Started</span><span class="homeNavSub">Entry sentences · course words · self-marked production</span></span></button>
       <button class="homeNavButton" id="connectorAllBtn" type="button"><span class="homeNavBadge">Topic drill</span><span class="homeNavMain"><span class="homeNavTitle">Connectors</span><span class="homeNavSub">weil · denn · deshalb · obwohl · trotzdem</span></span></button>
       <button class="homeNavButton" id="connectorReasonBtn" type="button"><span class="homeNavBadge">Topic drill</span><span class="homeNavMain"><span class="homeNavTitle">Reason</span><span class="homeNavSub">weil · denn · deshalb</span></span></button>
       <button class="homeNavButton" id="connectorContrastBtn" type="button"><span class="homeNavBadge">Contrast</span><span class="homeNavMain"><span class="homeNavTitle">Contrast</span><span class="homeNavSub">obwohl · trotzdem</span></span></button>
@@ -8517,6 +8518,7 @@ body.b1Mode .promptWord {
 <script src="content/b1-connectors.js"></script>
 <script src="content/b1-redemittel.js"></script>
 <script src="content/b1-wortschatz.js"></script>
+<script src="content/b1-m01-variant-families.js"></script>
 <script>
 (function () {
   "use strict";
@@ -8526,8 +8528,8 @@ body.b1Mode .promptWord {
   var B1_STORAGE_KEY = "ozmosis_b1_sprint_progress_v1";
   var B1_EVIDENCE_STORAGE_KEY = "ozmosis_b1_progress_evidence_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.80.2";
-  var OZMOSIS_EXPORT_VERSION = "v0.80.2-mc-choice-shuffle-safety";
+  var OZMOSIS_APP_VERSION = "v0.80.4";
+  var OZMOSIS_EXPORT_VERSION = "v0.80.4-b1-01-extension-variant-families";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -9185,6 +9187,10 @@ body.b1Mode .promptWord {
     });
   }
   const B1_REDEMITTEL_ITEMS = (window.OZMOSIS_CONTENT && Array.isArray(window.OZMOSIS_CONTENT.b1Redemittel)) ? window.OZMOSIS_CONTENT.b1Redemittel : [];
+  const B1_M01_VARIANT_FAMILY_ITEMS = (window.OZMOSIS_CONTENT && Array.isArray(window.OZMOSIS_CONTENT.b1M01VariantFamilies)) ? window.OZMOSIS_CONTENT.b1M01VariantFamilies : [];
+  const B1_M01_SINGLE_CANONICAL_ITEMS = (window.OZMOSIS_CONTENT && Array.isArray(window.OZMOSIS_CONTENT.b1M01SingleCanonical)) ? window.OZMOSIS_CONTENT.b1M01SingleCanonical : [];
+  const B1_M01_NOTICE_ITEMS = (window.OZMOSIS_CONTENT && Array.isArray(window.OZMOSIS_CONTENT.b1M01Notices)) ? window.OZMOSIS_CONTENT.b1M01Notices : [];
+  const B1_M01_ITEMS = B1_M01_VARIANT_FAMILY_ITEMS.concat(B1_M01_SINGLE_CANONICAL_ITEMS);
   const B1_CONTENT_REGISTRY = {
     core:{
       key:"core",
@@ -9218,6 +9224,17 @@ body.b1Mode .promptWord {
       source:"content/b1-wortschatz.js",
       includeInDaily:true,
       excludeProductionFromAutoGradedDaily:true
+    },
+    b1_m01:{
+      key:"b1_m01",
+      label:"B1-01 Getting Started",
+      items:B1_M01_ITEMS,
+      sourceItems:B1_M01_VARIANT_FAMILY_ITEMS,
+      notices:B1_M01_NOTICE_ITEMS,
+      source:"content/b1-m01-variant-families.js",
+      includeInDaily:false,
+      includeInDiagnostic:false,
+      excludeProductionFromAutoGradedDaily:true
     }
   };
   function b1RegistryBank(key) {
@@ -9239,14 +9256,20 @@ body.b1Mode .promptWord {
     return b1RegistryBanks().map(function(bank){
       var items = Array.isArray(bank.items) ? bank.items : [];
       var sourceItems = Array.isArray(bank.sourceItems) ? bank.sourceItems : null;
+      var notices = Array.isArray(bank.notices) ? bank.notices : [];
+      var variantFamilies = items.filter(function(item){ return item && item.itemType === "variant_family"; });
       return {
         key:bank.key,
         label:bank.label,
         source:bank.source,
         includeInDaily:!!bank.includeInDaily,
+        includeInDiagnostic:bank.includeInDiagnostic !== false,
         excludeProductionFromAutoGradedDaily:!!bank.excludeProductionFromAutoGradedDaily,
         itemCount:items.length,
         sourceItemCount:sourceItems ? sourceItems.length : null,
+        noticeCount:notices.length || null,
+        variantFamilyCount:variantFamilies.length || null,
+        variantCount:variantFamilies.reduce(function(sum, item){ return sum + (Array.isArray(item.variants) ? item.variants.length : 0); }, 0) || null,
         productionCount:items.filter(function(item){ return item && item.itemType === "production_card"; }).length
       };
     });
@@ -13807,6 +13830,28 @@ body.b1Mode .promptWord {
     for (var i = 0; i < pool.length; i += 1) {
       if (pool[i] && pool[i].id === id) return pool[i];
     }
+    var wanted = String(id || "");
+    var families = b1RegistryItems("b1_m01").filter(function(item){ return item && item.itemType === "variant_family"; });
+    for (var f = 0; f < families.length; f += 1) {
+      var family = families[f];
+      var familySourceIds = Array.isArray(family.sourceItemIds) ? family.sourceItemIds : [];
+      if (familySourceIds.indexOf(wanted) !== -1) {
+        var sourceMatch = cloneB1Item(family);
+        sourceMatch._legacySourceItemId = wanted;
+        return sourceMatch;
+      }
+      var variants = Array.isArray(family.variants) ? family.variants : [];
+      for (var v = 0; v < variants.length; v += 1) {
+        var variant = variants[v] || {};
+        var variantSourceIds = Array.isArray(variant.sourceItemIds) ? variant.sourceItemIds : [];
+        if (variant.variantId === wanted || variant.id === wanted || variantSourceIds.indexOf(wanted) !== -1) {
+          var variantMatch = cloneB1Item(family);
+          variantMatch._requestedVariantId = variant.variantId || variant.id || "";
+          if (variantSourceIds.indexOf(wanted) !== -1) variantMatch._legacySourceItemId = wanted;
+          return variantMatch;
+        }
+      }
+    }
     return null;
   }
   function b1UniqueIds(ids) {
@@ -14302,6 +14347,10 @@ body.b1Mode .promptWord {
     if (el("homeScreen")) el("homeScreen").hidden = true;
     if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
     if (el("grammarHub")) el("grammarHub").hidden = false;
+    if (el("grammarB101Btn") && !el("grammarB101Btn").getAttribute("data-bound")) {
+      el("grammarB101Btn").setAttribute("data-bound", "true");
+      el("grammarB101Btn").addEventListener("click", function(){ startB1M01Round("mixed"); }, false);
+    }
     if (el("redemittelHub")) el("redemittelHub").hidden = true;
     if (el("startScreen")) el("startScreen").hidden = true;
     setLearningMapVisible(false);
@@ -14600,6 +14649,7 @@ body.b1Mode .promptWord {
     return String(item && (item.itemType || item.type) || "other");
   }
   function b1EvidenceTaskDepth(item) {
+    if (item && item.taskDepth) return b1CanonicalTaskDepth(item.taskDepth);
     var type = b1EvidenceTaskType(item);
     var tags = (item && Array.isArray(item.tags)) ? item.tags.join(" ").toLowerCase() : "";
     if (type === "production_card") return b1CanonicalTaskDepth("controlled_production");
@@ -14682,6 +14732,7 @@ body.b1Mode .promptWord {
     if (bankKey === "connectors") add("connectors");
     else if (bankKey === "redemittel") add("redemittel");
     else if (bankKey === "wortschatz") add("wortschatz");
+    else if (bankKey === "b1_m01") add("b1_01");
     else if (bankKey === "core") add("b1_core");
     if (item && item.itemType === "word_order_cloze") add("word_order");
     if (item && item.itemType === "error_repair") add("repair");
@@ -14700,6 +14751,7 @@ body.b1Mode .promptWord {
     if (bankKey === "connectors") return "connectors";
     if (bankKey === "redemittel") return "redemittel";
     if (bankKey === "wortschatz") return "wortschatz";
+    if (bankKey === "b1_m01") return "b1_01";
     if (bankKey === "core") return "b1_core";
     return "unknown";
   }
@@ -14753,6 +14805,17 @@ body.b1Mode .promptWord {
     if (b1UsesInlineInput(item) || item.itemType === "error_repair") return "typed";
     return "unknown";
   }
+  function b1EvidenceHasSameSessionSibling(item, store) {
+    var group = item && item.siblingVariantGroup;
+    if (!group) return false;
+    var variantId = item && item.variantId;
+    var records = store && Array.isArray(store.records) ? store.records : [];
+    return records.some(function(record){
+      if (!record || record.sessionId !== B1_EVIDENCE_SESSION_ID) return false;
+      if (record.siblingVariantGroup !== group) return false;
+      return !variantId || record.variantId !== variantId || record.itemId === item.id;
+    });
+  }
   function appendB1EvidenceRecord(item, result, options) {
     if (!item || !item.id) return null;
     options = options || {};
@@ -14794,7 +14857,19 @@ body.b1Mode .promptWord {
       attemptContext:b1EvidenceAttemptContext(item, store, options),
       confidence:null,
       targetId:item.targetId || null,
+      variantFamilyId:item.variantFamilyId || item.parentVariantFamilyId || null,
       variantId:item.variantId || null,
+      siblingVariantGroup:item.siblingVariantGroup || null,
+      reviewGroup:item.reviewGroup || null,
+      familyType:item.familyType || null,
+      familyTarget:item.familyTarget || null,
+      sameSessionEvidenceCap:item.sameSessionEvidenceCap != null ? Number(item.sameSessionEvidenceCap) : null,
+      variantSelectionMode:item.variantSelectionMode || null,
+      isSiblingVariantAttempt:b1EvidenceHasSameSessionSibling(item, store),
+      supportPolicy:item.supportPolicy || item.supportPolicyDefault || null,
+      supportPresentation:item.supportPresentation || item.supportPresentationDefault || null,
+      evidenceType:item.evidenceType || item.familyEvidenceTypeDefault || null,
+      sourceTaskType:item.taskType || null,
       surfacePromptHash:b1EvidencePromptHash(b1EvidencePromptSurface(item)),
       errorCategory:item.itemType === "error_repair" ? b1RepairCategory(item, options.rawAnswer) : null,
       nearMissType:null,
@@ -17158,6 +17233,55 @@ body.b1Mode .promptWord {
     }
     return copy;
   }
+  function b1VariantFamilyVariants(item) {
+    return item && item.itemType === "variant_family" && Array.isArray(item.variants) ? item.variants.filter(function(variant){ return variant && variant.status === "active"; }) : [];
+  }
+  function b1VariantFamilyPickVariant(item, options) {
+    options = options || {};
+    var variants = b1VariantFamilyVariants(item);
+    if (!variants.length) return null;
+    var requested = String(options.requestedVariantId || item._requestedVariantId || "");
+    if (requested) {
+      for (var i = 0; i < variants.length; i += 1) {
+        if (variants[i].variantId === requested || variants[i].id === requested) return variants[i];
+      }
+    }
+    var seed = options.seed || [b1Runtime.roundSeed || "b1_m01", item.id || item.variantFamilyId || "family", b1AnsweredCount(), b1Runtime.queue.length].join("|");
+    var rand = seededRandom(seed);
+    return variants[Math.floor(rand() * variants.length)] || variants[0];
+  }
+  function b1ResolveVariantFamilyItem(item, options) {
+    if (!item || item.itemType !== "variant_family") return item;
+    var variant = b1VariantFamilyPickVariant(item, options);
+    if (!variant) return item;
+    var resolved = cloneB1Item(variant);
+    var familyId = item.variantFamilyId || item.id;
+    resolved.id = familyId;
+    resolved.parentItemId = familyId;
+    resolved.variantFamilyId = familyId;
+    resolved.variantId = variant.variantId || variant.id || "";
+    resolved.sourceVariantId = variant.id || variant.variantId || "";
+    resolved.familyType = item.familyType || variant.familyType || "";
+    resolved.familyTarget = item.familyTarget || variant.familyTarget || "";
+    resolved.familyEvidenceTypeDefault = item.familyEvidenceTypeDefault || "";
+    resolved.evidenceInterpretation = item.evidenceInterpretation || "";
+    resolved.sameSessionEvidenceCap = Number(item.sameSessionEvidenceCap || item.maxSameSessionEvidence || variant.sameSessionEvidenceCap || 1);
+    resolved.maxSameSessionEvidence = resolved.sameSessionEvidenceCap;
+    resolved.variantSelectionMode = item.variantSelectionMode || variant.variantSelectionMode || "static_family_attempt";
+    resolved.siblingVariantGroup = variant.siblingVariantGroup || item.siblingVariantGroup || "";
+    resolved.reviewGroup = variant.reviewGroup || item.reviewGroup || "";
+    resolved.sourceItemIds = b1EvidenceUnique((Array.isArray(item.sourceItemIds) ? item.sourceItemIds : []).concat(Array.isArray(variant.sourceItemIds) ? variant.sourceItemIds : []));
+    resolved.taskTypesSupported = Array.isArray(item.taskTypesSupported) ? item.taskTypesSupported.slice() : [];
+    resolved.taskDepthSupported = Array.isArray(item.taskDepthSupported) ? item.taskDepthSupported.slice() : [];
+    resolved._variantResolvedFromFamily = true;
+    resolved._variantFamilyRecordId = familyId;
+    resolved._variantFamilyLabel = item.familyTarget || item.label || "";
+    resolved._legacySourceItemId = item._legacySourceItemId || "";
+    resolved._requestedVariantId = item._requestedVariantId || "";
+    resolved._extraPractice = !!item._extraPractice;
+    resolved._diagnosticCategory = item._diagnosticCategory || "";
+    return resolved;
+  }
   function b1ItemIsNormalEligible(item) {
     return item && (item.status === "active" || item.status === "recognition");
   }
@@ -17176,6 +17300,7 @@ body.b1Mode .promptWord {
   }
   function b1ItemDeck(item) {
     if (!item) return "b1";
+    if (item.moduleKey === "b1-01" || item.source === "Ozmosis B1-01 Curated Variant Families v0.80.3" || item.source === "Ozmosis B1-01 retained single canonical items v0.80.3") return "b1_m01";
     if (item.source === "Ozmosis B1 Wortschatz Survival Set v1") return "wortschatz";
     if (item.source === "Ozmosis B1 Redemittel Survival Set v1") return "redemittel";
     if (String(item.itemType || "").indexOf("connector") !== -1 || item.source === "B1Work course notes + OZMOSIS B1 Connector Sprint v1") return "connector";
@@ -17373,6 +17498,28 @@ body.b1Mode .promptWord {
       return connectorFamilyFor(item) === family;
     });
   }
+  function b1M01Title(filter) {
+    if (filter === "production") return "B1-01 Production";
+    if (filter === "repair") return "B1-01 Repair";
+    return "B1-01 Getting Started";
+  }
+  function b1M01PoolFor(filter) {
+    filter = filter || "mixed";
+    return b1RegistryItems("b1_m01").filter(function(item){
+      if (!b1ItemIsNormalEligible(item)) return false;
+      if (filter === "production") {
+        if (item.itemType === "production_card") return true;
+        if (item.itemType === "variant_family") return b1VariantFamilyVariants(item).some(function(variant){ return variant.itemType === "production_card"; });
+        return false;
+      }
+      if (filter === "repair") {
+        if (item.itemType === "error_repair") return true;
+        if (item.itemType === "variant_family") return b1VariantFamilyVariants(item).some(function(variant){ return variant.itemType === "error_repair"; });
+        return false;
+      }
+      return true;
+    });
+  }
   function buildConnectorQueue(family) {
     var pool = b1ConnectorPoolFor(family);
     var production = pool.filter(function(item){ return item.itemType === "production_card"; });
@@ -17436,6 +17583,7 @@ body.b1Mode .promptWord {
   function b1DiagnosticEligibleItems(predicate, allowReview) {
     return b1RegistryPracticeItems().filter(function(item){
       if (!item || !item.id || item.status === "retired") return false;
+      if (item.diagnosticEligible === false || (b1RegistryBank(b1DiagnosticBankKey(item)) && b1RegistryBank(b1DiagnosticBankKey(item)).includeInDiagnostic === false)) return false;
       if (!allowReview && !b1ItemIsNormalEligible(item)) return false;
       if (allowReview && !(b1ItemIsNormalEligible(item) || item.status === "review")) return false;
       return !predicate || predicate(item);
@@ -17806,6 +17954,11 @@ body.b1Mode .promptWord {
   function b1CleanAnswer(value) {
     return String(value || "").trim().replace(/\s+/g, " ");
   }
+  function b1SurfaceAnswer(value) {
+    var text = String(value || "");
+    if (text.normalize) text = text.normalize("NFC");
+    return text.trim().replace(/\s+/g, " ").replace(/\s+([,.;:!?])/g, "$1");
+  }
   function b1CleanRepairSentence(value) {
     return b1CleanAnswer(value).replace(/\s+([,.;:!?])/g, "$1").replace(/[.!?]+$/g, "").trim();
   }
@@ -17829,9 +17982,17 @@ body.b1Mode .promptWord {
   }
   function b1TextAnswerMatches(item, raw) {
     var accepted = item && item.acceptedAnswers && item.acceptedAnswers.length ? item.acceptedAnswers : [item && item.answer];
+    if (item && item.strictSurfaceAnswer) {
+      var surfaceValue = b1SurfaceAnswer(raw);
+      return accepted.some(function(answer){ return surfaceValue === b1SurfaceAnswer(answer); });
+    }
     if (item && item.itemType === "error_repair") {
       var repairValue = normaliseGermanRepairAnswer(raw);
       return accepted.some(function(answer){ return repairValue === normaliseGermanRepairAnswer(answer); });
+    }
+    if (item && item.caseSensitiveAnswer) {
+      var exactValue = b1CleanAnswer(raw);
+      return accepted.some(function(answer){ return exactValue === b1CleanAnswer(answer); });
     }
     var value = b1CleanAnswer(raw).toLowerCase();
     return accepted.some(function(answer){ return value === b1CleanAnswer(answer).toLowerCase(); });
@@ -17986,6 +18147,24 @@ body.b1Mode .promptWord {
   }
   function compareRepairAnswer(item, rawAnswer) {
     if (!item || item.itemType !== "error_repair") return null;
+    if (item.strictSurfaceAnswer) {
+      var surfaceUser = b1SurfaceAnswer(rawAnswer);
+      var surfaceAccepted = (item.acceptedAnswers && item.acceptedAnswers.length ? item.acceptedAnswers : [item.answer]).map(function(answer){ return b1SurfaceAnswer(answer); }).filter(Boolean);
+      var surfaceExact = surfaceAccepted.filter(function(answer){ return surfaceUser === answer; })[0] || "";
+      var surfaceExpected = surfaceExact || surfaceAccepted[0] || b1SurfaceAnswer(item.answer || item.fullAnswer_de || "");
+      return {
+        expected:surfaceExpected,
+        displaySentence:surfaceExpected,
+        submitted:surfaceUser,
+        isExact:!!surfaceExact,
+        isCorrect:!!surfaceExact,
+        correctWithNote:false,
+        orthographyNote:false,
+        orthographyType:"",
+        capitalisationChanges:[],
+        capitalisationNote:""
+      };
+    }
     var user = normaliseGermanRepairAnswer(rawAnswer);
     var accepted = b1RepairAcceptedAnswers(item);
     var exact = accepted.filter(function(answer){ return user === answer; })[0] || "";
@@ -18353,6 +18532,56 @@ body.b1Mode .promptWord {
     setSettingsScreenVisible(false);
     nextB1Question();
   }
+  function startB1M01Round(filter) {
+    filter = filter || "mixed";
+    var pool = b1M01PoolFor(filter);
+    if (!pool.length) {
+      showGrammarHub();
+      return;
+    }
+    var round = buildB1Round({ deckKey:"b1_m01", filterKey:filter, items:pool, roundLength:10 });
+    var queue = round.queue;
+    b1Runtime.active = true;
+    b1Runtime.mode = "b1_m01";
+    b1Runtime.title = b1M01Title(filter);
+    b1Runtime.queue = queue;
+    b1Runtime.current = null;
+    b1Runtime.target = queue.length;
+    b1Runtime.correct = 0;
+    b1Runtime.wrong = 0;
+    b1Runtime.practised = 0;
+    b1Runtime.assisted = 0;
+    b1Runtime.streak = 0;
+    b1Runtime.connectorFamily = "";
+    b1Runtime.deckKey = "b1_m01";
+    b1Runtime.filterKey = filter;
+    b1Runtime.roundSeed = round.seed;
+    resetB1ChoiceSelection();
+    b1Runtime.translationOpen = false;
+    b1Runtime.currentExtraPractice = false;
+    b1Runtime.currentAssisted = false;
+    b1Runtime.dailySprint = false;
+    b1Runtime.dailyDateKey = "";
+    clearB1DiagnosticRuntime();
+    state = "b1Checking";
+    current = null;
+    hintUsed = false;
+    clearMobileClozeFocus();
+    setDiagnosticUiVisible(false);
+    document.body.classList.remove("b1TypedCloze", "b1LongAnswer");
+    setMenu(false);
+    setDevTools(false);
+    document.body.classList.add("b1Mode");
+    document.body.classList.remove("homeMode", "setupMode", "placeholderMode", "resultsMode");
+    if (el("homeScreen")) el("homeScreen").hidden = true;
+    if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
+    if (el("grammarHub")) el("grammarHub").hidden = true;
+    if (el("redemittelHub")) el("redemittelHub").hidden = true;
+    if (el("startScreen")) el("startScreen").hidden = true;
+    setLearningMapVisible(false);
+    setSettingsScreenVisible(false);
+    nextB1Question();
+  }
   function startWortschatzRound(filter) {
     filter = filter || "mixed";
     var pool = wortschatzPoolFor(filter);
@@ -18689,9 +18918,15 @@ body.b1Mode .promptWord {
     if (policy === "collapsed") return !!(context && (context.open || context.forceOpen));
     return true;
   }
+  function b1SupportToggleText(item, shown) {
+    var isRepair = item && item.itemType === "error_repair";
+    if (isRepair) return shown ? "Intended meaning shown" : "Intended meaning";
+    return shown ? "Meaning shown" : "Meaning";
+  }
   function b1SupportDisplayText(text, answered) {
     var value = String(text || "");
-    return value.replace(/^Correct:\s*/i, "Meaning: ");
+    var prefix = b1Runtime.current && b1Runtime.current.itemType === "error_repair" ? "Intended meaning: " : "Meaning: ";
+    return value.replace(/^Correct:\s*/i, prefix);
   }
   function renderB1Translation(forceOpen) {
     var gloss = el("englishGloss");
@@ -18712,11 +18947,11 @@ body.b1Mode .promptWord {
     }
     if (!showSupport) {
       if (state === "b1Checking") b1Runtime.translationOpen = false;
-      gloss.textContent = policy === "after_answer" ? "Meaning after answer." : "";
+      gloss.textContent = policy === "after_answer" ? b1SupportToggleText(b1Runtime.current, false) + " after answer." : "";
       if (gloss.textContent) gloss.classList.add("hiddenGloss");
       if (toggle) {
         toggle.hidden = policy !== "collapsed";
-        toggle.textContent = policy === "collapsed" ? "Meaning" : "";
+        toggle.textContent = policy === "collapsed" ? b1SupportToggleText(b1Runtime.current, false) : "";
         toggle.setAttribute("aria-expanded", "false");
       }
       return;
@@ -18725,7 +18960,7 @@ body.b1Mode .promptWord {
     if (state === "b1Checking") b1Runtime.translationOpen = true;
     if (toggle) {
       toggle.hidden = policy !== "collapsed";
-      toggle.textContent = policy === "collapsed" ? "Meaning shown" : "";
+      toggle.textContent = policy === "collapsed" ? b1SupportToggleText(b1Runtime.current, true) : "";
       toggle.setAttribute("aria-expanded", "true");
     }
   }
@@ -18902,7 +19137,7 @@ body.b1Mode .promptWord {
         checkB1Answer();
       }, false);
     }
-    if (item.itemType === "error_repair" && !usesChoices && !inlineInput) input.placeholder = "Korrektur eingeben";
+    if (item.itemType === "error_repair" && !usesChoices && !inlineInput) input.placeholder = item.taskType === "Umformen" ? "Satz umformen" : "Korrektur eingeben";
     if (usesChoices || isProduction || inlineInput) input.style.display = "none";
     if (usesChoices) renderConnectorChoices(item);
     if (isProduction) renderProductionControls(item);
@@ -19129,7 +19364,9 @@ body.b1Mode .promptWord {
       showB1Results();
       return;
     }
-    b1Runtime.current = b1Runtime.queue.shift();
+    var queuedItem = b1Runtime.queue.shift();
+    var variantSeed = [b1Runtime.roundSeed || "round", queuedItem && queuedItem.id || "item", b1AnsweredCount(), b1Runtime.queue.length].join("|");
+    b1Runtime.current = b1ResolveVariantFamilyItem(queuedItem, { seed:variantSeed });
     b1Runtime.currentAssisted = false;
     b1Runtime.currentExtraPractice = !!(b1Runtime.current && b1Runtime.current._extraPractice);
     b1Runtime.currentEvidenceRecordId = "";
@@ -20437,18 +20674,14 @@ body.b1Mode .promptWord {
   window.addEventListener("scroll", updateDebugStamp, false);
   if (!DEBUG_STAMP_TIMER) DEBUG_STAMP_TIMER = window.setInterval(updateDebugStamp, 1000);
   function b1QaFindItemById(id) {
-    var pools = [B1_ITEMS, B1_CONNECTOR_ITEMS, B1_REDEMITTEL_ITEMS, B1_WORTSCHATZ_ITEMS];
-    for (var p = 0; p < pools.length; p += 1) {
-      for (var i = 0; i < pools[p].length; i += 1) {
-        if (pools[p][i] && pools[p][i].id === id) return cloneB1Item(pools[p][i]);
-      }
-    }
-    return null;
+    var item = b1ItemById(id);
+    return item ? cloneB1Item(item) : null;
   }
   function b1QaStageItemById(id, overrides) {
     var item = b1QaFindItemById(id);
     if (!item) return null;
     Object.keys(overrides || {}).forEach(function(key){ item[key] = overrides[key]; });
+    item = b1ResolveVariantFamilyItem(item, { requestedVariantId:item._requestedVariantId || (overrides && overrides.variantId) || "", seed:"qa|" + String(id || "") });
     b1Runtime.active = true;
     b1Runtime.mode = "qa_repair";
     b1Runtime.title = "QA repair";
@@ -20496,6 +20729,7 @@ body.b1Mode .promptWord {
     var item = b1QaFindItemById(id);
     if (!item) return null;
     Object.keys(overrides || {}).forEach(function(key){ item[key] = overrides[key]; });
+    item = b1ResolveVariantFamilyItem(item, { requestedVariantId:item._requestedVariantId || (overrides && overrides.variantId) || "", seed:"qa-preview|" + String(id || "") });
     var comparison = compareRepairAnswer(item, rawAnswer);
     return {
       item:cloneB1Item(item),
@@ -20504,7 +20738,18 @@ body.b1Mode .promptWord {
       diff:repairDiffSummary(item, rawAnswer, comparison)
     };
   }
-window.ozmosisTesterReportSummary=testerReportSummary; window.ozmosisLearnerReadableProgressReport=buildLearnerReadableProgressReport; window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }; window.kasusNoArticle=function(){checkAnswer("none");}; window.kasusProceed=function(){proceed();}; window.kasusHint=function(){showHint();}; window.kasusNewRound=function(){showStartScreen();}; window.kasusStartRound=function(){startConfiguredRound();}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusSessionLog=function(){return sessionLog.slice();}; window.kasusCurrent=function(){return current ? cloneQuestion(current) : cloneB1Item(b1Runtime.current || {});}; window.kasusLeitnerDebug=function(){ return { storageKey:LEITNER_STORAGE_KEY, runtime:leitnerRuntime, progress:safeGetLeitner() }; }; window.ozmosisChoiceShuffleDebug=function(item, count){ return b1ChoiceShuffleDebugSummary(item, count); }; window.ozmosisB1Debug=function(){ return { storageKey:B1_STORAGE_KEY, evidenceStorageKey:B1_EVIDENCE_STORAGE_KEY, progressStateLabelVersion:PROGRESS_STATE_LABEL_VERSION, taskDepthSchemaVersion:B1_TASK_DEPTH_SCHEMA_VERSION, taskDepthDefinitions:b1TaskDepthDefinitions(), supportLevelSchemaVersion:B1_SUPPORT_LEVEL_SCHEMA_VERSION, supportLevelDefinitions:b1SupportLevelDefinitions(), itemCount:B1_ITEMS.length, connectorCount:B1_CONNECTOR_ITEMS.length, redemittelCount:B1_REDEMITTEL_ITEMS.length, wortschatzCount:B1_WORTSCHATZ_ITEMS.length, registry:b1RegistrySummary(), runtime:b1Runtime, progress:safeGetB1Progress(), evidence:b1EvidenceSummary(), supportLevelSummary:b1SupportLevelSummaryForRecords(safeGetB1Evidence().records), learningMap:b1LearningMapScaffold(), skillMatrix:b1SkillMatrixData(), skillMatrixSummary:debugSkillMatrixSummary(), recommendation:b1NextRecommendedPractice(), recommendationSummary:debugRecommendationSummary(), learnerReadableProgressReport:buildLearnerReadableProgressReport(), errorPatterns:b1ErrorPatternSignals(), errorPatternSummary:debugErrorPatternSummary(), errorTypeSummaries:b1ErrorTypeSummaries(), errorTypeSummary:debugErrorTypeSummary(), connectorDiagnostics:b1ConnectorDiagnosticCards(), connectorDiagnosticSummary:debugConnectorDiagnosticSummary(), diagnosticRepairQa:b1DiagnosticRepairQaSummary(), diagnosticRepairStability:b1DiagnosticRepairStabilitySummary(), durabilityReadiness:buildB1DurabilityReadinessSnapshot(), durabilityQa:buildB1DurabilityQaAudit(), reviewSystemStability:buildB1ReviewSystemStabilityAudit(), reviewEligibility:buildB1ReviewEligibility(), reviewCandidatePreview:buildB1ReviewCandidatePreview(), metadataReviewCoverage:buildB1MetadataReviewCoverageAudit(), b1CoverageAudit:buildB1CoverageAudit(), repairCandidates:b1WeaknessRepairCandidates(), repairCandidateSummary:debugWeaknessRepairSummary(), repairQueues:b1BuildWeaknessRepairQueue(), repairQueueSummary:b1RepairQueueDebugSummary(), diagnosticPlan:b1Runtime.diagnosticPlan, qaStageItemById:b1QaStageItemById, qaRepairPreview:b1QaRepairPreview, choiceShuffle:b1ChoiceShuffleDebugSummary(), debugSnapshot:buildDebugSnapshot }; }; window.ozmosisStartB1Round=function(mode){ startB1Round(mode || "mixed"); }; window.ozmosisStartDiagnostic=function(){ startB1DiagnosticSprint(); }; window.ozmosisStartConnector=function(family){ startConnectorSprint(family || "all"); }; window.ozmosisStartRedemittel=function(filter){ startRedemittelRound(filter || "mixed"); }; window.ozmosisStartWortschatz=function(filter){ startWortschatzRound(filter || "mixed"); }; window.ozmosisStartTargetedRepair=function(queueId){ startTargetedRepairPractice(queueId || ""); }; window.ozmosisStartReviewPractice=function(){ startB1ReviewPractice(); }; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusResetBest=function(){ highScore=0; bestStreakAll=0; savePersistent(); if (state === "results") showResults(); else renderHud(); }; window.kasusResetProfile=function(){ resetLearnerModel(); }; window.kasusToggleMenu=function(){ var panel=el("settingsPanel"); panel.classList.toggle("open"); document.body.classList.toggle("menuOpen", panel.classList.contains("open")); };
+window.ozmosisTesterReportSummary=testerReportSummary; window.ozmosisLearnerReadableProgressReport=buildLearnerReadableProgressReport; window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }; window.kasusNoArticle=function(){checkAnswer("none");}; window.kasusProceed=function(){proceed();}; window.kasusHint=function(){showHint();}; window.kasusNewRound=function(){showStartScreen();}; window.kasusStartRound=function(){startConfiguredRound();}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusSessionLog=function(){return sessionLog.slice();}; window.kasusCurrent=function(){return current ? cloneQuestion(current) : cloneB1Item(b1Runtime.current || {});}; window.kasusLeitnerDebug=function(){ return { storageKey:LEITNER_STORAGE_KEY, runtime:leitnerRuntime, progress:safeGetLeitner() }; }; window.ozmosisChoiceShuffleDebug=function(item, count){ return b1ChoiceShuffleDebugSummary(item, count); }; window.ozmosisB1Debug=function(){ return { storageKey:B1_STORAGE_KEY, evidenceStorageKey:B1_EVIDENCE_STORAGE_KEY, progressStateLabelVersion:PROGRESS_STATE_LABEL_VERSION, taskDepthSchemaVersion:B1_TASK_DEPTH_SCHEMA_VERSION, taskDepthDefinitions:b1TaskDepthDefinitions(), supportLevelSchemaVersion:B1_SUPPORT_LEVEL_SCHEMA_VERSION, supportLevelDefinitions:b1SupportLevelDefinitions(), itemCount:B1_ITEMS.length, connectorCount:B1_CONNECTOR_ITEMS.length, redemittelCount:B1_REDEMITTEL_ITEMS.length, wortschatzCount:B1_WORTSCHATZ_ITEMS.length, registry:b1RegistrySummary(), runtime:b1Runtime, progress:safeGetB1Progress(), evidence:b1EvidenceSummary(), supportLevelSummary:b1SupportLevelSummaryForRecords(safeGetB1Evidence().records), learningMap:b1LearningMapScaffold(), skillMatrix:b1SkillMatrixData(), skillMatrixSummary:debugSkillMatrixSummary(), recommendation:b1NextRecommendedPractice(), recommendationSummary:debugRecommendationSummary(), learnerReadableProgressReport:buildLearnerReadableProgressReport(), errorPatterns:b1ErrorPatternSignals(), errorPatternSummary:debugErrorPatternSummary(), errorTypeSummaries:b1ErrorTypeSummaries(), errorTypeSummary:debugErrorTypeSummary(), connectorDiagnostics:b1ConnectorDiagnosticCards(), connectorDiagnosticSummary:debugConnectorDiagnosticSummary(), diagnosticRepairQa:b1DiagnosticRepairQaSummary(), diagnosticRepairStability:b1DiagnosticRepairStabilitySummary(), durabilityReadiness:buildB1DurabilityReadinessSnapshot(), durabilityQa:buildB1DurabilityQaAudit(), reviewSystemStability:buildB1ReviewSystemStabilityAudit(), reviewEligibility:buildB1ReviewEligibility(), reviewCandidatePreview:buildB1ReviewCandidatePreview(), metadataReviewCoverage:buildB1MetadataReviewCoverageAudit(), b1CoverageAudit:buildB1CoverageAudit(), repairCandidates:b1WeaknessRepairCandidates(), repairCandidateSummary:debugWeaknessRepairSummary(), repairQueues:b1BuildWeaknessRepairQueue(), repairQueueSummary:b1RepairQueueDebugSummary(), diagnosticPlan:b1Runtime.diagnosticPlan, qaStageItemById:b1QaStageItemById, qaRepairPreview:b1QaRepairPreview, choiceShuffle:b1ChoiceShuffleDebugSummary(), debugSnapshot:buildDebugSnapshot }; }; window.ozmosisStartB1Round=function(mode){ startB1Round(mode || "mixed"); }; window.ozmosisStartDiagnostic=function(){ startB1DiagnosticSprint(); }; window.ozmosisStartConnector=function(family){ startConnectorSprint(family || "all"); }; window.ozmosisStartRedemittel=function(filter){ startRedemittelRound(filter || "mixed"); }; window.ozmosisStartWortschatz=function(filter){ startWortschatzRound(filter || "mixed"); }; window.ozmosisStartB1M01=function(filter){ startB1M01Round(filter || "mixed"); }; window.ozmosisStartTargetedRepair=function(queueId){ startTargetedRepairPractice(queueId || ""); }; window.ozmosisStartReviewPractice=function(){ startB1ReviewPractice(); }; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusResetBest=function(){ highScore=0; bestStreakAll=0; savePersistent(); if (state === "results") showResults(); else renderHud(); }; window.kasusResetProfile=function(){ resetLearnerModel(); }; window.kasusToggleMenu=function(){ var panel=el("settingsPanel"); panel.classList.toggle("open"); document.body.classList.toggle("menuOpen", panel.classList.contains("open")); };
+  window.ozmosisB1M01Debug = function(){
+    return {
+      bank:b1RegistryBank("b1_m01"),
+      familyCount:B1_M01_VARIANT_FAMILY_ITEMS.length,
+      variantCount:B1_M01_VARIANT_FAMILY_ITEMS.reduce(function(sum, family){ return sum + (Array.isArray(family.variants) ? family.variants.length : 0); }, 0),
+      singleCanonicalCount:B1_M01_SINGLE_CANONICAL_ITEMS.length,
+      noticeCount:B1_M01_NOTICE_ITEMS.length,
+      sampleResolved:b1ResolveVariantFamilyItem(cloneB1Item(B1_M01_VARIANT_FAMILY_ITEMS[0] || {}), { seed:"debug|b1_m01" })
+    };
+  };
+  window.ozmosisShowGrammarHub = function(){ showGrammarHub(); };
   window.ozmosisContentAudit = function(){ return b1ConnectorWordOrderIssues(); };
   function mountSettingsPanel() {
     var panel = el("settingsPanel");
