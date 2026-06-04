@@ -1,4 +1,4 @@
-# Ozmosis Full Changelog
+﻿# Ozmosis Full Changelog
 
 Chronological changelog from the earliest retained project history through the current package.
 
@@ -614,3 +614,22 @@ Historical standalone changelog files before `CHANGELOG-v0_80_14.txt` are not pr
 - Added `_development-files/v080141_beta_readiness_practice_ux_gate.cjs`.
 - Added QA documentation at `docs/qa/v0.80.14.1_beta_readiness_task_contract_practice_ux.md`.
 - Edge/CDP validation covered task-contract render states, B1-02 through B1-11 route smoke, production skip/self-marking, export/import, malformed import handling, Arabic/LTR, and the full required responsive viewport set.
+## v0.80.14.2 - Beta UX Interaction Pass
+
+- Fixed beta-blocking practice-flow UX friction reported from the v0.80.14.1 app line.
+- Allowed B1 choice-button tasks to submit on one click or tap through the existing answer/evidence path.
+- Kept explicit `Prüfen` submission for typed cloze, repair text, Satzbau, production contexts, and Case Trainer inputs.
+- Required confidence selection after auto-graded and assisted B1 submissions before the learner can continue.
+- Reordered confidence buttons to `I GUESSED`, `I WAS UNSURE`, `I KNEW IT`.
+- Replaced normal auto-graded skip-confidence continuation with the blocked copy `Select answer confidence to continue`.
+- Kept confidence writes additive to the current evidence record and avoided duplicate evidence records.
+- Integrated `Teach me` with inline typed cloze action state so empty input shows support and typed input switches to `Prüfen`.
+- Updated Teach Me support copy to `Practice answer — This will reappear at the end of the session for recall.`
+- Relaxed B1 practice scroll constraints so Edge/Chromium mouse wheel scrolling can use the document rather than a nested trapped panel.
+- Tightened practice prompt sizing, prompt-to-choice spacing, and choice-button rhythm without changing route design.
+- Normalised inline cloze punctuation spacing so punctuation after blanks does not sit awkwardly.
+- Kept typed cloze inputs at a standard width, thinned outlines, preserved accessible focus, and reinforced long-answer wrapping.
+- Reinforced reduced-motion-safe button press feedback and made the HUD progress strip easier to see.
+- Preserved v0.80.14.1 task-contract repairs, multiple-choice shuffling, Review Practice anti-clumping, scoring, evidence semantics, storage keys, export/import compatibility, content banks, B1-only scope, and static architecture.
+- Added `_development-files/v080142_beta_ux_interaction_gate.cjs`.
+- Added QA documentation at `docs/qa/v0.80.14.2_beta_ux_interaction_pass.md`.

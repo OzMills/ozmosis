@@ -39,7 +39,7 @@
   --cardPad:clamp(12px,3vw,20px);
   --cardRadius:16px;
   --routeTitleSize:clamp(1.9rem,8.4vw,4.2rem);
-  --practicePromptSize:clamp(1.12rem,4.8vw,2.1rem);
+  --practicePromptSize:clamp(1.06rem,4.4vw,1.88rem);
   --bodyTextSize:clamp(.88rem,3.2vw,1rem);
   --buttonHeight:48px;
   --buttonGap:8px;
@@ -7682,6 +7682,146 @@ body.b1Mode.b1TypedCloze .clozeAnswerText,
   }
 }
 
+/* v0.80.14.2 beta UX interaction pass: Edge wheel scroll, one-tap choices,
+   required confidence, thinner inputs, and compact practice spacing. */
+body.b1Mode {
+  overflow-y:auto !important;
+  overscroll-behavior-y:auto !important;
+  touch-action:pan-y;
+  padding-bottom:calc(var(--hudHeight) + 26px + env(safe-area-inset-bottom)) !important;
+}
+
+body.b1Mode main {
+  max-height:none !important;
+  overflow:visible !important;
+  scrollbar-gutter:auto !important;
+  overscroll-behavior-y:auto !important;
+  padding-bottom:calc(var(--hudHeight) + 38px + env(safe-area-inset-bottom)) !important;
+}
+
+body.b1Mode .content {
+  gap:clamp(8px, 1.7vh, 16px) !important;
+}
+
+body.b1Mode .answerArea {
+  gap:clamp(6px, 1.3vh, 10px) !important;
+}
+
+body.b1Mode .promptWord,
+body.b1Mode .promptWord.clozePrompt {
+  font-size:var(--practicePromptSize) !important;
+  line-height:1.18 !important;
+}
+
+body.b1Mode .connectorChoiceGrid {
+  gap:6px !important;
+}
+
+body.b1Mode .connectorChoiceGrid button {
+  min-height:46px !important;
+  padding:9px 12px !important;
+}
+
+button,
+.homeRouteCard,
+.homeNavButton,
+.menuButton,
+.learningMapAction,
+.connectorChoiceGrid button {
+  transition:filter .08s ease, transform .08s ease, border-color .08s ease, background-color .08s ease;
+}
+
+button:active:not(:disabled),
+.homeRouteCard:active,
+.homeNavButton:active,
+.menuButton:active,
+.connectorChoiceGrid button:active:not(:disabled),
+.learningMapAction:active:not(:disabled) {
+  transform:translateY(1px) scale(.99);
+  filter:brightness(1.15);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  button,
+  .homeRouteCard,
+  .homeNavButton,
+  .menuButton,
+  .learningMapAction,
+  .connectorChoiceGrid button {
+    transition:none !important;
+  }
+}
+
+body.b1Mode .inlineClozeInput,
+body.b1Mode.b1TypedCloze .inlineClozeInput,
+body.b1Mode.b1TypedCloze .blankSlot.answerSlot,
+body.b1Mode.b1TypedCloze .clozeAnswerText {
+  width:10ch !important;
+  min-width:min(10ch, 70vw) !important;
+  max-width:min(10ch, 74vw) !important;
+  min-height:40px !important;
+  border:1px solid color-mix(in srgb, var(--mode) 26%, var(--line)) !important;
+  border-bottom:2px solid color-mix(in srgb, var(--mode) 76%, var(--line)) !important;
+  border-radius:8px 8px 12px 12px !important;
+  background:rgba(7,12,21,.58) !important;
+  box-shadow:none !important;
+}
+
+body.b1Mode .inlineClozeInput:focus,
+body.b1Mode.b1TypedCloze .inlineClozeInput:focus {
+  border-color:color-mix(in srgb, var(--accent) 54%, var(--line)) !important;
+  border-bottom-color:var(--accent) !important;
+  outline:2px solid color-mix(in srgb, var(--accent) 34%, transparent) !important;
+  outline-offset:2px !important;
+  box-shadow:0 8px 22px -18px var(--modeShadow) !important;
+}
+
+body.b1Mode .clozeAnswerText {
+  white-space:normal !important;
+  overflow-wrap:anywhere !important;
+}
+
+.b1ConfidenceRow {
+  gap:6px !important;
+}
+
+.b1ConfidenceRow button {
+  min-height:44px !important;
+  padding:8px 5px !important;
+  font-size:clamp(.68rem, 2.45vw, .78rem) !important;
+}
+
+#nextBtn.confidenceBlocked {
+  border:1px solid color-mix(in srgb, var(--warn) 40%, var(--line)) !important;
+  background:rgba(246,193,92,.08) !important;
+  color:color-mix(in srgb, var(--warn) 72%, var(--muted)) !important;
+  cursor:not-allowed !important;
+  opacity:.88 !important;
+}
+
+#nextBtn:disabled {
+  pointer-events:none;
+}
+
+.bottomHud .progressRow {
+  height:14px !important;
+}
+
+.bottomHud .progressShell {
+  height:11px !important;
+}
+
+@media (min-width:760px) and (max-height:680px) {
+  :root {
+    --practicePromptSize:clamp(1rem, 2.2vw, 1.46rem);
+  }
+
+  body.b1Mode .challengeCard {
+    padding-top:4px !important;
+    padding-bottom:4px !important;
+  }
+}
+
 </style>
 </head>
 <body class="booting" data-mode="definite">
@@ -8208,9 +8348,9 @@ body.b1Mode.b1TypedCloze .clozeAnswerText,
         <div class="feedback" id="feedback"></div>
         <button class="whyNoStarsBtn" id="whyNoStarsBtn" type="button" hidden>Why limited evidence?</button>
         <div class="b1ConfidenceRow" id="b1ConfidenceRow" aria-label="Answer confidence" hidden>
-          <button type="button" data-confidence="sure" aria-label="I knew it">Knew it</button>
-          <button type="button" data-confidence="unsure" aria-label="I was unsure">Unsure</button>
-          <button type="button" data-confidence="guessed" aria-label="I guessed">Guessed</button>
+          <button type="button" data-confidence="guessed" aria-label="I guessed">I GUESSED</button>
+          <button type="button" data-confidence="unsure" aria-label="I was unsure">I WAS UNSURE</button>
+          <button type="button" data-confidence="sure" aria-label="I knew it">I KNEW IT</button>
         </div>
         <button id="nextBtn" type="button">Weiter</button>
         <button class="diagnosticExitBtn" id="diagnosticExitBtn" type="button" hidden>Exit diagnostic</button>
@@ -8641,8 +8781,8 @@ body.b1Mode.b1TypedCloze .clozeAnswerText,
   var B1_STORAGE_KEY = "ozmosis_b1_sprint_progress_v1";
   var B1_EVIDENCE_STORAGE_KEY = "ozmosis_b1_progress_evidence_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.80.14.1";
-  var OZMOSIS_EXPORT_VERSION = "v0.80.14.1-beta-readiness-task-contract-practice-ux";
+  var OZMOSIS_APP_VERSION = "v0.80.14.2";
+  var OZMOSIS_EXPORT_VERSION = "v0.80.14.2-beta-ux-interaction-pass";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -15232,7 +15372,12 @@ body.b1Mode.b1TypedCloze .clozeAnswerText,
       btn.setAttribute("aria-pressed", "false");
       btn.disabled = false;
     });
-    if (el("nextBtn")) el("nextBtn").textContent = "Weiter";
+    if (el("nextBtn")) {
+      el("nextBtn").textContent = "Weiter";
+      el("nextBtn").disabled = false;
+      el("nextBtn").classList.remove("confidenceBlocked");
+      el("nextBtn").removeAttribute("aria-disabled");
+    }
   }
   function b1CurrentEvidenceRecord() {
     if (!b1Runtime.active || !b1Runtime.current || !b1Runtime.currentEvidenceRecordId) return null;
@@ -15246,33 +15391,51 @@ body.b1Mode.b1TypedCloze .clozeAnswerText,
     return null;
   }
   function b1ConfidenceLabelsForRecord(record) {
-    if (record && record.result === "correct") {
-      return { sure:"I knew it", unsure:"I was unsure", guessed:"I guessed" };
-    }
-    if (record && record.result === "wrong") {
-      return { sure:"I thought I knew it", unsure:"I was unsure", guessed:"I guessed" };
-    }
-    return { sure:"Sure", unsure:"Unsure", guessed:"Guessed" };
+    return { guessed:"I GUESSED", unsure:"I WAS UNSURE", sure:"I KNEW IT" };
   }
-  function b1ConfidenceAutoAdvanceAllowed(record) {
+  function b1ConfidenceRequiredForRecord(record) {
     if (!record || state !== "b1Next") return false;
     if (record.result === "practised" || record.answerMode === "mark_practised") return false;
-    if (record.result === "assisted") return false;
-    return record.result === "correct" || record.result === "wrong";
+    return record.result === "correct" || record.result === "wrong" || record.result === "assisted";
+  }
+  function b1ValidConfidence(value) {
+    return value === "sure" || value === "unsure" || value === "guessed";
+  }
+  function b1ConfidenceAutoAdvanceAllowed(record) {
+    return false;
+  }
+  function b1AutoGradedConfidenceRequiredPending() {
+    var record = b1CurrentEvidenceRecord();
+    return !!(record && b1ConfidenceRequiredForRecord(record) && !b1ValidConfidence(record.confidence));
   }
   function renderB1ConfidenceControls(selected) {
     var row = el("b1ConfidenceRow");
     if (!row || !b1Runtime.currentEvidenceRecordId) return;
     var record = b1CurrentEvidenceRecord();
     var labels = b1ConfidenceLabelsForRecord(record);
+    var currentConfidence = selected || (record && record.confidence) || "";
+    var confidenceReady = b1ValidConfidence(currentConfidence);
+    var requiresConfidence = b1ConfidenceRequiredForRecord(record);
     row.hidden = false;
     row.setAttribute("data-evidence-id", b1Runtime.currentEvidenceRecordId);
-    row.setAttribute("data-confidence-next", b1ConfidenceAutoAdvanceAllowed(record) ? "true" : "false");
-    if (el("nextBtn")) el("nextBtn").textContent = b1ConfidenceAutoAdvanceAllowed(record) ? "Skip confidence / Weiter" : "Weiter";
+    row.setAttribute("data-confidence-next", requiresConfidence ? "required" : "optional");
+    if (el("nextBtn")) {
+      if (requiresConfidence && !confidenceReady) {
+        el("nextBtn").textContent = "Select answer confidence to continue";
+        el("nextBtn").disabled = true;
+        el("nextBtn").classList.add("confidenceBlocked");
+        el("nextBtn").setAttribute("aria-disabled", "true");
+      } else {
+        el("nextBtn").textContent = b1RoundComplete() ? "Ergebnis" : "Weiter";
+        el("nextBtn").disabled = false;
+        el("nextBtn").classList.remove("confidenceBlocked");
+        el("nextBtn").removeAttribute("aria-disabled");
+      }
+    }
     row.removeAttribute("data-advancing");
     row.querySelectorAll("button").forEach(function(btn){
       var value = btn.getAttribute("data-confidence");
-      var active = value === selected;
+      var active = value === currentConfidence;
       btn.textContent = labels[value] || value || "";
       btn.disabled = false;
       btn.classList.toggle("selected", active);
@@ -15302,15 +15465,7 @@ body.b1Mode.b1TypedCloze .clozeAnswerText,
     var row = el("b1ConfidenceRow");
     if (row && row.getAttribute("data-advancing") === "true") return;
     var record = updateLatestB1EvidenceConfidence(value);
-    if (!record || !b1ConfidenceAutoAdvanceAllowed(record)) return;
-    if (row) {
-      row.setAttribute("data-advancing", "true");
-      row.querySelectorAll("button").forEach(function(btn){ btn.disabled = true; });
-    }
-    setTimeout(function(){
-      if (row && row.getAttribute("data-advancing") !== "true") return;
-      if (state === "b1Next" && b1Runtime.currentEvidenceRecordId === record.id) proceed();
-    }, 0);
+    if (!record) return;
   }
   function b1EvidenceSummary() {
     var store = safeGetB1Evidence();
@@ -18410,6 +18565,9 @@ body.b1Mode.b1TypedCloze .clozeAnswerText,
     var type = String(item.itemType || item.type || "");
     return type === "connector_choice" || type === "phrase_choice" || type === "multiple_choice" || type === "choice" || type === "recognition" || type === "error_repair";
   }
+  function b1ChoiceSubmitsOnClick(item) {
+    return !!(item && b1UsesChoices(item));
+  }
   function resetB1ChoiceSelection() {
     b1Runtime.selectedChoice = "";
     b1Runtime.selectedChoiceId = "";
@@ -18460,9 +18618,12 @@ body.b1Mode.b1TypedCloze .clozeAnswerText,
   function b1ClozeWidthStyle(item) {
     return "--clozeWidth:10ch";
   }
+  function b1NormaliseInlineClozePunctuation(prompt) {
+    return String(prompt || "").replace(/___\s+([.,!?;:])/g, "___$1").replace(/\s+([.,!?;:])/g, "$1");
+  }
   function b1PromptHtml(item, resultClass) {
     if (item && item.itemType === "production_card") return escapeHtml(item.prompt_de || "");
-    var rawPrompt = String(item && item.prompt_de || "");
+    var rawPrompt = b1NormaliseInlineClozePunctuation(item && item.prompt_de || "");
     if (b1UsesChoices(item)) {
       if (b1IsKontrastSlashChoice(item) || b1RepairShouldUseChoiceContract(item)) return escapeHtml(b1TaskContractChoicePrompt(item));
       if (item.itemType === "error_repair" && resultClass && rawPrompt.indexOf("___") !== -1) {
@@ -20074,6 +20235,9 @@ body.b1Mode.b1TypedCloze .clozeAnswerText,
     });
     el("feedback").textContent = "";
     el("feedback").className = "feedback";
+    if (b1ChoiceSubmitsOnClick(b1Runtime.current)) {
+      checkB1Answer(selected);
+    }
   }
   function renderProductionControls(item) {
     var grid = el("connectorChoiceGrid");
@@ -20152,6 +20316,25 @@ body.b1Mode.b1TypedCloze .clozeAnswerText,
     grid.appendChild(actionRow);
     grid.classList.add("visible");
   }
+  function updateB1TypedClozeActionState() {
+    var inlineInput = el("b1InlineInput");
+    var actionGrid = el("actionGrid");
+    var teachBtn = el("noArticleBtn");
+    var checkBtn = el("checkBtn");
+    if (!actionGrid || !teachBtn || !checkBtn) return;
+    if (!inlineInput) {
+      checkBtn.style.display = "";
+      teachBtn.style.display = "none";
+      return;
+    }
+    var hasTyped = !!b1CleanAnswer(inlineInput.value);
+    actionGrid.classList.toggle("teachAction", !hasTyped);
+    actionGrid.classList.toggle("singleAction", hasTyped);
+    teachBtn.style.display = hasTyped ? "none" : "";
+    teachBtn.disabled = hasTyped;
+    checkBtn.style.display = hasTyped ? "" : "none";
+    checkBtn.disabled = !hasTyped;
+  }
   function renderB1Question() {
     var item = b1Runtime.current;
     clearMobileClozeFocus();
@@ -20206,6 +20389,7 @@ body.b1Mode.b1TypedCloze .clozeAnswerText,
         event.preventDefault();
         checkB1Answer();
       }, false);
+      inlineInput.addEventListener("input", updateB1TypedClozeActionState, false);
     }
     if (item.itemType === "error_repair" && !usesChoices && !inlineInput) input.placeholder = item.taskType === "Umformen" ? "Satz umformen" : "Korrektur eingeben";
     if (usesChoices || isProduction || inlineInput) input.style.display = "none";
@@ -20214,13 +20398,15 @@ body.b1Mode.b1TypedCloze .clozeAnswerText,
     el("actionGrid").classList.remove("singleAction", "rightAction", "teachAction");
     if (inlineInput) el("actionGrid").classList.add("teachAction");
     else el("actionGrid").classList.add("singleAction");
-    el("actionGrid").style.display = isProduction ? "none" : "grid";
-    el("checkBtn").disabled = isProduction;
+    el("actionGrid").style.display = (isProduction || usesChoices) ? "none" : "grid";
+    el("checkBtn").disabled = isProduction || usesChoices;
+    el("checkBtn").style.display = "";
     el("checkBtn").textContent = "Prüfen";
     el("noArticleBtn").classList.toggle("teachBtn", !!inlineInput);
     el("noArticleBtn").textContent = inlineInput ? "Teach me" : "Kein Artikel";
     el("noArticleBtn").disabled = !inlineInput;
     el("noArticleBtn").style.display = inlineInput ? "" : "none";
+    updateB1TypedClozeActionState();
     el("hintBtn").disabled = true;
     el("hintBtn").hidden = true;
     el("hintBtn").style.display = "none";
@@ -20265,7 +20451,7 @@ body.b1Mode.b1TypedCloze .clozeAnswerText,
     input.classList.add("teachGhost");
     input.style.cssText = b1ClozeWidthStyle(b1Runtime.current);
     var feedback = el("feedback");
-    feedback.textContent = "Assisted practice - type it once, then try again later.";
+    feedback.textContent = "Practice answer — This will reappear at the end of the session for recall.";
     feedback.className = "feedback";
     input.focus();
   }
@@ -20296,6 +20482,8 @@ body.b1Mode.b1TypedCloze .clozeAnswerText,
     var buttons = el("connectorChoiceGrid") ? el("connectorChoiceGrid").querySelectorAll("button") : [];
     buttons.forEach(function(btn){ btn.disabled = true; });
     el("nextBtn").textContent = b1Runtime.queue.length ? "Weiter" : "Ergebnis";
+    el("nextBtn").disabled = false;
+    el("nextBtn").classList.remove("confidenceBlocked");
     el("nextBtn").classList.add("visible");
     renderHud();
     focusWithoutScroll(el("nextBtn"));
@@ -20329,7 +20517,9 @@ body.b1Mode.b1TypedCloze .clozeAnswerText,
     renderB1ConfidenceControls(null);
     var buttons = el("connectorChoiceGrid") ? el("connectorChoiceGrid").querySelectorAll("button") : [];
     buttons.forEach(function(btn){ btn.disabled = true; });
-    el("nextBtn").textContent = b1RoundComplete() ? "Ergebnis" : "Continue without confidence";
+    el("nextBtn").textContent = b1RoundComplete() ? "Ergebnis" : "Weiter";
+    el("nextBtn").disabled = false;
+    el("nextBtn").classList.remove("confidenceBlocked");
     el("nextBtn").classList.add("visible");
     renderHud();
     focusWithoutScroll(el("nextBtn"));
@@ -20415,13 +20605,21 @@ body.b1Mode.b1TypedCloze .clozeAnswerText,
     el("hintBtn").style.display = "none";
     el("actionGrid").style.display = "none";
     setSupportPlaceholder(false, false);
-    el("nextBtn").textContent = b1RoundComplete() ? "Ergebnis" : "Continue without confidence";
+    el("nextBtn").textContent = b1RoundComplete() ? "Ergebnis" : "Weiter";
     el("nextBtn").classList.add("visible");
+    renderB1ConfidenceControls(null);
     renderHud();
-    focusWithoutScroll(el("nextBtn"));
+    var firstConfidence = b1AutoGradedConfidenceRequiredPending() && el("b1ConfidenceRow") ? el("b1ConfidenceRow").querySelector("button") : null;
+    focusWithoutScroll(firstConfidence || el("nextBtn"));
   }
   function nextB1Question() {
     if (!b1Runtime.active) return;
+    if (b1AutoGradedConfidenceRequiredPending()) {
+      renderB1ConfidenceControls(null);
+      var firstConfidence = el("b1ConfidenceRow") && el("b1ConfidenceRow").querySelector("button");
+      if (firstConfidence) focusWithoutScroll(firstConfidence);
+      return;
+    }
     clearMobileClozeFocus();
     if (b1RoundComplete()) {
       showB1Results();
@@ -20542,14 +20740,14 @@ body.b1Mode.b1TypedCloze .clozeAnswerText,
       el("promptValue").textContent = "Repair practice complete";
       el("englishGloss").textContent = "This was a narrow practice pass from existing items, not a mastery claim.";
       el("resultSummary").textContent = "Items attempted: " + answered + " / " + b1Runtime.target;
-      el("accuracySummary").textContent = "Evidence saved as normal item attempts. Confidence remains optional.";
+      el("accuracySummary").textContent = "Evidence saved as normal item attempts. Confidence is captured before continuing.";
       el("weakSummary").innerHTML = "<div class=\"sessionCoverage\"><strong>Correct this time</strong><span>" + b1Runtime.correct + " of " + scored + "</span><strong>Incorrect this time</strong><span>" + b1Runtime.wrong + "</span><strong>Assisted</strong><span>" + b1Runtime.assisted + "</span><strong>Next</strong><span>Return to Learning Map</span></div>";
     } else if (b1Runtime.mode === "review_practice") {
       el("modeTitle").textContent = "Review practice";
       el("promptValue").textContent = "Review practice complete";
       el("englishGloss").textContent = "This checks older items again; it does not prove mastery yet.";
       el("resultSummary").textContent = "Items attempted: " + answered + " / " + b1Runtime.target;
-      el("accuracySummary").textContent = "Evidence saved as normal item attempts with review context. Confidence remains optional.";
+      el("accuracySummary").textContent = "Evidence saved as normal item attempts with review context. Confidence is captured before continuing.";
       el("weakSummary").innerHTML = "<div class=\"sessionCoverage\"><strong>Correct this time</strong><span>" + b1Runtime.correct + " of " + scored + "</span><strong>Incorrect this time</strong><span>" + b1Runtime.wrong + "</span><strong>Assisted</strong><span>" + b1Runtime.assisted + "</span><strong>Claim limit</strong><span>Not mastery</span></div>";
     } else if (b1Runtime.dailySprint) {
       var dailyStats = b1DailyStats(b1CurrentDailySprint());
