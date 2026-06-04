@@ -368,6 +368,7 @@ select, .menuButton {
   grid-template-columns:minmax(0,1fr) minmax(112px,148px);
 }
 
+.actionGrid.rightAction #noArticleBtn.teachBtn,
 .actionGrid.rightAction #checkBtn {
   grid-column:2;
   min-height:44px;
@@ -647,6 +648,20 @@ button {
 .b1ConfidenceRow button:disabled {
   opacity:.64;
   cursor:default;
+}
+
+.b1ConfidenceGuidance {
+  width:min(420px,100%);
+  margin:0;
+  color:var(--muted);
+  font-size:clamp(.78rem,2.8vw,.88rem);
+  font-weight:850;
+  line-height:1.25;
+  text-align:center;
+}
+
+.b1ConfidenceGuidance[hidden] {
+  display:none !important;
 }
 
 .miniTableWrap {
@@ -3666,6 +3681,7 @@ body.b1Mode .answerArea {
   gap:8px;
 }
 
+body.b1Mode.keyboardOpen .actionGrid.rightAction #noArticleBtn.teachBtn,
 body.b1Mode.keyboardOpen .actionGrid.rightAction #checkBtn {
   min-height:40px;
   padding-top:8px;
@@ -3771,6 +3787,7 @@ body.b1Mode.keyboardOpen .actionGrid.rightAction #checkBtn {
     align-items:center;
   }
 
+  body.b1Mode.b1TypedCloze .actionGrid.rightAction #noArticleBtn.teachBtn,
   body.b1Mode.b1TypedCloze .actionGrid.rightAction #checkBtn {
     min-height:56px;
     padding:12px 14px;
@@ -7791,14 +7808,6 @@ body.b1Mode .clozeAnswerText {
   font-size:clamp(.68rem, 2.45vw, .78rem) !important;
 }
 
-#nextBtn.confidenceBlocked {
-  border:1px solid color-mix(in srgb, var(--warn) 40%, var(--line)) !important;
-  background:rgba(246,193,92,.08) !important;
-  color:color-mix(in srgb, var(--warn) 72%, var(--muted)) !important;
-  cursor:not-allowed !important;
-  opacity:.88 !important;
-}
-
 #nextBtn:disabled {
   pointer-events:none;
 }
@@ -8352,6 +8361,7 @@ body.b1Mode .clozeAnswerText {
           <button type="button" data-confidence="unsure" aria-label="I was unsure">I WAS UNSURE</button>
           <button type="button" data-confidence="sure" aria-label="I knew it">I KNEW IT</button>
         </div>
+        <p class="b1ConfidenceGuidance" id="b1ConfidenceGuidance" hidden>Select answer confidence to continue.</p>
         <button id="nextBtn" type="button">Weiter</button>
         <button class="diagnosticExitBtn" id="diagnosticExitBtn" type="button" hidden>Exit diagnostic</button>
       </section>
@@ -8781,8 +8791,8 @@ body.b1Mode .clozeAnswerText {
   var B1_STORAGE_KEY = "ozmosis_b1_sprint_progress_v1";
   var B1_EVIDENCE_STORAGE_KEY = "ozmosis_b1_progress_evidence_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.80.14.3";
-  var OZMOSIS_EXPORT_VERSION = "v0.80.14.3-b1-question-quality-safe-fix-patch";
+  var OZMOSIS_APP_VERSION = "v0.80.14.4";
+  var OZMOSIS_EXPORT_VERSION = "v0.80.14.4-b1-practice-flow-ux-catchup";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -12604,7 +12614,7 @@ body.b1Mode .clozeAnswerText {
           '<div class="learningMapNodeTop"><strong>' + escapeHtml(summary.label) + '</strong><span>' + escapeHtml(countText) + '</span></div>' +
           '<p class="learningMapText">' + escapeHtml(summary.learnerSummary) + '</p>' +
           (route.routeKey ? '<div class="learningMapActionGrid"><button class="learningMapAction learningMapPatternAction" type="button" data-route-key="' + escapeHtml(route.routeKey) + '">' + escapeHtml(route.label || "Open route") + '</button></div>' : '') +
-          '<details class="learningMapDisclosure"><summary>Explain</summary>' +
+          '<details class="learningMapDisclosure"><summary>Show pattern evidence</summary>' +
             '<div class="learningMapDetail">Source patterns: ' + escapeHtml((summary.sourcePatternIds || []).join(", ") || "current evidence") + '.</div>' +
             (summary.limitations || []).map(function(text){ return '<div class="learningMapLimitation">' + escapeHtml(text) + '</div>'; }).join("") +
           '</details>' +
@@ -12625,7 +12635,7 @@ body.b1Mode .clozeAnswerText {
           '<div class="learningMapNodeTop"><strong>' + escapeHtml(card.label || "Connector pattern") + '</strong><span>Possible connector pattern</span></div>' +
           '<p class="learningMapText">' + escapeHtml(card.learnerSummary || "Repeated connector evidence points to a small area to recheck.") + '</p>' +
           (route.routeKey ? '<div class="learningMapActionGrid"><button class="learningMapAction learningMapPatternAction" type="button" data-route-key="' + escapeHtml(route.routeKey) + '">' + escapeHtml(route.label || "Open connector practice") + '</button></div>' : '') +
-          '<details class="learningMapDisclosure"><summary>Explain</summary>' +
+          '<details class="learningMapDisclosure"><summary>Show connector evidence</summary>' +
             '<div class="learningMapDetail">' + Number(card.evidenceCount || 0) + ' relevant attempts; ' + Number(card.errorCount || 0) + ' similar errors.</div>' +
             '<div class="learningMapDetail">Connectors: ' + escapeHtml(card.connectorGroup || "mixed connectors") + '.</div>' +
             '<div class="learningMapDetail">Task types: ' + escapeHtml((card.taskDepths || []).join(", ") || "mixed") + '.</div>' +
@@ -15363,10 +15373,12 @@ body.b1Mode .clozeAnswerText {
   function resetB1ConfidenceControls() {
     var row = el("b1ConfidenceRow");
     if (!row) return;
+    var guidance = el("b1ConfidenceGuidance");
     row.hidden = true;
     row.removeAttribute("data-evidence-id");
     row.removeAttribute("data-advancing");
     row.removeAttribute("data-confidence-next");
+    if (guidance) guidance.hidden = true;
     row.querySelectorAll("button").forEach(function(btn){
       btn.classList.remove("selected");
       btn.setAttribute("aria-pressed", "false");
@@ -15375,7 +15387,6 @@ body.b1Mode .clozeAnswerText {
     if (el("nextBtn")) {
       el("nextBtn").textContent = "Weiter";
       el("nextBtn").disabled = false;
-      el("nextBtn").classList.remove("confidenceBlocked");
       el("nextBtn").removeAttribute("aria-disabled");
     }
   }
@@ -15402,7 +15413,10 @@ body.b1Mode .clozeAnswerText {
     return value === "sure" || value === "unsure" || value === "guessed";
   }
   function b1ConfidenceAutoAdvanceAllowed(record) {
-    return false;
+    if (!record || state !== "b1Next") return false;
+    if (!b1ConfidenceRequiredForRecord(record)) return false;
+    if (record.result === "practised" || record.answerMode === "mark_practised") return false;
+    return record.answerMode === "choice" || record.answerMode === "typed";
   }
   function b1AutoGradedConfidenceRequiredPending() {
     var record = b1CurrentEvidenceRecord();
@@ -15411,6 +15425,7 @@ body.b1Mode .clozeAnswerText {
   function renderB1ConfidenceControls(selected) {
     var row = el("b1ConfidenceRow");
     if (!row || !b1Runtime.currentEvidenceRecordId) return;
+    var guidance = el("b1ConfidenceGuidance");
     var record = b1CurrentEvidenceRecord();
     var labels = b1ConfidenceLabelsForRecord(record);
     var currentConfidence = selected || (record && record.confidence) || "";
@@ -15419,17 +15434,21 @@ body.b1Mode .clozeAnswerText {
     row.hidden = false;
     row.setAttribute("data-evidence-id", b1Runtime.currentEvidenceRecordId);
     row.setAttribute("data-confidence-next", requiresConfidence ? "required" : "optional");
+    if (guidance) {
+      guidance.hidden = !(requiresConfidence && !confidenceReady);
+      guidance.textContent = "Select answer confidence to continue.";
+    }
     if (el("nextBtn")) {
       if (requiresConfidence && !confidenceReady) {
-        el("nextBtn").textContent = "Select answer confidence to continue";
-        el("nextBtn").disabled = true;
-        el("nextBtn").classList.add("confidenceBlocked");
-        el("nextBtn").setAttribute("aria-disabled", "true");
+        el("nextBtn").textContent = b1RoundComplete() ? "Ergebnis" : "Weiter";
+        el("nextBtn").disabled = false;
+        el("nextBtn").removeAttribute("aria-disabled");
+        el("nextBtn").classList.remove("visible");
       } else {
         el("nextBtn").textContent = b1RoundComplete() ? "Ergebnis" : "Weiter";
         el("nextBtn").disabled = false;
-        el("nextBtn").classList.remove("confidenceBlocked");
         el("nextBtn").removeAttribute("aria-disabled");
+        el("nextBtn").classList.add("visible");
       }
     }
     row.removeAttribute("data-advancing");
@@ -15466,6 +15485,10 @@ body.b1Mode .clozeAnswerText {
     if (row && row.getAttribute("data-advancing") === "true") return;
     var record = updateLatestB1EvidenceConfidence(value);
     if (!record) return;
+    if (b1ConfidenceAutoAdvanceAllowed(record)) {
+      if (row) row.setAttribute("data-advancing", "true");
+      proceed();
+    }
   }
   function b1EvidenceSummary() {
     var store = safeGetB1Evidence();
@@ -18395,7 +18418,7 @@ body.b1Mode .clozeAnswerText {
   function b1TaskContractChoicePrompt(item) {
     var text = String(item && (item.prompt_de || item.learnerCue || item.microRule || "") || "");
     if (b1RepairShouldUseChoiceContract(item)) {
-      if (/tone|schlecht|soft|h.flich|polite/i.test(text)) return "Welche Form ist höflicher?";
+      if (/tone|schlecht|soft|h.flich|polite/i.test(text)) return "Welche Form passt in dieser Situation am besten?";
       if (/Termin|appointment/i.test(text)) return "Welche Form passt besser für einen Termin?";
       if (/Antrag|Formular|Unterlagen|Amt|office/i.test(text)) return "Welche Form passt im Amt?";
       if (/Stelle|bewerb/i.test(text)) return "Welche Form passt zur Bewerbung?";
@@ -18737,7 +18760,8 @@ body.b1Mode .clozeAnswerText {
     var correctText = correct ? correct.text : (b1ChoiceCorrectTexts(item)[0] || "");
     if (!selectedText && !correctText) return "";
     var selectedIsCorrect = selected && correct && selected.id === correct.id;
-    var line = selectedIsCorrect || !correctText ? "Selected answer: " + selectedText : "Your answer: " + selectedText + ". Correct answer: " + correctText;
+    if (selectedIsCorrect) return "";
+    var line = correctText ? "Correct answer: " + correctText : "Check the highlighted option.";
     return "<div class=\"microRule b1ChoiceFeedback\" dir=\"ltr\">" + escapeHtml(line) + "</div>";
   }
   function b1ChoiceShuffleDebugSummary(item, count) {
@@ -18955,7 +18979,7 @@ body.b1Mode .clozeAnswerText {
     comparison = comparison || compareRepairAnswer(item, rawAnswer);
     if (!comparison) return "";
     if (comparison.correctWithNote) return "Capitalisation: " + (comparison.capitalisationNote || "check letter case.");
-    if (comparison.isExact) return "Corrected.";
+    if (comparison.isExact) return "Correction matches the target sentence.";
     var userSentence = comparison.submitted;
     var correctSentence = comparison.expected || comparison.displaySentence;
     var userTokens = b1RepairTokens(userSentence);
@@ -18980,7 +19004,7 @@ body.b1Mode .clozeAnswerText {
     comparison = comparison || compareRepairAnswer(item, rawAnswer);
     if (!comparison) return "";
     if (comparison.correctWithNote) return "Correct - " + (comparison.capitalisationNote || "capitalisation note.");
-    if (isCorrect) return "Corrected.";
+    if (isCorrect) return "Correction matches the target sentence.";
     var ruleHint = b1RepairRuleHint(item, comparison.submitted || rawAnswer, comparison.expected || comparison.displaySentence, "");
     if (ruleHint) return ruleHint;
     return repairDiffSummary(item, rawAnswer, comparison);
@@ -18992,7 +19016,7 @@ body.b1Mode .clozeAnswerText {
     var tokenDiff = repairDiffSummary(item, rawAnswer, comparison);
     var ruleHint = b1RepairRuleHint(item, userSentence, comparison && comparison.expected || correctSentence, tokenDiff);
     var contrast = renderB1ContrastNote(item, rawAnswer, isCorrect).replace(/^<div class="microRule">|<\/div>$/g, "");
-    var html = "<details class=\"repairExplain\"><summary>Explain</summary><div class=\"repairExplainBody\">";
+    var html = "<details class=\"repairExplain\"><summary>Why this correction works</summary><div class=\"repairExplainBody\">";
     if (correctSentence) html += "<span class=\"repairFeedbackLine\">Corrected sentence:<span class=\"repairAnswerLine\">" + escapeHtml(correctSentence) + "</span></span>";
     if (userSentence) html += "<span class=\"repairFeedbackLine\">Your answer: " + escapeHtml(userSentence) + "</span>";
     if (ruleHint) html += "<span class=\"repairFeedbackLine\">Rule: " + escapeHtml(ruleHint) + "</span>";
@@ -20150,13 +20174,11 @@ body.b1Mode .clozeAnswerText {
     return true;
   }
   function b1SupportToggleText(item, shown) {
-    var isRepair = item && item.itemType === "error_repair";
-    if (isRepair) return shown ? "Intended meaning shown" : "Intended meaning";
-    return shown ? "Meaning shown" : "Meaning";
+    return shown ? "Hide translation" : "Show translation";
   }
   function b1SupportDisplayText(text, answered) {
     var value = String(text || "");
-    var prefix = b1Runtime.current && b1Runtime.current.itemType === "error_repair" ? "Intended meaning: " : "Meaning: ";
+    var prefix = b1Runtime.current && b1Runtime.current.itemType === "error_repair" ? "Meaning / translation: " : "Translation: ";
     return value.replace(/^Correct:\s*/i, prefix);
   }
   function renderB1Translation(forceOpen) {
@@ -20197,8 +20219,8 @@ body.b1Mode .clozeAnswerText {
   }
   function toggleB1Translation() {
     if (!b1Runtime.active || !b1Runtime.current) return;
-    b1Runtime.translationOpen = true;
-    renderB1Translation(true);
+    b1Runtime.translationOpen = !b1Runtime.translationOpen;
+    renderB1Translation(b1Runtime.translationOpen);
   }
   function renderConnectorChoices(item) {
     var grid = el("connectorChoiceGrid");
@@ -20323,13 +20345,15 @@ body.b1Mode .clozeAnswerText {
     var checkBtn = el("checkBtn");
     if (!actionGrid || !teachBtn || !checkBtn) return;
     if (!inlineInput) {
+      actionGrid.classList.remove("teachAction", "rightAction");
+      actionGrid.classList.add("singleAction");
       checkBtn.style.display = "";
       teachBtn.style.display = "none";
       return;
     }
     var hasTyped = !!b1CleanAnswer(inlineInput.value);
-    actionGrid.classList.toggle("teachAction", !hasTyped);
-    actionGrid.classList.toggle("singleAction", hasTyped);
+    actionGrid.classList.remove("teachAction", "singleAction");
+    actionGrid.classList.add("rightAction");
     teachBtn.style.display = hasTyped ? "none" : "";
     teachBtn.disabled = hasTyped;
     checkBtn.style.display = hasTyped ? "" : "none";
@@ -20396,7 +20420,7 @@ body.b1Mode .clozeAnswerText {
     if (usesChoices) renderConnectorChoices(item);
     if (isProduction) renderProductionControls(item);
     el("actionGrid").classList.remove("singleAction", "rightAction", "teachAction");
-    if (inlineInput) el("actionGrid").classList.add("teachAction");
+    if (inlineInput) el("actionGrid").classList.add("rightAction");
     else el("actionGrid").classList.add("singleAction");
     el("actionGrid").style.display = (isProduction || usesChoices) ? "none" : "grid";
     el("checkBtn").disabled = isProduction || usesChoices;
@@ -20483,7 +20507,6 @@ body.b1Mode .clozeAnswerText {
     buttons.forEach(function(btn){ btn.disabled = true; });
     el("nextBtn").textContent = b1Runtime.queue.length ? "Weiter" : "Ergebnis";
     el("nextBtn").disabled = false;
-    el("nextBtn").classList.remove("confidenceBlocked");
     el("nextBtn").classList.add("visible");
     renderHud();
     focusWithoutScroll(el("nextBtn"));
@@ -20519,7 +20542,6 @@ body.b1Mode .clozeAnswerText {
     buttons.forEach(function(btn){ btn.disabled = true; });
     el("nextBtn").textContent = b1RoundComplete() ? "Ergebnis" : "Weiter";
     el("nextBtn").disabled = false;
-    el("nextBtn").classList.remove("confidenceBlocked");
     el("nextBtn").classList.add("visible");
     renderHud();
     focusWithoutScroll(el("nextBtn"));
