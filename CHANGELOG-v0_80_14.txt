@@ -1,0 +1,49 @@
+## v0.80.14 - B1-11 Colleague feedback / conflict
+
+### Added
+
+- Added approved B1-11 Colleague feedback / conflict content as a static module file.
+- Added 15 active B1-11 practice items and 3 B1-11 notice/concept cards.
+- Added a B1-11 module practice entry under Grammar.
+- Added B1-11 debug/start helpers for QA.
+- Added a v0.80.14 static verifier and Edge/CDP QA gate for B1-11 counts, route registration, task rendering, evidence metadata, export/import, responsive checks, and Arabic/LTR smoke.
+
+### Implementation
+
+- Imported rows from the approved B1-11 planning inventory and schema mapping.
+- Preserved planning IDs, target-family IDs, target IDs, evidence types, support presentation, and review-eligibility metadata where the current schema supports them.
+- Mapped `Auswahl`, `Luecke`, `Satzbau`, `Reparatur`, `Kontrast`, and `Produktion` to existing renderers.
+- Kept B1-11 out of Today's B1 Sprint and Diagnostic Sprint by registry flags.
+- Kept production cards self-marked only.
+
+### Preserved
+
+- Existing localStorage keys.
+- Existing export/import compatibility.
+- Existing B1-01 through B1-10 behaviour.
+- Existing multiple-choice shuffling behaviour.
+- Existing production self-marking behaviour.
+- Today B1 Sprint and Diagnostic Sprint composition.
+- German LTR handling in Arabic UI contexts.
+- Static, dependency-free app architecture.
+
+### Excluded
+
+- Did not add B1-12 review items.
+- Did not add v0.81 Cases and Articles work.
+- Did not add Genitive.
+- Did not add Satzi.
+- Did not add runtime grammar generation.
+- Did not add dynamic German case/article inference.
+- Did not add B2 content.
+- Did not add a scheduler, delayed review, or weakness repair queue.
+
+### Testing
+
+- Parsed `index.html` inline script.
+- Parsed active content scripts.
+- Generated `content/b1-m11-colleague-feedback-conflict.js` from the approved B1-11 planning table.
+- Ran `_development-files/v0813_static_verify.cjs` before editing.
+- Ran `_development-files/v0814_static_verify.cjs`.
+- Ran `_development-files/v0814_b111_colleague_feedback_conflict_gate.cjs`.
+- Ran `_development-files/v0802_mc_choice_shuffle_gate.cjs` under v0.80.14 version labels.

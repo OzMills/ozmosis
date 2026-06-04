@@ -1,0 +1,49 @@
+{
+  "package": "ozmosis_b1_m02_m11_codex_input_package_v0_1",
+  "created_files_copied": [
+    [
+      "ozmosis-v0_80_4.zip",
+      "_app_source_reference/ozmosis-v0_80_4.zip"
+    ],
+    [
+      "OZMOSIS_SOURCE_BRIEF_v0.80.4.md",
+      "docs/OZMOSIS_SOURCE_BRIEF_v0.80.4.md"
+    ],
+    [
+      "OZMOSIS_DEVELOPMENT_ROADMAP_v0.80.4.md",
+      "docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.80.4.md"
+    ],
+    [
+      "ozmosis_b1_m02_m11_codex_prompt_series_v0_1.md",
+      "docs/Codex Building/workflow/ozmosis_b1_m02_m11_codex_prompt_series_v0_1.md"
+    ],
+    [
+      "ozmosis_b1_m02_m12_prompt_pipeline_control_workbook_v0_1.xlsx",
+      "docs/Codex Building/workflow/ozmosis_b1_m02_m12_prompt_pipeline_control_workbook_v0_1.xlsx"
+    ],
+    [
+      "ozmosis_b1_module_pipeline_core_v0_1.md",
+      "docs/Codex Building/workflow/ozmosis_b1_module_pipeline_core_v0_1.md"
+    ],
+    [
+      "ozmosis_b1_m02_m12_spoke_set_cross_spoke_consistency_audit_v0_1.md",
+      "docs/Codex Building/workflow/ozmosis_b1_m02_m12_spoke_set_cross_spoke_consistency_audit_v0_1.md"
+    ],
+    [
+      "ozmosis_b1_m02_m12_full_staged_content_pipeline_run_v0_1.zip",
+      "docs/Codex Building/workflow/ozmosis_b1_m02_m12_full_staged_content_pipeline_run_v0_1.zip"
+    ],
+    [
+      "ozmosis_b1_m02_m12_prompt_pipeline_execution_outputs_v0_1.zip",
+      "docs/Codex Building/workflow/ozmosis_b1_m02_m12_prompt_pipeline_execution_outputs_v0_1.zip"
+    ]
+  ],
+  "missing_optional_files": [],
+  "expanded_execution_output_files": 43,
+  "expanded_staged_output_files": 12,
+  "excluded": [
+    "Excluded TELC/coursebook/PDF source files deliberately.",
+    "The package contains generated, source-safe planning outputs only, plus the current app package/source briefs.",
+    "Do not commit `_app_source_reference/ozmosis-v0_80_4.zip` to public GitHub unless you intentionally want the full app package stored there."
+  ]
+}
