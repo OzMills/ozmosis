@@ -7589,6 +7589,99 @@ body.b1Mode .promptWord {
   }
 }
 
+/* v0.80.14.1 beta readiness: task input, press, and HUD repair. */
+button:active:not(:disabled),
+.homeRouteCard:active,
+.homeNavButton:active,
+.menuButton:active,
+.connectorChoiceGrid button:active:not(:disabled),
+.learningMapAction:active:not(:disabled) {
+  transform:translateY(1px) scale(.992);
+  filter:brightness(1.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  button:active:not(:disabled),
+  .homeRouteCard:active,
+  .homeNavButton:active,
+  .menuButton:active,
+  .connectorChoiceGrid button:active:not(:disabled),
+  .learningMapAction:active:not(:disabled) {
+    transform:none;
+  }
+}
+
+.bottomHud {
+  padding-top:24px !important;
+}
+
+.bottomHud .progressRow {
+  height:10px !important;
+}
+
+.bottomHud .progressShell {
+  height:8px !important;
+}
+
+body.b1Mode .inlineClozeInput,
+body.b1Mode.b1TypedCloze .inlineClozeInput,
+body.b1Mode.b1TypedCloze .blankSlot.answerSlot,
+body.b1Mode.b1TypedCloze .clozeAnswerText {
+  width:var(--clozeWidth, 10ch) !important;
+  min-width:min(10ch, 72vw) !important;
+  max-width:min(10ch, 78vw) !important;
+  border:0 !important;
+  border-bottom:2px solid var(--mode) !important;
+  border-radius:0 0 12px 12px !important;
+  background:rgba(7,12,21,.34) !important;
+  box-shadow:none !important;
+}
+
+body.b1Mode .inlineClozeInput:focus,
+body.b1Mode.b1TypedCloze .inlineClozeInput:focus {
+  border-bottom-width:3px !important;
+  outline:1px solid color-mix(in srgb, var(--accent) 42%, transparent) !important;
+  outline-offset:3px !important;
+  box-shadow:0 8px 20px -16px var(--modeShadow) !important;
+}
+
+body.b1Mode .clozeAnswerText,
+body.b1Mode.b1TypedCloze .clozeAnswerText,
+.repairAnswerLine,
+.answerArea .correctionPattern,
+.answerArea .correctionTarget,
+.microRule,
+.b1ChoiceFeedback {
+  overflow-wrap:anywhere;
+  word-break:normal;
+  max-width:100%;
+}
+
+.taskInstruction {
+  display:inline-block;
+  margin-bottom:.28em;
+  color:var(--accent);
+  font-size:.72em;
+  font-weight:950;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+
+@media (orientation:landscape) and (max-height:420px) {
+  body.b1Mode:not(.resultsMode) {
+    padding-bottom:12px !important;
+  }
+
+  body.b1Mode:not(.resultsMode) main {
+    max-height:calc(100dvh - 18px) !important;
+    padding-bottom:14px !important;
+  }
+
+  body.b1Mode:not(.resultsMode) .bottomHud {
+    display:none !important;
+  }
+}
+
 </style>
 </head>
 <body class="booting" data-mode="definite">
@@ -8548,8 +8641,8 @@ body.b1Mode .promptWord {
   var B1_STORAGE_KEY = "ozmosis_b1_sprint_progress_v1";
   var B1_EVIDENCE_STORAGE_KEY = "ozmosis_b1_progress_evidence_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.80.14";
-  var OZMOSIS_EXPORT_VERSION = "v0.80.14-b1-11-colleague-feedback-conflict";
+  var OZMOSIS_APP_VERSION = "v0.80.14.1";
+  var OZMOSIS_EXPORT_VERSION = "v0.80.14.1-beta-readiness-task-contract-practice-ux";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -18087,7 +18180,86 @@ body.b1Mode .promptWord {
     for (var i = 0; i < sources.length; i += 1) {
       if (Array.isArray(sources[i]) && sources[i].length) return sources[i].filter(function(choice){ return choice !== null && choice !== undefined; });
     }
+    var contractChoices = b1TaskContractGeneratedChoices(item);
+    if (contractChoices.length) return contractChoices;
     return [];
+  }
+  function b1TaskContractStripInstruction(text) {
+    return String(text || "")
+      .replace(/\s*[-–—]\s*Choose.*$/i, "")
+      .replace(/\s*Intended (formal |admin |target |workplace |instruction |meaning:).*$/i, "")
+      .replace(/^Fix the tone:\s*/i, "")
+      .trim();
+  }
+  function b1TaskContractSlashAlternatives(item) {
+    var source = String(item && (item.learnerCue || item.prompt_de) || "");
+    source = source.split(/[–—]/)[0];
+    source = source.replace(/^Choices:\s*/i, "").trim();
+    if (source.indexOf(" / ") === -1) return [];
+    return source.split(/\s+\/\s+/).map(function(part){ return b1TaskContractStripInstruction(part); }).filter(Boolean);
+  }
+  function b1IsKontrastSlashChoice(item) {
+    if (!item || item.taskType !== "Kontrast") return false;
+    var text = String(item.prompt_de || "") + " " + String(item.learnerCue || "");
+    return /\s\/\s/.test(text) && (/choose/i.test(text) || b1TaskContractSlashAlternatives(item).length >= 2);
+  }
+  function b1RepairShouldUseChoiceContract(item) {
+    if (!item || item.itemType !== "error_repair") return false;
+    var text = [
+      item.id,
+      item.prompt_de,
+      item.learnerCue,
+      item.support_en
+    ].join(" ");
+    return /Intended|Fix the tone|Das ist schlecht|bis am Freitag|formal appointment phrase|formal admin meaning|application preposition|workplace leave request|recipient|action verb|imperative|instruction|tone/i.test(text);
+  }
+  function b1TaskContractWrongSurface(item) {
+    var prompt = b1TaskContractStripInstruction(item && item.prompt_de || "");
+    return prompt.replace(/\s+/g, " ").trim();
+  }
+  function b1TaskContractGeneratedChoices(item) {
+    if (!item) return [];
+    var values = [];
+    if (b1IsKontrastSlashChoice(item)) {
+      values = Array.isArray(item.contrastTargets) && item.contrastTargets.length ? item.contrastTargets.slice() : b1TaskContractSlashAlternatives(item);
+    } else if (b1RepairShouldUseChoiceContract(item)) {
+      values = [item.answer || item.fullAnswer_de || "", b1TaskContractWrongSurface(item)];
+    }
+    values = b1UniqueChoiceValues(values);
+    if (values.length < 2) return [];
+    var answer = b1CleanAnswer(item.answer || item.fullAnswer_de || values[0]);
+    return values.map(function(value, index){
+      return {
+        id:String(item.id || "item") + "_contract_choice_" + String(index + 1),
+        text:value,
+        value:value,
+        isCorrect:b1ChoiceCanonical(value) === b1ChoiceCanonical(answer)
+      };
+    });
+  }
+  function b1TaskContractChoicePrompt(item) {
+    var text = String(item && (item.prompt_de || item.learnerCue || item.microRule || "") || "");
+    if (b1RepairShouldUseChoiceContract(item)) {
+      if (/tone|schlecht|soft|h.flich|polite/i.test(text)) return "Welche Form ist höflicher?";
+      if (/Termin|appointment/i.test(text)) return "Welche Form passt besser für einen Termin?";
+      if (/Antrag|Formular|Unterlagen|Amt|office/i.test(text)) return "Welche Form passt im Amt?";
+      if (/Stelle|bewerb/i.test(text)) return "Welche Form passt zur Bewerbung?";
+      if (/Urlaub/i.test(text)) return "Welche Form passt als Urlaubsantrag?";
+      if (/Stecker|Gerät|instruction|imperative/i.test(text)) return "Welche Form ist die höfliche Anweisung?";
+      if (/Rechnung|Lieferung|Betrag/i.test(text)) return "Welche Form passt zur Rechnung oder Lieferung?";
+      return "Welche Form passt besser?";
+    }
+    if (/soft disagreement|Du hast Unrecht|sehe das anders/i.test(text)) return "Welche Antwort ist höflicher?";
+    if (/apology|Es tut mir leid|Entschuldigung/i.test(text)) return "Welche Antwort ist eine Entschuldigung?";
+    if (/verb-final|V2|connector|weil|denn|obwohl|deshalb|ob\s|dass/i.test(text)) return "Welche Option passt zur Grammatik?";
+    if (/document|proof|Nachweis|Formular|Unterlagen/i.test(text)) return "Welche Option passt im Amt?";
+    return "Welche Option passt besser?";
+  }
+  function b1RepairPromptHtml(item) {
+    var source = b1TaskContractWrongSurface(item);
+    if (!source) source = String(item && item.prompt_de || "");
+    var label = item && item.taskType === "Umformen" ? "Forme den ganzen Satz um:" : "Korrigiere den ganzen Satz:";
+    return '<span class="taskInstruction">' + escapeHtml(label) + '</span><br><span dir="ltr">' + escapeHtml(source) + '</span>';
   }
   function b1ChoiceText(choice) {
     if (choice && typeof choice === "object") {
@@ -18234,6 +18406,7 @@ body.b1Mode .promptWord {
     if (!item || item.itemType === "production_card") return false;
     var choices = b1ChoiceRawChoices(item);
     if (!choices.length) return false;
+    if (b1IsKontrastSlashChoice(item) || b1RepairShouldUseChoiceContract(item)) return true;
     var type = String(item.itemType || item.type || "");
     return type === "connector_choice" || type === "phrase_choice" || type === "multiple_choice" || type === "choice" || type === "recognition" || type === "error_repair";
   }
@@ -18285,14 +18458,13 @@ body.b1Mode .promptWord {
     return b1IsTypedCloze(item);
   }
   function b1ClozeWidthStyle(item) {
-    var answerLength = b1CleanAnswer(item && item.answer || "").length;
-    var chars = Math.max(6, Math.min(18, answerLength + 2));
-    return "--clozeWidth:" + chars + "ch";
+    return "--clozeWidth:10ch";
   }
   function b1PromptHtml(item, resultClass) {
     if (item && item.itemType === "production_card") return escapeHtml(item.prompt_de || "");
     var rawPrompt = String(item && item.prompt_de || "");
     if (b1UsesChoices(item)) {
+      if (b1IsKontrastSlashChoice(item) || b1RepairShouldUseChoiceContract(item)) return escapeHtml(b1TaskContractChoicePrompt(item));
       if (item.itemType === "error_repair" && resultClass && rawPrompt.indexOf("___") !== -1) {
         return escapeHtml(rawPrompt).replace(/___/g, b1ClozeReplacement(item, resultClass));
       }
@@ -18302,6 +18474,7 @@ body.b1Mode .promptWord {
     if (b1IsTypedCloze(item) && rawPrompt.indexOf("___") !== -1) {
       return escapeHtml(rawPrompt).replace(/___/g, b1ClozeReplacement(item, resultClass));
     }
+    if (item && item.itemType === "error_repair") return b1RepairPromptHtml(item);
     return escapeHtml(b1PromptWithoutFakeBlank(rawPrompt));
   }
   function b1CapitalizationMatters(item) {
@@ -18562,6 +18735,13 @@ body.b1Mode .promptWord {
     var capHint = b1RepairCapitalisationHint(userAnswer, correctAnswer);
     if (capHint) return capHint;
     var category = b1RepairCategory(item);
+    var promptText = String(item && (item.prompt_de || item.fullAnswer_de || item.answer || "") || "");
+    if (/dass/i.test(promptText)) return 'Nach "dass" steht das konjugierte Verb am Ende.';
+    if (/weil/i.test(promptText)) return 'Nach "weil" steht das konjugierte Verb am Ende.';
+    if (/ob\s/i.test(promptText)) return 'Nach "ob" steht das konjugierte Verb am Ende.';
+    if (/wenn/i.test(promptText)) return 'Nach "wenn" steht das konjugierte Verb am Ende.';
+    if (/bevor/i.test(promptText)) return 'Nach "bevor" steht das konjugierte Verb am Ende.';
+    if (/deshalb|trotzdem|Aus meiner Sicht/i.test(promptText)) return "Das konjugierte Verb steht im Hauptsatz auf Position 2.";
     if (category === "word_order_subordinate") return "In a subordinate clause, the conjugated verb goes to the end.";
     if (category === "word_order_main_clause") return "In a main clause, the conjugated verb stays in position 2.";
     var micro = String(item && item.microRule || "").replace(/\s+/g, " ").trim();
@@ -18640,6 +18820,8 @@ body.b1Mode .promptWord {
     if (!comparison) return "";
     if (comparison.correctWithNote) return "Correct - " + (comparison.capitalisationNote || "capitalisation note.");
     if (isCorrect) return "Corrected.";
+    var ruleHint = b1RepairRuleHint(item, comparison.submitted || rawAnswer, comparison.expected || comparison.displaySentence, "");
+    if (ruleHint) return ruleHint;
     return repairDiffSummary(item, rawAnswer, comparison);
   }
   function repairFeedbackExplainDetails(item, rawAnswer, isCorrect, comparison) {
@@ -19603,9 +19785,11 @@ body.b1Mode .promptWord {
   }
   function b1ReviewPracticeItems() {
     var preview = buildB1ReviewCandidatePreview();
-    return (preview.candidates || []).filter(function(candidate){
+    var candidates = (preview.candidates || []).filter(function(candidate){
       return candidate.candidateQuality === "preview_ready";
-    }).slice(0, 8).map(function(candidate){
+    });
+    candidates = shuffleWithSeed(candidates, "review-practice|" + Date.now().toString(36));
+    return b1ReviewPracticeAntiClump(candidates.map(function(candidate){
       var item = b1ItemById(candidate.itemId);
       if (!item) return null;
       var copy = cloneB1Item(item);
@@ -19614,7 +19798,35 @@ body.b1Mode .promptWord {
       copy._reviewDelayBucket = candidate.intervalBucket || "";
       copy._reviewDaysSinceLastAttempt = candidate.lastAutoGradedAgeDays;
       return copy;
-    }).filter(Boolean);
+    }).filter(Boolean), 8).slice(0, 8);
+  }
+  function b1ReviewPracticeClusterKey(item) {
+    return [
+      b1EvidenceBankKeyFor(item),
+      b1ItemFamily(item),
+      item && item.targetFamilyId || "",
+      item && item.reviewGroup || ""
+    ].join("|");
+  }
+  function b1ReviewPracticeAntiClump(items, limit) {
+    var remaining = (items || []).slice();
+    var out = [];
+    limit = Math.max(1, Number(limit || remaining.length || 1));
+    while (remaining.length && out.length < limit) {
+      var previous = out.length ? out[out.length - 1] : null;
+      var previousKey = previous ? b1ReviewPracticeClusterKey(previous) : "";
+      var index = 0;
+      if (previousKey) {
+        for (var i = 0; i < remaining.length; i += 1) {
+          if (b1ReviewPracticeClusterKey(remaining[i]) !== previousKey) {
+            index = i;
+            break;
+          }
+        }
+      }
+      out.push(remaining.splice(index, 1)[0]);
+    }
+    return out.concat(remaining);
   }
   function showReviewPracticeEmpty() {
     showHubPlaceholder("Review practice");
@@ -19760,6 +19972,8 @@ body.b1Mode .promptWord {
     context = context || {};
     var policy = b1CanonicalSupportVisibility(item && (item.supportVisibilityPolicy || item.supportVisibility || item.supportPolicy));
     if (policy === "unknown") return "visible";
+    if (item && item.itemType === "error_repair") return "hidden";
+    if (item && b1UsesChoices(item) && policy === "visible") return "after_answer";
     return policy;
   }
   function b1ShouldShowSupportBeforeAnswer(item, context) {
