@@ -310,17 +310,17 @@
     "grammarDomain": "redemittel",
     "section": "formal_email",
     "category": "formal_email",
-    "itemType": "error_repair",
+    "itemType": "phrase_choice",
     "cefr": "B1",
     "difficulty": "sprint_core",
-    "prompt_de": "Bessere formelle Form: ___",
+    "prompt_de": "Welche formelle Schlussform passt am besten?",
     "answer": "Ich freue mich auf Ihre Antwort.",
     "acceptedAnswers": [
       "Ich freue mich auf Ihre Antwort."
     ],
     "fullAnswer_de": "Ich freue mich auf Ihre Antwort.",
     "support_en": "Make the request polite and formal.",
-    "microRule": "Use a neutral closing expectation, not a command.",
+    "microRule": "Neutral closing expectation; the other options sound too informal or too commanding.",
     "variantFamilyId": "red_formal_reply",
     "variantRole": "survival",
     "tags": [
@@ -333,8 +333,13 @@
     "choices": [
       "Schreib mir schnell.",
       "Ich freue mich auf Ihre Antwort.",
-      "Antworten Sie sofort."
-    ]
+      "Antworten Sie bitte bis morgen."
+    ],
+    "taskType": "Kontrast",
+    "taskDepth": "contrast",
+    "answerMode": "selected_choice_value",
+    "supportPolicy": "scenario_visible",
+    "evidenceType": "auto_supported"
   },
   {
     "id": "b1_redemittel_012",
@@ -344,17 +349,17 @@
     "grammarDomain": "redemittel",
     "section": "formal_email",
     "category": "formal_email",
-    "itemType": "error_repair",
+    "itemType": "phrase_choice",
     "cefr": "B1",
     "difficulty": "sprint_core",
-    "prompt_de": "Bessere formelle Form: ___",
+    "prompt_de": "Welche Einleitung ist vollständig und höflich?",
     "answer": "Ich schreibe Ihnen, weil ich eine Frage habe.",
     "acceptedAnswers": [
       "Ich schreibe Ihnen, weil ich eine Frage habe."
     ],
     "fullAnswer_de": "Ich schreibe Ihnen, weil ich eine Frage habe.",
     "support_en": "Choose the natural formal sentence.",
-    "microRule": "Keep the email phrase complete and polite.",
+    "microRule": "Complete formal email frame; the other options are incomplete or too direct.",
     "variantFamilyId": "red_formal_purpose",
     "variantRole": "survival",
     "tags": [
@@ -366,9 +371,14 @@
     "status": "active",
     "choices": [
       "Ich schreibe Ihnen, weil ich eine Frage habe.",
-      "Ich schreibe, weil Frage.",
-      "Ich will was fragen."
-    ]
+      "Ich habe eine Frage.",
+      "Ich will etwas fragen."
+    ],
+    "taskType": "Kontrast",
+    "taskDepth": "contrast",
+    "answerMode": "selected_choice_value",
+    "supportPolicy": "scenario_visible",
+    "evidenceType": "auto_supported"
   },
   {
     "id": "b1_redemittel_013",
@@ -728,17 +738,17 @@
     "grammarDomain": "redemittel",
     "section": "appointment",
     "category": "appointment",
-    "itemType": "error_repair",
+    "itemType": "phrase_choice",
     "cefr": "B1",
     "difficulty": "sprint_core",
-    "prompt_de": "Bessere Form: ___",
+    "prompt_de": "Welche Form passt für eine höfliche Terminvereinbarung?",
     "answer": "Ich möchte gern einen Termin vereinbaren.",
     "acceptedAnswers": [
       "Ich möchte gern einen Termin vereinbaren."
     ],
     "fullAnswer_de": "Ich möchte gern einen Termin vereinbaren.",
     "support_en": "Make the appointment request polite.",
-    "microRule": "Ich möchte gern ... is safer than Ich will ...",
+    "microRule": "„Ich möchte gern ... vereinbaren“ is polite and natural; „will“ is direct and „Ich mache Termin“ is non-standard.",
     "variantFamilyId": "red_appointment_arrange",
     "variantRole": "survival",
     "tags": [
@@ -752,7 +762,12 @@
       "Ich will einen Termin bekommen.",
       "Ich möchte gern einen Termin vereinbaren.",
       "Ich mache Termin."
-    ]
+    ],
+    "taskType": "Kontrast",
+    "taskDepth": "contrast",
+    "answerMode": "selected_choice_value",
+    "supportPolicy": "scenario_visible",
+    "evidenceType": "auto_supported"
   },
   {
     "id": "b1_redemittel_026",
@@ -762,17 +777,17 @@
     "grammarDomain": "redemittel",
     "section": "appointment",
     "category": "appointment",
-    "itemType": "error_repair",
+    "itemType": "phrase_choice",
     "cefr": "B1",
     "difficulty": "sprint_core",
-    "prompt_de": "Bessere Form: ___",
+    "prompt_de": "Welche Form sagt höflich, dass der Termin nicht passt?",
     "answer": "Der Termin passt mir leider nicht.",
     "acceptedAnswers": [
       "Der Termin passt mir leider nicht."
     ],
     "fullAnswer_de": "Der Termin passt mir leider nicht.",
     "support_en": "Explain a scheduling problem politely.",
-    "microRule": "leider softens the refusal.",
+    "microRule": "„Leider“ softens the refusal and „passt mir nicht“ is the useful appointment phrase.",
     "variantFamilyId": "red_appointment_fit",
     "variantRole": "survival",
     "tags": [
@@ -786,7 +801,12 @@
       "Der Termin ist schlecht.",
       "Der Termin passt mir leider nicht.",
       "Ich komme nicht, egal."
-    ]
+    ],
+    "taskType": "Kontrast",
+    "taskDepth": "contrast",
+    "answerMode": "selected_choice_value",
+    "supportPolicy": "scenario_visible",
+    "evidenceType": "auto_supported"
   },
   {
     "id": "b1_redemittel_027",
@@ -1089,17 +1109,17 @@
     "grammarDomain": "redemittel",
     "section": "request",
     "category": "request",
-    "itemType": "error_repair",
+    "itemType": "phrase_choice",
     "cefr": "B1",
     "difficulty": "sprint_core",
-    "prompt_de": "Bessere Form: ___",
+    "prompt_de": "Welche Form passt für eine formelle Nachfrage zur Stelle?",
     "answer": "Ich möchte mich erkundigen, ob die Stelle noch frei ist.",
     "acceptedAnswers": [
       "Ich möchte mich erkundigen, ob die Stelle noch frei ist."
     ],
     "fullAnswer_de": "Ich möchte mich erkundigen, ob die Stelle noch frei ist.",
     "support_en": "Make the question formal and complete.",
-    "microRule": "erkundigen, ob ... is useful in formal contexts.",
+    "microRule": "„Ich möchte mich erkundigen, ob ...“ is formal and uses an indirect question.",
     "variantFamilyId": "red_request_inquire",
     "variantRole": "survival",
     "tags": [
@@ -1110,10 +1130,15 @@
     ],
     "status": "active",
     "choices": [
-      "Ich will wissen, Stelle frei?",
+      "Ich will wissen, ist die Stelle frei?",
       "Ich möchte mich erkundigen, ob die Stelle noch frei ist.",
-      "Sagen Sie mir Stelle."
-    ]
+      "Sagen Sie mir, ob die Stelle frei ist."
+    ],
+    "taskType": "Kontrast",
+    "taskDepth": "contrast",
+    "answerMode": "selected_choice_value",
+    "supportPolicy": "scenario_visible",
+    "evidenceType": "auto_supported"
   },
   {
     "id": "b1_redemittel_038",
@@ -1123,17 +1148,17 @@
     "grammarDomain": "redemittel",
     "section": "request",
     "category": "request",
-    "itemType": "error_repair",
+    "itemType": "phrase_choice",
     "cefr": "B1",
     "difficulty": "sprint_core",
-    "prompt_de": "Bessere Form: ___",
+    "prompt_de": "Welche Bitte ist am höflichsten und noch natürlich?",
     "answer": "Könnten Sie mir bitte die Adresse schicken?",
     "acceptedAnswers": [
       "Könnten Sie mir bitte die Adresse schicken?"
     ],
     "fullAnswer_de": "Könnten Sie mir bitte die Adresse schicken?",
     "support_en": "Use a polite request pattern.",
-    "microRule": "Könnten Sie mir bitte ...? is neutral and polite.",
+    "microRule": "„Könnten Sie mir bitte ...?“ is softer than a direct request.",
     "variantFamilyId": "red_request_documents",
     "variantRole": "survival",
     "tags": [
@@ -1147,7 +1172,12 @@
       "Können Sie mir die Adresse schicken?",
       "Könnten Sie mir bitte die Adresse schicken?",
       "Bitte schicken Sie mir die Adresse."
-    ]
+    ],
+    "taskType": "Kontrast",
+    "taskDepth": "contrast",
+    "answerMode": "selected_choice_value",
+    "supportPolicy": "scenario_visible",
+    "evidenceType": "auto_supported"
   },
   {
     "id": "b1_redemittel_039",
@@ -1384,14 +1414,14 @@
     "itemType": "phrase_choice",
     "cefr": "B1",
     "difficulty": "sprint_core",
-    "prompt_de": "Formelle Beschwerde:",
+    "prompt_de": "Welche Beschwerde ist formell und sachlich?",
     "answer": "Leider gibt es ein Problem mit der Lieferung.",
     "acceptedAnswers": [
       "Leider gibt es ein Problem mit der Lieferung."
     ],
     "fullAnswer_de": "Leider gibt es ein Problem mit der Lieferung.",
     "support_en": "Choose the formal problem statement.",
-    "microRule": "Leider keeps the complaint controlled and polite.",
+    "microRule": "„Leider“ makes the complaint clear but less abrupt.",
     "variantFamilyId": "red_complaint_problem",
     "variantRole": "survival",
     "tags": [
@@ -1404,8 +1434,13 @@
     "choices": [
       "Es gibt ein Problem mit der Lieferung.",
       "Leider gibt es ein Problem mit der Lieferung.",
-      "Die Lieferung ist problematisch."
-    ]
+      "Die Lieferung ist total schlecht."
+    ],
+    "taskType": "Kontrast",
+    "taskDepth": "contrast",
+    "answerMode": "selected_choice_value",
+    "supportPolicy": "scenario_visible",
+    "evidenceType": "auto_supported"
   },
   {
     "id": "b1_redemittel_048",
@@ -1449,17 +1484,17 @@
     "grammarDomain": "redemittel",
     "section": "complaint",
     "category": "complaint",
-    "itemType": "error_repair",
+    "itemType": "phrase_choice",
     "cefr": "B1",
     "difficulty": "sprint_core",
-    "prompt_de": "Bessere Form: ___",
+    "prompt_de": "Welche Form passt für eine sachliche Beschwerde?",
     "answer": "Ich möchte mich beschweren.",
     "acceptedAnswers": [
       "Ich möchte mich beschweren."
     ],
     "fullAnswer_de": "Ich möchte mich beschweren.",
     "support_en": "Use neutral complaint language.",
-    "microRule": "beschweren is formal enough; meckern is too informal.",
+    "microRule": "„Sich beschweren“ is neutral enough for a formal complaint; „meckern“ and „sauer“ are too informal.",
     "variantFamilyId": "red_complaint_complain",
     "variantRole": "survival",
     "tags": [
@@ -1473,7 +1508,12 @@
       "Ich will meckern.",
       "Ich möchte mich beschweren.",
       "Ich bin sauer."
-    ]
+    ],
+    "taskType": "Kontrast",
+    "taskDepth": "contrast",
+    "answerMode": "selected_choice_value",
+    "supportPolicy": "scenario_visible",
+    "evidenceType": "auto_supported"
   },
   {
     "id": "b1_redemittel_050",
@@ -1483,17 +1523,17 @@
     "grammarDomain": "redemittel",
     "section": "complaint",
     "category": "complaint",
-    "itemType": "error_repair",
+    "itemType": "phrase_choice",
     "cefr": "B1",
     "difficulty": "sprint_core",
-    "prompt_de": "Bessere Form: ___",
+    "prompt_de": "Welche Bitte passt in einer Beschwerde am besten?",
     "answer": "Könnten Sie das bitte prüfen?",
     "acceptedAnswers": [
       "Könnten Sie das bitte prüfen?"
     ],
     "fullAnswer_de": "Könnten Sie das bitte prüfen?",
     "support_en": "Make the request polite.",
-    "microRule": "Könnten Sie bitte ... softens the complaint.",
+    "microRule": "The Konjunktiv-II frame softens the complaint without hiding the problem.",
     "variantFamilyId": "red_complaint_check",
     "variantRole": "survival",
     "tags": [
@@ -1506,8 +1546,13 @@
     "choices": [
       "Prüfen Sie das bitte.",
       "Könnten Sie das bitte prüfen?",
-      "Bitte kümmern Sie sich darum."
-    ]
+      "Kümmern Sie sich darum."
+    ],
+    "taskType": "Kontrast",
+    "taskDepth": "contrast",
+    "answerMode": "selected_choice_value",
+    "supportPolicy": "scenario_visible",
+    "evidenceType": "auto_supported"
   },
   {
     "id": "b1_redemittel_051",
@@ -1809,17 +1854,17 @@
     "grammarDomain": "redemittel",
     "section": "application",
     "category": "application",
-    "itemType": "error_repair",
+    "itemType": "phrase_choice",
     "cefr": "B1",
     "difficulty": "sprint_core",
-    "prompt_de": "Bessere Form: ___",
+    "prompt_de": "Welche Form passt in einer Bewerbung?",
     "answer": "Ich interessiere mich für die Stelle.",
     "acceptedAnswers": [
       "Ich interessiere mich für die Stelle."
     ],
     "fullAnswer_de": "Ich interessiere mich für die Stelle.",
     "support_en": "Use formal interest language.",
-    "microRule": "sich interessieren für is neutral and useful.",
+    "microRule": "„Sich interessieren für“ is the useful neutral application phrase.",
     "variantFamilyId": "red_application_interest",
     "variantRole": "survival",
     "tags": [
@@ -1833,7 +1878,12 @@
       "Ich finde die Stelle okay.",
       "Ich interessiere mich für die Stelle.",
       "Ich will diese Arbeit."
-    ]
+    ],
+    "taskType": "Kontrast",
+    "taskDepth": "contrast",
+    "answerMode": "selected_choice_value",
+    "supportPolicy": "scenario_visible",
+    "evidenceType": "auto_supported"
   },
   {
     "id": "b1_redemittel_062",
@@ -1843,17 +1893,17 @@
     "grammarDomain": "redemittel",
     "section": "application",
     "category": "application",
-    "itemType": "error_repair",
+    "itemType": "phrase_choice",
     "cefr": "B1",
     "difficulty": "sprint_core",
-    "prompt_de": "Bessere Form: ___",
+    "prompt_de": "Welche Form beschreibt Berufserfahrung natürlich?",
     "answer": "Ich habe Erfahrung mit Büroarbeit.",
     "acceptedAnswers": [
       "Ich habe Erfahrung mit Büroarbeit."
     ],
     "fullAnswer_de": "Ich habe Erfahrung mit Büroarbeit.",
     "support_en": "Name experience clearly.",
-    "microRule": "Erfahrung mit is the job-application phrase.",
+    "microRule": "„Erfahrung mit ...“ is the application phrase; the other options are incomplete or vague.",
     "variantFamilyId": "red_application_experience",
     "variantRole": "survival",
     "tags": [
@@ -1867,7 +1917,12 @@
       "Ich kann Büro.",
       "Ich habe Erfahrung mit Büroarbeit.",
       "Büro ist gut."
-    ]
+    ],
+    "taskType": "Kontrast",
+    "taskDepth": "contrast",
+    "answerMode": "selected_choice_value",
+    "supportPolicy": "scenario_visible",
+    "evidenceType": "auto_supported"
   },
   {
     "id": "b1_redemittel_063",
@@ -2142,17 +2197,17 @@
     "grammarDomain": "redemittel",
     "section": "illness_absence",
     "category": "illness_absence",
-    "itemType": "error_repair",
+    "itemType": "phrase_choice",
     "cefr": "B1",
     "difficulty": "sprint_core",
-    "prompt_de": "Bessere Form: ___",
+    "prompt_de": "Welche Form passt für einen Termin beim Arzt?",
     "answer": "Ich habe einen Arzttermin.",
     "acceptedAnswers": [
       "Ich habe einen Arzttermin."
     ],
     "fullAnswer_de": "Ich habe einen Arzttermin.",
     "support_en": "Use the standard noun Arzttermin.",
-    "microRule": "Arzttermin is compact and natural.",
+    "microRule": "„Der Arzttermin“ is the compact natural noun.",
     "variantFamilyId": "red_illness_doctor",
     "variantRole": "survival",
     "tags": [
@@ -2166,7 +2221,12 @@
       "Ich habe Doktorzeit.",
       "Ich habe einen Arzttermin.",
       "Ich bin bei Arztzeit."
-    ]
+    ],
+    "taskType": "Kontrast",
+    "taskDepth": "contrast",
+    "answerMode": "selected_choice_value",
+    "supportPolicy": "scenario_visible",
+    "evidenceType": "auto_supported"
   },
   {
     "id": "b1_redemittel_073",
@@ -2176,17 +2236,17 @@
     "grammarDomain": "redemittel",
     "section": "illness_absence",
     "category": "illness_absence",
-    "itemType": "error_repair",
+    "itemType": "phrase_choice",
     "cefr": "B1",
     "difficulty": "sprint_core",
-    "prompt_de": "Bessere Form: ___",
-    "answer": "Ich kann erst morgen wieder kommen.",
+    "prompt_de": "Welche Form sagt klar, wann Sie wiederkommen können?",
+    "answer": "Ich kann erst morgen wiederkommen.",
     "acceptedAnswers": [
-      "Ich kann erst morgen wieder kommen."
+      "Ich kann erst morgen wiederkommen."
     ],
     "fullAnswer_de": "Ich kann erst morgen wieder kommen.",
     "support_en": "Make the return time clear.",
-    "microRule": "erst morgen wieder is concise and natural.",
+    "microRule": "„Erst morgen wieder“ states the earliest possible return clearly.",
     "variantFamilyId": "red_illness_return",
     "variantRole": "survival",
     "tags": [
@@ -2198,9 +2258,14 @@
     "status": "active",
     "choices": [
       "Ich komme morgen vielleicht wieder.",
-      "Ich kann erst morgen wieder kommen.",
+      "Ich kann erst morgen wiederkommen.",
       "Heute nein, morgen ja."
-    ]
+    ],
+    "taskType": "Kontrast",
+    "taskDepth": "contrast",
+    "answerMode": "selected_choice_value",
+    "supportPolicy": "scenario_visible",
+    "evidenceType": "auto_supported"
   },
   {
     "id": "b1_redemittel_074",
@@ -2418,17 +2483,17 @@
     "grammarDomain": "redemittel",
     "section": "polite_requests",
     "category": "polite_requests",
-    "itemType": "error_repair",
+    "itemType": "phrase_choice",
     "cefr": "B1",
     "difficulty": "sprint_core",
-    "prompt_de": "Bessere Form: ___",
+    "prompt_de": "Welche Form passt für einen höflichen Beratungstermin?",
     "answer": "Ich hätte gern einen Beratungstermin.",
     "acceptedAnswers": [
       "Ich hätte gern einen Beratungstermin."
     ],
     "fullAnswer_de": "Ich hätte gern einen Beratungstermin.",
     "support_en": "Use polite service language.",
-    "microRule": "hätte gern is softer than will.",
+    "microRule": "„Ich hätte gern ...“ is softer and suitable for service/admin contexts.",
     "variantFamilyId": "red_polite_haette",
     "variantRole": "survival",
     "tags": [
@@ -2441,8 +2506,13 @@
     "choices": [
       "Ich will Beratung.",
       "Ich hätte gern einen Beratungstermin.",
-      "Gib mir Beratung."
-    ]
+      "Geben Sie mir Beratung."
+    ],
+    "taskType": "Kontrast",
+    "taskDepth": "contrast",
+    "answerMode": "selected_choice_value",
+    "supportPolicy": "scenario_visible",
+    "evidenceType": "auto_supported"
   },
   {
     "id": "b1_redemittel_082",
@@ -2452,17 +2522,17 @@
     "grammarDomain": "redemittel",
     "section": "polite_requests",
     "category": "polite_requests",
-    "itemType": "error_repair",
+    "itemType": "phrase_choice",
     "cefr": "B1",
     "difficulty": "sprint_core",
-    "prompt_de": "Bessere Form: ___",
+    "prompt_de": "Welche Bitte ist am höflichsten und noch natürlich?",
     "answer": "Könnten Sie mir bitte eine Bestätigung schicken?",
     "acceptedAnswers": [
       "Könnten Sie mir bitte eine Bestätigung schicken?"
     ],
     "fullAnswer_de": "Könnten Sie mir bitte eine Bestätigung schicken?",
     "support_en": "Make the request formal and polite.",
-    "microRule": "Könnten Sie mir bitte ...? is a reliable pattern.",
+    "microRule": "„Könnten Sie mir bitte ...?“ is a reliable polite request frame.",
     "variantFamilyId": "red_polite_koennten",
     "variantRole": "survival",
     "tags": [
@@ -2476,7 +2546,12 @@
       "Können Sie mir eine Bestätigung schicken?",
       "Könnten Sie mir bitte eine Bestätigung schicken?",
       "Bitte schicken Sie mir eine Bestätigung."
-    ]
+    ],
+    "taskType": "Kontrast",
+    "taskDepth": "contrast",
+    "answerMode": "selected_choice_value",
+    "supportPolicy": "scenario_visible",
+    "evidenceType": "auto_supported"
   },
   {
     "id": "b1_redemittel_083",

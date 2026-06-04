@@ -959,7 +959,8 @@
       "prompt_de": "___ die Aufgabe schwierig ist, erledige ich sie heute.",
       "answer": "Obwohl",
       "acceptedAnswers": [
-        "Obwohl"
+        "Obwohl",
+        "obwohl"
       ],
       "fullAnswer_de": "Obwohl die Aufgabe schwierig ist, erledige ich sie heute.",
       "support_en": "Although the task is difficult, I complete it today.",
@@ -983,9 +984,11 @@
         "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
       },
       "choices": [
-        "obwohl",
+        "Obwohl",
         "trotzdem"
-      ]
+      ],
+      "supportPolicy": "hidden",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_022",
@@ -1773,7 +1776,8 @@
       "prompt_de": "___ die Kundin unzufrieden ist, bedankt sie sich höflich.",
       "answer": "Obwohl",
       "acceptedAnswers": [
-        "Obwohl"
+        "Obwohl",
+        "obwohl"
       ],
       "fullAnswer_de": "Obwohl die Kundin unzufrieden ist, bedankt sie sich höflich.",
       "support_en": "Although the customer is dissatisfied, she thanks them politely.",
@@ -1796,9 +1800,11 @@
         "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
       },
       "choices": [
-        "obwohl",
+        "Obwohl",
         "trotzdem"
-      ]
+      ],
+      "supportPolicy": "hidden",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_040",
@@ -2755,7 +2761,8 @@
       "prompt_de": "___ ich im Büro ankomme, starte ich den Computer.",
       "answer": "Wenn",
       "acceptedAnswers": [
-        "Wenn"
+        "Wenn",
+        "wenn"
       ],
       "fullAnswer_de": "Wenn ich im Büro ankomme, starte ich den Computer.",
       "support_en": "When I arrive at the office, I start the computer.",
@@ -2778,9 +2785,11 @@
         "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
       },
       "choices": [
-        "wenn",
+        "Wenn",
         "als"
-      ]
+      ],
+      "supportPolicy": "hidden",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_062",
@@ -2800,7 +2809,8 @@
       "prompt_de": "___ ich Fragen habe, frage ich meine Kollegin.",
       "answer": "Wenn",
       "acceptedAnswers": [
-        "Wenn"
+        "Wenn",
+        "wenn"
       ],
       "fullAnswer_de": "Wenn ich Fragen habe, frage ich meine Kollegin.",
       "support_en": "When I have questions, I ask my colleague.",
@@ -2823,9 +2833,11 @@
         "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
       },
       "choices": [
-        "wenn",
+        "Wenn",
         "als"
-      ]
+      ],
+      "supportPolicy": "hidden",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_063",
@@ -2845,7 +2857,8 @@
       "prompt_de": "___ das Telefon klingelt, nehme ich den Anruf an.",
       "answer": "Wenn",
       "acceptedAnswers": [
-        "Wenn"
+        "Wenn",
+        "wenn"
       ],
       "fullAnswer_de": "Wenn das Telefon klingelt, nehme ich den Anruf an.",
       "support_en": "When the telephone rings, I answer the call.",
@@ -2868,9 +2881,11 @@
         "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
       },
       "choices": [
-        "wenn",
+        "Wenn",
         "als"
-      ]
+      ],
+      "supportPolicy": "hidden",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_064",
@@ -2890,7 +2905,8 @@
       "prompt_de": "___ die Lieferung kommt, prüfen wir die Ware.",
       "answer": "Wenn",
       "acceptedAnswers": [
-        "Wenn"
+        "Wenn",
+        "wenn"
       ],
       "fullAnswer_de": "Wenn die Lieferung kommt, prüfen wir die Ware.",
       "support_en": "When the delivery arrives, we check the goods.",
@@ -2913,9 +2929,11 @@
         "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
       },
       "choices": [
-        "wenn",
+        "Wenn",
         "als"
-      ]
+      ],
+      "supportPolicy": "hidden",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_065",
@@ -3019,7 +3037,8 @@
       "prompt_de": "___ ich eine Zusage bekomme, informiere ich meine Schule.",
       "answer": "Wenn",
       "acceptedAnswers": [
-        "Wenn"
+        "Wenn",
+        "wenn"
       ],
       "fullAnswer_de": "Wenn ich eine Zusage bekomme, informiere ich meine Schule.",
       "support_en": "If/when I receive an acceptance, I inform my school.",
@@ -3042,9 +3061,11 @@
         "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
       },
       "choices": [
-        "wenn",
+        "Wenn",
         "als"
-      ]
+      ],
+      "supportPolicy": "hidden",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_068",
@@ -3064,7 +3085,8 @@
       "prompt_de": "___ ich mein Praktikum gemacht habe, habe ich viel gelernt.",
       "answer": "Als",
       "acceptedAnswers": [
-        "Als"
+        "Als",
+        "als"
       ],
       "fullAnswer_de": "Als ich mein Praktikum gemacht habe, habe ich viel gelernt.",
       "support_en": "When I did my internship, I learned a lot.",
@@ -3088,8 +3110,10 @@
       },
       "choices": [
         "wenn",
-        "als"
-      ]
+        "Als"
+      ],
+      "supportPolicy": "hidden",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_069",
@@ -3109,7 +3133,8 @@
       "prompt_de": "___ ich neu in der Firma war, hatte ich viele Fragen.",
       "answer": "Als",
       "acceptedAnswers": [
-        "Als"
+        "Als",
+        "als"
       ],
       "fullAnswer_de": "Als ich neu in der Firma war, hatte ich viele Fragen.",
       "support_en": "When I was new at the company, I had many questions.",
@@ -3133,8 +3158,10 @@
       },
       "choices": [
         "wenn",
-        "als"
-      ]
+        "Als"
+      ],
+      "supportPolicy": "hidden",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_070",
@@ -3154,7 +3181,8 @@
       "prompt_de": "___ ich die Anzeige gelesen habe, wollte ich mich sofort bewerben.",
       "answer": "Als",
       "acceptedAnswers": [
-        "Als"
+        "Als",
+        "als"
       ],
       "fullAnswer_de": "Als ich die Anzeige gelesen habe, wollte ich mich sofort bewerben.",
       "support_en": "When I read the advertisement, I wanted to apply immediately.",
@@ -3178,8 +3206,10 @@
       },
       "choices": [
         "wenn",
-        "als"
-      ]
+        "Als"
+      ],
+      "supportPolicy": "hidden",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_071",
@@ -3199,7 +3229,8 @@
       "prompt_de": "___ der Fehler zum ersten Mal aufgetreten ist, war ich allein im Büro.",
       "answer": "Als",
       "acceptedAnswers": [
-        "Als"
+        "Als",
+        "als"
       ],
       "fullAnswer_de": "Als der Fehler zum ersten Mal aufgetreten ist, war ich allein im Büro.",
       "support_en": "When the error first occurred, I was alone in the office.",
@@ -3223,8 +3254,10 @@
       },
       "choices": [
         "wenn",
-        "als"
-      ]
+        "Als"
+      ],
+      "supportPolicy": "hidden",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_072",
@@ -3328,7 +3361,8 @@
       "prompt_de": "___ ich telefoniere, macht meine Kollegin Notizen.",
       "answer": "Während",
       "acceptedAnswers": [
-        "Während"
+        "Während",
+        "während"
       ],
       "fullAnswer_de": "Während ich telefoniere, macht meine Kollegin Notizen.",
       "support_en": "While I am on the phone, my colleague takes notes.",
@@ -3352,10 +3386,12 @@
         "v0321_note": "v0.32.1 review: während/solange contrast can be contextually ambiguous."
       },
       "choices": [
-        "während",
+        "Während",
         "solange",
         "bevor"
-      ]
+      ],
+      "supportPolicy": "hidden",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_075",
@@ -3376,7 +3412,8 @@
       "prompt_de": "___ der Computer startet, hole ich die Unterlagen.",
       "answer": "Während",
       "acceptedAnswers": [
-        "Während"
+        "Während",
+        "während"
       ],
       "fullAnswer_de": "Während der Computer startet, hole ich die Unterlagen.",
       "support_en": "While the computer is starting, I get the documents.",
@@ -3399,10 +3436,12 @@
         "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
       },
       "choices": [
-        "während",
+        "Während",
         "bevor",
         "nachdem"
-      ]
+      ],
+      "supportPolicy": "hidden",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_076",
@@ -3423,7 +3462,8 @@
       "prompt_de": "___ der Kunde wartet, prüfe ich die Bestellung.",
       "answer": "Während",
       "acceptedAnswers": [
-        "Während"
+        "Während",
+        "während"
       ],
       "fullAnswer_de": "Während der Kunde wartet, prüfe ich die Bestellung.",
       "support_en": "While the customer waits, I check the order.",
@@ -3446,10 +3486,12 @@
         "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
       },
       "choices": [
-        "während",
+        "Während",
         "bevor",
         "nachdem"
-      ]
+      ],
+      "supportPolicy": "hidden",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_077",
@@ -3469,7 +3511,8 @@
       "prompt_de": "___ sie die Ausbildung macht, sammelt sie praktische Erfahrung.",
       "answer": "Während",
       "acceptedAnswers": [
-        "Während"
+        "Während",
+        "während"
       ],
       "fullAnswer_de": "Während sie die Ausbildung macht, sammelt sie praktische Erfahrung.",
       "support_en": "While she is doing the training, she gains practical experience.",
@@ -3492,10 +3535,12 @@
         "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
       },
       "choices": [
-        "während",
+        "Während",
         "als",
         "bis"
-      ]
+      ],
+      "supportPolicy": "hidden",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_078",
@@ -3601,7 +3646,8 @@
       "prompt_de": "___ wir die Ware verschicken, prüfen wir die Adresse.",
       "answer": "Bevor",
       "acceptedAnswers": [
-        "Bevor"
+        "Bevor",
+        "bevor"
       ],
       "fullAnswer_de": "Bevor wir die Ware verschicken, prüfen wir die Adresse.",
       "support_en": "Before we send the goods, we check the address.",
@@ -3624,9 +3670,11 @@
         "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
       },
       "choices": [
-        "bevor",
+        "Bevor",
         "nachdem"
-      ]
+      ],
+      "supportPolicy": "hidden",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_081",
@@ -3646,7 +3694,8 @@
       "prompt_de": "___ ich die Bewerbung abschicke, kontrolliere ich die Anlagen.",
       "answer": "Bevor",
       "acceptedAnswers": [
-        "Bevor"
+        "Bevor",
+        "bevor"
       ],
       "fullAnswer_de": "Bevor ich die Bewerbung abschicke, kontrolliere ich die Anlagen.",
       "support_en": "Before I send the application, I check the attachments.",
@@ -3669,9 +3718,11 @@
         "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
       },
       "choices": [
-        "bevor",
+        "Bevor",
         "nachdem"
-      ]
+      ],
+      "supportPolicy": "hidden",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_082",
@@ -3691,7 +3742,8 @@
       "prompt_de": "___ Sie das Gerät einschalten, lesen Sie bitte die Anleitung.",
       "answer": "Bevor",
       "acceptedAnswers": [
-        "Bevor"
+        "Bevor",
+        "bevor"
       ],
       "fullAnswer_de": "Bevor Sie das Gerät einschalten, lesen Sie bitte die Anleitung.",
       "support_en": "Before you switch on the device, please read the instructions.",
@@ -3714,9 +3766,11 @@
         "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
       },
       "choices": [
-        "bevor",
+        "Bevor",
         "nachdem"
-      ]
+      ],
+      "supportPolicy": "hidden",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_083",
@@ -3820,7 +3874,8 @@
       "prompt_de": "___ wir die Ware geprüft haben, schicken wir die Rechnung.",
       "answer": "Nachdem",
       "acceptedAnswers": [
-        "Nachdem"
+        "Nachdem",
+        "nachdem"
       ],
       "fullAnswer_de": "Nachdem wir die Ware geprüft haben, schicken wir die Rechnung.",
       "support_en": "After we have checked the goods, we send the invoice.",
@@ -3844,8 +3899,10 @@
       },
       "choices": [
         "bevor",
-        "nachdem"
-      ]
+        "Nachdem"
+      ],
+      "supportPolicy": "hidden",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_086",
@@ -3865,7 +3922,8 @@
       "prompt_de": "___ ich die Bewerbung abgeschickt habe, warte ich auf eine Antwort.",
       "answer": "Nachdem",
       "acceptedAnswers": [
-        "Nachdem"
+        "Nachdem",
+        "nachdem"
       ],
       "fullAnswer_de": "Nachdem ich die Bewerbung abgeschickt habe, warte ich auf eine Antwort.",
       "support_en": "After I have sent the application, I wait for a reply.",
@@ -3889,8 +3947,10 @@
       },
       "choices": [
         "bevor",
-        "nachdem"
-      ]
+        "Nachdem"
+      ],
+      "supportPolicy": "hidden",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_087",
@@ -3910,7 +3970,8 @@
       "prompt_de": "___ der Techniker das Gerät repariert hat, funktioniert es wieder.",
       "answer": "Nachdem",
       "acceptedAnswers": [
-        "Nachdem"
+        "Nachdem",
+        "nachdem"
       ],
       "fullAnswer_de": "Nachdem der Techniker das Gerät repariert hat, funktioniert es wieder.",
       "support_en": "After the technician has repaired the device, it works again.",
@@ -3934,8 +3995,10 @@
       },
       "choices": [
         "bevor",
-        "nachdem"
-      ]
+        "Nachdem"
+      ],
+      "supportPolicy": "hidden",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_088",
@@ -4039,7 +4102,8 @@
       "prompt_de": "___ ich den Kurs besuche, verstehe ich die Grammatik besser.",
       "answer": "Seitdem",
       "acceptedAnswers": [
-        "Seitdem"
+        "Seitdem",
+        "seitdem"
       ],
       "fullAnswer_de": "Seitdem ich den Kurs besuche, verstehe ich die Grammatik besser.",
       "support_en": "Since I have been attending the course, I understand the grammar better.",
@@ -4064,9 +4128,11 @@
         "v0321_note": "v0.32.1: kept active as an easy recognition item, not a strong contrast item."
       },
       "choices": [
-        "seitdem",
+        "Seitdem",
         "bis"
-      ]
+      ],
+      "supportPolicy": "hidden",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_091",
@@ -4086,7 +4152,8 @@
       "prompt_de": "___ das Programm aktualisiert wurde, läuft es stabiler.",
       "answer": "Seitdem",
       "acceptedAnswers": [
-        "Seitdem"
+        "Seitdem",
+        "seitdem"
       ],
       "fullAnswer_de": "Seitdem das Programm aktualisiert wurde, läuft es stabiler.",
       "support_en": "Since the program was updated, it runs more stably.",
@@ -4110,9 +4177,11 @@
         "v0321_note": "v0.32.1 review: hidden passive/load beyond connector recognition."
       },
       "choices": [
-        "seitdem",
+        "Seitdem",
         "bis"
-      ]
+      ],
+      "supportPolicy": "hidden",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_092",
@@ -4392,7 +4461,8 @@
       "prompt_de": "___ die Maschine läuft, bleiben wir in der Nähe.",
       "answer": "Solange",
       "acceptedAnswers": [
-        "Solange"
+        "Solange",
+        "solange"
       ],
       "fullAnswer_de": "Solange die Maschine läuft, bleiben wir in der Nähe.",
       "support_en": "As long as the machine is running, we stay nearby.",
@@ -4416,9 +4486,11 @@
         "v0321_note": "v0.32.1 review: solange/während contrast can be contextually ambiguous."
       },
       "choices": [
-        "solange",
+        "Solange",
         "während"
-      ]
+      ],
+      "supportPolicy": "hidden",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_099",
@@ -4438,7 +4510,8 @@
       "prompt_de": "___ der Kunde wartet, sollten wir ihn informieren.",
       "answer": "Solange",
       "acceptedAnswers": [
-        "Solange"
+        "Solange",
+        "solange"
       ],
       "fullAnswer_de": "Solange der Kunde wartet, sollten wir ihn informieren.",
       "support_en": "As long as the customer is waiting, we should inform him.",
@@ -4462,9 +4535,11 @@
         "v0321_note": "v0.32.1 review: solange/während contrast can be contextually ambiguous."
       },
       "choices": [
-        "solange",
+        "Solange",
         "während"
-      ]
+      ],
+      "supportPolicy": "hidden",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_100",
@@ -4514,7 +4589,7 @@
       "chapter": 3,
       "courseDomain": "krankmeldung_versicherung",
       "grammarDomain": "kausal_konnektoren",
-      "itemType": "error_repair",
+      "itemType": "grammar_cloze",
       "cefr": "B1",
       "difficulty": "sprint_core",
       "variantFamilyId": "repair_weil_order",
@@ -4523,14 +4598,14 @@
       "contrastTargets": [
         "denn"
       ],
-      "prompt_de": "Reparatur: Ich komme nicht, weil ich krank ___.",
+      "prompt_de": "Ich komme nicht, weil ich krank ___.",
       "answer": "bin",
       "acceptedAnswers": [
         "bin"
       ],
       "fullAnswer_de": "Ich komme nicht, weil ich krank bin.",
       "support_en": "Repair the sentence: I am not coming because I am ill.",
-      "microRule": "After weil, the finite verb goes to the end.",
+      "microRule": "Ich komme nicht, weil ich krank bin. After weil, the finite verb goes to the end.",
       "tags": [
         "repair",
         "weil",
@@ -4548,7 +4623,12 @@
           "course_context_relevant": true
         },
         "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
-      }
+      },
+      "taskType": "Luecke",
+      "taskDepth": "cloze",
+      "answerMode": "typed_short",
+      "supportPolicy": "after_answer",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_102",
@@ -4556,7 +4636,7 @@
       "chapter": 3,
       "courseDomain": "krankmeldung_versicherung",
       "grammarDomain": "kausal_konnektoren",
-      "itemType": "error_repair",
+      "itemType": "grammar_cloze",
       "cefr": "B1",
       "difficulty": "sprint_core",
       "variantFamilyId": "repair_denn_order",
@@ -4565,14 +4645,14 @@
       "contrastTargets": [
         "weil"
       ],
-      "prompt_de": "Reparatur: Ich komme nicht, denn ich ___ krank.",
+      "prompt_de": "Ich komme nicht, denn ich ___ krank.",
       "answer": "bin",
       "acceptedAnswers": [
         "bin"
       ],
       "fullAnswer_de": "Ich komme nicht, denn ich bin krank.",
       "support_en": "Repair the sentence: I am not coming because I am ill.",
-      "microRule": "After denn, the verb stays in position 2.",
+      "microRule": "Ich komme nicht, denn ich bin krank. After denn, the verb stays in position 2.",
       "tags": [
         "repair",
         "denn",
@@ -4590,7 +4670,12 @@
           "course_context_relevant": true
         },
         "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
-      }
+      },
+      "taskType": "Luecke",
+      "taskDepth": "cloze",
+      "answerMode": "typed_short",
+      "supportPolicy": "after_answer",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_103",
@@ -4598,7 +4683,7 @@
       "chapter": 3,
       "courseDomain": "krankmeldung_versicherung",
       "grammarDomain": "kausal_konnektoren",
-      "itemType": "error_repair",
+      "itemType": "grammar_cloze",
       "cefr": "B1",
       "difficulty": "sprint_core",
       "variantFamilyId": "repair_deshalb_order",
@@ -4608,14 +4693,14 @@
         "weil",
         "denn"
       ],
-      "prompt_de": "Reparatur: Ich bin krank, deshalb ___ ich zu Hause.",
+      "prompt_de": "Ich bin krank, deshalb ___ ich zu Hause.",
       "answer": "bleibe",
       "acceptedAnswers": [
         "bleibe"
       ],
       "fullAnswer_de": "Ich bin krank, deshalb bleibe ich zu Hause.",
       "support_en": "Repair the sentence: I am ill, so I am staying home.",
-      "microRule": "After deshalb, the finite verb comes directly after the connector.",
+      "microRule": "Ich bin krank, deshalb bleibe ich zu Hause. After deshalb, the finite verb comes directly after the connector.",
       "tags": [
         "repair",
         "deshalb",
@@ -4633,7 +4718,12 @@
           "course_context_relevant": true
         },
         "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
-      }
+      },
+      "taskType": "Luecke",
+      "taskDepth": "cloze",
+      "answerMode": "typed_short",
+      "supportPolicy": "after_answer",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_104",
@@ -4641,7 +4731,7 @@
       "chapter": 2,
       "courseDomain": "bewerbung",
       "grammarDomain": "konzessiv_konnektoren",
-      "itemType": "error_repair",
+      "itemType": "grammar_cloze",
       "cefr": "B1",
       "difficulty": "sprint_core",
       "variantFamilyId": "repair_obwohl_order",
@@ -4650,14 +4740,14 @@
       "contrastTargets": [
         "trotzdem"
       ],
-      "prompt_de": "Reparatur: Obwohl ich wenig Erfahrung ___, bewerbe ich mich.",
+      "prompt_de": "Obwohl ich wenig Erfahrung ___, bewerbe ich mich.",
       "answer": "habe",
       "acceptedAnswers": [
         "habe"
       ],
       "fullAnswer_de": "Obwohl ich wenig Erfahrung habe, bewerbe ich mich.",
       "support_en": "Repair the sentence: Although I have little experience, I am applying.",
-      "microRule": "After obwohl, the finite verb goes to the end of the subordinate clause.",
+      "microRule": "Obwohl ich wenig Erfahrung habe, bewerbe ich mich. After obwohl, the finite verb goes to the end of the subordinate clause.",
       "tags": [
         "repair",
         "obwohl",
@@ -4675,7 +4765,12 @@
           "course_context_relevant": true
         },
         "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
-      }
+      },
+      "taskType": "Luecke",
+      "taskDepth": "cloze",
+      "answerMode": "typed_short",
+      "supportPolicy": "after_answer",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_105",
@@ -4683,7 +4778,7 @@
       "chapter": 2,
       "courseDomain": "bewerbung",
       "grammarDomain": "konzessiv_konnektoren",
-      "itemType": "error_repair",
+      "itemType": "grammar_cloze",
       "cefr": "B1",
       "difficulty": "sprint_core",
       "variantFamilyId": "repair_trotzdem_order",
@@ -4692,14 +4787,14 @@
       "contrastTargets": [
         "obwohl"
       ],
-      "prompt_de": "Reparatur: Ich habe wenig Erfahrung, trotzdem ___ ich mich.",
+      "prompt_de": "Ich habe wenig Erfahrung, trotzdem ___ ich mich.",
       "answer": "bewerbe",
       "acceptedAnswers": [
         "bewerbe"
       ],
       "fullAnswer_de": "Ich habe wenig Erfahrung, trotzdem bewerbe ich mich.",
       "support_en": "Repair the sentence: I have little experience; nevertheless, I am applying.",
-      "microRule": "After trotzdem, the finite verb comes directly after the connector.",
+      "microRule": "Ich habe wenig Erfahrung, trotzdem bewerbe ich mich. After trotzdem, the finite verb comes directly after the connector.",
       "tags": [
         "repair",
         "trotzdem",
@@ -4717,7 +4812,12 @@
           "course_context_relevant": true
         },
         "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
-      }
+      },
+      "taskType": "Luecke",
+      "taskDepth": "cloze",
+      "answerMode": "typed_short",
+      "supportPolicy": "after_answer",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_106",
@@ -4725,7 +4825,7 @@
       "chapter": 4,
       "courseDomain": "kundenanfrage",
       "grammarDomain": "finalsaetze",
-      "itemType": "error_repair",
+      "itemType": "grammar_cloze",
       "cefr": "B1",
       "difficulty": "sprint_core",
       "variantFamilyId": "repair_damit_subject",
@@ -4734,14 +4834,14 @@
       "contrastTargets": [
         "um ... zu"
       ],
-      "prompt_de": "Reparatur: Wir senden eine Bestätigung, damit der Kunde Bescheid ___.",
+      "prompt_de": "Wir senden eine Bestätigung, damit der Kunde Bescheid ___.",
       "answer": "weiß",
       "acceptedAnswers": [
         "weiß"
       ],
       "fullAnswer_de": "Wir senden eine Bestätigung, damit der Kunde Bescheid weiß.",
       "support_en": "Repair the sentence: We send a confirmation so that the customer knows.",
-      "microRule": "Use damit when the purpose clause has its own subject.",
+      "microRule": "Wir senden eine Bestätigung, damit der Kunde Bescheid weiß. After damit, the finite verb goes to the end.",
       "tags": [
         "repair",
         "damit"
@@ -4758,7 +4858,12 @@
           "course_context_relevant": true
         },
         "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
-      }
+      },
+      "taskType": "Luecke",
+      "taskDepth": "cloze",
+      "answerMode": "typed_short",
+      "supportPolicy": "after_answer",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_107",
@@ -4766,7 +4871,7 @@
       "chapter": 1,
       "courseDomain": "firma_buero",
       "grammarDomain": "finalsaetze",
-      "itemType": "error_repair",
+      "itemType": "grammar_cloze",
       "cefr": "B1",
       "difficulty": "sprint_core",
       "variantFamilyId": "repair_umzu_infinitive",
@@ -4775,14 +4880,14 @@
       "contrastTargets": [
         "damit"
       ],
-      "prompt_de": "Reparatur: Ich rufe an, um den Termin zu ___.",
+      "prompt_de": "Ich rufe an, um den Termin zu ___.",
       "answer": "verschieben",
       "acceptedAnswers": [
         "verschieben"
       ],
       "fullAnswer_de": "Ich rufe an, um den Termin zu verschieben.",
       "support_en": "Repair the sentence: I am calling in order to postpone the appointment.",
-      "microRule": "Use um ... zu with the infinitive when the subject is the same.",
+      "microRule": "Ich rufe an, um den Termin zu verschieben. um ... zu uses the infinitive at the end.",
       "tags": [
         "repair",
         "um_zu"
@@ -4799,7 +4904,12 @@
           "course_context_relevant": true
         },
         "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
-      }
+      },
+      "taskType": "Luecke",
+      "taskDepth": "cloze",
+      "answerMode": "typed_short",
+      "supportPolicy": "after_answer",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_108",
@@ -4819,7 +4929,8 @@
       "prompt_de": "___ ich neu in der Firma war, hatte ich viele Fragen.",
       "answer": "Als",
       "acceptedAnswers": [
-        "Als"
+        "Als",
+        "als"
       ],
       "fullAnswer_de": "Als ich neu in der Firma war, hatte ich viele Fragen.",
       "support_en": "When I was new at the company, I had many questions.",
@@ -4844,8 +4955,10 @@
       },
       "choices": [
         "wenn",
-        "als"
-      ]
+        "Als"
+      ],
+      "supportPolicy": "hidden",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_109",
@@ -4865,7 +4978,8 @@
       "prompt_de": "___ ich morgen fertig bin, schicke ich Ihnen die Datei.",
       "answer": "Wenn",
       "acceptedAnswers": [
-        "Wenn"
+        "Wenn",
+        "wenn"
       ],
       "fullAnswer_de": "Wenn ich morgen fertig bin, schicke ich Ihnen die Datei.",
       "support_en": "When I am finished tomorrow, I will send you the file.",
@@ -4889,9 +5003,11 @@
         "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
       },
       "choices": [
-        "wenn",
+        "Wenn",
         "als"
-      ]
+      ],
+      "supportPolicy": "hidden",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_110",
@@ -4911,7 +5027,8 @@
       "prompt_de": "___ ich die Bewerbung abschicke, kontrolliere ich die Anlagen.",
       "answer": "Bevor",
       "acceptedAnswers": [
-        "Bevor"
+        "Bevor",
+        "bevor"
       ],
       "fullAnswer_de": "Bevor ich die Bewerbung abschicke, kontrolliere ich die Anlagen.",
       "support_en": "Before I send the application, I check the attachments.",
@@ -4935,9 +5052,11 @@
         "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
       },
       "choices": [
-        "bevor",
+        "Bevor",
         "nachdem"
-      ]
+      ],
+      "supportPolicy": "hidden",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_111",
@@ -4957,7 +5076,8 @@
       "prompt_de": "___ ich die Bewerbung abgeschickt habe, warte ich auf eine Antwort.",
       "answer": "Nachdem",
       "acceptedAnswers": [
-        "Nachdem"
+        "Nachdem",
+        "nachdem"
       ],
       "fullAnswer_de": "Nachdem ich die Bewerbung abgeschickt habe, warte ich auf eine Antwort.",
       "support_en": "After I have sent the application, I wait for a reply.",
@@ -4982,8 +5102,10 @@
       },
       "choices": [
         "bevor",
-        "nachdem"
-      ]
+        "Nachdem"
+      ],
+      "supportPolicy": "hidden",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_112",
@@ -5003,7 +5125,8 @@
       "prompt_de": "___ die Maschine läuft, bleiben wir in der Nähe.",
       "answer": "Solange",
       "acceptedAnswers": [
-        "Solange"
+        "Solange",
+        "solange"
       ],
       "fullAnswer_de": "Solange die Maschine läuft, bleiben wir in der Nähe.",
       "support_en": "As long as the machine is running, we stay nearby.",
@@ -5029,8 +5152,10 @@
       },
       "choices": [
         "während",
-        "solange"
-      ]
+        "Solange"
+      ],
+      "supportPolicy": "hidden",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_113",
@@ -5038,7 +5163,7 @@
       "chapter": 4,
       "courseDomain": "technisches_problem",
       "grammarDomain": "konsekutiv_konnektoren",
-      "itemType": "error_repair",
+      "itemType": "grammar_cloze",
       "cefr": "B1",
       "difficulty": "sprint_core",
       "variantFamilyId": "repair_sodass_order",
@@ -5047,14 +5172,14 @@
       "contrastTargets": [
         "deshalb"
       ],
-      "prompt_de": "Reparatur: Der Drucker ist kaputt, sodass wir ihn nicht benutzen ___.",
+      "prompt_de": "Der Drucker ist kaputt, sodass wir ihn nicht benutzen ___.",
       "answer": "können",
       "acceptedAnswers": [
         "können"
       ],
       "fullAnswer_de": "Der Drucker ist kaputt, sodass wir ihn nicht benutzen können.",
       "support_en": "Repair the result clause: The printer is broken, so we cannot use it.",
-      "microRule": "sodass introduces a result clause; the finite verb goes to the end.",
+      "microRule": "Der Drucker ist kaputt, sodass wir ihn nicht benutzen können. After sodass, the finite verb goes to the end.",
       "tags": [
         "repair",
         "sodass",
@@ -5072,7 +5197,12 @@
           "course_context_relevant": true
         },
         "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
-      }
+      },
+      "taskType": "Luecke",
+      "taskDepth": "cloze",
+      "answerMode": "typed_short",
+      "supportPolicy": "after_answer",
+      "evidenceType": "auto_core"
     },
     {
       "id": "b1_connector_114",

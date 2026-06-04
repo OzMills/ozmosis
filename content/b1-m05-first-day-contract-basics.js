@@ -31,10 +31,10 @@
       "der Arbeitsvertrag"
     ],
     "fullAnswer_de": "der Arbeitsvertrag",
-    "prompt_de": "Which word is the work contract?",
+    "prompt_de": "Welches Wort passt zum Vertrag bei Arbeitsbeginn?",
     "learnerCue": "der Arbeitsvertrag / die Lieferung / der Rückruf",
     "support_en": "",
-    "microRule": "Arbeitsvertrag is the employment contract.",
+    "microRule": "The work contract is „der Arbeitsvertrag“.",
     "correctnessPolicy": "exact",
     "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
@@ -74,21 +74,18 @@
     "schemaRisk": "support-visible evidence; not strong mastery proof",
     "choices": [
       {
-        "id": "draft_b1_05_004_choice_1",
+        "id": "choice_01_der_arbeitsvertrag",
         "text": "der Arbeitsvertrag",
-        "value": "der Arbeitsvertrag",
         "isCorrect": true
       },
       {
-        "id": "draft_b1_05_004_choice_2",
-        "text": "die Lieferung",
-        "value": "die Lieferung",
+        "id": "choice_02_die_probezeit",
+        "text": "die Probezeit",
         "isCorrect": false
       },
       {
-        "id": "draft_b1_05_004_choice_3",
-        "text": "der Rückruf",
-        "value": "der Rückruf",
+        "id": "choice_03_die_arbeitszeit",
+        "text": "die Arbeitszeit",
         "isCorrect": false
       }
     ]
@@ -123,10 +120,10 @@
       "die Probezeit"
     ],
     "fullAnswer_de": "die Probezeit",
-    "prompt_de": "Which word means probationary period?",
+    "prompt_de": "Welches Wort bedeutet die erste Testphase im Job?",
     "learnerCue": "die Probezeit / die Sprechzeit / die Rechnung",
     "support_en": "",
-    "microRule": "Probezeit is a contract/onboarding term.",
+    "microRule": "„Probezeit“ is the probationary period.",
     "correctnessPolicy": "exact",
     "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
@@ -166,21 +163,18 @@
     "schemaRisk": "support-visible evidence; not strong mastery proof",
     "choices": [
       {
-        "id": "draft_b1_05_005_choice_1",
+        "id": "choice_01_die_probezeit",
         "text": "die Probezeit",
-        "value": "die Probezeit",
         "isCorrect": true
       },
       {
-        "id": "draft_b1_05_005_choice_2",
-        "text": "die Sprechzeit",
-        "value": "die Sprechzeit",
+        "id": "choice_02_die_arbeitszeit",
+        "text": "die Arbeitszeit",
         "isCorrect": false
       },
       {
-        "id": "draft_b1_05_005_choice_3",
-        "text": "die Rechnung",
-        "value": "die Rechnung",
+        "id": "choice_03_der_arbeitstag",
+        "text": "der Arbeitstag",
         "isCorrect": false
       }
     ]
@@ -814,27 +808,27 @@
     "familyType": "candidate_sibling_family",
     "maxSameSessionEvidence": 1,
     "sameSessionEvidenceCap": 1,
-    "itemType": "error_repair",
-    "taskType": "Reparatur",
-    "taskDepth": "repair",
-    "answerMode": "repair_text",
-    "answerShape": "repaired_sentence",
-    "answer": "Ich gehe ins Personalbüro.",
+    "itemType": "grammar_cloze",
+    "taskType": "Luecke",
+    "taskDepth": "cloze",
+    "answerMode": "typed_short",
+    "answerShape": "typed_short",
+    "answer": "ins",
     "acceptedAnswers": [
-      "Ich gehe ins Personalbüro."
+      "ins"
     ],
-    "fullAnswer_de": "Ich gehe ins Personalbüro.",
-    "prompt_de": "Ich gehe im Personalbüro. Intended meaning: I go to the personnel office.",
+    "fullAnswer_de": "Richtung: Ich gehe ins Personalbüro.",
+    "prompt_de": "Richtung: Ich gehe ___ Personalbüro.",
     "learnerCue": "Fix movement phrase.",
     "support_en": "Fix movement phrase.",
-    "microRule": "Use ins for movement into.",
-    "correctnessPolicy": "exact_surface",
-    "acceptedAnswerPolicy": "exact_surface_sentence",
+    "microRule": "Direction: „ins Personalbüro“ = to/into the personnel office.",
+    "correctnessPolicy": "exact",
+    "acceptedAnswerPolicy": "exact_only",
     "strictSurfaceAnswer": true,
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
     "planningEvidenceLabel": "Practice Evidence",
-    "evidenceType": "auto_core",
+    "evidenceType": "auto_supported",
     "reviewEligibilityDefault": "eligible_auto_after_delay",
     "delayedReviewEligibility": "eligible_auto_after_delay",
     "diagnosticEligible": false,
@@ -963,22 +957,23 @@
     "familyType": "candidate_sibling_family",
     "maxSameSessionEvidence": 1,
     "sameSessionEvidenceCap": 1,
-    "itemType": "grammar_cloze",
+    "itemType": "multiple_choice",
     "taskType": "Kontrast",
     "taskDepth": "contrast",
-    "answerMode": "typed_short",
-    "answerShape": "short_answer",
+    "answerMode": "selected_choice_value",
+    "answerShape": "selected_choice_value",
     "answer": "im",
     "acceptedAnswers": [
       "im"
     ],
-    "fullAnswer_de": "Choose location: Ich bin im Büro.",
-    "prompt_de": "im / ins — Choose location: Ich bin ___ Büro.",
+    "correctChoice": "im Büro",
+    "fullAnswer_de": "im Büro",
+    "prompt_de": "Ort: Sie sind schon dort. Welche Form passt?",
     "learnerCue": "im / ins",
     "support_en": "",
-    "microRule": "Static location uses im.",
+    "microRule": "Location: „im Büro“ = in the office.",
     "correctnessPolicy": "exact",
-    "acceptedAnswerPolicy": "exact_only",
+    "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
     "planningEvidenceLabel": "Supported Practice Evidence",
@@ -1019,7 +1014,24 @@
       "im",
       "ins"
     ],
-    "targetRule": "Static location uses im."
+    "targetRule": "Static location uses im.",
+    "choices": [
+      {
+        "id": "choice_01_im_buro",
+        "text": "im Büro",
+        "isCorrect": true
+      },
+      {
+        "id": "choice_02_ins_buro",
+        "text": "ins Büro",
+        "isCorrect": false
+      },
+      {
+        "id": "choice_03_am_buro",
+        "text": "am Büro",
+        "isCorrect": false
+      }
+    ]
   },
   {
     "id": "draft_b1_05_017",
@@ -1041,22 +1053,23 @@
     "familyType": "candidate_sibling_family",
     "maxSameSessionEvidence": 1,
     "sameSessionEvidenceCap": 1,
-    "itemType": "grammar_cloze",
+    "itemType": "multiple_choice",
     "taskType": "Kontrast",
     "taskDepth": "contrast",
-    "answerMode": "typed_short",
-    "answerShape": "short_answer",
+    "answerMode": "selected_choice_value",
+    "answerShape": "selected_choice_value",
     "answer": "ins",
     "acceptedAnswers": [
       "ins"
     ],
-    "fullAnswer_de": "Choose direction: Ich gehe ins Büro.",
-    "prompt_de": "im / ins — Choose direction: Ich gehe ___ Büro.",
+    "correctChoice": "ins Büro",
+    "fullAnswer_de": "ins Büro",
+    "prompt_de": "Richtung: Sie gehen dorthin. Welche Form passt?",
     "learnerCue": "im / ins",
     "support_en": "",
-    "microRule": "Movement/destination uses ins.",
+    "microRule": "Direction: „ins Büro“ = into/to the office.",
     "correctnessPolicy": "exact",
-    "acceptedAnswerPolicy": "exact_only",
+    "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
     "planningEvidenceLabel": "Supported Practice Evidence",
@@ -1097,7 +1110,24 @@
       "im",
       "ins"
     ],
-    "targetRule": "Movement/destination uses ins."
+    "targetRule": "Movement/destination uses ins.",
+    "choices": [
+      {
+        "id": "choice_01_ins_buro",
+        "text": "ins Büro",
+        "isCorrect": true
+      },
+      {
+        "id": "choice_02_im_buro",
+        "text": "im Büro",
+        "isCorrect": false
+      },
+      {
+        "id": "choice_03_am_buro",
+        "text": "am Büro",
+        "isCorrect": false
+      }
+    ]
   },
   {
     "id": "draft_b1_05_018",
@@ -1119,22 +1149,22 @@
     "familyType": "candidate_sibling_family",
     "maxSameSessionEvidence": 1,
     "sameSessionEvidenceCap": 1,
-    "itemType": "grammar_cloze",
+    "itemType": "multiple_choice",
     "taskType": "Kontrast",
     "taskDepth": "contrast",
-    "answerMode": "typed_short",
-    "answerShape": "short_answer",
+    "answerMode": "selected_choice_value",
+    "answerShape": "selected_choice_value",
     "answer": "die Probezeit",
     "acceptedAnswers": [
       "die Probezeit"
     ],
     "fullAnswer_de": "die Probezeit",
-    "prompt_de": "die Probezeit / der Papierstau — Choose contract-basics word.",
+    "prompt_de": "Welches Wort gehört zu Vertragsbeginn?",
     "learnerCue": "die Probezeit / der Papierstau",
     "support_en": "",
-    "microRule": "Probezeit belongs to contract/onboarding context.",
+    "microRule": "„Probezeit“ belongs to contract/work-start language.",
     "correctnessPolicy": "exact",
-    "acceptedAnswerPolicy": "exact_only",
+    "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
     "planningEvidenceLabel": "Supported Practice Evidence",
@@ -1174,7 +1204,24 @@
       "die Probezeit",
       "der Papierstau"
     ],
-    "targetRule": "Probezeit belongs to contract/onboarding context."
+    "targetRule": "Probezeit belongs to contract/onboarding context.",
+    "choices": [
+      {
+        "id": "choice_01_die_probezeit",
+        "text": "die Probezeit",
+        "isCorrect": true
+      },
+      {
+        "id": "choice_02_die_arbeitszeit",
+        "text": "die Arbeitszeit",
+        "isCorrect": false
+      },
+      {
+        "id": "choice_03_die_lieferung",
+        "text": "die Lieferung",
+        "isCorrect": false
+      }
+    ]
   },
   {
     "id": "draft_b1_05_019",

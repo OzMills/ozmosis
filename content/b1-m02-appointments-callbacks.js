@@ -26,15 +26,15 @@
     "taskDepth": "recognition",
     "answerMode": "selected_choice_value",
     "answerShape": "selected_choice_value",
-    "answer": "vereinbaren",
+    "answer": "einen Termin vereinbaren",
     "acceptedAnswers": [
-      "vereinbaren"
+      "einen Termin vereinbaren"
     ],
     "fullAnswer_de": "vereinbaren",
-    "prompt_de": "German-first scenario: Sie brauchen einen neuen Termin. Which verb best fits?",
+    "prompt_de": "Welche Aktion passt? Sie brauchen einen neuen Termin.",
     "learnerCue": "Choices: vereinbaren / absagen / schlafen",
     "support_en": "",
-    "microRule": "Use vereinbaren when you make an appointment.",
+    "microRule": "Use „vereinbaren“ when you make a new appointment.",
     "correctnessPolicy": "exact",
     "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
@@ -75,21 +75,18 @@
     "schemaRisk": "support-visible evidence; not strong mastery proof",
     "choices": [
       {
-        "id": "draft_b1_02_004_choice_1",
-        "text": "vereinbaren",
-        "value": "vereinbaren",
+        "id": "choice_01_einen_termin_vereinbaren",
+        "text": "einen Termin vereinbaren",
         "isCorrect": true
       },
       {
-        "id": "draft_b1_02_004_choice_2",
-        "text": "absagen",
-        "value": "absagen",
+        "id": "choice_02_einen_termin_verschieben",
+        "text": "einen Termin verschieben",
         "isCorrect": false
       },
       {
-        "id": "draft_b1_02_004_choice_3",
-        "text": "schlafen",
-        "value": "schlafen",
+        "id": "choice_03_einen_termin_absagen",
+        "text": "einen Termin absagen",
         "isCorrect": false
       }
     ]
@@ -119,15 +116,15 @@
     "taskDepth": "recognition",
     "answerMode": "selected_choice_value",
     "answerShape": "selected_choice_value",
-    "answer": "verschieben",
+    "answer": "den Termin verschieben",
     "acceptedAnswers": [
-      "verschieben"
+      "den Termin verschieben"
     ],
     "fullAnswer_de": "verschieben",
-    "prompt_de": "German-first scenario: Der Termin ist morgen, aber Sie können nicht. Which action fits?",
+    "prompt_de": "Welche Aktion passt? Der Termin ist morgen, aber Sie können nicht.",
     "learnerCue": "Choices: verschieben / bestellen / unterschreiben",
     "support_en": "",
-    "microRule": "verschieben means moving an appointment.",
+    "microRule": "Use „verschieben“ when the appointment must move to another time.",
     "correctnessPolicy": "exact",
     "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
@@ -168,21 +165,18 @@
     "schemaRisk": "support-visible evidence; not strong mastery proof",
     "choices": [
       {
-        "id": "draft_b1_02_005_choice_1",
-        "text": "verschieben",
-        "value": "verschieben",
+        "id": "choice_01_den_termin_verschieben",
+        "text": "den Termin verschieben",
         "isCorrect": true
       },
       {
-        "id": "draft_b1_02_005_choice_2",
-        "text": "bestellen",
-        "value": "bestellen",
+        "id": "choice_02_den_termin_vereinbaren",
+        "text": "den Termin vereinbaren",
         "isCorrect": false
       },
       {
-        "id": "draft_b1_02_005_choice_3",
-        "text": "unterschreiben",
-        "value": "unterschreiben",
+        "id": "choice_03_den_termin_bestatigen",
+        "text": "den Termin bestätigen",
         "isCorrect": false
       }
     ]
@@ -217,10 +211,10 @@
       "um Rückruf bitten"
     ],
     "fullAnswer_de": "um Rückruf bitten",
-    "prompt_de": "Which phrase asks for a callback?",
+    "prompt_de": "Welche Phrase bittet um einen Rückruf?",
     "learnerCue": "Choices: um Rückruf bitten / eine Rechnung bezahlen / einen Lebenslauf schicken",
     "support_en": "",
-    "microRule": "Rückruf is the callback noun.",
+    "microRule": "„Um Rückruf bitten“ is the compact formal request phrase.",
     "correctnessPolicy": "exact",
     "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
@@ -261,21 +255,18 @@
     "schemaRisk": "support-visible evidence; not strong mastery proof",
     "choices": [
       {
-        "id": "draft_b1_02_006_choice_1",
+        "id": "choice_01_um_ruckruf_bitten",
         "text": "um Rückruf bitten",
-        "value": "um Rückruf bitten",
         "isCorrect": true
       },
       {
-        "id": "draft_b1_02_006_choice_2",
-        "text": "eine Rechnung bezahlen",
-        "value": "eine Rechnung bezahlen",
+        "id": "choice_02_einen_ruckruf_bekommen",
+        "text": "einen Rückruf bekommen",
         "isCorrect": false
       },
       {
-        "id": "draft_b1_02_006_choice_3",
-        "text": "einen Lebenslauf schicken",
-        "value": "einen Lebenslauf schicken",
+        "id": "choice_03_eine_nachricht_schreiben",
+        "text": "eine Nachricht schreiben",
         "isCorrect": false
       }
     ]
@@ -1126,22 +1117,22 @@
     "familyType": "candidate_sibling_family",
     "maxSameSessionEvidence": 1,
     "sameSessionEvidenceCap": 1,
-    "itemType": "error_repair",
-    "taskType": "Reparatur",
-    "taskDepth": "repair",
-    "answerMode": "repair_text",
-    "answerShape": "repaired_sentence",
+    "itemType": "multiple_choice",
+    "taskType": "Kontrast",
+    "taskDepth": "contrast",
+    "answerMode": "selected_choice_value",
+    "answerShape": "selected_choice_value",
     "answer": "Ich möchte einen Termin vereinbaren.",
     "acceptedAnswers": [
       "Ich möchte einen Termin vereinbaren."
     ],
     "fullAnswer_de": "Ich möchte einen Termin vereinbaren.",
-    "prompt_de": "Ich möchte einen Termin machen. Intended formal meaning: make an appointment.",
+    "prompt_de": "Welche Form passt für eine formelle Terminvereinbarung?",
     "learnerCue": "Fix the formal appointment phrase.",
     "support_en": "Fix the formal appointment phrase.",
-    "microRule": "Use vereinbaren for a formal appointment.",
-    "correctnessPolicy": "exact_surface",
-    "acceptedAnswerPolicy": "exact_surface_sentence",
+    "microRule": "„Einen Termin vereinbaren“ is the standard formal collocation; „machen“ is not ideal as an exact repair target.",
+    "correctnessPolicy": "exact",
+    "acceptedAnswerPolicy": "choice_value_exact",
     "strictSurfaceAnswer": true,
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
@@ -1178,7 +1169,24 @@
     "learnerFacingAllowed": "Yes",
     "schemaNotes": "Imported from B1-02 approved planning inventory; notice cards remain separate and excluded from evidence.",
     "sourceRisk": "supported evidence; conservative only",
-    "schemaRisk": "support-visible evidence; not strong mastery proof"
+    "schemaRisk": "support-visible evidence; not strong mastery proof",
+    "choices": [
+      {
+        "id": "choice_01_ich_mochte_einen_termin_machen",
+        "text": "Ich möchte einen Termin machen.",
+        "isCorrect": false
+      },
+      {
+        "id": "choice_02_ich_mochte_einen_termin_vereinbaren",
+        "text": "Ich möchte einen Termin vereinbaren.",
+        "isCorrect": true
+      },
+      {
+        "id": "choice_03_ich_mochte_einen_termin_absagen",
+        "text": "Ich möchte einen Termin absagen.",
+        "isCorrect": false
+      }
+    ]
   },
   {
     "id": "draft_b1_02_019",
@@ -1200,27 +1208,27 @@
     "familyType": "candidate_sibling_family",
     "maxSameSessionEvidence": 1,
     "sameSessionEvidenceCap": 1,
-    "itemType": "error_repair",
-    "taskType": "Reparatur",
-    "taskDepth": "repair",
-    "answerMode": "repair_text",
-    "answerShape": "repaired_sentence",
-    "answer": "Ich muss den Termin verschieben.",
+    "itemType": "grammar_cloze",
+    "taskType": "Luecke",
+    "taskDepth": "cloze",
+    "answerMode": "typed_short",
+    "answerShape": "typed_short",
+    "answer": "verschieben",
     "acceptedAnswers": [
-      "Ich muss den Termin verschieben."
+      "verschieben"
     ],
-    "fullAnswer_de": "Ich muss den Termin verschieben.",
-    "prompt_de": "Ich muss den Termin bewegen. Intended meaning: move/postpone the appointment.",
+    "fullAnswer_de": "Falsches Verb: Ich muss den Termin bewegen.\nBesser: Ich muss den Termin verschieben.",
+    "prompt_de": "Falsches Verb: Ich muss den Termin bewegen.\nBesser: Ich muss den Termin ___.",
     "learnerCue": "Fix the appointment verb.",
     "support_en": "Fix the appointment verb.",
-    "microRule": "verschieben is used for moving appointments.",
-    "correctnessPolicy": "exact_surface",
-    "acceptedAnswerPolicy": "exact_surface_sentence",
+    "microRule": "„Den Termin verschieben“ is the appointment collocation.",
+    "correctnessPolicy": "exact",
+    "acceptedAnswerPolicy": "exact_only",
     "strictSurfaceAnswer": true,
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
     "planningEvidenceLabel": "Practice Evidence",
-    "evidenceType": "auto_core",
+    "evidenceType": "auto_supported",
     "reviewEligibilityDefault": "eligible_auto_after_delay",
     "delayedReviewEligibility": "eligible_auto_after_delay",
     "diagnosticEligible": false,
@@ -1494,27 +1502,27 @@
     "reviewGroup": "rg-b1-02-draft_b1_02_023",
     "familyTarget": "B1-02 single retained item",
     "familyType": "single_retained_item",
-    "itemType": "error_repair",
-    "taskType": "Umformen",
-    "taskDepth": "transformation",
-    "answerMode": "transformation_text",
-    "answerShape": "transformed_sentence",
+    "itemType": "multiple_choice",
+    "taskType": "Auswahl",
+    "taskDepth": "recognition",
+    "answerMode": "selected_choice_value",
+    "answerShape": "selected_choice_value",
     "answer": "Kann ich einen Termin bekommen?",
     "acceptedAnswers": [
       "Kann ich einen Termin bekommen?"
     ],
     "fullAnswer_de": "Kann ich einen Termin bekommen?",
-    "prompt_de": "Ich bekomme einen Termin.",
+    "prompt_de": "Sie möchten höflich nach einem Termin fragen. Welche Frage passt?",
     "learnerCue": "Transform the statement into a polite question.",
     "support_en": "Transform the statement into a polite question.",
-    "microRule": "Use Kann ich...? for a simple polite request.",
-    "correctnessPolicy": "exact_surface",
-    "acceptedAnswerPolicy": "exact_surface_sentence",
+    "microRule": "A yes/no request starts with the finite verb: Kann ich ...?",
+    "correctnessPolicy": "exact",
+    "acceptedAnswerPolicy": "choice_value_exact",
     "strictSurfaceAnswer": true,
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
     "planningEvidenceLabel": "Practice Evidence",
-    "evidenceType": "auto_core",
+    "evidenceType": "auto_supported",
     "reviewEligibilityDefault": "eligible_auto_after_delay",
     "delayedReviewEligibility": "eligible_auto_after_delay",
     "diagnosticEligible": false,
@@ -1548,7 +1556,24 @@
     "learnerFacingAllowed": "Yes",
     "schemaNotes": "Imported from B1-02 approved planning inventory; notice cards remain separate and excluded from evidence.",
     "sourceRisk": "approved B1-02 micro-scenario",
-    "schemaRisk": "standard B1-02 practice evidence"
+    "schemaRisk": "standard B1-02 practice evidence",
+    "choices": [
+      {
+        "id": "choice_01_kann_ich_einen_termin_bekommen",
+        "text": "Kann ich einen Termin bekommen?",
+        "isCorrect": true
+      },
+      {
+        "id": "choice_02_ich_bekomme_einen_termin",
+        "text": "Ich bekomme einen Termin.",
+        "isCorrect": false
+      },
+      {
+        "id": "choice_03_ich_kann_einen_termin",
+        "text": "Ich kann einen Termin.",
+        "isCorrect": false
+      }
+    ]
   },
   {
     "id": "draft_b1_02_024",
@@ -1570,22 +1595,22 @@
     "familyType": "candidate_sibling_family",
     "maxSameSessionEvidence": 1,
     "sameSessionEvidenceCap": 1,
-    "itemType": "grammar_cloze",
+    "itemType": "multiple_choice",
     "taskType": "Kontrast",
     "taskDepth": "contrast",
-    "answerMode": "typed_short",
-    "answerShape": "short_answer",
+    "answerMode": "selected_choice_value",
+    "answerShape": "selected_choice_value",
     "answer": "verschieben",
     "acceptedAnswers": [
       "verschieben"
     ],
     "fullAnswer_de": "Choose the better verb: den Termin verschieben when you cannot come tomorrow.",
-    "prompt_de": "verschieben / bestehen — Choose the better verb: den Termin ___ when you cannot come tomorrow.",
+    "prompt_de": "Sie können morgen nicht kommen. Welches Verb passt?",
     "learnerCue": "verschieben / bestehen",
     "support_en": "",
-    "microRule": "Termin verschieben means move the appointment.",
+    "microRule": "Use „den Termin verschieben“ when you need another time.",
     "correctnessPolicy": "exact",
-    "acceptedAnswerPolicy": "exact_only",
+    "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
     "planningEvidenceLabel": "Supported Practice Evidence",
@@ -1626,7 +1651,24 @@
       "verschieben",
       "bestehen"
     ],
-    "targetRule": "Termin verschieben means move the appointment."
+    "targetRule": "Termin verschieben means move the appointment.",
+    "choices": [
+      {
+        "id": "choice_01_verschieben",
+        "text": "verschieben",
+        "isCorrect": true
+      },
+      {
+        "id": "choice_02_vereinbaren",
+        "text": "vereinbaren",
+        "isCorrect": false
+      },
+      {
+        "id": "choice_03_bestehen",
+        "text": "bestehen",
+        "isCorrect": false
+      }
+    ]
   },
   {
     "id": "draft_b1_02_025",
@@ -1648,22 +1690,22 @@
     "familyType": "candidate_sibling_family",
     "maxSameSessionEvidence": 1,
     "sameSessionEvidenceCap": 1,
-    "itemType": "grammar_cloze",
+    "itemType": "multiple_choice",
     "taskType": "Kontrast",
     "taskDepth": "contrast",
-    "answerMode": "typed_short",
-    "answerShape": "short_answer",
+    "answerMode": "selected_choice_value",
+    "answerShape": "selected_choice_value",
     "answer": "absagen",
     "acceptedAnswers": [
       "absagen"
     ],
     "fullAnswer_de": "Choose the better verb: den Termin absagen when you cannot attend at all.",
-    "prompt_de": "absagen / beraten — Choose the better verb: den Termin ___ when you cannot attend at all.",
+    "prompt_de": "Sie können gar nicht teilnehmen. Welches Verb passt?",
     "learnerCue": "absagen / beraten",
     "support_en": "",
-    "microRule": "absagen means cancel.",
+    "microRule": "Use „absagen“ when the appointment is cancelled, not just moved.",
     "correctnessPolicy": "exact",
-    "acceptedAnswerPolicy": "exact_only",
+    "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
     "planningEvidenceLabel": "Supported Practice Evidence",
@@ -1704,7 +1746,24 @@
       "absagen",
       "beraten"
     ],
-    "targetRule": "absagen means cancel."
+    "targetRule": "absagen means cancel.",
+    "choices": [
+      {
+        "id": "choice_01_absagen",
+        "text": "absagen",
+        "isCorrect": true
+      },
+      {
+        "id": "choice_02_verschieben",
+        "text": "verschieben",
+        "isCorrect": false
+      },
+      {
+        "id": "choice_03_vereinbaren",
+        "text": "vereinbaren",
+        "isCorrect": false
+      }
+    ]
   },
   {
     "id": "draft_b1_02_026",
@@ -1726,22 +1785,22 @@
     "familyType": "candidate_sibling_family",
     "maxSameSessionEvidence": 1,
     "sameSessionEvidenceCap": 1,
-    "itemType": "grammar_cloze",
+    "itemType": "multiple_choice",
     "taskType": "Kontrast",
     "taskDepth": "contrast",
-    "answerMode": "typed_short",
-    "answerShape": "short_answer",
+    "answerMode": "selected_choice_value",
+    "answerShape": "selected_choice_value",
     "answer": "Ich bitte um Rückruf.",
     "acceptedAnswers": [
       "Ich bitte um Rückruf."
     ],
     "fullAnswer_de": "Ich bitte um Rückruf.",
-    "prompt_de": "Ich bitte um Rückruf. / Ich bitte um Rechnung. — Choose the callback phrase.",
+    "prompt_de": "Welche Phrase bittet um einen Rückruf?",
     "learnerCue": "Ich bitte um Rückruf. / Ich bitte um Rechnung.",
     "support_en": "",
-    "microRule": "Rückruf is callback.",
-    "correctnessPolicy": "exact_surface",
-    "acceptedAnswerPolicy": "exact_surface_or_case",
+    "microRule": "„Rückruf“ is the callback noun in this request.",
+    "correctnessPolicy": "exact",
+    "acceptedAnswerPolicy": "choice_value_exact",
     "strictSurfaceAnswer": true,
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
@@ -1783,7 +1842,24 @@
       "Ich bitte um Rückruf.",
       "Ich bitte um Rechnung."
     ],
-    "targetRule": "Rückruf is callback."
+    "targetRule": "Rückruf is callback.",
+    "choices": [
+      {
+        "id": "choice_01_ich_bitte_um_ruckruf",
+        "text": "Ich bitte um Rückruf.",
+        "isCorrect": true
+      },
+      {
+        "id": "choice_02_ich_bitte_um_eine_rechnung",
+        "text": "Ich bitte um eine Rechnung.",
+        "isCorrect": false
+      },
+      {
+        "id": "choice_03_ich_rufe_spater_zuruck",
+        "text": "Ich rufe später zurück.",
+        "isCorrect": false
+      }
+    ]
   },
   {
     "id": "draft_b1_02_027",
@@ -2061,10 +2137,10 @@
       "die Sprechzeit"
     ],
     "fullAnswer_de": "die Sprechzeit",
-    "prompt_de": "Which phrase means office hours?",
+    "prompt_de": "Welche Bezeichnung passt für Zeiten, in denen jemand erreichbar ist?",
     "learnerCue": "Choices: die Sprechzeit / die Rechnung / die Lieferung",
     "support_en": "",
-    "microRule": "Sprechzeit is the time when an office/person is available.",
+    "microRule": "„Sprechzeit“ means the time when an office/person is available.",
     "correctnessPolicy": "exact",
     "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
@@ -2105,21 +2181,18 @@
     "schemaRisk": "support-visible evidence; not strong mastery proof",
     "choices": [
       {
-        "id": "draft_b1_02_030_choice_1",
+        "id": "choice_01_die_sprechzeit",
         "text": "die Sprechzeit",
-        "value": "die Sprechzeit",
         "isCorrect": true
       },
       {
-        "id": "draft_b1_02_030_choice_2",
-        "text": "die Rechnung",
-        "value": "die Rechnung",
+        "id": "choice_02_der_termin",
+        "text": "der Termin",
         "isCorrect": false
       },
       {
-        "id": "draft_b1_02_030_choice_3",
-        "text": "die Lieferung",
-        "value": "die Lieferung",
+        "id": "choice_03_die_wartezeit",
+        "text": "die Wartezeit",
         "isCorrect": false
       }
     ]

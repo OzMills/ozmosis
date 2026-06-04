@@ -27,10 +27,10 @@
       "die Krankmeldung"
     ],
     "fullAnswer_de": "die Krankmeldung",
-    "prompt_de": "Which word means sick note / sickness report context?",
+    "prompt_de": "Welches Wort passt, wenn Sie Krankheit offiziell melden?",
     "learnerCue": "die Krankmeldung / der Urlaub / die Bestellung",
     "support_en": "",
-    "microRule": "Krankmeldung belongs to sickness absence.",
+    "microRule": "„Krankmeldung“ is the sickness report/notice context.",
     "correctnessPolicy": "exact",
     "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
@@ -71,21 +71,18 @@
     "schemaRisk": "support-visible evidence; not strong mastery proof",
     "choices": [
       {
-        "id": "draft_b1_06_004_choice_1",
+        "id": "choice_01_die_krankmeldung",
         "text": "die Krankmeldung",
-        "value": "die Krankmeldung",
         "isCorrect": true
       },
       {
-        "id": "draft_b1_06_004_choice_2",
-        "text": "der Urlaub",
-        "value": "der Urlaub",
+        "id": "choice_02_der_arzttermin",
+        "text": "der Arzttermin",
         "isCorrect": false
       },
       {
-        "id": "draft_b1_06_004_choice_3",
-        "text": "die Bestellung",
-        "value": "die Bestellung",
+        "id": "choice_03_die_krankenkasse",
+        "text": "die Krankenkasse",
         "isCorrect": false
       }
     ]
@@ -116,10 +113,10 @@
       "den Arbeitgeber"
     ],
     "fullAnswer_de": "den Arbeitgeber",
-    "prompt_de": "Who must you usually inform in this language item?",
+    "prompt_de": "Wen informieren Sie normalerweise bei Krankheit im Job?",
     "learnerCue": "den Arbeitgeber / die Rechnung / den Gutschein",
     "support_en": "",
-    "microRule": "This item practises employer notification language, not legal advice.",
+    "microRule": "In workplace sick-leave language, you inform the employer.",
     "correctnessPolicy": "exact",
     "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
@@ -160,21 +157,18 @@
     "schemaRisk": "support-visible evidence; not strong mastery proof",
     "choices": [
       {
-        "id": "draft_b1_06_005_choice_1",
+        "id": "choice_01_den_arbeitgeber",
         "text": "den Arbeitgeber",
-        "value": "den Arbeitgeber",
         "isCorrect": true
       },
       {
-        "id": "draft_b1_06_005_choice_2",
-        "text": "die Rechnung",
-        "value": "die Rechnung",
+        "id": "choice_02_die_krankenkasse",
+        "text": "die Krankenkasse",
         "isCorrect": false
       },
       {
-        "id": "draft_b1_06_005_choice_3",
-        "text": "den Gutschein",
-        "value": "den Gutschein",
+        "id": "choice_03_die_apotheke",
+        "text": "die Apotheke",
         "isCorrect": false
       }
     ]
@@ -948,22 +942,22 @@
     "reviewGroup": "rg-b1-06-draft_b1_06_016",
     "familyTarget": "B1-06 single retained item",
     "familyType": "single_retained_item",
-    "itemType": "error_repair",
-    "taskType": "Reparatur",
-    "taskDepth": "repair",
-    "answerMode": "repair_text",
-    "answerShape": "repaired_sentence",
-    "answer": "Ich informiere den Arbeitgeber.",
+    "itemType": "grammar_cloze",
+    "taskType": "Luecke",
+    "taskDepth": "cloze",
+    "answerMode": "typed_short",
+    "answerShape": "typed_short",
+    "answer": "Arbeitgeber",
     "acceptedAnswers": [
-      "Ich informiere den Arbeitgeber."
+      "Arbeitgeber"
     ],
-    "fullAnswer_de": "Ich informiere den Arbeitgeber.",
-    "prompt_de": "Ich informiere die Rechnung. Intended meaning: inform the employer.",
+    "fullAnswer_de": "Bei Krankheit informiere ich den Arbeitgeber.",
+    "prompt_de": "Bei Krankheit informiere ich den ___.",
     "learnerCue": "Fix the recipient.",
     "support_en": "Fix the recipient.",
-    "microRule": "The employer is the recipient in this absence message.",
-    "correctnessPolicy": "exact_surface",
-    "acceptedAnswerPolicy": "exact_surface_sentence",
+    "microRule": "In a work sick-leave context, the useful target is „den Arbeitgeber informieren“.",
+    "correctnessPolicy": "exact",
+    "acceptedAnswerPolicy": "exact_only",
     "strictSurfaceAnswer": true,
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
@@ -1022,22 +1016,22 @@
     "familyType": "candidate_sibling_family",
     "maxSameSessionEvidence": 1,
     "sameSessionEvidenceCap": 1,
-    "itemType": "grammar_cloze",
+    "itemType": "multiple_choice",
     "taskType": "Kontrast",
     "taskDepth": "contrast",
-    "answerMode": "typed_short",
-    "answerShape": "short_answer",
+    "answerMode": "selected_choice_value",
+    "answerShape": "selected_choice_value",
     "answer": "krank",
     "acceptedAnswers": [
       "krank"
     ],
     "fullAnswer_de": "krank",
-    "prompt_de": "krank / im Urlaub — Choose sickness, not holiday.",
+    "prompt_de": "Sie sind krank, nicht im Urlaub. Welches Wort passt?",
     "learnerCue": "krank / im Urlaub",
     "support_en": "",
-    "microRule": "This module practises sickness absence.",
+    "microRule": "Use „krank“ for illness.",
     "correctnessPolicy": "exact",
-    "acceptedAnswerPolicy": "exact_only",
+    "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
     "planningEvidenceLabel": "Supported Practice Evidence",
@@ -1078,7 +1072,24 @@
       "krank",
       "im Urlaub"
     ],
-    "targetRule": "This module practises sickness absence."
+    "targetRule": "This module practises sickness absence.",
+    "choices": [
+      {
+        "id": "choice_01_krank",
+        "text": "krank",
+        "isCorrect": true
+      },
+      {
+        "id": "choice_02_im_urlaub",
+        "text": "im Urlaub",
+        "isCorrect": false
+      },
+      {
+        "id": "choice_03_verfugbar",
+        "text": "verfügbar",
+        "isCorrect": false
+      }
+    ]
   },
   {
     "id": "draft_b1_06_018",
@@ -1100,22 +1111,22 @@
     "familyType": "candidate_sibling_family",
     "maxSameSessionEvidence": 1,
     "sameSessionEvidenceCap": 1,
-    "itemType": "grammar_cloze",
+    "itemType": "multiple_choice",
     "taskType": "Kontrast",
     "taskDepth": "contrast",
-    "answerMode": "typed_short",
-    "answerShape": "short_answer",
+    "answerMode": "selected_choice_value",
+    "answerShape": "selected_choice_value",
     "answer": "weil",
     "acceptedAnswers": [
       "weil"
     ],
     "fullAnswer_de": "weil",
-    "prompt_de": "weil / denn — Choose the connector that sends the verb to the end.",
+    "prompt_de": "Welcher Konnektor schickt das Verb ans Ende?",
     "learnerCue": "weil / denn",
     "support_en": "",
-    "microRule": "weil sends the verb to the end.",
+    "microRule": "„Weil“ starts a subordinate clause; the finite verb goes to the end.",
     "correctnessPolicy": "exact",
-    "acceptedAnswerPolicy": "exact_only",
+    "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
     "planningEvidenceLabel": "Supported Practice Evidence",
@@ -1156,7 +1167,24 @@
       "weil",
       "denn"
     ],
-    "targetRule": "weil sends the verb to the end."
+    "targetRule": "weil sends the verb to the end.",
+    "choices": [
+      {
+        "id": "choice_01_weil",
+        "text": "weil",
+        "isCorrect": true
+      },
+      {
+        "id": "choice_02_denn",
+        "text": "denn",
+        "isCorrect": false
+      },
+      {
+        "id": "choice_03_deshalb",
+        "text": "deshalb",
+        "isCorrect": false
+      }
+    ]
   },
   {
     "id": "draft_b1_06_019",

@@ -1,0 +1,647 @@
+﻿# Ozmosis Full Changelog
+
+Chronological changelog from the earliest retained project history through the current package.
+
+Historical standalone changelog files before `CHANGELOG-v0_80_14.txt` are not present in the current repo package. Where exact earlier changelog files are unavailable, entries are reconstructed from the surviving versioned QA reports in `docs/qa/`. The current `v0.80.14` entry is preserved from the active versioned changelog.
+
+## v0.80.14.3 - B1 Question Quality Safe Fix Patch
+
+- Applied the 177 safe, self-audited B1 question-quality fixes from the 09B safe-for-Codex CSV.
+- Reconciled every safe row by `itemId`, source file, prompt, choices, answer, accepted answers, and feedback before release.
+- Converted approved fake-repair and raw-slash contrast items into constrained `Luecke`, `Kontrast`, or `Auswahl` tasks where the 09B safe CSV specified that change.
+- Revised approved choice distractors, prompts, accepted answers, and micro-feedback across Connector, Redemittel, Wortschatz, and B1-01 through B1-11 content banks.
+- Preserved the three human/native review rows untouched: `draft_b1_03_022`, `draft_b1_04_018`, and `draft_b1_08_016`.
+- Added `_development-files/v080143_b1_question_quality_gate.cjs` to validate safe-row reconciliation, blind-cloze guardrails, repair guardrails, stable choice identity, storage keys, and v0.80.14.3 version metadata.
+- Updated current-era validation gates where required so their expectations match the approved 09B safe conversions.
+- Preserved scoring, correctness rules, content IDs, content statuses, production self-marking, Today B1 Sprint composition, Diagnostic Sprint composition, protected storage keys, export/import compatibility, static architecture, and B1-only active scope.
+- Added QA documentation at `docs/qa/v0.80.14.3_b1_question_quality_safe_fix_patch.md`.
+
+## v30-b1-sprint-landing-page
+
+- Added a numbered OZMOSIS landing page for B1 sprint navigation.
+- Kept existing Case Trainer, Options, and Dev Tools accessible.
+- Added placeholder navigation for upcoming Grammar, Wortschatz, Redemittel, Schreiben, Sprechen, and Course Map tools.
+- Preserved existing static single-file architecture and local progress.
+
+## v31 - Dev Leitner prototype with external TSV data
+
+- Added a Dev Tools Leitner article prototype.
+- Added external TSV data files for article items and Leitner card configuration.
+- Added local Leitner progress persistence using a separate localStorage namespace.
+- Added five-step star rating display with due-card scheduling and early-practice handling.
+
+## v31-b1-content-engine-lite
+
+- Added a lightweight B1 practice engine.
+- Added 24 seed B1 sprint items across Grammar, Wortschatz, and Redemittel.
+- Connected Today's B1 Sprint, Grammar, Wortschatz, and Redemittel landing-page buttons to real practice rounds.
+- Added basic B1 item progress persistence under `ozmosis_b1_sprint_progress_v1`.
+- Preserved existing Case Trainer, Options, Dev Tools, and localStorage compatibility.
+
+## v32 - Fullscreen Lernbox cloze prototype
+
+- Changed the Dev Tools Leitner prototype into a fullscreen `LERNBOX PROTOTYPE` cloze session.
+- Switched the prototype data source to `LeitnerTest.json`.
+- Randomised each prototype round to a maximum of 10 initial clozes and requeued missed clozes for retry.
+- Added a compact Lernbox results screen with strongest and weakest category summaries.
+- Moved prototype progress reset to the Dev Tools list with a confirmation screen.
+- Removed visible due-card status text, step text, intro copy, and in-prototype Dev Tools/back controls.
+
+## v33 - Lernbox footer HUD and progress strips
+
+- Moved the Lernbox prompt, answer input, and actions out of the extra outer play box.
+- Added a fixed Lernbox footer HUD with done, right, wrong, retry, and thin top progress-bar status.
+- Added the same thin top progress-bar treatment to the main practice HUD.
+- Kept the fullscreen Lernbox prototype flow and existing article trainer behaviour intact.
+
+## v0.32 - B1 Connector Sprint Bank
+
+- Added a structured B1 Connector Sprint under Grammar.
+- Added the 120-item B1 connector bank covering reason, contrast, purpose, time, repair, and production transfer.
+- Added support for connector-choice, word-order cloze, error-repair, and production-card item types.
+- Added connector-family filtering for All, Reason, Contrast, Purpose, Time, and Repair.
+- Preserved existing v31 B1 seed practice, Case Trainer, Options, Dev Tools, and localStorage compatibility.
+- Extended B1 progress tracking for connector attempts and practised production cards.
+
+## v0.33.1 - B1 Renderer Contract and Feedback Cleanup
+
+- Verified the renderer contract and feedback cleanup from the surviving QA report.
+- Confirmed current version markers in `index.html`, `README.md`, `AGENTS.md`, and the then-current changelog.
+- Preserved the next planned content patch path toward `v0.34`.
+
+## v0.34 - Daily Sprint Queue / Teach Me / Wortschatz Integration
+
+- Added daily sprint queue, Teach me, cloze feedback, and Wortschatz integration.
+- Preserved the B1 static learning scope and existing storage compatibility.
+
+## v0.38 - B1 Content Registry Normalisation
+
+- Normalised the B1 content registry.
+- Made connector inclusion policy explicit through registry metadata.
+- Preserved current B1 route behaviour while identifying stale export-version metadata for follow-up.
+
+## v0.39 - Static Content QA
+
+- Audited static content loading and registry behaviour.
+- Verified current v0.38 state before the v0.39 QA pass.
+- Documented connector-bank inclusion expectations and export metadata risk.
+
+## v0.40 - Progress Evidence Model v1
+
+- Added the B1 progress evidence model v1.
+- Introduced the protected evidence storage key `ozmosis_b1_progress_evidence_v1`.
+- Preserved the existing B1 sprint progress key `ozmosis_b1_sprint_progress_v1`.
+- Updated export metadata away from stale v0.34 export references.
+
+## v0.40.1 - Confidence / Guess Tracking
+
+- Added confidence and guess tracking to the evidence model.
+- Preserved safe confidence values and export/import compatibility.
+- Kept scoring semantics unchanged.
+
+## v0.41 - B1 Skill Tag Audit
+
+- Audited B1 skill tagging across the active B1 content banks.
+- Strengthened metadata consistency for progress and evidence views.
+- Preserved static content loading and storage compatibility.
+
+## v0.42 - Learning Map Data Scaffold
+
+- Added the Learning Map data scaffold.
+- Prepared conservative progress/evidence summaries without adding mastery claims.
+- Updated documentation and QA references for the v0.42 progress layer.
+
+## v0.42.1 - B1 Diagnostic Entry Sprint
+
+- Added the B1 Diagnostic Entry Sprint.
+- Preserved diagnostic evidence as snapshot evidence rather than pass/fail scoring.
+- Kept the active B1 scope local and static.
+
+## v0.42.2 - Diagnostic Flow Recovery
+
+- Repaired diagnostic flow recovery.
+- Preserved diagnostic evidence semantics and export/import behaviour.
+- Documented remaining diagnostic UX risks.
+
+## v0.42.3 - Production Card Support Repair
+
+- Repaired production-card support handling.
+- Preserved production as self-marked practice rather than auto-graded correctness.
+- Kept production evidence conservative.
+
+## v0.42.4 - Debug Stamp + State Snapshot Export
+
+- Added a debug stamp and state snapshot export support.
+- Improved tester/debug visibility without changing learner scoring.
+- Preserved existing app storage keys.
+
+## v0.43 - Learning Map UI Preparation
+
+- Prepared the Learning Map UI surface.
+- Kept progress language conservative and evidence-limited.
+- Preserved existing routes and B1 practice flows.
+
+## v0.44 - Skill Matrix Data Model
+
+- Added the Skill Matrix data model.
+- Started separating progress evidence by skill and task depth.
+- Preserved learner-facing labels as conservative progress states.
+
+## v0.45 - Next Recommended Practice v1
+
+- Added Suggested Next Practice v1.
+- Kept recommendations rules-based and conservative.
+- Preserved existing route targets and avoided new scheduler behaviour.
+
+## v0.46 - Progress State Labels v1
+
+- Added progress state labels.
+- Preserved safe learner-facing states: Not tested, Not enough evidence, Introduced, Emerging, and Developing.
+- Avoided mastery, durability, readiness, and pass/fail claims.
+
+## v0.47 - Not Enough Evidence Handling
+
+- Improved Not enough evidence handling.
+- Kept empty and thin evidence states neutral rather than punitive.
+- Preserved scoring and storage behaviour.
+
+## v0.48 - Tester-Ready UX / Visual System
+
+- Added tester-ready UX and visual-system improvements.
+- Added Tester Notes / Known Bugs and stronger Dev Tools access.
+- Preserved core route hooks for Home, Learning Map, B1 practice routes, Case Trainer, Options, and Dev Tools.
+
+## v0.48.1 - Confidence-as-Next
+
+- Made confidence selection part of the post-answer next-action rhythm.
+- Preserved null-confidence continue behaviour.
+- Avoided duplicate evidence records when confidence was selected.
+
+## v0.49 - Progress Foundation QA
+
+- Audited the progress foundation.
+- Verified recommendation, Learning Map, Skill Matrix, confidence, and evidence behaviour together.
+- Preserved learner-facing conservatism and storage compatibility.
+
+## v0.50 - Task Depth Formalisation
+
+- Formalised task-depth metadata.
+- Preserved task-depth separation for recognition, cloze, repair, contrast, and production evidence.
+- Documented browser-validation limitations and Edge/CDP gate follow-up.
+
+## v0.50 - Browser Validation Blocked
+
+- Documented the blocked browser-validation state.
+- Preserved static and syntax checks while browser validation was unavailable.
+- Recorded the need for an Edge/CDP validation path.
+
+## v0.50 - Browser Gate / Edge-CDP Clarification
+
+- Clarified Edge/CDP as the accepted browser gate path.
+- Confirmed browser validation could proceed through local static serving and headless Edge/CDP.
+
+## v0.51 - Skill Matrix v1
+
+- Added Skill Matrix v1.
+- Rendered skill/task-depth evidence views while preserving conservative labels.
+- Kept production and diagnostic limitations visible.
+
+## v0.51 - Deployment / Device QA Gate
+
+- Added deployment/device QA gate coverage.
+- Verified route and device smoke expectations for the v0.51 matrix layer.
+- Preserved documentation and changelog alignment.
+
+## v0.52 - Support-Level Tracking
+
+- Added support-level tracking.
+- Preserved additive, conservative support metadata.
+- Kept scoring unchanged.
+
+## v0.52.1 - Support Visibility Policy
+
+- Added support visibility policy handling.
+- Preserved support reveal semantics and conservative evidence interpretation.
+- Kept German learning content LTR.
+
+## v0.53 - Controlled Production Tracking
+
+- Added controlled production tracking.
+- Preserved production cards as self-marked evidence only.
+- Avoided inferring correctness from production practice.
+
+## v0.53 - Documentation Filename Hygiene
+
+- Audited and repaired documentation filename hygiene.
+- Preserved historical changelog and QA naming.
+- Kept current documentation pointers aligned.
+
+## v0.53.1 - Mobile UX Stabilisation
+
+- Stabilised mobile UX.
+- Improved menu sections, close behaviour, scrollable overflow, and route access.
+- Preserved Diagnostic Sprint, Learning Map, Wortschatz, and Tester Notes navigation.
+
+## v0.54 - Repair Mode Strengthening
+
+- Strengthened repair-mode handling.
+- Preserved repair evidence as repair task-depth evidence.
+- Kept feedback concise and route behaviour stable.
+
+## v0.55 - Contrast Tasks
+
+- Added contrast-task support.
+- Preserved contrast metadata as conservative evidence.
+- Kept route and storage compatibility.
+
+## v0.56 - Skill-Task Recommendations
+
+- Added skill-task recommendations.
+- Connected recommendations to task-depth evidence while keeping copy cautious.
+- Preserved existing progress states and B1-only active scope.
+
+## v0.56 - Documentation Filename Hygiene
+
+- Aligned versioned README, changelog, source brief, and roadmap filenames.
+- Preserved historical docs and QA files.
+- Confirmed root README/changelog files were not required by the versioned convention.
+
+## v0.56 - Restore Cleanup Gate
+
+- Verified restored v0.56 state.
+- Documented temporary artifact cleanup and preserved uncertain files.
+- Confirmed current docs and QA reports after restore.
+
+## v0.57 - Recommendation QA and Evidence Inflation Audit
+
+- Hardened Suggested Next Practice against evidence inflation.
+- Audited thin, scaffolded, diagnostic, self-marked, broad-category, and repair/contrast evidence.
+- Preserved v0.56 recommendation behaviour while making learner-facing copy cautious.
+
+## v0.57.1 - Big UX Update
+
+- Performed a full mobile-first UX and visual-system audit across the app.
+- Refined Home, menu, Options, active practice, feedback, production cards, diagnostics, Learning Map, Skill Matrix, Case Trainer, Dev Tools, and tester surfaces.
+- Preserved v0.57 recommendation hardening, scoring, evidence semantics, storage keys, export/import, content banks, and B1-only scope.
+
+## v0.57.2 - Flow, Navigation, and Mobile UX Corrections
+
+- Fixed post-v0.57.1 mobile navigation and flow issues.
+- Made Home and route hubs purpose-grouped rather than falsely numbered.
+- Improved menu scrollability, Settings access, production-card reveals, diagnostic hierarchy, Learning Map copy, mobile Skill Matrix readability, Case Trainer harmony, cloze sizing, feedback hierarchy, toast placement, HUD clearance, and Arabic/LTR smoke behaviour.
+
+## v0.58 - Skill Matrix QA
+
+- Audited the Skill Matrix for evidence-inflation risks.
+- Added conservative matrix QA handling for thin samples, scaffolded evidence, diagnostic records, self-marked production, derived metadata, and unknown task depths.
+- Preserved learner-facing conservative labels and mobile matrix readability.
+
+## v0.59 - Skill Matrix Stabilisation
+
+- Stabilised the Learning Map, Skill Matrix, and Suggested Next Practice foundation.
+- Aligned recommendation copy, matrix limitations, debug/tester output, documentation, and export metadata.
+- Preserved v0.57.2 UX fixes.
+
+## v0.60 - Error Pattern Detection v1
+
+- Added conservative rules-based Error Pattern Detection v1.
+- Added cautious possible-pattern signals where existing evidence and metadata met thresholds.
+- Kept pattern signals separate from progress states, scoring, weakness repair, and review scheduling.
+
+## v0.60.1 - Repair Feedback Precision
+
+- Improved repair feedback precision.
+- Preserved error-pattern signals and repair evidence semantics.
+- Kept broader v0.60 regression coverage intact.
+
+## v0.61 - Error Pattern QA / Weakness Repair Preparation
+
+- Audited error-pattern output for QA and future weakness-repair preparation.
+- Preserved cautious pattern language and avoided learner-facing diagnosis claims.
+- Kept weakness repair as preparation only.
+
+## v0.62 - Error-Type Summaries v1
+
+- Added Error-Type Summaries v1.
+- Summarised repeated error-type evidence conservatively.
+- Preserved scoring, storage keys, and learner-facing progress-state limits.
+
+## v0.63 - Weakness Repair Design Gate
+
+- Added the Weakness Repair Design Gate.
+- Prepared repair design constraints without shipping broad repair queues.
+- Preserved route smoke and storage compatibility.
+
+## v0.64 - Weakness Repair Queue Scaffold
+
+- Added a scaffold for weakness repair queues.
+- Kept repair queue behaviour conservative and bounded.
+- Preserved existing B1 routes and evidence semantics.
+
+## v0.65 - Targeted Repair Practice v1
+
+- Added Targeted Repair Practice v1.
+- Routed eligible repair practice through existing B1 evidence and task-depth semantics.
+- Preserved export/import and storage compatibility.
+
+## v0.66 - Targeted Repair QA / Route Expansion
+
+- Expanded targeted repair QA and route coverage.
+- Preserved conservative repair evidence and route smoke behaviour.
+- Kept storage and scoring unchanged.
+
+## v0.67 - Connector Diagnostic Cards
+
+- Added Connector Diagnostic Cards.
+- Preserved diagnostic evidence as snapshot/context evidence.
+- Kept existing route and storage behaviour.
+
+## v0.68 - Diagnostic QA
+
+- Audited diagnostic behaviour.
+- Preserved diagnostic copy, evidence limits, and route semantics.
+- Kept pass/fail and mastery claims out of learner-facing UI.
+
+## v0.69 - Diagnostic Repair Stabilisation
+
+- Stabilised diagnostic repair behaviour.
+- Preserved diagnostic repair evidence and route smoke coverage.
+- Updated v0.69 README, changelog, source brief, roadmap, AGENTS pointers, and QA report.
+
+## v0.69.1 - Holistic UX Legibility and Access Hierarchy Pass
+
+- Audited first-run picker, menu, Settings, Home, placeholders, Learning Map, production cards, Diagnostic, route hubs, Case Trainer, Dev Tools, Tester Notes, evidence, import, and responsive states.
+- Improved visual hierarchy, access hierarchy, and legibility.
+- Kept Settings, Tester Notes, and Dev Tools reachable without competing with primary practice.
+
+## v0.69.2 - v0.69.1 Completion Fix
+
+- Completed v0.69.1 documentation/package follow-through.
+- Created v0.69.2 README, changelog, source brief, roadmap, and QA report.
+- Updated AGENTS to v0.69.2 with next planned patch v0.70.
+
+## v0.70 - Durability / Review Design Gate
+
+- Added a durability/review design gate.
+- Preserved review as design-gated rather than broad scheduler behaviour.
+- Smoke-tested first-run, Home, menu, Settings, Learning Map, Grammar, Wortschatz, Redemittel, production, Diagnostic, Case Trainer, Dev Tools, Tester Notes, and export/import UI.
+
+## v0.71 - Review Eligibility Rules v1
+
+- Added Review Eligibility Rules v1.
+- Kept review eligibility conservative and evidence-based.
+- Preserved current changelog/docs pointers and storage compatibility.
+
+## v0.72 - Review Candidate Preview v1
+
+- Added Review Candidate Preview v1.
+- Previewed review candidates without forcing a scheduler.
+- Preserved export/import and conservative learner-facing copy.
+
+## v0.73 - Opt-in Review Practice v1
+
+- Added Opt-in Review Practice v1.
+- Kept review practice opt-in rather than automatic scheduling.
+- Preserved current scoring and evidence behaviour.
+
+## v0.74 - Review UX Integration v1
+
+- Integrated review UX into existing app surfaces.
+- Preserved current route access and conservative review language.
+- Kept documentation and QA pointers aligned.
+
+## v0.75 - Review/Durability QA Stabilisation
+
+- Stabilised review and durability QA.
+- Clarified Tester Notes and Dev Tools review copy.
+- Kept Review Practice optional and available only when eligible older auto-graded items exist.
+
+## v0.75.1 - Holistic UX Redesign / Access Hierarchy / Visual System Pass
+
+- Audited first-run language picker, Home, Menu, Settings, active practice, feedback, Diagnostic, Grammar, Wortschatz, Redemittel, production, Case Trainer, Learning Map, Skill Matrix, review practice, Dev Tools, Tester Notes, export/import, Arabic, desktop, and short-laptop states.
+- Improved access hierarchy and visual-system consistency.
+- Generated screenshot coverage for named UX states.
+
+## v0.76 - B1 Content Metadata Repair / Review Coverage Pass
+
+- Repaired B1 content metadata for review coverage.
+- Preserved B1 content semantics and review eligibility safety.
+- Kept Tester Notes and route smoke coverage.
+
+## v0.77 - Learner-Readable Progress Export
+
+- Added learner-readable progress export.
+- Preserved internal export/import compatibility.
+- Smoke-tested Home, Menu, Settings, Today's B1 Sprint, Diagnostic Sprint, Grammar/Connector, Wortschatz, Redemittel, production card, Case Trainer, Learning Map, Skill Matrix, Review Practice, Dev Tools, Tester Notes, and export/import UI.
+
+## v0.78 - Durability QA
+
+- Audited durability/review behaviour.
+- Preserved conservative durability and review language.
+- Kept scoring and storage unchanged.
+
+## v0.79 - Stabilise B1 Review System
+
+- Stabilised the B1 review system.
+- Preserved opt-in review, eligibility rules, and learner-readable export behaviour.
+- Kept next work scoped to B1 coverage.
+
+## v0.80 - B1 Coverage Audit
+
+- Audited B1 coverage.
+- Prepared the B1 module coverage track.
+- Preserved the versioned README/changelog convention.
+
+## v0.80 - Documentation Filename Hygiene
+
+- Aligned v0.80 documentation filenames.
+- Preserved versioned README/changelog/source brief/roadmap convention.
+- Confirmed no root README or root changelog was required.
+
+## v0.80.1 - Live / Real Device / Screenshot Harness Stabilisation
+
+- Stabilised live, real-device, and screenshot QA harness expectations.
+- Preserved first-run, Home, Menu, Settings, active practice, feedback, Diagnostic, route hubs, production, Case Trainer, Learning Map, Skill Matrix, review practice, Dev Tools, Tester Notes, export/import, Arabic, desktop, and short-laptop coverage.
+
+## v0.80.1 - Documentation Filename Hygiene
+
+- Aligned v0.80.1 documentation filenames.
+- Preserved the versioned README/changelog convention.
+- Confirmed no root README or root changelog was required.
+
+## v0.80.2 - Multiple-Choice Choice Shuffling Safety
+
+- Added multiple-choice shuffling safety.
+- Verified shuffled choice identity for correct and wrong selections.
+- Preserved confidence updates without duplicate evidence.
+
+## v0.80.3 - B1-01 Curated Variant Families
+
+- Added B1-01 curated variant families.
+- Preserved variant metadata, review-group constraints, and static content architecture.
+- Kept storage/export/import compatibility.
+
+## v0.80.3.1 - B1-01 Cue Alignment / Translation Hotfix
+
+- Fixed B1-01 cue alignment and translation issues.
+- Preserved B1-01 content IDs and evidence semantics.
+- Kept the patch narrow and content-focused.
+
+## v0.80.4 - B1-01 Extension Variant Families
+
+- Added B1-01 extension variant families.
+- Preserved Today/Diagnostic composition and storage compatibility.
+- Updated v0.80.4 docs and QA.
+
+## v0.80.5 - B1-02 Appointments / callbacks
+
+- Added approved B1-02 Appointments / callbacks content as static module content.
+- Registered B1-02 under the existing B1 module system.
+- Preserved Today B1 Sprint, Diagnostic Sprint, storage, export/import, and existing B1-01 behaviour.
+
+## v0.80.6 - B1-03 Job search / offices
+
+- Added approved B1-03 Job search / offices content as static module content.
+- Registered B1-03 under the existing B1 module system.
+- Preserved previous B1 module behaviour and storage/export/import compatibility.
+
+## v0.80.7 - B1-04 Applications
+
+- Added approved B1-04 Applications content as static module content.
+- Registered B1-04 under the existing B1 module system.
+- Preserved previous B1 module behaviour and Today/Diagnostic composition.
+
+## v0.80.8 - B1-05 First day / contract basics
+
+- Added approved B1-05 First day / contract basics content as static module content.
+- Registered B1-05 under the existing B1 module system.
+- Preserved storage keys, export/import, and earlier module behaviour.
+
+## v0.80.9 - B1-06 Sick Leave
+
+- Added approved B1-06 Sick Leave content as static module content.
+- Registered B1-06 under the existing B1 module system.
+- Preserved previous B1 route behaviour, storage, export/import, and B1-only scope.
+
+## v0.80.10 - B1-07 Meetings / Leave Requests
+
+- Added approved B1-07 Meetings / Leave Requests content as static module content.
+- Registered B1-07 under the existing B1 module system.
+- Preserved previous B1 module behaviour, storage, export/import, and B1-only scope.
+
+## v0.80.11 - B1-08 Orders / Delivery
+
+- Added approved B1-08 Orders / Delivery content as static module content.
+- Registered B1-08 under the existing B1 module system.
+- Preserved previous B1 module behaviour, storage, export/import, and B1-only scope.
+
+## v0.80.12 - B1-09 Complaints / Customer Service
+
+- Added approved B1-09 Complaints / Customer Service content as static module content.
+- Registered B1-09 under the existing B1 module system.
+- Preserved previous B1 module behaviour, storage, export/import, and B1-only scope.
+
+## v0.80.13 - B1-10 Technical Problems
+
+- Added approved B1-10 Technical Problems content as static module content.
+- Registered B1-10 under the existing B1 module system.
+- Preserved previous B1 module behaviour, storage, export/import, and B1-only scope.
+
+## v0.80.14 - B1-11 Colleague feedback / conflict
+
+### Added
+
+- Added approved B1-11 Colleague feedback / conflict content as a static module file.
+- Added 15 active B1-11 practice items and 3 B1-11 notice/concept cards.
+- Added a B1-11 module practice entry under Grammar.
+- Added B1-11 debug/start helpers for QA.
+- Added a v0.80.14 static verifier and Edge/CDP QA gate for B1-11 counts, route registration, task rendering, evidence metadata, export/import, responsive checks, and Arabic/LTR smoke.
+
+### Implementation
+
+- Imported rows from the approved B1-11 planning inventory and schema mapping.
+- Preserved planning IDs, target-family IDs, target IDs, evidence types, support presentation, and review-eligibility metadata where the current schema supports them.
+- Mapped `Auswahl`, `Luecke`, `Satzbau`, `Reparatur`, `Kontrast`, and `Produktion` to existing renderers.
+- Kept B1-11 out of Today's B1 Sprint and Diagnostic Sprint by registry flags.
+- Kept production cards self-marked only.
+
+### Preserved
+
+- Existing localStorage keys.
+- Existing export/import compatibility.
+- Existing B1-01 through B1-10 behaviour.
+- Existing multiple-choice shuffling behaviour.
+- Existing production self-marking behaviour.
+- Today B1 Sprint and Diagnostic Sprint composition.
+- German LTR handling in Arabic UI contexts.
+- Static, dependency-free app architecture.
+
+### Excluded
+
+- Did not add B1-12 review items.
+- Did not add v0.81 Cases and Articles work.
+- Did not add Genitive.
+- Did not add Satzi.
+- Did not add runtime grammar generation.
+- Did not add dynamic German case/article inference.
+- Did not add B2 content.
+- Did not add a scheduler, delayed review, or weakness repair queue.
+
+### Testing
+
+- Parsed `index.html` inline script.
+- Parsed active content scripts.
+- Generated `content/b1-m11-colleague-feedback-conflict.js` from the approved B1-11 planning table.
+- Ran `_development-files/v0813_static_verify.cjs` before editing.
+- Ran `_development-files/v0814_static_verify.cjs`.
+- Ran `_development-files/v0814_b111_colleague_feedback_conflict_gate.cjs`.
+- Ran `_development-files/v0802_mc_choice_shuffle_gate.cjs` under v0.80.14 version labels.
+
+## v0.80.14.1 - Beta Readiness: Task Contract + Practice UX Repair
+
+### Fixed
+
+- Repaired the B1 task-rendering contract for imported B1-02 through B1-11 module content without changing content-bank item IDs, answers, or statuses.
+- Converted slash-style `Kontrast` prompts into generated choice-button tasks at render time.
+- Converted selected valid/style/register `Reparatur` prompts into bounded choice-button tasks where a free repair input would be misleading.
+- Reframed ordinary repair prompts so the learner sees a German repair target and not English planning/source text.
+- Hid answer-giving support before answer for repair and choice contexts where the source support would reveal the target.
+- Standardised typed cloze blank sizing so answer length no longer makes the blank look too large or too revealing.
+- Added wrapping safeguards for long answers, repair corrections, correction targets, micro-rules, and choice feedback.
+- Added visible button tap/press feedback for touch interaction.
+- Thickened the practice HUD progress strip and hid the fixed HUD in very short landscape B1 practice states where it would otherwise cover primary controls.
+- Added concrete repair micro-rules for common connector and word-order repairs such as `dass`, `weil`, `ob`, `wenn`, `bevor`, and V2-style fronted connector frames.
+- Added lightweight Review Practice anti-clumping so nearby review candidates are less likely to repeat the same cluster immediately.
+
+### Preserved
+
+- Preserved scoring, correctness, confidence values, review eligibility, review timing, production self-marking, diagnostic semantics, storage keys, export/import compatibility, Today B1 Sprint composition, Diagnostic Sprint composition, and B1-only active scope.
+- Preserved all existing content bank item IDs, answers, and statuses.
+- Preserved the static, dependency-free app architecture.
+- Did not add B1-12, v0.81 Cases and Articles, Genitive expansion, Satzi, B2 content, runtime grammar generation, runtime AI, a backend, a framework, package manager files, or dependencies.
+
+### QA
+
+- Added `_development-files/v080141_task_contract_beta_readiness_gate.cjs`.
+- Added `_development-files/v080141_beta_readiness_practice_ux_gate.cjs`.
+- Added QA documentation at `docs/qa/v0.80.14.1_beta_readiness_task_contract_practice_ux.md`.
+- Edge/CDP validation covered task-contract render states, B1-02 through B1-11 route smoke, production skip/self-marking, export/import, malformed import handling, Arabic/LTR, and the full required responsive viewport set.
+## v0.80.14.2 - Beta UX Interaction Pass
+
+- Fixed beta-blocking practice-flow UX friction reported from the v0.80.14.1 app line.
+- Allowed B1 choice-button tasks to submit on one click or tap through the existing answer/evidence path.
+- Kept explicit `Prüfen` submission for typed cloze, repair text, Satzbau, production contexts, and Case Trainer inputs.
+- Required confidence selection after auto-graded and assisted B1 submissions before the learner can continue.
+- Reordered confidence buttons to `I GUESSED`, `I WAS UNSURE`, `I KNEW IT`.
+- Replaced normal auto-graded skip-confidence continuation with the blocked copy `Select answer confidence to continue`.
+- Kept confidence writes additive to the current evidence record and avoided duplicate evidence records.
+- Integrated `Teach me` with inline typed cloze action state so empty input shows support and typed input switches to `Prüfen`.
+- Updated Teach Me support copy to `Practice answer — This will reappear at the end of the session for recall.`
+- Relaxed B1 practice scroll constraints so Edge/Chromium mouse wheel scrolling can use the document rather than a nested trapped panel.
+- Tightened practice prompt sizing, prompt-to-choice spacing, and choice-button rhythm without changing route design.
+- Normalised inline cloze punctuation spacing so punctuation after blanks does not sit awkwardly.
+- Kept typed cloze inputs at a standard width, thinned outlines, preserved accessible focus, and reinforced long-answer wrapping.
+- Reinforced reduced-motion-safe button press feedback and made the HUD progress strip easier to see.
+- Preserved v0.80.14.1 task-contract repairs, multiple-choice shuffling, Review Practice anti-clumping, scoring, evidence semantics, storage keys, export/import compatibility, content banks, B1-only scope, and static architecture.
+- Added `_development-files/v080142_beta_ux_interaction_gate.cjs`.
+- Added QA documentation at `docs/qa/v0.80.14.2_beta_ux_interaction_pass.md`.

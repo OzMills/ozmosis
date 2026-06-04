@@ -31,10 +31,10 @@
       "das Formular"
     ],
     "fullAnswer_de": "das Formular",
-    "prompt_de": "German-first scenario: Sie bekommen ein Papier mit vielen Fragen. Which word fits?",
+    "prompt_de": "Sie bekommen ein Dokument mit vielen Feldern. Welches Wort passt?",
     "learnerCue": "Choices: das Formular / der Rückruf / die Lieferung",
     "support_en": "",
-    "microRule": "A Formular is a form.",
+    "microRule": "A „Formular“ is the form you fill in.",
     "correctnessPolicy": "exact",
     "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
@@ -77,21 +77,18 @@
     "schemaRisk": "support-visible evidence; not strong mastery proof",
     "choices": [
       {
-        "id": "draft_b1_03_004_choice_1",
+        "id": "choice_01_das_formular",
         "text": "das Formular",
-        "value": "das Formular",
         "isCorrect": true
       },
       {
-        "id": "draft_b1_03_004_choice_2",
-        "text": "der Rückruf",
-        "value": "der Rückruf",
+        "id": "choice_02_der_antrag",
+        "text": "der Antrag",
         "isCorrect": false
       },
       {
-        "id": "draft_b1_03_004_choice_3",
-        "text": "die Lieferung",
-        "value": "die Lieferung",
+        "id": "choice_03_der_nachweis",
+        "text": "der Nachweis",
         "isCorrect": false
       }
     ]
@@ -125,11 +122,11 @@
     "acceptedAnswers": [
       "stellen"
     ],
-    "fullAnswer_de": "stellen",
-    "prompt_de": "Which action fits with Antrag in formal admin German?",
+    "fullAnswer_de": "Welches Verb passt zur Amtsphrase „einen Antrag stellen“?",
+    "prompt_de": "Welches Verb passt zur Amtsphrase „einen Antrag ___“?",
     "learnerCue": "stellen / trinken / schlafen",
     "support_en": "",
-    "microRule": "Use einen Antrag stellen.",
+    "microRule": "The fixed collocation is „einen Antrag stellen“.",
     "correctnessPolicy": "exact",
     "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
@@ -170,21 +167,18 @@
     "schemaRisk": "support-visible evidence; not strong mastery proof",
     "choices": [
       {
-        "id": "draft_b1_03_005_choice_1",
+        "id": "choice_01_stellen",
         "text": "stellen",
-        "value": "stellen",
         "isCorrect": true
       },
       {
-        "id": "draft_b1_03_005_choice_2",
-        "text": "trinken",
-        "value": "trinken",
+        "id": "choice_02_einreichen",
+        "text": "einreichen",
         "isCorrect": false
       },
       {
-        "id": "draft_b1_03_005_choice_3",
-        "text": "schlafen",
-        "value": "schlafen",
+        "id": "choice_03_ausfullen",
+        "text": "ausfüllen",
         "isCorrect": false
       }
     ]
@@ -214,16 +208,16 @@
     "taskDepth": "recognition",
     "answerMode": "selected_choice_value",
     "answerShape": "selected_choice_value",
-    "answer": "Wer ist zuständig für...?",
+    "answer": "Wer ist zuständig für den Antrag?",
     "acceptedAnswers": [
-      "Wer ist zuständig für...?"
+      "Wer ist zuständig für den Antrag?"
     ],
     "fullAnswer_de": "Wer ist zuständig für...?",
-    "prompt_de": "Which phrase asks who is responsible?",
+    "prompt_de": "Welche Frage fragt nach der verantwortlichen Person?",
     "learnerCue": "Choices: Wer ist zuständig für...? / Wer ist krankgeschrieben? / Wer liefert morgen?",
     "support_en": "",
-    "microRule": "zuständig für means responsible for.",
-    "correctnessPolicy": "exact_surface",
+    "microRule": "„Zuständig für“ means responsible for.",
+    "correctnessPolicy": "exact",
     "acceptedAnswerPolicy": "choice_value_exact",
     "strictSurfaceAnswer": true,
     "supportPolicy": "scenario_visible",
@@ -264,21 +258,18 @@
     "schemaRisk": "support-visible evidence; not strong mastery proof",
     "choices": [
       {
-        "id": "draft_b1_03_006_choice_1",
-        "text": "Wer ist zuständig für...?",
-        "value": "Wer ist zuständig für...?",
+        "id": "choice_01_wer_ist_zustandig_fur_den_antrag",
+        "text": "Wer ist zuständig für den Antrag?",
         "isCorrect": true
       },
       {
-        "id": "draft_b1_03_006_choice_2",
-        "text": "Wer ist krankgeschrieben?",
-        "value": "Wer ist krankgeschrieben?",
+        "id": "choice_02_wer_bearbeitet_den_antrag_wann",
+        "text": "Wer bearbeitet den Antrag wann?",
         "isCorrect": false
       },
       {
-        "id": "draft_b1_03_006_choice_3",
-        "text": "Wer liefert morgen?",
-        "value": "Wer liefert morgen?",
+        "id": "choice_03_wo_gebe_ich_den_antrag_ab",
+        "text": "Wo gebe ich den Antrag ab?",
         "isCorrect": false
       }
     ]
@@ -1157,22 +1148,22 @@
     "familyType": "candidate_sibling_family",
     "maxSameSessionEvidence": 1,
     "sameSessionEvidenceCap": 1,
-    "itemType": "error_repair",
-    "taskType": "Reparatur",
-    "taskDepth": "repair",
-    "answerMode": "repair_text",
-    "answerShape": "repaired_sentence",
-    "answer": "Ich stelle einen Antrag.",
+    "itemType": "multiple_choice",
+    "taskType": "Kontrast",
+    "taskDepth": "contrast",
+    "answerMode": "selected_choice_value",
+    "answerShape": "selected_choice_value",
+    "answer": "einen Antrag stellen",
     "acceptedAnswers": [
-      "Ich stelle einen Antrag."
+      "einen Antrag stellen"
     ],
     "fullAnswer_de": "Ich stelle einen Antrag.",
-    "prompt_de": "Ich mache einen Antrag. Intended formal admin meaning: submit an application.",
+    "prompt_de": "Welche feste Amtsphrase passt?",
     "learnerCue": "Fix the collocation.",
     "support_en": "Fix the collocation.",
-    "microRule": "Use einen Antrag stellen.",
-    "correctnessPolicy": "exact_surface",
-    "acceptedAnswerPolicy": "exact_surface_sentence",
+    "microRule": "Use the fixed collocation „einen Antrag stellen“.",
+    "correctnessPolicy": "exact",
+    "acceptedAnswerPolicy": "choice_value_exact",
     "strictSurfaceAnswer": true,
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
@@ -1209,7 +1200,24 @@
     "learnerFacingAllowed": "Yes",
     "schemaNotes": "Imported from B1-03 approved planning inventory; notice cards remain separate and excluded from evidence.",
     "sourceRisk": "supported evidence; conservative only",
-    "schemaRisk": "support-visible evidence; not strong mastery proof"
+    "schemaRisk": "support-visible evidence; not strong mastery proof",
+    "choices": [
+      {
+        "id": "choice_01_einen_antrag_machen",
+        "text": "einen Antrag machen",
+        "isCorrect": false
+      },
+      {
+        "id": "choice_02_einen_antrag_stellen",
+        "text": "einen Antrag stellen",
+        "isCorrect": true
+      },
+      {
+        "id": "choice_03_einen_antrag_schreiben",
+        "text": "einen Antrag schreiben",
+        "isCorrect": false
+      }
+    ]
   },
   {
     "id": "draft_b1_03_019",
@@ -1533,22 +1541,22 @@
     "familyType": "candidate_sibling_family",
     "maxSameSessionEvidence": 1,
     "sameSessionEvidenceCap": 1,
-    "itemType": "grammar_cloze",
+    "itemType": "multiple_choice",
     "taskType": "Kontrast",
     "taskDepth": "contrast",
-    "answerMode": "typed_short",
-    "answerShape": "short_answer",
+    "answerMode": "selected_choice_value",
+    "answerShape": "selected_choice_value",
     "answer": "das Formular",
     "acceptedAnswers": [
       "das Formular"
     ],
     "fullAnswer_de": "das Formular",
-    "prompt_de": "das Formular / der Termin — Choose the document you fill in.",
+    "prompt_de": "Sie müssen ein Dokument mit Feldern ausfüllen. Welches Wort passt?",
     "learnerCue": "das Formular / der Termin",
     "support_en": "",
-    "microRule": "You fill in a form.",
+    "microRule": "You fill in a „Formular“.",
     "correctnessPolicy": "exact",
-    "acceptedAnswerPolicy": "exact_only",
+    "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
     "planningEvidenceLabel": "Supported Practice Evidence",
@@ -1589,7 +1597,24 @@
       "das Formular",
       "der Termin"
     ],
-    "targetRule": "You fill in a form."
+    "targetRule": "You fill in a form.",
+    "choices": [
+      {
+        "id": "choice_01_das_formular",
+        "text": "das Formular",
+        "isCorrect": true
+      },
+      {
+        "id": "choice_02_der_nachweis",
+        "text": "der Nachweis",
+        "isCorrect": false
+      },
+      {
+        "id": "choice_03_die_unterlagen",
+        "text": "die Unterlagen",
+        "isCorrect": false
+      }
+    ]
   },
   {
     "id": "draft_b1_03_024",
@@ -1611,22 +1636,22 @@
     "familyType": "candidate_sibling_family",
     "maxSameSessionEvidence": 1,
     "sameSessionEvidenceCap": 1,
-    "itemType": "grammar_cloze",
+    "itemType": "multiple_choice",
     "taskType": "Kontrast",
     "taskDepth": "contrast",
-    "answerMode": "typed_short",
-    "answerShape": "short_answer",
+    "answerMode": "selected_choice_value",
+    "answerShape": "selected_choice_value",
     "answer": "der Nachweis",
     "acceptedAnswers": [
       "der Nachweis"
     ],
     "fullAnswer_de": "der Nachweis",
-    "prompt_de": "der Nachweis / der Vorschlag — Choose the phrase for proof/document evidence.",
+    "prompt_de": "Sie sollen beweisen, dass etwas stimmt. Welches Wort passt?",
     "learnerCue": "der Nachweis / der Vorschlag",
     "support_en": "",
-    "microRule": "A Nachweis is proof/evidence in admin contexts.",
+    "microRule": "„Der Nachweis“ is proof/evidence in admin contexts.",
     "correctnessPolicy": "exact",
-    "acceptedAnswerPolicy": "exact_only",
+    "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
     "planningEvidenceLabel": "Supported Practice Evidence",
@@ -1667,7 +1692,24 @@
       "der Nachweis",
       "der Vorschlag"
     ],
-    "targetRule": "A Nachweis is proof/evidence in admin contexts."
+    "targetRule": "A Nachweis is proof/evidence in admin contexts.",
+    "choices": [
+      {
+        "id": "choice_01_der_nachweis",
+        "text": "der Nachweis",
+        "isCorrect": true
+      },
+      {
+        "id": "choice_02_der_antrag",
+        "text": "der Antrag",
+        "isCorrect": false
+      },
+      {
+        "id": "choice_03_das_formular",
+        "text": "das Formular",
+        "isCorrect": false
+      }
+    ]
   },
   {
     "id": "draft_b1_03_025",
@@ -1689,22 +1731,22 @@
     "familyType": "candidate_sibling_family",
     "maxSameSessionEvidence": 1,
     "sameSessionEvidenceCap": 1,
-    "itemType": "grammar_cloze",
+    "itemType": "multiple_choice",
     "taskType": "Kontrast",
     "taskDepth": "contrast",
-    "answerMode": "typed_short",
-    "answerShape": "short_answer",
+    "answerMode": "selected_choice_value",
+    "answerShape": "selected_choice_value",
     "answer": "einreichen",
     "acceptedAnswers": [
       "einreichen"
     ],
     "fullAnswer_de": "einreichen",
-    "prompt_de": "einreichen / besprechen — Choose the action for documents.",
+    "prompt_de": "Sie schicken Dokumente offiziell ab. Welches Verb passt?",
     "learnerCue": "einreichen / besprechen",
     "support_en": "",
-    "microRule": "Use Unterlagen einreichen for submitting documents.",
+    "microRule": "„Unterlagen einreichen“ means submit documents.",
     "correctnessPolicy": "exact",
-    "acceptedAnswerPolicy": "exact_only",
+    "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
     "planningEvidenceLabel": "Supported Practice Evidence",
@@ -1745,7 +1787,24 @@
       "einreichen",
       "besprechen"
     ],
-    "targetRule": "Use Unterlagen einreichen for submitting documents."
+    "targetRule": "Use Unterlagen einreichen for submitting documents.",
+    "choices": [
+      {
+        "id": "choice_01_einreichen",
+        "text": "einreichen",
+        "isCorrect": true
+      },
+      {
+        "id": "choice_02_ausfullen",
+        "text": "ausfüllen",
+        "isCorrect": false
+      },
+      {
+        "id": "choice_03_zustandig_sein",
+        "text": "zuständig sein",
+        "isCorrect": false
+      }
+    ]
   },
   {
     "id": "draft_b1_03_026",
@@ -1767,27 +1826,27 @@
     "familyType": "candidate_sibling_family",
     "maxSameSessionEvidence": 1,
     "sameSessionEvidenceCap": 1,
-    "itemType": "error_repair",
-    "taskType": "Umformen",
-    "taskDepth": "transformation",
-    "answerMode": "transformation_text",
-    "answerShape": "transformed_sentence",
+    "itemType": "multiple_choice",
+    "taskType": "Auswahl",
+    "taskDepth": "recognition",
+    "answerMode": "selected_choice_value",
+    "answerShape": "selected_choice_value",
     "answer": "Welche Unterlagen brauche ich?",
     "acceptedAnswers": [
       "Welche Unterlagen brauche ich?"
     ],
     "fullAnswer_de": "Welche Unterlagen brauche ich?",
-    "prompt_de": "Ich brauche Unterlagen.",
+    "prompt_de": "Sie möchten fragen, welche Dokumente nötig sind. Welche Frage passt?",
     "learnerCue": "Ask which documents are needed.",
     "support_en": "Ask which documents are needed.",
-    "microRule": "Use Welche Unterlagen...? for this office question.",
-    "correctnessPolicy": "exact_surface",
-    "acceptedAnswerPolicy": "exact_surface_sentence",
+    "microRule": "For a W-question, the question word comes first and the finite verb comes second.",
+    "correctnessPolicy": "exact",
+    "acceptedAnswerPolicy": "choice_value_exact",
     "strictSurfaceAnswer": true,
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
     "planningEvidenceLabel": "Practice Evidence",
-    "evidenceType": "auto_core",
+    "evidenceType": "auto_supported",
     "reviewEligibilityDefault": "eligible_auto_after_delay",
     "delayedReviewEligibility": "eligible_auto_after_delay",
     "diagnosticEligible": false,
@@ -1823,7 +1882,24 @@
     "learnerFacingAllowed": "Yes",
     "schemaNotes": "Imported from B1-03 approved planning inventory; notice cards remain separate and excluded from evidence.",
     "sourceRisk": "approved B1-03 micro-scenario",
-    "schemaRisk": "standard B1-03 practice evidence"
+    "schemaRisk": "standard B1-03 practice evidence",
+    "choices": [
+      {
+        "id": "choice_01_welche_unterlagen_brauche_ich",
+        "text": "Welche Unterlagen brauche ich?",
+        "isCorrect": true
+      },
+      {
+        "id": "choice_02_ich_brauche_unterlagen",
+        "text": "Ich brauche Unterlagen.",
+        "isCorrect": false
+      },
+      {
+        "id": "choice_03_brauche_unterlagen_ich",
+        "text": "Brauche Unterlagen ich?",
+        "isCorrect": false
+      }
+    ]
   },
   {
     "id": "draft_b1_03_027",

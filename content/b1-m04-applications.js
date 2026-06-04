@@ -27,10 +27,10 @@
       "die Stellenanzeige"
     ],
     "fullAnswer_de": "die Stellenanzeige",
-    "prompt_de": "Which word means a job advert?",
+    "prompt_de": "Welches Wort passt für eine Anzeige mit einer offenen Stelle?",
     "learnerCue": "Choices: die Stellenanzeige / die Krankmeldung / die Lieferung",
     "support_en": "",
-    "microRule": "A Stellenanzeige is a job advert.",
+    "microRule": "„Die Stellenanzeige“ is the job advert.",
     "correctnessPolicy": "exact",
     "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
@@ -73,21 +73,18 @@
     "schemaRisk": "support-visible evidence; not strong mastery proof",
     "choices": [
       {
-        "id": "draft_b1_04_004_choice_1",
+        "id": "choice_01_die_stellenanzeige",
         "text": "die Stellenanzeige",
-        "value": "die Stellenanzeige",
         "isCorrect": true
       },
       {
-        "id": "draft_b1_04_004_choice_2",
-        "text": "die Krankmeldung",
-        "value": "die Krankmeldung",
+        "id": "choice_02_die_stelle",
+        "text": "die Stelle",
         "isCorrect": false
       },
       {
-        "id": "draft_b1_04_004_choice_3",
-        "text": "die Lieferung",
-        "value": "die Lieferung",
+        "id": "choice_03_das_vorstellungsgesprach",
+        "text": "das Vorstellungsgespräch",
         "isCorrect": false
       }
     ]
@@ -122,10 +119,10 @@
       "der Lebenslauf"
     ],
     "fullAnswer_de": "der Lebenslauf",
-    "prompt_de": "Which document is a CV?",
+    "prompt_de": "Welches Dokument ist der CV/Lebenslauf?",
     "learnerCue": "Choices: der Lebenslauf / der Rückruf / der Gutschein",
     "support_en": "",
-    "microRule": "Lebenslauf is CV.",
+    "microRule": "„Der Lebenslauf“ is the CV.",
     "correctnessPolicy": "exact",
     "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
@@ -166,21 +163,18 @@
     "schemaRisk": "support-visible evidence; not strong mastery proof",
     "choices": [
       {
-        "id": "draft_b1_04_005_choice_1",
+        "id": "choice_01_der_lebenslauf",
         "text": "der Lebenslauf",
-        "value": "der Lebenslauf",
         "isCorrect": true
       },
       {
-        "id": "draft_b1_04_005_choice_2",
-        "text": "der Rückruf",
-        "value": "der Rückruf",
+        "id": "choice_02_das_anschreiben",
+        "text": "das Anschreiben",
         "isCorrect": false
       },
       {
-        "id": "draft_b1_04_005_choice_3",
-        "text": "der Gutschein",
-        "value": "der Gutschein",
+        "id": "choice_03_die_bewerbung",
+        "text": "die Bewerbung",
         "isCorrect": false
       }
     ]
@@ -215,10 +209,10 @@
       "das Anschreiben"
     ],
     "fullAnswer_de": "das Anschreiben",
-    "prompt_de": "Which document is usually the cover/application letter?",
+    "prompt_de": "Welches Dokument ist der Bewerbungsbrief?",
     "learnerCue": "Choices: das Anschreiben / die Sprechzeit / der Papierstau",
     "support_en": "",
-    "microRule": "Anschreiben is the cover letter/application letter document.",
+    "microRule": "„Das Anschreiben“ is the cover/application letter.",
     "correctnessPolicy": "exact",
     "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
@@ -259,21 +253,18 @@
     "schemaRisk": "support-visible evidence; not strong mastery proof",
     "choices": [
       {
-        "id": "draft_b1_04_006_choice_1",
+        "id": "choice_01_das_anschreiben",
         "text": "das Anschreiben",
-        "value": "das Anschreiben",
         "isCorrect": true
       },
       {
-        "id": "draft_b1_04_006_choice_2",
-        "text": "die Sprechzeit",
-        "value": "die Sprechzeit",
+        "id": "choice_02_der_lebenslauf",
+        "text": "der Lebenslauf",
         "isCorrect": false
       },
       {
-        "id": "draft_b1_04_006_choice_3",
-        "text": "der Papierstau",
-        "value": "der Papierstau",
+        "id": "choice_03_die_stellenanzeige",
+        "text": "die Stellenanzeige",
         "isCorrect": false
       }
     ]
@@ -1343,22 +1334,22 @@
     "familyType": "candidate_sibling_family",
     "maxSameSessionEvidence": 1,
     "sameSessionEvidenceCap": 1,
-    "itemType": "grammar_cloze",
+    "itemType": "multiple_choice",
     "taskType": "Kontrast",
     "taskDepth": "contrast",
-    "answerMode": "typed_short",
-    "answerShape": "short_answer",
+    "answerMode": "selected_choice_value",
+    "answerShape": "selected_choice_value",
     "answer": "der Lebenslauf",
     "acceptedAnswers": [
       "der Lebenslauf"
     ],
     "fullAnswer_de": "der Lebenslauf",
-    "prompt_de": "der Lebenslauf / das Anschreiben — Choose the CV document.",
+    "prompt_de": "Welches Dokument ist der CV?",
     "learnerCue": "der Lebenslauf / das Anschreiben",
     "support_en": "",
-    "microRule": "The CV is der Lebenslauf.",
+    "microRule": "The CV is „der Lebenslauf“.",
     "correctnessPolicy": "exact",
-    "acceptedAnswerPolicy": "exact_only",
+    "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
     "planningEvidenceLabel": "Supported Practice Evidence",
@@ -1399,7 +1390,24 @@
       "der Lebenslauf",
       "das Anschreiben"
     ],
-    "targetRule": "The CV is der Lebenslauf."
+    "targetRule": "The CV is der Lebenslauf.",
+    "choices": [
+      {
+        "id": "choice_01_der_lebenslauf",
+        "text": "der Lebenslauf",
+        "isCorrect": true
+      },
+      {
+        "id": "choice_02_das_anschreiben",
+        "text": "das Anschreiben",
+        "isCorrect": false
+      },
+      {
+        "id": "choice_03_die_bewerbung",
+        "text": "die Bewerbung",
+        "isCorrect": false
+      }
+    ]
   },
   {
     "id": "draft_b1_04_022",
@@ -1421,22 +1429,22 @@
     "familyType": "candidate_sibling_family",
     "maxSameSessionEvidence": 1,
     "sameSessionEvidenceCap": 1,
-    "itemType": "grammar_cloze",
+    "itemType": "multiple_choice",
     "taskType": "Kontrast",
     "taskDepth": "contrast",
-    "answerMode": "typed_short",
-    "answerShape": "short_answer",
+    "answerMode": "selected_choice_value",
+    "answerShape": "selected_choice_value",
     "answer": "als",
     "acceptedAnswers": [
       "als"
     ],
-    "fullAnswer_de": "Choose the frame for a role: Ich bewerbe mich als Verkäufer.",
-    "prompt_de": "als / um — Choose the frame for a role: Ich bewerbe mich ___ Verkäufer.",
+    "fullAnswer_de": "Welche Form passt für die Rolle? „Ich bewerbe mich als Verkäufer.“",
+    "prompt_de": "Welche Form passt für die Rolle? „Ich bewerbe mich ___ Verkäufer.“",
     "learnerCue": "als / um",
     "support_en": "",
-    "microRule": "Use als for the role.",
+    "microRule": "Use „als“ before the job role: „als Verkäufer“.",
     "correctnessPolicy": "exact",
-    "acceptedAnswerPolicy": "exact_only",
+    "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
     "planningEvidenceLabel": "Supported Practice Evidence",
@@ -1477,7 +1485,24 @@
       "als",
       "um"
     ],
-    "targetRule": "Use als for the role."
+    "targetRule": "Use als for the role.",
+    "choices": [
+      {
+        "id": "choice_01_als",
+        "text": "als",
+        "isCorrect": true
+      },
+      {
+        "id": "choice_02_um",
+        "text": "um",
+        "isCorrect": false
+      },
+      {
+        "id": "choice_03_fur",
+        "text": "für",
+        "isCorrect": false
+      }
+    ]
   },
   {
     "id": "draft_b1_04_023",
@@ -1499,22 +1524,22 @@
     "familyType": "candidate_sibling_family",
     "maxSameSessionEvidence": 1,
     "sameSessionEvidenceCap": 1,
-    "itemType": "grammar_cloze",
+    "itemType": "multiple_choice",
     "taskType": "Kontrast",
     "taskDepth": "contrast",
-    "answerMode": "typed_short",
-    "answerShape": "short_answer",
+    "answerMode": "selected_choice_value",
+    "answerShape": "selected_choice_value",
     "answer": "Ich bin zuverlässig.",
     "acceptedAnswers": [
       "Ich bin zuverlässig."
     ],
     "fullAnswer_de": "Ich bin zuverlässig.",
-    "prompt_de": "Ich bin zuverlässig. / Ich bin zuverlässige Mitarbeiter. — Choose the sentence without adjective endings as target.",
+    "prompt_de": "Welche Aussage ist für B1 klar und korrekt?",
     "learnerCue": "Ich bin zuverlässig. / Ich bin zuverlässige Mitarbeiter.",
     "support_en": "",
-    "microRule": "Use predicative adjective here: Ich bin zuverlässig.",
-    "correctnessPolicy": "exact_surface",
-    "acceptedAnswerPolicy": "exact_surface_or_case",
+    "microRule": "Use the simple adjective after „sein“: „Ich bin zuverlässig.“",
+    "correctnessPolicy": "exact",
+    "acceptedAnswerPolicy": "choice_value_exact",
     "strictSurfaceAnswer": true,
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
@@ -1556,7 +1581,24 @@
       "Ich bin zuverlässig.",
       "Ich bin zuverlässige Mitarbeiter."
     ],
-    "targetRule": "Use predicative adjective here: Ich bin zuverlässig."
+    "targetRule": "Use predicative adjective here: Ich bin zuverlässig.",
+    "choices": [
+      {
+        "id": "choice_01_ich_bin_zuverlassig",
+        "text": "Ich bin zuverlässig.",
+        "isCorrect": true
+      },
+      {
+        "id": "choice_02_ich_bin_zuverlassige_mitarbeiter",
+        "text": "Ich bin zuverlässige Mitarbeiter.",
+        "isCorrect": false
+      },
+      {
+        "id": "choice_03_ich_habe_zuverlassig",
+        "text": "Ich habe zuverlässig.",
+        "isCorrect": false
+      }
+    ]
   },
   {
     "id": "draft_b1_04_024",
@@ -1574,27 +1616,27 @@
     "reviewGroup": "rg-b1-04-draft_b1_04_024",
     "familyTarget": "B1-04 single retained item",
     "familyType": "single_retained_item",
-    "itemType": "error_repair",
-    "taskType": "Umformen",
-    "taskDepth": "transformation",
-    "answerMode": "transformation_text",
-    "answerShape": "transformed_sentence",
+    "itemType": "multiple_choice",
+    "taskType": "Kontrast",
+    "taskDepth": "contrast",
+    "answerMode": "selected_choice_value",
+    "answerShape": "selected_choice_value",
     "answer": "Ich interessiere mich für die Stelle.",
     "acceptedAnswers": [
       "Ich interessiere mich für die Stelle."
     ],
     "fullAnswer_de": "Ich interessiere mich für die Stelle.",
-    "prompt_de": "Die Stelle ist interessant für mich.",
+    "prompt_de": "Welche Form passt besser in eine Bewerbung?",
     "learnerCue": "Use the target frame.",
     "support_en": "",
-    "microRule": "sich interessieren für is the interest frame.",
-    "correctnessPolicy": "exact_surface",
-    "acceptedAnswerPolicy": "exact_surface_sentence",
+    "microRule": "„Ich interessiere mich für ...“ is the clearer application phrase; the source sentence is not a grammar error.",
+    "correctnessPolicy": "exact",
+    "acceptedAnswerPolicy": "choice_value_exact",
     "strictSurfaceAnswer": true,
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
     "planningEvidenceLabel": "Practice Evidence",
-    "evidenceType": "auto_core",
+    "evidenceType": "auto_supported",
     "reviewEligibilityDefault": "eligible_auto_after_delay",
     "delayedReviewEligibility": "eligible_auto_after_delay",
     "diagnosticEligible": false,
@@ -1630,7 +1672,24 @@
     "learnerFacingAllowed": "Yes",
     "schemaNotes": "Imported from B1-04 approved planning inventory; notice cards remain separate and excluded from evidence.",
     "sourceRisk": "approved B1-04 micro-scenario",
-    "schemaRisk": "standard B1-04 practice evidence"
+    "schemaRisk": "standard B1-04 practice evidence",
+    "choices": [
+      {
+        "id": "choice_01_die_stelle_ist_interessant_fur_mich",
+        "text": "Die Stelle ist interessant für mich.",
+        "isCorrect": false
+      },
+      {
+        "id": "choice_02_ich_interessiere_mich_fur_die_stelle",
+        "text": "Ich interessiere mich für die Stelle.",
+        "isCorrect": true
+      },
+      {
+        "id": "choice_03_ich_finde_die_stelle_okay",
+        "text": "Ich finde die Stelle okay.",
+        "isCorrect": false
+      }
+    ]
   },
   {
     "id": "draft_b1_04_025",

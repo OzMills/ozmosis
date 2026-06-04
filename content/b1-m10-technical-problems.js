@@ -31,10 +31,10 @@
       "das Gerät"
     ],
     "fullAnswer_de": "das Gerät",
-    "prompt_de": "Which word means device?",
+    "prompt_de": "Welches allgemeine Wort passt für Maschine, Handy oder Drucker?",
     "learnerCue": "das Gerät / der Urlaub / der Lebenslauf",
     "support_en": "",
-    "microRule": "Gerät is device.",
+    "microRule": "„Gerät“ is the general word for device.",
     "correctnessPolicy": "exact",
     "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
@@ -75,21 +75,18 @@
     "schemaRisk": "support-visible evidence; not strong mastery proof",
     "choices": [
       {
-        "id": "draft_b1_10_004_choice_1",
+        "id": "choice_01_das_gerat",
         "text": "das Gerät",
-        "value": "das Gerät",
         "isCorrect": true
       },
       {
-        "id": "draft_b1_10_004_choice_2",
-        "text": "der Urlaub",
-        "value": "der Urlaub",
+        "id": "choice_02_der_stecker",
+        "text": "der Stecker",
         "isCorrect": false
       },
       {
-        "id": "draft_b1_10_004_choice_3",
-        "text": "der Lebenslauf",
-        "value": "der Lebenslauf",
+        "id": "choice_03_die_fehlermeldung",
+        "text": "die Fehlermeldung",
         "isCorrect": false
       }
     ]
@@ -124,10 +121,10 @@
       "die Fehlermeldung"
     ],
     "fullAnswer_de": "die Fehlermeldung",
-    "prompt_de": "Which word means error message?",
+    "prompt_de": "Welches Wort passt für die Meldung auf dem Bildschirm bei einem Fehler?",
     "learnerCue": "die Fehlermeldung / die Besprechung / der Ersatz",
     "support_en": "",
-    "microRule": "Fehlermeldung is error message.",
+    "microRule": "„Fehlermeldung“ is an error message.",
     "correctnessPolicy": "exact",
     "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
@@ -168,21 +165,18 @@
     "schemaRisk": "support-visible evidence; not strong mastery proof",
     "choices": [
       {
-        "id": "draft_b1_10_005_choice_1",
+        "id": "choice_01_die_fehlermeldung",
         "text": "die Fehlermeldung",
-        "value": "die Fehlermeldung",
         "isCorrect": true
       },
       {
-        "id": "draft_b1_10_005_choice_2",
-        "text": "die Besprechung",
-        "value": "die Besprechung",
+        "id": "choice_02_die_ruckmeldung",
+        "text": "die Rückmeldung",
         "isCorrect": false
       },
       {
-        "id": "draft_b1_10_005_choice_3",
-        "text": "der Ersatz",
-        "value": "der Ersatz",
+        "id": "choice_03_die_bestatigung",
+        "text": "die Bestätigung",
         "isCorrect": false
       }
     ]
@@ -906,27 +900,27 @@
     "familyType": "candidate_sibling_family",
     "maxSameSessionEvidence": 1,
     "sameSessionEvidenceCap": 1,
-    "itemType": "error_repair",
-    "taskType": "Reparatur",
-    "taskDepth": "repair",
-    "answerMode": "repair_text",
-    "answerShape": "repaired_sentence",
+    "itemType": "multiple_choice",
+    "taskType": "Auswahl",
+    "taskDepth": "recognition",
+    "answerMode": "selected_choice_value",
+    "answerShape": "selected_choice_value",
     "answer": "Prüfen Sie den Stecker.",
     "acceptedAnswers": [
       "Prüfen Sie den Stecker."
     ],
     "fullAnswer_de": "Prüfen Sie den Stecker.",
-    "prompt_de": "Sie prüfen den Stecker. Intended instruction.",
+    "prompt_de": "Welche Form ist eine formelle Anweisung?",
     "learnerCue": "Fix the imperative.",
     "support_en": "Fix the imperative.",
-    "microRule": "Formal instruction starts with the verb.",
-    "correctnessPolicy": "exact_surface",
-    "acceptedAnswerPolicy": "exact_surface_sentence",
+    "microRule": "Formal imperative uses verb + Sie; the source statement was valid German but not an instruction.",
+    "correctnessPolicy": "exact",
+    "acceptedAnswerPolicy": "choice_value_exact",
     "strictSurfaceAnswer": true,
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
     "planningEvidenceLabel": "Practice Evidence",
-    "evidenceType": "auto_core",
+    "evidenceType": "auto_supported",
     "reviewEligibilityDefault": "eligible_auto_after_delay",
     "delayedReviewEligibility": "eligible_auto_after_delay",
     "diagnosticEligible": false,
@@ -960,7 +954,24 @@
     "learnerFacingAllowed": "Yes",
     "schemaNotes": "Imported from B1-10 approved planning inventory; notice cards remain separate and excluded from evidence.",
     "sourceRisk": "approved B1-10 micro-scenario",
-    "schemaRisk": "standard B1-10 practice evidence"
+    "schemaRisk": "standard B1-10 practice evidence",
+    "choices": [
+      {
+        "id": "choice_01_prufen_sie_den_stecker",
+        "text": "Prüfen Sie den Stecker.",
+        "isCorrect": true
+      },
+      {
+        "id": "choice_02_sie_prufen_den_stecker",
+        "text": "Sie prüfen den Stecker.",
+        "isCorrect": false
+      },
+      {
+        "id": "choice_03_prufen_den_stecker_sie",
+        "text": "Prüfen den Stecker Sie.",
+        "isCorrect": false
+      }
+    ]
   },
   {
     "id": "draft_b1_10_016",
@@ -1056,22 +1067,22 @@
     "familyType": "candidate_sibling_family",
     "maxSameSessionEvidence": 1,
     "sameSessionEvidenceCap": 1,
-    "itemType": "grammar_cloze",
+    "itemType": "multiple_choice",
     "taskType": "Kontrast",
     "taskDepth": "contrast",
-    "answerMode": "typed_short",
-    "answerShape": "short_answer",
+    "answerMode": "selected_choice_value",
+    "answerShape": "selected_choice_value",
     "answer": "einschalten",
     "acceptedAnswers": [
       "einschalten"
     ],
     "fullAnswer_de": "einschalten",
-    "prompt_de": "einschalten / beschweren — Choose switch on.",
+    "prompt_de": "Sie möchten ein Gerät starten. Welches Verb passt?",
     "learnerCue": "einschalten / beschweren",
     "support_en": "",
-    "microRule": "einschalten = switch on.",
+    "microRule": "„Einschalten“ means switch on.",
     "correctnessPolicy": "exact",
-    "acceptedAnswerPolicy": "exact_only",
+    "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
     "planningEvidenceLabel": "Supported Practice Evidence",
@@ -1113,7 +1124,24 @@
       "einschalten",
       "beschweren"
     ],
-    "targetRule": "einschalten = switch on."
+    "targetRule": "einschalten = switch on.",
+    "choices": [
+      {
+        "id": "choice_01_einschalten",
+        "text": "einschalten",
+        "isCorrect": true
+      },
+      {
+        "id": "choice_02_ausschalten",
+        "text": "ausschalten",
+        "isCorrect": false
+      },
+      {
+        "id": "choice_03_neu_starten",
+        "text": "neu starten",
+        "isCorrect": false
+      }
+    ]
   },
   {
     "id": "draft_b1_10_018",
@@ -1135,22 +1163,22 @@
     "familyType": "candidate_sibling_family",
     "maxSameSessionEvidence": 1,
     "sameSessionEvidenceCap": 1,
-    "itemType": "grammar_cloze",
+    "itemType": "multiple_choice",
     "taskType": "Kontrast",
     "taskDepth": "contrast",
-    "answerMode": "typed_short",
-    "answerShape": "short_answer",
+    "answerMode": "selected_choice_value",
+    "answerShape": "selected_choice_value",
     "answer": "die Fehlermeldung",
     "acceptedAnswers": [
       "die Fehlermeldung"
     ],
     "fullAnswer_de": "die Fehlermeldung",
-    "prompt_de": "die Fehlermeldung / der Lebenslauf — Choose a technical problem word.",
+    "prompt_de": "Welches Wort gehört zu einem technischen Problem?",
     "learnerCue": "die Fehlermeldung / der Lebenslauf",
     "support_en": "",
-    "microRule": "Error message = Fehlermeldung.",
+    "microRule": "An error message is „die Fehlermeldung“.",
     "correctnessPolicy": "exact",
-    "acceptedAnswerPolicy": "exact_only",
+    "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
     "planningEvidenceLabel": "Supported Practice Evidence",
@@ -1191,7 +1219,24 @@
       "die Fehlermeldung",
       "der Lebenslauf"
     ],
-    "targetRule": "Error message = Fehlermeldung."
+    "targetRule": "Error message = Fehlermeldung.",
+    "choices": [
+      {
+        "id": "choice_01_die_fehlermeldung",
+        "text": "die Fehlermeldung",
+        "isCorrect": true
+      },
+      {
+        "id": "choice_02_die_ruckmeldung",
+        "text": "die Rückmeldung",
+        "isCorrect": false
+      },
+      {
+        "id": "choice_03_die_bestatigung",
+        "text": "die Bestätigung",
+        "isCorrect": false
+      }
+    ]
   },
   {
     "id": "draft_b1_10_019",

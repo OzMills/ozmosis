@@ -59,24 +59,27 @@
     "subtopic": "rescheduling",
     "target": "einen Termin verschieben",
     "type": "phrase_choice",
-    "prompt_de": "Welche Formulierung passt, wenn du einen Termin ändern möchtest?",
+    "prompt_de": "Sie können morgen nicht. Welche Formulierung verschiebt den Termin?",
     "answer": "Könnten wir den Termin verschieben?",
-    "accepted": [],
+    "accepted": [
+      "Könnten wir den Termin verschieben?"
+    ],
     "translation_en": "Which phrase fits if you want to change an appointment?",
     "choices": [
       "Könnten wir den Termin verschieben?",
-      "Könnten wir den Termin ausfüllen?",
-      "Könnten wir den Termin bestellen?"
+      "Könnten wir den Termin absagen?",
+      "Könnten wir einen neuen Termin vereinbaren?"
     ],
     "correct_choice": "Könnten wir den Termin verschieben?",
-    "micro_rule": "einen Termin verschieben = to move/reschedule an appointment.",
+    "micro_rule": "„Verschieben“ means moving the appointment to another time.",
     "difficulty": "medium",
     "family": "termin",
     "tags": [
       "appointment",
       "phrase_choice",
       "polite_request"
-    ]
+    ],
+    "supportVisibility": "scenario_visible"
   },
   {
     "id": "b1_vocab_termin_004",
@@ -85,23 +88,28 @@
     "topic": "appointments",
     "subtopic": "collocation repair",
     "target": "einen Termin vereinbaren",
-    "type": "error_repair",
-    "prompt_de": "Korrigiere: Ich mache einen Termin beim Arzt.",
+    "type": "phrase_choice",
+    "prompt_de": "Welche Form ist in Praxis/Büro standardsprachlich besser?",
     "answer": "Ich vereinbare einen Termin beim Arzt.",
     "accepted": [
       "Ich vereinbare einen Termin beim Arzt."
     ],
     "translation_en": "Correct: I make an appointment at the doctor.",
-    "choices": [],
-    "correct_choice": "",
-    "micro_rule": "Natural German: einen Termin vereinbaren, not einen Termin machen.",
+    "choices": [
+      "Ich mache einen Termin beim Arzt.",
+      "Ich vereinbare einen Termin beim Arzt.",
+      "Ich bekomme einen Termin beim Arzt."
+    ],
+    "correct_choice": "Ich vereinbare einen Termin beim Arzt.",
+    "micro_rule": "„Einen Termin vereinbaren“ is the standard phrase; „machen“ should not be marked as a simple grammar error.",
     "difficulty": "hard_b1",
     "family": "termin",
     "tags": [
       "appointment",
       "error_repair",
       "collocation"
-    ]
+    ],
+    "supportVisibility": "scenario_visible"
   },
   {
     "id": "b1_vocab_termin_005",
@@ -197,24 +205,27 @@
     "subtopic": "email confirmation",
     "target": "Bestätigung erhalten",
     "type": "phrase_choice",
-    "prompt_de": "Welche Formulierung passt, wenn du noch keine Antwort bekommen hast?",
+    "prompt_de": "Sie haben noch keine Bestätigung bekommen. Welche Formulierung passt?",
     "answer": "Ich habe noch keine Bestätigung erhalten.",
-    "accepted": [],
+    "accepted": [
+      "Ich habe noch keine Bestätigung erhalten."
+    ],
     "translation_en": "Which phrase fits if you have not received a reply yet?",
     "choices": [
       "Ich habe noch keine Bestätigung erhalten.",
-      "Ich habe noch keine Lieferung ausgefüllt.",
-      "Ich habe noch keine Rechnung verschoben."
+      "Ich habe die Bestätigung schon erhalten.",
+      "Könnten Sie mir die Rechnung schicken?"
     ],
     "correct_choice": "Ich habe noch keine Bestätigung erhalten.",
-    "micro_rule": "eine Bestätigung erhalten = to receive a confirmation.",
+    "micro_rule": "„Noch keine Bestätigung erhalten“ states that confirmation is missing.",
     "difficulty": "medium",
     "family": "bestaetigung",
     "tags": [
       "confirmation",
       "phrase_choice",
       "email"
-    ]
+    ],
+    "supportVisibility": "scenario_visible"
   },
   {
     "id": "b1_vocab_bestaetigung_004",
@@ -334,24 +345,27 @@
     "subtopic": "missing documents",
     "target": "Unterlagen fehlen",
     "type": "phrase_choice",
-    "prompt_de": "Welche Formulierung passt, wenn Dokumente noch nicht da sind?",
+    "prompt_de": "Dokumente fehlen noch. Welche Formulierung passt?",
     "answer": "Mir fehlen noch die Unterlagen.",
-    "accepted": [],
+    "accepted": [
+      "Mir fehlen noch die Unterlagen."
+    ],
     "translation_en": "Which phrase fits if documents are still missing?",
     "choices": [
       "Mir fehlen noch die Unterlagen.",
-      "Mir bezahlt noch die Unterlagen.",
-      "Mir verschiebt noch die Unterlagen."
+      "Ich habe alle Unterlagen dabei.",
+      "Ich brauche keine Unterlagen mehr."
     ],
     "correct_choice": "Mir fehlen noch die Unterlagen.",
-    "micro_rule": "Mir fehlen ... = I am missing ...",
+    "micro_rule": "„Unterlagen fehlen“ means required documents are missing.",
     "difficulty": "medium",
     "family": "unterlagen",
     "tags": [
       "documents",
       "phrase_choice",
       "missing"
-    ]
+    ],
+    "supportVisibility": "scenario_visible"
   },
   {
     "id": "b1_vocab_unterlagen_004",
@@ -361,15 +375,15 @@
     "subtopic": "plural repair",
     "target": "die Unterlagen",
     "type": "error_repair",
-    "prompt_de": "Korrigiere: Ich schicke Ihnen die Unterlage für die Bewerbung.",
+    "prompt_de": "Korrigiere im Bewerbungskontext: Ich schicke Ihnen die Unterlage für die Bewerbung.",
     "answer": "Ich schicke Ihnen die Unterlagen für die Bewerbung.",
     "accepted": [
       "Ich schicke Ihnen die Unterlagen für die Bewerbung."
     ],
     "translation_en": "Correct: I am sending you the documents for the application.",
     "choices": [],
-    "correct_choice": "",
-    "micro_rule": "For application documents, German often uses plural: die Unterlagen.",
+    "correct_choice": "Ich schicke Ihnen die Unterlagen für die Bewerbung.",
+    "micro_rule": "In application contexts, „die Unterlagen“ is the usual plural for documents.",
     "difficulty": "hard_b1",
     "family": "unterlagen",
     "tags": [
@@ -377,7 +391,8 @@
       "plural",
       "application",
       "error_repair"
-    ]
+    ],
+    "supportVisibility": "scenario_visible"
   },
   {
     "id": "b1_vocab_unterlagen_005",
@@ -473,24 +488,27 @@
     "subtopic": "incomplete forms",
     "target": "vollständig",
     "type": "phrase_choice",
-    "prompt_de": "Welche Formulierung passt, wenn Angaben fehlen?",
+    "prompt_de": "Angaben fehlen im Formular. Welche Formulierung passt?",
     "answer": "Das Formular ist noch nicht vollständig.",
-    "accepted": [],
+    "accepted": [
+      "Das Formular ist noch nicht vollständig."
+    ],
     "translation_en": "Which phrase fits if information is missing?",
     "choices": [
       "Das Formular ist noch nicht vollständig.",
-      "Das Formular ist noch nicht pünktlich.",
-      "Das Formular ist noch nicht höflich."
+      "Das Formular ist schon unterschrieben.",
+      "Das Formular ist angekommen."
     ],
     "correct_choice": "Das Formular ist noch nicht vollständig.",
-    "micro_rule": "vollständig = complete.",
+    "micro_rule": "„Vollständig“ means complete.",
     "difficulty": "medium",
     "family": "formular",
     "tags": [
       "form",
       "phrase_choice",
       "admin"
-    ]
+    ],
+    "supportVisibility": "scenario_visible"
   },
   {
     "id": "b1_vocab_formular_004",
@@ -611,22 +629,25 @@
     "type": "phrase_choice",
     "prompt_de": "Welche Formulierung ist höflich und passend für eine Beschwerde?",
     "answer": "Ich möchte mich über die Lieferung beschweren.",
-    "accepted": [],
+    "accepted": [
+      "Ich möchte mich über die Lieferung beschweren."
+    ],
     "translation_en": "Which phrase is polite and suitable for a complaint?",
     "choices": [
       "Ich möchte mich über die Lieferung beschweren.",
-      "Ich finde Ihre Lieferung total schlecht.",
-      "Ihre Lieferung ist einfach unmöglich."
+      "Die Lieferung ist total schlecht.",
+      "Ihre Lieferung ist unmöglich."
     ],
     "correct_choice": "Ich möchte mich über die Lieferung beschweren.",
-    "micro_rule": "Ich möchte mich über ... beschweren is clear and formal enough for B1.",
+    "micro_rule": "„Ich möchte mich beschweren“ is direct but still formal enough.",
     "difficulty": "medium",
     "family": "beschwerde",
     "tags": [
       "complaint",
       "register",
       "phrase_choice"
-    ]
+    ],
+    "supportVisibility": "scenario_visible"
   },
   {
     "id": "b1_vocab_beschwerde_004",
@@ -748,24 +769,27 @@
     "subtopic": "missing delivery",
     "target": "nicht angekommen",
     "type": "phrase_choice",
-    "prompt_de": "Welche Formulierung passt, wenn die Lieferung noch nicht da ist?",
+    "prompt_de": "Die Ware ist noch nicht da. Welche Formulierung passt?",
     "answer": "Die Lieferung ist noch nicht angekommen.",
-    "accepted": [],
+    "accepted": [
+      "Die Lieferung ist noch nicht angekommen."
+    ],
     "translation_en": "Which phrase fits if the delivery has not arrived yet?",
     "choices": [
       "Die Lieferung ist noch nicht angekommen.",
-      "Die Lieferung ist noch nicht ausgefüllt.",
-      "Die Lieferung ist noch nicht bestätigt worden."
+      "Die Bestellung ist schon bestätigt.",
+      "Die Rechnung ist noch offen."
     ],
     "correct_choice": "Die Lieferung ist noch nicht angekommen.",
-    "micro_rule": "ankommen = to arrive.",
+    "micro_rule": "„Lieferung angekommen“ is the delivery-arrival phrase.",
     "difficulty": "medium",
     "family": "lieferung",
     "tags": [
       "delivery",
       "phrase_choice",
       "problem"
-    ]
+    ],
+    "supportVisibility": "scenario_visible"
   },
   {
     "id": "b1_vocab_lieferung_004",
@@ -885,24 +909,27 @@
     "subtopic": "wrong order",
     "target": "falsche Bestellung",
     "type": "phrase_choice",
-    "prompt_de": "Welche Formulierung passt, wenn du etwas anderes bekommen hast?",
+    "prompt_de": "Sie haben den falschen Artikel bekommen. Welche Formulierung passt?",
     "answer": "Ich habe die falsche Bestellung erhalten.",
-    "accepted": [],
+    "accepted": [
+      "Ich habe die falsche Bestellung erhalten."
+    ],
     "translation_en": "Which phrase fits if you received something different?",
     "choices": [
       "Ich habe die falsche Bestellung erhalten.",
-      "Ich habe die höfliche Bestellung erhalten.",
-      "Ich habe die vollständige Bestellung bezahlt."
+      "Die Bestellung ist vollständig.",
+      "Ich habe die Rechnung bezahlt."
     ],
     "correct_choice": "Ich habe die falsche Bestellung erhalten.",
-    "micro_rule": "die falsche Bestellung = the wrong order.",
+    "micro_rule": "„Die falsche Bestellung erhalten“ describes receiving the wrong order.",
     "difficulty": "medium",
     "family": "bestellung",
     "tags": [
       "order",
       "phrase_choice",
       "problem"
-    ]
+    ],
+    "supportVisibility": "scenario_visible"
   },
   {
     "id": "b1_vocab_bestellung_004",
@@ -1023,24 +1050,27 @@
     "subtopic": "incorrect invoice",
     "target": "Der Betrag stimmt nicht.",
     "type": "phrase_choice",
-    "prompt_de": "Welche Formulierung passt, wenn der Preis falsch ist?",
+    "prompt_de": "Der Preis ist falsch. Welche Formulierung passt?",
     "answer": "Der Betrag auf der Rechnung stimmt nicht.",
-    "accepted": [],
+    "accepted": [
+      "Der Betrag auf der Rechnung stimmt nicht."
+    ],
     "translation_en": "Which phrase fits if the price is wrong?",
     "choices": [
       "Der Betrag auf der Rechnung stimmt nicht.",
-      "Der Termin auf der Rechnung kommt nicht an.",
-      "Die Beschwerde auf der Rechnung ist vollständig."
+      "Die Rechnung ist schon bezahlt.",
+      "Die Bestellung ist noch nicht angekommen."
     ],
     "correct_choice": "Der Betrag auf der Rechnung stimmt nicht.",
-    "micro_rule": "Der Betrag stimmt nicht = the amount is not correct.",
+    "micro_rule": "„Der Betrag stimmt nicht“ identifies the wrong invoice amount.",
     "difficulty": "medium",
     "family": "rechnung",
     "tags": [
       "invoice",
       "phrase_choice",
       "problem"
-    ]
+    ],
+    "supportVisibility": "scenario_visible"
   },
   {
     "id": "b1_vocab_rechnung_004",
@@ -1158,24 +1188,27 @@
     "subtopic": "device not turning on",
     "target": "sich einschalten lassen",
     "type": "phrase_choice",
-    "prompt_de": "Welche Formulierung passt, wenn ein Gerät nicht angeht?",
+    "prompt_de": "Ein Gerät geht nicht an. Welche Formulierung passt?",
     "answer": "Das Gerät lässt sich nicht einschalten.",
-    "accepted": [],
+    "accepted": [
+      "Das Gerät lässt sich nicht einschalten."
+    ],
     "translation_en": "Which phrase fits if a device will not turn on?",
     "choices": [
       "Das Gerät lässt sich nicht einschalten.",
-      "Das Gerät lässt sich nicht beschweren.",
-      "Das Gerät lässt sich nicht bestätigen."
+      "Das Gerät ist eingeschaltet.",
+      "Der Stecker ist in Ordnung."
     ],
     "correct_choice": "Das Gerät lässt sich nicht einschalten.",
-    "micro_rule": "sich einschalten lassen = can be turned on.",
+    "micro_rule": "„Sich einschalten lassen“ reports that a device will not switch on.",
     "difficulty": "hard_b1",
     "family": "geraet",
     "tags": [
       "technical_problem",
       "phrase_choice",
       "device"
-    ]
+    ],
+    "supportVisibility": "scenario_visible"
   },
   {
     "id": "b1_vocab_geraet_004",
@@ -1298,22 +1331,25 @@
     "type": "phrase_choice",
     "prompt_de": "Welche Formulierung passt gut am Ende einer höflichen E-Mail?",
     "answer": "Ich freue mich auf Ihre Rückmeldung.",
-    "accepted": [],
+    "accepted": [
+      "Ich freue mich auf Ihre Rückmeldung."
+    ],
     "translation_en": "Which phrase fits well at the end of a polite email?",
     "choices": [
       "Ich freue mich auf Ihre Rückmeldung.",
-      "Ich warte auf Ihre Beschwerde.",
-      "Ich bezahle Ihre Rückmeldung."
+      "Ich warte auf Ihre Rechnung.",
+      "Ich schicke Ihnen meine Rückmeldung."
     ],
     "correct_choice": "Ich freue mich auf Ihre Rückmeldung.",
-    "micro_rule": "Ich freue mich auf Ihre Rückmeldung is a useful formal email phrase.",
+    "micro_rule": "„Ich freue mich auf Ihre Rückmeldung“ is a standard polite closing.",
     "difficulty": "medium",
     "family": "rueckmeldung",
     "tags": [
       "email",
       "phrase_choice",
       "closing"
-    ]
+    ],
+    "supportVisibility": "scenario_visible"
   },
   {
     "id": "b1_vocab_rueckmeldung_004",
@@ -1432,24 +1468,27 @@
     "subtopic": "absence message",
     "target": "krank sein",
     "type": "phrase_choice",
-    "prompt_de": "Welche Formulierung passt in einer kurzen Nachricht an den Kurs?",
+    "prompt_de": "Sie schreiben dem Kurs wegen Krankheit. Welche Formulierung passt?",
     "answer": "Ich bin leider krank und kann heute nicht kommen.",
-    "accepted": [],
+    "accepted": [
+      "Ich bin leider krank und kann heute nicht kommen."
+    ],
     "translation_en": "Which phrase fits in a short message to the course?",
     "choices": [
       "Ich bin leider krank und kann heute nicht kommen.",
-      "Ich bin leider höflich und kann heute nicht kommen.",
-      "Ich bin leider vollständig und kann heute nicht kommen."
+      "Ich habe heute einen Termin und komme später.",
+      "Ich bin im Urlaub und komme nächste Woche."
     ],
     "correct_choice": "Ich bin leider krank und kann heute nicht kommen.",
-    "micro_rule": "leider softens the message: unfortunately.",
+    "micro_rule": "This states illness and absence clearly.",
     "difficulty": "easy",
     "family": "krankheit",
     "tags": [
       "illness",
       "message",
       "phrase_choice"
-    ]
+    ],
+    "supportVisibility": "scenario_visible"
   },
   {
     "id": "b1_vocab_krankheit_004",
@@ -1568,24 +1607,27 @@
     "subtopic": "course absence",
     "target": "Krankmeldung abgeben",
     "type": "phrase_choice",
-    "prompt_de": "Welche Formulierung passt, wenn der Kurs eine Krankmeldung braucht?",
+    "prompt_de": "Der Kurs braucht den Krankmeldungsnachweis. Welche Formulierung passt?",
     "answer": "Ich gebe die Krankmeldung morgen ab.",
-    "accepted": [],
+    "accepted": [
+      "Ich gebe die Krankmeldung morgen ab."
+    ],
     "translation_en": "Which phrase fits if the course needs a sickness notification?",
     "choices": [
       "Ich gebe die Krankmeldung morgen ab.",
-      "Ich verschiebe die Krankmeldung morgen.",
-      "Ich bezahle die Krankmeldung morgen."
+      "Ich melde mich morgen krank.",
+      "Ich habe morgen einen Arzttermin."
     ],
     "correct_choice": "Ich gebe die Krankmeldung morgen ab.",
-    "micro_rule": "eine Krankmeldung abgeben = to hand in a sick note/notification.",
+    "micro_rule": "„Abgeben“ fits handing in a document.",
     "difficulty": "medium",
     "family": "krankmeldung",
     "tags": [
       "sick_note",
       "course",
       "phrase_choice"
-    ]
+    ],
+    "supportVisibility": "scenario_visible"
   },
   {
     "id": "b1_vocab_krankmeldung_004",
@@ -1706,17 +1748,19 @@
     "subtopic": "appointment conflict",
     "target": "Arzttermin",
     "type": "phrase_choice",
-    "prompt_de": "Welche Formulierung passt, wenn du wegen eines Arzttermins später kommst?",
+    "prompt_de": "Sie kommen wegen eines Arzttermins später. Welche Formulierung passt?",
     "answer": "Ich komme später, weil ich einen Arzttermin habe.",
-    "accepted": [],
+    "accepted": [
+      "Ich komme später, weil ich einen Arzttermin habe."
+    ],
     "translation_en": "Which phrase fits if you are coming later because of a doctor's appointment?",
     "choices": [
       "Ich komme später, weil ich einen Arzttermin habe.",
-      "Ich komme später, weil ich eine Rechnung bezahle.",
-      "Ich komme später, weil ich ein Formular höflich finde."
+      "Ich komme später, weil die Lieferung fehlt.",
+      "Ich komme später, obwohl ich pünktlich bin."
     ],
     "correct_choice": "Ich komme später, weil ich einen Arzttermin habe.",
-    "micro_rule": "Use weil + verb at the end: weil ich einen Arzttermin habe.",
+    "micro_rule": "„Arzttermin“ gives the reason for being late.",
     "difficulty": "medium",
     "family": "arzttermin",
     "tags": [
@@ -1724,7 +1768,8 @@
       "absence",
       "connector",
       "phrase_choice"
-    ]
+    ],
+    "supportVisibility": "scenario_visible"
   },
   {
     "id": "b1_vocab_arzttermin_004",
@@ -1843,24 +1888,27 @@
     "subtopic": "asking for information",
     "target": "Krankenkasse",
     "type": "phrase_choice",
-    "prompt_de": "Welche Frage passt, wenn du Informationen von der Krankenkasse brauchst?",
+    "prompt_de": "Sie brauchen Informationen von der Krankenkasse. Welche Bitte passt?",
     "answer": "Könnten Sie mir bitte die Informationen schicken?",
-    "accepted": [],
+    "accepted": [
+      "Könnten Sie mir bitte die Informationen schicken?"
+    ],
     "translation_en": "Which question fits if you need information from the health insurance provider?",
     "choices": [
       "Könnten Sie mir bitte die Informationen schicken?",
-      "Könnten Sie mir bitte die Krankheit bestellen?",
-      "Könnten Sie mir bitte den Arzttermin bezahlen?"
+      "Übernimmt die Krankenkasse die Kosten?",
+      "Könnten Sie mir bitte einen Termin verschieben?"
     ],
     "correct_choice": "Könnten Sie mir bitte die Informationen schicken?",
-    "micro_rule": "Könnten Sie mir bitte ...? is a polite request.",
+    "micro_rule": "This is a direct polite request for information.",
     "difficulty": "medium",
     "family": "krankenkasse",
     "tags": [
       "health_insurance",
       "polite_request",
       "phrase_choice"
-    ]
+    ],
+    "supportVisibility": "scenario_visible"
   },
   {
     "id": "b1_vocab_krankenkasse_004",
@@ -1981,24 +2029,27 @@
     "subtopic": "coverage",
     "target": "übernehmen",
     "type": "phrase_choice",
-    "prompt_de": "Welche Frage passt, wenn du wissen willst, ob die Versicherung bezahlt?",
+    "prompt_de": "Sie möchten wissen, ob die Versicherung bezahlt. Welche Frage passt?",
     "answer": "Übernimmt die Versicherung die Kosten?",
-    "accepted": [],
+    "accepted": [
+      "Übernimmt die Versicherung die Kosten?"
+    ],
     "translation_en": "Which question fits if you want to know whether the insurance pays?",
     "choices": [
       "Übernimmt die Versicherung die Kosten?",
-      "Verschiebt die Versicherung den Termin?",
-      "Füllt die Versicherung das Rezept aus?"
+      "Wann ist der Termin bei der Versicherung?",
+      "Kann ich die Unterlagen einreichen?"
     ],
     "correct_choice": "Übernimmt die Versicherung die Kosten?",
-    "micro_rule": "Kosten übernehmen = to cover/pay the costs.",
+    "micro_rule": "„Kosten übernehmen“ means cover/pay the costs.",
     "difficulty": "hard_b1",
     "family": "versicherung",
     "tags": [
       "insurance",
       "costs",
       "phrase_choice"
-    ]
+    ],
+    "supportVisibility": "scenario_visible"
   },
   {
     "id": "b1_vocab_versicherung_004",
@@ -2119,24 +2170,27 @@
     "subtopic": "showing card",
     "target": "vorzeigen",
     "type": "phrase_choice",
-    "prompt_de": "Welche Formulierung passt in der Arztpraxis?",
+    "prompt_de": "Die Praxis braucht Ihre Gesundheitskarte. Welche Aufforderung passt?",
     "answer": "Bitte zeigen Sie Ihre Gesundheitskarte vor.",
-    "accepted": [],
+    "accepted": [
+      "Bitte zeigen Sie Ihre Gesundheitskarte vor."
+    ],
     "translation_en": "Which phrase fits at the doctor's office?",
     "choices": [
       "Bitte zeigen Sie Ihre Gesundheitskarte vor.",
-      "Bitte bezahlen Sie Ihre Gesundheitskarte.",
-      "Bitte verschieben Sie Ihre Gesundheitskarte."
+      "Bitte füllen Sie das Formular aus.",
+      "Bitte nehmen Sie im Wartezimmer Platz."
     ],
     "correct_choice": "Bitte zeigen Sie Ihre Gesundheitskarte vor.",
-    "micro_rule": "eine Karte vorzeigen = to show/present a card.",
+    "micro_rule": "„Vorzeigen“ means show/present a card or document.",
     "difficulty": "medium",
     "family": "gesundheitskarte",
     "tags": [
       "health_card",
       "doctor_office",
       "phrase_choice"
-    ]
+    ],
+    "supportVisibility": "scenario_visible"
   },
   {
     "id": "b1_vocab_gesundheitskarte_004",
@@ -2255,24 +2309,27 @@
     "subtopic": "collecting medicine",
     "target": "Rezept einlösen",
     "type": "phrase_choice",
-    "prompt_de": "Welche Formulierung passt in der Apotheke?",
+    "prompt_de": "Sie möchten ein Rezept in der Apotheke nutzen. Welche Formulierung passt?",
     "answer": "Ich möchte dieses Rezept einlösen.",
-    "accepted": [],
+    "accepted": [
+      "Ich möchte dieses Rezept einlösen."
+    ],
     "translation_en": "Which phrase fits in the pharmacy?",
     "choices": [
       "Ich möchte dieses Rezept einlösen.",
-      "Ich möchte dieses Rezept kündigen.",
-      "Ich möchte dieses Rezept verschieben."
+      "Ich brauche ein neues Rezept.",
+      "Ich habe mein Rezept vergessen."
     ],
     "correct_choice": "Ich möchte dieses Rezept einlösen.",
-    "micro_rule": "ein Rezept einlösen = to use/redeem a prescription at the pharmacy.",
+    "micro_rule": "„Ein Rezept einlösen“ is the pharmacy phrase for using a prescription.",
     "difficulty": "hard_b1",
     "family": "rezept",
     "tags": [
       "prescription",
       "pharmacy",
       "phrase_choice"
-    ]
+    ],
+    "supportVisibility": "scenario_visible"
   },
   {
     "id": "b1_vocab_rezept_004",
@@ -2390,24 +2447,27 @@
     "subtopic": "pharmacy request",
     "target": "Medikament abholen",
     "type": "phrase_choice",
-    "prompt_de": "Welche Formulierung passt, wenn du ein Medikament in der Apotheke bekommst?",
+    "prompt_de": "Sie bekommen ein Medikament in der Apotheke. Welche Formulierung passt?",
     "answer": "Ich hole das Medikament in der Apotheke ab.",
-    "accepted": [],
+    "accepted": [
+      "Ich hole das Medikament in der Apotheke ab."
+    ],
     "translation_en": "Which phrase fits if you collect medicine at the pharmacy?",
     "choices": [
       "Ich hole das Medikament in der Apotheke ab.",
-      "Ich gebe die Apotheke beim Arzt ab.",
-      "Ich fülle das Medikament in der Apotheke aus."
+      "Ich habe einen Termin beim Arzt.",
+      "Ich reiche die Unterlagen ein."
     ],
     "correct_choice": "Ich hole das Medikament in der Apotheke ab.",
-    "micro_rule": "etwas abholen = to pick something up/collect something.",
+    "micro_rule": "„In der Apotheke abholen“ fits collecting medicine.",
     "difficulty": "medium",
     "family": "apotheke",
     "tags": [
       "pharmacy",
       "medicine",
       "phrase_choice"
-    ]
+    ],
+    "supportVisibility": "scenario_visible"
   },
   {
     "id": "b1_vocab_apotheke_004",
@@ -2525,24 +2585,27 @@
     "subtopic": "appointment purpose",
     "target": "zur Untersuchung kommen",
     "type": "phrase_choice",
-    "prompt_de": "Welche Formulierung passt in der Arztpraxis?",
+    "prompt_de": "Sie haben einen Termin für eine medizinische Prüfung. Welche Formulierung passt?",
     "answer": "Ich komme zur Untersuchung.",
-    "accepted": [],
+    "accepted": [
+      "Ich komme zur Untersuchung."
+    ],
     "translation_en": "Which phrase fits at the doctor's office?",
     "choices": [
       "Ich komme zur Untersuchung.",
-      "Ich komme zur Rechnung.",
-      "Ich komme zur Lieferung."
+      "Ich komme zur Besprechung.",
+      "Ich komme zum Vorstellungsgespräch."
     ],
     "correct_choice": "Ich komme zur Untersuchung.",
-    "micro_rule": "zur Untersuchung = for the examination/check-up.",
+    "micro_rule": "„Untersuchung“ is the medical examination.",
     "difficulty": "medium",
     "family": "untersuchung",
     "tags": [
       "doctor",
       "phrase_choice",
       "appointment"
-    ]
+    ],
+    "supportVisibility": "scenario_visible"
   },
   {
     "id": "b1_vocab_untersuchung_004",
@@ -2661,24 +2724,27 @@
     "subtopic": "doctor question",
     "target": "Beschwerden",
     "type": "phrase_choice",
-    "prompt_de": "Welche Frage stellt ein Arzt oder eine Ärztin?",
+    "prompt_de": "Welche Frage fragt nach Symptomen?",
     "answer": "Welche Beschwerden haben Sie?",
-    "accepted": [],
+    "accepted": [
+      "Welche Beschwerden haben Sie?"
+    ],
     "translation_en": "Which question does a doctor ask?",
     "choices": [
       "Welche Beschwerden haben Sie?",
-      "Welche Bestellung haben Sie?",
-      "Welche Rückmeldung bezahlen Sie?"
+      "Welche Medikamente nehmen Sie?",
+      "Welche Krankenkasse haben Sie?"
     ],
     "correct_choice": "Welche Beschwerden haben Sie?",
-    "micro_rule": "Welche Beschwerden haben Sie? = What symptoms do you have?",
+    "micro_rule": "„Beschwerden“ means symptoms/complaints in a medical context.",
     "difficulty": "easy",
     "family": "beschwerden",
     "tags": [
       "symptoms",
       "doctor",
       "phrase_choice"
-    ]
+    ],
+    "supportVisibility": "scenario_visible"
   },
   {
     "id": "b1_vocab_beschwerden_004",
@@ -2797,24 +2863,27 @@
     "subtopic": "application email",
     "target": "Bewerbungsunterlagen",
     "type": "phrase_choice",
-    "prompt_de": "Welche Formulierung passt in einer Bewerbungsmail?",
+    "prompt_de": "Welche Formulierung passt in eine Bewerbungsmail mit Anlagen?",
     "answer": "Im Anhang finden Sie meine Bewerbungsunterlagen.",
-    "accepted": [],
+    "accepted": [
+      "Im Anhang finden Sie meine Bewerbungsunterlagen."
+    ],
     "translation_en": "Which phrase fits in an application email?",
     "choices": [
       "Im Anhang finden Sie meine Bewerbungsunterlagen.",
-      "Im Anhang verschiebe ich Ihren Termin.",
-      "Im Anhang bezahle ich meine Erfahrung."
+      "Im Anhang finden Sie meine Krankmeldung.",
+      "Im Anhang ist die Lieferung."
     ],
     "correct_choice": "Im Anhang finden Sie meine Bewerbungsunterlagen.",
-    "micro_rule": "Bewerbungsunterlagen = application documents.",
+    "micro_rule": "„Bewerbungsunterlagen“ are the application documents.",
     "difficulty": "medium",
     "family": "bewerbung",
     "tags": [
       "application",
       "email",
       "phrase_choice"
-    ]
+    ],
+    "supportVisibility": "scenario_visible"
   },
   {
     "id": "b1_vocab_bewerbung_004",
@@ -2935,24 +3004,27 @@
     "subtopic": "email attachment",
     "target": "Lebenslauf anhängen",
     "type": "phrase_choice",
-    "prompt_de": "Welche Formulierung passt, wenn du deinen CV mitschickst?",
+    "prompt_de": "Sie schicken Ihren CV mit. Welche Formulierung passt?",
     "answer": "Ich habe meinen Lebenslauf angehängt.",
-    "accepted": [],
+    "accepted": [
+      "Ich habe meinen Lebenslauf angehängt."
+    ],
     "translation_en": "Which phrase fits if you are sending your CV with the email?",
     "choices": [
       "Ich habe meinen Lebenslauf angehängt.",
-      "Ich habe meinen Lebenslauf abgesagt.",
-      "Ich habe meinen Lebenslauf untersucht."
+      "Ich habe meinen Lebenslauf ausgefüllt.",
+      "Ich habe meinen Lebenslauf verschoben."
     ],
     "correct_choice": "Ich habe meinen Lebenslauf angehängt.",
-    "micro_rule": "anhängen = to attach.",
+    "micro_rule": "„Angehängt“ fits a document attached to an email.",
     "difficulty": "medium",
     "family": "lebenslauf",
     "tags": [
       "cv",
       "email",
       "phrase_choice"
-    ]
+    ],
+    "supportVisibility": "scenario_visible"
   },
   {
     "id": "b1_vocab_lebenslauf_004",
@@ -3070,24 +3142,27 @@
     "subtopic": "applying for a job",
     "target": "sich um eine Stelle bewerben",
     "type": "phrase_choice",
-    "prompt_de": "Welche Formulierung passt in einer Bewerbung?",
+    "prompt_de": "Sie sagen, dass Sie sich auf die Stelle bewerben. Welche Formulierung passt?",
     "answer": "Ich bewerbe mich um die Stelle als Verkäufer.",
-    "accepted": [],
+    "accepted": [
+      "Ich bewerbe mich um die Stelle als Verkäufer."
+    ],
     "translation_en": "Which phrase fits in a job application?",
     "choices": [
       "Ich bewerbe mich um die Stelle als Verkäufer.",
-      "Ich beschwere mich über die Stelle als Verkäufer.",
-      "Ich verschiebe mich zur Stelle als Verkäufer."
+      "Ich interessiere mich für die Stelle als Verkäufer.",
+      "Ich beschwere mich über die Stelle als Verkäufer."
     ],
     "correct_choice": "Ich bewerbe mich um die Stelle als Verkäufer.",
-    "micro_rule": "sich um eine Stelle bewerben = to apply for a position.",
+    "micro_rule": "„Sich um die Stelle bewerben“ is the standard application frame.",
     "difficulty": "medium",
     "family": "stelle",
     "tags": [
       "job",
       "application",
       "phrase_choice"
-    ]
+    ],
+    "supportVisibility": "scenario_visible"
   },
   {
     "id": "b1_vocab_stelle_004",
@@ -3205,24 +3280,27 @@
     "subtopic": "interview invitation",
     "target": "Einladung zum Vorstellungsgespräch",
     "type": "phrase_choice",
-    "prompt_de": "Welche Formulierung passt, wenn du auf eine Einladung antwortest?",
+    "prompt_de": "Sie antworten auf eine Einladung. Welche Formulierung passt?",
     "answer": "Vielen Dank für die Einladung zum Vorstellungsgespräch.",
-    "accepted": [],
+    "accepted": [
+      "Vielen Dank für die Einladung zum Vorstellungsgespräch."
+    ],
     "translation_en": "Which phrase fits if you are replying to an invitation?",
     "choices": [
       "Vielen Dank für die Einladung zum Vorstellungsgespräch.",
-      "Vielen Dank für die Beschwerde zum Vorstellungsgespräch.",
-      "Vielen Dank für die Lieferung zum Vorstellungsgespräch."
+      "Vielen Dank für Ihre Bewerbung.",
+      "Vielen Dank für die Krankmeldung."
     ],
     "correct_choice": "Vielen Dank für die Einladung zum Vorstellungsgespräch.",
-    "micro_rule": "die Einladung zum Vorstellungsgespräch = invitation to a job interview.",
+    "micro_rule": "This thanks the sender for the interview invitation.",
     "difficulty": "medium",
     "family": "vorstellungsgespraech",
     "tags": [
       "job_interview",
       "email",
       "phrase_choice"
-    ]
+    ],
+    "supportVisibility": "scenario_visible"
   },
   {
     "id": "b1_vocab_vorstellungsgespraech_004",
@@ -3343,24 +3421,27 @@
     "subtopic": "application strength",
     "target": "Erfahrung mit Kunden",
     "type": "phrase_choice",
-    "prompt_de": "Welche Formulierung passt in einer Bewerbung?",
+    "prompt_de": "Welche Formulierung passt in eine Bewerbung?",
     "answer": "Ich habe Erfahrung im Umgang mit Kunden.",
-    "accepted": [],
+    "accepted": [
+      "Ich habe Erfahrung im Umgang mit Kunden."
+    ],
     "translation_en": "Which phrase fits in a job application?",
     "choices": [
       "Ich habe Erfahrung im Umgang mit Kunden.",
-      "Ich habe Erfahrung im Verschieben mit Kunden.",
-      "Ich habe Erfahrung im Bezahlen mit Kunden."
+      "Ich habe ein Vorstellungsgespräch mit Kunden.",
+      "Ich habe Unterlagen im Umgang mit Kunden."
     ],
     "correct_choice": "Ich habe Erfahrung im Umgang mit Kunden.",
-    "micro_rule": "Erfahrung im Umgang mit Kunden = experience dealing with customers.",
+    "micro_rule": "„Erfahrung im Umgang mit ...“ describes work experience.",
     "difficulty": "hard_b1",
     "family": "erfahrung",
     "tags": [
       "experience",
       "application",
       "phrase_choice"
-    ]
+    ],
+    "supportVisibility": "scenario_visible"
   },
   {
     "id": "b1_vocab_erfahrung_004",
@@ -3479,17 +3560,19 @@
     "subtopic": "asking for clarification",
     "target": "Aufgabe erklären",
     "type": "phrase_choice",
-    "prompt_de": "Welche Frage passt, wenn du eine Aufgabe nicht verstehst?",
+    "prompt_de": "Sie verstehen eine Aufgabe nicht. Welche Frage passt?",
     "answer": "Könnten Sie die Aufgabe bitte noch einmal erklären?",
-    "accepted": [],
+    "accepted": [
+      "Könnten Sie die Aufgabe bitte noch einmal erklären?"
+    ],
     "translation_en": "Which question fits if you do not understand a task?",
     "choices": [
       "Könnten Sie die Aufgabe bitte noch einmal erklären?",
-      "Könnten Sie die Aufgabe bitte bezahlen?",
-      "Könnten Sie die Aufgabe bitte krankmelden?"
+      "Könnten Sie die Aufgabe bitte bis morgen abgeben?",
+      "Könnten Sie die Aufgabe bitte unterschreiben?"
     ],
     "correct_choice": "Könnten Sie die Aufgabe bitte noch einmal erklären?",
-    "micro_rule": "etwas erklären = to explain something.",
+    "micro_rule": "This asks for an explanation, not completion or signature.",
     "difficulty": "medium",
     "family": "aufgabe",
     "tags": [
@@ -3497,7 +3580,8 @@
       "course",
       "phrase_choice",
       "polite_request"
-    ]
+    ],
+    "supportVisibility": "scenario_visible"
   },
   {
     "id": "b1_vocab_aufgabe_004",
@@ -3617,24 +3701,27 @@
     "subtopic": "rescheduling meeting",
     "target": "Besprechung verschieben",
     "type": "phrase_choice",
-    "prompt_de": "Welche Formulierung passt, wenn ein Meeting später stattfinden soll?",
+    "prompt_de": "Das Meeting soll später stattfinden. Welche Formulierung passt?",
     "answer": "Können wir die Besprechung auf morgen verschieben?",
-    "accepted": [],
+    "accepted": [
+      "Können wir die Besprechung auf morgen verschieben?"
+    ],
     "translation_en": "Which phrase fits if a meeting should take place later?",
     "choices": [
       "Können wir die Besprechung auf morgen verschieben?",
-      "Können wir die Besprechung auf morgen ausfüllen?",
-      "Können wir die Besprechung auf morgen abholen?"
+      "Können wir die Besprechung morgen beginnen?",
+      "Können wir die Besprechung absagen?"
     ],
     "correct_choice": "Können wir die Besprechung auf morgen verschieben?",
-    "micro_rule": "eine Besprechung verschieben = to reschedule a meeting.",
+    "micro_rule": "„Auf morgen verschieben“ means move it to tomorrow.",
     "difficulty": "medium",
     "family": "besprechung",
     "tags": [
       "meeting",
       "reschedule",
       "phrase_choice"
-    ]
+    ],
+    "supportVisibility": "scenario_visible"
   },
   {
     "id": "b1_vocab_besprechung_004",
@@ -3755,24 +3842,27 @@
     "subtopic": "registration confirmation",
     "target": "Anmeldung bestätigen",
     "type": "phrase_choice",
-    "prompt_de": "Welche Formulierung passt, wenn du eine Bestätigung für die Anmeldung brauchst?",
+    "prompt_de": "Sie brauchen eine Bestätigung Ihrer Anmeldung. Welche Bitte passt?",
     "answer": "Könnten Sie mir meine Anmeldung bestätigen?",
-    "accepted": [],
+    "accepted": [
+      "Könnten Sie mir meine Anmeldung bestätigen?"
+    ],
     "translation_en": "Which phrase fits if you need confirmation of your registration?",
     "choices": [
       "Könnten Sie mir meine Anmeldung bestätigen?",
-      "Könnten Sie mir meine Anmeldung untersuchen?",
-      "Könnten Sie mir meine Anmeldung beschweren?"
+      "Könnten Sie mir die Anmeldung schicken?",
+      "Könnten Sie die Anmeldung absagen?"
     ],
     "correct_choice": "Könnten Sie mir meine Anmeldung bestätigen?",
-    "micro_rule": "eine Anmeldung bestätigen = to confirm a registration.",
+    "micro_rule": "„Bestätigen“ is the target action for confirmation.",
     "difficulty": "medium",
     "family": "anmeldung",
     "tags": [
       "course",
       "registration",
       "phrase_choice"
-    ]
+    ],
+    "supportVisibility": "scenario_visible"
   },
   {
     "id": "b1_vocab_anmeldung_004",
@@ -3892,24 +3982,27 @@
     "subtopic": "requesting login details",
     "target": "Zugangsdaten schicken",
     "type": "phrase_choice",
-    "prompt_de": "Welche Formulierung passt, wenn du deine Login-Daten brauchst?",
+    "prompt_de": "Sie brauchen Ihre Login-Daten noch einmal. Welche Bitte passt?",
     "answer": "Könnten Sie mir die Zugangsdaten bitte noch einmal schicken?",
-    "accepted": [],
+    "accepted": [
+      "Könnten Sie mir die Zugangsdaten bitte noch einmal schicken?"
+    ],
     "translation_en": "Which phrase fits if you need your login details?",
     "choices": [
       "Könnten Sie mir die Zugangsdaten bitte noch einmal schicken?",
-      "Könnten Sie mir die Zugangsdaten bitte bezahlen?",
-      "Könnten Sie mir die Zugangsdaten bitte untersuchen?"
+      "Könnten Sie mein Passwort bitte ändern?",
+      "Könnten Sie den Termin bitte verschieben?"
     ],
     "correct_choice": "Könnten Sie mir die Zugangsdaten bitte noch einmal schicken?",
-    "micro_rule": "Zugangsdaten schicken = to send login/access details.",
+    "micro_rule": "This asks for the login data again.",
     "difficulty": "medium",
     "family": "zugangsdaten",
     "tags": [
       "login",
       "polite_request",
       "phrase_choice"
-    ]
+    ],
+    "supportVisibility": "scenario_visible"
   },
   {
     "id": "b1_vocab_zugangsdaten_004",
@@ -4029,24 +4122,27 @@
     "subtopic": "support message",
     "target": "Fehlermeldung senden",
     "type": "phrase_choice",
-    "prompt_de": "Welche Formulierung passt, wenn du dem Support ein Problem beschreibst?",
+    "prompt_de": "Sie beschreiben eine Fehlermeldung beim Login. Welche Formulierung passt?",
     "answer": "Ich bekomme eine Fehlermeldung, wenn ich mich einlogge.",
-    "accepted": [],
+    "accepted": [
+      "Ich bekomme eine Fehlermeldung, wenn ich mich einlogge."
+    ],
     "translation_en": "Which phrase fits if you are describing a problem to support?",
     "choices": [
       "Ich bekomme eine Fehlermeldung, wenn ich mich einlogge.",
-      "Ich bekomme eine Bestätigung, wenn ich mich beschwere.",
-      "Ich bekomme eine Lieferung, wenn ich mich untersuche."
+      "Ich kann mich nicht einloggen, aber es gibt keine Meldung.",
+      "Ich habe meine Zugangsdaten vergessen."
     ],
     "correct_choice": "Ich bekomme eine Fehlermeldung, wenn ich mich einlogge.",
-    "micro_rule": "Use wenn to describe when the problem happens.",
+    "micro_rule": "This describes an error message during login.",
     "difficulty": "medium",
     "family": "fehlermeldung",
     "tags": [
       "technical_problem",
       "support",
       "phrase_choice"
-    ]
+    ],
+    "supportVisibility": "scenario_visible"
   },
   {
     "id": "b1_vocab_fehlermeldung_004",

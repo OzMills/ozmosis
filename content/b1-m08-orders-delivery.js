@@ -27,10 +27,10 @@
       "die Bestellung"
     ],
     "fullAnswer_de": "die Bestellung",
-    "prompt_de": "Which word is the order?",
+    "prompt_de": "Welches Wort passt für das, was Sie bestellt haben?",
     "learnerCue": "die Bestellung / die Krankmeldung / das Anschreiben",
     "support_en": "",
-    "microRule": "Bestellung is the order.",
+    "microRule": "„Bestellung“ is the order.",
     "correctnessPolicy": "exact",
     "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
@@ -72,21 +72,18 @@
     "schemaRisk": "support-visible evidence; not strong mastery proof",
     "choices": [
       {
-        "id": "draft_b1_08_004_choice_1",
+        "id": "choice_01_die_bestellung",
         "text": "die Bestellung",
-        "value": "die Bestellung",
         "isCorrect": true
       },
       {
-        "id": "draft_b1_08_004_choice_2",
-        "text": "die Krankmeldung",
-        "value": "die Krankmeldung",
+        "id": "choice_02_die_lieferung",
+        "text": "die Lieferung",
         "isCorrect": false
       },
       {
-        "id": "draft_b1_08_004_choice_3",
-        "text": "das Anschreiben",
-        "value": "das Anschreiben",
+        "id": "choice_03_die_rechnung",
+        "text": "die Rechnung",
         "isCorrect": false
       }
     ]
@@ -117,10 +114,10 @@
       "die Rechnung"
     ],
     "fullAnswer_de": "die Rechnung",
-    "prompt_de": "Which word is the invoice?",
+    "prompt_de": "Welches Wort passt für die Zahlungsforderung?",
     "learnerCue": "die Rechnung / die Besprechung / der Urlaub",
     "support_en": "",
-    "microRule": "Rechnung is the invoice/bill.",
+    "microRule": "„Rechnung“ is the invoice/bill.",
     "correctnessPolicy": "exact",
     "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
@@ -161,21 +158,18 @@
     "schemaRisk": "support-visible evidence; not strong mastery proof",
     "choices": [
       {
-        "id": "draft_b1_08_005_choice_1",
+        "id": "choice_01_die_rechnung",
         "text": "die Rechnung",
-        "value": "die Rechnung",
         "isCorrect": true
       },
       {
-        "id": "draft_b1_08_005_choice_2",
-        "text": "die Besprechung",
-        "value": "die Besprechung",
+        "id": "choice_02_die_bestellung",
+        "text": "die Bestellung",
         "isCorrect": false
       },
       {
-        "id": "draft_b1_08_005_choice_3",
-        "text": "der Urlaub",
-        "value": "der Urlaub",
+        "id": "choice_03_die_quittung",
+        "text": "die Quittung",
         "isCorrect": false
       }
     ]
@@ -882,27 +876,27 @@
     "familyType": "candidate_sibling_family",
     "maxSameSessionEvidence": 1,
     "sameSessionEvidenceCap": 1,
-    "itemType": "error_repair",
-    "taskType": "Reparatur",
-    "taskDepth": "repair",
-    "answerMode": "repair_text",
-    "answerShape": "repaired_sentence",
-    "answer": "Ich bezahle die Rechnung.",
+    "itemType": "grammar_cloze",
+    "taskType": "Luecke",
+    "taskDepth": "cloze",
+    "answerMode": "typed_short",
+    "answerShape": "typed_short",
+    "answer": "bezahle",
     "acceptedAnswers": [
-      "Ich bezahle die Rechnung."
+      "bezahle"
     ],
-    "fullAnswer_de": "Ich bezahle die Rechnung.",
-    "prompt_de": "Ich kaufe die Rechnung. Intended meaning: pay the invoice.",
+    "fullAnswer_de": "Falsches Verb: Ich kaufe die Rechnung.\nBesser: Ich bezahle die Rechnung.",
+    "prompt_de": "Falsches Verb: Ich kaufe die Rechnung.\nBesser: Ich ___ die Rechnung.",
     "learnerCue": "Fix the action verb.",
     "support_en": "Fix the action verb.",
-    "microRule": "Use bezahlen for invoices.",
-    "correctnessPolicy": "exact_surface",
-    "acceptedAnswerPolicy": "exact_surface_sentence",
+    "microRule": "„Eine Rechnung bezahlen“ is the standard collocation.",
+    "correctnessPolicy": "exact",
+    "acceptedAnswerPolicy": "exact_only",
     "strictSurfaceAnswer": true,
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
     "planningEvidenceLabel": "Practice Evidence",
-    "evidenceType": "auto_core",
+    "evidenceType": "auto_supported",
     "reviewEligibilityDefault": "eligible_auto_after_delay",
     "delayedReviewEligibility": "eligible_auto_after_delay",
     "diagnosticEligible": false,
@@ -1104,22 +1098,22 @@
     "reviewGroup": "rg-b1-08-draft_b1_08_018",
     "familyTarget": "B1-08 single retained item",
     "familyType": "single_retained_item",
-    "itemType": "grammar_cloze",
+    "itemType": "multiple_choice",
     "taskType": "Kontrast",
     "taskDepth": "contrast",
-    "answerMode": "typed_short",
-    "answerShape": "short_answer",
+    "answerMode": "selected_choice_value",
+    "answerShape": "selected_choice_value",
     "answer": "die Lieferung",
     "acceptedAnswers": [
       "die Lieferung"
     ],
     "fullAnswer_de": "die Lieferung",
-    "prompt_de": "die Lieferung / die Beschwerde — Choose delivery, not complaint.",
+    "prompt_de": "Sie warten auf das Paket/die Ware. Welches Wort passt?",
     "learnerCue": "die Lieferung / die Beschwerde",
     "support_en": "",
-    "microRule": "Lieferung is delivery.",
+    "microRule": "„Lieferung“ is the delivery.",
     "correctnessPolicy": "exact",
-    "acceptedAnswerPolicy": "exact_only",
+    "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
     "planningEvidenceLabel": "Supported Practice Evidence",
@@ -1160,7 +1154,24 @@
       "die Lieferung",
       "die Beschwerde"
     ],
-    "targetRule": "Lieferung is delivery."
+    "targetRule": "Lieferung is delivery.",
+    "choices": [
+      {
+        "id": "choice_01_die_lieferung",
+        "text": "die Lieferung",
+        "isCorrect": true
+      },
+      {
+        "id": "choice_02_die_bestellung",
+        "text": "die Bestellung",
+        "isCorrect": false
+      },
+      {
+        "id": "choice_03_die_beschwerde",
+        "text": "die Beschwerde",
+        "isCorrect": false
+      }
+    ]
   },
   {
     "id": "draft_b1_08_019",
@@ -1178,22 +1189,22 @@
     "reviewGroup": "rg-b1-08-draft_b1_08_019",
     "familyTarget": "B1-08 single retained item",
     "familyType": "single_retained_item",
-    "itemType": "grammar_cloze",
+    "itemType": "multiple_choice",
     "taskType": "Kontrast",
     "taskDepth": "contrast",
-    "answerMode": "typed_short",
-    "answerShape": "short_answer",
+    "answerMode": "selected_choice_value",
+    "answerShape": "selected_choice_value",
     "answer": "der Betrag",
     "acceptedAnswers": [
       "der Betrag"
     ],
     "fullAnswer_de": "der Betrag",
-    "prompt_de": "der Betrag / der Vorschlag — Choose invoice amount field.",
+    "prompt_de": "Welches Wort passt für die Summe auf der Rechnung?",
     "learnerCue": "der Betrag / der Vorschlag",
     "support_en": "",
-    "microRule": "Betrag is amount.",
+    "microRule": "„Betrag“ is the amount.",
     "correctnessPolicy": "exact",
-    "acceptedAnswerPolicy": "exact_only",
+    "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
     "planningEvidenceLabel": "Supported Practice Evidence",
@@ -1234,7 +1245,24 @@
       "der Betrag",
       "der Vorschlag"
     ],
-    "targetRule": "Betrag is amount."
+    "targetRule": "Betrag is amount.",
+    "choices": [
+      {
+        "id": "choice_01_der_betrag",
+        "text": "der Betrag",
+        "isCorrect": true
+      },
+      {
+        "id": "choice_02_die_rechnung",
+        "text": "die Rechnung",
+        "isCorrect": false
+      },
+      {
+        "id": "choice_03_die_erstattung",
+        "text": "die Erstattung",
+        "isCorrect": false
+      }
+    ]
   },
   {
     "id": "draft_b1_08_020",

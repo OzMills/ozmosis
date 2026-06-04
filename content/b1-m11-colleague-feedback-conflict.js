@@ -27,10 +27,10 @@
       "das Missverständnis"
     ],
     "fullAnswer_de": "das Missverständnis",
-    "prompt_de": "Which word means misunderstanding?",
+    "prompt_de": "Welches Wort passt, wenn zwei Personen etwas falsch verstanden haben?",
     "learnerCue": "das Missverständnis / die Rechnung / der Urlaub",
     "support_en": "",
-    "microRule": "Missverständnis is misunderstanding.",
+    "microRule": "„Missverständnis“ is a misunderstanding.",
     "correctnessPolicy": "exact",
     "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
@@ -72,21 +72,18 @@
     "schemaRisk": "support-visible evidence; not strong standalone proof",
     "choices": [
       {
-        "id": "draft_b1_11_004_choice_1",
+        "id": "choice_01_das_missverstandnis",
         "text": "das Missverständnis",
-        "value": "das Missverständnis",
         "isCorrect": true
       },
       {
-        "id": "draft_b1_11_004_choice_2",
-        "text": "die Rechnung",
-        "value": "die Rechnung",
+        "id": "choice_02_die_meinung",
+        "text": "die Meinung",
         "isCorrect": false
       },
       {
-        "id": "draft_b1_11_004_choice_3",
-        "text": "der Urlaub",
-        "value": "der Urlaub",
+        "id": "choice_03_die_losung",
+        "text": "die Lösung",
         "isCorrect": false
       }
     ]
@@ -121,11 +118,11 @@
       "Es tut mir leid."
     ],
     "fullAnswer_de": "Es tut mir leid.",
-    "prompt_de": "Which phrase is an apology?",
+    "prompt_de": "Welche Antwort passt als Entschuldigung?",
     "learnerCue": "Es tut mir leid. / Es ist geliefert. / Es ist bezahlt.",
     "support_en": "",
-    "microRule": "Es tut mir leid is an apology.",
-    "correctnessPolicy": "exact_surface",
+    "microRule": "„Es tut mir leid“ is an apology. „Weh tun“ means to hurt; „Ihnen“ changes who is affected.",
+    "correctnessPolicy": "exact",
     "acceptedAnswerPolicy": "choice_value_exact",
     "strictSurfaceAnswer": true,
     "supportPolicy": "scenario_visible",
@@ -167,21 +164,23 @@
     "schemaRisk": "support-visible evidence; not strong standalone proof",
     "choices": [
       {
-        "id": "draft_b1_11_005_choice_1",
+        "id": "choice_01_es_tut_mir_leid",
         "text": "Es tut mir leid.",
-        "value": "Es tut mir leid.",
         "isCorrect": true
       },
       {
-        "id": "draft_b1_11_005_choice_2",
-        "text": "Es ist geliefert.",
-        "value": "Es ist geliefert.",
+        "id": "choice_02_es_tut_mir_weh",
+        "text": "Es tut mir weh.",
         "isCorrect": false
       },
       {
-        "id": "draft_b1_11_005_choice_3",
-        "text": "Es ist bezahlt.",
-        "value": "Es ist bezahlt.",
+        "id": "choice_03_es_tut_ihnen_leid",
+        "text": "Es tut Ihnen leid.",
+        "isCorrect": false
+      },
+      {
+        "id": "choice_04_es_tut_ihnen_weh",
+        "text": "Es tut Ihnen weh.",
         "isCorrect": false
       }
     ]
@@ -801,22 +800,22 @@
     "reviewGroup": "rg-b1-11-draft_b1_11_014",
     "familyTarget": "B1-11 single retained item",
     "familyType": "single_retained_item",
-    "itemType": "error_repair",
-    "taskType": "Reparatur",
-    "taskDepth": "repair",
-    "answerMode": "repair_text",
-    "answerShape": "repaired_sentence",
+    "itemType": "multiple_choice",
+    "taskType": "Kontrast",
+    "taskDepth": "contrast",
+    "answerMode": "selected_choice_value",
+    "answerShape": "selected_choice_value",
     "answer": "Aus meiner Sicht ist das schwierig.",
     "acceptedAnswers": [
       "Aus meiner Sicht ist das schwierig."
     ],
     "fullAnswer_de": "Aus meiner Sicht ist das schwierig.",
-    "prompt_de": "Das ist schlecht.",
+    "prompt_de": "Welche Form passt für vorsichtiges Feedback im Büro?",
     "learnerCue": "Make the feedback softer.",
     "support_en": "Make the feedback softer.",
-    "microRule": "Softening is the target; production remains bounded.",
-    "correctnessPolicy": "exact_surface",
-    "acceptedAnswerPolicy": "exact_surface_sentence",
+    "microRule": "„Schwierig“ softens the judgement and leaves room for discussion; this is register contrast, not grammar repair.",
+    "correctnessPolicy": "exact",
+    "acceptedAnswerPolicy": "choice_value_exact",
     "strictSurfaceAnswer": true,
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
@@ -855,7 +854,24 @@
     "learnerFacingAllowed": "Yes",
     "schemaNotes": "Imported from B1-11 approved planning inventory; notice cards remain separate and excluded from evidence.",
     "sourceRisk": "supported evidence; conservative only",
-    "schemaRisk": "support-visible evidence; not strong standalone proof"
+    "schemaRisk": "support-visible evidence; not strong standalone proof",
+    "choices": [
+      {
+        "id": "choice_01_das_ist_schlecht",
+        "text": "Das ist schlecht.",
+        "isCorrect": false
+      },
+      {
+        "id": "choice_02_aus_meiner_sicht_ist_das_schwierig",
+        "text": "Aus meiner Sicht ist das schwierig.",
+        "isCorrect": true
+      },
+      {
+        "id": "choice_03_das_ist_schwachsinn",
+        "text": "Das ist Schwachsinn.",
+        "isCorrect": false
+      }
+    ]
   },
   {
     "id": "draft_b1_11_015",
@@ -877,22 +893,22 @@
     "familyType": "candidate_sibling_family",
     "maxSameSessionEvidence": 1,
     "sameSessionEvidenceCap": 1,
-    "itemType": "grammar_cloze",
+    "itemType": "multiple_choice",
     "taskType": "Kontrast",
     "taskDepth": "contrast",
-    "answerMode": "typed_short",
-    "answerShape": "short_answer",
+    "answerMode": "selected_choice_value",
+    "answerShape": "selected_choice_value",
     "answer": "Es tut mir leid.",
     "acceptedAnswers": [
       "Es tut mir leid."
     ],
     "fullAnswer_de": "Es tut mir leid.",
-    "prompt_de": "Es tut mir leid. / Ich bitte um Ersatz. — Choose the apology.",
+    "prompt_de": "Welche Form ist eine Entschuldigung?",
     "learnerCue": "Es tut mir leid. / Ich bitte um Ersatz.",
     "support_en": "",
-    "microRule": "This is apology language, not customer service.",
-    "correctnessPolicy": "exact_surface",
-    "acceptedAnswerPolicy": "exact_surface_or_case",
+    "microRule": "„Es tut mir leid“ apologises; „weh“ is pain, and Ersatz is replacement.",
+    "correctnessPolicy": "exact",
+    "acceptedAnswerPolicy": "choice_value_exact",
     "strictSurfaceAnswer": true,
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
@@ -935,7 +951,24 @@
       "Es tut mir leid.",
       "Ich bitte um Ersatz."
     ],
-    "targetRule": "This is apology language, not customer service."
+    "targetRule": "This is apology language, not customer service.",
+    "choices": [
+      {
+        "id": "choice_01_es_tut_mir_leid",
+        "text": "Es tut mir leid.",
+        "isCorrect": true
+      },
+      {
+        "id": "choice_02_es_tut_mir_weh",
+        "text": "Es tut mir weh.",
+        "isCorrect": false
+      },
+      {
+        "id": "choice_03_ich_bitte_um_ersatz",
+        "text": "Ich bitte um Ersatz.",
+        "isCorrect": false
+      }
+    ]
   },
   {
     "id": "draft_b1_11_016",
@@ -957,22 +990,22 @@
     "familyType": "candidate_sibling_family",
     "maxSameSessionEvidence": 1,
     "sameSessionEvidenceCap": 1,
-    "itemType": "grammar_cloze",
+    "itemType": "multiple_choice",
     "taskType": "Kontrast",
     "taskDepth": "contrast",
-    "answerMode": "typed_short",
-    "answerShape": "short_answer",
+    "answerMode": "selected_choice_value",
+    "answerShape": "selected_choice_value",
     "answer": "Ich sehe das anders.",
     "acceptedAnswers": [
       "Ich sehe das anders."
     ],
     "fullAnswer_de": "Ich sehe das anders.",
-    "prompt_de": "Ich sehe das anders. / Du hast Unrecht. — Choose soft disagreement.",
+    "prompt_de": "Welche Form ist vorsichtige Meinungsverschiedenheit?",
     "learnerCue": "Ich sehe das anders. / Du hast Unrecht.",
     "support_en": "",
-    "microRule": "Soft disagreement avoids blunt escalation.",
-    "correctnessPolicy": "exact_surface",
-    "acceptedAnswerPolicy": "exact_surface_or_case",
+    "microRule": "„Ich sehe das anders“ disagrees without attacking the other person.",
+    "correctnessPolicy": "exact",
+    "acceptedAnswerPolicy": "choice_value_exact",
     "strictSurfaceAnswer": true,
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
@@ -1015,7 +1048,24 @@
       "Ich sehe das anders.",
       "Du hast Unrecht."
     ],
-    "targetRule": "Soft disagreement avoids blunt escalation."
+    "targetRule": "Soft disagreement avoids blunt escalation.",
+    "choices": [
+      {
+        "id": "choice_01_ich_sehe_das_anders",
+        "text": "Ich sehe das anders.",
+        "isCorrect": true
+      },
+      {
+        "id": "choice_02_du_hast_unrecht",
+        "text": "Du hast Unrecht.",
+        "isCorrect": false
+      },
+      {
+        "id": "choice_03_das_ist_falsch",
+        "text": "Das ist falsch.",
+        "isCorrect": false
+      }
+    ]
   },
   {
     "id": "draft_b1_11_017",

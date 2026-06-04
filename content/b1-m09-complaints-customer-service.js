@@ -31,10 +31,10 @@
       "beschädigt"
     ],
     "fullAnswer_de": "beschädigt",
-    "prompt_de": "Which word means damaged?",
+    "prompt_de": "Welches Wort passt, wenn ein Artikel kaputt angekommen ist?",
     "learnerCue": "beschädigt / pünktlich / zuständig",
     "support_en": "",
-    "microRule": "beschädigt means damaged.",
+    "microRule": "„Beschädigt“ means damaged; it is not „beschäftigt“.",
     "correctnessPolicy": "exact",
     "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
@@ -76,21 +76,18 @@
     "schemaRisk": "support-visible evidence; not strong mastery proof",
     "choices": [
       {
-        "id": "draft_b1_09_004_choice_1",
+        "id": "choice_01_beschadigt",
         "text": "beschädigt",
-        "value": "beschädigt",
         "isCorrect": true
       },
       {
-        "id": "draft_b1_09_004_choice_2",
-        "text": "pünktlich",
-        "value": "pünktlich",
+        "id": "choice_02_beschaftigt",
+        "text": "beschäftigt",
         "isCorrect": false
       },
       {
-        "id": "draft_b1_09_004_choice_3",
-        "text": "zuständig",
-        "value": "zuständig",
+        "id": "choice_03_bestatigt",
+        "text": "bestätigt",
         "isCorrect": false
       }
     ]
@@ -121,10 +118,10 @@
       "der Ersatz"
     ],
     "fullAnswer_de": "der Ersatz",
-    "prompt_de": "Which word means replacement?",
+    "prompt_de": "Welches Wort passt, wenn Sie einen neuen Artikel statt des kaputten möchten?",
     "learnerCue": "der Ersatz / die Probezeit / der Rückruf",
     "support_en": "",
-    "microRule": "Ersatz is replacement.",
+    "microRule": "„Ersatz“ is replacement; „Erstattung“ is refund.",
     "correctnessPolicy": "exact",
     "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
@@ -165,21 +162,18 @@
     "schemaRisk": "support-visible evidence; not strong mastery proof",
     "choices": [
       {
-        "id": "draft_b1_09_005_choice_1",
+        "id": "choice_01_der_ersatz",
         "text": "der Ersatz",
-        "value": "der Ersatz",
         "isCorrect": true
       },
       {
-        "id": "draft_b1_09_005_choice_2",
-        "text": "die Probezeit",
-        "value": "die Probezeit",
+        "id": "choice_02_die_erstattung",
+        "text": "die Erstattung",
         "isCorrect": false
       },
       {
-        "id": "draft_b1_09_005_choice_3",
-        "text": "der Rückruf",
-        "value": "der Rückruf",
+        "id": "choice_03_die_beschwerde",
+        "text": "die Beschwerde",
         "isCorrect": false
       }
     ]
@@ -969,22 +963,22 @@
     "reviewGroup": "rg-b1-09-draft_b1_09_016",
     "familyTarget": "B1-09 single retained item",
     "familyType": "single_retained_item",
-    "itemType": "error_repair",
-    "taskType": "Reparatur",
-    "taskDepth": "repair",
-    "answerMode": "repair_text",
-    "answerShape": "repaired_sentence",
+    "itemType": "multiple_choice",
+    "taskType": "Kontrast",
+    "taskDepth": "contrast",
+    "answerMode": "selected_choice_value",
+    "answerShape": "selected_choice_value",
     "answer": "Leider gibt es ein Problem. Können Sie mir bitte helfen?",
     "acceptedAnswers": [
       "Leider gibt es ein Problem. Können Sie mir bitte helfen?"
     ],
     "fullAnswer_de": "Leider gibt es ein Problem. Können Sie mir bitte helfen?",
-    "prompt_de": "Fix the tone: Das ist schlecht. Machen Sie das sofort!",
+    "prompt_de": "Welche Beschwerde bleibt höflich und klar?",
     "learnerCue": "Make the complaint polite and clear.",
     "support_en": "Make the complaint polite and clear.",
-    "microRule": "Polite tone is part of the target.",
-    "correctnessPolicy": "exact_surface",
-    "acceptedAnswerPolicy": "exact_surface_sentence",
+    "microRule": "This tests register choice; it is not exact repair because many polite complaints would be valid.",
+    "correctnessPolicy": "exact",
+    "acceptedAnswerPolicy": "choice_value_exact",
     "strictSurfaceAnswer": true,
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
@@ -1023,7 +1017,24 @@
     "learnerFacingAllowed": "Yes",
     "schemaNotes": "Imported from B1-09 approved planning inventory; notice cards remain separate and excluded from evidence.",
     "sourceRisk": "supported evidence; conservative only",
-    "schemaRisk": "support-visible evidence; not strong mastery proof"
+    "schemaRisk": "support-visible evidence; not strong mastery proof",
+    "choices": [
+      {
+        "id": "choice_01_das_ist_schlecht_machen_sie_das_sofort",
+        "text": "Das ist schlecht. Machen Sie das sofort!",
+        "isCorrect": false
+      },
+      {
+        "id": "choice_02_leider_gibt_es_ein_problem_konnen_sie_mir_",
+        "text": "Leider gibt es ein Problem. Können Sie mir bitte helfen?",
+        "isCorrect": true
+      },
+      {
+        "id": "choice_03_das_ist_egal_ich_warte",
+        "text": "Das ist egal. Ich warte.",
+        "isCorrect": false
+      }
+    ]
   },
   {
     "id": "draft_b1_09_017",
@@ -1045,22 +1056,22 @@
     "familyType": "candidate_sibling_family",
     "maxSameSessionEvidence": 1,
     "sameSessionEvidenceCap": 1,
-    "itemType": "grammar_cloze",
+    "itemType": "multiple_choice",
     "taskType": "Kontrast",
     "taskDepth": "contrast",
-    "answerMode": "typed_short",
-    "answerShape": "short_answer",
+    "answerMode": "selected_choice_value",
+    "answerShape": "selected_choice_value",
     "answer": "obwohl",
     "acceptedAnswers": [
       "obwohl"
     ],
     "fullAnswer_de": "obwohl",
-    "prompt_de": "obwohl / deshalb — Choose contrast connector with verb-final clause.",
+    "prompt_de": "Welcher Konnektor bildet einen Kontrast mit Verb am Ende?",
     "learnerCue": "obwohl / deshalb",
     "support_en": "",
-    "microRule": "obwohl sends the verb to the end.",
+    "microRule": "„Obwohl“ starts a subordinate contrast clause.",
     "correctnessPolicy": "exact",
-    "acceptedAnswerPolicy": "exact_only",
+    "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
     "planningEvidenceLabel": "Supported Practice Evidence",
@@ -1102,7 +1113,24 @@
       "obwohl",
       "deshalb"
     ],
-    "targetRule": "obwohl sends the verb to the end."
+    "targetRule": "obwohl sends the verb to the end.",
+    "choices": [
+      {
+        "id": "choice_01_obwohl",
+        "text": "obwohl",
+        "isCorrect": true
+      },
+      {
+        "id": "choice_02_deshalb",
+        "text": "deshalb",
+        "isCorrect": false
+      },
+      {
+        "id": "choice_03_trotzdem",
+        "text": "trotzdem",
+        "isCorrect": false
+      }
+    ]
   },
   {
     "id": "draft_b1_09_018",
@@ -1120,22 +1148,22 @@
     "reviewGroup": "rg-b1-09-draft_b1_09_018",
     "familyTarget": "B1-09 single retained item",
     "familyType": "single_retained_item",
-    "itemType": "grammar_cloze",
+    "itemType": "multiple_choice",
     "taskType": "Kontrast",
     "taskDepth": "contrast",
-    "answerMode": "typed_short",
-    "answerShape": "short_answer",
+    "answerMode": "selected_choice_value",
+    "answerShape": "selected_choice_value",
     "answer": "die Erstattung",
     "acceptedAnswers": [
       "die Erstattung"
     ],
     "fullAnswer_de": "die Erstattung",
-    "prompt_de": "die Erstattung / die Besprechung — Choose money-back solution word.",
+    "prompt_de": "Sie möchten Geld zurück. Welches Wort passt?",
     "learnerCue": "die Erstattung / die Besprechung",
     "support_en": "",
-    "microRule": "Erstattung is refund/reimbursement.",
+    "microRule": "„Erstattung“ means refund/reimbursement.",
     "correctnessPolicy": "exact",
-    "acceptedAnswerPolicy": "exact_only",
+    "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
     "planningEvidenceLabel": "Supported Practice Evidence",
@@ -1176,7 +1204,24 @@
       "die Erstattung",
       "die Besprechung"
     ],
-    "targetRule": "Erstattung is refund/reimbursement."
+    "targetRule": "Erstattung is refund/reimbursement.",
+    "choices": [
+      {
+        "id": "choice_01_die_erstattung",
+        "text": "die Erstattung",
+        "isCorrect": true
+      },
+      {
+        "id": "choice_02_der_ersatz",
+        "text": "der Ersatz",
+        "isCorrect": false
+      },
+      {
+        "id": "choice_03_die_beschwerde",
+        "text": "die Beschwerde",
+        "isCorrect": false
+      }
+    ]
   },
   {
     "id": "draft_b1_09_019",

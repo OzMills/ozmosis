@@ -27,10 +27,10 @@
       "die Besprechung"
     ],
     "fullAnswer_de": "die Besprechung",
-    "prompt_de": "Which word is a meeting?",
+    "prompt_de": "Welches Wort passt für ein Meeting?",
     "learnerCue": "die Besprechung / das Attest / die Rechnung",
     "support_en": "",
-    "microRule": "Besprechung is a meeting/discussion.",
+    "microRule": "„Besprechung“ is a meeting/discussion.",
     "correctnessPolicy": "exact",
     "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
@@ -71,21 +71,18 @@
     "schemaRisk": "support-visible evidence; not strong mastery proof",
     "choices": [
       {
-        "id": "draft_b1_07_004_choice_1",
+        "id": "choice_01_die_besprechung",
         "text": "die Besprechung",
-        "value": "die Besprechung",
         "isCorrect": true
       },
       {
-        "id": "draft_b1_07_004_choice_2",
-        "text": "das Attest",
-        "value": "das Attest",
+        "id": "choice_02_der_termin",
+        "text": "der Termin",
         "isCorrect": false
       },
       {
-        "id": "draft_b1_07_004_choice_3",
-        "text": "die Rechnung",
-        "value": "die Rechnung",
+        "id": "choice_03_die_aufgabe",
+        "text": "die Aufgabe",
         "isCorrect": false
       }
     ]
@@ -120,10 +117,10 @@
       "Urlaub nehmen"
     ],
     "fullAnswer_de": "Urlaub nehmen",
-    "prompt_de": "Which phrase asks for holiday/leave?",
+    "prompt_de": "Welche Phrase passt für Urlaub im Betrieb?",
     "learnerCue": "Urlaub nehmen / krankmelden / Rechnung bezahlen",
     "support_en": "",
-    "microRule": "Urlaub nehmen belongs to leave, not sick leave.",
+    "microRule": "At work, use „Urlaub nehmen“ for taking leave.",
     "correctnessPolicy": "exact",
     "acceptedAnswerPolicy": "choice_value_exact",
     "caseSensitiveAnswer": true,
@@ -165,21 +162,18 @@
     "schemaRisk": "support-visible evidence; not strong mastery proof",
     "choices": [
       {
-        "id": "draft_b1_07_005_choice_1",
+        "id": "choice_01_urlaub_nehmen",
         "text": "Urlaub nehmen",
-        "value": "Urlaub nehmen",
         "isCorrect": true
       },
       {
-        "id": "draft_b1_07_005_choice_2",
-        "text": "krankmelden",
-        "value": "krankmelden",
+        "id": "choice_02_urlaub_machen",
+        "text": "Urlaub machen",
         "isCorrect": false
       },
       {
-        "id": "draft_b1_07_005_choice_3",
-        "text": "Rechnung bezahlen",
-        "value": "Rechnung bezahlen",
+        "id": "choice_03_sich_krankmelden",
+        "text": "sich krankmelden",
         "isCorrect": false
       }
     ]
@@ -900,22 +894,22 @@
     "familyType": "candidate_sibling_family",
     "maxSameSessionEvidence": 1,
     "sameSessionEvidenceCap": 1,
-    "itemType": "error_repair",
-    "taskType": "Reparatur",
-    "taskDepth": "repair",
-    "answerMode": "repair_text",
-    "answerShape": "repaired_sentence",
+    "itemType": "multiple_choice",
+    "taskType": "Kontrast",
+    "taskDepth": "contrast",
+    "answerMode": "selected_choice_value",
+    "answerShape": "selected_choice_value",
     "answer": "Ich möchte Urlaub nehmen.",
     "acceptedAnswers": [
       "Ich möchte Urlaub nehmen."
     ],
     "fullAnswer_de": "Ich möchte Urlaub nehmen.",
-    "prompt_de": "Ich möchte Urlaub machen. Intended workplace leave request.",
+    "prompt_de": "Welche Form passt für eine Bitte um Urlaub im Betrieb?",
     "learnerCue": "Fix the leave-request phrase.",
     "support_en": "Fix the leave-request phrase.",
-    "microRule": "Use Urlaub nehmen in this workplace frame.",
-    "correctnessPolicy": "exact_surface",
-    "acceptedAnswerPolicy": "exact_surface_sentence",
+    "microRule": "In workplace/admin language, use „Urlaub nehmen“ for taking leave; „Urlaub machen“ means going on holiday.",
+    "correctnessPolicy": "exact",
+    "acceptedAnswerPolicy": "choice_value_exact",
     "strictSurfaceAnswer": true,
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
@@ -952,7 +946,24 @@
     "learnerFacingAllowed": "Yes",
     "schemaNotes": "Imported from B1-07 approved planning inventory; notice cards remain separate and excluded from evidence.",
     "sourceRisk": "supported evidence; conservative only",
-    "schemaRisk": "support-visible evidence; not strong mastery proof"
+    "schemaRisk": "support-visible evidence; not strong mastery proof",
+    "choices": [
+      {
+        "id": "choice_01_ich_mochte_urlaub_machen",
+        "text": "Ich möchte Urlaub machen.",
+        "isCorrect": false
+      },
+      {
+        "id": "choice_02_ich_mochte_urlaub_nehmen",
+        "text": "Ich möchte Urlaub nehmen.",
+        "isCorrect": true
+      },
+      {
+        "id": "choice_03_ich_mochte_krankmelden",
+        "text": "Ich möchte krankmelden.",
+        "isCorrect": false
+      }
+    ]
   },
   {
     "id": "draft_b1_07_016",
@@ -1050,22 +1061,22 @@
     "familyType": "candidate_sibling_family",
     "maxSameSessionEvidence": 1,
     "sameSessionEvidenceCap": 1,
-    "itemType": "grammar_cloze",
+    "itemType": "multiple_choice",
     "taskType": "Kontrast",
     "taskDepth": "contrast",
-    "answerMode": "typed_short",
-    "answerShape": "short_answer",
+    "answerMode": "selected_choice_value",
+    "answerShape": "selected_choice_value",
     "answer": "Urlaub nehmen",
     "acceptedAnswers": [
       "Urlaub nehmen"
     ],
     "fullAnswer_de": "Urlaub nehmen",
-    "prompt_de": "Urlaub nehmen / krankmelden — Choose leave, not sickness.",
+    "prompt_de": "Sie sprechen über Urlaub im Betrieb. Welche Phrase passt?",
     "learnerCue": "Urlaub nehmen / krankmelden",
     "support_en": "",
-    "microRule": "Leave request: Urlaub nehmen.",
+    "microRule": "Workplace leave is usually „Urlaub nehmen“.",
     "correctnessPolicy": "exact",
-    "acceptedAnswerPolicy": "exact_surface_or_case",
+    "acceptedAnswerPolicy": "choice_value_exact",
     "caseSensitiveAnswer": true,
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
@@ -1107,7 +1118,24 @@
       "Urlaub nehmen",
       "krankmelden"
     ],
-    "targetRule": "Leave request: Urlaub nehmen."
+    "targetRule": "Leave request: Urlaub nehmen.",
+    "choices": [
+      {
+        "id": "choice_01_urlaub_nehmen",
+        "text": "Urlaub nehmen",
+        "isCorrect": true
+      },
+      {
+        "id": "choice_02_urlaub_machen",
+        "text": "Urlaub machen",
+        "isCorrect": false
+      },
+      {
+        "id": "choice_03_sich_krankmelden",
+        "text": "sich krankmelden",
+        "isCorrect": false
+      }
+    ]
   },
   {
     "id": "draft_b1_07_018",
@@ -1129,22 +1157,22 @@
     "familyType": "candidate_sibling_family",
     "maxSameSessionEvidence": 1,
     "sameSessionEvidenceCap": 1,
-    "itemType": "grammar_cloze",
+    "itemType": "multiple_choice",
     "taskType": "Kontrast",
     "taskDepth": "contrast",
-    "answerMode": "typed_short",
-    "answerShape": "short_answer",
+    "answerMode": "selected_choice_value",
+    "answerShape": "selected_choice_value",
     "answer": "ob",
     "acceptedAnswers": [
       "ob"
     ],
     "fullAnswer_de": "ob",
-    "prompt_de": "ob / dass — Choose indirect yes/no connector.",
+    "prompt_de": "Welche Form passt für eine indirekte Ja/Nein-Frage?",
     "learnerCue": "ob / dass",
     "support_en": "",
-    "microRule": "Use ob for whether/if in an indirect question.",
+    "microRule": "Use „ob“ for indirect yes/no questions.",
     "correctnessPolicy": "exact",
-    "acceptedAnswerPolicy": "exact_only",
+    "acceptedAnswerPolicy": "choice_value_exact",
     "supportPolicy": "scenario_visible",
     "supportPresentation": "english_visible_before_answer",
     "planningEvidenceLabel": "Supported Practice Evidence",
@@ -1186,7 +1214,24 @@
       "ob",
       "dass"
     ],
-    "targetRule": "Use ob for whether/if in an indirect question."
+    "targetRule": "Use ob for whether/if in an indirect question.",
+    "choices": [
+      {
+        "id": "choice_01_ob",
+        "text": "ob",
+        "isCorrect": true
+      },
+      {
+        "id": "choice_02_dass",
+        "text": "dass",
+        "isCorrect": false
+      },
+      {
+        "id": "choice_03_weil",
+        "text": "weil",
+        "isCorrect": false
+      }
+    ]
   },
   {
     "id": "draft_b1_07_019",
