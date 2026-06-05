@@ -4,6 +4,34 @@ Chronological changelog from the earliest retained project history through the c
 
 Historical standalone changelog files before `CHANGELOG-v0_80_14.txt` are not present in the current repo package. Where exact earlier changelog files are unavailable, entries are reconstructed from the surviving versioned QA reports in `docs/qa/`. The current `v0.80.14` entry is preserved from the active versioned changelog.
 
+## v0.80.14.5 - B1-03 Admin Office Candidate Addendum
+
+- Added a small B1-03 official-office/job-search admin-language content addendum covering proof/document phrases, official confirmations, copies, applications, deadline phrasing, polite help requests, required documents, reflexive contact phrasing, and yes/no office questions.
+- Imported ten approved active rows into `content/b1-m03-job-search-offices.js`: `ext_b1_03_001`, `ext_b1_03_002`, `ext_b1_03_003`, `ext_b1_03_004`, `ext_b1_03_005`, `ext_b1_03_006`, `ext_b1_03_007`, `ext_b1_03_008`, `ext_b1_03_011`, and `ext_b1_03_017`.
+- Kept the patch narrow: no redesign, no new dependencies, no runtime AI, no runtime German generation, no storage-key changes, no B1-12, no v0.81, no Satzi, no Genitive expansion, and no B2 active content.
+- Deferred same-target repair siblings, vocabulary-only rows, prompt-giveaway rows, rewrite-needed rows, B1-02-adjacent rows, and a near-duplicate production card rather than activating weak or crowding-prone evidence.
+- Kept legal-adjacent work-permit vocabulary as language practice only, not legal advice or legal-competence evidence.
+- Added `_development-files/v080145_b1_m03_admin_office_addendum_gate.cjs` to validate imported IDs, answer fields, deferred IDs, source safety, storage keys, and version metadata.
+- Added `_development-files/v080145_b1_m03_admin_office_browser_smoke.cjs` to stage and validate the new `Luecke`, `Satzbau`, `Reparatur`, and `Umformen` rows through local Edge/CDP.
+- Preserved scoring, correctness rules, production self-marking, choice shuffling safety, protected storage keys, export/import compatibility, static architecture, Today B1 Sprint composition, Diagnostic Sprint composition, existing content bank IDs/statuses, and B1-only active scope.
+- Added QA documentation at `docs/qa/v0.80.14.5_b1_m03_admin_office_candidate_addendum.md`.
+
+## v0.80.14.4 - B1 Practice Flow UX Catch-up
+
+- Replaced the disabled `Weiter` confidence prompt with separate guidance text: "Select answer confidence to continue."
+- Changed normal auto-graded B1 confidence selection so choosing confidence records it and advances immediately, without requiring a second Continue press.
+- Kept production/self-marked practice outside the auto-advance confidence path.
+- Stabilised typed B1 `Luecke` actions so `Teach me` and `Prüfen` share the same right-hand action slot while typing swaps the action.
+- Clarified translation/support labels with `Show translation`, `Hide translation`, `Translation`, and `Meaning / translation` wording.
+- Removed the bare learner-facing `Corrected.` repair fallback.
+- Replaced vague learner-facing `<summary>Explain</summary>` disclosures with more specific evidence/correction labels.
+- Removed redundant `Selected answer:` choice feedback.
+- Replaced the generic fallback `Welche Form ist höflicher?` with contextual wording: `Welche Form passt in dieser Situation am besten?`
+- Added `_development-files/v080144_b1_practice_flow_ux_gate.cjs` to hard-fail on the B1 practice-flow UX regressions targeted by this patch.
+- Added `_development-files/v080144_b1_practice_flow_browser_smoke.cjs` for targeted Edge/CDP browser validation of typed cloze, confidence, feedback, production, responsive, and Arabic/LTR states.
+- Preserved content banks, scoring, correctness rules, production self-marking, choice shuffling, protected storage keys, export/import compatibility, static architecture, and B1-only active scope.
+- Added QA documentation at `docs/qa/v0.80.14.4_b1_practice_flow_ux_catchup.md`.
+
 ## v0.80.14.3 - B1 Question Quality Safe Fix Patch
 
 - Applied the 177 safe, self-audited B1 question-quality fixes from the 09B safe-for-Codex CSV.
