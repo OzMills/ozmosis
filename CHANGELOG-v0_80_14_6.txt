@@ -4,6 +4,25 @@ Chronological changelog from the earliest retained project history through the c
 
 Historical standalone changelog files before `CHANGELOG-v0_80_14.txt` are not present in the current repo package. Where exact earlier changelog files are unavailable, entries are reconstructed from the surviving versioned QA reports in `docs/qa/`. The current `v0.80.14` entry is preserved from the active versioned changelog.
 
+## v0.80.14.6 - B1 Progress Path and Star-Gated Category System
+
+- Added a derived B1 Progress Path from B1.1 through B1.18 based on `docs/design docs/OZMOSIS B1 Progress Path and Star-Gated Category System v0.1.md`.
+- Added compact Home `Your B1 Progress` cards below the recommended task, using stacked star bars and category percentages rather than giant landing-page progress tables.
+- Added a detailed Learning Map `B1 Path` section with category cards, star-ladder explanation, and conservative limitations.
+- Added repeated-correct star calculations at target-family/practice-target level so raw item variants do not inflate category denominators.
+- Added star labels from 0 stars through 5 stars without calling 5 stars mastered.
+- Added task-type breadth checks before a category is recommended for continuation.
+- Added soft path unlocks with `Keep practising` and `Unlock anyway`; manual overrides are additive and do not mark previous categories complete.
+- Added additive unlock override storage under `ozmosis_b1_path_unlock_overrides_v1`.
+- Added additive export/import support for B1 Path unlock overrides while preserving older imports.
+- Added B1 Path progress and unlock metadata to the debug summary.
+- Preserved Teach Me/revealed/assisted semantics so those attempts do not count as normal correct star credit.
+- Preserved production self-marking as practised-only evidence, never correctness stars.
+- Preserved scoring, correctness rules, protected storage keys, export/import compatibility, content banks, route composition, Today B1 Sprint composition, Diagnostic Sprint composition, B1-only active scope, and German LTR behaviour under Arabic UI.
+- Added `_development-files/v080146_b1_progress_path_star_gate.cjs`.
+- Added `_development-files/v080146_b1_progress_path_browser_smoke.cjs`.
+- Added QA documentation at `docs/qa/v0.80.14.6_b1_progress_path_star_gate.md`.
+
 ## v0.80.14.5 - B1-03 Admin Office Candidate Addendum
 
 - Added a small B1-03 official-office/job-search admin-language content addendum covering proof/document phrases, official confirmations, copies, applications, deadline phrasing, polite help requests, required documents, reflexive contact phrasing, and yes/no office questions.

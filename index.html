@@ -4997,6 +4997,212 @@ body.homeMode #settingsPanel {
   background:rgba(6,10,18,.68);
 }
 
+.b1PathSection {
+  display:grid;
+  gap:10px;
+}
+
+.b1PathLead {
+  margin:0;
+  color:var(--muted);
+  font-size:clamp(.82rem, 3.1vw, .94rem);
+  line-height:1.35;
+  font-weight:850;
+}
+
+.b1PathCardGrid,
+.b1PathAreaGrid,
+.b1PathDetailGrid {
+  display:grid;
+  grid-template-columns:1fr;
+  gap:10px;
+}
+
+.b1PathCard {
+  display:grid;
+  gap:9px;
+  border:1px solid color-mix(in srgb, var(--accent) 38%, var(--line));
+  border-radius:var(--cardRadius, 14px);
+  padding:12px 13px;
+  background:linear-gradient(135deg, rgba(7,14,27,.78), rgba(8,18,31,.56));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035);
+}
+
+.b1PathCardTop,
+.b1PathMetricLine,
+.b1PathTypeLine {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.b1PathCardTitle {
+  min-width:0;
+  color:var(--text);
+  font-size:clamp(.98rem, 3.7vw, 1.16rem);
+  line-height:1.12;
+  font-weight:1000;
+}
+
+.b1PathStatus {
+  flex:0 0 auto;
+  border:1px solid color-mix(in srgb, var(--accent) 50%, var(--line));
+  border-radius:999px;
+  padding:.28rem .48rem;
+  color:var(--accent);
+  background:rgba(5,14,24,.68);
+  font-size:.66rem;
+  line-height:1;
+  font-weight:1000;
+  white-space:nowrap;
+}
+
+.b1PathStatus.recommended,
+.b1PathStatus.open {
+  color:var(--ok);
+  border-color:var(--ok);
+}
+
+.b1PathStatus.locked {
+  color:var(--muted);
+  border-color:color-mix(in srgb, var(--muted) 44%, var(--line));
+}
+
+.b1PathMetricLine,
+.b1PathTypeLine {
+  color:var(--muted);
+  font-size:.78rem;
+  line-height:1.2;
+  font-weight:850;
+}
+
+.b1PathMetricLine strong {
+  color:var(--text);
+  font-variant-numeric:tabular-nums;
+}
+
+.b1PathStarBar {
+  display:grid;
+  grid-template-columns:repeat(5, minmax(0, 1fr));
+  gap:3px;
+  height:10px;
+  overflow:hidden;
+  border:1px solid color-mix(in srgb, var(--accent) 24%, var(--line));
+  border-radius:999px;
+  background:rgba(2,8,16,.86);
+}
+
+.b1PathStarBar span {
+  min-width:0;
+  background:rgba(125,227,255,.11);
+}
+
+.b1PathStarBar span.filled-1 { background:color-mix(in srgb, var(--ok) 34%, rgba(125,227,255,.08)); }
+.b1PathStarBar span.filled-2 { background:color-mix(in srgb, var(--ok) 46%, rgba(125,227,255,.08)); }
+.b1PathStarBar span.filled-3 { background:color-mix(in srgb, var(--ok) 58%, rgba(125,227,255,.08)); }
+.b1PathStarBar span.filled-4 { background:color-mix(in srgb, var(--ok) 72%, rgba(125,227,255,.08)); }
+.b1PathStarBar span.filled-5 { background:color-mix(in srgb, var(--ok) 88%, rgba(125,227,255,.08)); }
+
+.b1PathActions {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.b1PathAction {
+  min-height:42px;
+  border:1px solid color-mix(in srgb, var(--accent) 42%, var(--line));
+  border-radius:12px;
+  padding:8px 11px;
+  background:rgba(5,11,22,.78);
+  color:var(--text);
+  font:inherit;
+  font-size:.82rem;
+  font-weight:950;
+  cursor:pointer;
+}
+
+.b1PathAction:hover,
+.b1PathAction:focus-visible {
+  outline:none;
+  border-color:var(--accent);
+  box-shadow:var(--focusRing);
+}
+
+.b1PathDisclaimer {
+  margin:0;
+  color:color-mix(in srgb, var(--warn) 78%, var(--text));
+  font-size:.78rem;
+  line-height:1.3;
+  font-weight:850;
+}
+
+.b1PathUnlockOverlay {
+  position:fixed;
+  inset:0;
+  z-index:31020;
+  display:grid;
+  place-items:center;
+  padding:18px;
+  background:rgba(2,6,13,.74);
+}
+
+.b1PathUnlockOverlay[hidden] {
+  display:none !important;
+}
+
+.b1PathUnlockCard {
+  width:min(460px, 100%);
+  display:grid;
+  gap:12px;
+  border:1.5px solid color-mix(in srgb, var(--accent) 48%, var(--line));
+  border-radius:18px;
+  padding:clamp(16px, 4vw, 22px);
+  background:#050913;
+  box-shadow:0 24px 80px rgba(0,0,0,.58), 0 0 30px var(--modeShadow);
+}
+
+.b1PathUnlockCard h2 {
+  margin:0;
+  color:var(--text);
+  font-size:clamp(1.22rem, 5vw, 1.62rem);
+  line-height:1.08;
+  font-weight:1000;
+}
+
+.b1PathUnlockCard p {
+  margin:0;
+  color:var(--muted);
+  font-size:.92rem;
+  line-height:1.4;
+  font-weight:820;
+}
+
+.b1PathUnlockActions {
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:flex-end;
+}
+
+.b1PathUnlockActions button {
+  min-height:44px;
+  border:1.5px solid color-mix(in srgb, var(--accent) 46%, var(--line));
+  border-radius:14px;
+  padding:9px 14px;
+  background:rgba(5,11,22,.92);
+  color:var(--text);
+  font:inherit;
+  font-weight:950;
+  cursor:pointer;
+}
+
+.b1PathUnlockActions .primaryAction {
+  border-color:var(--accent);
+  background:linear-gradient(135deg, color-mix(in srgb, var(--accent) 24%, transparent), rgba(5,11,22,.92));
+}
+
 .homeFeedback {
   margin:clamp(18px,4vw,28px) 0 0;
   color:color-mix(in srgb, var(--muted) 82%, var(--text));
@@ -6825,6 +7031,11 @@ body[data-support-lang="ar"] .productionChecklist {
     min-height:74px;
   }
 
+  .b1PathCardGrid,
+  .b1PathAreaGrid {
+    grid-template-columns:repeat(2, minmax(0,1fr));
+  }
+
   .grammarHub .homeNav,
   .redemittelHub .homeNav {
     grid-template-columns:repeat(2, minmax(0,1fr));
@@ -8015,6 +8226,13 @@ body.b1Mode .clozeAnswerText {
     </details>
     </section>
 
+    <section class="homeSection b1PathSection" aria-labelledby="homeB1PathTitle">
+      <h3 class="homeSectionTitle" id="homeB1PathTitle">Your B1 Progress</h3>
+      <p class="b1PathLead">B1 Path cards show repeated correct answers by practice target, not raw card count.</p>
+      <div class="b1PathCardGrid" id="homeB1PathCards" aria-label="Compact B1 Path progress"></div>
+      <p class="b1PathDisclaimer">Stars guide practice. They are not a mastery or exam-readiness score.</p>
+    </section>
+
     <div class="homeStatusStrip" id="homeStatusStrip" aria-label="Local B1 practice status">
       <div class="homeStatusItem"><span>Today</span><span class="homeStatusValue" id="homeStatusToday">Ready</span></div>
       <div class="homeStatusItem"><span>Current focus</span><span class="homeStatusValue" id="homeStatusDue">--</span></div>
@@ -8446,6 +8664,17 @@ body.b1Mode .clozeAnswerText {
   </div>
 </div>
 
+<div class="b1PathUnlockOverlay" id="b1PathUnlockOverlay" hidden role="dialog" aria-modal="true" aria-labelledby="b1PathUnlockTitle">
+  <div class="b1PathUnlockCard" role="document">
+    <h2 id="b1PathUnlockTitle">Ozmosis recommends a little more practice first.</h2>
+    <div id="b1PathUnlockBody"></div>
+    <div class="b1PathUnlockActions">
+      <button id="b1PathKeepPractisingBtn" type="button">Keep practising</button>
+      <button class="primaryAction" id="b1PathUnlockAnywayBtn" type="button">Unlock anyway</button>
+    </div>
+  </div>
+</div>
+
 <div class="testerNotesOverlay" id="testerNotesOverlay" hidden role="dialog" aria-modal="true" aria-labelledby="testerNotesTitle">
   <div class="testerNotesCard" role="document">
     <h2 id="testerNotesTitle">Tester Notes / Known Bugs</h2>
@@ -8790,9 +9019,10 @@ body.b1Mode .clozeAnswerText {
   var LEITNER_STORAGE_KEY = "kasuskonsole.leitner.v1";
   var B1_STORAGE_KEY = "ozmosis_b1_sprint_progress_v1";
   var B1_EVIDENCE_STORAGE_KEY = "ozmosis_b1_progress_evidence_v1";
+  var B1_PATH_UNLOCK_STORAGE_KEY = "ozmosis_b1_path_unlock_overrides_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.80.14.5";
-  var OZMOSIS_EXPORT_VERSION = "v0.80.14.5-b1-m03-admin-office-candidate-addendum";
+  var OZMOSIS_APP_VERSION = "v0.80.14.6";
+  var OZMOSIS_EXPORT_VERSION = "v0.80.14.6-b1-progress-path-star-gate";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -9656,6 +9886,329 @@ body.b1Mode .clozeAnswerText {
         productionCount:items.filter(function(item){ return item && item.itemType === "production_card"; }).length
       };
     });
+  }
+  const B1_PATH_STAR = "★";
+  const B1_PATH_STAR_LABELS = [
+    "Not yet correct",
+    "Got right once",
+    "Got right twice",
+    "Got right 3 times",
+    "Got right 4 times",
+    "Got right 5 times"
+  ];
+  const B1_PATH_AREAS = [
+    { pathId:"B1.1", order:1, label:"Practical Admin and Appointments", routeKey:"b1_m02", banks:["b1_m02"], subcategoryLabel:"Appointments / callbacks" },
+    { pathId:"B1.2", order:2, label:"Course and Work Starting Point", routeKey:"b1_m01", banks:["b1_m01"], subcategoryLabel:"Course and work basics" },
+    { pathId:"B1.3", order:3, label:"Job Search and Offices", routeKey:"b1_m03", banks:["b1_m03"], subcategoryLabel:"Job search / offices" },
+    { pathId:"B1.4", order:4, label:"Applications and Interviews", routeKey:"b1_m04", banks:["b1_m04"], subcategoryLabel:"Applications" },
+    { pathId:"B1.5", order:5, label:"First Day and Contract Basics", routeKey:"b1_m05", banks:["b1_m05"], subcategoryLabel:"First day / contract basics" },
+    { pathId:"B1.6", order:6, label:"Sick Leave, Doctor, and Insurance", routeKey:"b1_m06", banks:["b1_m06"], subcategoryLabel:"Sick leave" },
+    { pathId:"B1.7", order:7, label:"Meetings and Leave Requests", routeKey:"b1_m07", banks:["b1_m07"], subcategoryLabel:"Meetings / leave requests" },
+    { pathId:"B1.8", order:8, label:"Orders and Delivery", routeKey:"b1_m08", banks:["b1_m08"], subcategoryLabel:"Orders / delivery" },
+    { pathId:"B1.9", order:9, label:"Complaints and Customer Service", routeKey:"b1_m09", banks:["b1_m09"], subcategoryLabel:"Complaints / customer service" },
+    { pathId:"B1.10", order:10, label:"Technical Problems", routeKey:"b1_m10", banks:["b1_m10"], subcategoryLabel:"Technical problems" },
+    { pathId:"B1.11", order:11, label:"Colleague Feedback and Conflict", routeKey:"b1_m11", banks:["b1_m11"], subcategoryLabel:"Colleague feedback / conflict" },
+    { pathId:"B1.12", order:12, label:"Forms, Admin, and Certificates", routeKey:"learning_map", banks:[], subcategoryLabel:"Deferred forms/admin path", preview:true },
+    { pathId:"B1.13", order:13, label:"Learning and Exam Language", routeKey:"learning_map", banks:[], subcategoryLabel:"Learning language", preview:true },
+    { pathId:"B1.14", order:14, label:"Connectors and Sentence Functions", routeKey:"connectors", banks:["connectors", "redemittel"], subcategoryLabel:"Connectors / sentence functions" },
+    { pathId:"B1.15", order:15, label:"Time, Place, and Movement", routeKey:"grammar", banks:["core"], subcategoryLabel:"Cases / movement support" },
+    { pathId:"B1.16", order:16, label:"Money, Payment, and Contracts", routeKey:"learning_map", banks:[], subcategoryLabel:"Money / contracts", preview:true },
+    { pathId:"B1.17", order:17, label:"Home, Family, and Daily Life Support", routeKey:"learning_map", banks:[], subcategoryLabel:"Daily life support", preview:true },
+    { pathId:"B1.18", order:18, label:"B1→B2 Bridge Preview", routeKey:"learning_map", banks:[], subcategoryLabel:"Bridge preview", preview:true }
+  ];
+  function b1PathAreaDefinitions() {
+    return B1_PATH_AREAS.map(function(area){
+      return {
+        pathId:area.pathId,
+        order:area.order,
+        label:area.label,
+        routeKey:area.routeKey,
+        banks:(area.banks || []).slice(),
+        subcategoryLabel:area.subcategoryLabel,
+        preview:!!area.preview
+      };
+    });
+  }
+  function b1PathAreaById(pathId) {
+    var id = String(pathId || "");
+    for (var i = 0; i < B1_PATH_AREAS.length; i += 1) {
+      if (B1_PATH_AREAS[i].pathId === id) return B1_PATH_AREAS[i];
+    }
+    return null;
+  }
+  function b1PathAreaForBank(bankKey, item) {
+    bankKey = String(bankKey || "");
+    var tags = b1LearningMapNormalizeTokens([bankKey].concat(item && Array.isArray(item.skillTags) ? item.skillTags : [], item && Array.isArray(item.tags) ? item.tags : []));
+    if (bankKey === "b1_m02") return b1PathAreaById("B1.1");
+    if (bankKey === "b1_m01") return b1PathAreaById("B1.2");
+    if (bankKey === "b1_m03") return b1PathAreaById("B1.3");
+    if (bankKey === "b1_m04") return b1PathAreaById("B1.4");
+    if (bankKey === "b1_m05") return b1PathAreaById("B1.5");
+    if (bankKey === "b1_m06") return b1PathAreaById("B1.6");
+    if (bankKey === "b1_m07") return b1PathAreaById("B1.7");
+    if (bankKey === "b1_m08") return b1PathAreaById("B1.8");
+    if (bankKey === "b1_m09") return b1PathAreaById("B1.9");
+    if (bankKey === "b1_m10") return b1PathAreaById("B1.10");
+    if (bankKey === "b1_m11") return b1PathAreaById("B1.11");
+    if (bankKey === "connectors") return b1PathAreaById("B1.14");
+    if (bankKey === "core") return b1PathAreaById("B1.15");
+    if (bankKey === "redemittel") {
+      if (tags.indexOf("appointment") !== -1 || tags.indexOf("appointments") !== -1) return b1PathAreaById("B1.1");
+      if (tags.indexOf("application") !== -1 || tags.indexOf("applications") !== -1) return b1PathAreaById("B1.4");
+      if (tags.indexOf("illness_absence") !== -1 || tags.indexOf("illness") !== -1) return b1PathAreaById("B1.6");
+      if (tags.indexOf("complaint") !== -1 || tags.indexOf("complaints") !== -1) return b1PathAreaById("B1.9");
+      return b1PathAreaById("B1.14");
+    }
+    if (bankKey === "wortschatz") {
+      if (tags.indexOf("illness") !== -1 || tags.indexOf("insurance") !== -1) return b1PathAreaById("B1.6");
+      if (tags.indexOf("applications") !== -1 || tags.indexOf("application") !== -1) return b1PathAreaById("B1.4");
+      if (tags.indexOf("technical_problem") !== -1) return b1PathAreaById("B1.10");
+      if (tags.indexOf("admin") !== -1 || tags.indexOf("office_admin") !== -1 || tags.indexOf("documents") !== -1) return b1PathAreaById("B1.3");
+      return b1PathAreaById("B1.2");
+    }
+    return b1PathAreaById("B1.2");
+  }
+  function b1PathTaskTypeKey(record, item) {
+    var depth = b1CanonicalTaskDepth(record && record.taskDepth || (item ? b1EvidenceTaskDepth(item) : ""));
+    var type = String(record && record.taskType || (item ? b1EvidenceTaskType(item) : "") || "");
+    var sourceTask = String(record && record.sourceTaskType || item && item.taskType || "");
+    if (record && (record.answerMode === "mark_practised" || record.selfMarked || record.result === "practised") || item && item.itemType === "production_card") return "production";
+    if (depth === "recognition" || depth === "contrast" || type === "connector_choice" || type === "phrase_choice" || /Auswahl|Kontrast/.test(sourceTask)) return "choice";
+    if (depth === "cloze" || /Luecke|Cloze/.test(sourceTask)) return "cloze";
+    if (depth === "repair" || depth === "transformation" || type === "error_repair" || /Reparatur|Umformen/.test(sourceTask)) return "repair";
+    if (depth === "sentence_building" || type === "word_order_cloze" || /Satzbau/.test(sourceTask)) return "satzbau";
+    if (depth === "controlled_production" || depth === "free_production") return "production";
+    return "choice";
+  }
+  function b1PathTaskTypeLabel(key) {
+    var labels = { choice:"Choice / contrast", cloze:"Cloze", repair:"Repair", satzbau:"Satzbau", production:"Production" };
+    return labels[key] || "Practice";
+  }
+  function b1PathItemTargetKey(item, bankKey) {
+    if (!item || !item.id) return "";
+    return String(item.targetFamilyId || item.reviewGroup || item.variantFamilyId || item.targetId || item.family || item.section || item.topic || ("legacy:" + String(bankKey || "unknown") + ":" + item.id));
+  }
+  function b1PathItemTargetLabel(item, key) {
+    return String(item && (item.familyTarget || item.targetRule || item.grammarFocus || item.vocabularyFocus || item.redemittelFocus || item.answer || item.prompt_de) || key || "Practice target").replace(/\s+/g, " ").trim();
+  }
+  function b1PathStarLevel(correctCount) {
+    return Math.max(0, Math.min(5, Math.floor(Number(correctCount || 0))));
+  }
+  function b1PathEmptyTarget(item, bank, area) {
+    var bankKey = bank && bank.key || b1EvidenceBankKeyFor(item);
+    var key = b1PathItemTargetKey(item, bankKey);
+    var subcategoryId = area.pathId + ".1";
+    return {
+      targetKey:key,
+      label:b1PathItemTargetLabel(item, key),
+      pathId:area.pathId,
+      pathLabel:area.label,
+      subcategoryId:subcategoryId,
+      subcategoryLabel:area.subcategoryLabel || area.label,
+      routeKey:area.routeKey || "learning_map",
+      coreStatus:"support",
+      itemIds:[],
+      taskTypes:{},
+      requiredTaskTypes:[],
+      correctCount:0,
+      starLevel:0,
+      recentWrongCount:0,
+      lastCorrectAt:null,
+      lastAttemptAt:null,
+      confidenceHistory:[],
+      supportHistory:[],
+      productionPractisedCount:0,
+      teachMeCount:0,
+      assistedAttemptCount:0,
+      fallbackMapping:!item.targetFamilyId && !item.reviewGroup && !item.variantFamilyId
+    };
+  }
+  function b1PathIsPracticeItem(item) {
+    if (!item || !item.id) return false;
+    if (item.status && item.status !== "active") return false;
+    if (item.itemType === "notice" || item.taskType === "notice" || item.evidenceType === "excluded") return false;
+    return true;
+  }
+  function b1PathProgressFromEvidence(options) {
+    options = options || {};
+    var records = Array.isArray(options.records) ? options.records : (safeGetB1Evidence().records || []);
+    var overrides = options.overrides || safeGetB1PathUnlockOverrides();
+    var targetMap = {};
+    var fallbackMappingCount = 0;
+    b1RegistryBanks().forEach(function(bank){
+      (Array.isArray(bank.items) ? bank.items : []).forEach(function(item){
+        if (!b1PathIsPracticeItem(item)) return;
+        var area = b1PathAreaForBank(bank.key, item);
+        if (!area) return;
+        var key = b1PathItemTargetKey(item, bank.key);
+        if (!targetMap[key]) targetMap[key] = b1PathEmptyTarget(item, bank, area);
+        var target = targetMap[key];
+        if (target.itemIds.indexOf(item.id) === -1) target.itemIds.push(item.id);
+        var typeKey = b1PathTaskTypeKey(null, item);
+        target.taskTypes[typeKey] = target.taskTypes[typeKey] || { available:0, correctCount:0, starLevel:0, practisedCount:0 };
+        target.taskTypes[typeKey].available += 1;
+        if (typeKey !== "production") target.coreStatus = "core";
+      });
+    });
+    Object.keys(targetMap).forEach(function(key){
+      var target = targetMap[key];
+      target.requiredTaskTypes = Object.keys(target.taskTypes).sort();
+      if (target.fallbackMapping) fallbackMappingCount += 1;
+    });
+    records.forEach(function(record){
+      if (!record || !record.itemId) return;
+      var item = b1ItemById(record.itemId) || b1LearningMapItemForEvidence(record);
+      var bankKey = String(record.bankKey || (item ? b1EvidenceBankKeyFor(item) : "unknown"));
+      var area = b1PathAreaForBank(bankKey, item || record);
+      if (!area) return;
+      var targetKey = String(record.targetFamilyId || record.reviewGroup || record.variantFamilyId || record.targetId || (item ? b1PathItemTargetKey(item, bankKey) : ("legacy:" + bankKey + ":" + record.itemId)));
+      if (!targetMap[targetKey]) targetMap[targetKey] = b1PathEmptyTarget(item || { id:record.itemId, targetFamilyId:record.targetFamilyId, reviewGroup:record.reviewGroup, variantFamilyId:record.variantFamilyId, grammarFocus:record.grammarFocus }, { key:bankKey }, area);
+      var target = targetMap[targetKey];
+      if (target.itemIds.indexOf(record.itemId) === -1) target.itemIds.push(record.itemId);
+      var taskType = b1PathTaskTypeKey(record, item);
+      target.taskTypes[taskType] = target.taskTypes[taskType] || { available:0, correctCount:0, starLevel:0, practisedCount:0 };
+      var assisted = record.result === "assisted" || record.supportLevel === "teach_me_assisted" || record.hintUsed === true;
+      var production = taskType === "production" || record.answerMode === "mark_practised" || record.selfMarked === true || record.result === "practised";
+      if (record.timestamp) target.lastAttemptAt = !target.lastAttemptAt || Date.parse(record.timestamp) > Date.parse(target.lastAttemptAt) ? record.timestamp : target.lastAttemptAt;
+      if (record.confidence) target.confidenceHistory.push(record.confidence);
+      if (record.supportLevel) target.supportHistory.push(record.supportLevel);
+      if (assisted) {
+        target.assistedAttemptCount += 1;
+        if (record.supportLevel === "teach_me_assisted" || record.hintUsed === true) target.teachMeCount += 1;
+      }
+      if (production) {
+        if (record.result === "practised" || record.productionAction === "mark_practised") {
+          target.productionPractisedCount += 1;
+          target.taskTypes[taskType].practisedCount += 1;
+        }
+        return;
+      }
+      if (record.correct === true && !assisted) {
+        target.correctCount += 1;
+        target.lastCorrectAt = record.timestamp || target.lastCorrectAt;
+        target.taskTypes[taskType].correctCount += 1;
+      } else if (record.correct === false || record.result === "wrong") {
+        target.recentWrongCount += 1;
+      }
+    });
+    var categories = {};
+    b1PathAreaDefinitions().forEach(function(area){
+      categories[area.pathId] = {
+        categoryId:area.pathId,
+        pathId:area.pathId,
+        label:area.label,
+        routeKey:area.routeKey,
+        order:area.order,
+        preview:!!area.preview,
+        coreTargetCount:0,
+        supportTargetCount:0,
+        targets:[],
+        starCounts:{ 1:0, 2:0, 3:0, 4:0, 5:0 },
+        totalStars:0,
+        taskTypes:{ choice:{available:0, done:0}, cloze:{available:0, done:0}, repair:{available:0, done:0}, satzbau:{available:0, done:0}, production:{available:0, done:0} },
+        productionPractisedCount:0,
+        recentWrongCount:0,
+        fallbackMappingCount:0,
+        override:(overrides.categories && overrides.categories[area.pathId]) || null,
+        status:"Locked",
+        recommendedUnlock:false,
+        missingTaskTypes:[]
+      };
+    });
+    Object.keys(targetMap).forEach(function(key){
+      var target = targetMap[key];
+      target.starLevel = b1PathStarLevel(target.correctCount);
+      Object.keys(target.taskTypes).forEach(function(type){
+        target.taskTypes[type].starLevel = b1PathStarLevel(target.taskTypes[type].correctCount);
+      });
+      var category = categories[target.pathId] || categories["B1.2"];
+      category.targets.push(target);
+      if (target.coreStatus === "core") {
+        category.coreTargetCount += 1;
+        category.totalStars += target.starLevel;
+        [1,2,3,4,5].forEach(function(level){ if (target.starLevel >= level) category.starCounts[level] += 1; });
+      } else {
+        category.supportTargetCount += 1;
+      }
+      if (target.fallbackMapping) category.fallbackMappingCount += 1;
+      category.recentWrongCount += Number(target.recentWrongCount || 0);
+      category.productionPractisedCount += Number(target.productionPractisedCount || 0);
+      Object.keys(target.taskTypes).forEach(function(type){
+        if (!category.taskTypes[type]) category.taskTypes[type] = { available:0, done:0 };
+        category.taskTypes[type].available += Number(target.taskTypes[type].available || 0);
+        if (type === "production") {
+          if (target.productionPractisedCount > 0) category.taskTypes[type].done += 1;
+        } else if (target.taskTypes[type].starLevel >= 1) {
+          category.taskTypes[type].done += 1;
+        }
+      });
+    });
+    var ordered = Object.keys(categories).map(function(key){ return categories[key]; }).sort(function(a,b){ return a.order - b.order; });
+    ordered.forEach(function(category, index){
+      var total = Math.max(0, Number(category.coreTargetCount || 0));
+      category.percentAt1Star = total ? Math.round(category.starCounts[1] * 100 / total) : 0;
+      category.percentAt2Stars = total ? Math.round(category.starCounts[2] * 100 / total) : 0;
+      category.percentAt3Stars = total ? Math.round(category.starCounts[3] * 100 / total) : 0;
+      category.percentAt4Stars = total ? Math.round(category.starCounts[4] * 100 / total) : 0;
+      category.percentAt5Stars = total ? Math.round(category.starCounts[5] * 100 / total) : 0;
+      category.totalStarPercent = total ? Math.round(category.totalStars * 100 / (total * 5)) : 0;
+      category.requiredTaskTypes = Object.keys(category.taskTypes).filter(function(type){ return category.taskTypes[type].available > 0; });
+      category.missingTaskTypes = category.requiredTaskTypes.filter(function(type){ return category.taskTypes[type].done <= 0; });
+      category.recommendedUnlock = !category.preview && total > 0 && category.percentAt1Star >= 50 && category.missingTaskTypes.length === 0;
+      var previous = null;
+      for (var prevIndex = index - 1; prevIndex >= 0; prevIndex -= 1) {
+        if (!ordered[prevIndex].preview && ordered[prevIndex].coreTargetCount > 0) {
+          previous = ordered[prevIndex];
+          break;
+        }
+      }
+      var previousAllowsOpen = !previous || previous && (previous.recommendedUnlock || previous.override);
+      category.status = category.override ? "Open" : (category.recommendedUnlock ? "Recommended" : (previousAllowsOpen && total > 0 ? "Open" : "Locked"));
+      if (category.preview) category.status = "Preview";
+      category.statusLabel = category.recommendedUnlock ? "Recommended" : (category.recentWrongCount > 0 ? "Review suggested" : (category.missingTaskTypes.length ? "Needs one more type" : category.status));
+      if (category.override) category.statusLabel = "Open";
+    });
+    var allCore = ordered.reduce(function(total, category){ return total + category.coreTargetCount; }, 0);
+    var allStars = ordered.reduce(function(total, category){ return total + category.totalStars; }, 0);
+    var allStarCounts = { 1:0, 2:0, 3:0, 4:0, 5:0 };
+    ordered.forEach(function(category){ [1,2,3,4,5].forEach(function(level){ allStarCounts[level] += Number(category.starCounts[level] || 0); }); });
+    var recommended = ordered.filter(function(category){ return category.coreTargetCount > 0 && category.status !== "Preview"; }).sort(function(a,b){
+      if (a.recentWrongCount !== b.recentWrongCount) return b.recentWrongCount - a.recentWrongCount;
+      if (a.missingTaskTypes.length !== b.missingTaskTypes.length) return b.missingTaskTypes.length - a.missingTaskTypes.length;
+      return a.percentAt1Star - b.percentAt1Star;
+    })[0] || ordered[0];
+    return {
+      schemaVersion:"v1",
+      starLadder:B1_PATH_STAR_LABELS.slice(),
+      disclaimerShort:"Stars guide practice. They are not a mastery or exam-readiness score.",
+      disclaimerLong:"Stars show how often you have answered correctly in Ozmosis. They help guide practice, but they do not prove mastery, fluency, or exam readiness.",
+      categories:ordered,
+      targets:Object.keys(targetMap).map(function(key){ return targetMap[key]; }),
+      allB1:{
+        coreTargetCount:allCore,
+        percentAt1Star:allCore ? Math.round(allStarCounts[1] * 100 / allCore) : 0,
+        percentAt2Stars:allCore ? Math.round(allStarCounts[2] * 100 / allCore) : 0,
+        percentAt3Stars:allCore ? Math.round(allStarCounts[3] * 100 / allCore) : 0,
+        percentAt4Stars:allCore ? Math.round(allStarCounts[4] * 100 / allCore) : 0,
+        percentAt5Stars:allCore ? Math.round(allStarCounts[5] * 100 / allCore) : 0,
+        totalStarPercent:allCore ? Math.round(allStars * 100 / (allCore * 5)) : 0
+      },
+      recommendedTask:recommended ? {
+        categoryId:recommended.categoryId,
+        title:"Continue " + recommended.pathId + " " + recommended.label,
+        reason:recommended.recentWrongCount ? recommended.recentWrongCount + " recent misses are waiting." : (recommended.missingTaskTypes.length ? "Needs " + recommended.missingTaskTypes.map(b1PathTaskTypeLabel).join(", ") + "." : "You are close to the next path step."),
+        routeKey:recommended.routeKey || "today"
+      } : null,
+      limitations:[
+        "Stars are derived from existing local evidence records.",
+        "Production is tracked as practised, not correct.",
+        "Legacy/general-bank mapping uses conservative fallback where target-family metadata is incomplete."
+      ],
+      fallbackMappingCount:fallbackMappingCount
+    };
+  }
+  function b1PathProgressData(options) {
+    return b1PathProgressFromEvidence(options || {});
   }
   const B1_LEARNING_MAP_NODES = {
     cases_articles:{
@@ -11111,6 +11664,17 @@ body.b1Mode .clozeAnswerText {
     if (routeKey === "diagnostic") { startB1DiagnosticSprint(); return; }
     if (routeKey === "review_practice") { startB1ReviewPractice(); return; }
     if (routeKey === "targeted_repair") { startTargetedRepairPractice(); return; }
+    if (routeKey === "b1_m01") { startB1M01Round("mixed"); return; }
+    if (routeKey === "b1_m02") { startB1M02Round("mixed"); return; }
+    if (routeKey === "b1_m03") { startB1M03Round("mixed"); return; }
+    if (routeKey === "b1_m04") { startB1M04Round("mixed"); return; }
+    if (routeKey === "b1_m05") { startB1M05Round("mixed"); return; }
+    if (routeKey === "b1_m06") { startB1M06Round("mixed"); return; }
+    if (routeKey === "b1_m07") { startB1M07Round("mixed"); return; }
+    if (routeKey === "b1_m08") { startB1M08Round("mixed"); return; }
+    if (routeKey === "b1_m09") { startB1M09Round("mixed"); return; }
+    if (routeKey === "b1_m10") { startB1M10Round("mixed"); return; }
+    if (routeKey === "b1_m11") { startB1M11Round("mixed"); return; }
     if (routeKey === "grammar") { showGrammarHub(); return; }
     if (routeKey === "grammar_repair") { startConnectorSprint("repair"); return; }
     if (routeKey === "connectors") { startConnectorSprint("all"); return; }
@@ -12672,6 +13236,7 @@ body.b1Mode .clozeAnswerText {
     var map = b1LearningMapScaffold();
     var matrix = b1SkillMatrixData();
     var evidenceSummary = b1EvidenceSummary();
+    var pathProgress = b1PathProgressData();
     var summary = learningMapSummaryFor(map, evidenceSummary);
     var recommendation = b1NextRecommendedPractice({ map:map, matrix:matrix, evidenceSummary:evidenceSummary });
     var errorPatterns = b1ErrorPatternSignals();
@@ -12697,6 +13262,7 @@ body.b1Mode .clozeAnswerText {
       learningMapErrorPatternsHtml(errorPatterns) +
       learningMapErrorTypesHtml(errorTypes) +
       learningMapConnectorDiagnosticsHtml(connectorDiagnostics) +
+      learningMapB1PathHtml(pathProgress) +
       '<section class="learningMapPanel"><h3>Skill overview</h3><div class="learningMapNodeList">' + nodesHtml + '</div></section>' +
       '<details class="learningMapDisclosure learningMapEvidenceDetails">' +
         '<summary>Evidence details</summary>' +
@@ -13742,6 +14308,7 @@ body.b1Mode .clozeAnswerText {
   var resultHeatmapType = "definite";
   var learnerModel = defaultLearnerModel();
   var homeRecommendedRouteKey = "today";
+  var b1PathPendingUnlockId = "";
   var testerIntroDismissed = false;
 
   function el(id) { return document.getElementById(id); }
@@ -14535,9 +15102,142 @@ body.b1Mode .clozeAnswerText {
       '</details>' +
     '</section>';
   }
+  function b1PathCategoryById(progress, categoryId) {
+    var categories = progress && Array.isArray(progress.categories) ? progress.categories : [];
+    for (var i = 0; i < categories.length; i += 1) {
+      if (categories[i].categoryId === categoryId || categories[i].pathId === categoryId) return categories[i];
+    }
+    return null;
+  }
+  function b1PathPercentText(category) {
+    var total = Number(category && category.coreTargetCount || 0);
+    var count = Number(category && category.starCounts && category.starCounts[1] || 0);
+    if (!total) return "No active targets yet";
+    if (total < 5) return count + " of " + total + " got right once";
+    return Number(category.percentAt1Star || 0) + "% got right once";
+  }
+  function b1PathStatusClass(category) {
+    var label = String(category && category.statusLabel || category && category.status || "").toLowerCase();
+    if (/recommended|ready|open/.test(label)) return "open";
+    if (/locked|preview/.test(label)) return "locked";
+    return "recommended";
+  }
+  function b1PathStarBarHtml(category) {
+    var total = Math.max(1, Number(category && category.coreTargetCount || 0));
+    return '<div class="b1PathStarBar" aria-label="Stacked star progress">' + [1,2,3,4,5].map(function(level){
+      var pct = Math.round(Number(category && category.starCounts && category.starCounts[level] || 0) * 100 / total);
+      return '<span class="' + (pct > 0 ? "filled-" + level : "") + '" title="' + escapeHtml(B1_PATH_STAR_LABELS[level]) + ': ' + pct + '%"></span>';
+    }).join("") + '</div>';
+  }
+  function b1PathTypeSummary(category) {
+    var required = Array.isArray(category && category.requiredTaskTypes) ? category.requiredTaskTypes : [];
+    if (!required.length) return "No task types yet";
+    var missing = Array.isArray(category.missingTaskTypes) ? category.missingTaskTypes : [];
+    if (!missing.length) return "Types practised: done";
+    return "Needs: " + missing.slice(0, 2).map(b1PathTaskTypeLabel).join(", ") + (missing.length > 2 ? " +" + (missing.length - 2) : "");
+  }
+  function b1PathCategoryCardHtml(category, compact) {
+    var status = category.statusLabel || category.status || "Open";
+    var actionLabel = category.status === "Locked" ? "Unlock" : "Open";
+    if (category.preview) actionLabel = "Details";
+    return '<article class="b1PathCard" data-path-category="' + escapeHtml(category.categoryId) + '">' +
+      '<div class="b1PathCardTop"><strong class="b1PathCardTitle">' + escapeHtml(category.pathId + " " + category.label) + '</strong><span class="b1PathStatus ' + b1PathStatusClass(category) + '">' + escapeHtml(status) + '</span></div>' +
+      '<div class="b1PathMetricLine"><span>' + escapeHtml(b1PathPercentText(category)) + '</span><strong>' + Number(category.totalStarPercent || 0) + '% stars</strong></div>' +
+      b1PathStarBarHtml(category) +
+      '<div class="b1PathTypeLine"><span>' + escapeHtml(b1PathTypeSummary(category)) + '</span><span>' + Number(category.coreTargetCount || 0) + ' targets</span></div>' +
+      (compact ? '' : '<p class="learningMapText">Production, where present, is practised-only. Stars come from auto-checked correct answers.</p>') +
+      '<div class="b1PathActions">' +
+        '<button class="b1PathAction b1PathRouteAction" type="button" data-category-id="' + escapeHtml(category.categoryId) + '">' + escapeHtml(actionLabel) + '</button>' +
+      '</div>' +
+    '</article>';
+  }
+  function renderHomeB1Path(progress) {
+    var target = el("homeB1PathCards");
+    if (!target) return;
+    progress = progress || b1PathProgressData();
+    var categories = (progress.categories || []).filter(function(category){
+      return category.coreTargetCount > 0 && !category.preview;
+    });
+    var recommended = progress.recommendedTask ? b1PathCategoryById(progress, progress.recommendedTask.categoryId) : null;
+    var selected = [];
+    if (recommended) selected.push(recommended);
+    categories.forEach(function(category){
+      if (selected.length >= 4) return;
+      if (selected.some(function(row){ return row.categoryId === category.categoryId; })) return;
+      if (category.status === "Open" || category.status === "Recommended" || category.percentAt1Star > 0 || selected.length < 2) selected.push(category);
+    });
+    if (!selected.length) selected = categories.slice(0, 4);
+    target.innerHTML = selected.slice(0, 4).map(function(category){ return b1PathCategoryCardHtml(category, true); }).join("");
+  }
+  function learningMapB1PathHtml(progress) {
+    progress = progress || b1PathProgressData();
+    var categories = (progress.categories || []).filter(function(category){ return category.coreTargetCount > 0 || category.preview; });
+    return '<section class="learningMapPanel b1PathSection" aria-labelledby="learningMapB1PathTitle">' +
+      '<h3 id="learningMapB1PathTitle">B1 Path</h3>' +
+      '<p class="learningMapText">All B1 Progress: ' + Number(progress.allB1.percentAt1Star || 0) + '% got right once - ' + Number(progress.allB1.totalStarPercent || 0) + '% total stars.</p>' +
+      '<p class="b1PathDisclaimer">' + escapeHtml(progress.disclaimerShort) + '</p>' +
+      '<div class="b1PathAreaGrid">' + categories.map(function(category){ return b1PathCategoryCardHtml(category, false); }).join("") + '</div>' +
+      '<details class="learningMapDisclosure"><summary>How stars work</summary>' +
+        '<div class="learningMapDetail">' + escapeHtml(progress.disclaimerLong) + '</div>' +
+        '<div class="b1PathDetailGrid">' + [0,1,2,3,4,5].map(function(level){
+          return '<div class="learningMapDetail">' + level + B1_PATH_STAR + ' - ' + escapeHtml(B1_PATH_STAR_LABELS[level]) + '</div>';
+        }).join("") + '</div>' +
+        '<div class="learningMapLimitation">Targets are grouped by target family or conservative fallback metadata, so variants do not inflate the denominator.</div>' +
+      '</details>' +
+    '</section>';
+  }
+  function showB1PathUnlockDialog(categoryId) {
+    var progress = b1PathProgressData();
+    var category = b1PathCategoryById(progress, categoryId);
+    if (!category) return;
+    b1PathPendingUnlockId = category.categoryId;
+    var body = el("b1PathUnlockBody");
+    if (body) {
+      body.innerHTML =
+        '<p><strong>' + escapeHtml(category.pathId + " " + category.label) + '</strong></p>' +
+        '<p>Got right once: ' + escapeHtml(b1PathPercentText(category)) + '</p>' +
+        '<p>Types practised: ' + escapeHtml(b1PathTypeSummary(category)) + '</p>' +
+        '<p>You can continue anyway. This does not mark the previous category complete.</p>';
+    }
+    if (el("b1PathUnlockOverlay")) el("b1PathUnlockOverlay").hidden = false;
+    setTimeout(function(){ if (el("b1PathKeepPractisingBtn")) el("b1PathKeepPractisingBtn").focus(); }, 0);
+  }
+  function closeB1PathUnlockDialog() {
+    if (el("b1PathUnlockOverlay")) el("b1PathUnlockOverlay").hidden = true;
+    b1PathPendingUnlockId = "";
+  }
+  function b1PathRecordUnlockOverride(categoryId) {
+    var progress = b1PathProgressData();
+    var category = b1PathCategoryById(progress, categoryId);
+    if (!category) return;
+    var store = safeGetB1PathUnlockOverrides();
+    store.categories[category.categoryId] = {
+      categoryId:category.categoryId,
+      unlockedByOverride:true,
+      overrideAt:new Date().toISOString(),
+      previousCategoryProgressAtOverride:{
+        percentAt1Star:category.percentAt1Star,
+        totalStarPercent:category.totalStarPercent,
+        missingTaskTypes:(category.missingTaskTypes || []).slice(),
+        coreTargetCount:category.coreTargetCount
+      }
+    };
+    safeSetB1PathUnlockOverrides(store);
+  }
+  function openB1PathCategory(categoryId) {
+    var progress = b1PathProgressData();
+    var category = b1PathCategoryById(progress, categoryId);
+    if (!category) return;
+    if (category.status === "Locked" && !category.override) {
+      showB1PathUnlockDialog(category.categoryId);
+      return;
+    }
+    openB1RecommendationRoute(category.routeKey || "learning_map");
+  }
   function renderHomeCommandScreen() {
     var summary = b1HomeProgressSummary();
     var map = b1LearningMapScaffold();
+    var pathProgress = b1PathProgressData();
     var evidenceSummary = b1EvidenceSummary();
     var mapSummary = learningMapSummaryFor(map, evidenceSummary);
     var recommendation = b1NextRecommendedPractice({ map:map, matrix:b1SkillMatrixData(), evidenceSummary:evidenceSummary });
@@ -14579,6 +15279,7 @@ body.b1Mode .clozeAnswerText {
     if (el("homeHeroProgress")) el("homeHeroProgress").hidden = homeRecommendedRouteKey !== "today";
     setHomeHeroProgress(fill, retryFill);
     setHomeStatus(summary, mapSummary, recommendation);
+    renderHomeB1Path(pathProgress);
     updateReviewPracticeUx();
     if (el("homeTesterCard")) el("homeTesterCard").hidden = testerIntroDismissed || b1EvidenceCount() > 0;
   }
@@ -15044,6 +15745,35 @@ body.b1Mode .clozeAnswerText {
   function safeSetB1Evidence(obj) {
     try {
       window.localStorage.setItem(B1_EVIDENCE_STORAGE_KEY, JSON.stringify(normaliseB1EvidenceStore(obj)));
+    } catch (e) {}
+  }
+  function normaliseB1PathUnlockOverrides(input) {
+    var source = input && typeof input === "object" ? input : {};
+    var categories = source.categories && typeof source.categories === "object" ? source.categories : {};
+    var out = { schemaVersion:Number(source.schemaVersion || 1), categories:{} };
+    Object.keys(categories).forEach(function(id){
+      var row = categories[id];
+      if (!row || typeof row !== "object") return;
+      out.categories[id] = {
+        categoryId:String(row.categoryId || id),
+        unlockedByOverride:row.unlockedByOverride !== false,
+        overrideAt:String(row.overrideAt || ""),
+        previousCategoryProgressAtOverride:row.previousCategoryProgressAtOverride && typeof row.previousCategoryProgressAtOverride === "object" ? row.previousCategoryProgressAtOverride : {}
+      };
+    });
+    return out;
+  }
+  function safeGetB1PathUnlockOverrides() {
+    try {
+      var raw = window.localStorage.getItem(B1_PATH_UNLOCK_STORAGE_KEY);
+      return normaliseB1PathUnlockOverrides(raw ? JSON.parse(raw) : null);
+    } catch (e) {
+      return { schemaVersion:1, categories:{} };
+    }
+  }
+  function safeSetB1PathUnlockOverrides(obj) {
+    try {
+      window.localStorage.setItem(B1_PATH_UNLOCK_STORAGE_KEY, JSON.stringify(normaliseB1PathUnlockOverrides(obj)));
     } catch (e) {}
   }
   function b1EvidenceUnique(values) {
@@ -21040,9 +21770,9 @@ body.b1Mode .clozeAnswerText {
     if (el("learnerReportStatus")) el("learnerReportStatus").textContent = "Learning summary download created. The JSON export/import format is unchanged.";
     setTimeout(function(){ URL.revokeObjectURL(url); },250);
   }
-  function exportProgress(){ savePersistent(); var b1Store=safeGetB1Progress(); var evidenceStore=safeGetB1Evidence(); var payload={app:"Ozmosis",appVersion:OZMOSIS_APP_VERSION,version:OZMOSIS_EXPORT_VERSION,taskDepthSchemaVersion:B1_TASK_DEPTH_SCHEMA_VERSION,supportLevelSchemaVersion:B1_SUPPORT_LEVEL_SCHEMA_VERSION,exportedAt:new Date().toISOString(),sessionLog:sessionLog.slice(-80),data:safeGetObject(),leitner:safeGetLeitner(),b1:b1Store,evidence:evidenceStore}; var blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"}); var url=URL.createObjectURL(blob); var a=document.createElement("a"); a.href=url; a.download="ozmosis-progress.json"; document.body.appendChild(a); a.click(); a.remove(); showAppStatus("Export created: " + b1ProgressCount(b1Store) + " B1 progress items and " + b1EvidenceCount(evidenceStore) + " evidence records.", "good"); setTimeout(function(){ URL.revokeObjectURL(url); },250); }
-  function importProgress(file){ if (!file) return; var reader=new FileReader(); reader.onload=function(){ try { var parsed=JSON.parse(String(reader.result || "{}")), data=parsed.data || parsed; safeSetObject(data); if (parsed.leitner && typeof parsed.leitner === "object") safeSetLeitner(parsed.leitner); if (parsed.b1 && typeof parsed.b1 === "object") safeSetB1Progress(parsed.b1); if (parsed.evidence && typeof parsed.evidence === "object") safeSetB1Evidence(parsed.evidence); loadPersistent(); newRound(); } catch(e){ el("feedback").textContent="Import fehlgeschlagen: ungültige JSON-Datei."; el("feedback").className="feedback missed"; } }; reader.readAsText(file); }
-  function importProgressWithFeedback(file){ if (!file) { showAppStatus("No import file selected.", "warn"); return; } var reader=new FileReader(); reader.onload=function(){ try { var parsed=JSON.parse(String(reader.result || "{}")), data=parsed.data || parsed; safeSetObject(data); if (parsed.leitner && typeof parsed.leitner === "object") safeSetLeitner(parsed.leitner); if (parsed.b1 && typeof parsed.b1 === "object") safeSetB1Progress(parsed.b1); if (parsed.evidence && typeof parsed.evidence === "object") safeSetB1Evidence(parsed.evidence); loadPersistent(); setMenu(false); showHomeScreen(); showAppStatus("Import successful: " + b1ProgressCount() + " B1 progress items and " + b1EvidenceCount() + " evidence records available.", "good"); } catch(e){ showAppStatus("Import failed: invalid JSON file.", "bad"); if (el("feedback")) { el("feedback").textContent="Import failed: invalid JSON file."; el("feedback").className="feedback missed"; } } }; reader.readAsText(file); }
+  function exportProgress(){ savePersistent(); var b1Store=safeGetB1Progress(); var evidenceStore=safeGetB1Evidence(); var payload={app:"Ozmosis",appVersion:OZMOSIS_APP_VERSION,version:OZMOSIS_EXPORT_VERSION,taskDepthSchemaVersion:B1_TASK_DEPTH_SCHEMA_VERSION,supportLevelSchemaVersion:B1_SUPPORT_LEVEL_SCHEMA_VERSION,b1PathStarSchemaVersion:"v1",exportedAt:new Date().toISOString(),sessionLog:sessionLog.slice(-80),data:safeGetObject(),leitner:safeGetLeitner(),b1:b1Store,evidence:evidenceStore,b1PathUnlocks:safeGetB1PathUnlockOverrides()}; var blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"}); var url=URL.createObjectURL(blob); var a=document.createElement("a"); a.href=url; a.download="ozmosis-progress.json"; document.body.appendChild(a); a.click(); a.remove(); showAppStatus("Export created: " + b1ProgressCount(b1Store) + " B1 progress items and " + b1EvidenceCount(evidenceStore) + " evidence records.", "good"); setTimeout(function(){ URL.revokeObjectURL(url); },250); }
+  function importProgress(file){ if (!file) return; var reader=new FileReader(); reader.onload=function(){ try { var parsed=JSON.parse(String(reader.result || "{}")), data=parsed.data || parsed; safeSetObject(data); if (parsed.leitner && typeof parsed.leitner === "object") safeSetLeitner(parsed.leitner); if (parsed.b1 && typeof parsed.b1 === "object") safeSetB1Progress(parsed.b1); if (parsed.evidence && typeof parsed.evidence === "object") safeSetB1Evidence(parsed.evidence); if (parsed.b1PathUnlocks && typeof parsed.b1PathUnlocks === "object") safeSetB1PathUnlockOverrides(parsed.b1PathUnlocks); loadPersistent(); newRound(); } catch(e){ el("feedback").textContent="Import fehlgeschlagen: ungültige JSON-Datei."; el("feedback").className="feedback missed"; } }; reader.readAsText(file); }
+  function importProgressWithFeedback(file){ if (!file) { showAppStatus("No import file selected.", "warn"); return; } var reader=new FileReader(); reader.onload=function(){ try { var parsed=JSON.parse(String(reader.result || "{}")), data=parsed.data || parsed; safeSetObject(data); if (parsed.leitner && typeof parsed.leitner === "object") safeSetLeitner(parsed.leitner); if (parsed.b1 && typeof parsed.b1 === "object") safeSetB1Progress(parsed.b1); if (parsed.evidence && typeof parsed.evidence === "object") safeSetB1Evidence(parsed.evidence); if (parsed.b1PathUnlocks && typeof parsed.b1PathUnlocks === "object") safeSetB1PathUnlockOverrides(parsed.b1PathUnlocks); loadPersistent(); setMenu(false); showHomeScreen(); showAppStatus("Import successful: " + b1ProgressCount() + " B1 progress items and " + b1EvidenceCount() + " evidence records available.", "good"); } catch(e){ showAppStatus("Import failed: invalid JSON file.", "bad"); if (el("feedback")) { el("feedback").textContent="Import failed: invalid JSON file."; el("feedback").className="feedback missed"; } } }; reader.readAsText(file); }
   importProgress = importProgressWithFeedback;
   document.addEventListener("click", function(event){
     var target = event.target && event.target.closest ? event.target.closest("#diagnosticIntroStartBtn, #diagnosticIntroCancelBtn, #diagnosticIntroOverlay, #practiceExitControl, #practiceExitStayBtn, #practiceExitConfirmBtn, #practiceExitOverlay, #testerNotesCopyReportBtn, #testerNotesCopyDebugBtn, #testerNotesCloseBtn, #testerNotesOverlay") : null;
@@ -22038,6 +22768,8 @@ window.ozmosisTesterReportSummary=testerReportSummary; window.ozmosisLearnerRead
     summary.b1M09Count = B1_M09_ITEMS.length;
     summary.b1M10Count = B1_M10_ITEMS.length;
     summary.b1M11Count = B1_M11_ITEMS.length;
+    summary.b1Path = b1PathProgressData();
+    summary.b1PathUnlocks = safeGetB1PathUnlockOverrides();
     return summary;
   };
   window.ozmosisStartB1M06 = function(filter){ startB1M06Round(filter || "mixed"); };
@@ -22350,7 +23082,7 @@ window.ozmosisTesterReportSummary=testerReportSummary; window.ozmosisLearnerRead
     bind("genitiveHelpBtn","click",openGenitiveHelp);
     bind("startGenitiveHelpBtn","click",openGenitiveHelp);
     bind("genitiveHelpCloseBtn","click",closeGenitiveHelp);
-    if (el("genitiveHelpOverlay")) el("genitiveHelpOverlay").addEventListener("click",function(event){ if (event.target === el("genitiveHelpOverlay")) closeGenitiveHelp(); },false); bind("englishSupport","change",function(){ savePersistent(); if (b1Runtime.active) renderB1Translation(false); else if (current) renderQuestion(); }); bind("roundTarget","change",function(){ if (shouldApplyLiveSettings()) newRound(); else savePersistent(); }); bind("adaptiveMode","change",function(){ savePersistent(); if (shouldApplyLiveSettings()) newRound(); }); bind("menuHomeBtn","click",function(){ setMenu(false); showHomeScreen(); }); bind("menuSprintBtn","click",function(){ setMenu(false); startB1Round("mixed"); }); bind("menuRecommendedBtn","click",function(){ setMenu(false); openB1RecommendationRoute(homeRecommendedRouteKey || "today"); }); bind("menuGrammarBtn","click",function(){ setMenu(false); showGrammarHub(); }); bind("menuRedemittelBtn","click",function(){ setMenu(false); showRedemittelHub(); }); bind("menuCaseTrainerBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("menuReviewPracticeBtn","click",function(){ setMenu(false); startB1ReviewPractice(); }); bind("restartBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("resetBestBtn","click",function(){window.kasusResetBest();}); bind("resetProfileBtn","click",function(){window.kasusResetProfile();}); bind("exportBtn","click",exportProgress); bind("importBtn","click",function(){el("importFile").click();}); bind("copyLearnerReportBtn","click",copyLearnerReadableProgressReport); bind("downloadLearnerReportBtn","click",downloadLearnerReadableProgressReport); bind("importFile","change",function(event){ importProgress(event.target.files && event.target.files[0]); event.target.value=""; }); bind("devToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("devMenuBtn","click",function(event){ event.stopPropagation(); setMenu(!el("settingsPanel").classList.contains("open")); }); bind("devCloseBtn","click",function(){ setDevTools(false); }); bind("newGameCloseBtn","click",function(){ setDevTools(false); }); bind("leitnerCloseBtn","click",closeLeitnerPrototype); bind("openNewGameMockBtn","click",showNewGameMock); bind("openLeitnerPrototypeBtn","click",showLeitnerPrototype); bind("resetLeitnerPrototypeBtn","click",showLeitnerResetConfirm); bind("backToDevListBtn","click",showDevList); bind("leitnerResetCloseBtn","click",showDevList); bind("cancelLeitnerResetBtn","click",showDevList); bind("confirmLeitnerResetBtn","click",resetLeitnerPrototypeProgress); bind("leitnerRestartBtn","click",startLeitnerQueue); bind("leitnerCheckBtn","click",checkLeitnerAnswer); bind("leitnerNextBtn","click",nextLeitnerCard); bind("leitnerAnswerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (leitnerRuntime.answered) nextLeitnerCard(); else checkLeitnerAnswer(); }); bind("applyNewGameMockBtn","click",applyNewGameMock); bind("homeSprintBtn","click",function(){ startB1Round("mixed"); }); bind("homeDiagnosticBtn","click",startB1DiagnosticSprint); bind("homeLearningMapBtn","click",showLearningMapScreen); bind("learningMapBackBtn","click",showHomeScreen); bind("diagnosticExitBtn","click",exitB1Diagnostic); bind("homeGrammarBtn","click",showGrammarHub); bind("grammarBackBtn","click",showHomeScreen); bind("grammarSeedBtn","click",function(){ startB1Round("grammar_cloze"); }); bind("connectorAllBtn","click",function(){ startConnectorSprint("all"); }); bind("connectorReasonBtn","click",function(){ startConnectorSprint("reason"); }); bind("connectorContrastBtn","click",function(){ startConnectorSprint("contrast"); }); bind("connectorPurposeBtn","click",function(){ startConnectorSprint("purpose"); }); bind("connectorTimeBtn","click",function(){ startConnectorSprint("time"); }); bind("connectorRepairBtn","click",function(){ startConnectorSprint("repair"); }); bind("homeWortschatzBtn","click",function(){ startWortschatzRound("mixed"); }); bind("homeRedemittelBtn","click",function(){ startB1Round("redemittel_cloze"); }); bind("homeCaseTrainerBtn","click",showStartScreen); bind("caseTrainerBackBtn","click",showHomeScreen); bind("homeOptionsBtn","click",function(event){ event.stopPropagation(); setDevTools(false); setMenu(true); if (el("menuOptionsDetails")) el("menuOptionsDetails").open = true; setTimeout(function(){ var summary = el("menuOptionsDetails") && el("menuOptionsDetails").querySelector("summary"); if (summary) focusWithoutScroll(summary); }, 0); }); bind("homeDevToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("hubBackBtn","click",showHomeScreen); document.querySelectorAll(".homePlaceholderBtn").forEach(function(btn){ btn.addEventListener("click",function(){ showHubPlaceholder(btn.getAttribute("data-title") || btn.textContent.trim()); }); }); var devOverlay=el("devOverlay"); if (devOverlay) devOverlay.addEventListener("click",function(event){ if (event.target === devOverlay && !devOverlay.classList.contains("leitnerFullscreen")) setDevTools(false); },false); document.addEventListener("keydown",function(event){ if ((event.key === "Escape" || event.key === "Esc") && el("genitiveHelpOverlay") && !el("genitiveHelpOverlay").hidden) { el("genitiveHelpOverlay").hidden = true; return; } if ((event.key === "Escape" || event.key === "Esc") && el("devOverlay") && !el("devOverlay").hidden) { setDevTools(false); return; } if ((event.key === "Escape" || event.key === "Esc") && b1Runtime.mode === "b1_diagnostic" && (state === "b1Checking" || state === "b1Next")) { exitB1Diagnostic(); return; } if ((event.key === "Escape" || event.key === "Esc") && (state === "placeholder" || state === "grammarHub" || state === "learningMap")) showHomeScreen(); }); bind("checkBtn","click",function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }); bind("noArticleBtn","click",function(){checkAnswer("none");}); bind("nextBtn","click",proceed); bind("hintBtn","click",showHint); bind("supportPlaceholder","click",showHint); bind("translationToggle","click",toggleB1Translation); bind("whyNoStarsBtn","click",explainExtraPracticeStars); bind("startRoundBtn","click",startConfiguredRound); document.querySelectorAll(".langBtn").forEach(function(btn){ btn.addEventListener("click",function(){ setSupportLanguage(btn.getAttribute("data-lang")); }); }); bind("answerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (state==="b1Checking") checkB1Answer(); else if (state==="checking") checkAnswer(); else proceed(); }); renderHud(); applyLanguage(); showHomeScreen(); }
+    if (el("genitiveHelpOverlay")) el("genitiveHelpOverlay").addEventListener("click",function(event){ if (event.target === el("genitiveHelpOverlay")) closeGenitiveHelp(); },false); bind("englishSupport","change",function(){ savePersistent(); if (b1Runtime.active) renderB1Translation(false); else if (current) renderQuestion(); }); bind("roundTarget","change",function(){ if (shouldApplyLiveSettings()) newRound(); else savePersistent(); }); bind("adaptiveMode","change",function(){ savePersistent(); if (shouldApplyLiveSettings()) newRound(); }); bind("menuHomeBtn","click",function(){ setMenu(false); showHomeScreen(); }); bind("menuSprintBtn","click",function(){ setMenu(false); startB1Round("mixed"); }); bind("menuRecommendedBtn","click",function(){ setMenu(false); openB1RecommendationRoute(homeRecommendedRouteKey || "today"); }); bind("menuGrammarBtn","click",function(){ setMenu(false); showGrammarHub(); }); bind("menuRedemittelBtn","click",function(){ setMenu(false); showRedemittelHub(); }); bind("menuCaseTrainerBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("menuReviewPracticeBtn","click",function(){ setMenu(false); startB1ReviewPractice(); }); bind("restartBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("resetBestBtn","click",function(){window.kasusResetBest();}); bind("resetProfileBtn","click",function(){window.kasusResetProfile();}); bind("exportBtn","click",exportProgress); bind("importBtn","click",function(){el("importFile").click();}); bind("copyLearnerReportBtn","click",copyLearnerReadableProgressReport); bind("downloadLearnerReportBtn","click",downloadLearnerReadableProgressReport); bind("importFile","change",function(event){ importProgress(event.target.files && event.target.files[0]); event.target.value=""; }); bind("devToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("devMenuBtn","click",function(event){ event.stopPropagation(); setMenu(!el("settingsPanel").classList.contains("open")); }); bind("devCloseBtn","click",function(){ setDevTools(false); }); bind("newGameCloseBtn","click",function(){ setDevTools(false); }); bind("leitnerCloseBtn","click",closeLeitnerPrototype); bind("openNewGameMockBtn","click",showNewGameMock); bind("openLeitnerPrototypeBtn","click",showLeitnerPrototype); bind("resetLeitnerPrototypeBtn","click",showLeitnerResetConfirm); bind("backToDevListBtn","click",showDevList); bind("leitnerResetCloseBtn","click",showDevList); bind("cancelLeitnerResetBtn","click",showDevList); bind("confirmLeitnerResetBtn","click",resetLeitnerPrototypeProgress); bind("leitnerRestartBtn","click",startLeitnerQueue); bind("leitnerCheckBtn","click",checkLeitnerAnswer); bind("leitnerNextBtn","click",nextLeitnerCard); bind("leitnerAnswerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (leitnerRuntime.answered) nextLeitnerCard(); else checkLeitnerAnswer(); }); bind("applyNewGameMockBtn","click",applyNewGameMock); bind("homeSprintBtn","click",function(){ startB1Round("mixed"); }); bind("homeDiagnosticBtn","click",startB1DiagnosticSprint); bind("homeLearningMapBtn","click",showLearningMapScreen); bind("learningMapBackBtn","click",showHomeScreen); bind("diagnosticExitBtn","click",exitB1Diagnostic); bind("homeGrammarBtn","click",showGrammarHub); bind("grammarBackBtn","click",showHomeScreen); bind("grammarSeedBtn","click",function(){ startB1Round("grammar_cloze"); }); bind("connectorAllBtn","click",function(){ startConnectorSprint("all"); }); bind("connectorReasonBtn","click",function(){ startConnectorSprint("reason"); }); bind("connectorContrastBtn","click",function(){ startConnectorSprint("contrast"); }); bind("connectorPurposeBtn","click",function(){ startConnectorSprint("purpose"); }); bind("connectorTimeBtn","click",function(){ startConnectorSprint("time"); }); bind("connectorRepairBtn","click",function(){ startConnectorSprint("repair"); }); bind("homeWortschatzBtn","click",function(){ startWortschatzRound("mixed"); }); bind("homeRedemittelBtn","click",function(){ startB1Round("redemittel_cloze"); }); bind("homeCaseTrainerBtn","click",showStartScreen); bind("caseTrainerBackBtn","click",showHomeScreen); bind("homeOptionsBtn","click",function(event){ event.stopPropagation(); setDevTools(false); setMenu(true); if (el("menuOptionsDetails")) el("menuOptionsDetails").open = true; setTimeout(function(){ var summary = el("menuOptionsDetails") && el("menuOptionsDetails").querySelector("summary"); if (summary) focusWithoutScroll(summary); }, 0); }); bind("homeDevToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("hubBackBtn","click",showHomeScreen); document.querySelectorAll(".homePlaceholderBtn").forEach(function(btn){ btn.addEventListener("click",function(){ showHubPlaceholder(btn.getAttribute("data-title") || btn.textContent.trim()); }); }); document.addEventListener("click",function(event){ var routeButton = event.target && event.target.closest ? event.target.closest(".b1PathRouteAction") : null; if (routeButton) { event.preventDefault(); openB1PathCategory(routeButton.getAttribute("data-category-id")); return; } }); bind("b1PathKeepPractisingBtn","click",function(){ var categoryId = b1PathPendingUnlockId; var progress = b1PathProgressData(); var categories = (progress.categories || []).filter(function(category){ return category.coreTargetCount > 0 && !category.preview; }); var category = b1PathCategoryById(progress, categoryId); var index = categories.findIndex(function(row){ return row.categoryId === categoryId; }); var practiceCategory = index > 0 ? categories[index - 1] : category; closeB1PathUnlockDialog(); openB1RecommendationRoute(practiceCategory && practiceCategory.routeKey || "today"); }); bind("b1PathUnlockAnywayBtn","click",function(){ var categoryId = b1PathPendingUnlockId; if (!categoryId) return; b1PathRecordUnlockOverride(categoryId); closeB1PathUnlockDialog(); openB1PathCategory(categoryId); }); if (el("b1PathUnlockOverlay")) el("b1PathUnlockOverlay").addEventListener("click",function(event){ if (event.target === el("b1PathUnlockOverlay")) closeB1PathUnlockDialog(); },false); var devOverlay=el("devOverlay"); if (devOverlay) devOverlay.addEventListener("click",function(event){ if (event.target === devOverlay && !devOverlay.classList.contains("leitnerFullscreen")) setDevTools(false); },false); document.addEventListener("keydown",function(event){ if ((event.key === "Escape" || event.key === "Esc") && el("b1PathUnlockOverlay") && !el("b1PathUnlockOverlay").hidden) { closeB1PathUnlockDialog(); return; } if ((event.key === "Escape" || event.key === "Esc") && el("genitiveHelpOverlay") && !el("genitiveHelpOverlay").hidden) { el("genitiveHelpOverlay").hidden = true; return; } if ((event.key === "Escape" || event.key === "Esc") && el("devOverlay") && !el("devOverlay").hidden) { setDevTools(false); return; } if ((event.key === "Escape" || event.key === "Esc") && b1Runtime.mode === "b1_diagnostic" && (state === "b1Checking" || state === "b1Next")) { exitB1Diagnostic(); return; } if ((event.key === "Escape" || event.key === "Esc") && (state === "placeholder" || state === "grammarHub" || state === "learningMap")) showHomeScreen(); }); bind("checkBtn","click",function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }); bind("noArticleBtn","click",function(){checkAnswer("none");}); bind("nextBtn","click",proceed); bind("hintBtn","click",showHint); bind("supportPlaceholder","click",showHint); bind("translationToggle","click",toggleB1Translation); bind("whyNoStarsBtn","click",explainExtraPracticeStars); bind("startRoundBtn","click",startConfiguredRound); document.querySelectorAll(".langBtn").forEach(function(btn){ btn.addEventListener("click",function(){ setSupportLanguage(btn.getAttribute("data-lang")); }); }); bind("answerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (state==="b1Checking") checkB1Answer(); else if (state==="checking") checkAnswer(); else proceed(); }); renderHud(); applyLanguage(); showHomeScreen(); }
   function initOzmosisApp() {
     init();
     window.setTimeout(function(){
