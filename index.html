@@ -5104,6 +5104,47 @@ body.homeMode #settingsPanel {
 .b1PathStarBar span.filled-4 { background:color-mix(in srgb, var(--ok) 72%, rgba(125,227,255,.08)); }
 .b1PathStarBar span.filled-5 { background:color-mix(in srgb, var(--ok) 88%, rgba(125,227,255,.08)); }
 
+.b1PathStarRows {
+  display:grid;
+  gap:5px;
+  border:1px solid color-mix(in srgb, var(--accent) 20%, var(--line));
+  border-radius:12px;
+  padding:8px;
+  background:rgba(3,10,20,.42);
+}
+
+.b1PathStarRow,
+.b1PathMissingList {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  color:var(--muted);
+  font-size:.75rem;
+  line-height:1.22;
+  font-weight:850;
+}
+
+.b1PathStarRow strong,
+.b1PathMissingList strong {
+  color:var(--text);
+  font-variant-numeric:tabular-nums;
+}
+
+.b1PathSubcategories {
+  margin:0;
+  padding-left:18px;
+  color:var(--muted);
+  font-size:.76rem;
+  line-height:1.25;
+  font-weight:820;
+}
+
+.b1PathSubcategories li + li {
+  margin-top:3px;
+}
+
 .b1PathActions {
   display:flex;
   flex-wrap:wrap;
@@ -5136,6 +5177,84 @@ body.homeMode #settingsPanel {
   font-size:.78rem;
   line-height:1.3;
   font-weight:850;
+}
+
+.b1TaskStarStrip {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  width:auto;
+  max-width:100%;
+  margin:2px auto 0;
+  border:1px solid color-mix(in srgb, var(--accent) 32%, var(--line));
+  border-radius:999px;
+  padding:5px 9px;
+  background:rgba(3,10,20,.68);
+  color:var(--muted);
+  font-size:clamp(.7rem, 2.6vw, .82rem);
+  line-height:1.1;
+  font-weight:900;
+}
+
+.b1TaskStarStrip[hidden] {
+  display:none !important;
+}
+
+.b1StarGlyphs {
+  direction:ltr;
+  white-space:nowrap;
+  letter-spacing:0;
+  color:rgba(164,176,198,.46);
+  font-variant-numeric:tabular-nums;
+}
+
+.b1StarGlyphs .filled {
+  color:var(--ok);
+  text-shadow:0 0 8px rgba(74,255,168,.18);
+}
+
+.b1TaskStarCopy {
+  color:var(--text);
+}
+
+.b1TaskStarMeta {
+  color:var(--muted);
+}
+
+.b1StarUpdateLine {
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  align-items:center;
+  margin-top:7px;
+  border:1px solid color-mix(in srgb, var(--accent) 26%, var(--line));
+  border-radius:12px;
+  padding:7px 9px;
+  background:rgba(4,12,24,.72);
+  color:var(--muted);
+  font-size:.82rem;
+  line-height:1.25;
+  font-weight:880;
+}
+
+.b1StarUpdateLine.positive {
+  border-color:color-mix(in srgb, var(--ok) 45%, var(--line));
+  color:color-mix(in srgb, var(--ok) 74%, var(--text));
+}
+
+.b1StarUpdateLine.neutral {
+  color:var(--muted);
+}
+
+.b1StarUpdateLine.warn {
+  border-color:color-mix(in srgb, var(--bad) 42%, var(--line));
+  color:color-mix(in srgb, var(--bad) 72%, var(--text));
+}
+
+.b1StarUpdateLine .b1StarGlyphs {
+  color:rgba(164,176,198,.52);
 }
 
 .b1PathUnlockOverlay {
@@ -8551,6 +8670,7 @@ body.b1Mode .clozeAnswerText {
       <section class="challengeCard">
         <div class="b1PracticeTag" id="b1PracticeTag" hidden>EXTRA PRACTICE</div>
         <div class="modeTitle" id="modeTitle">Bestimmter Artikel</div>
+        <div class="b1TaskStarStrip" id="b1TaskStarStatus" hidden aria-live="polite"></div>
         <div class="promptStack">
           <span class="promptWord" id="promptValue">Dativ Plural</span>
         </div>
@@ -8666,7 +8786,7 @@ body.b1Mode .clozeAnswerText {
 
 <div class="b1PathUnlockOverlay" id="b1PathUnlockOverlay" hidden role="dialog" aria-modal="true" aria-labelledby="b1PathUnlockTitle">
   <div class="b1PathUnlockCard" role="document">
-    <h2 id="b1PathUnlockTitle">Ozmosis recommends a little more practice first.</h2>
+    <h2 id="b1PathUnlockTitle">Ozmosis recommends more practice here first.</h2>
     <div id="b1PathUnlockBody"></div>
     <div class="b1PathUnlockActions">
       <button id="b1PathKeepPractisingBtn" type="button">Keep practising</button>
@@ -9021,8 +9141,8 @@ body.b1Mode .clozeAnswerText {
   var B1_EVIDENCE_STORAGE_KEY = "ozmosis_b1_progress_evidence_v1";
   var B1_PATH_UNLOCK_STORAGE_KEY = "ozmosis_b1_path_unlock_overrides_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.80.14.6";
-  var OZMOSIS_EXPORT_VERSION = "v0.80.14.6-b1-progress-path-star-gate";
+  var OZMOSIS_APP_VERSION = "v0.80.14.7";
+  var OZMOSIS_EXPORT_VERSION = "v0.80.14.7-b1-progress-stars-task-screen";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -9897,25 +10017,27 @@ body.b1Mode .clozeAnswerText {
     "Got right 5 times"
   ];
   const B1_PATH_AREAS = [
-    { pathId:"B1.1", order:1, label:"Practical Admin and Appointments", routeKey:"b1_m02", banks:["b1_m02"], subcategoryLabel:"Appointments / callbacks" },
-    { pathId:"B1.2", order:2, label:"Course and Work Starting Point", routeKey:"b1_m01", banks:["b1_m01"], subcategoryLabel:"Course and work basics" },
-    { pathId:"B1.3", order:3, label:"Job Search and Offices", routeKey:"b1_m03", banks:["b1_m03"], subcategoryLabel:"Job search / offices" },
-    { pathId:"B1.4", order:4, label:"Applications and Interviews", routeKey:"b1_m04", banks:["b1_m04"], subcategoryLabel:"Applications" },
-    { pathId:"B1.5", order:5, label:"First Day and Contract Basics", routeKey:"b1_m05", banks:["b1_m05"], subcategoryLabel:"First day / contract basics" },
-    { pathId:"B1.6", order:6, label:"Sick Leave, Doctor, and Insurance", routeKey:"b1_m06", banks:["b1_m06"], subcategoryLabel:"Sick leave" },
-    { pathId:"B1.7", order:7, label:"Meetings and Leave Requests", routeKey:"b1_m07", banks:["b1_m07"], subcategoryLabel:"Meetings / leave requests" },
-    { pathId:"B1.8", order:8, label:"Orders and Delivery", routeKey:"b1_m08", banks:["b1_m08"], subcategoryLabel:"Orders / delivery" },
-    { pathId:"B1.9", order:9, label:"Complaints and Customer Service", routeKey:"b1_m09", banks:["b1_m09"], subcategoryLabel:"Complaints / customer service" },
-    { pathId:"B1.10", order:10, label:"Technical Problems", routeKey:"b1_m10", banks:["b1_m10"], subcategoryLabel:"Technical problems" },
-    { pathId:"B1.11", order:11, label:"Colleague Feedback and Conflict", routeKey:"b1_m11", banks:["b1_m11"], subcategoryLabel:"Colleague feedback / conflict" },
-    { pathId:"B1.12", order:12, label:"Forms, Admin, and Certificates", routeKey:"learning_map", banks:[], subcategoryLabel:"Deferred forms/admin path", preview:true },
-    { pathId:"B1.13", order:13, label:"Learning and Exam Language", routeKey:"learning_map", banks:[], subcategoryLabel:"Learning language", preview:true },
-    { pathId:"B1.14", order:14, label:"Connectors and Sentence Functions", routeKey:"connectors", banks:["connectors", "redemittel"], subcategoryLabel:"Connectors / sentence functions" },
-    { pathId:"B1.15", order:15, label:"Time, Place, and Movement", routeKey:"grammar", banks:["core"], subcategoryLabel:"Cases / movement support" },
-    { pathId:"B1.16", order:16, label:"Money, Payment, and Contracts", routeKey:"learning_map", banks:[], subcategoryLabel:"Money / contracts", preview:true },
-    { pathId:"B1.17", order:17, label:"Home, Family, and Daily Life Support", routeKey:"learning_map", banks:[], subcategoryLabel:"Daily life support", preview:true },
-    { pathId:"B1.18", order:18, label:"B1→B2 Bridge Preview", routeKey:"learning_map", banks:[], subcategoryLabel:"Bridge preview", preview:true }
+    { pathId:"B1.1", order:1, label:"Practical Admin and Appointments", routeKey:"b1_m02", banks:["b1_m02"], subcategoryLabel:"Appointments / callbacks", subcategories:["B1.1.1 Appointments", "B1.1.2 Callbacks", "B1.1.3 Availability", "B1.1.4 Rescheduling", "B1.1.5 Confirming details"] },
+    { pathId:"B1.2", order:2, label:"Course and Work Starting Point", routeKey:"b1_m01", banks:["b1_m01"], subcategoryLabel:"Course and work basics", subcategories:["B1.2.1 Introducing yourself", "B1.2.2 Course language", "B1.2.3 Work basics", "B1.2.4 Asking for help", "B1.2.5 Materials and documents"] },
+    { pathId:"B1.3", order:3, label:"Job Search and Offices", routeKey:"b1_m03", banks:["b1_m03"], subcategoryLabel:"Job search / offices", subcategories:["B1.3.1 Looking for work", "B1.3.2 Offices and departments", "B1.3.3 Responsibilities", "B1.3.4 Job adverts", "B1.3.5 Asking for information"] },
+    { pathId:"B1.4", order:4, label:"Applications and Interviews", routeKey:"b1_m04", banks:["b1_m04"], subcategoryLabel:"Applications", subcategories:["B1.4.1 Application documents", "B1.4.2 Application phrases", "B1.4.3 Interviews", "B1.4.4 Strengths and experience", "B1.4.5 Follow-up messages"] },
+    { pathId:"B1.5", order:5, label:"First Day and Contract Basics", routeKey:"b1_m05", banks:["b1_m05"], subcategoryLabel:"First day / contract basics", subcategories:["B1.5.1 First day at work", "B1.5.2 Contract basics", "B1.5.3 Working hours", "B1.5.4 Trial period", "B1.5.5 Duties and rules"] },
+    { pathId:"B1.6", order:6, label:"Sick Leave, Doctor, and Insurance", routeKey:"b1_m06", banks:["b1_m06"], subcategoryLabel:"Sick leave", subcategories:["B1.6.1 Reporting sick", "B1.6.2 Doctor appointments", "B1.6.3 Symptoms", "B1.6.4 Certificates and proof", "B1.6.5 Insurance basics"] },
+    { pathId:"B1.7", order:7, label:"Meetings and Leave Requests", routeKey:"b1_m07", banks:["b1_m07"], subcategoryLabel:"Meetings / leave requests", subcategories:["B1.7.1 Meetings", "B1.7.2 Giving opinions", "B1.7.3 Asking for leave", "B1.7.4 Agreeing and disagreeing", "B1.7.5 Follow-up tasks"] },
+    { pathId:"B1.8", order:8, label:"Orders and Delivery", routeKey:"b1_m08", banks:["b1_m08"], subcategoryLabel:"Orders / delivery", subcategories:["B1.8.1 Orders", "B1.8.2 Delivery", "B1.8.3 Invoices", "B1.8.4 Damaged goods", "B1.8.5 Checking details"] },
+    { pathId:"B1.9", order:9, label:"Complaints and Customer Service", routeKey:"b1_m09", banks:["b1_m09"], subcategoryLabel:"Complaints / customer service", subcategories:["B1.9.1 Complaints", "B1.9.2 Describing problems", "B1.9.3 Requesting a solution", "B1.9.4 Apologies", "B1.9.5 Polite but firm tone"] },
+    { pathId:"B1.10", order:10, label:"Technical Problems", routeKey:"b1_m10", banks:["b1_m10"], subcategoryLabel:"Technical problems", subcategories:["B1.10.1 Devices and apps", "B1.10.2 Error messages", "B1.10.3 Internet and access", "B1.10.4 Explaining what happened", "B1.10.5 Asking for support"] },
+    { pathId:"B1.11", order:11, label:"Colleague Feedback and Conflict", routeKey:"b1_m11", banks:["b1_m11"], subcategoryLabel:"Colleague feedback / conflict", subcategories:["B1.11.1 Giving feedback", "B1.11.2 Receiving feedback", "B1.11.3 Disagreeing politely", "B1.11.4 Apologising and repairing", "B1.11.5 Setting boundaries"] },
+    { pathId:"B1.12", order:12, label:"Forms, Admin, and Certificates", routeKey:"learning_map", banks:[], subcategoryLabel:"Deferred forms/admin path", subcategories:["B1.12.1 Forms", "B1.12.2 Applications and requests", "B1.12.3 Certificates and proof", "B1.12.4 Deadlines", "B1.12.5 Official replies"], preview:true },
+    { pathId:"B1.13", order:13, label:"Learning and Exam Language", routeKey:"learning_map", banks:[], subcategoryLabel:"Learning language", subcategories:["B1.13.1 Tasks and instructions", "B1.13.2 Asking for explanation", "B1.13.3 Talking about mistakes", "B1.13.4 Exam preparation", "B1.13.5 Progress and review"], preview:true },
+    { pathId:"B1.14", order:14, label:"Connectors and Sentence Functions", routeKey:"connectors", banks:["connectors", "redemittel"], subcategoryLabel:"Connectors / sentence functions", subcategories:["B1.14.1 Reasons: weil, denn, deshalb", "B1.14.2 Contrast: obwohl, trotzdem", "B1.14.3 Time: wenn, als, bevor, nachdem", "B1.14.4 Purpose: damit, um ... zu", "B1.14.5 Word order after connectors"] },
+    { pathId:"B1.15", order:15, label:"Time, Place, and Movement", routeKey:"grammar", banks:["core"], subcategoryLabel:"Cases / movement support", subcategories:["B1.15.1 Time phrases", "B1.15.2 Places", "B1.15.3 Movement and direction", "B1.15.4 Two-way prepositions", "B1.15.5 Local and temporal prepositions"] },
+    { pathId:"B1.16", order:16, label:"Money, Payment, and Contracts", routeKey:"learning_map", banks:[], subcategoryLabel:"Money / contracts", subcategories:["B1.16.1 Payment", "B1.16.2 Charges and fees", "B1.16.3 Contract conditions", "B1.16.4 Cancellation", "B1.16.5 Written confirmation"], preview:true },
+    { pathId:"B1.17", order:17, label:"Home, Family, and Daily Life Support", routeKey:"learning_map", banks:[], subcategoryLabel:"Daily life support", subcategories:["B1.17.1 Household", "B1.17.2 Family logistics", "B1.17.3 Kindergarten and school", "B1.17.4 Neighbourhood", "B1.17.5 Everyday problems"], preview:true },
+    { pathId:"B1.18", order:18, label:"B1 to B2 Bridge Preview", routeKey:"learning_map", banks:[], subcategoryLabel:"Bridge preview", subcategories:["B1.18.1 More formal phrasing", "B1.18.2 Longer explanations", "B1.18.3 Nuanced disagreement", "B1.18.4 Written German preview", "B1.18.5 B2 preview tasks"], preview:true }
   ];
+  const B1_PATH_UNLOCK_STAR_THRESHOLD = 1;
+  const B1_PATH_UNLOCK_COVERAGE_PERCENT = 50;
   function b1PathAreaDefinitions() {
     return B1_PATH_AREAS.map(function(area){
       return {
@@ -9925,6 +10047,7 @@ body.b1Mode .clozeAnswerText {
         routeKey:area.routeKey,
         banks:(area.banks || []).slice(),
         subcategoryLabel:area.subcategoryLabel,
+        subcategories:(area.subcategories || []).slice(),
         preview:!!area.preview
       };
     });
@@ -9975,13 +10098,14 @@ body.b1Mode .clozeAnswerText {
     if (record && (record.answerMode === "mark_practised" || record.selfMarked || record.result === "practised") || item && item.itemType === "production_card") return "production";
     if (depth === "recognition" || depth === "contrast" || type === "connector_choice" || type === "phrase_choice" || /Auswahl|Kontrast/.test(sourceTask)) return "choice";
     if (depth === "cloze" || /Luecke|Cloze/.test(sourceTask)) return "cloze";
-    if (depth === "repair" || depth === "transformation" || type === "error_repair" || /Reparatur|Umformen/.test(sourceTask)) return "repair";
+    if (depth === "transformation" || /Umformen/.test(sourceTask)) return "umformen";
+    if (depth === "repair" || type === "error_repair" || /Reparatur/.test(sourceTask)) return "repair";
     if (depth === "sentence_building" || type === "word_order_cloze" || /Satzbau/.test(sourceTask)) return "satzbau";
     if (depth === "controlled_production" || depth === "free_production") return "production";
     return "choice";
   }
   function b1PathTaskTypeLabel(key) {
-    var labels = { choice:"Choice / contrast", cloze:"Cloze", repair:"Repair", satzbau:"Satzbau", production:"Production" };
+    var labels = { choice:"Choice / contrast", cloze:"Cloze", repair:"Repair", satzbau:"Satzbau", umformen:"Transformation", production:"Production" };
     return labels[key] || "Practice";
   }
   function b1PathItemTargetKey(item, bankKey) {
@@ -10020,6 +10144,7 @@ body.b1Mode .clozeAnswerText {
       productionPractisedCount:0,
       teachMeCount:0,
       assistedAttemptCount:0,
+      diagnosticAttemptCount:0,
       fallbackMapping:!item.targetFamilyId && !item.reviewGroup && !item.variantFamilyId
     };
   }
@@ -10069,9 +10194,14 @@ body.b1Mode .clozeAnswerText {
       target.taskTypes[taskType] = target.taskTypes[taskType] || { available:0, correctCount:0, starLevel:0, practisedCount:0 };
       var assisted = record.result === "assisted" || record.supportLevel === "teach_me_assisted" || record.hintUsed === true;
       var production = taskType === "production" || record.answerMode === "mark_practised" || record.selfMarked === true || record.result === "practised";
+      var diagnostic = record.attemptContext === "diagnostic" || b1CanonicalTaskDepth(record.taskDepth) === "diagnostic";
       if (record.timestamp) target.lastAttemptAt = !target.lastAttemptAt || Date.parse(record.timestamp) > Date.parse(target.lastAttemptAt) ? record.timestamp : target.lastAttemptAt;
       if (record.confidence) target.confidenceHistory.push(record.confidence);
       if (record.supportLevel) target.supportHistory.push(record.supportLevel);
+      if (diagnostic) {
+        target.diagnosticAttemptCount += 1;
+        return;
+      }
       if (assisted) {
         target.assistedAttemptCount += 1;
         if (record.supportLevel === "teach_me_assisted" || record.hintUsed === true) target.teachMeCount += 1;
@@ -10099,13 +10229,15 @@ body.b1Mode .clozeAnswerText {
         label:area.label,
         routeKey:area.routeKey,
         order:area.order,
+        subcategoryLabel:area.subcategoryLabel,
+        subcategories:(area.subcategories || []).slice(),
         preview:!!area.preview,
         coreTargetCount:0,
         supportTargetCount:0,
         targets:[],
         starCounts:{ 1:0, 2:0, 3:0, 4:0, 5:0 },
         totalStars:0,
-        taskTypes:{ choice:{available:0, done:0}, cloze:{available:0, done:0}, repair:{available:0, done:0}, satzbau:{available:0, done:0}, production:{available:0, done:0} },
+        taskTypes:{ choice:{available:0, done:0}, cloze:{available:0, done:0}, repair:{available:0, done:0}, satzbau:{available:0, done:0}, umformen:{available:0, done:0}, production:{available:0, done:0} },
         productionPractisedCount:0,
         recentWrongCount:0,
         fallbackMappingCount:0,
@@ -10138,7 +10270,7 @@ body.b1Mode .clozeAnswerText {
         category.taskTypes[type].available += Number(target.taskTypes[type].available || 0);
         if (type === "production") {
           if (target.productionPractisedCount > 0) category.taskTypes[type].done += 1;
-        } else if (target.taskTypes[type].starLevel >= 1) {
+        } else if (target.taskTypes[type].starLevel >= B1_PATH_UNLOCK_STAR_THRESHOLD) {
           category.taskTypes[type].done += 1;
         }
       });
@@ -10154,7 +10286,7 @@ body.b1Mode .clozeAnswerText {
       category.totalStarPercent = total ? Math.round(category.totalStars * 100 / (total * 5)) : 0;
       category.requiredTaskTypes = Object.keys(category.taskTypes).filter(function(type){ return category.taskTypes[type].available > 0; });
       category.missingTaskTypes = category.requiredTaskTypes.filter(function(type){ return category.taskTypes[type].done <= 0; });
-      category.recommendedUnlock = !category.preview && total > 0 && category.percentAt1Star >= 50 && category.missingTaskTypes.length === 0;
+      category.recommendedUnlock = !category.preview && total > 0 && category.percentAt1Star >= B1_PATH_UNLOCK_COVERAGE_PERCENT && category.missingTaskTypes.length === 0;
       var previous = null;
       for (var prevIndex = index - 1; prevIndex >= 0; prevIndex -= 1) {
         if (!ordered[prevIndex].preview && ordered[prevIndex].coreTargetCount > 0) {
@@ -10165,13 +10297,14 @@ body.b1Mode .clozeAnswerText {
       var previousAllowsOpen = !previous || previous && (previous.recommendedUnlock || previous.override);
       category.status = category.override ? "Open" : (category.recommendedUnlock ? "Recommended" : (previousAllowsOpen && total > 0 ? "Open" : "Locked"));
       if (category.preview) category.status = "Preview";
-      category.statusLabel = category.recommendedUnlock ? "Recommended" : (category.recentWrongCount > 0 ? "Review suggested" : (category.missingTaskTypes.length ? "Needs one more type" : category.status));
-      if (category.override) category.statusLabel = "Open";
+      category.statusLabel = category.preview ? "Preview" : (category.recommendedUnlock ? "Ready to continue" : "Keep practising");
+      if (category.override) category.statusLabel = "Unlocked anyway";
     });
     var allCore = ordered.reduce(function(total, category){ return total + category.coreTargetCount; }, 0);
     var allStars = ordered.reduce(function(total, category){ return total + category.totalStars; }, 0);
     var allStarCounts = { 1:0, 2:0, 3:0, 4:0, 5:0 };
     ordered.forEach(function(category){ [1,2,3,4,5].forEach(function(level){ allStarCounts[level] += Number(category.starCounts[level] || 0); }); });
+    var targetList = Object.keys(targetMap).map(function(key){ return targetMap[key]; });
     var recommended = ordered.filter(function(category){ return category.coreTargetCount > 0 && category.status !== "Preview"; }).sort(function(a,b){
       if (a.recentWrongCount !== b.recentWrongCount) return b.recentWrongCount - a.recentWrongCount;
       if (a.missingTaskTypes.length !== b.missingTaskTypes.length) return b.missingTaskTypes.length - a.missingTaskTypes.length;
@@ -10180,10 +10313,15 @@ body.b1Mode .clozeAnswerText {
     return {
       schemaVersion:"v1",
       starLadder:B1_PATH_STAR_LABELS.slice(),
+      unlockConfig:{
+        starThreshold:B1_PATH_UNLOCK_STAR_THRESHOLD,
+        coveragePercent:B1_PATH_UNLOCK_COVERAGE_PERCENT
+      },
       disclaimerShort:"Stars guide practice. They are not a mastery or exam-readiness score.",
       disclaimerLong:"Stars show how often you have answered correctly in Ozmosis. They help guide practice, but they do not prove mastery, fluency, or exam readiness.",
       categories:ordered,
-      targets:Object.keys(targetMap).map(function(key){ return targetMap[key]; }),
+      targets:targetList,
+      tagSummaries:b1PathTagSummaries(targetList),
       allB1:{
         coreTargetCount:allCore,
         percentAt1Star:allCore ? Math.round(allStarCounts[1] * 100 / allCore) : 0,
@@ -10202,13 +10340,87 @@ body.b1Mode .clozeAnswerText {
       limitations:[
         "Stars are derived from existing local evidence records.",
         "Production is tracked as practised, not correct.",
-        "Legacy/general-bank mapping uses conservative fallback where target-family metadata is incomplete."
+        "Practice variants are grouped so repeats do not inflate progress."
       ],
       fallbackMappingCount:fallbackMappingCount
     };
   }
   function b1PathProgressData(options) {
     return b1PathProgressFromEvidence(options || {});
+  }
+  function b1PathTagSummaries(targets) {
+    var map = {};
+    (targets || []).forEach(function(target){
+      var firstItem = target && target.itemIds && target.itemIds.length ? b1ItemById(target.itemIds[0]) : null;
+      var tokens = b1LearningMapNormalizeTokens([].concat(
+        firstItem && Array.isArray(firstItem.skillTags) ? firstItem.skillTags : [],
+        firstItem && Array.isArray(firstItem.tags) ? firstItem.tags : [],
+        firstItem && firstItem.grammarFocus ? [firstItem.grammarFocus] : [],
+        firstItem && firstItem.section ? [firstItem.section] : [],
+        firstItem && firstItem.topic ? [firstItem.topic] : []
+      ));
+      var seen = {};
+      tokens.forEach(function(token){
+        if (!token || seen[token]) return;
+        seen[token] = true;
+        map[token] = map[token] || { tag:token, practicePointCount:0, starCounts:{ 1:0, 2:0, 3:0, 4:0, 5:0 }, totalStars:0, fallbackMappingCount:0 };
+        map[token].practicePointCount += target.coreStatus === "core" ? 1 : 0;
+        [1,2,3,4,5].forEach(function(level){ if (target.starLevel >= level) map[token].starCounts[level] += 1; });
+        map[token].totalStars += Number(target.starLevel || 0);
+        if (target.fallbackMapping) map[token].fallbackMappingCount += 1;
+      });
+    });
+    return Object.keys(map).map(function(key){
+      var row = map[key];
+      var total = Math.max(0, Number(row.practicePointCount || 0));
+      row.percentAt1Star = total ? Math.round(row.starCounts[1] * 100 / total) : 0;
+      row.totalStarPercent = total ? Math.round(row.totalStars * 100 / (total * 5)) : 0;
+      return row;
+    }).sort(function(a,b){
+      if (b.practicePointCount !== a.practicePointCount) return b.practicePointCount - a.practicePointCount;
+      return a.tag.localeCompare(b.tag);
+    }).slice(0, 80);
+  }
+  function b1PathDebugSummary() {
+    var progress = b1PathProgressData();
+    return {
+      schemaVersion:progress.schemaVersion,
+      unlockConfig:progress.unlockConfig,
+      allB1:progress.allB1,
+      categorySummaries:(progress.categories || []).map(function(category){
+        return {
+          categoryId:category.categoryId,
+          label:category.label,
+          subcategories:(category.subcategories || []).slice(),
+          coreTargetCount:category.coreTargetCount,
+          starCounts:category.starCounts,
+          totalStarPercent:category.totalStarPercent,
+          percentAt1Star:category.percentAt1Star,
+          requiredTaskTypes:(category.requiredTaskTypes || []).slice(),
+          missingTaskTypes:(category.missingTaskTypes || []).slice(),
+          taskTypes:category.taskTypes,
+          recommendedUnlock:!!category.recommendedUnlock,
+          status:category.status,
+          statusLabel:category.statusLabel,
+          override:category.override || null
+        };
+      }),
+      targetStarLevels:(progress.targets || []).map(function(target){
+        return {
+          targetKey:target.targetKey,
+          pathId:target.pathId,
+          starLevel:target.starLevel,
+          correctCount:target.correctCount,
+          taskTypes:target.taskTypes,
+          productionPractisedCount:target.productionPractisedCount,
+          diagnosticAttemptCount:target.diagnosticAttemptCount,
+          fallbackMapping:!!target.fallbackMapping,
+          itemIds:(target.itemIds || []).slice(0, 8)
+        };
+      }),
+      tagSummaries:(progress.tagSummaries || []).slice(0, 40),
+      unlockOverrides:safeGetB1PathUnlockOverrides()
+    };
   }
   const B1_LEARNING_MAP_NODES = {
     cases_articles:{
@@ -15112,13 +15324,13 @@ body.b1Mode .clozeAnswerText {
   function b1PathPercentText(category) {
     var total = Number(category && category.coreTargetCount || 0);
     var count = Number(category && category.starCounts && category.starCounts[1] || 0);
-    if (!total) return "No active targets yet";
+    if (!total) return "No active practice points yet";
     if (total < 5) return count + " of " + total + " got right once";
     return Number(category.percentAt1Star || 0) + "% got right once";
   }
   function b1PathStatusClass(category) {
     var label = String(category && category.statusLabel || category && category.status || "").toLowerCase();
-    if (/recommended|ready|open/.test(label)) return "open";
+    if (/recommended|ready|open|unlocked/.test(label)) return "open";
     if (/locked|preview/.test(label)) return "locked";
     return "recommended";
   }
@@ -15133,19 +15345,159 @@ body.b1Mode .clozeAnswerText {
     var required = Array.isArray(category && category.requiredTaskTypes) ? category.requiredTaskTypes : [];
     if (!required.length) return "No task types yet";
     var missing = Array.isArray(category.missingTaskTypes) ? category.missingTaskTypes : [];
-    if (!missing.length) return "Types practised: done";
+    if (!missing.length) return "Types practised: " + required.length + " / " + required.length;
     return "Needs: " + missing.slice(0, 2).map(b1PathTaskTypeLabel).join(", ") + (missing.length > 2 ? " +" + (missing.length - 2) : "");
+  }
+  function b1PathStarGlyphsHtml(level) {
+    level = b1PathStarLevel(level);
+    var out = [];
+    for (var i = 1; i <= 5; i += 1) {
+      out.push('<span' + (i <= level ? ' class="filled"' : '') + ' aria-hidden="true">&#9733;</span>');
+    }
+    return '<span class="b1StarGlyphs" aria-label="' + level + ' of 5 stars">' + out.join("") + '</span>';
+  }
+  function b1PathStarLevelText(level) {
+    level = b1PathStarLevel(level);
+    return level + "/5 stars - " + B1_PATH_STAR_LABELS[level].toLowerCase();
+  }
+  function b1PathTaskTargetForItem(item, progress) {
+    if (!item || !item.id) return null;
+    progress = progress || b1PathProgressData();
+    var bankKey = b1EvidenceBankKeyFor(item);
+    var targetKey = b1PathItemTargetKey(item, bankKey);
+    var targets = Array.isArray(progress.targets) ? progress.targets : [];
+    var target = null;
+    for (var i = 0; i < targets.length; i += 1) {
+      if (targets[i].targetKey === targetKey) {
+        target = targets[i];
+        break;
+      }
+    }
+    if (!target) {
+      var area = b1PathAreaForBank(bankKey, item);
+      target = area ? b1PathEmptyTarget(item, { key:bankKey }, area) : null;
+    }
+    if (!target) return null;
+    return {
+      progress:progress,
+      target:target,
+      category:b1PathCategoryById(progress, target.pathId),
+      bankKey:bankKey,
+      taskType:b1PathTaskTypeKey(null, item),
+      production:item.itemType === "production_card",
+      diagnostic:b1Runtime && b1Runtime.mode === "b1_diagnostic",
+      fallbackMapping:!!target.fallbackMapping
+    };
+  }
+  function b1PathTaskStarSummary(item, progress) {
+    var data = b1PathTaskTargetForItem(item, progress);
+    if (!data) return null;
+    var level = b1PathStarLevel(data.target.starLevel);
+    return {
+      level:level,
+      label:B1_PATH_STAR_LABELS[level],
+      levelText:b1PathStarLevelText(level),
+      targetKey:data.target.targetKey,
+      categoryId:data.target.pathId,
+      categoryLabel:data.target.pathLabel,
+      taskType:data.taskType,
+      taskTypeLabel:b1PathTaskTypeLabel(data.taskType),
+      production:data.production,
+      diagnostic:data.diagnostic,
+      fallbackMapping:data.fallbackMapping
+    };
+  }
+  function clearB1TaskStarStatus() {
+    var mount = el("b1TaskStarStatus");
+    if (!mount) return;
+    mount.hidden = true;
+    mount.innerHTML = "";
+  }
+  function renderB1TaskStarStatus(item) {
+    var mount = el("b1TaskStarStatus");
+    if (!mount) return;
+    var summary = b1PathTaskStarSummary(item);
+    if (!summary || !b1Runtime.active) {
+      clearB1TaskStarStatus();
+      return;
+    }
+    mount.hidden = false;
+    if (summary.production) {
+      mount.innerHTML = '<span class="b1TaskStarCopy">Production practice</span>' +
+        '<span class="b1TaskStarMeta">not star-rated</span>' +
+        '<span class="b1TaskStarMeta">Speaking/writing practice does not add correctness stars.</span>';
+      return;
+    }
+    if (summary.diagnostic) {
+      mount.innerHTML = '<span class="b1TaskStarCopy">Diagnostic snapshot</span>' +
+        '<span class="b1TaskStarMeta">star unchanged</span>' +
+        '<span class="b1TaskStarMeta">' + escapeHtml(summary.taskTypeLabel) + '</span>';
+      return;
+    }
+    mount.innerHTML = '<span class="b1TaskStarCopy">Practice progress</span>' +
+      b1PathStarGlyphsHtml(summary.level) +
+      '<span class="b1TaskStarCopy">' + escapeHtml(summary.levelText) + '</span>' +
+      '<span class="b1TaskStarMeta">' + escapeHtml(summary.categoryId) + ' &middot; ' + escapeHtml(summary.taskTypeLabel) + '</span>';
+  }
+  function b1PathTaskStarUpdateHtml(item, beforeSummary, record, isCorrect, assisted) {
+    var beforeLevel = beforeSummary ? b1PathStarLevel(beforeSummary.level) : 0;
+    var afterSummary = b1PathTaskStarSummary(item);
+    var afterLevel = afterSummary ? b1PathStarLevel(afterSummary.level) : beforeLevel;
+    var diagnostic = afterSummary && afterSummary.diagnostic || record && record.attemptContext === "diagnostic";
+    var production = afterSummary && afterSummary.production || record && (record.selfMarked || record.answerMode === "mark_practised" || record.result === "practised");
+    if (production) {
+      return '<div class="b1StarUpdateLine neutral"><span>Production practised - speaking/writing practice does not add correctness stars.</span></div>';
+    }
+    if (diagnostic) {
+      return '<div class="b1StarUpdateLine neutral"><span>Diagnostic snapshot - star unchanged.</span></div>';
+    }
+    if (assisted || record && (record.result === "assisted" || record.hintUsed === true || record.supportLevel === "teach_me_assisted")) {
+      return '<div class="b1StarUpdateLine neutral"><span>Practised with help - star unchanged.</span></div>';
+    }
+    if (!isCorrect) {
+      return '<div class="b1StarUpdateLine warn"><span>No star this time. This will return for practice.</span></div>';
+    }
+    var changed = afterLevel > beforeLevel;
+    var copy = changed ? ("Now " + afterLevel + "/5 stars - got right " + (afterLevel === 1 ? "once" : (afterLevel === 2 ? "twice" : afterLevel + " times")) + ".") : ("Still " + afterLevel + "/5 stars - star unchanged.");
+    return '<div class="b1StarUpdateLine ' + (changed ? "positive" : "neutral") + '">' + b1PathStarGlyphsHtml(afterLevel) + '<span>' + escapeHtml(copy) + '</span></div>';
+  }
+  function b1PathCategoryStarRowsHtml(category) {
+    var total = Number(category && category.coreTargetCount || 0);
+    if (!total) return "";
+    return '<div class="b1PathStarRows" aria-label="B1 Path star counts">' + [1,2,3,4,5].map(function(level){
+      var count = Number(category.starCounts && category.starCounts[level] || 0);
+      var pct = Math.round(count * 100 / total);
+      return '<div class="b1PathStarRow"><span>' + escapeHtml(B1_PATH_STAR_LABELS[level]) + '</span><strong>' + count + ' of ' + total + ' (' + pct + '%)</strong></div>';
+    }).join("") + '</div>';
+  }
+  function b1PathSubcategoryHtml(category) {
+    var subcategories = Array.isArray(category && category.subcategories) ? category.subcategories : [];
+    if (!subcategories.length) return "";
+    return '<ul class="b1PathSubcategories" aria-label="B1 Path subcategories">' + subcategories.map(function(line){
+      return '<li>' + escapeHtml(line) + '</li>';
+    }).join("") + '</ul>';
+  }
+  function b1PathUnlockMissingHtml(category) {
+    var lines = [];
+    if (Number(category && category.percentAt1Star || 0) < B1_PATH_UNLOCK_COVERAGE_PERCENT) {
+      lines.push(B1_PATH_UNLOCK_COVERAGE_PERCENT + "% got right once");
+    }
+    (Array.isArray(category && category.missingTaskTypes) ? category.missingTaskTypes : []).forEach(function(type){
+      lines.push(type === "production" ? "one production card practised" : "one " + b1PathTaskTypeLabel(type).toLowerCase() + " task correct");
+    });
+    if (!lines.length) return '<div class="b1PathMissingList"><span>Recommended unlock requirements met.</span></div>';
+    return '<div class="b1PathMissingList"><span>Needed before recommended unlock:</span><strong>' + escapeHtml(lines.join("; ")) + '</strong></div>';
   }
   function b1PathCategoryCardHtml(category, compact) {
     var status = category.statusLabel || category.status || "Open";
-    var actionLabel = category.status === "Locked" ? "Unlock" : "Open";
+    var actionLabel = category.status === "Locked" ? "Open anyway" : "Open";
     if (category.preview) actionLabel = "Details";
     return '<article class="b1PathCard" data-path-category="' + escapeHtml(category.categoryId) + '">' +
       '<div class="b1PathCardTop"><strong class="b1PathCardTitle">' + escapeHtml(category.pathId + " " + category.label) + '</strong><span class="b1PathStatus ' + b1PathStatusClass(category) + '">' + escapeHtml(status) + '</span></div>' +
       '<div class="b1PathMetricLine"><span>' + escapeHtml(b1PathPercentText(category)) + '</span><strong>' + Number(category.totalStarPercent || 0) + '% stars</strong></div>' +
       b1PathStarBarHtml(category) +
-      '<div class="b1PathTypeLine"><span>' + escapeHtml(b1PathTypeSummary(category)) + '</span><span>' + Number(category.coreTargetCount || 0) + ' targets</span></div>' +
-      (compact ? '' : '<p class="learningMapText">Production, where present, is practised-only. Stars come from auto-checked correct answers.</p>') +
+      '<div class="b1PathTypeLine"><span>' + escapeHtml(b1PathTypeSummary(category)) + '</span><span>' + Number(category.coreTargetCount || 0) + ' practice points</span></div>' +
+      (compact ? '' : b1PathCategoryStarRowsHtml(category) + b1PathSubcategoryHtml(category) + b1PathUnlockMissingHtml(category) + '<p class="learningMapText">Production, where present, is practised-only. Stars come from auto-checked correct answers.</p>') +
       '<div class="b1PathActions">' +
         '<button class="b1PathAction b1PathRouteAction" type="button" data-category-id="' + escapeHtml(category.categoryId) + '">' + escapeHtml(actionLabel) + '</button>' +
       '</div>' +
@@ -15182,7 +15534,7 @@ body.b1Mode .clozeAnswerText {
         '<div class="b1PathDetailGrid">' + [0,1,2,3,4,5].map(function(level){
           return '<div class="learningMapDetail">' + level + B1_PATH_STAR + ' - ' + escapeHtml(B1_PATH_STAR_LABELS[level]) + '</div>';
         }).join("") + '</div>' +
-        '<div class="learningMapLimitation">Targets are grouped by target family or conservative fallback metadata, so variants do not inflate the denominator.</div>' +
+        '<div class="learningMapLimitation">Practice variants are grouped so repeats do not inflate progress.</div>' +
       '</details>' +
     '</section>';
   }
@@ -15197,8 +15549,10 @@ body.b1Mode .clozeAnswerText {
         '<p><strong>' + escapeHtml(category.pathId + " " + category.label) + '</strong></p>' +
         '<p>Got right once: ' + escapeHtml(b1PathPercentText(category)) + '</p>' +
         '<p>Types practised: ' + escapeHtml(b1PathTypeSummary(category)) + '</p>' +
-        '<p>You can continue anyway. This does not mark the previous category complete.</p>';
+        b1PathUnlockMissingHtml(category) +
+        '<p>You can continue anyway. This will not mark the previous area complete.</p>';
     }
+    if (el("b1PathUnlockTitle")) el("b1PathUnlockTitle").textContent = "Ozmosis recommends more practice here first.";
     if (el("b1PathUnlockOverlay")) el("b1PathUnlockOverlay").hidden = false;
     setTimeout(function(){ if (el("b1PathKeepPractisingBtn")) el("b1PathKeepPractisingBtn").focus(); }, 0);
   }
@@ -15219,7 +15573,13 @@ body.b1Mode .clozeAnswerText {
         percentAt1Star:category.percentAt1Star,
         totalStarPercent:category.totalStarPercent,
         missingTaskTypes:(category.missingTaskTypes || []).slice(),
-        coreTargetCount:category.coreTargetCount
+        coreTargetCount:category.coreTargetCount,
+        recommendedUnlock:!!category.recommendedUnlock
+      },
+      doesNotMarkPreviousAreaComplete:true,
+      missingRequirementsAtOverride:{
+        neededGotRightOnce:Number(category.percentAt1Star || 0) < B1_PATH_UNLOCK_COVERAGE_PERCENT,
+        missingTaskTypes:(category.missingTaskTypes || []).slice()
       }
     };
     safeSetB1PathUnlockOverrides(store);
@@ -15312,6 +15672,7 @@ body.b1Mode .clozeAnswerText {
     closeDiagnosticIntro();
     closePracticeExitConfirm();
     clearMobileClozeFocus();
+    clearB1TaskStarStatus();
     state = "settings";
     current = null;
     setMenu(false);
@@ -15341,6 +15702,7 @@ body.b1Mode .clozeAnswerText {
     closeDiagnosticIntro();
     closePracticeExitConfirm();
     clearMobileClozeFocus();
+    clearB1TaskStarStatus();
     state = "learningMap";
     current = null;
     setMenu(false);
@@ -15370,6 +15732,7 @@ body.b1Mode .clozeAnswerText {
     closeDiagnosticIntro();
     closePracticeExitConfirm();
     clearMobileClozeFocus();
+    clearB1TaskStarStatus();
     state = "home";
     setMenu(false);
     document.body.classList.add("homeMode");
@@ -21111,6 +21474,7 @@ body.b1Mode .clozeAnswerText {
     el("promptValue").className = "promptWord clozePrompt";
     el("promptValue").innerHTML = b1PromptHtml(item);
     if (el("b1PracticeTag")) el("b1PracticeTag").hidden = !b1Runtime.currentExtraPractice;
+    renderB1TaskStarStatus(item);
     renderB1Translation(false);
     var input = el("answerInput");
     input.value = "";
@@ -21175,7 +21539,7 @@ body.b1Mode .clozeAnswerText {
       else input.focus();
     }, 0);
   }
-  function renderB1Feedback(isCorrect, assisted, rawAnswer, repairComparison) {
+  function renderB1Feedback(isCorrect, assisted, rawAnswer, repairComparison, starUpdateHtml) {
     var item = b1Runtime.current;
     var block = el("correctionBlock");
     var extraLine = b1Runtime.currentExtraPractice ? "<div class=\"microRule\">Extra practice helps rehearsal, but it does not move review timing early.</div>" : "";
@@ -21193,7 +21557,8 @@ body.b1Mode .clozeAnswerText {
       repairLine +
       choiceLine +
       contrastLine +
-      ruleLine;
+      ruleLine +
+      (starUpdateHtml || "");
     block.classList.add("visible");
   }
   function teachB1Answer() {
@@ -21231,7 +21596,9 @@ body.b1Mode .clozeAnswerText {
     var block = el("correctionBlock");
     block.className = "correctionBlock visible";
     block.innerHTML = "<div class=\"correctionTarget\" aria-label=\"Skipped\">Skipped</div>" +
-      "<div class=\"microRule\">No production evidence was recorded.</div>";
+      "<div class=\"microRule\">No production evidence was recorded.</div>" +
+      "<div class=\"b1StarUpdateLine neutral\"><span>Speaking/writing practice does not add correctness stars.</span></div>";
+    renderB1TaskStarStatus(b1Runtime.current);
     resetB1ConfidenceControls();
     var buttons = el("connectorChoiceGrid") ? el("connectorChoiceGrid").querySelectorAll("button") : [];
     buttons.forEach(function(btn){ btn.disabled = true; });
@@ -21265,8 +21632,10 @@ body.b1Mode .clozeAnswerText {
     var block = el("correctionBlock");
     block.className = "correctionBlock visible";
     block.innerHTML = "<div class=\"correctionTarget\" aria-label=\"Practised\">✓</div>" +
-      "<div class=\"microRule\">Saved as self-marked practice evidence." + (b1Runtime.currentProductionModelShown ? " Model answer viewed." : "") + "</div>";
+      "<div class=\"microRule\">Saved as self-marked practice evidence." + (b1Runtime.currentProductionModelShown ? " Model answer viewed." : "") + "</div>" +
+      "<div class=\"b1StarUpdateLine neutral\"><span>Production practised - speaking/writing practice does not add correctness stars.</span></div>";
     block.querySelector(".correctionTarget").textContent = "Practised";
+    renderB1TaskStarStatus(b1Runtime.current);
     renderB1ConfidenceControls(null);
     var buttons = el("connectorChoiceGrid") ? el("connectorChoiceGrid").querySelectorAll("button") : [];
     buttons.forEach(function(btn){ btn.disabled = true; });
@@ -21299,6 +21668,7 @@ body.b1Mode .clozeAnswerText {
     var repairComparison = b1Runtime.current.itemType === "error_repair" ? compareRepairAnswer(b1Runtime.current, raw) : null;
     var isCorrect = repairComparison ? repairComparison.isCorrect : (usesChoices ? b1ChoiceMatchesCorrect(b1Runtime.current, selectedChoice || raw) : b1AnswerMatches(b1Runtime.current, raw));
     var assisted = !!b1Runtime.currentAssisted;
+    var starBefore = b1PathTaskStarSummary(b1Runtime.current);
     var evidenceRecord = appendB1EvidenceRecord(b1Runtime.current, assisted ? "assisted" : (isCorrect ? "correct" : "wrong"), {
       extraPractice:b1Runtime.currentExtraPractice,
       assisted:assisted,
@@ -21347,7 +21717,9 @@ body.b1Mode .clozeAnswerText {
     }
     el("feedback").innerHTML = "";
     el("feedback").className = "feedback";
-    renderB1Feedback(isCorrect, assisted, raw, repairComparison);
+    var starUpdateHtml = b1PathTaskStarUpdateHtml(b1Runtime.current, starBefore, evidenceRecord, isCorrect, assisted);
+    renderB1TaskStarStatus(b1Runtime.current);
+    renderB1Feedback(isCorrect, assisted, raw, repairComparison, starUpdateHtml);
     renderB1ConfidenceControls(null);
     if (!usesChoices) activeInput.disabled = true;
     el("checkBtn").disabled = true;
@@ -21458,6 +21830,7 @@ body.b1Mode .clozeAnswerText {
     document.body.classList.remove("b1TypedCloze", "b1LongAnswer");
     document.body.classList.add("resultsMode");
     setDiagnosticUiVisible(false);
+    clearB1TaskStarStatus();
     el("answerArea").classList.remove("answered");
     el("answerArea").classList.add("resultsArea");
     document.body.setAttribute("data-mode", "definite");
@@ -21522,7 +21895,7 @@ body.b1Mode .clozeAnswerText {
     renderHud();
     scrollAppPanelToTop();
   }
-  function renderQuestion() { b1Runtime.currentEvidenceRecordId=""; resetB1ConfidenceControls(); renderMode(); resetConnectorChoiceGrid(); document.body.classList.remove("resultsMode"); el("answerArea").classList.remove("answered", "resultsArea"); var supportColumn=document.querySelector(".supportColumn"); var resultPanel=el("resultPanel"); if (supportColumn && resultPanel && resultPanel.parentElement !== supportColumn) supportColumn.appendChild(resultPanel); el("resultPanel").classList.remove("visible"); var prompt=el("promptValue"); prompt.className="promptWord" + (current.kind === "cloze" ? " clozePrompt" : ""); if (current.kind === "cloze") prompt.innerHTML=sentenceHtml(current.sentence); else prompt.textContent=current.caseKey+" "+current.genderKey; renderEnglishGloss(); var input=el("answerInput"); input.value=""; input.disabled=false; input.style.display=""; input.placeholder=current.kind === "cloze" ? "Lücke ausfüllen" : "Artikel eingeben"; input.classList.remove("correct","missed"); el("feedback").innerHTML=""; el("feedback").className="feedback"; el("practiceSurface").classList.add("hidden"); setSupportPlaceholder(true, false); el("miniTableWrap").innerHTML=""; el("correctionBlock").className="correctionBlock"; el("correctionBlock").innerHTML=""; if (currentShowMicroRule) { el("correctionBlock").innerHTML="<div class=\"microRule\"><strong>Repair rule</strong>" + escapeHtml(microRuleFor(current)) + "</div>"; el("correctionBlock").classList.add("visible"); } el("actionGrid").classList.remove("singleAction", "rightAction"); el("actionGrid").style.display="grid"; el("checkBtn").disabled=false; el("noArticleBtn").disabled=false; el("noArticleBtn").style.display=""; el("hintBtn").disabled=false; el("hintBtn").hidden=false; el("hintBtn").style.display=""; el("nextBtn").classList.remove("visible"); el("nextBtn").textContent="Weiter"; setTimeout(function(){ input.focus(); },0); }
+  function renderQuestion() { clearB1TaskStarStatus(); b1Runtime.currentEvidenceRecordId=""; resetB1ConfidenceControls(); renderMode(); resetConnectorChoiceGrid(); document.body.classList.remove("resultsMode"); el("answerArea").classList.remove("answered", "resultsArea"); var supportColumn=document.querySelector(".supportColumn"); var resultPanel=el("resultPanel"); if (supportColumn && resultPanel && resultPanel.parentElement !== supportColumn) supportColumn.appendChild(resultPanel); el("resultPanel").classList.remove("visible"); var prompt=el("promptValue"); prompt.className="promptWord" + (current.kind === "cloze" ? " clozePrompt" : ""); if (current.kind === "cloze") prompt.innerHTML=sentenceHtml(current.sentence); else prompt.textContent=current.caseKey+" "+current.genderKey; renderEnglishGloss(); var input=el("answerInput"); input.value=""; input.disabled=false; input.style.display=""; input.placeholder=current.kind === "cloze" ? "Lücke ausfüllen" : "Artikel eingeben"; input.classList.remove("correct","missed"); el("feedback").innerHTML=""; el("feedback").className="feedback"; el("practiceSurface").classList.add("hidden"); setSupportPlaceholder(true, false); el("miniTableWrap").innerHTML=""; el("correctionBlock").className="correctionBlock"; el("correctionBlock").innerHTML=""; if (currentShowMicroRule) { el("correctionBlock").innerHTML="<div class=\"microRule\"><strong>Repair rule</strong>" + escapeHtml(microRuleFor(current)) + "</div>"; el("correctionBlock").classList.add("visible"); } el("actionGrid").classList.remove("singleAction", "rightAction"); el("actionGrid").style.display="grid"; el("checkBtn").disabled=false; el("noArticleBtn").disabled=false; el("noArticleBtn").style.display=""; el("hintBtn").disabled=false; el("hintBtn").hidden=false; el("hintBtn").style.display=""; el("nextBtn").classList.remove("visible"); el("nextBtn").textContent="Weiter"; setTimeout(function(){ input.focus(); },0); }
   function checkAnswer(overrideChoice) {
     if (state !== "checking") return;
     var input=el("answerInput"), choice=overrideChoice === "none" ? "kein artikel" : normalise(input.value);
@@ -22769,6 +23142,7 @@ window.ozmosisTesterReportSummary=testerReportSummary; window.ozmosisLearnerRead
     summary.b1M10Count = B1_M10_ITEMS.length;
     summary.b1M11Count = B1_M11_ITEMS.length;
     summary.b1Path = b1PathProgressData();
+    summary.b1PathDebug = b1PathDebugSummary();
     summary.b1PathUnlocks = safeGetB1PathUnlockOverrides();
     return summary;
   };
