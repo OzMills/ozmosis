@@ -49,6 +49,15 @@
   --stateSuccess:var(--good);
   --stateError:var(--bad);
   --stateAssist:var(--warn);
+  --star-empty:#536073;
+  --star-bronze:#b97538;
+  --star-brass:#d39b4a;
+  --star-silver:#d7e4f0;
+  --star-electrum:#efe0a8;
+  --star-gold:#ffd66b;
+  --star-glow-bronze:rgba(185,117,56,.34);
+  --star-glow-silver:rgba(215,228,240,.34);
+  --star-glow-gold:rgba(255,214,107,.42);
   --mono:ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
 }
 
@@ -447,7 +456,7 @@ select, .menuButton {
 }
 
 .b1Star {
-  color:#536073;
+  color:var(--star-empty);
   text-shadow:none;
   font-size:clamp(.9rem,3.4vw,1.1rem);
   line-height:1;
@@ -455,13 +464,13 @@ select, .menuButton {
 }
 
 .b1Star.unearned {
-  color:#536073;
+  color:var(--star-empty);
   opacity:.62;
 }
 
 .b1Star.earned {
   font-size:clamp(1.16rem,4.3vw,1.42rem);
-  color:#c77b36;
+  color:var(--star-bronze);
   opacity:.9;
 }
 
@@ -471,31 +480,33 @@ select, .menuButton {
 }
 
 .b1Star.earned.level1 {
-  color:#b97538;
+  color:var(--star-bronze);
   opacity:.82;
+  filter:drop-shadow(0 0 4px var(--star-glow-bronze));
 }
 
 .b1Star.earned.level2 {
-  color:#d58a3f;
+  color:var(--star-brass);
   opacity:.92;
+  filter:drop-shadow(0 0 5px var(--star-glow-bronze));
 }
 
 .b1Star.earned.level3 {
-  color:#f0a34a;
+  color:var(--star-silver);
   opacity:1;
-  filter:drop-shadow(0 0 5px rgba(240,163,74,.28));
+  filter:drop-shadow(0 0 6px var(--star-glow-silver));
 }
 
 .b1Star.earned.level4 {
-  color:#d7e4f0;
+  color:var(--star-electrum);
   opacity:1;
-  filter:drop-shadow(0 0 6px rgba(215,228,240,.3));
+  filter:drop-shadow(0 0 7px var(--star-glow-gold));
 }
 
 .b1Star.earned.level5 {
-  color:#ffe06d;
+  color:var(--star-gold);
   opacity:1;
-  filter:drop-shadow(0 0 8px rgba(255,224,109,.42));
+  filter:drop-shadow(0 0 8px var(--star-glow-gold));
 }
 
 .b1Star.current.level3,
@@ -504,9 +515,11 @@ select, .menuButton {
   filter:drop-shadow(0 0 10px currentColor);
 }
 
-.b1Star.bronze { color:#c7834e; }
-.b1Star.silver { color:#c9d4df; }
-.b1Star.gold { color:#ffd66b; }
+.b1Star.bronze { color:var(--star-bronze); }
+.b1Star.brass { color:var(--star-brass); }
+.b1Star.silver { color:var(--star-silver); }
+.b1Star.electrum { color:var(--star-electrum); }
+.b1Star.gold { color:var(--star-gold); }
 
 .productionChecklist {
   width:min(520px,100%);
@@ -5088,21 +5101,21 @@ body.homeMode #settingsPanel {
   gap:3px;
   height:10px;
   overflow:hidden;
-  border:1px solid color-mix(in srgb, var(--accent) 24%, var(--line));
+  border:1px solid color-mix(in srgb, var(--star-silver) 20%, var(--line));
   border-radius:999px;
   background:rgba(2,8,16,.86);
 }
 
 .b1PathStarBar span {
   min-width:0;
-  background:rgba(125,227,255,.11);
+  background:color-mix(in srgb, var(--star-empty) 30%, rgba(2,8,16,.86));
 }
 
-.b1PathStarBar span.filled-1 { background:color-mix(in srgb, var(--ok) 34%, rgba(125,227,255,.08)); }
-.b1PathStarBar span.filled-2 { background:color-mix(in srgb, var(--ok) 46%, rgba(125,227,255,.08)); }
-.b1PathStarBar span.filled-3 { background:color-mix(in srgb, var(--ok) 58%, rgba(125,227,255,.08)); }
-.b1PathStarBar span.filled-4 { background:color-mix(in srgb, var(--ok) 72%, rgba(125,227,255,.08)); }
-.b1PathStarBar span.filled-5 { background:color-mix(in srgb, var(--ok) 88%, rgba(125,227,255,.08)); }
+.b1PathStarBar span.filled-1 { background:linear-gradient(90deg, color-mix(in srgb, var(--star-bronze) 55%, #121b2c), var(--star-bronze)); }
+.b1PathStarBar span.filled-2 { background:linear-gradient(90deg, color-mix(in srgb, var(--star-brass) 52%, #121b2c), var(--star-brass)); }
+.b1PathStarBar span.filled-3 { background:linear-gradient(90deg, color-mix(in srgb, var(--star-silver) 48%, #121b2c), var(--star-silver)); }
+.b1PathStarBar span.filled-4 { background:linear-gradient(90deg, color-mix(in srgb, var(--star-electrum) 52%, #121b2c), var(--star-electrum)); }
+.b1PathStarBar span.filled-5 { background:linear-gradient(90deg, color-mix(in srgb, var(--star-gold) 54%, #121b2c), var(--star-gold)); }
 
 .b1PathStarRows {
   display:grid;
@@ -5184,16 +5197,16 @@ body.homeMode #settingsPanel {
   flex-wrap:wrap;
   align-items:center;
   justify-content:center;
-  gap:7px;
+  gap:6px;
   width:auto;
   max-width:100%;
   margin:2px auto 0;
-  border:1px solid color-mix(in srgb, var(--accent) 32%, var(--line));
+  border:1px solid color-mix(in srgb, var(--star-silver) 26%, var(--line));
   border-radius:999px;
-  padding:5px 9px;
-  background:rgba(3,10,20,.68);
+  padding:4px 9px;
+  background:rgba(3,10,20,.62);
   color:var(--muted);
-  font-size:clamp(.7rem, 2.6vw, .82rem);
+  font-size:clamp(.68rem, 2.45vw, .78rem);
   line-height:1.1;
   font-weight:900;
 }
@@ -5206,13 +5219,26 @@ body.homeMode #settingsPanel {
   direction:ltr;
   white-space:nowrap;
   letter-spacing:0;
-  color:rgba(164,176,198,.46);
+  color:var(--star-empty);
   font-variant-numeric:tabular-nums;
 }
 
-.b1StarGlyphs .filled {
-  color:var(--ok);
-  text-shadow:0 0 8px rgba(74,255,168,.18);
+.b1TaskStarStrip .b1StarGlyphs,
+.b1StarUpdateLine .b1StarGlyphs {
+  margin-top:0;
+  min-height:0;
+}
+
+.b1StarGlyphs .b1Star {
+  font-size:clamp(.82rem, 2.5vw, 1rem);
+}
+
+.b1StarGlyphs .b1Star.earned {
+  font-size:clamp(.95rem, 2.85vw, 1.14rem);
+}
+
+.b1StarGlyphs .b1Star.current {
+  font-size:clamp(1.05rem, 3.05vw, 1.22rem);
 }
 
 .b1TaskStarCopy {
@@ -5221,6 +5247,22 @@ body.homeMode #settingsPanel {
 
 .b1TaskStarMeta {
   color:var(--muted);
+}
+
+.b1ReviewFlagBadge {
+  display:inline-flex;
+  align-items:center;
+  min-height:20px;
+  border:1px solid color-mix(in srgb, var(--warn) 42%, var(--line));
+  border-radius:999px;
+  padding:2px 6px;
+  background:rgba(255,196,87,.09);
+  color:color-mix(in srgb, var(--warn) 84%, var(--text));
+  font-size:.68rem;
+  line-height:1;
+  font-weight:950;
+  text-transform:uppercase;
+  letter-spacing:.02em;
 }
 
 .b1StarUpdateLine {
@@ -5240,8 +5282,8 @@ body.homeMode #settingsPanel {
 }
 
 .b1StarUpdateLine.positive {
-  border-color:color-mix(in srgb, var(--ok) 45%, var(--line));
-  color:color-mix(in srgb, var(--ok) 74%, var(--text));
+  border-color:color-mix(in srgb, var(--star-gold) 38%, var(--line));
+  color:var(--text);
 }
 
 .b1StarUpdateLine.neutral {
@@ -5249,12 +5291,12 @@ body.homeMode #settingsPanel {
 }
 
 .b1StarUpdateLine.warn {
-  border-color:color-mix(in srgb, var(--bad) 42%, var(--line));
-  color:color-mix(in srgb, var(--bad) 72%, var(--text));
+  border-color:color-mix(in srgb, var(--star-empty) 50%, var(--line));
+  color:var(--muted);
 }
 
 .b1StarUpdateLine .b1StarGlyphs {
-  color:rgba(164,176,198,.52);
+  color:var(--star-empty);
 }
 
 .b1PathUnlockOverlay {
@@ -5320,6 +5362,44 @@ body.homeMode #settingsPanel {
 .b1PathUnlockActions .primaryAction {
   border-color:var(--accent);
   background:linear-gradient(135deg, color-mix(in srgb, var(--accent) 24%, transparent), rgba(5,11,22,.92));
+}
+
+.reviewEditCard {
+  width:min(720px, 100%);
+  max-height:min(82dvh, 760px);
+  overflow:auto;
+}
+
+.reviewEditRows {
+  display:grid;
+  gap:8px;
+  max-height:44dvh;
+  overflow:auto;
+  border:1px solid color-mix(in srgb, var(--accent) 28%, var(--line));
+  border-radius:12px;
+  padding:8px;
+  background:rgba(3,8,18,.7);
+}
+
+.reviewEditRow {
+  display:grid;
+  gap:3px;
+  border:1px solid color-mix(in srgb, var(--accent) 18%, var(--line));
+  border-radius:10px;
+  padding:8px;
+  background:rgba(5,11,22,.78);
+  color:var(--muted);
+  font-size:.78rem;
+  line-height:1.25;
+}
+
+.reviewEditRow strong {
+  color:var(--text);
+}
+
+.reviewEditPrompt {
+  color:var(--muted);
+  overflow-wrap:anywhere;
 }
 
 .homeFeedback {
@@ -8795,6 +8875,21 @@ body.b1Mode .clozeAnswerText {
   </div>
 </div>
 
+<div class="b1PathUnlockOverlay reviewEditOverlay" id="reviewEditOverlay" hidden role="dialog" aria-modal="true" aria-labelledby="reviewEditTitle">
+  <div class="b1PathUnlockCard reviewEditCard" role="document">
+    <h2 id="reviewEditTitle">Review Edit List</h2>
+    <p id="reviewEditSummary">No review edits marked yet.</p>
+    <div class="reviewEditRows" id="reviewEditRows"></div>
+    <textarea class="devSnapshotFallback" id="reviewEditFallback" readonly hidden aria-label="Review edit list fallback text"></textarea>
+    <div class="devStatus" id="reviewEditStatus" aria-live="polite"></div>
+    <div class="b1PathUnlockActions">
+      <button id="reviewEditCopyBtn" type="button">Copy List</button>
+      <button id="reviewEditClearBtn" type="button">Clear List</button>
+      <button class="primaryAction" id="reviewEditCloseBtn" type="button">Close</button>
+    </div>
+  </div>
+</div>
+
 <div class="testerNotesOverlay" id="testerNotesOverlay" hidden role="dialog" aria-modal="true" aria-labelledby="testerNotesTitle">
   <div class="testerNotesCard" role="document">
     <h2 id="testerNotesTitle">Tester Notes / Known Bugs</h2>
@@ -8917,6 +9012,15 @@ body.b1Mode .clozeAnswerText {
         </div>
         <div class="devStatus" id="devReviewCandidatePreviewStatus" aria-live="polite"></div>
         <div class="devPreviewPanel" id="devReviewCandidatePreviewResults" hidden></div>
+      </section>
+      <section class="devUtilityBlock" aria-labelledby="devReviewTestsTitle">
+        <h3 id="devReviewTestsTitle">Review Tests</h3>
+        <p>Live-test imported review-flagged rows and mark rows that need later content edits. Local only.</p>
+        <div class="devUtilityActions">
+          <button id="devStartReviewTestsBtn" type="button">Review Tests</button>
+          <button id="devReviewEditListBtn" type="button">Review Edit List</button>
+        </div>
+        <div class="devStatus" id="devReviewTestsStatus" aria-live="polite"></div>
       </section>
       <section class="devUtilityBlock" aria-labelledby="devMetadataReviewCoverageTitle">
         <h3 id="devMetadataReviewCoverageTitle">Metadata review coverage</h3>
@@ -9131,6 +9235,13 @@ body.b1Mode .clozeAnswerText {
 <script src="content/b1-m09-complaints-customer-service.js"></script>
 <script src="content/b1-m10-technical-problems.js"></script>
 <script src="content/b1-m11-colleague-feedback-conflict.js"></script>
+<script src="content/b1-m12-forms-admin-certificates.js"></script>
+<script src="content/b1-m13-learning-exam-language.js"></script>
+<script src="content/b1-m14-connectors-sentence-functions.js"></script>
+<script src="content/b1-m15-time-place-movement.js"></script>
+<script src="content/b1-m16-money-payment-contracts.js"></script>
+<script src="content/b1-m17-home-family-daily-life-support.js"></script>
+<script src="content/b1-m18-b1-b2-bridge-preview.js"></script>
 <script>
 (function () {
   "use strict";
@@ -9140,9 +9251,10 @@ body.b1Mode .clozeAnswerText {
   var B1_STORAGE_KEY = "ozmosis_b1_sprint_progress_v1";
   var B1_EVIDENCE_STORAGE_KEY = "ozmosis_b1_progress_evidence_v1";
   var B1_PATH_UNLOCK_STORAGE_KEY = "ozmosis_b1_path_unlock_overrides_v1";
+  var B1_REVIEW_EDIT_QUEUE_STORAGE_KEY = "ozmosis_b1_review_edit_queue_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.80.14.7";
-  var OZMOSIS_EXPORT_VERSION = "v0.80.14.7-b1-progress-stars-task-screen";
+  var OZMOSIS_APP_VERSION = "v0.80.14.9";
+  var OZMOSIS_EXPORT_VERSION = "v0.80.14.9-full-b1-v02-content-import";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -9824,6 +9936,20 @@ body.b1Mode .clozeAnswerText {
   const B1_M10_NOTICE_ITEMS = (window.OZMOSIS_CONTENT && Array.isArray(window.OZMOSIS_CONTENT.b1M10TechnicalProblemsNotices)) ? window.OZMOSIS_CONTENT.b1M10TechnicalProblemsNotices : [];
   const B1_M11_ITEMS = (window.OZMOSIS_CONTENT && Array.isArray(window.OZMOSIS_CONTENT.b1M11ColleagueFeedbackConflict)) ? window.OZMOSIS_CONTENT.b1M11ColleagueFeedbackConflict : [];
   const B1_M11_NOTICE_ITEMS = (window.OZMOSIS_CONTENT && Array.isArray(window.OZMOSIS_CONTENT.b1M11ColleagueFeedbackConflictNotices)) ? window.OZMOSIS_CONTENT.b1M11ColleagueFeedbackConflictNotices : [];
+  const B1_M12_ITEMS = (window.OZMOSIS_CONTENT && Array.isArray(window.OZMOSIS_CONTENT.b1M12FormsAdminCertificates)) ? window.OZMOSIS_CONTENT.b1M12FormsAdminCertificates : [];
+  const B1_M12_NOTICE_ITEMS = (window.OZMOSIS_CONTENT && Array.isArray(window.OZMOSIS_CONTENT.b1M12FormsAdminCertificatesNotices)) ? window.OZMOSIS_CONTENT.b1M12FormsAdminCertificatesNotices : [];
+  const B1_M13_ITEMS = (window.OZMOSIS_CONTENT && Array.isArray(window.OZMOSIS_CONTENT.b1M13LearningExamLanguage)) ? window.OZMOSIS_CONTENT.b1M13LearningExamLanguage : [];
+  const B1_M13_NOTICE_ITEMS = (window.OZMOSIS_CONTENT && Array.isArray(window.OZMOSIS_CONTENT.b1M13LearningExamLanguageNotices)) ? window.OZMOSIS_CONTENT.b1M13LearningExamLanguageNotices : [];
+  const B1_M14_ITEMS = (window.OZMOSIS_CONTENT && Array.isArray(window.OZMOSIS_CONTENT.b1M14ConnectorsSentenceFunctions)) ? window.OZMOSIS_CONTENT.b1M14ConnectorsSentenceFunctions : [];
+  const B1_M14_NOTICE_ITEMS = (window.OZMOSIS_CONTENT && Array.isArray(window.OZMOSIS_CONTENT.b1M14ConnectorsSentenceFunctionsNotices)) ? window.OZMOSIS_CONTENT.b1M14ConnectorsSentenceFunctionsNotices : [];
+  const B1_M15_ITEMS = (window.OZMOSIS_CONTENT && Array.isArray(window.OZMOSIS_CONTENT.b1M15TimePlaceMovement)) ? window.OZMOSIS_CONTENT.b1M15TimePlaceMovement : [];
+  const B1_M15_NOTICE_ITEMS = (window.OZMOSIS_CONTENT && Array.isArray(window.OZMOSIS_CONTENT.b1M15TimePlaceMovementNotices)) ? window.OZMOSIS_CONTENT.b1M15TimePlaceMovementNotices : [];
+  const B1_M16_ITEMS = (window.OZMOSIS_CONTENT && Array.isArray(window.OZMOSIS_CONTENT.b1M16MoneyPaymentContracts)) ? window.OZMOSIS_CONTENT.b1M16MoneyPaymentContracts : [];
+  const B1_M16_NOTICE_ITEMS = (window.OZMOSIS_CONTENT && Array.isArray(window.OZMOSIS_CONTENT.b1M16MoneyPaymentContractsNotices)) ? window.OZMOSIS_CONTENT.b1M16MoneyPaymentContractsNotices : [];
+  const B1_M17_ITEMS = (window.OZMOSIS_CONTENT && Array.isArray(window.OZMOSIS_CONTENT.b1M17HomeFamilyDailyLifeSupport)) ? window.OZMOSIS_CONTENT.b1M17HomeFamilyDailyLifeSupport : [];
+  const B1_M17_NOTICE_ITEMS = (window.OZMOSIS_CONTENT && Array.isArray(window.OZMOSIS_CONTENT.b1M17HomeFamilyDailyLifeSupportNotices)) ? window.OZMOSIS_CONTENT.b1M17HomeFamilyDailyLifeSupportNotices : [];
+  const B1_M18_ITEMS = (window.OZMOSIS_CONTENT && Array.isArray(window.OZMOSIS_CONTENT.b1M18B1B2BridgePreview)) ? window.OZMOSIS_CONTENT.b1M18B1B2BridgePreview : [];
+  const B1_M18_NOTICE_ITEMS = (window.OZMOSIS_CONTENT && Array.isArray(window.OZMOSIS_CONTENT.b1M18B1B2BridgePreviewNotices)) ? window.OZMOSIS_CONTENT.b1M18B1B2BridgePreviewNotices : [];
   const B1_CONTENT_REGISTRY = {
     core:{
       key:"core",
@@ -9968,6 +10094,77 @@ body.b1Mode .clozeAnswerText {
       includeInDaily:false,
       includeInDiagnostic:false,
       excludeProductionFromAutoGradedDaily:true
+    },
+    b1_m12:{
+      key:"b1_m12",
+      label:"B1-12 Forms / admin / certificates",
+      items:B1_M12_ITEMS,
+      notices:B1_M12_NOTICE_ITEMS,
+      source:"content/b1-m12-forms-admin-certificates.js",
+      includeInDaily:false,
+      includeInDiagnostic:false,
+      excludeProductionFromAutoGradedDaily:true
+    },
+    b1_m13:{
+      key:"b1_m13",
+      label:"B1-13 Learning / exam language",
+      items:B1_M13_ITEMS,
+      notices:B1_M13_NOTICE_ITEMS,
+      source:"content/b1-m13-learning-exam-language.js",
+      includeInDaily:false,
+      includeInDiagnostic:false,
+      excludeProductionFromAutoGradedDaily:true
+    },
+    b1_m14:{
+      key:"b1_m14",
+      label:"B1-14 Connectors / sentence functions",
+      items:B1_M14_ITEMS,
+      notices:B1_M14_NOTICE_ITEMS,
+      source:"content/b1-m14-connectors-sentence-functions.js",
+      includeInDaily:false,
+      includeInDiagnostic:false,
+      excludeProductionFromAutoGradedDaily:true
+    },
+    b1_m15:{
+      key:"b1_m15",
+      label:"B1-15 Time / place / movement",
+      items:B1_M15_ITEMS,
+      notices:B1_M15_NOTICE_ITEMS,
+      source:"content/b1-m15-time-place-movement.js",
+      includeInDaily:false,
+      includeInDiagnostic:false,
+      excludeProductionFromAutoGradedDaily:true
+    },
+    b1_m16:{
+      key:"b1_m16",
+      label:"B1-16 Money / payment / contracts",
+      items:B1_M16_ITEMS,
+      notices:B1_M16_NOTICE_ITEMS,
+      source:"content/b1-m16-money-payment-contracts.js",
+      includeInDaily:false,
+      includeInDiagnostic:false,
+      excludeProductionFromAutoGradedDaily:true
+    },
+    b1_m17:{
+      key:"b1_m17",
+      label:"B1-17 Home / family / daily life support",
+      items:B1_M17_ITEMS,
+      notices:B1_M17_NOTICE_ITEMS,
+      source:"content/b1-m17-home-family-daily-life-support.js",
+      includeInDaily:false,
+      includeInDiagnostic:false,
+      excludeProductionFromAutoGradedDaily:true
+    },
+    b1_m18:{
+      key:"b1_m18",
+      label:"B1-18 B1 to B2 bridge preview",
+      items:B1_M18_ITEMS,
+      notices:B1_M18_NOTICE_ITEMS,
+      source:"content/b1-m18-b1-b2-bridge-preview.js",
+      includeInDaily:false,
+      includeInDiagnostic:false,
+      excludeProductionFromAutoGradedDaily:true,
+      previewOnly:true
     }
   };
   function b1RegistryBank(key) {
@@ -10028,13 +10225,13 @@ body.b1Mode .clozeAnswerText {
     { pathId:"B1.9", order:9, label:"Complaints and Customer Service", routeKey:"b1_m09", banks:["b1_m09"], subcategoryLabel:"Complaints / customer service", subcategories:["B1.9.1 Complaints", "B1.9.2 Describing problems", "B1.9.3 Requesting a solution", "B1.9.4 Apologies", "B1.9.5 Polite but firm tone"] },
     { pathId:"B1.10", order:10, label:"Technical Problems", routeKey:"b1_m10", banks:["b1_m10"], subcategoryLabel:"Technical problems", subcategories:["B1.10.1 Devices and apps", "B1.10.2 Error messages", "B1.10.3 Internet and access", "B1.10.4 Explaining what happened", "B1.10.5 Asking for support"] },
     { pathId:"B1.11", order:11, label:"Colleague Feedback and Conflict", routeKey:"b1_m11", banks:["b1_m11"], subcategoryLabel:"Colleague feedback / conflict", subcategories:["B1.11.1 Giving feedback", "B1.11.2 Receiving feedback", "B1.11.3 Disagreeing politely", "B1.11.4 Apologising and repairing", "B1.11.5 Setting boundaries"] },
-    { pathId:"B1.12", order:12, label:"Forms, Admin, and Certificates", routeKey:"learning_map", banks:[], subcategoryLabel:"Deferred forms/admin path", subcategories:["B1.12.1 Forms", "B1.12.2 Applications and requests", "B1.12.3 Certificates and proof", "B1.12.4 Deadlines", "B1.12.5 Official replies"], preview:true },
-    { pathId:"B1.13", order:13, label:"Learning and Exam Language", routeKey:"learning_map", banks:[], subcategoryLabel:"Learning language", subcategories:["B1.13.1 Tasks and instructions", "B1.13.2 Asking for explanation", "B1.13.3 Talking about mistakes", "B1.13.4 Exam preparation", "B1.13.5 Progress and review"], preview:true },
-    { pathId:"B1.14", order:14, label:"Connectors and Sentence Functions", routeKey:"connectors", banks:["connectors", "redemittel"], subcategoryLabel:"Connectors / sentence functions", subcategories:["B1.14.1 Reasons: weil, denn, deshalb", "B1.14.2 Contrast: obwohl, trotzdem", "B1.14.3 Time: wenn, als, bevor, nachdem", "B1.14.4 Purpose: damit, um ... zu", "B1.14.5 Word order after connectors"] },
-    { pathId:"B1.15", order:15, label:"Time, Place, and Movement", routeKey:"grammar", banks:["core"], subcategoryLabel:"Cases / movement support", subcategories:["B1.15.1 Time phrases", "B1.15.2 Places", "B1.15.3 Movement and direction", "B1.15.4 Two-way prepositions", "B1.15.5 Local and temporal prepositions"] },
-    { pathId:"B1.16", order:16, label:"Money, Payment, and Contracts", routeKey:"learning_map", banks:[], subcategoryLabel:"Money / contracts", subcategories:["B1.16.1 Payment", "B1.16.2 Charges and fees", "B1.16.3 Contract conditions", "B1.16.4 Cancellation", "B1.16.5 Written confirmation"], preview:true },
-    { pathId:"B1.17", order:17, label:"Home, Family, and Daily Life Support", routeKey:"learning_map", banks:[], subcategoryLabel:"Daily life support", subcategories:["B1.17.1 Household", "B1.17.2 Family logistics", "B1.17.3 Kindergarten and school", "B1.17.4 Neighbourhood", "B1.17.5 Everyday problems"], preview:true },
-    { pathId:"B1.18", order:18, label:"B1 to B2 Bridge Preview", routeKey:"learning_map", banks:[], subcategoryLabel:"Bridge preview", subcategories:["B1.18.1 More formal phrasing", "B1.18.2 Longer explanations", "B1.18.3 Nuanced disagreement", "B1.18.4 Written German preview", "B1.18.5 B2 preview tasks"], preview:true }
+    { pathId:"B1.12", order:12, label:"Forms, Admin, and Certificates", routeKey:"b1_m12", banks:["b1_m12"], subcategoryLabel:"Forms / admin / certificates", subcategories:["B1.12.1 Forms", "B1.12.2 Applications and requests", "B1.12.3 Certificates and proof", "B1.12.4 Deadlines", "B1.12.5 Official replies"] },
+    { pathId:"B1.13", order:13, label:"Learning and Exam Language", routeKey:"b1_m13", banks:["b1_m13"], subcategoryLabel:"Learning / exam language", subcategories:["B1.13.1 Tasks and instructions", "B1.13.2 Asking for explanation", "B1.13.3 Talking about mistakes", "B1.13.4 Exam preparation", "B1.13.5 Progress and review"] },
+    { pathId:"B1.14", order:14, label:"Connectors and Sentence Functions", routeKey:"b1_m14", banks:["b1_m14"], subcategoryLabel:"Connectors / sentence functions", subcategories:["B1.14.1 Reasons: weil, denn, deshalb", "B1.14.2 Contrast: obwohl, trotzdem", "B1.14.3 Time: wenn, als, bevor, nachdem", "B1.14.4 Purpose: damit, um ... zu", "B1.14.5 Word order after connectors"] },
+    { pathId:"B1.15", order:15, label:"Time, Place, and Movement", routeKey:"b1_m15", banks:["b1_m15"], subcategoryLabel:"Time / place / movement", subcategories:["B1.15.1 Time phrases", "B1.15.2 Places", "B1.15.3 Movement and direction", "B1.15.4 Two-way prepositions", "B1.15.5 Local and temporal prepositions"] },
+    { pathId:"B1.16", order:16, label:"Money, Payment, and Contracts", routeKey:"b1_m16", banks:["b1_m16"], subcategoryLabel:"Money / contracts", subcategories:["B1.16.1 Payment", "B1.16.2 Charges and fees", "B1.16.3 Contract conditions", "B1.16.4 Cancellation", "B1.16.5 Written confirmation"] },
+    { pathId:"B1.17", order:17, label:"Home, Family, and Daily Life Support", routeKey:"b1_m17", banks:["b1_m17"], subcategoryLabel:"Daily life support", subcategories:["B1.17.1 Household", "B1.17.2 Family logistics", "B1.17.3 Kindergarten and school", "B1.17.4 Neighbourhood", "B1.17.5 Everyday problems"] },
+    { pathId:"B1.18", order:18, label:"B1 to B2 Bridge Preview", routeKey:"learning_map", banks:["b1_m18"], subcategoryLabel:"Bridge preview", subcategories:["B1.18.1 More formal phrasing", "B1.18.2 Longer explanations", "B1.18.3 Nuanced disagreement", "B1.18.4 Written German preview", "B1.18.5 B2 preview tasks"], preview:true }
   ];
   const B1_PATH_UNLOCK_STAR_THRESHOLD = 1;
   const B1_PATH_UNLOCK_COVERAGE_PERCENT = 50;
@@ -10073,6 +10270,13 @@ body.b1Mode .clozeAnswerText {
     if (bankKey === "b1_m09") return b1PathAreaById("B1.9");
     if (bankKey === "b1_m10") return b1PathAreaById("B1.10");
     if (bankKey === "b1_m11") return b1PathAreaById("B1.11");
+    if (bankKey === "b1_m12") return b1PathAreaById("B1.12");
+    if (bankKey === "b1_m13") return b1PathAreaById("B1.13");
+    if (bankKey === "b1_m14") return b1PathAreaById("B1.14");
+    if (bankKey === "b1_m15") return b1PathAreaById("B1.15");
+    if (bankKey === "b1_m16") return b1PathAreaById("B1.16");
+    if (bankKey === "b1_m17") return b1PathAreaById("B1.17");
+    if (bankKey === "b1_m18") return b1PathAreaById("B1.18");
     if (bankKey === "connectors") return b1PathAreaById("B1.14");
     if (bankKey === "core") return b1PathAreaById("B1.15");
     if (bankKey === "redemittel") {
@@ -11887,6 +12091,12 @@ body.b1Mode .clozeAnswerText {
     if (routeKey === "b1_m09") { startB1M09Round("mixed"); return; }
     if (routeKey === "b1_m10") { startB1M10Round("mixed"); return; }
     if (routeKey === "b1_m11") { startB1M11Round("mixed"); return; }
+    if (routeKey === "b1_m12") { startB1M12Round("mixed"); return; }
+    if (routeKey === "b1_m13") { startB1M13Round("mixed"); return; }
+    if (routeKey === "b1_m14") { startB1M14Round("mixed"); return; }
+    if (routeKey === "b1_m15") { startB1M15Round("mixed"); return; }
+    if (routeKey === "b1_m16") { startB1M16Round("mixed"); return; }
+    if (routeKey === "b1_m17") { startB1M17Round("mixed"); return; }
     if (routeKey === "grammar") { showGrammarHub(); return; }
     if (routeKey === "grammar_repair") { startConnectorSprint("repair"); return; }
     if (routeKey === "connectors") { startConnectorSprint("all"); return; }
@@ -15336,7 +15546,11 @@ body.b1Mode .clozeAnswerText {
   }
   function b1PathStarBarHtml(category) {
     var total = Math.max(1, Number(category && category.coreTargetCount || 0));
-    return '<div class="b1PathStarBar" aria-label="Stacked star progress">' + [1,2,3,4,5].map(function(level){
+    var aria = [1,2,3,4,5].map(function(level){
+      var count = Number(category && category.starCounts && category.starCounts[level] || 0);
+      return B1_PATH_STAR_LABELS[level] + ": " + count + " of " + total;
+    }).join("; ");
+    return '<div class="b1PathStarBar" role="img" aria-label="' + escapeHtml(aria) + '">' + [1,2,3,4,5].map(function(level){
       var pct = Math.round(Number(category && category.starCounts && category.starCounts[level] || 0) * 100 / total);
       return '<span class="' + (pct > 0 ? "filled-" + level : "") + '" title="' + escapeHtml(B1_PATH_STAR_LABELS[level]) + ': ' + pct + '%"></span>';
     }).join("") + '</div>';
@@ -15350,15 +15564,25 @@ body.b1Mode .clozeAnswerText {
   }
   function b1PathStarGlyphsHtml(level) {
     level = b1PathStarLevel(level);
+    var label = B1_PATH_STAR_LABELS[level] || B1_PATH_STAR_LABELS[0];
     var out = [];
     for (var i = 1; i <= 5; i += 1) {
-      out.push('<span' + (i <= level ? ' class="filled"' : '') + ' aria-hidden="true">&#9733;</span>');
+      var earned = i <= level;
+      var tier = i === 1 ? "bronze" : (i === 2 ? "brass" : (i === 3 ? "silver" : (i === 4 ? "electrum" : "gold")));
+      var classes = ["b1Star", tier, "level" + i, earned ? "earned" : "unearned"];
+      if (earned && i === level) classes.push("current");
+      out.push('<span class="' + classes.join(" ") + '" aria-hidden="true">' + (earned ? '&#9733;' : '&#9734;') + '</span>');
     }
-    return '<span class="b1StarGlyphs" aria-label="' + level + ' of 5 stars">' + out.join("") + '</span>';
+    return '<span class="b1Stars b1StarGlyphs" role="img" aria-label="' + level + ' of 5 stars. ' + escapeHtml(label) + '.">' + out.join("") + '</span>';
   }
   function b1PathStarLevelText(level) {
     level = b1PathStarLevel(level);
-    return level + "/5 stars - " + B1_PATH_STAR_LABELS[level].toLowerCase();
+    return B1_PATH_STAR_LABELS[level];
+  }
+  function b1PathStarSentence(level) {
+    level = b1PathStarLevel(level);
+    if (level === 0) return "Not yet correct";
+    return B1_PATH_STAR_LABELS[level];
   }
   function b1PathTaskTargetForItem(item, progress) {
     if (!item || !item.id) return null;
@@ -15417,6 +15641,7 @@ body.b1Mode .clozeAnswerText {
     var mount = el("b1TaskStarStatus");
     if (!mount) return;
     var summary = b1PathTaskStarSummary(item);
+    var reviewBadge = item && (item.reviewFlag || item.needsHumanReview) ? '<span class="b1ReviewFlagBadge">Review flagged</span>' : "";
     if (!summary || !b1Runtime.active) {
       clearB1TaskStarStatus();
       return;
@@ -15424,20 +15649,16 @@ body.b1Mode .clozeAnswerText {
     mount.hidden = false;
     if (summary.production) {
       mount.innerHTML = '<span class="b1TaskStarCopy">Production practice</span>' +
-        '<span class="b1TaskStarMeta">not star-rated</span>' +
-        '<span class="b1TaskStarMeta">Speaking/writing practice does not add correctness stars.</span>';
+        '<span class="b1TaskStarMeta">Not star-rated</span>' + reviewBadge;
       return;
     }
     if (summary.diagnostic) {
       mount.innerHTML = '<span class="b1TaskStarCopy">Diagnostic snapshot</span>' +
-        '<span class="b1TaskStarMeta">star unchanged</span>' +
-        '<span class="b1TaskStarMeta">' + escapeHtml(summary.taskTypeLabel) + '</span>';
+        '<span class="b1TaskStarMeta">Stars unchanged</span>' + reviewBadge;
       return;
     }
-    mount.innerHTML = '<span class="b1TaskStarCopy">Practice progress</span>' +
-      b1PathStarGlyphsHtml(summary.level) +
-      '<span class="b1TaskStarCopy">' + escapeHtml(summary.levelText) + '</span>' +
-      '<span class="b1TaskStarMeta">' + escapeHtml(summary.categoryId) + ' &middot; ' + escapeHtml(summary.taskTypeLabel) + '</span>';
+    mount.innerHTML = b1PathStarGlyphsHtml(summary.level) +
+      '<span class="b1TaskStarCopy">' + escapeHtml(b1PathStarSentence(summary.level)) + '</span>' + reviewBadge;
   }
   function b1PathTaskStarUpdateHtml(item, beforeSummary, record, isCorrect, assisted) {
     var beforeLevel = beforeSummary ? b1PathStarLevel(beforeSummary.level) : 0;
@@ -15446,19 +15667,19 @@ body.b1Mode .clozeAnswerText {
     var diagnostic = afterSummary && afterSummary.diagnostic || record && record.attemptContext === "diagnostic";
     var production = afterSummary && afterSummary.production || record && (record.selfMarked || record.answerMode === "mark_practised" || record.result === "practised");
     if (production) {
-      return '<div class="b1StarUpdateLine neutral"><span>Production practised - speaking/writing practice does not add correctness stars.</span></div>';
+      return '<div class="b1StarUpdateLine neutral"><span>Production practised.</span><span>Not star-rated.</span></div>';
     }
     if (diagnostic) {
       return '<div class="b1StarUpdateLine neutral"><span>Diagnostic snapshot - star unchanged.</span></div>';
     }
     if (assisted || record && (record.result === "assisted" || record.hintUsed === true || record.supportLevel === "teach_me_assisted")) {
-      return '<div class="b1StarUpdateLine neutral"><span>Practised with help - star unchanged.</span></div>';
+      return '<div class="b1StarUpdateLine neutral"><span>Practised with help. Stars need an unaided correct answer.</span></div>';
     }
     if (!isCorrect) {
-      return '<div class="b1StarUpdateLine warn"><span>No star this time. This will return for practice.</span></div>';
+      return '<div class="b1StarUpdateLine warn"><span>No new star. This will return for practice.</span></div>';
     }
     var changed = afterLevel > beforeLevel;
-    var copy = changed ? ("Now " + afterLevel + "/5 stars - got right " + (afterLevel === 1 ? "once" : (afterLevel === 2 ? "twice" : afterLevel + " times")) + ".") : ("Still " + afterLevel + "/5 stars - star unchanged.");
+    var copy = changed ? ("Now " + b1PathStarSentence(afterLevel).toLowerCase() + ".") : ("Still " + afterLevel + "/5. Star unchanged.");
     return '<div class="b1StarUpdateLine ' + (changed ? "positive" : "neutral") + '">' + b1PathStarGlyphsHtml(afterLevel) + '<span>' + escapeHtml(copy) + '</span></div>';
   }
   function b1PathCategoryStarRowsHtml(category) {
@@ -16139,6 +16360,94 @@ body.b1Mode .clozeAnswerText {
       window.localStorage.setItem(B1_PATH_UNLOCK_STORAGE_KEY, JSON.stringify(normaliseB1PathUnlockOverrides(obj)));
     } catch (e) {}
   }
+  function normaliseB1ReviewEditQueue(input) {
+    var source = input && typeof input === "object" ? input : {};
+    var rows = Array.isArray(source.items) ? source.items : (Array.isArray(source) ? source : []);
+    var seen = {};
+    var items = [];
+    rows.forEach(function(row){
+      if (!row || typeof row !== "object") return;
+      var key = String(row.sourceRowAuditKey || row.itemId || "").trim();
+      if (!key || seen[key]) return;
+      seen[key] = true;
+      items.push({
+        sourceRowAuditKey:key,
+        itemId:String(row.itemId || ""),
+        categoryId:String(row.categoryId || ""),
+        categoryTitle:String(row.categoryTitle || ""),
+        sourceFile:String(row.sourceFile || ""),
+        sourceRowId:String(row.sourceRowId || ""),
+        sourceRowNumber:String(row.sourceRowNumber || ""),
+        taskType:String(row.taskType || ""),
+        originalStage3Decision:String(row.originalStage3Decision || ""),
+        issueCodes:Array.isArray(row.issueCodes) ? row.issueCodes.map(String) : b1EvidenceUnique(String(row.issueCodes || "").split(/\s*(?:;|\|)\s*/g)),
+        humanReviewReason:String(row.humanReviewReason || row.reviewFlagReason || ""),
+        prompt:String(row.prompt || ""),
+        taskTextOrOptions:String(row.taskTextOrOptions || ""),
+        answer:String(row.answer || ""),
+        timestampAdded:String(row.timestampAdded || ""),
+        appVersion:String(row.appVersion || "")
+      });
+    });
+    return { schemaVersion:Number(source.schemaVersion || 1), storageKey:B1_REVIEW_EDIT_QUEUE_STORAGE_KEY, items:items };
+  }
+  function safeGetB1ReviewEditQueue() {
+    try {
+      var raw = window.localStorage.getItem(B1_REVIEW_EDIT_QUEUE_STORAGE_KEY);
+      return normaliseB1ReviewEditQueue(raw ? JSON.parse(raw) : null);
+    } catch (e) {
+      return { schemaVersion:1, storageKey:B1_REVIEW_EDIT_QUEUE_STORAGE_KEY, items:[] };
+    }
+  }
+  function safeSetB1ReviewEditQueue(obj) {
+    try {
+      window.localStorage.setItem(B1_REVIEW_EDIT_QUEUE_STORAGE_KEY, JSON.stringify(normaliseB1ReviewEditQueue(obj)));
+    } catch (e) {}
+  }
+  function b1ReviewEditQueueEntryForItem(item) {
+    item = item || {};
+    return {
+      sourceRowAuditKey:String(item.sourceRowAuditKey || item.id || ""),
+      itemId:String(item.id || ""),
+      categoryId:String(item.categoryId || ""),
+      categoryTitle:String(item.categoryTitle || item.moduleTitle || ""),
+      sourceFile:String(item.sourceFile || item.sourceTaskCsv || ""),
+      sourceRowId:String(item.sourceRowId || ""),
+      sourceRowNumber:String(item.sourceRowNumber || ""),
+      taskType:String(item.taskType || item.itemType || ""),
+      originalStage3Decision:String(item.originalStage3Decision || ""),
+      issueCodes:Array.isArray(item.issueCodes) ? item.issueCodes.slice() : [],
+      humanReviewReason:String(item.humanReviewReason || item.reviewFlagReason || ""),
+      prompt:String(item.prompt_de || ""),
+      taskTextOrOptions:b1UsesChoices(item) ? b1ChoiceRawChoices(item).map(b1ChoiceText).join(" | ") : String(item.learnerCue || item.fullAnswer_de || ""),
+      answer:String(item.answer || item.fullAnswer_de || ""),
+      timestampAdded:new Date().toISOString(),
+      appVersion:OZMOSIS_APP_VERSION
+    };
+  }
+  function b1ReviewEditQueueAdd(item) {
+    var entry = b1ReviewEditQueueEntryForItem(item);
+    if (!entry.sourceRowAuditKey) return { added:false, duplicate:false, count:safeGetB1ReviewEditQueue().items.length };
+    var queue = safeGetB1ReviewEditQueue();
+    var exists = queue.items.some(function(row){ return row.sourceRowAuditKey === entry.sourceRowAuditKey; });
+    if (!exists) queue.items.push(entry);
+    safeSetB1ReviewEditQueue(queue);
+    return { added:!exists, duplicate:exists, count:safeGetB1ReviewEditQueue().items.length, entry:entry };
+  }
+  function b1ReviewEditQueueCopyText() {
+    var rows = safeGetB1ReviewEditQueue().items || [];
+    var header = "categoryId\ttaskType\tsourceRowAuditKey\titemId\tissueCodes\thumanReviewReason";
+    return [header].concat(rows.map(function(row){
+      return [
+        row.categoryId || "",
+        row.taskType || "",
+        row.sourceRowAuditKey || "",
+        row.itemId || "",
+        Array.isArray(row.issueCodes) ? row.issueCodes.join("|") : String(row.issueCodes || ""),
+        row.humanReviewReason || ""
+      ].map(function(value){ return String(value || "").replace(/\s+/g, " ").trim(); }).join("\t");
+    })).join("\n");
+  }
   function b1EvidenceUnique(values) {
     var seen = {}, out = [];
     (values || []).forEach(function(value){
@@ -16259,6 +16568,13 @@ body.b1Mode .clozeAnswerText {
     else if (bankKey === "b1_m09") add("b1_09");
     else if (bankKey === "b1_m10") add("b1_10");
     else if (bankKey === "b1_m11") add("b1_11");
+    else if (bankKey === "b1_m12") add("b1_12");
+    else if (bankKey === "b1_m13") add("b1_13");
+    else if (bankKey === "b1_m14") add("b1_14");
+    else if (bankKey === "b1_m15") add("b1_15");
+    else if (bankKey === "b1_m16") add("b1_16");
+    else if (bankKey === "b1_m17") add("b1_17");
+    else if (bankKey === "b1_m18") add("b1_18_preview");
     else if (bankKey === "core") add("b1_core");
     if (item && item.itemType === "word_order_cloze") add("word_order");
     if (item && item.itemType === "error_repair") add("repair");
@@ -16288,6 +16604,13 @@ body.b1Mode .clozeAnswerText {
     if (bankKey === "b1_m09") return "b1_09_complaints_customer_service";
     if (bankKey === "b1_m10") return "b1_10_technical_problems";
     if (bankKey === "b1_m11") return "b1_11_colleague_feedback_conflict";
+    if (bankKey === "b1_m12") return "b1_12_forms_admin_certificates";
+    if (bankKey === "b1_m13") return "b1_13_learning_exam_language";
+    if (bankKey === "b1_m14") return "b1_14_connectors_sentence_functions";
+    if (bankKey === "b1_m15") return "b1_15_time_place_movement";
+    if (bankKey === "b1_m16") return "b1_16_money_payment_contracts";
+    if (bankKey === "b1_m17") return "b1_17_home_family_daily_life_support";
+    if (bankKey === "b1_m18") return "b1_18_b1_b2_bridge_preview";
     if (bankKey === "core") return "b1_core";
     return "unknown";
   }
@@ -16403,6 +16726,19 @@ body.b1Mode .clozeAnswerText {
       variantId:item.variantId || null,
       siblingVariantGroup:item.siblingVariantGroup || null,
       reviewGroup:item.reviewGroup || null,
+      contentImportVersion:item.contentImportVersion || null,
+      categoryId:item.categoryId || null,
+      categoryTitle:item.categoryTitle || null,
+      sourceRowAuditKey:item.sourceRowAuditKey || null,
+      sourceFile:item.sourceFile || item.sourceTaskCsv || null,
+      sourceRowId:item.sourceRowId || null,
+      sourceRowNumber:item.sourceRowNumber || null,
+      originalStage3Decision:item.originalStage3Decision || null,
+      reviewFlag:!!(item.reviewFlag || item.needsHumanReview),
+      needsHumanReview:!!item.needsHumanReview,
+      reviewStatus:item.reviewStatus || null,
+      humanReviewReason:item.humanReviewReason || item.reviewFlagReason || null,
+      issueCodes:Array.isArray(item.issueCodes) ? item.issueCodes.slice() : [],
       familyType:item.familyType || null,
       familyTarget:item.familyTarget || null,
       sameSessionEvidenceCap:item.sameSessionEvidenceCap != null ? Number(item.sameSessionEvidenceCap) : null,
@@ -18870,6 +19206,7 @@ body.b1Mode .clozeAnswerText {
   }
   function b1ItemDeck(item) {
     if (!item) return "b1";
+    if (item.contentBankKey) return String(item.contentBankKey);
     if (item.moduleKey === "b1-01" || item.source === "Ozmosis B1-01 Curated Variant Families v0.80.3" || item.source === "Ozmosis B1-01 retained single canonical items v0.80.3") return "b1_m01";
     if (item.moduleKey === "b1-02" || item.source === "Ozmosis B1-02 Appointments / callbacks v0.80.5") return "b1_m02";
     if (item.moduleKey === "b1-03" || item.source === "Ozmosis B1-03 Job search / offices v0.80.6") return "b1_m03";
@@ -19240,6 +19577,87 @@ body.b1Mode .clozeAnswerText {
       return true;
     });
   }
+  const B1_IMPORTED_MODULE_TITLES = {
+    b1_m12:"B1-12 Forms / admin / certificates",
+    b1_m13:"B1-13 Learning / exam language",
+    b1_m14:"B1-14 Connectors / sentence functions",
+    b1_m15:"B1-15 Time / place / movement",
+    b1_m16:"B1-16 Money / payment / contracts",
+    b1_m17:"B1-17 Home / family / daily life support"
+  };
+  function b1ImportedModuleTitle(bankKey, filter) {
+    var base = B1_IMPORTED_MODULE_TITLES[bankKey] || "B1 category practice";
+    if (filter === "production") return base + " Production";
+    if (filter === "repair") return base + " Repair";
+    return base;
+  }
+  function b1ImportedModulePoolFor(bankKey, filter) {
+    filter = filter || "mixed";
+    return b1RegistryItems(bankKey).filter(function(item){
+      if (!b1ItemIsNormalEligible(item)) return false;
+      if (item.previewOnly || item.activeB1Evidence === false) return false;
+      if (filter === "production") return item.itemType === "production_card";
+      if (filter === "repair") return item.itemType === "error_repair";
+      return true;
+    });
+  }
+  function startB1ImportedModuleRound(bankKey, filter) {
+    filter = filter || "mixed";
+    var pool = b1ImportedModulePoolFor(bankKey, filter);
+    if (!pool.length) {
+      showLearningMapScreen();
+      showAppStatus("No active imported practice items are available for this category.", "warn");
+      return;
+    }
+    var round = buildB1Round({ deckKey:bankKey, filterKey:filter, items:pool, roundLength:10 });
+    var queue = round.queue;
+    b1Runtime.active = true;
+    b1Runtime.mode = bankKey;
+    b1Runtime.title = b1ImportedModuleTitle(bankKey, filter);
+    b1Runtime.queue = queue;
+    b1Runtime.current = null;
+    b1Runtime.target = queue.length;
+    b1Runtime.correct = 0;
+    b1Runtime.wrong = 0;
+    b1Runtime.practised = 0;
+    b1Runtime.assisted = 0;
+    b1Runtime.streak = 0;
+    b1Runtime.connectorFamily = "";
+    b1Runtime.deckKey = bankKey;
+    b1Runtime.filterKey = filter;
+    b1Runtime.roundSeed = round.seed;
+    resetB1ChoiceSelection();
+    b1Runtime.translationOpen = false;
+    b1Runtime.currentExtraPractice = false;
+    b1Runtime.currentAssisted = false;
+    b1Runtime.dailySprint = false;
+    b1Runtime.dailyDateKey = "";
+    clearB1DiagnosticRuntime();
+    state = "b1Checking";
+    current = null;
+    hintUsed = false;
+    clearMobileClozeFocus();
+    setDiagnosticUiVisible(false);
+    document.body.classList.remove("b1TypedCloze", "b1LongAnswer");
+    setMenu(false);
+    setDevTools(false);
+    document.body.classList.add("b1Mode");
+    document.body.classList.remove("homeMode", "setupMode", "placeholderMode", "resultsMode");
+    if (el("homeScreen")) el("homeScreen").hidden = true;
+    if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
+    if (el("grammarHub")) el("grammarHub").hidden = true;
+    if (el("redemittelHub")) el("redemittelHub").hidden = true;
+    if (el("startScreen")) el("startScreen").hidden = true;
+    setLearningMapVisible(false);
+    setSettingsScreenVisible(false);
+    nextB1Question();
+  }
+  function startB1M12Round(filter) { startB1ImportedModuleRound("b1_m12", filter); }
+  function startB1M13Round(filter) { startB1ImportedModuleRound("b1_m13", filter); }
+  function startB1M14Round(filter) { startB1ImportedModuleRound("b1_m14", filter); }
+  function startB1M15Round(filter) { startB1ImportedModuleRound("b1_m15", filter); }
+  function startB1M16Round(filter) { startB1ImportedModuleRound("b1_m16", filter); }
+  function startB1M17Round(filter) { startB1ImportedModuleRound("b1_m17", filter); }
   function buildConnectorQueue(family) {
     var pool = b1ConnectorPoolFor(family);
     var production = pool.filter(function(item){ return item.itemType === "production_card"; });
@@ -19284,6 +19702,9 @@ body.b1Mode .clozeAnswerText {
     b1Runtime.sourceCandidateId = "";
     b1Runtime.reviewPractice = false;
     b1Runtime.reviewPracticeCandidateIds = [];
+    b1Runtime.reviewTests = false;
+    b1Runtime.reviewTestItemIds = [];
+    b1Runtime.reviewTestDecisionPending = false;
   }
   function b1DiagnosticTokenText(item) {
     if (!item) return "";
@@ -20219,9 +20640,9 @@ body.b1Mode .clozeAnswerText {
     step = Math.max(0, Math.min(5, Number(step || 0)));
     var colors = ["grey", "grey", "grey", "grey", "grey"];
     if (step >= 1) colors[0] = "bronze level1";
-    if (step >= 2) colors[1] = "bronze level2";
-    if (step >= 3) colors[2] = "bronze level3";
-    if (step >= 4) colors[3] = "silver level4";
+    if (step >= 2) colors[1] = "brass level2";
+    if (step >= 3) colors[2] = "silver level3";
+    if (step >= 4) colors[3] = "electrum level4";
     if (step >= 5) colors[4] = "gold level5";
     return '<div class="b1Stars" role="img" aria-label="Leitner rating ' + step + ' of 5">' +
       colors.map(function(color, index){
@@ -21106,6 +21527,158 @@ body.b1Mode .clozeAnswerText {
     }
     return out.concat(remaining);
   }
+  function b1ReviewFlaggedImportedItems() {
+    return b1RegistryPracticeItems().filter(function(item){
+      if (!item || !item.id) return false;
+      if (!(item.reviewFlag || item.needsHumanReview)) return false;
+      if (item.contentImportVersion !== "v0.80.14.9") return false;
+      if (item.previewOnly || item.categoryId === "CAT18" || item.activeB1Evidence === false) return false;
+      if (item.originalStage3Decision === "cut" || item.originalStage3Decision === "defer") return false;
+      if (item.rendererImportStatus === "imported_data_only_renderer_pending" || item.importStatus === "excluded_cut_defer") return false;
+      return b1ItemIsNormalEligible(item);
+    });
+  }
+  function b1ReviewTestsDebugSummary() {
+    var items = b1ReviewFlaggedImportedItems();
+    return {
+      storageKey:B1_REVIEW_EDIT_QUEUE_STORAGE_KEY,
+      reviewFlaggedCount:items.length,
+      reviewEditQueueCount:safeGetB1ReviewEditQueue().items.length,
+      cat18ExcludedByDefault:B1_M18_ITEMS.filter(function(item){ return item && (item.reviewFlag || item.needsHumanReview); }).length,
+      currentReviewTestItem:b1Runtime.reviewTests && b1Runtime.current ? b1ReviewEditQueueEntryForItem(b1Runtime.current) : null
+    };
+  }
+  function showReviewTestsEmpty() {
+    showHubPlaceholder("Review Tests");
+    if (el("hubPlaceholderBody")) {
+      el("hubPlaceholderBody").innerHTML =
+        '<p class="learningMapText">No active review-flagged imported rows are available. CAT18 remains preview-only and is excluded by default.</p>';
+    }
+    showAppStatus("No review-flagged imported rows are available for Review Tests.", "warn");
+  }
+  function startB1ReviewTests() {
+    var items = shuffleWithSeed(b1ReviewFlaggedImportedItems(), "review-tests|" + Date.now().toString(36));
+    if (!items.length) {
+      showReviewTestsEmpty();
+      return;
+    }
+    b1Runtime.active = true;
+    b1Runtime.mode = "review_tests";
+    b1Runtime.title = "Review Tests";
+    b1Runtime.queue = items.map(cloneB1Item);
+    b1Runtime.current = null;
+    b1Runtime.target = b1Runtime.queue.length;
+    b1Runtime.correct = 0;
+    b1Runtime.wrong = 0;
+    b1Runtime.practised = 0;
+    b1Runtime.assisted = 0;
+    b1Runtime.streak = 0;
+    b1Runtime.connectorFamily = "";
+    b1Runtime.deckKey = "review_tests";
+    b1Runtime.filterKey = "review_flagged_imported_v1";
+    b1Runtime.roundSeed = "review_tests|" + Date.now().toString(36);
+    resetB1ChoiceSelection();
+    b1Runtime.translationOpen = false;
+    b1Runtime.currentExtraPractice = false;
+    b1Runtime.currentAssisted = false;
+    b1Runtime.dailySprint = false;
+    b1Runtime.dailyDateKey = "";
+    clearB1DiagnosticRuntime();
+    b1Runtime.reviewTests = true;
+    b1Runtime.reviewTestItemIds = items.map(function(item){ return item.id; });
+    b1Runtime.reviewTestDecisionPending = false;
+    state = "b1Checking";
+    current = null;
+    hintUsed = false;
+    clearMobileClozeFocus();
+    setDiagnosticUiVisible(false);
+    document.body.classList.remove("b1TypedCloze", "b1LongAnswer");
+    setMenu(false);
+    setDevTools(false);
+    document.body.classList.add("b1Mode");
+    document.body.classList.remove("homeMode", "setupMode", "placeholderMode", "resultsMode");
+    if (el("homeScreen")) el("homeScreen").hidden = true;
+    if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
+    if (el("grammarHub")) el("grammarHub").hidden = true;
+    if (el("redemittelHub")) el("redemittelHub").hidden = true;
+    if (el("startScreen")) el("startScreen").hidden = true;
+    setLearningMapVisible(false);
+    setSettingsScreenVisible(false);
+    showAppStatus("Review Tests started: " + items.length + " review-flagged imported rows.", "good");
+    nextB1Question();
+  }
+  function markB1ReviewTestDecisionPending() {
+    if (b1Runtime.mode !== "review_tests" || !b1Runtime.current || !(b1Runtime.current.reviewFlag || b1Runtime.current.needsHumanReview)) return;
+    b1Runtime.reviewTestDecisionPending = true;
+  }
+  function renderB1ReviewTestQuestion() {
+    if (!b1Runtime.reviewTests || !b1Runtime.reviewTestDecisionPending || !b1Runtime.current) return;
+    var block = el("correctionBlock");
+    if (!block) return;
+    block.className = "correctionBlock visible";
+    block.innerHTML =
+      '<div class="correctionTarget">Did the test need editing?</div>' +
+      '<div class="microRule">Review Tests only. This does not change the content or evidence record.</div>' +
+      '<div class="productionActionRow">' +
+        '<button type="button" data-review-test-decision="no">No</button>' +
+        '<button type="button" data-review-test-decision="yes">Yes, add to edit list</button>' +
+      '</div>';
+    if (el("nextBtn")) {
+      el("nextBtn").classList.remove("visible");
+      el("nextBtn").disabled = true;
+    }
+    var first = block.querySelector("button");
+    if (first) focusWithoutScroll(first);
+  }
+  function handleB1ReviewTestDecision(addToList) {
+    if (!b1Runtime.reviewTests || !b1Runtime.reviewTestDecisionPending || !b1Runtime.current) return;
+    if (addToList) {
+      var result = b1ReviewEditQueueAdd(b1Runtime.current);
+      showAppStatus(result.duplicate ? "Already on edit list." : "Added to review edit list.", result.duplicate ? "warn" : "good");
+    }
+    b1Runtime.reviewTestDecisionPending = false;
+    if (el("nextBtn")) el("nextBtn").disabled = false;
+    nextB1Question();
+  }
+  function renderReviewEditList() {
+    var queue = safeGetB1ReviewEditQueue();
+    var rows = queue.items || [];
+    if (el("reviewEditSummary")) el("reviewEditSummary").textContent = rows.length ? rows.length + " review item(s) marked for editing." : "No review edits marked yet.";
+    var mount = el("reviewEditRows");
+    if (mount) {
+      if (!rows.length) {
+        mount.innerHTML = '<div class="reviewEditRow"><strong>No rows marked.</strong><span>Use Review Tests, then choose “Yes, add to edit list”.</span></div>';
+      } else {
+        mount.innerHTML = rows.map(function(row){
+          return '<div class="reviewEditRow">' +
+            '<strong>' + escapeHtml((row.categoryId || "CAT??") + " · " + (row.taskType || "task")) + '</strong>' +
+            '<span>' + escapeHtml(row.sourceRowAuditKey || row.itemId || "") + '</span>' +
+            '<span class="reviewEditPrompt">' + escapeHtml(String(row.prompt || row.answer || "").slice(0, 160)) + '</span>' +
+          '</div>';
+        }).join("");
+      }
+    }
+    if (el("reviewEditFallback")) el("reviewEditFallback").hidden = true;
+    if (el("reviewEditStatus")) el("reviewEditStatus").textContent = "";
+  }
+  function showReviewEditList() {
+    renderReviewEditList();
+    if (el("reviewEditOverlay")) el("reviewEditOverlay").hidden = false;
+    setTimeout(function(){ if (el("reviewEditCopyBtn")) focusWithoutScroll(el("reviewEditCopyBtn")); }, 0);
+  }
+  function closeReviewEditList() {
+    if (el("reviewEditOverlay")) el("reviewEditOverlay").hidden = true;
+  }
+  function copyReviewEditList() {
+    copyTextWithFallback(b1ReviewEditQueueCopyText(), "reviewEditFallback", "reviewEditStatus", "Review edit list copied.", "Clipboard blocked. Select and copy the review edit list.");
+  }
+  function clearReviewEditList() {
+    if (!window.confirm || window.confirm("Clear the local review edit list?")) {
+      safeSetB1ReviewEditQueue({ schemaVersion:1, items:[] });
+      renderReviewEditList();
+      showAppStatus("Review edit list cleared.", "warn");
+    }
+  }
   function showReviewPracticeEmpty() {
     showHubPlaceholder("Review practice");
     if (el("hubPlaceholderBody")) {
@@ -21597,7 +22170,8 @@ body.b1Mode .clozeAnswerText {
     block.className = "correctionBlock visible";
     block.innerHTML = "<div class=\"correctionTarget\" aria-label=\"Skipped\">Skipped</div>" +
       "<div class=\"microRule\">No production evidence was recorded.</div>" +
-      "<div class=\"b1StarUpdateLine neutral\"><span>Speaking/writing practice does not add correctness stars.</span></div>";
+      "<div class=\"b1StarUpdateLine neutral\"><span>Not star-rated.</span></div>";
+    markB1ReviewTestDecisionPending();
     renderB1TaskStarStatus(b1Runtime.current);
     resetB1ConfidenceControls();
     var buttons = el("connectorChoiceGrid") ? el("connectorChoiceGrid").querySelectorAll("button") : [];
@@ -21613,7 +22187,7 @@ body.b1Mode .clozeAnswerText {
     var evidenceRecord = appendB1EvidenceRecord(b1Runtime.current, "practised", {
       extraPractice:b1Runtime.currentExtraPractice,
       answerMode:"mark_practised",
-      attemptContext:b1Runtime.mode === "b1_diagnostic" ? "diagnostic" : "",
+      attemptContext:b1Runtime.mode === "b1_diagnostic" ? "diagnostic" : (b1Runtime.mode === "review_tests" ? "review_tests" : ""),
       productionAction:"mark_practised",
       modelShown:!!b1Runtime.currentProductionModelShown,
       modelRevealed:!!b1Runtime.currentProductionModelShown,
@@ -21633,8 +22207,9 @@ body.b1Mode .clozeAnswerText {
     block.className = "correctionBlock visible";
     block.innerHTML = "<div class=\"correctionTarget\" aria-label=\"Practised\">✓</div>" +
       "<div class=\"microRule\">Saved as self-marked practice evidence." + (b1Runtime.currentProductionModelShown ? " Model answer viewed." : "") + "</div>" +
-      "<div class=\"b1StarUpdateLine neutral\"><span>Production practised - speaking/writing practice does not add correctness stars.</span></div>";
+      "<div class=\"b1StarUpdateLine neutral\"><span>Production practised.</span><span>Not star-rated.</span></div>";
     block.querySelector(".correctionTarget").textContent = "Practised";
+    markB1ReviewTestDecisionPending();
     renderB1TaskStarStatus(b1Runtime.current);
     renderB1ConfidenceControls(null);
     var buttons = el("connectorChoiceGrid") ? el("connectorChoiceGrid").querySelectorAll("button") : [];
@@ -21679,7 +22254,7 @@ body.b1Mode .clozeAnswerText {
       correctWithNote:!!(repairComparison && repairComparison.correctWithNote),
       orthographyNote:!!(repairComparison && repairComparison.orthographyNote),
       orthographyType:repairComparison && repairComparison.orthographyType || null,
-      attemptContext:b1Runtime.mode === "b1_diagnostic" ? "diagnostic" : (b1Runtime.mode === "targeted_repair" ? "targeted_repair" : (b1Runtime.mode === "review_practice" ? "review" : "")),
+      attemptContext:b1Runtime.mode === "b1_diagnostic" ? "diagnostic" : (b1Runtime.mode === "targeted_repair" ? "targeted_repair" : (b1Runtime.mode === "review_practice" ? "review" : (b1Runtime.mode === "review_tests" ? "review_tests" : ""))),
       targetedRepair:!!b1Runtime.current._targetedRepair,
       repairQueueId:b1Runtime.current._repairQueueId || b1Runtime.repairQueueId || null,
       sourceCandidateId:b1Runtime.current._sourceCandidateId || b1Runtime.sourceCandidateId || null,
@@ -21720,6 +22295,7 @@ body.b1Mode .clozeAnswerText {
     var starUpdateHtml = b1PathTaskStarUpdateHtml(b1Runtime.current, starBefore, evidenceRecord, isCorrect, assisted);
     renderB1TaskStarStatus(b1Runtime.current);
     renderB1Feedback(isCorrect, assisted, raw, repairComparison, starUpdateHtml);
+    markB1ReviewTestDecisionPending();
     renderB1ConfidenceControls(null);
     if (!usesChoices) activeInput.disabled = true;
     el("checkBtn").disabled = true;
@@ -21742,6 +22318,10 @@ body.b1Mode .clozeAnswerText {
       renderB1ConfidenceControls(null);
       var firstConfidence = el("b1ConfidenceRow") && el("b1ConfidenceRow").querySelector("button");
       if (firstConfidence) focusWithoutScroll(firstConfidence);
+      return;
+    }
+    if (b1Runtime.reviewTests && b1Runtime.reviewTestDecisionPending) {
+      renderB1ReviewTestQuestion();
       return;
     }
     clearMobileClozeFocus();
@@ -22143,16 +22723,17 @@ body.b1Mode .clozeAnswerText {
     if (el("learnerReportStatus")) el("learnerReportStatus").textContent = "Learning summary download created. The JSON export/import format is unchanged.";
     setTimeout(function(){ URL.revokeObjectURL(url); },250);
   }
-  function exportProgress(){ savePersistent(); var b1Store=safeGetB1Progress(); var evidenceStore=safeGetB1Evidence(); var payload={app:"Ozmosis",appVersion:OZMOSIS_APP_VERSION,version:OZMOSIS_EXPORT_VERSION,taskDepthSchemaVersion:B1_TASK_DEPTH_SCHEMA_VERSION,supportLevelSchemaVersion:B1_SUPPORT_LEVEL_SCHEMA_VERSION,b1PathStarSchemaVersion:"v1",exportedAt:new Date().toISOString(),sessionLog:sessionLog.slice(-80),data:safeGetObject(),leitner:safeGetLeitner(),b1:b1Store,evidence:evidenceStore,b1PathUnlocks:safeGetB1PathUnlockOverrides()}; var blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"}); var url=URL.createObjectURL(blob); var a=document.createElement("a"); a.href=url; a.download="ozmosis-progress.json"; document.body.appendChild(a); a.click(); a.remove(); showAppStatus("Export created: " + b1ProgressCount(b1Store) + " B1 progress items and " + b1EvidenceCount(evidenceStore) + " evidence records.", "good"); setTimeout(function(){ URL.revokeObjectURL(url); },250); }
-  function importProgress(file){ if (!file) return; var reader=new FileReader(); reader.onload=function(){ try { var parsed=JSON.parse(String(reader.result || "{}")), data=parsed.data || parsed; safeSetObject(data); if (parsed.leitner && typeof parsed.leitner === "object") safeSetLeitner(parsed.leitner); if (parsed.b1 && typeof parsed.b1 === "object") safeSetB1Progress(parsed.b1); if (parsed.evidence && typeof parsed.evidence === "object") safeSetB1Evidence(parsed.evidence); if (parsed.b1PathUnlocks && typeof parsed.b1PathUnlocks === "object") safeSetB1PathUnlockOverrides(parsed.b1PathUnlocks); loadPersistent(); newRound(); } catch(e){ el("feedback").textContent="Import fehlgeschlagen: ungültige JSON-Datei."; el("feedback").className="feedback missed"; } }; reader.readAsText(file); }
-  function importProgressWithFeedback(file){ if (!file) { showAppStatus("No import file selected.", "warn"); return; } var reader=new FileReader(); reader.onload=function(){ try { var parsed=JSON.parse(String(reader.result || "{}")), data=parsed.data || parsed; safeSetObject(data); if (parsed.leitner && typeof parsed.leitner === "object") safeSetLeitner(parsed.leitner); if (parsed.b1 && typeof parsed.b1 === "object") safeSetB1Progress(parsed.b1); if (parsed.evidence && typeof parsed.evidence === "object") safeSetB1Evidence(parsed.evidence); if (parsed.b1PathUnlocks && typeof parsed.b1PathUnlocks === "object") safeSetB1PathUnlockOverrides(parsed.b1PathUnlocks); loadPersistent(); setMenu(false); showHomeScreen(); showAppStatus("Import successful: " + b1ProgressCount() + " B1 progress items and " + b1EvidenceCount() + " evidence records available.", "good"); } catch(e){ showAppStatus("Import failed: invalid JSON file.", "bad"); if (el("feedback")) { el("feedback").textContent="Import failed: invalid JSON file."; el("feedback").className="feedback missed"; } } }; reader.readAsText(file); }
+  function exportProgress(){ savePersistent(); var b1Store=safeGetB1Progress(); var evidenceStore=safeGetB1Evidence(); var payload={app:"Ozmosis",appVersion:OZMOSIS_APP_VERSION,version:OZMOSIS_EXPORT_VERSION,taskDepthSchemaVersion:B1_TASK_DEPTH_SCHEMA_VERSION,supportLevelSchemaVersion:B1_SUPPORT_LEVEL_SCHEMA_VERSION,b1PathStarSchemaVersion:"v1",exportedAt:new Date().toISOString(),sessionLog:sessionLog.slice(-80),data:safeGetObject(),leitner:safeGetLeitner(),b1:b1Store,evidence:evidenceStore,b1PathUnlocks:safeGetB1PathUnlockOverrides(),b1ReviewEditQueue:safeGetB1ReviewEditQueue()}; var blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"}); var url=URL.createObjectURL(blob); var a=document.createElement("a"); a.href=url; a.download="ozmosis-progress.json"; document.body.appendChild(a); a.click(); a.remove(); showAppStatus("Export created: " + b1ProgressCount(b1Store) + " B1 progress items and " + b1EvidenceCount(evidenceStore) + " evidence records.", "good"); setTimeout(function(){ URL.revokeObjectURL(url); },250); }
+  function importProgress(file){ if (!file) return; var reader=new FileReader(); reader.onload=function(){ try { var parsed=JSON.parse(String(reader.result || "{}")), data=parsed.data || parsed; safeSetObject(data); if (parsed.leitner && typeof parsed.leitner === "object") safeSetLeitner(parsed.leitner); if (parsed.b1 && typeof parsed.b1 === "object") safeSetB1Progress(parsed.b1); if (parsed.evidence && typeof parsed.evidence === "object") safeSetB1Evidence(parsed.evidence); if (parsed.b1PathUnlocks && typeof parsed.b1PathUnlocks === "object") safeSetB1PathUnlockOverrides(parsed.b1PathUnlocks); if (parsed.b1ReviewEditQueue && typeof parsed.b1ReviewEditQueue === "object") safeSetB1ReviewEditQueue(parsed.b1ReviewEditQueue); loadPersistent(); newRound(); } catch(e){ el("feedback").textContent="Import fehlgeschlagen: ungültige JSON-Datei."; el("feedback").className="feedback missed"; } }; reader.readAsText(file); }
+  function importProgressWithFeedback(file){ if (!file) { showAppStatus("No import file selected.", "warn"); return; } var reader=new FileReader(); reader.onload=function(){ try { var parsed=JSON.parse(String(reader.result || "{}")), data=parsed.data || parsed; safeSetObject(data); if (parsed.leitner && typeof parsed.leitner === "object") safeSetLeitner(parsed.leitner); if (parsed.b1 && typeof parsed.b1 === "object") safeSetB1Progress(parsed.b1); if (parsed.evidence && typeof parsed.evidence === "object") safeSetB1Evidence(parsed.evidence); if (parsed.b1PathUnlocks && typeof parsed.b1PathUnlocks === "object") safeSetB1PathUnlockOverrides(parsed.b1PathUnlocks); if (parsed.b1ReviewEditQueue && typeof parsed.b1ReviewEditQueue === "object") safeSetB1ReviewEditQueue(parsed.b1ReviewEditQueue); loadPersistent(); setMenu(false); showHomeScreen(); showAppStatus("Import successful: " + b1ProgressCount() + " B1 progress items and " + b1EvidenceCount() + " evidence records available.", "good"); } catch(e){ showAppStatus("Import failed: invalid JSON file.", "bad"); if (el("feedback")) { el("feedback").textContent="Import failed: invalid JSON file."; el("feedback").className="feedback missed"; } } }; reader.readAsText(file); }
   importProgress = importProgressWithFeedback;
   document.addEventListener("click", function(event){
-    var target = event.target && event.target.closest ? event.target.closest("#diagnosticIntroStartBtn, #diagnosticIntroCancelBtn, #diagnosticIntroOverlay, #practiceExitControl, #practiceExitStayBtn, #practiceExitConfirmBtn, #practiceExitOverlay, #testerNotesCopyReportBtn, #testerNotesCopyDebugBtn, #testerNotesCloseBtn, #testerNotesOverlay") : null;
+    var target = event.target && event.target.closest ? event.target.closest("#diagnosticIntroStartBtn, #diagnosticIntroCancelBtn, #diagnosticIntroOverlay, #practiceExitControl, #practiceExitStayBtn, #practiceExitConfirmBtn, #practiceExitOverlay, #testerNotesCopyReportBtn, #testerNotesCopyDebugBtn, #testerNotesCloseBtn, #testerNotesOverlay, #reviewEditOverlay, #reviewEditCopyBtn, #reviewEditClearBtn, #reviewEditCloseBtn, [data-review-test-decision]") : null;
     if (!target) return;
     if (target.id === "diagnosticIntroOverlay" && event.target !== target) return;
     if (target.id === "practiceExitOverlay" && event.target !== target) return;
     if (target.id === "testerNotesOverlay" && event.target !== target) return;
+    if (target.id === "reviewEditOverlay" && event.target !== target) return;
     event.preventDefault();
     event.stopPropagation();
     event.stopImmediatePropagation();
@@ -22164,6 +22745,10 @@ body.b1Mode .clozeAnswerText {
     if (target.id === "testerNotesCopyReportBtn") { copyTesterReport("notes"); return; }
     if (target.id === "testerNotesCopyDebugBtn") { copyTesterDebugSnapshot("notes"); return; }
     if (target.id === "testerNotesCloseBtn" || target.id === "testerNotesOverlay") { closeTesterNotes(); return; }
+    if (target.id === "reviewEditCopyBtn") { copyReviewEditList(); return; }
+    if (target.id === "reviewEditClearBtn") { clearReviewEditList(); return; }
+    if (target.id === "reviewEditCloseBtn" || target.id === "reviewEditOverlay") { closeReviewEditList(); return; }
+    if (target.hasAttribute && target.hasAttribute("data-review-test-decision")) { handleB1ReviewTestDecision(target.getAttribute("data-review-test-decision") === "yes"); return; }
   }, true);
   document.addEventListener("keydown", function(event){
     if (!(event.key === "Escape" || event.key === "Esc")) return;
@@ -22172,6 +22757,13 @@ body.b1Mode .clozeAnswerText {
       event.stopPropagation();
       event.stopImmediatePropagation();
       closeTesterNotes();
+      return;
+    }
+    if (el("reviewEditOverlay") && !el("reviewEditOverlay").hidden) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+      closeReviewEditList();
       return;
     }
     if (el("diagnosticIntroOverlay") && !el("diagnosticIntroOverlay").hidden) {
@@ -23037,7 +23629,7 @@ body.b1Mode .clozeAnswerText {
     if (status) status.textContent = "Previewing " + queue.queueId + ". No progress or evidence saved.";
   }
   document.addEventListener("click", function(event){
-    var target = event.target && event.target.closest ? event.target.closest("#copyDebugSnapshotBtn, #copySkillMatrixSnapshotBtn, #copyTesterReportBtn, #openTesterNotesBtn, #devReviewReadinessBtn, #devDurabilityQaBtn, #devReviewEligibilityBtn, #devReviewStabilityBtn, #devReviewCandidatePreviewBtn, #devMetadataReviewCoverageBtn, #devB1CoverageAuditBtn, #devStartReviewPracticeBtn, #devFindItemBtn, #devRepairQueuePreviewBtn, [data-dev-preview-id], #devPreviewShowModelBtn, #devPreviewMockMarkBtn, #devPreviewCopyItemIdBtn, #devPreviewClearBtn, #devPreviewCheckBtn") : null;
+    var target = event.target && event.target.closest ? event.target.closest("#copyDebugSnapshotBtn, #copySkillMatrixSnapshotBtn, #copyTesterReportBtn, #openTesterNotesBtn, #devReviewReadinessBtn, #devDurabilityQaBtn, #devReviewEligibilityBtn, #devReviewStabilityBtn, #devReviewCandidatePreviewBtn, #devMetadataReviewCoverageBtn, #devB1CoverageAuditBtn, #devStartReviewPracticeBtn, #devStartReviewTestsBtn, #devReviewEditListBtn, #devFindItemBtn, #devRepairQueuePreviewBtn, [data-dev-preview-id], #devPreviewShowModelBtn, #devPreviewMockMarkBtn, #devPreviewCopyItemIdBtn, #devPreviewClearBtn, #devPreviewCheckBtn") : null;
     if (!target) return;
     if (target.id === "copyDebugSnapshotBtn") { copyDebugSnapshot(); return; }
     if (target.id === "copySkillMatrixSnapshotBtn") { copySkillMatrixSnapshot(); return; }
@@ -23051,6 +23643,8 @@ body.b1Mode .clozeAnswerText {
     if (target.id === "devMetadataReviewCoverageBtn") { renderDevMetadataReviewCoverage(); return; }
     if (target.id === "devB1CoverageAuditBtn") { renderDevB1CoverageAudit(); return; }
     if (target.id === "devStartReviewPracticeBtn") { startB1ReviewPractice(); return; }
+    if (target.id === "devStartReviewTestsBtn") { startB1ReviewTests(); return; }
+    if (target.id === "devReviewEditListBtn") { showReviewEditList(); return; }
     if (target.id === "devFindItemBtn") { renderDevPreviewResults(); return; }
     if (target.id === "devRepairQueuePreviewBtn") { renderDevRepairQueuePreview(); return; }
     handleDevPreviewClick(event);
@@ -23141,9 +23735,20 @@ window.ozmosisTesterReportSummary=testerReportSummary; window.ozmosisLearnerRead
     summary.b1M09Count = B1_M09_ITEMS.length;
     summary.b1M10Count = B1_M10_ITEMS.length;
     summary.b1M11Count = B1_M11_ITEMS.length;
+    summary.b1M12Count = B1_M12_ITEMS.length;
+    summary.b1M13Count = B1_M13_ITEMS.length;
+    summary.b1M14Count = B1_M14_ITEMS.length;
+    summary.b1M15Count = B1_M15_ITEMS.length;
+    summary.b1M16Count = B1_M16_ITEMS.length;
+    summary.b1M17Count = B1_M17_ITEMS.length;
+    summary.b1M18Count = B1_M18_ITEMS.length;
     summary.b1Path = b1PathProgressData();
     summary.b1PathDebug = b1PathDebugSummary();
     summary.b1PathUnlocks = safeGetB1PathUnlockOverrides();
+    summary.reviewTests = b1ReviewTestsDebugSummary();
+    summary.reviewFlaggedCount = summary.reviewTests.reviewFlaggedCount;
+    summary.reviewEditQueueCount = summary.reviewTests.reviewEditQueueCount;
+    summary.reviewEditQueue = safeGetB1ReviewEditQueue();
     return summary;
   };
   window.ozmosisStartB1M06 = function(filter){ startB1M06Round(filter || "mixed"); };
@@ -23152,6 +23757,18 @@ window.ozmosisTesterReportSummary=testerReportSummary; window.ozmosisLearnerRead
   window.ozmosisStartB1M09 = function(filter){ startB1M09Round(filter || "mixed"); };
   window.ozmosisStartB1M10 = function(filter){ startB1M10Round(filter || "mixed"); };
   window.ozmosisStartB1M11 = function(filter){ startB1M11Round(filter || "mixed"); };
+  window.ozmosisStartB1M12 = function(filter){ startB1M12Round(filter || "mixed"); };
+  window.ozmosisStartB1M13 = function(filter){ startB1M13Round(filter || "mixed"); };
+  window.ozmosisStartB1M14 = function(filter){ startB1M14Round(filter || "mixed"); };
+  window.ozmosisStartB1M15 = function(filter){ startB1M15Round(filter || "mixed"); };
+  window.ozmosisStartB1M16 = function(filter){ startB1M16Round(filter || "mixed"); };
+  window.ozmosisStartB1M17 = function(filter){ startB1M17Round(filter || "mixed"); };
+  window.ozmosisStartReviewTests = function(){ startB1ReviewTests(); };
+  window.ozmosisReviewTestDecisionPrompt = function(){ markB1ReviewTestDecisionPending(); renderB1ReviewTestQuestion(); };
+  window.ozmosisReviewEditQueueCopyText = function(){ return b1ReviewEditQueueCopyText(); };
+  window.ozmosisShowReviewEditList = function(){ showReviewEditList(); };
+  window.ozmosisShowHome = function(){ showHomeScreen(); };
+  window.ozmosisShowLearningMap = function(){ showLearningMapScreen(); };
   window.ozmosisB1M01Debug = function(){
     return {
       bank:b1RegistryBank("b1_m01"),
