@@ -13462,14 +13462,9 @@
     "learnerCue": "Der Preis wird niedriger: A Rabatt / B Bestellnummer / C Lieferzeit",
     "choices": [
       {
-        "id": "choice_01_rabatt",
-        "text": "Rabatt",
-        "isCorrect": true
-      },
-      {
         "id": "choice_02_der_preis_wird_niedriger_a_rabatt",
-        "text": "Der Preis wird niedriger: A Rabatt",
-        "isCorrect": false
+        "text": "A Rabatt",
+        "isCorrect": true
       },
       {
         "id": "choice_03_b_bestellnummer",

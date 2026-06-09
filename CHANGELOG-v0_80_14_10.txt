@@ -4,6 +4,62 @@ Chronological changelog from the earliest retained project history through the c
 
 Historical standalone changelog files before `CHANGELOG-v0_80_14.txt` are not present in the current repo package. Where exact earlier changelog files are unavailable, entries are reconstructed from the surviving versioned QA reports in `docs/qa/`. The current `v0.80.14` entry is preserved from the active versioned changelog.
 
+## v0.80.14.10 - Learner Route Filtering and Landing Hub Cleanup
+
+- Added central learner-route filtering so normal imported learner practice is temporarily limited to `PRACTICE_FAMILIES` and `CONTRAST_SETS` rows that are not human-review flagged, not preview-only, and not generated prompt/choice artefacts.
+- Excluded `move_to_human_review`, `needsHumanReview`, `reviewFlag`, generic `WORTSCHATZ_BANK`, `COLLOCATION_BANK`, generic `REDEMITTEL_BANK`, and CAT18 preview rows from normal learner routes, Today’s B1 Sprint, Review Practice, B1 Path stars/progress, learner-facing recommendations, and normal progress summaries.
+- Preserved excluded imported source material for Dev Tools Review Tests, source/debug views, Review Edit List workflows, and export/import metadata.
+- Added additive route-eligibility metadata to new evidence records while preserving protected storage keys and old import compatibility.
+- Corrected source-ledger-backed visible choices in five imported rows that had letter-only or bare-answer fallback choices, while preserving existing item IDs and `sourceRowAuditKey` values.
+- Reorganised the landing page into grouped route collections: Learn, Review, Progress, Production, Tools, and Settings.
+- Moved Developer / QA access under the lower-priority Settings group instead of exposing it as a normal learner-facing route card.
+- Kept B1 Progress visible but compact on Home and moved full progress detail to Learning Map.
+- Reworded learner-facing Home/Learning Map copy away from developer/evidence jargon where safe.
+- Preserved Review Tests, Review Edit List, CAT18 preview/source visibility, export/import compatibility, scoring, correctness rules, production self-marking, Today’s B1 Sprint structure, B1-only active scope, German LTR behaviour under Arabic UI, and v0.80.14.8/v0.80.14.9 medal/rank star visuals.
+- Added `_development-files/v0801410_route_filtering_landing_cleanup_gate.cjs`.
+- Added `_development-files/v0801410_route_filtering_landing_cleanup_browser_smoke.cjs`.
+- Added QA documentation at `docs/qa/v0.80.14.10_route_filtering_landing_cleanup.md`.
+
+## v0.80.14.9 - Full B1 v0_2 Content Import with Review-Flagged Live QA
+
+- Imported the reconciled CAT01-CAT18 v0_2 B1 content package into the static Ozmosis app.
+- Used the revised category CSVs as the active task source and preserved master-ledger/audit metadata on imported rows.
+- Imported normal decision rows covering `keep_as_is`, `revise_light`, `rewrite_heavy`, `convert_task_shape`, and `downgrade_evidence`.
+- Imported renderer-compatible former `move_to_human_review` rows as active practice where safe, preserving `needsHumanReview`, `reviewFlag`, `reviewStatus`, `originalStage3Decision`, `humanReviewReason`, `issueCodes`, source file/row metadata, and `sourceRowAuditKey`.
+- Excluded `cut` and `defer` rows from active imported content arrays.
+- Imported CAT18 as preview-only B1/B2 bridge material with `previewOnly: true`, `activeB1Evidence: false`, and `importStatus: "preview_imported_not_active_b1"`, without activating CAT18 for B1 scoring, progress, unlock, or Review Tests evidence.
+- Added active CAT12-CAT17 route starters using the existing static B1 practice renderer and existing scoring/evidence rules.
+- Added a Dev Tools-only Review Tests workflow for active review-flagged imported rows, excluding CAT18 preview rows by default.
+- Added an additive Review Edit List under `ozmosis_b1_review_edit_queue_v1`, deduped by `sourceRowAuditKey`, with copy format `categoryId<TAB>taskType<TAB>sourceRowAuditKey<TAB>itemId<TAB>issueCodes<TAB>humanReviewReason`.
+- Added additive export/import support for the Review Edit List while preserving older imports and protected storage keys.
+- Added review/debug metadata for review-flagged counts, review edit queue count, current review test item, and CAT12-CAT18 counts.
+- Preserved v0.80.14.8 medal/rank star visuals and avoided green progress-star regressions.
+- Preserved scoring, correctness rules, production self-marking, choice shuffling safety, protected storage keys, export/import compatibility, Today B1 Sprint composition, Diagnostic Sprint composition, B1-only active scope, and German LTR behaviour under Arabic UI.
+- Added `_development-files/v080149_import_b1_v02_content.cjs`.
+- Added `_development-files/v080149_full_b1_v02_content_import_gate.cjs`.
+- Added `_development-files/v080149_full_b1_v02_content_import_browser_smoke.cjs`.
+- Added QA documentation at `docs/qa/v0.80.14.9_full_b1_v02_content_import.md`.
+
+## v0.80.14.8 - Restore Medal Star Visual System
+
+- Restored the B1 Progress Path and task-screen star visual language to a medal/rank hierarchy instead of green success-style stars.
+- Added explicit star colour tokens for empty, bronze, brass, silver, electrum, gold, and matching glow states.
+- Reused and extended the existing `.b1Stars` / `.b1Star` component classes for B1 Path task strips, post-answer star updates, and compact star glyphs.
+- Replaced green B1 Path stacked star bars with metal-tier threshold bars: 1 star bronze, 2 stars brass, 3 stars silver, 4 stars electrum, and 5 stars gold.
+- Simplified task-screen star copy so normal B1 tasks show a compact medal strip and short label such as `Got right twice`, without large `Practice progress` banners or internal category/task labels.
+- Simplified post-answer star copy:
+  - correct answers show medal stars plus concise copy such as `Now got right 3 times.`;
+  - wrong answers show `No new star. This will return for practice.`;
+  - assisted practice shows `Practised with help. Stars need an unaided correct answer.`;
+  - production practice shows `Production practised.` and `Not star-rated.`.
+- Kept correctness feedback green/red where appropriate, while separating that meaning from B1 progress stars.
+- Preserved the existing star logic: stars still come only from unassisted correct auto-graded repetitions for the same practice target.
+- Preserved production as self-marked/practised-only and Diagnostic Sprint as snapshot-only.
+- Preserved Home compact progress cards, Learning Map B1 Path details, scoring, correctness rules, protected storage keys, additive path unlock overrides, export/import compatibility, content banks, route composition, Today B1 Sprint composition, Diagnostic Sprint composition, B1-only active scope, and German LTR behaviour under Arabic UI.
+- Added `_development-files/v080148_restore_medal_star_visual_system_gate.cjs`.
+- Added `_development-files/v080148_restore_medal_star_visual_system_browser_smoke.cjs`.
+- Added QA documentation at `docs/qa/v0.80.14.8_restore_medal_star_visual_system.md`.
+
 ## v0.80.14.7 - B1 Progress Stars Task-Screen Integration Pass
 
 - Integrated the v0.80.14.6 B1 Progress Path star system into individual B1 task screens.

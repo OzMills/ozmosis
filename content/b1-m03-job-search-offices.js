@@ -9321,7 +9321,7 @@
     "acceptedAnswers": [
       "A"
     ],
-    "fullAnswer_de": "A",
+    "fullAnswer_de": "A Frist",
     "prompt_de": "Sie suchen Unterstützung bei der Jobsuche. Welche Stelle passt am besten?",
     "learnerCue": "A Arbeitsagentur / B Bürgeramt / C Ausländerbehörde",
     "choices": [
@@ -9923,14 +9923,9 @@
     "learnerCue": "A Frist / B Termin / C Zeitraum",
     "choices": [
       {
-        "id": "choice_01_a",
-        "text": "A",
-        "isCorrect": true
-      },
-      {
         "id": "choice_02_a_frist",
         "text": "A Frist",
-        "isCorrect": false
+        "isCorrect": true
       },
       {
         "id": "choice_03_b_termin",
@@ -10037,7 +10032,7 @@
     "acceptedAnswers": [
       "A"
     ],
-    "fullAnswer_de": "A",
+    "fullAnswer_de": "A zuständig",
     "prompt_de": "Die Stelle hat 20 Stunden pro Woche. Welche Form passt?",
     "learnerCue": "A Teilzeit / B Vollzeit / C Minijob",
     "choices": [
@@ -10282,14 +10277,9 @@
     "learnerCue": "A zuständig / B erreichbar / C gültig",
     "choices": [
       {
-        "id": "choice_01_a",
-        "text": "A",
-        "isCorrect": true
-      },
-      {
         "id": "choice_02_a_zustandig",
         "text": "A zuständig",
-        "isCorrect": false
+        "isCorrect": true
       },
       {
         "id": "choice_03_b_erreichbar",

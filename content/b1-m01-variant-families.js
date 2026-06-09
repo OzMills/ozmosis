@@ -6711,7 +6711,7 @@
     "acceptedAnswers": [
       "B"
     ],
-    "fullAnswer_de": "B",
+    "fullAnswer_de": "B die App",
     "prompt_de": "Sie stehen vor einem Raum. Welche Frage passt?",
     "learnerCue": "A Wo ist der richtige Raum? / B Ist das der richtige Raum? / C Wann ist der richtige Raum?",
     "choices": [
@@ -11941,11 +11941,6 @@
     "learnerCue": "A die Datei / B die App / C der Zugang",
     "choices": [
       {
-        "id": "choice_01_b",
-        "text": "B",
-        "isCorrect": true
-      },
-      {
         "id": "choice_02_a_die_datei",
         "text": "A die Datei",
         "isCorrect": false
@@ -11953,7 +11948,7 @@
       {
         "id": "choice_03_b_die_app",
         "text": "B die App",
-        "isCorrect": false
+        "isCorrect": true
       },
       {
         "id": "choice_04_c_der_zugang",
@@ -12296,7 +12291,7 @@
     "acceptedAnswers": [
       "B"
     ],
-    "fullAnswer_de": "B",
+    "fullAnswer_de": "B die Unterlagen",
     "prompt_de": "Sie sprechen über Ihr Lernziel. Welche Formulierung passt?",
     "learnerCue": "A Deutschunterricht verbessern / B Deutschkenntnisse verbessern / C Deutschniveau verbessern",
     "choices": [
@@ -12421,11 +12416,6 @@
     "learnerCue": "A das Formular / B die Unterlagen / C das Arbeitsblatt",
     "choices": [
       {
-        "id": "choice_01_b",
-        "text": "B",
-        "isCorrect": true
-      },
-      {
         "id": "choice_02_a_das_formular",
         "text": "A das Formular",
         "isCorrect": false
@@ -12433,7 +12423,7 @@
       {
         "id": "choice_03_b_die_unterlagen",
         "text": "B die Unterlagen",
-        "isCorrect": false
+        "isCorrect": true
       },
       {
         "id": "choice_04_c_das_arbeitsblatt",
