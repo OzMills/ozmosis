@@ -9304,8 +9304,8 @@ body.b1Mode .clozeAnswerText {
   var B1_PATH_UNLOCK_STORAGE_KEY = "ozmosis_b1_path_unlock_overrides_v1";
   var B1_REVIEW_EDIT_QUEUE_STORAGE_KEY = "ozmosis_b1_review_edit_queue_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.80.14.11";
-  var OZMOSIS_EXPORT_VERSION = "v0.80.14.11-source-preserving-import-wiring-runtime-qa";
+  var OZMOSIS_APP_VERSION = "v0.80.14.12";
+  var OZMOSIS_EXPORT_VERSION = "v0.80.14.12-verification-learner-facing-artefact-hotfix";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -19316,11 +19316,113 @@ body.b1Mode .clozeAnswerText {
   function b1ItemIsPreviewOrInactiveImport(item) {
     return !!(item && (item.previewOnly || item.categoryId === "CAT18" || item.activeB1Evidence === false));
   }
+  function b1ArtefactScanText(value) {
+    var text = String(value == null ? "" : value);
+    if (text.normalize) text = text.normalize("NFC");
+    return text.replace(/\s+/g, " ").trim();
+  }
+  function b1NormaliseLearnerChoiceDisplay(rawChoice) {
+    var text = String(rawChoice == null ? "" : rawChoice);
+    if (text.normalize) text = text.normalize("NFC");
+    return text.split(/\r?\n/).map(function(line){
+      return line.replace(/^\s*[A-D](?:[\s.:\)\-\u2013\u2014]+)(?=\S)/i, "").trim();
+    }).filter(Boolean).join("\n").trim();
+  }
+  function b1ChoiceDisplayHasSourceLabelArtifact(value) {
+    return /^\s*[A-D](?:[\s.:\)\-\u2013\u2014]+)(?=\S)/i.test(String(value == null ? "" : value));
+  }
+  function b1ChoiceDisplayIsBareSourceLetter(value) {
+    return /^\s*[A-D]\s*$/i.test(String(value == null ? "" : value));
+  }
   function b1ChoiceTextValues(item) {
     return Array.isArray(item && item.choices) ? item.choices.map(function(choice){
       if (typeof choice === "string") return choice;
       return String(choice && (choice.text || choice.label || choice.value) || "");
     }) : [];
+  }
+  function b1ItemHasUnsafeChoiceDisplayArtifact(item) {
+    return b1ChoiceTextValues(item).some(function(choice){
+      return b1ChoiceDisplayIsBareSourceLetter(choice) || (b1ChoiceDisplayHasSourceLabelArtifact(choice) && !b1NormaliseLearnerChoiceDisplay(choice));
+    });
+  }
+  function b1ItemHasSourcePromptArtifact(item) {
+    var prompt = b1ArtefactScanText(item && (item.prompt_de || item.prompt || item.question || ""));
+    if (!prompt) return false;
+    if (/^Beste Bitte um L.sung:\s*$/i.test(prompt)) return true;
+    if (/^(Welches Wort passt\?|Welche Kollokation passt\?|Welche Wendung passt\?)\s+[A-Za-z][A-Za-z \-']*$/i.test(prompt)) return true;
+    return false;
+  }
+  function b1ProductionPromptHasStructuredLabels(value) {
+    return /(?:^|\s|\|)(Scenario|Useful phrases|Checklist|Optional model answer|Model answer):/i.test(String(value || ""));
+  }
+  function b1ProductionCleanSegment(value) {
+    return String(value || "").replace(/^\s*\|\s*/, "").replace(/\s*\|\s*$/, "").replace(/\s+/g, " ").trim();
+  }
+  function b1ProductionPromptSegments(item) {
+    var raw = String(item && item.prompt_de || "");
+    if (raw.normalize) raw = raw.normalize("NFC");
+    var segments = {
+      instruction:b1ProductionCleanSegment(raw),
+      scenario:"",
+      usefulPhrases:"",
+      checklist:"",
+      modelAnswer:"",
+      hasStructuredLabels:false
+    };
+    var labels = [];
+    var pattern = /(Scenario|Useful phrases|Checklist|Optional model answer|Model answer):/ig;
+    var match;
+    while ((match = pattern.exec(raw))) {
+      labels.push({ label:match[1].toLowerCase(), index:match.index, end:pattern.lastIndex });
+    }
+    if (!labels.length) return segments;
+    segments.hasStructuredLabels = true;
+    segments.instruction = b1ProductionCleanSegment(raw.slice(0, labels[0].index)) || "Produce a short B1 answer.";
+    labels.forEach(function(label, index){
+      var next = labels[index + 1] ? labels[index + 1].index : raw.length;
+      var body = b1ProductionCleanSegment(raw.slice(label.end, next));
+      if (!body) return;
+      if (label.label === "scenario") segments.scenario = body;
+      else if (label.label === "useful phrases") segments.usefulPhrases = body;
+      else if (label.label === "checklist") segments.checklist = body;
+      else segments.modelAnswer = body;
+    });
+    return segments;
+  }
+  function b1ProductionSplitList(value) {
+    var text = b1ProductionCleanSegment(value);
+    if (!text) return [];
+    var quoted = [];
+    text.replace(/`([^`]+)`/g, function(_, part){
+      if (part) quoted.push(part.trim());
+      return "";
+    });
+    if (quoted.length) return quoted;
+    return text.split(/[;\n]|,\s+(?=[A-ZÄÖÜ])/).map(function(part){
+      return b1ProductionCleanSegment(part);
+    }).filter(Boolean);
+  }
+  function b1MergeUniqueLines() {
+    var seen = {};
+    var out = [];
+    Array.prototype.slice.call(arguments).forEach(function(source){
+      (Array.isArray(source) ? source : b1ProductionSplitList(source)).forEach(function(line){
+        var clean = b1ProductionCleanSegment(line);
+        var key = clean.toLocaleLowerCase("de-DE");
+        if (clean && !seen[key]) {
+          seen[key] = true;
+          out.push(clean);
+        }
+      });
+    });
+    return out;
+  }
+  function b1ItemHasUnstructuredProductionPromptRisk(item) {
+    if (!item || item.itemType !== "production_card") return false;
+    var prompt = String(item.prompt_de || "");
+    if (!b1ProductionPromptHasStructuredLabels(prompt)) return false;
+    var segments = b1ProductionPromptSegments(item);
+    return !segments.instruction || (!!segments.hasStructuredLabels && !segments.scenario && !segments.usefulPhrases && !segments.checklist && !segments.modelAnswer);
   }
   function b1ItemHasPlaceholderChoices(item) {
     var text = b1ChoiceTextValues(item).join(" ");
@@ -19349,6 +19451,9 @@ body.b1Mode .clozeAnswerText {
     if (/\[(English|Deutsch|German|source|translation)\]/i.test(learnerSurface)) return true;
     if (b1ItemHasPlaceholderChoices(item)) return true;
     if (b1ItemHasLetterOnlyCorrectChoice(item)) return true;
+    if (b1ItemHasSourcePromptArtifact(item)) return true;
+    if (b1ItemHasUnsafeChoiceDisplayArtifact(item)) return true;
+    if (b1ItemHasUnstructuredProductionPromptRisk(item)) return true;
     return false;
   }
   function b1NormalPracticeExclusionReasons(item) {
@@ -19356,11 +19461,11 @@ body.b1Mode .clozeAnswerText {
     if (!item || !item.id) return ["missing_item"];
     if (!b1ItemHasLearnerStatus(item)) reasons.push("not_active");
     if (item.itemType === "notice" || item.taskType === "notice" || item.evidenceType === "excluded") reasons.push("non_practice");
+    if (b1ItemHasGeneratedPromptRisk(item)) reasons.push("generated_prompt_or_choice_risk");
     if (b1IsImportedV02Item(item)) {
       if (b1ItemIsPreviewOrInactiveImport(item)) reasons.push("preview_or_inactive_import");
       if (b1ItemNeedsHumanReview(item)) reasons.push("human_review");
       if (!b1ImportedSourceAllowedForNormal(item)) reasons.push("source_not_ready_for_routes");
-      if (b1ItemHasGeneratedPromptRisk(item)) reasons.push("generated_prompt_or_choice_risk");
     }
     return reasons;
   }
@@ -19902,7 +20007,7 @@ body.b1Mode .clozeAnswerText {
     var pool = b1ImportedModulePoolFor(bankKey, filter);
     if (!pool.length) {
       showLearningMapScreen();
-      showAppStatus("No active imported practice items are available for this category.", "warn");
+      showAppStatus("No unfinished practice items are available for this route.", "warn");
       return;
     }
     var round = buildB1Round({ deckKey:bankKey, filterKey:filter, items:pool, roundLength:10 });
@@ -20308,6 +20413,7 @@ body.b1Mode .clozeAnswerText {
     var correctIds = b1ChoiceCorrectIds(item);
     return rawChoices.map(function(raw, index){
       var text = b1ChoiceText(raw);
+      var displayText = b1NormaliseLearnerChoiceDisplay(text);
       var value = b1ChoiceValue(raw);
       var id = b1ChoiceId(raw, index);
       var explicitCorrect = !!(raw && typeof raw === "object" && (raw.isCorrect === true || raw.correct === true));
@@ -20316,8 +20422,10 @@ body.b1Mode .clozeAnswerText {
       var textCorrect = correctTexts.indexOf(b1ChoiceCanonical(text)) !== -1 || correctTexts.indexOf(b1ChoiceCanonical(value)) !== -1;
       return {
         id:id,
-        text:text,
+        text:displayText || text,
         value:value,
+        sourceText:text,
+        displayWasNormalised:displayText !== text,
         authoredIndex:index,
         explicitCorrect:explicitCorrect,
         explicitWrong:explicitWrong,
@@ -20455,7 +20563,7 @@ body.b1Mode .clozeAnswerText {
     return String(prompt || "").replace(/___\s+([.,!?;:])/g, "___$1").replace(/\s+([.,!?;:])/g, "$1");
   }
   function b1PromptHtml(item, resultClass) {
-    if (item && item.itemType === "production_card") return escapeHtml(item.prompt_de || "");
+    if (item && item.itemType === "production_card") return escapeHtml(b1ProductionPromptSegments(item).instruction || item.prompt_de || "");
     var rawPrompt = b1NormaliseInlineClozePunctuation(item && item.prompt_de || "");
     if (b1UsesChoices(item)) {
       if (b1IsKontrastSlashChoice(item) || b1RepairShouldUseChoiceContract(item)) return escapeHtml(b1TaskContractChoicePrompt(item));
@@ -20976,6 +21084,7 @@ body.b1Mode .clozeAnswerText {
     var pool = b1PoolFor(mode);
     if (!pool.length) {
       showHubPlaceholder(b1RoundTitle(mode));
+      showAppStatus("No unfinished practice items are available for this route.", "warn");
       return;
     }
     var roundLength = mode === "mixed" ? B1_DAILY_TOTAL : 10;
@@ -21098,6 +21207,7 @@ body.b1Mode .clozeAnswerText {
     var pool = b1M01PoolFor(filter);
     if (!pool.length) {
       showGrammarHub();
+      showAppStatus("No unfinished practice items are available for this route.", "warn");
       return;
     }
     var round = buildB1Round({ deckKey:"b1_m01", filterKey:filter, items:pool, roundLength:10 });
@@ -21148,6 +21258,7 @@ body.b1Mode .clozeAnswerText {
     var pool = b1M02PoolFor(filter);
     if (!pool.length) {
       showGrammarHub();
+      showAppStatus("No unfinished practice items are available for this route.", "warn");
       return;
     }
     var round = buildB1Round({ deckKey:"b1_m02", filterKey:filter, items:pool, roundLength:10 });
@@ -21198,6 +21309,7 @@ body.b1Mode .clozeAnswerText {
     var pool = b1M03PoolFor(filter);
     if (!pool.length) {
       showGrammarHub();
+      showAppStatus("No unfinished practice items are available for this route.", "warn");
       return;
     }
     var round = buildB1Round({ deckKey:"b1_m03", filterKey:filter, items:pool, roundLength:10 });
@@ -21248,6 +21360,7 @@ body.b1Mode .clozeAnswerText {
     var pool = b1M04PoolFor(filter);
     if (!pool.length) {
       showGrammarHub();
+      showAppStatus("No unfinished practice items are available for this route.", "warn");
       return;
     }
     var round = buildB1Round({ deckKey:"b1_m04", filterKey:filter, items:pool, roundLength:10 });
@@ -21298,6 +21411,7 @@ body.b1Mode .clozeAnswerText {
     var pool = b1M05PoolFor(filter);
     if (!pool.length) {
       showGrammarHub();
+      showAppStatus("No unfinished practice items are available for this route.", "warn");
       return;
     }
     var round = buildB1Round({ deckKey:"b1_m05", filterKey:filter, items:pool, roundLength:10 });
@@ -21348,6 +21462,7 @@ body.b1Mode .clozeAnswerText {
     var pool = b1M06PoolFor(filter);
     if (!pool.length) {
       showGrammarHub();
+      showAppStatus("No unfinished practice items are available for this route.", "warn");
       return;
     }
     var round = buildB1Round({ deckKey:"b1_m06", filterKey:filter, items:pool, roundLength:10 });
@@ -21398,6 +21513,7 @@ body.b1Mode .clozeAnswerText {
     var pool = b1M07PoolFor(filter);
     if (!pool.length) {
       showGrammarHub();
+      showAppStatus("No unfinished practice items are available for this route.", "warn");
       return;
     }
     var round = buildB1Round({ deckKey:"b1_m07", filterKey:filter, items:pool, roundLength:10 });
@@ -21448,6 +21564,7 @@ body.b1Mode .clozeAnswerText {
     var pool = b1M08PoolFor(filter);
     if (!pool.length) {
       showGrammarHub();
+      showAppStatus("No unfinished practice items are available for this route.", "warn");
       return;
     }
     var round = buildB1Round({ deckKey:"b1_m08", filterKey:filter, items:pool, roundLength:10 });
@@ -21498,6 +21615,7 @@ body.b1Mode .clozeAnswerText {
     var pool = b1M09PoolFor(filter);
     if (!pool.length) {
       showGrammarHub();
+      showAppStatus("No unfinished practice items are available for this route.", "warn");
       return;
     }
     var round = buildB1Round({ deckKey:"b1_m09", filterKey:filter, items:pool, roundLength:10 });
@@ -21548,6 +21666,7 @@ body.b1Mode .clozeAnswerText {
     var pool = b1M10PoolFor(filter);
     if (!pool.length) {
       showGrammarHub();
+      showAppStatus("No unfinished practice items are available for this route.", "warn");
       return;
     }
     var round = buildB1Round({ deckKey:"b1_m10", filterKey:filter, items:pool, roundLength:10 });
@@ -21598,6 +21717,7 @@ body.b1Mode .clozeAnswerText {
     var pool = b1M11PoolFor(filter);
     if (!pool.length) {
       showGrammarHub();
+      showAppStatus("No unfinished practice items are available for this route.", "warn");
       return;
     }
     var round = buildB1Round({ deckKey:"b1_m11", filterKey:filter, items:pool, roundLength:10 });
@@ -21648,6 +21768,7 @@ body.b1Mode .clozeAnswerText {
     var pool = wortschatzPoolFor(filter);
     if (!pool.length) {
       showHubPlaceholder("Wortschatz");
+      showAppStatus("No unfinished practice items are available for this route.", "warn");
       return;
     }
     var round = buildB1Round({ deckKey:"wortschatz", filterKey:filter, items:pool, roundLength:10 });
@@ -21698,6 +21819,7 @@ body.b1Mode .clozeAnswerText {
     var pool = redemittelPoolFor(filter);
     if (!pool.length) {
       showRedemittelHub();
+      showAppStatus("No unfinished practice items are available for this route.", "warn");
       return;
     }
     var round = buildB1Round({ deckKey:"redemittel", filterKey:filter, items:pool, roundLength:10 });
@@ -22271,25 +22393,35 @@ body.b1Mode .clozeAnswerText {
       }, false);
       grid.appendChild(details);
     }
+    var segments = b1ProductionPromptSegments(item);
     var note = document.createElement("div");
     note.className = "productionEvidenceNote";
     note.textContent = "Write or say your answer, then self-mark. No auto-grading.";
     grid.appendChild(note);
-    if (item.usefulPhrases && item.usefulPhrases.length) {
+    if (segments.scenario) {
+      var situation = document.createElement("div");
+      situation.className = "productionEvidenceNote";
+      situation.setAttribute("dir", "ltr");
+      situation.innerHTML = "<strong>Situation</strong><br>" + escapeHtml(segments.scenario);
+      grid.appendChild(situation);
+    }
+    var usefulPhrases = b1MergeUniqueLines(item.usefulPhrases || [], segments.usefulPhrases);
+    if (usefulPhrases.length) {
       var phrases = document.createElement("ul");
       phrases.className = "productionChecklist";
       phrases.setAttribute("dir", "ltr");
-      item.usefulPhrases.forEach(function(line){
+      usefulPhrases.forEach(function(line){
         var li = document.createElement("li");
         li.textContent = line;
         phrases.appendChild(li);
       });
       appendReveal("Useful phrases", phrases, function(){ b1Runtime.currentProductionUsefulPhrasesShown = true; });
     }
-    if (item.productionChecklist && item.productionChecklist.length) {
+    var checklistLines = b1MergeUniqueLines(item.productionChecklist || [], segments.checklist);
+    if (checklistLines.length) {
       var checklist = document.createElement("ul");
       checklist.className = "productionChecklist";
-      item.productionChecklist.forEach(function(line){
+      checklistLines.forEach(function(line){
         var li = document.createElement("li");
         li.textContent = line;
         checklist.appendChild(li);
@@ -22301,10 +22433,11 @@ body.b1Mode .clozeAnswerText {
     model.textContent = "Show example answer";
     model.addEventListener("click", function(){
       var block = el("correctionBlock");
+      var exampleAnswer = item.modelAnswer_de || item.fullAnswer_de || segments.modelAnswer || "";
       block.className = "correctionBlock success visible";
       block.innerHTML = "<div class=\"correctionTarget\">Example answer</div>" +
         "<div class=\"microRule\">This is one possible answer. Yours can be different.</div>" +
-        "<div class=\"correctionPattern\" dir=\"ltr\">" + escapeHtml(item.modelAnswer_de || item.fullAnswer_de || "") + "</div>";
+        "<div class=\"correctionPattern\" dir=\"ltr\">" + escapeHtml(exampleAnswer) + "</div>";
       b1Runtime.currentProductionModelShown = true;
       model.disabled = true;
     }, false);
