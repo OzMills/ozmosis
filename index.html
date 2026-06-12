@@ -8604,6 +8604,11 @@ body.homeMode #menuToggle {
   background:linear-gradient(100deg, rgba(6,19,34,.76), rgba(4,12,22,.93)) !important;
 }
 
+.homePathCard.homePathChecking {
+  cursor:default;
+  opacity:.78;
+}
+
 .homePathBadge,
 .homeAllProgressBadge {
   width:62px;
@@ -10110,11 +10115,12 @@ body.homeMode .homeRefCardSmall {
   var LEITNER_STORAGE_KEY = "kasuskonsole.leitner.v1";
   var B1_STORAGE_KEY = "ozmosis_b1_sprint_progress_v1";
   var B1_EVIDENCE_STORAGE_KEY = "ozmosis_b1_progress_evidence_v1";
+  var B1_PROGRESS_SUMMARY_STORAGE_KEY = "ozmosis_b1_progress_summary_v1";
   var B1_PATH_UNLOCK_STORAGE_KEY = "ozmosis_b1_path_unlock_overrides_v1";
   var B1_REVIEW_EDIT_QUEUE_STORAGE_KEY = "ozmosis_b1_review_edit_queue_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.80.14.13";
-  var OZMOSIS_EXPORT_VERSION = "v0.80.14.13-landing-page-visual-reference-alignment";
+  var OZMOSIS_APP_VERSION = "v0.80.14.14";
+  var OZMOSIS_EXPORT_VERSION = "v0.80.14.14-progress-summary-cache-interaction-latency-hotfix";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -11037,10 +11043,81 @@ body.homeMode .homeRefCardSmall {
     var bank = b1RegistryBank(key);
     return bank && Array.isArray(bank.items) ? bank.items : [];
   }
+  function b1ContentIndex() {
+    if (B1_CONTENT_INDEX_CACHE) return B1_CONTENT_INDEX_CACHE;
+    var index = {
+      schemaVersion:1,
+      builtAt:new Date().toISOString(),
+      itemById:{},
+      bankByItemId:{},
+      itemsByBank:{},
+      itemsByModule:{},
+      itemsByRoute:{},
+      itemsByCategory:{},
+      itemsByTaskType:{},
+      itemsByReviewGroup:{},
+      itemsByPracticeUnit:{},
+      normalEligibleIdsByRoute:{},
+      productionIdsByRoute:{},
+      reviewEligiblePracticeUnitIds:[],
+      practiceUnitById:{},
+      practiceItems:[]
+    };
+    function push(map, key, value) {
+      key = String(key || "unknown");
+      if (!map[key]) map[key] = [];
+      map[key].push(value);
+    }
+    b1RegistryBanks().forEach(function(bank){
+      var bankKey = bank && bank.key || "unknown";
+      var items = Array.isArray(bank && bank.items) ? bank.items : [];
+      index.itemsByBank[bankKey] = items.slice();
+      items.forEach(function(item){
+        if (!item || !item.id) return;
+        index.practiceItems.push(item);
+        index.itemById[item.id] = item;
+        index.bankByItemId[item.id] = bankKey;
+        var moduleKey = String(item.moduleKey || bankKey || "unknown");
+        var categoryId = String(item.categoryId || "");
+        var taskType = String(item.itemType || item.taskType || "unknown");
+        var reviewGroup = String(item.reviewGroup || "");
+        var area = b1PathAreaForBank(bankKey, item);
+        var routeKey = String(area && area.routeKey || bankKey || "unknown");
+        var practiceUnitId = b1ProgressPracticeUnitIdForItem(item, bankKey);
+        push(index.itemsByModule, moduleKey, item);
+        push(index.itemsByRoute, routeKey, item);
+        push(index.itemsByTaskType, taskType, item);
+        if (categoryId) push(index.itemsByCategory, categoryId, item);
+        if (reviewGroup) push(index.itemsByReviewGroup, reviewGroup, item);
+        if (practiceUnitId) {
+          push(index.itemsByPracticeUnit, practiceUnitId, item);
+          if (!index.practiceUnitById[practiceUnitId]) {
+            index.practiceUnitById[practiceUnitId] = {
+              id:practiceUnitId,
+              moduleId:moduleKey,
+              categoryId:categoryId || (area && area.pathId) || null,
+              routeKey:routeKey,
+              taskTypes:{},
+              itemIds:[]
+            };
+          }
+          index.practiceUnitById[practiceUnitId].taskTypes[taskType] = true;
+          index.practiceUnitById[practiceUnitId].itemIds.push(item.id);
+        }
+        if (item.itemType === "production_card") push(index.productionIdsByRoute, routeKey, item.id);
+        if (b1ItemIsNormalEligible(item)) {
+          push(index.normalEligibleIdsByRoute, routeKey, item.id);
+          if (item.itemType !== "production_card" && practiceUnitId && index.reviewEligiblePracticeUnitIds.indexOf(practiceUnitId) === -1) {
+            index.reviewEligiblePracticeUnitIds.push(practiceUnitId);
+          }
+        }
+      });
+    });
+    B1_CONTENT_INDEX_CACHE = index;
+    return index;
+  }
   function b1RegistryPracticeItems() {
-    return b1RegistryBanks().reduce(function(out, bank){
-      return out.concat(Array.isArray(bank.items) ? bank.items : []);
-    }, []);
+    return b1ContentIndex().practiceItems.slice();
   }
   function b1RegistrySummary() {
     return b1RegistryBanks().map(function(bank){
@@ -11175,6 +11252,12 @@ body.homeMode .homeRefCardSmall {
   function b1PathItemTargetKey(item, bankKey) {
     if (!item || !item.id) return "";
     return String(item.targetFamilyId || item.reviewGroup || item.variantFamilyId || item.targetId || item.family || item.section || item.topic || ("legacy:" + String(bankKey || "unknown") + ":" + item.id));
+  }
+  function b1ProgressPracticeUnitIdForItem(item, bankKey) {
+    if (!item || !item.id) return "";
+    if (item.itemType === "production_card") return "production:" + String(item.id);
+    var key = item.targetId || item.targetFamilyId || item.reviewGroup || item.variantFamilyId || item.family || item.section || item.topic || item.id;
+    return "unit:" + String(bankKey || b1EvidenceBankKeyFor(item) || "unknown") + ":" + String(key || item.id);
   }
   function b1PathItemTargetLabel(item, key) {
     return String(item && (item.familyTarget || item.targetRule || item.grammarFocus || item.vocabularyFocus || item.redemittelFocus || item.answer || item.prompt_de) || key || "Practice target").replace(/\s+/g, " ").trim();
@@ -11367,6 +11450,8 @@ body.homeMode .homeRefCardSmall {
     var allStarCounts = { 1:0, 2:0, 3:0, 4:0, 5:0 };
     ordered.forEach(function(category){ [1,2,3,4,5].forEach(function(level){ allStarCounts[level] += Number(category.starCounts[level] || 0); }); });
     var targetList = Object.keys(targetMap).map(function(key){ return targetMap[key]; });
+    var targetByKey = {};
+    targetList.forEach(function(target){ if (target && target.targetKey) targetByKey[target.targetKey] = target; });
     var recommended = ordered.filter(function(category){ return category.coreTargetCount > 0 && category.status !== "Preview"; }).sort(function(a,b){
       if (a.recentWrongCount !== b.recentWrongCount) return b.recentWrongCount - a.recentWrongCount;
       if (a.missingTaskTypes.length !== b.missingTaskTypes.length) return b.missingTaskTypes.length - a.missingTaskTypes.length;
@@ -11383,6 +11468,7 @@ body.homeMode .homeRefCardSmall {
       disclaimerLong:"Stars show how often you have answered correctly in Ozmosis. They help guide practice, but they do not prove mastery, fluency, or exam readiness.",
       categories:ordered,
       targets:targetList,
+      targetByKey:targetByKey,
       tagSummaries:b1PathTagSummaries(targetList),
       allB1:{
         coreTargetCount:allCore,
@@ -11408,7 +11494,19 @@ body.homeMode .homeRefCardSmall {
     };
   }
   function b1PathProgressData(options) {
-    return b1PathProgressFromEvidence(options || {});
+    options = options || {};
+    if (Array.isArray(options.records)) return b1PathProgressFromEvidence(options);
+    if (options.cachedOnly || options.allowRebuild === false) {
+      var cached = getB1ProgressSummaryCached({
+        scheduleRebuild:!!options.scheduleRebuild,
+        reason:options.reason || "path_progress_cached",
+        rerender:!!options.rerender
+      });
+      if (cached && cached.pathProgress) return cached.pathProgress;
+      if (options.placeholder) return null;
+    }
+    var summary = getB1ProgressSummary({ allowRebuild:true, reason:options.reason || "path_progress" });
+    return summary && summary.pathProgress ? summary.pathProgress : b1PathProgressFromEvidence(options || {});
   }
   function b1PathTagSummaries(targets) {
     var map = {};
@@ -15593,6 +15691,15 @@ body.homeMode .homeRefCardSmall {
   var homeRecommendedRouteKey = "today";
   var b1PathPendingUnlockId = "";
   var testerIntroDismissed = false;
+  var B1_CONTENT_INDEX_CACHE = null;
+  var B1_PROGRESS_SUMMARY_MEMORY = null;
+  var B1_PROGRESS_SUMMARY_REBUILDING = false;
+  var B1_PROGRESS_SUMMARY_REBUILD_PENDING = false;
+  var B1_PROGRESS_SUMMARY_AGGREGATE_PENDING = false;
+  var B1_PROGRESS_SUMMARY_SCHEMA_VERSION = 1;
+  var B1_REVIEW_PRACTICE_PREVIEW_CACHE = null;
+  var B1_REVIEW_PRACTICE_PREVIEW_PENDING = false;
+  var OZMOSIS_PERF_TIMINGS = [];
 
   function el(id) { return document.getElementById(id); }
   function focusWithoutScroll(node) {
@@ -15616,6 +15723,22 @@ body.homeMode .homeRefCardSmall {
     node.hidden = !message;
     if (APP_STATUS_TIMER) window.clearTimeout(APP_STATUS_TIMER);
     if (message) APP_STATUS_TIMER = window.setTimeout(function(){ node.hidden = true; }, 3600);
+  }
+  function ozmosisPerfStart(label) {
+    if (!window.performance || typeof window.performance.now !== "function") return null;
+    return { label:String(label || "operation"), startedAt:window.performance.now() };
+  }
+  function ozmosisPerfEnd(mark, extra) {
+    if (!mark || !window.performance || typeof window.performance.now !== "function") return null;
+    var durationMs = Math.round((window.performance.now() - mark.startedAt) * 100) / 100;
+    var row = { label:mark.label, durationMs:durationMs, at:new Date().toISOString(), extra:extra || null };
+    OZMOSIS_PERF_TIMINGS.push(row);
+    if (OZMOSIS_PERF_TIMINGS.length > 80) OZMOSIS_PERF_TIMINGS = OZMOSIS_PERF_TIMINGS.slice(-80);
+    if (window.console && console.debug) console.debug("[Ozmosis timing]", row);
+    return row;
+  }
+  function ozmosisPerfRecent() {
+    return OZMOSIS_PERF_TIMINGS.slice(-40);
   }
   function copyTextWithFallback(text, fallbackId, statusId, successMessage, fallbackMessage) {
     var fallback = el(fallbackId);
@@ -16059,11 +16182,13 @@ body.homeMode .homeRefCardSmall {
     return d.getFullYear() + "-" + month + "-" + day;
   }
   function b1ItemById(id) {
+    var wanted = String(id || "");
+    var indexed = wanted ? b1ContentIndex().itemById[wanted] : null;
+    if (indexed) return indexed;
     var pool = b1RegistryPracticeItems();
     for (var i = 0; i < pool.length; i += 1) {
       if (pool[i] && pool[i].id === id) return pool[i];
     }
-    var wanted = String(id || "");
     var families = b1RegistryItems("b1_m01").filter(function(item){ return item && item.itemType === "variant_family"; });
     for (var f = 0; f < families.length; f += 1) {
       var family = families[f];
@@ -16143,6 +16268,35 @@ body.homeMode .homeRefCardSmall {
     if (!daily || daily.dateKey !== homeDateKey() || !daily.originalIds.length) return null;
     return daily;
   }
+  function b1DailyDisplaySnapshot(daily) {
+    if (!daily || typeof daily !== "object") return null;
+    var out = b1DailySkeleton(String(daily.dateKey || ""));
+    out.version = Number(daily.version || 1);
+    out.originalIds = b1UniqueIds(daily.originalIds);
+    out.completedIds = b1UniqueIds(daily.completedIds).filter(function(id){ return out.originalIds.indexOf(id) !== -1; });
+    out.failedIds = b1UniqueIds(daily.failedIds).filter(function(id){ return out.originalIds.indexOf(id) !== -1 && out.completedIds.indexOf(id) === -1; });
+    out.assistedIds = b1UniqueIds(daily.assistedIds).filter(function(id){ return out.originalIds.indexOf(id) !== -1 && out.completedIds.indexOf(id) === -1; });
+    out.queue = b1UniqueIds(daily.queue).filter(function(id){ return out.originalIds.indexOf(id) !== -1 && out.completedIds.indexOf(id) === -1; });
+    out.currentId = String(daily.currentId || "");
+    out.total = B1_DAILY_TOTAL;
+    out.successCount = out.completedIds.length;
+    out.startedAt = daily.startedAt || "";
+    out.updatedAt = daily.updatedAt || "";
+    out.finishedAt = daily.finishedAt || null;
+    if (out.successCount >= B1_DAILY_TOTAL && !out.finishedAt) out.finishedAt = new Date().toISOString();
+    if (out.dateKey !== homeDateKey() || !out.originalIds.length) return null;
+    return out;
+  }
+  function b1DailyDisplayStats(daily) {
+    daily = b1DailyDisplaySnapshot(daily);
+    if (!daily) return { success:0, retry:0, total:B1_DAILY_TOTAL, finished:false };
+    return {
+      success:daily.completedIds.length,
+      retry:b1DailyRetryCount(daily),
+      total:B1_DAILY_TOTAL,
+      finished:!!daily.finishedAt || daily.completedIds.length >= B1_DAILY_TOTAL
+    };
+  }
   function b1DailyRetryCount(daily) {
     if (!daily) return 0;
     var pending = {};
@@ -16166,12 +16320,14 @@ body.homeMode .homeRefCardSmall {
     var wrong = Number(rec.wrong || 0), correct = Number(rec.correct || 0), step = Number(rec.step || 0);
     return rec.lastResult === "wrong" || wrong > correct || (wrong > 0 && step === 0);
   }
-  function b1DailySelectionIds(pool, store) {
+  function b1DailySelectionIds(pool, store, options) {
+    options = options || {};
     var nowMs = Date.now();
     var seed = createRoundSeed("daily", homeDateKey());
     var buckets = { fresh:[], due:[], weak:[], old:[] };
-    var progress = b1PathProgressData();
-    shuffleWithSeed(b1PracticeSelectableItems(pool, progress), seed).forEach(function(item){
+    var progress = options.prefiltered ? null : b1PathProgressData();
+    var candidates = options.prefiltered ? (Array.isArray(pool) ? pool : []) : b1PracticeSelectableItems(pool, progress);
+    shuffleWithSeed(candidates, seed).forEach(function(item){
       var rec = b1ProgressRecordFor(store, item);
       var bucket = b1ItemProgressState(item, store, nowMs);
       if (bucket === "new") buckets.fresh.push(item);
@@ -16196,7 +16352,7 @@ body.homeMode .homeRefCardSmall {
   function b1CreateDailySprint() {
     var store = safeGetB1Progress();
     var pool = b1PoolFor("mixed");
-    var ids = b1DailySelectionIds(pool, store);
+    var ids = b1DailySelectionIds(pool, store, { prefiltered:true });
     var daily = b1DailySkeleton(homeDateKey());
     var now = new Date().toISOString();
     daily.originalIds = ids;
@@ -16286,43 +16442,33 @@ body.homeMode .homeRefCardSmall {
       summary.parseOk = false;
       return summary;
     }
-    var items = parsed && parsed.items && typeof parsed.items === "object" ? parsed.items : {};
-    var today = homeDateKey();
-    var daily = b1CurrentDailySprint(parsed);
+    var daily = b1DailyDisplaySnapshot(parsed.meta && parsed.meta.dailySprintV1);
     if (daily) {
-      var stats = b1DailyStats(daily);
+      var stats = b1DailyDisplayStats(daily);
       summary.daily = daily;
       summary.todayCount = stats.success;
       summary.retryCount = stats.retry;
       summary.dailyFinished = stats.finished;
       summary.latestLabel = "Today";
     }
-    var latestTime = 0;
-    Object.keys(items).forEach(function(id){
-      var item = b1ItemById(id);
-      if (item && !b1ItemIsNormalEligible(item)) return;
-      var rec = items[id] || {};
-      var attempts = Number(rec.attempts || 0) + Number(rec.practised || 0);
-      if (!attempts) return;
-      var step = Math.max(0, Math.min(5, Number(rec.step || 0)));
-      var wrong = Number(rec.wrong || 0);
-      var correct = Number(rec.correct || 0);
-      if (!daily && rec.lastSeenAt && homeDateKey(rec.lastSeenAt) === today) summary.todayCount += 1;
-      var dueAt = Date.parse(rec.nextDueAt || "");
-      if (!rec.nextDueAt || isNaN(dueAt) || dueAt <= Date.now()) summary.dueCount += 1;
-      if (rec.lastResult === "wrong" || wrong > correct || (wrong > 0 && step === 0)) summary.weakCount += 1;
-      if (rec.lastSeenAt) {
-        var time = new Date(rec.lastSeenAt).getTime();
-        if (!isNaN(time) && time > latestTime) {
-          latestTime = time;
-          summary.latestLabel = item && item.source === "Ozmosis B1 Wortschatz Survival Set v1" ? "Wortschatz" :
-            (item && item.source === "Ozmosis B1 Redemittel Survival Set v1" ? "Redemittel" :
-            (item && item.itemType && item.itemType.indexOf("connector") !== -1 ? "Connector" :
-            (item && item.itemType === "vocab_cloze" ? "Wortschatz" :
-            (item && item.itemType ? "B1 Sprint" : ""))));
-        }
-      }
+    var progressSummary = getB1ProgressSummaryCached({
+      scheduleRebuild:true,
+      reason:"home_summary",
+      rerender:true
     });
+    if (progressSummary) {
+      summary.hasProgress = summary.hasProgress || Number(progressSummary.evidenceFingerprint && progressSummary.evidenceFingerprint.count || 0) > 0;
+      var totals = progressSummary.totals || {};
+      summary.weakCount = Number(totals.wrong || 0);
+      summary.dueCount = Object.keys(progressSummary.byPracticeUnit || {}).filter(function(key){
+        var unit = progressSummary.byPracticeUnit[key] || {};
+        return unit.attempts && !unit.isComplete;
+      }).length;
+      if (!summary.latestLabel && Number(totals.attempted || 0)) summary.latestLabel = "B1 practice";
+    } else if (storageKeyExists(B1_EVIDENCE_STORAGE_KEY)) {
+      summary.hasProgress = true;
+      if (!summary.latestLabel) summary.latestLabel = "Checking progress...";
+    }
     summary.todayCount = Math.min(B1_DAILY_TOTAL, summary.todayCount);
     return summary;
   }
@@ -16370,8 +16516,48 @@ body.homeMode .homeRefCardSmall {
       .replace(/\btask-type breadth\b/gi, "types practised")
       .replace(/\bactiveB1Evidence\b/g, "progress");
   }
+  function b1SummaryMapSummary(summary, pathProgress) {
+    summary = summary || {};
+    pathProgress = pathProgress || summary.pathProgress || {};
+    var evidenceCount = Number(summary.evidenceFingerprint && summary.evidenceFingerprint.count || 0);
+    var units = Object.keys(summary.byPracticeUnit || {}).map(function(key){ return summary.byPracticeUnit[key] || {}; });
+    var notTested = units.filter(function(unit){ return !Number(unit.attempts || 0); }).length;
+    var notEnough = units.filter(function(unit){ return Number(unit.attempts || 0) > 0 && !unit.isComplete; }).length;
+    return {
+      evidenceCount:evidenceCount,
+      notTested:notTested,
+      notEnough:notEnough,
+      totalUnits:units.length,
+      allB1:pathProgress.allB1 || { totalStarPercent:0 }
+    };
+  }
+  function b1SummaryRecommendation(summary, pathProgress) {
+    var task = pathProgress && pathProgress.recommendedTask || summary && summary.pathProgress && summary.pathProgress.recommendedTask || null;
+    if (!task) {
+      return {
+        primary:{
+          title:"Start Today's B1 Sprint",
+          shortLabel:"B1 Sprint",
+          why:["Use current B1 routes to build progress."],
+          routeKey:"today",
+          routeLabel:"START",
+          action:{ routeKey:"today", label:"START" }
+        }
+      };
+    }
+    return {
+      primary:{
+        title:task.title || "Continue B1 practice",
+        shortLabel:task.categoryId || "B1 practice",
+        why:[homeLearnerCopy(task.reason || "Continue the next B1 practice path.")],
+        routeKey:task.routeKey || "today",
+        routeLabel:"OPEN",
+        action:{ routeKey:task.routeKey || "today", label:"OPEN" }
+      }
+    };
+  }
   function b1ReviewPracticeAvailability(preview) {
-    var data = preview || buildB1ReviewCandidatePreview();
+    var data = preview || B1_REVIEW_PRACTICE_PREVIEW_CACHE || null;
     var readyCount = Number(data && data.previewReadyCount || 0);
     return {
       available:readyCount > 0,
@@ -16388,6 +16574,21 @@ body.homeMode .homeRefCardSmall {
       el("homeReviewPracticeMeta").textContent = status.readyCount + " older checked " + (status.readyCount === 1 ? "item" : "items") + " available";
     }
     return status;
+  }
+  function scheduleReviewPracticeUxUpdate() {
+    updateReviewPracticeUx(B1_REVIEW_PRACTICE_PREVIEW_CACHE);
+    if (B1_REVIEW_PRACTICE_PREVIEW_CACHE || B1_REVIEW_PRACTICE_PREVIEW_PENDING) return;
+    B1_REVIEW_PRACTICE_PREVIEW_PENDING = true;
+    setTimeout(function(){
+      var timing = ozmosisPerfStart("review preview");
+      try {
+        B1_REVIEW_PRACTICE_PREVIEW_CACHE = buildB1ReviewCandidatePreview();
+        updateReviewPracticeUx(B1_REVIEW_PRACTICE_PREVIEW_CACHE);
+      } finally {
+        B1_REVIEW_PRACTICE_PREVIEW_PENDING = false;
+        ozmosisPerfEnd(timing);
+      }
+    }, 0);
   }
   function learningMapReviewPracticeHtml(preview) {
     var status = b1ReviewPracticeAvailability(preview);
@@ -16470,11 +16671,13 @@ body.homeMode .homeRefCardSmall {
     var bankKey = b1EvidenceBankKeyFor(item);
     var targetKey = b1PathItemTargetKey(item, bankKey);
     var targets = Array.isArray(progress.targets) ? progress.targets : [];
-    var target = null;
-    for (var i = 0; i < targets.length; i += 1) {
-      if (targets[i].targetKey === targetKey) {
-        target = targets[i];
-        break;
+    var target = progress.targetByKey && progress.targetByKey[targetKey] || null;
+    if (!target) {
+      for (var i = 0; i < targets.length; i += 1) {
+        if (targets[i].targetKey === targetKey) {
+          target = targets[i];
+          break;
+        }
       }
     }
     if (!target) {
@@ -16657,10 +16860,27 @@ body.homeMode .homeRefCardSmall {
       '<span class="homePathChevron" aria-hidden="true">&gt;</span>' +
     '</button>';
   }
+  function homePathCheckingCardHtml(id, title) {
+    return '<button class="homePathCard homePathChecking" type="button" disabled>' +
+      '<span class="homePathBadge">' + escapeHtml(id) + '</span>' +
+      '<span class="homePathMain">' +
+        '<span class="homePathTitleLine"><span class="homePathTitle">' + escapeHtml(title) + '</span></span>' +
+        '<span class="homePathSub">Checking progress...</span>' +
+      '</span>' +
+      '<span class="homePathChevron" aria-hidden="true">&gt;</span>' +
+    '</button>';
+  }
   function renderHomeB1Path(progress) {
     var target = el("homeB1PathCards");
     if (!target) return;
-    progress = progress || b1PathProgressData();
+    if (!progress) {
+      target.innerHTML = [
+        homePathCheckingCardHtml("B1.1", "Practical Admin"),
+        homePathCheckingCardHtml("B1.2", "Work Basics"),
+        homePathCheckingCardHtml("All", "All Practice")
+      ].join("");
+      return;
+    }
     var b11 = b1PathCategoryById(progress, "B1.1");
     var b12 = b1PathCategoryById(progress, "B1.2");
     var cards = [];
@@ -16743,14 +16963,17 @@ body.homeMode .homeRefCardSmall {
     openB1RecommendationRoute(category.routeKey || "learning_map");
   }
   function renderHomeCommandScreen() {
+    var timing = ozmosisPerfStart("home render");
     var summary = b1HomeProgressSummary();
-    var learnerRecords = b1LearnerProgressRecords();
-    var map = b1LearningMapScaffold({ records:learnerRecords });
-    var pathProgress = b1PathProgressData();
+    var progressSummary = getB1ProgressSummaryCached({
+      scheduleRebuild:true,
+      reason:"home_render",
+      rerender:true
+    });
+    var pathProgress = progressSummary && progressSummary.pathProgress ? progressSummary.pathProgress : null;
     var pathRecommended = pathProgress && pathProgress.recommendedTask || null;
-    var evidenceSummary = b1EvidenceSummary(learnerRecords);
-    var mapSummary = learningMapSummaryFor(map, evidenceSummary);
-    var recommendation = b1NextRecommendedPractice({ map:map, matrix:b1SkillMatrixData({ records:learnerRecords }), evidenceSummary:evidenceSummary, records:learnerRecords });
+    var mapSummary = b1SummaryMapSummary(progressSummary, pathProgress);
+    var recommendation = b1SummaryRecommendation(progressSummary, pathProgress);
     var primary = recommendation && recommendation.primary || {};
     var route = primary.action && primary.action.routeKey || primary.routeKey || "today";
     var title = "Start Today’s B1 Sprint";
@@ -16780,6 +17003,11 @@ body.homeMode .homeRefCardSmall {
       fill = summary.todayCount;
       retryFill = summary.retryCount;
       homeRecommendedRouteKey = "today";
+    } else if (!progressSummary && storageKeyExists(B1_EVIDENCE_STORAGE_KEY)) {
+      title = "Start B1 practice";
+      meta = "Checking progress...";
+      cta = "START";
+      homeRecommendedRouteKey = "today";
     }
     if (pathRecommended && pathRecommended.categoryId) {
       title = pathRecommended.categoryId + " Practice";
@@ -16796,8 +17024,9 @@ body.homeMode .homeRefCardSmall {
     setHomeHeroProgress(fill, retryFill);
     setHomeStatus(summary, mapSummary, recommendation);
     renderHomeB1Path(pathProgress);
-    updateReviewPracticeUx();
+    scheduleReviewPracticeUxUpdate();
     if (el("homeTesterCard")) el("homeTesterCard").hidden = testerIntroDismissed || b1EvidenceCount() > 0;
+    ozmosisPerfEnd(timing, { evidence:mapSummary.evidenceCount || 0 });
   }
   function setLearningMapVisible(visible) {
     if (el("learningMapScreen")) el("learningMapScreen").hidden = !visible;
@@ -16815,6 +17044,7 @@ body.homeMode .homeRefCardSmall {
     setSettingsScreenVisible(false);
   }
   function showSettingsScreen() {
+    var timing = ozmosisPerfStart("settings open");
     b1Runtime.active = false;
     resetB1ChoiceSelection();
     b1Runtime.translationOpen = false;
@@ -16839,12 +17069,14 @@ body.homeMode .homeRefCardSmall {
     applyLanguage();
     setSettingsScreenVisible(true);
     renderHud();
+    ozmosisPerfEnd(timing);
     setTimeout(function(){
       window.scrollTo(0, 0);
       if (el("settingsBackBtn")) el("settingsBackBtn").focus();
     }, 0);
   }
   function showLearningMapScreen() {
+    var timing = ozmosisPerfStart("learning map open");
     b1Runtime.active = false;
     resetB1ChoiceSelection();
     b1Runtime.translationOpen = false;
@@ -16869,6 +17101,7 @@ body.homeMode .homeRefCardSmall {
     renderLearningMapScreen();
     setLearningMapVisible(true);
     renderHud();
+    ozmosisPerfEnd(timing);
     setTimeout(function(){
       window.scrollTo(0, 0);
       if (el("learningMapBackBtn")) el("learningMapBackBtn").focus();
@@ -17266,6 +17499,544 @@ body.homeMode .homeRefCardSmall {
       window.localStorage.setItem(B1_EVIDENCE_STORAGE_KEY, JSON.stringify(normaliseB1EvidenceStore(obj)));
     } catch (e) {}
   }
+  function b1ProgressSummaryDefault() {
+    return {
+      schemaVersion:B1_PROGRESS_SUMMARY_SCHEMA_VERSION,
+      appVersion:OZMOSIS_APP_VERSION,
+      exportVersion:OZMOSIS_EXPORT_VERSION,
+      rebuiltAt:null,
+      updatedAt:null,
+      rebuildReason:"",
+      evidenceFingerprint:{ count:0, lastEvidenceAt:null, lastEvidenceId:null },
+      contentFingerprint:{ contentVersion:OZMOSIS_EXPORT_VERSION, routeManifestVersion:"b1-content-index-v1", itemCount:0, practiceUnitCount:0 },
+      totals:{ attempted:0, correct:0, wrong:0, productionPractised:0 },
+      byModule:{},
+      byCategory:{},
+      byRoute:{},
+      byTaskType:{},
+      byPracticeUnit:{},
+      pathProgress:null
+    };
+  }
+  function b1ProgressEvidenceFingerprint(store) {
+    store = normaliseB1EvidenceStore(store);
+    var records = store.records || [];
+    var last = records.length ? records[records.length - 1] : null;
+    return {
+      count:records.length,
+      lastEvidenceAt:last && (last.timestamp || last.createdAt || last.attemptedAt) || null,
+      lastEvidenceId:last && last.id || null
+    };
+  }
+  function b1ProgressContentFingerprint() {
+    var index = b1ContentIndex();
+    return {
+      contentVersion:OZMOSIS_EXPORT_VERSION,
+      routeManifestVersion:"b1-content-index-v1",
+      itemCount:index.practiceItems.length,
+      practiceUnitCount:Object.keys(index.practiceUnitById || {}).length,
+      routeCount:Object.keys(index.itemsByRoute || {}).length
+    };
+  }
+  function b1ProgressSummaryCopyTaskTypes(taskTypes) {
+    var out = {};
+    Object.keys(taskTypes || {}).forEach(function(key){
+      var row = taskTypes[key] || {};
+      out[key] = {
+        available:Number(row.available || 0),
+        correctCount:Number(row.correctCount || 0),
+        starLevel:b1PathStarLevel(row.starLevel || row.correctCount || 0),
+        practisedCount:Number(row.practisedCount || 0)
+      };
+    });
+    return out;
+  }
+  function b1CompactPathTarget(target) {
+    target = target || {};
+    return {
+      targetKey:String(target.targetKey || ""),
+      label:String(target.label || "Practice target"),
+      pathId:String(target.pathId || ""),
+      pathLabel:String(target.pathLabel || ""),
+      subcategoryId:String(target.subcategoryId || ""),
+      subcategoryLabel:String(target.subcategoryLabel || ""),
+      routeKey:String(target.routeKey || "learning_map"),
+      coreStatus:String(target.coreStatus || "support"),
+      itemIds:Array.isArray(target.itemIds) ? target.itemIds.slice() : [],
+      taskTypes:b1ProgressSummaryCopyTaskTypes(target.taskTypes),
+      requiredTaskTypes:Array.isArray(target.requiredTaskTypes) ? target.requiredTaskTypes.slice() : Object.keys(target.taskTypes || {}).sort(),
+      correctCount:Number(target.correctCount || 0),
+      starLevel:b1PathStarLevel(target.starLevel || target.correctCount || 0),
+      recentWrongCount:Number(target.recentWrongCount || 0),
+      lastCorrectAt:target.lastCorrectAt || null,
+      lastAttemptAt:target.lastAttemptAt || null,
+      confidenceHistory:Array.isArray(target.confidenceHistory) ? target.confidenceHistory.slice(-12) : [],
+      supportHistory:Array.isArray(target.supportHistory) ? target.supportHistory.slice(-12) : [],
+      productionPractisedCount:Number(target.productionPractisedCount || 0),
+      teachMeCount:Number(target.teachMeCount || 0),
+      assistedAttemptCount:Number(target.assistedAttemptCount || 0),
+      diagnosticAttemptCount:Number(target.diagnosticAttemptCount || 0),
+      fallbackMapping:!!target.fallbackMapping
+    };
+  }
+  function b1CompactPathCategory(category) {
+    category = category || {};
+    return {
+      categoryId:String(category.categoryId || category.pathId || ""),
+      pathId:String(category.pathId || category.categoryId || ""),
+      label:String(category.label || ""),
+      routeKey:String(category.routeKey || "learning_map"),
+      order:Number(category.order || 0),
+      subcategoryLabel:String(category.subcategoryLabel || ""),
+      subcategories:Array.isArray(category.subcategories) ? category.subcategories.slice() : [],
+      preview:!!category.preview,
+      coreTargetCount:Number(category.coreTargetCount || 0),
+      supportTargetCount:Number(category.supportTargetCount || 0),
+      targetKeys:(Array.isArray(category.targets) ? category.targets : []).map(function(target){ return target && target.targetKey; }).filter(Boolean),
+      starCounts:{
+        1:Number(category.starCounts && category.starCounts[1] || 0),
+        2:Number(category.starCounts && category.starCounts[2] || 0),
+        3:Number(category.starCounts && category.starCounts[3] || 0),
+        4:Number(category.starCounts && category.starCounts[4] || 0),
+        5:Number(category.starCounts && category.starCounts[5] || 0)
+      },
+      totalStars:Number(category.totalStars || 0),
+      taskTypes:category.taskTypes || {},
+      productionPractisedCount:Number(category.productionPractisedCount || 0),
+      recentWrongCount:Number(category.recentWrongCount || 0),
+      fallbackMappingCount:Number(category.fallbackMappingCount || 0),
+      override:category.override || null,
+      status:String(category.status || "Locked"),
+      statusLabel:String(category.statusLabel || category.status || ""),
+      recommendedUnlock:!!category.recommendedUnlock,
+      missingTaskTypes:Array.isArray(category.missingTaskTypes) ? category.missingTaskTypes.slice() : [],
+      requiredTaskTypes:Array.isArray(category.requiredTaskTypes) ? category.requiredTaskTypes.slice() : [],
+      percentAt1Star:Number(category.percentAt1Star || 0),
+      percentAt2Stars:Number(category.percentAt2Stars || 0),
+      percentAt3Stars:Number(category.percentAt3Stars || 0),
+      percentAt4Stars:Number(category.percentAt4Stars || 0),
+      percentAt5Stars:Number(category.percentAt5Stars || 0),
+      totalStarPercent:Number(category.totalStarPercent || 0)
+    };
+  }
+  function b1CompactPathProgress(progress) {
+    progress = progress || {};
+    var targets = (Array.isArray(progress.targets) ? progress.targets : []).map(b1CompactPathTarget);
+    var targetByKey = {};
+    targets.forEach(function(target){ if (target.targetKey) targetByKey[target.targetKey] = target; });
+    return {
+      schemaVersion:progress.schemaVersion || "v1",
+      starLadder:Array.isArray(progress.starLadder) ? progress.starLadder.slice() : B1_PATH_STAR_LABELS.slice(),
+      unlockConfig:progress.unlockConfig || { starThreshold:B1_PATH_UNLOCK_STAR_THRESHOLD, coveragePercent:B1_PATH_UNLOCK_COVERAGE_PERCENT },
+      disclaimerShort:progress.disclaimerShort || "Stars guide practice. They are not a mastery or exam-readiness score.",
+      disclaimerLong:progress.disclaimerLong || "Stars show how often you have answered correctly in Ozmosis. They help guide practice, but they do not prove mastery, fluency, or exam readiness.",
+      categories:(Array.isArray(progress.categories) ? progress.categories : []).map(b1CompactPathCategory),
+      targets:targets,
+      targetByKey:targetByKey,
+      tagSummaries:Array.isArray(progress.tagSummaries) ? progress.tagSummaries.slice(0, 80) : [],
+      allB1:progress.allB1 || { coreTargetCount:0, percentAt1Star:0, percentAt2Stars:0, percentAt3Stars:0, percentAt4Stars:0, percentAt5Stars:0, totalStarPercent:0 },
+      recommendedTask:progress.recommendedTask || null,
+      limitations:Array.isArray(progress.limitations) ? progress.limitations.slice() : [],
+      fallbackMappingCount:Number(progress.fallbackMappingCount || 0)
+    };
+  }
+  function b1ProgressSummaryPracticeUnitFromTarget(target) {
+    var taskTypes = Object.keys(target && target.taskTypes || {});
+    var attempts = Number(target.correctCount || 0) + Number(target.recentWrongCount || 0) + Number(target.productionPractisedCount || 0) + Number(target.assistedAttemptCount || 0) + Number(target.diagnosticAttemptCount || 0);
+    var lastResult = null;
+    if (target && target.diagnosticAttemptCount) lastResult = "diagnostic";
+    if (target && target.assistedAttemptCount) lastResult = "assisted";
+    if (target && target.productionPractisedCount) lastResult = "practised";
+    if (target && target.correctCount) lastResult = "correct";
+    if (target && target.recentWrongCount) lastResult = "wrong";
+    return {
+      stars:b1PathStarLevel(target && target.starLevel || 0),
+      attempts:attempts,
+      correct:Number(target && target.correctCount || 0),
+      wrong:Number(target && target.recentWrongCount || 0),
+      productionPractised:Number(target && target.productionPractisedCount || 0),
+      lastResult:lastResult,
+      lastAttemptAt:target && target.lastAttemptAt || target && target.lastCorrectAt || null,
+      moduleId:target && target.pathId || null,
+      categoryId:target && target.pathId || null,
+      routeKey:target && target.routeKey || null,
+      taskType:taskTypes[0] || null,
+      taskTypes:taskTypes,
+      reviewGroup:target && target.targetKey || null,
+      isComplete:b1PathStarLevel(target && target.starLevel || 0) >= B1_PATH_UNLOCK_STAR_THRESHOLD,
+      isMaxStar:b1PathStarLevel(target && target.starLevel || 0) >= 5
+    };
+  }
+  function b1ProgressSummaryRefreshPathAggregates(summary) {
+    if (!summary || !summary.pathProgress) return summary;
+    var progress = summary.pathProgress;
+    var targets = Array.isArray(progress.targets) ? progress.targets : [];
+    var overrides = safeGetB1PathUnlockOverrides();
+    var categories = {};
+    b1PathAreaDefinitions().forEach(function(area){
+      categories[area.pathId] = {
+        categoryId:area.pathId,
+        pathId:area.pathId,
+        label:area.label,
+        routeKey:area.routeKey,
+        order:area.order,
+        subcategoryLabel:area.subcategoryLabel,
+        subcategories:(area.subcategories || []).slice(),
+        preview:!!area.preview,
+        coreTargetCount:0,
+        supportTargetCount:0,
+        targets:[],
+        starCounts:{ 1:0, 2:0, 3:0, 4:0, 5:0 },
+        totalStars:0,
+        taskTypes:{ choice:{available:0, done:0}, cloze:{available:0, done:0}, repair:{available:0, done:0}, satzbau:{available:0, done:0}, umformen:{available:0, done:0}, production:{available:0, done:0} },
+        productionPractisedCount:0,
+        recentWrongCount:0,
+        fallbackMappingCount:0,
+        override:(overrides.categories && overrides.categories[area.pathId]) || null,
+        status:"Locked",
+        recommendedUnlock:false,
+        missingTaskTypes:[]
+      };
+    });
+    targets.forEach(function(target){
+      if (!target || !target.targetKey) return;
+      target.starLevel = b1PathStarLevel(target.correctCount || target.starLevel || 0);
+      Object.keys(target.taskTypes || {}).forEach(function(type){
+        target.taskTypes[type].starLevel = b1PathStarLevel(target.taskTypes[type].correctCount || target.taskTypes[type].starLevel || 0);
+      });
+      var category = categories[target.pathId] || categories["B1.2"];
+      if (!category) return;
+      category.targets.push(target);
+      if (target.coreStatus === "core") {
+        category.coreTargetCount += 1;
+        category.totalStars += target.starLevel;
+        [1,2,3,4,5].forEach(function(level){ if (target.starLevel >= level) category.starCounts[level] += 1; });
+      } else {
+        category.supportTargetCount += 1;
+      }
+      if (target.fallbackMapping) category.fallbackMappingCount += 1;
+      category.recentWrongCount += Number(target.recentWrongCount || 0);
+      category.productionPractisedCount += Number(target.productionPractisedCount || 0);
+      Object.keys(target.taskTypes || {}).forEach(function(type){
+        if (!category.taskTypes[type]) category.taskTypes[type] = { available:0, done:0 };
+        category.taskTypes[type].available += Number(target.taskTypes[type].available || 0);
+        if (type === "production") {
+          if (target.productionPractisedCount > 0) category.taskTypes[type].done += 1;
+        } else if (target.taskTypes[type].starLevel >= B1_PATH_UNLOCK_STAR_THRESHOLD) {
+          category.taskTypes[type].done += 1;
+        }
+      });
+    });
+    var ordered = Object.keys(categories).map(function(key){ return categories[key]; }).sort(function(a,b){ return a.order - b.order; });
+    ordered.forEach(function(category, index){
+      var total = Math.max(0, Number(category.coreTargetCount || 0));
+      category.percentAt1Star = total ? Math.round(category.starCounts[1] * 100 / total) : 0;
+      category.percentAt2Stars = total ? Math.round(category.starCounts[2] * 100 / total) : 0;
+      category.percentAt3Stars = total ? Math.round(category.starCounts[3] * 100 / total) : 0;
+      category.percentAt4Stars = total ? Math.round(category.starCounts[4] * 100 / total) : 0;
+      category.percentAt5Stars = total ? Math.round(category.starCounts[5] * 100 / total) : 0;
+      category.totalStarPercent = total ? Math.round(category.totalStars * 100 / (total * 5)) : 0;
+      category.requiredTaskTypes = Object.keys(category.taskTypes).filter(function(type){ return category.taskTypes[type].available > 0; });
+      category.missingTaskTypes = category.requiredTaskTypes.filter(function(type){ return category.taskTypes[type].done <= 0; });
+      category.recommendedUnlock = !category.preview && total > 0 && category.percentAt1Star >= B1_PATH_UNLOCK_COVERAGE_PERCENT && category.missingTaskTypes.length === 0;
+      var previous = null;
+      for (var prevIndex = index - 1; prevIndex >= 0; prevIndex -= 1) {
+        if (!ordered[prevIndex].preview && ordered[prevIndex].coreTargetCount > 0) { previous = ordered[prevIndex]; break; }
+      }
+      var previousAllowsOpen = !previous || previous && (previous.recommendedUnlock || previous.override);
+      category.status = category.override ? "Open" : (category.recommendedUnlock ? "Recommended" : (previousAllowsOpen && total > 0 ? "Open" : "Locked"));
+      if (category.preview) category.status = "Preview";
+      category.statusLabel = category.preview ? "Preview" : (category.recommendedUnlock ? "Ready to continue" : "Keep practising");
+      if (category.override) category.statusLabel = "Unlocked anyway";
+    });
+    var allCore = ordered.reduce(function(total, category){ return total + category.coreTargetCount; }, 0);
+    var allStars = ordered.reduce(function(total, category){ return total + category.totalStars; }, 0);
+    var allStarCounts = { 1:0, 2:0, 3:0, 4:0, 5:0 };
+    ordered.forEach(function(category){ [1,2,3,4,5].forEach(function(level){ allStarCounts[level] += Number(category.starCounts[level] || 0); }); });
+    var recommended = ordered.filter(function(category){ return category.coreTargetCount > 0 && category.status !== "Preview"; }).sort(function(a,b){
+      if (a.recentWrongCount !== b.recentWrongCount) return b.recentWrongCount - a.recentWrongCount;
+      if (a.missingTaskTypes.length !== b.missingTaskTypes.length) return b.missingTaskTypes.length - a.missingTaskTypes.length;
+      return a.percentAt1Star - b.percentAt1Star;
+    })[0] || ordered[0];
+    progress.categories = ordered.map(b1CompactPathCategory);
+    progress.targets = targets.map(b1CompactPathTarget);
+    progress.targetByKey = {};
+    progress.targets.forEach(function(target){ if (target.targetKey) progress.targetByKey[target.targetKey] = target; });
+    progress.tagSummaries = b1PathTagSummaries(progress.targets);
+    progress.allB1 = {
+      coreTargetCount:allCore,
+      percentAt1Star:allCore ? Math.round(allStarCounts[1] * 100 / allCore) : 0,
+      percentAt2Stars:allCore ? Math.round(allStarCounts[2] * 100 / allCore) : 0,
+      percentAt3Stars:allCore ? Math.round(allStarCounts[3] * 100 / allCore) : 0,
+      percentAt4Stars:allCore ? Math.round(allStarCounts[4] * 100 / allCore) : 0,
+      percentAt5Stars:allCore ? Math.round(allStarCounts[5] * 100 / allCore) : 0,
+      totalStarPercent:allCore ? Math.round(allStars * 100 / (allCore * 5)) : 0
+    };
+    progress.recommendedTask = recommended ? {
+      categoryId:recommended.categoryId,
+      title:"Continue " + recommended.pathId + " " + recommended.label,
+      reason:recommended.recentWrongCount ? recommended.recentWrongCount + " recent misses are waiting." : (recommended.missingTaskTypes.length ? "Needs " + recommended.missingTaskTypes.map(b1PathTaskTypeLabel).join(", ") + "." : "You are close to the next path step."),
+      routeKey:recommended.routeKey || "today"
+    } : null;
+    summary.byCategory = {};
+    summary.byRoute = {};
+    summary.byModule = {};
+    summary.byTaskType = {};
+    summary.byPracticeUnit = {};
+    progress.categories.forEach(function(category){
+      summary.byCategory[category.categoryId] = category;
+      var routeKey = category.routeKey || "learning_map";
+      summary.byRoute[routeKey] = summary.byRoute[routeKey] || { routeKey:routeKey, categoryIds:[], coreTargetCount:0, totalStars:0, recentWrongCount:0, productionPractised:0, totalStarPercent:0 };
+      summary.byRoute[routeKey].categoryIds.push(category.categoryId);
+      summary.byRoute[routeKey].coreTargetCount += Number(category.coreTargetCount || 0);
+      summary.byRoute[routeKey].totalStars += Number(category.totalStars || 0);
+      summary.byRoute[routeKey].recentWrongCount += Number(category.recentWrongCount || 0);
+      summary.byRoute[routeKey].productionPractised += Number(category.productionPractisedCount || 0);
+      summary.byRoute[routeKey].totalStarPercent = summary.byRoute[routeKey].coreTargetCount ? Math.round(summary.byRoute[routeKey].totalStars * 100 / (summary.byRoute[routeKey].coreTargetCount * 5)) : 0;
+    });
+    progress.targets.forEach(function(target){
+      var unit = b1ProgressSummaryPracticeUnitFromTarget(target);
+      summary.byPracticeUnit[target.targetKey] = unit;
+      var moduleKey = unit.moduleId || "unknown";
+      summary.byModule[moduleKey] = summary.byModule[moduleKey] || { knownTotal:0, attemptedUnits:0, completedUnits:0, maxStarUnits:0, correctAttempts:0, wrongAttempts:0, productionPractised:0, starBuckets:{ 0:0, 1:0, 2:0, 3:0, 4:0, 5:0 }, taskTypesPractised:{} };
+      summary.byModule[moduleKey].knownTotal += unit.taskType === "production" ? 0 : 1;
+      summary.byModule[moduleKey].attemptedUnits += unit.attempts ? 1 : 0;
+      summary.byModule[moduleKey].completedUnits += unit.isComplete ? 1 : 0;
+      summary.byModule[moduleKey].maxStarUnits += unit.isMaxStar ? 1 : 0;
+      summary.byModule[moduleKey].correctAttempts += unit.correct;
+      summary.byModule[moduleKey].wrongAttempts += unit.wrong;
+      summary.byModule[moduleKey].productionPractised += unit.productionPractised;
+      summary.byModule[moduleKey].starBuckets[unit.stars] = Number(summary.byModule[moduleKey].starBuckets[unit.stars] || 0) + 1;
+      unit.taskTypes.forEach(function(type){
+        var task = target.taskTypes && target.taskTypes[type] || {};
+        summary.byTaskType[type] = summary.byTaskType[type] || { available:0, done:0, correctAttempts:0, productionPractised:0 };
+        summary.byTaskType[type].available += Number(task.available || 0);
+        summary.byTaskType[type].correctAttempts += Number(task.correctCount || 0);
+        summary.byTaskType[type].productionPractised += Number(task.practisedCount || 0);
+        var unitTaskDone = type === "production" ? unit.productionPractised > 0 : Number(task.starLevel || 0) >= B1_PATH_UNLOCK_STAR_THRESHOLD;
+        if (unitTaskDone) summary.byTaskType[type].done += 1;
+        summary.byModule[moduleKey].taskTypesPractised[type] = Number(summary.byModule[moduleKey].taskTypesPractised[type] || 0) + (unitTaskDone ? 1 : 0);
+      });
+    });
+    return summary;
+  }
+  function b1ProgressSummaryFromPathProgress(pathProgress, evidenceStore, reason) {
+    var store = normaliseB1EvidenceStore(evidenceStore);
+    var records = b1LearnerProgressRecords(store.records);
+    var summary = b1ProgressSummaryDefault();
+    var now = new Date().toISOString();
+    summary.rebuiltAt = now;
+    summary.updatedAt = now;
+    summary.rebuildReason = String(reason || "rebuild");
+    summary.evidenceFingerprint = b1ProgressEvidenceFingerprint(store);
+    summary.contentFingerprint = b1ProgressContentFingerprint();
+    records.forEach(function(record){
+      summary.totals.attempted += 1;
+      if (record.correct === true) summary.totals.correct += 1;
+      if (record.correct === false || record.result === "wrong") summary.totals.wrong += 1;
+      if (record.answerMode === "mark_practised" || record.selfMarked || record.result === "practised" || record.productionAction === "mark_practised") summary.totals.productionPractised += 1;
+    });
+    summary.pathProgress = b1CompactPathProgress(pathProgress);
+    return b1ProgressSummaryRefreshPathAggregates(summary);
+  }
+  function normaliseB1ProgressSummary(input) {
+    if (!input || typeof input !== "object") return null;
+    if (Number(input.schemaVersion || 0) !== B1_PROGRESS_SUMMARY_SCHEMA_VERSION) return null;
+    var out = b1ProgressSummaryDefault();
+    Object.keys(out).forEach(function(key){ if (input[key] !== undefined) out[key] = input[key]; });
+    if (!out.totals || typeof out.totals !== "object") out.totals = { attempted:0, correct:0, wrong:0, productionPractised:0 };
+    ["attempted", "correct", "wrong", "productionPractised"].forEach(function(key){ out.totals[key] = Number(out.totals[key] || 0); });
+    if (!out.pathProgress || typeof out.pathProgress !== "object") out.pathProgress = null;
+    return out;
+  }
+  function safeGetB1ProgressSummary() {
+    if (B1_PROGRESS_SUMMARY_MEMORY) return B1_PROGRESS_SUMMARY_MEMORY;
+    try {
+      var raw = window.localStorage.getItem(B1_PROGRESS_SUMMARY_STORAGE_KEY);
+      B1_PROGRESS_SUMMARY_MEMORY = normaliseB1ProgressSummary(raw ? JSON.parse(raw) : null);
+      return B1_PROGRESS_SUMMARY_MEMORY;
+    } catch (e) { return null; }
+  }
+  function safeSetB1ProgressSummary(summary) {
+    try {
+      var normalised = summary && Number(summary.schemaVersion || 0) === B1_PROGRESS_SUMMARY_SCHEMA_VERSION ? summary : normaliseB1ProgressSummary(summary);
+      if (!normalised) return null;
+      normalised.updatedAt = normalised.updatedAt || new Date().toISOString();
+      B1_PROGRESS_SUMMARY_MEMORY = normalised;
+      window.localStorage.setItem(B1_PROGRESS_SUMMARY_STORAGE_KEY, JSON.stringify(normalised));
+      return normalised;
+    } catch (e) { return null; }
+  }
+  function scheduleB1ProgressSummaryAggregateRefresh(reason) {
+    if (B1_PROGRESS_SUMMARY_AGGREGATE_PENDING) return;
+    B1_PROGRESS_SUMMARY_AGGREGATE_PENDING = true;
+    setTimeout(function(){
+      var timing = ozmosisPerfStart("summary aggregate refresh");
+      try {
+        var summary = safeGetB1ProgressSummary();
+        if (summary && summary.pathProgress) {
+          b1ProgressSummaryRefreshPathAggregates(summary);
+          summary.updatedAt = new Date().toISOString();
+          summary.aggregateRefreshReason = String(reason || "deferred_incremental");
+          safeSetB1ProgressSummary(summary);
+        }
+      } finally {
+        B1_PROGRESS_SUMMARY_AGGREGATE_PENDING = false;
+        ozmosisPerfEnd(timing, { reason:reason || "deferred_incremental" });
+      }
+    }, 0);
+  }
+  function safeClearB1ProgressSummary() {
+    B1_PROGRESS_SUMMARY_MEMORY = null;
+    try { window.localStorage.removeItem(B1_PROGRESS_SUMMARY_STORAGE_KEY); } catch (e) {}
+  }
+  function b1ProgressSummaryStructurallyCurrent(summary) {
+    if (!summary || Number(summary.schemaVersion || 0) !== B1_PROGRESS_SUMMARY_SCHEMA_VERSION) return false;
+    if (summary.appVersion !== OZMOSIS_APP_VERSION || summary.exportVersion !== OZMOSIS_EXPORT_VERSION) return false;
+    var content = b1ProgressContentFingerprint();
+    var cached = summary.contentFingerprint || {};
+    return cached.contentVersion === content.contentVersion && cached.routeManifestVersion === content.routeManifestVersion && Number(cached.itemCount || 0) === Number(content.itemCount || 0) && Number(cached.practiceUnitCount || 0) === Number(content.practiceUnitCount || 0);
+  }
+  function b1ProgressSummaryHasCurrentMarkers(summary) {
+    if (!summary || Number(summary.schemaVersion || 0) !== B1_PROGRESS_SUMMARY_SCHEMA_VERSION) return false;
+    if (summary.appVersion !== OZMOSIS_APP_VERSION || summary.exportVersion !== OZMOSIS_EXPORT_VERSION) return false;
+    var cached = summary.contentFingerprint || {};
+    return cached.contentVersion === OZMOSIS_EXPORT_VERSION && cached.routeManifestVersion === "b1-content-index-v1";
+  }
+  function b1ProgressSummaryIsValid(summary, evidenceStore) {
+    if (!b1ProgressSummaryStructurallyCurrent(summary)) return false;
+    var expected = b1ProgressEvidenceFingerprint(evidenceStore || safeGetB1Evidence());
+    var actual = summary.evidenceFingerprint || {};
+    return Number(actual.count || 0) === expected.count && String(actual.lastEvidenceAt || "") === String(expected.lastEvidenceAt || "") && String(actual.lastEvidenceId || "") === String(expected.lastEvidenceId || "");
+  }
+  function rebuildB1ProgressSummaryFromEvidence(options) {
+    options = options || {};
+    if (B1_PROGRESS_SUMMARY_REBUILDING) return B1_PROGRESS_SUMMARY_MEMORY || safeGetB1ProgressSummary();
+    B1_PROGRESS_SUMMARY_REBUILDING = true;
+    var timing = ozmosisPerfStart("summary rebuild");
+    try {
+      var store = safeGetB1Evidence();
+      var learnerRecords = b1LearnerProgressRecords(store.records);
+      var pathProgress = b1PathProgressFromEvidence({ records:learnerRecords });
+      var summary = b1ProgressSummaryFromPathProgress(pathProgress, store, options.reason || "rebuild");
+      summary.rebuiltAt = new Date().toISOString();
+      summary.updatedAt = summary.rebuiltAt;
+      summary.rebuildReason = String(options.reason || "rebuild");
+      return safeSetB1ProgressSummary(summary) || summary;
+    } finally {
+      B1_PROGRESS_SUMMARY_REBUILDING = false;
+      ozmosisPerfEnd(timing, { reason:options.reason || "rebuild" });
+    }
+  }
+  function getB1ProgressSummary(options) {
+    options = options || {};
+    var store = safeGetB1Evidence();
+    var summary = safeGetB1ProgressSummary();
+    if (b1ProgressSummaryIsValid(summary, store)) return summary;
+    if (!options.allowRebuild) return null;
+    return rebuildB1ProgressSummaryFromEvidence({ reason:options.reason || "stale" });
+  }
+  function getB1ProgressSummaryCached(options) {
+    options = options || {};
+    var summary = safeGetB1ProgressSummary();
+    if (b1ProgressSummaryHasCurrentMarkers(summary)) return summary;
+    if (options.scheduleRebuild) scheduleB1ProgressSummaryRebuild(options.reason || "cached_summary_missing", !!options.rerender);
+    return null;
+  }
+  function scheduleB1ProgressSummaryRebuild(reason, rerender) {
+    if (B1_PROGRESS_SUMMARY_REBUILD_PENDING || B1_PROGRESS_SUMMARY_REBUILDING) return;
+    B1_PROGRESS_SUMMARY_REBUILD_PENDING = true;
+    setTimeout(function(){
+      try {
+        rebuildB1ProgressSummaryFromEvidence({ reason:reason || "scheduled_rebuild" });
+      } catch (e) {
+        if (window.console && console.warn) console.warn("[Ozmosis] Progress summary rebuild failed", e);
+      } finally {
+        B1_PROGRESS_SUMMARY_REBUILD_PENDING = false;
+        if (rerender && state === "home") renderHomeCommandScreen();
+      }
+    }, 0);
+  }
+  function b1ProgressSummaryTargetForRecord(summary, record, item) {
+    if (!summary || !summary.pathProgress || !record) return null;
+    var bankKey = String(record.bankKey || (item ? b1EvidenceBankKeyFor(item) : "unknown"));
+    var area = b1PathAreaForBank(bankKey, item || record);
+    if (!area) return null;
+    var targetKey = String(record.targetFamilyId || record.reviewGroup || record.variantFamilyId || record.targetId || (item ? b1PathItemTargetKey(item, bankKey) : ("legacy:" + bankKey + ":" + record.itemId)));
+    var progress = summary.pathProgress;
+    if (!progress.targetByKey) progress.targetByKey = {};
+    var target = progress.targetByKey[targetKey] || null;
+    if (!target && Array.isArray(progress.targets)) {
+      for (var i = 0; i < progress.targets.length; i += 1) { if (progress.targets[i] && progress.targets[i].targetKey === targetKey) { target = progress.targets[i]; break; } }
+    }
+    if (!target) {
+      target = b1CompactPathTarget(b1PathEmptyTarget(item || { id:record.itemId, targetFamilyId:record.targetFamilyId, reviewGroup:record.reviewGroup, variantFamilyId:record.variantFamilyId, grammarFocus:record.grammarFocus }, { key:bankKey }, area));
+      progress.targets = Array.isArray(progress.targets) ? progress.targets : [];
+      progress.targets.push(target);
+    }
+    progress.targetByKey[targetKey] = target;
+    if (target.itemIds.indexOf(record.itemId) === -1) target.itemIds.push(record.itemId);
+    return target;
+  }
+  function b1ProgressSummaryApplyRecordToTarget(target, record, item) {
+    if (!target || !record) return;
+    var taskType = b1PathTaskTypeKey(record, item);
+    target.taskTypes = target.taskTypes || {};
+    target.taskTypes[taskType] = target.taskTypes[taskType] || { available:0, correctCount:0, starLevel:0, practisedCount:0 };
+    var assisted = record.result === "assisted" || record.supportLevel === "teach_me_assisted" || record.hintUsed === true;
+    var production = taskType === "production" || record.answerMode === "mark_practised" || record.selfMarked === true || record.result === "practised";
+    var diagnostic = record.attemptContext === "diagnostic" || b1CanonicalTaskDepth(record.taskDepth) === "diagnostic";
+    if (record.timestamp) target.lastAttemptAt = !target.lastAttemptAt || Date.parse(record.timestamp) > Date.parse(target.lastAttemptAt) ? record.timestamp : target.lastAttemptAt;
+    if (record.confidence) target.confidenceHistory = (target.confidenceHistory || []).concat(record.confidence).slice(-12);
+    if (record.supportLevel) target.supportHistory = (target.supportHistory || []).concat(record.supportLevel).slice(-12);
+    if (diagnostic) { target.diagnosticAttemptCount = Number(target.diagnosticAttemptCount || 0) + 1; return; }
+    if (assisted) {
+      target.assistedAttemptCount = Number(target.assistedAttemptCount || 0) + 1;
+      if (record.supportLevel === "teach_me_assisted" || record.hintUsed === true) target.teachMeCount = Number(target.teachMeCount || 0) + 1;
+    }
+    if (production) {
+      if (record.result === "practised" || record.productionAction === "mark_practised") {
+        target.productionPractisedCount = Number(target.productionPractisedCount || 0) + 1;
+        target.taskTypes[taskType].practisedCount = Number(target.taskTypes[taskType].practisedCount || 0) + 1;
+      }
+      return;
+    }
+    if (record.correct === true && !assisted) {
+      target.correctCount = Number(target.correctCount || 0) + 1;
+      target.lastCorrectAt = record.timestamp || target.lastCorrectAt;
+      target.taskTypes[taskType].correctCount = Number(target.taskTypes[taskType].correctCount || 0) + 1;
+    } else if (record.correct === false || record.result === "wrong") {
+      target.recentWrongCount = Number(target.recentWrongCount || 0) + 1;
+    }
+    target.starLevel = b1PathStarLevel(target.correctCount);
+    target.taskTypes[taskType].starLevel = b1PathStarLevel(target.taskTypes[taskType].correctCount);
+  }
+  function updateB1ProgressSummaryAfterEvidence(record, item, evidenceStore) {
+    if (!record) return null;
+    var timing = ozmosisPerfStart("summary incremental");
+    var store = normaliseB1EvidenceStore(evidenceStore || safeGetB1Evidence());
+    var summary = safeGetB1ProgressSummary();
+    if (!b1ProgressSummaryStructurallyCurrent(summary)) {
+      var rebuilt = rebuildB1ProgressSummaryFromEvidence({ reason:"incremental_missing_summary" });
+      ozmosisPerfEnd(timing, { mode:"rebuild" });
+      return rebuilt;
+    }
+    summary.evidenceFingerprint = b1ProgressEvidenceFingerprint(store);
+    summary.updatedAt = new Date().toISOString();
+    if (b1LearnerProgressRecordEligible(record, item)) {
+      summary.totals.attempted = Number(summary.totals.attempted || 0) + 1;
+      if (record.correct === true) summary.totals.correct = Number(summary.totals.correct || 0) + 1;
+      if (record.correct === false || record.result === "wrong") summary.totals.wrong = Number(summary.totals.wrong || 0) + 1;
+      if (record.answerMode === "mark_practised" || record.selfMarked || record.result === "practised" || record.productionAction === "mark_practised") summary.totals.productionPractised = Number(summary.totals.productionPractised || 0) + 1;
+      var target = b1ProgressSummaryTargetForRecord(summary, record, item);
+      b1ProgressSummaryApplyRecordToTarget(target, record, item);
+      if (target && target.targetKey) summary.byPracticeUnit[target.targetKey] = b1ProgressSummaryPracticeUnitFromTarget(target);
+      scheduleB1ProgressSummaryAggregateRefresh("incremental_evidence");
+    }
+    var saved = safeSetB1ProgressSummary(summary);
+    ozmosisPerfEnd(timing, { mode:"incremental" });
+    return saved || summary;
+  }
   function normaliseB1PathUnlockOverrides(input) {
     var source = input && typeof input === "object" ? input : {};
     var categories = source.categories && typeof source.categories === "object" ? source.categories : {};
@@ -17293,6 +18064,7 @@ body.homeMode .homeRefCardSmall {
   function safeSetB1PathUnlockOverrides(obj) {
     try {
       window.localStorage.setItem(B1_PATH_UNLOCK_STORAGE_KEY, JSON.stringify(normaliseB1PathUnlockOverrides(obj)));
+      safeClearB1ProgressSummary();
     } catch (e) {}
   }
   function normaliseB1ReviewEditQueue(input) {
@@ -17396,6 +18168,8 @@ body.homeMode .homeRefCardSmall {
   function b1EvidenceBankKeyFor(item) {
     if (!item || !item.id) return "unknown";
     var id = item.id;
+    var indexed = b1ContentIndex().bankByItemId[id];
+    if (indexed) return indexed;
     var banks = b1RegistryBanks();
     for (var i = 0; i < banks.length; i++) {
       var items = Array.isArray(banks[i].items) ? banks[i].items : [];
@@ -17733,8 +18507,15 @@ body.homeMode .homeRefCardSmall {
       record.ambiguousCorrectText = !!options.choiceMetadata.ambiguousCorrectText;
     }
     store.records.push(record);
-    if (store.records.length > B1_EVIDENCE_RECORD_LIMIT) store.records = store.records.slice(-B1_EVIDENCE_RECORD_LIMIT);
+    var evidenceTrimmed = false;
+    if (store.records.length > B1_EVIDENCE_RECORD_LIMIT) {
+      evidenceTrimmed = true;
+      store.records = store.records.slice(-B1_EVIDENCE_RECORD_LIMIT);
+    }
     safeSetB1Evidence(store);
+    B1_REVIEW_PRACTICE_PREVIEW_CACHE = null;
+    if (evidenceTrimmed) rebuildB1ProgressSummaryFromEvidence({ reason:"evidence_record_limit_trim" });
+    else updateB1ProgressSummaryAfterEvidence(record, item, store);
     return record;
   }
   function b1ConfidenceCounts(records) {
@@ -19349,6 +20130,7 @@ body.homeMode .homeRefCardSmall {
     var round = debugRoundPosition();
     var progressStore = safeGetB1Progress();
     var evidenceStore = safeGetB1Evidence();
+    var progressSummary = safeGetB1ProgressSummary();
     return {
       app:"Ozmosis",
       appVersion:OZMOSIS_APP_VERSION,
@@ -19395,8 +20177,15 @@ body.homeMode .homeRefCardSmall {
         evidenceKey:B1_EVIDENCE_STORAGE_KEY,
         evidenceKeyExists:storageKeyExists(B1_EVIDENCE_STORAGE_KEY),
         evidenceCount:b1EvidenceCount(evidenceStore),
+        progressSummaryKey:B1_PROGRESS_SUMMARY_STORAGE_KEY,
+        progressSummaryKeyExists:storageKeyExists(B1_PROGRESS_SUMMARY_STORAGE_KEY),
+        progressSummaryValid:b1ProgressSummaryIsValid(progressSummary, evidenceStore),
+        progressSummaryFingerprint:progressSummary && progressSummary.evidenceFingerprint || null,
         supportLevelSummary:b1SupportLevelSummaryForRecords(evidenceStore.records),
         latestEvidence:debugLatestEvidence()
+      },
+      performance:{
+        recentTimings:ozmosisPerfRecent()
       },
       registry:b1RegistrySummary(),
       contentBankCounts:{
@@ -20341,12 +21130,35 @@ body.homeMode .homeRefCardSmall {
     return b1ItemStarLevelForNormalPractice(item, progress) >= 5;
   }
   function b1ItemIsPracticeSelectable(item, progress) {
-    return b1ItemIsNormalEligible(item) && !b1ItemIsCompletedForNormalPractice(item, progress);
-  }
-  function b1PracticeSelectableItems(items, progress) {
+    if (!b1ItemIsNormalEligible(item)) return false;
+    if (!item || item.itemType === "production_card") return true;
     progress = progress || b1PathProgressData();
+    var targetKey = b1PathItemTargetKey(item, b1EvidenceBankKeyFor(item));
+    var target = progress && progress.targetByKey && progress.targetByKey[targetKey] || null;
+    if (target) return b1PathStarLevel(target.starLevel || target.correctCount || 0) < 5;
+    return !b1ItemIsCompletedForNormalPractice(item, progress);
+  }
+  function b1CompletedPathTargetSet(progress) {
+    progress = progress || b1PathProgressData();
+    var set = {};
+    (Array.isArray(progress && progress.targets) ? progress.targets : []).forEach(function(target){
+      if (target && target.targetKey && b1PathStarLevel(target.starLevel || target.correctCount || 0) >= 5) set[target.targetKey] = true;
+    });
+    return set;
+  }
+  function b1ItemIsPracticeSelectableFast(item, progress, completedTargets) {
+    if (!b1ItemIsNormalEligible(item)) return false;
+    if (!item || item.itemType === "production_card") return true;
+    completedTargets = completedTargets || b1CompletedPathTargetSet(progress);
+    var targetKey = b1PathItemTargetKey(item, b1EvidenceBankKeyFor(item));
+    if (targetKey && completedTargets[targetKey]) return false;
+    return true;
+  }
+  function b1PracticeSelectableItems(items, progress, completedTargets) {
+    progress = progress || b1PathProgressData();
+    completedTargets = completedTargets || b1CompletedPathTargetSet(progress);
     return (Array.isArray(items) ? items : []).filter(function(item){
-      return b1ItemIsPracticeSelectable(item, progress);
+      return b1ItemIsPracticeSelectableFast(item, progress, completedTargets);
     });
   }
   function b1ItemIsReviewPracticeEligible(item, progress) {
@@ -20435,13 +21247,15 @@ body.homeMode .homeRefCardSmall {
   }
   function b1RegistryDailyEligibleItems() {
     var progress = b1PathProgressData();
+    var contentIndex = b1ContentIndex();
+    var completedTargets = b1CompletedPathTargetSet(progress);
     return b1RegistryBanks().reduce(function(out, bank){
       if (!bank.includeInDaily) return out;
-      var items = Array.isArray(bank.items) ? bank.items : [];
+      var items = contentIndex.itemsByBank[bank.key] || (Array.isArray(bank.items) ? bank.items : []);
       if (bank.excludeProductionFromAutoGradedDaily) {
         items = items.filter(function(item){ return item && item.itemType !== "production_card"; });
       }
-      return out.concat(b1PracticeSelectableItems(items, progress));
+      return out.concat(b1PracticeSelectableItems(items, progress, completedTargets));
     }, []);
   }
   function b1ItemFamily(item) {
@@ -20590,11 +21404,12 @@ body.homeMode .homeRefCardSmall {
     return "Today’s B1 Sprint";
   }
   function b1PoolFor(mode) {
-    var progress = b1PathProgressData();
-    var active = b1PracticeSelectableItems(b1RegistryItems("core"), progress);
-    var redemittel = b1PracticeSelectableItems(b1RegistryItems("redemittel"), progress).filter(function(item){ return item.itemType !== "production_card"; });
-    var wortschatz = b1PracticeSelectableItems(b1RegistryItems("wortschatz"), progress).filter(function(item){ return item.itemType !== "production_card"; });
     if (mode === "mixed") return b1RegistryDailyEligibleItems();
+    var progress = b1PathProgressData();
+    var completedTargets = b1CompletedPathTargetSet(progress);
+    var active = b1PracticeSelectableItems(b1RegistryItems("core"), progress, completedTargets);
+    var redemittel = b1PracticeSelectableItems(b1RegistryItems("redemittel"), progress, completedTargets).filter(function(item){ return item.itemType !== "production_card"; });
+    var wortschatz = b1PracticeSelectableItems(b1RegistryItems("wortschatz"), progress, completedTargets).filter(function(item){ return item.itemType !== "production_card"; });
     if (mode === "redemittel_cloze") return redemittel;
     if (mode === "vocab_cloze") return wortschatz;
     return active.filter(function(item){ return item.itemType === mode; });
@@ -21940,10 +22755,12 @@ body.homeMode .homeRefCardSmall {
       '</div>';
   }
   function startB1Round(mode) {
+    var timing = ozmosisPerfStart("start B1 round");
     var pool = b1PoolFor(mode);
     if (!pool.length) {
       showHubPlaceholder(b1RoundTitle(mode));
       showAppStatus("No unfinished practice items are available for this route.", "warn");
+      ozmosisPerfEnd(timing, { mode:mode || "", empty:true });
       return;
     }
     var roundLength = mode === "mixed" ? B1_DAILY_TOTAL : 10;
@@ -21969,6 +22786,7 @@ body.homeMode .homeRefCardSmall {
     if (!queue.length) {
       showHubPlaceholder(b1RoundTitle(mode));
       showAppStatus("No unfinished practice items are available for this route.", "warn");
+      ozmosisPerfEnd(timing, { mode:mode || "", empty:true });
       return;
     }
     b1Runtime.active = true;
@@ -22011,6 +22829,7 @@ body.homeMode .homeRefCardSmall {
     setLearningMapVisible(false);
     setSettingsScreenVisible(false);
     nextB1Question();
+    ozmosisPerfEnd(timing, { mode:mode || "", queue:queue.length });
   }
   function startConnectorSprint(family) {
     family = family || "all";
@@ -22991,9 +23810,11 @@ body.homeMode .homeRefCardSmall {
     showAppStatus("Review practice is not ready yet.", "warn");
   }
   function startB1ReviewPractice() {
+    var timing = ozmosisPerfStart("start review practice");
     var items = b1ReviewPracticeItems();
     if (!items.length) {
       showReviewPracticeEmpty();
+      ozmosisPerfEnd(timing, { empty:true });
       return;
     }
     b1Runtime.active = true;
@@ -23038,6 +23859,7 @@ body.homeMode .homeRefCardSmall {
     setLearningMapVisible(false);
     setSettingsScreenVisible(false);
     nextB1Question();
+    ozmosisPerfEnd(timing, { queue:items.length });
   }
   function startB1DiagnosticSprint() {
     showDiagnosticIntro();
@@ -23891,7 +24713,11 @@ body.homeMode .homeRefCardSmall {
   }
   function newRound() { b1Runtime.active=false; hideStartScreen(); score=0; correct=0; wrong=0; streak=0; bestStreakRound=0; mistakeCounts={}; retryQueue=[]; sessionLog=[]; sessionMisses={}; sessionPromptCounts={}; currentWasRetry=false; currentShowMicroRule=false; state="checking"; hintUsed=false; lastKey=null; savePersistent(); pickQuestion(); }
   function proceed() { if (state === "b1Next") nextB1Question(); else if (state === "b1Results") { if (b1Runtime.mode === "b1_diagnostic" || b1Runtime.mode === "targeted_repair") showLearningMapScreen(); else if (b1Runtime.mode === "connector_sprint") showGrammarHub(); else if (b1Runtime.mode === "redemittel") showRedemittelHub(); else showHomeScreen(); } else if (state === "next") pickQuestion(); else if (state === "results") showStartScreen(); }
-  function bind(id,event,fn){ var node=el(id); if (node) node.addEventListener(event,fn,false); }
+  function bind(id,event,fn){
+    if (event === "click" && (id === "homeSprintBtn" || id === "homeRedemittelBtn")) return;
+    var node=el(id);
+    if (node) node.addEventListener(event,fn,false);
+  }
   function learnerReportCountLine(label, count, noun) {
     count = Number(count || 0);
     return "- " + label + ": " + count + " " + noun + (count === 1 ? "" : "s") + ".";
@@ -24036,9 +24862,81 @@ body.homeMode .homeRefCardSmall {
     if (el("learnerReportStatus")) el("learnerReportStatus").textContent = "Learning summary download created. The JSON export/import format is unchanged.";
     setTimeout(function(){ URL.revokeObjectURL(url); },250);
   }
-  function exportProgress(){ savePersistent(); var b1Store=safeGetB1Progress(); var evidenceStore=safeGetB1Evidence(); var payload={app:"Ozmosis",appVersion:OZMOSIS_APP_VERSION,version:OZMOSIS_EXPORT_VERSION,taskDepthSchemaVersion:B1_TASK_DEPTH_SCHEMA_VERSION,supportLevelSchemaVersion:B1_SUPPORT_LEVEL_SCHEMA_VERSION,b1PathStarSchemaVersion:"v1",exportedAt:new Date().toISOString(),sessionLog:sessionLog.slice(-80),data:safeGetObject(),leitner:safeGetLeitner(),b1:b1Store,evidence:evidenceStore,b1PathUnlocks:safeGetB1PathUnlockOverrides(),b1ReviewEditQueue:safeGetB1ReviewEditQueue()}; var blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"}); var url=URL.createObjectURL(blob); var a=document.createElement("a"); a.href=url; a.download="ozmosis-progress.json"; document.body.appendChild(a); a.click(); a.remove(); showAppStatus("Export created: " + b1ProgressCount(b1Store) + " B1 progress items and " + b1EvidenceCount(evidenceStore) + " evidence records.", "good"); setTimeout(function(){ URL.revokeObjectURL(url); },250); }
-  function importProgress(file){ if (!file) return; var reader=new FileReader(); reader.onload=function(){ try { var parsed=JSON.parse(String(reader.result || "{}")), data=parsed.data || parsed; safeSetObject(data); if (parsed.leitner && typeof parsed.leitner === "object") safeSetLeitner(parsed.leitner); if (parsed.b1 && typeof parsed.b1 === "object") safeSetB1Progress(parsed.b1); if (parsed.evidence && typeof parsed.evidence === "object") safeSetB1Evidence(parsed.evidence); if (parsed.b1PathUnlocks && typeof parsed.b1PathUnlocks === "object") safeSetB1PathUnlockOverrides(parsed.b1PathUnlocks); if (parsed.b1ReviewEditQueue && typeof parsed.b1ReviewEditQueue === "object") safeSetB1ReviewEditQueue(parsed.b1ReviewEditQueue); loadPersistent(); newRound(); } catch(e){ el("feedback").textContent="Import fehlgeschlagen: ungültige JSON-Datei."; el("feedback").className="feedback missed"; } }; reader.readAsText(file); }
-  function importProgressWithFeedback(file){ if (!file) { showAppStatus("No import file selected.", "warn"); return; } var reader=new FileReader(); reader.onload=function(){ try { var parsed=JSON.parse(String(reader.result || "{}")), data=parsed.data || parsed; safeSetObject(data); if (parsed.leitner && typeof parsed.leitner === "object") safeSetLeitner(parsed.leitner); if (parsed.b1 && typeof parsed.b1 === "object") safeSetB1Progress(parsed.b1); if (parsed.evidence && typeof parsed.evidence === "object") safeSetB1Evidence(parsed.evidence); if (parsed.b1PathUnlocks && typeof parsed.b1PathUnlocks === "object") safeSetB1PathUnlockOverrides(parsed.b1PathUnlocks); if (parsed.b1ReviewEditQueue && typeof parsed.b1ReviewEditQueue === "object") safeSetB1ReviewEditQueue(parsed.b1ReviewEditQueue); loadPersistent(); setMenu(false); showHomeScreen(); showAppStatus("Import successful: " + b1ProgressCount() + " B1 progress items and " + b1EvidenceCount() + " evidence records available.", "good"); } catch(e){ showAppStatus("Import failed: invalid JSON file.", "bad"); if (el("feedback")) { el("feedback").textContent="Import failed: invalid JSON file."; el("feedback").className="feedback missed"; } } }; reader.readAsText(file); }
+  function exportProgress(){
+    var timing = ozmosisPerfStart("export");
+    savePersistent();
+    var b1Store=safeGetB1Progress();
+    var evidenceStore=safeGetB1Evidence();
+    var progressSummary=getB1ProgressSummary({ allowRebuild:true, reason:"export" });
+    var payload={app:"Ozmosis",appVersion:OZMOSIS_APP_VERSION,version:OZMOSIS_EXPORT_VERSION,taskDepthSchemaVersion:B1_TASK_DEPTH_SCHEMA_VERSION,supportLevelSchemaVersion:B1_SUPPORT_LEVEL_SCHEMA_VERSION,b1PathStarSchemaVersion:"v1",progressSummarySchemaVersion:B1_PROGRESS_SUMMARY_SCHEMA_VERSION,exportedAt:new Date().toISOString(),sessionLog:sessionLog.slice(-80),data:safeGetObject(),leitner:safeGetLeitner(),b1:b1Store,evidence:evidenceStore,b1ProgressSummary:progressSummary,b1PathUnlocks:safeGetB1PathUnlockOverrides(),b1ReviewEditQueue:safeGetB1ReviewEditQueue()};
+    var blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"});
+    var url=URL.createObjectURL(blob);
+    var a=document.createElement("a");
+    a.href=url;
+    a.download="ozmosis-progress.json";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    showAppStatus("Export created: " + b1ProgressCount(b1Store) + " B1 progress items and " + b1EvidenceCount(evidenceStore) + " evidence records.", "good");
+    ozmosisPerfEnd(timing, { evidence:b1EvidenceCount(evidenceStore) });
+    setTimeout(function(){ URL.revokeObjectURL(url); },250);
+  }
+  function importProgress(file){
+    if (!file) return;
+    var reader=new FileReader();
+    reader.onload=function(){
+      var timing = ozmosisPerfStart("import");
+      try {
+        var parsed=JSON.parse(String(reader.result || "{}")), data=parsed.data || parsed;
+        safeSetObject(data);
+        if (parsed.leitner && typeof parsed.leitner === "object") safeSetLeitner(parsed.leitner);
+        if (parsed.b1 && typeof parsed.b1 === "object") safeSetB1Progress(parsed.b1);
+        if (parsed.evidence && typeof parsed.evidence === "object") safeSetB1Evidence(parsed.evidence);
+        if (parsed.b1PathUnlocks && typeof parsed.b1PathUnlocks === "object") safeSetB1PathUnlockOverrides(parsed.b1PathUnlocks);
+        if (parsed.b1ReviewEditQueue && typeof parsed.b1ReviewEditQueue === "object") safeSetB1ReviewEditQueue(parsed.b1ReviewEditQueue);
+        safeClearB1ProgressSummary();
+        rebuildB1ProgressSummaryFromEvidence({ reason:"import" });
+        B1_REVIEW_PRACTICE_PREVIEW_CACHE = null;
+        loadPersistent();
+        newRound();
+      } catch(e){
+        el("feedback").textContent="Import fehlgeschlagen: ungultige JSON-Datei.";
+        el("feedback").className="feedback missed";
+      } finally {
+        ozmosisPerfEnd(timing);
+      }
+    };
+    reader.readAsText(file);
+  }
+  function importProgressWithFeedback(file){
+    if (!file) { showAppStatus("No import file selected.", "warn"); return; }
+    var reader=new FileReader();
+    reader.onload=function(){
+      var timing = ozmosisPerfStart("import");
+      try {
+        var parsed=JSON.parse(String(reader.result || "{}")), data=parsed.data || parsed;
+        safeSetObject(data);
+        if (parsed.leitner && typeof parsed.leitner === "object") safeSetLeitner(parsed.leitner);
+        if (parsed.b1 && typeof parsed.b1 === "object") safeSetB1Progress(parsed.b1);
+        if (parsed.evidence && typeof parsed.evidence === "object") safeSetB1Evidence(parsed.evidence);
+        if (parsed.b1PathUnlocks && typeof parsed.b1PathUnlocks === "object") safeSetB1PathUnlockOverrides(parsed.b1PathUnlocks);
+        if (parsed.b1ReviewEditQueue && typeof parsed.b1ReviewEditQueue === "object") safeSetB1ReviewEditQueue(parsed.b1ReviewEditQueue);
+        safeClearB1ProgressSummary();
+        rebuildB1ProgressSummaryFromEvidence({ reason:"import" });
+        B1_REVIEW_PRACTICE_PREVIEW_CACHE = null;
+        loadPersistent();
+        setMenu(false);
+        showHomeScreen();
+        showAppStatus("Import successful: " + b1ProgressCount() + " B1 progress items and " + b1EvidenceCount() + " evidence records available.", "good");
+      } catch(e){
+        showAppStatus("Import failed: invalid JSON file.", "bad");
+        if (el("feedback")) { el("feedback").textContent="Import failed: invalid JSON file."; el("feedback").className="feedback missed"; }
+      } finally {
+        ozmosisPerfEnd(timing);
+      }
+    };
+    reader.readAsText(file);
+  }
   importProgress = importProgressWithFeedback;
   document.addEventListener("click", function(event){
     var target = event.target && event.target.closest ? event.target.closest("#diagnosticIntroStartBtn, #diagnosticIntroCancelBtn, #diagnosticIntroOverlay, #practiceExitControl, #practiceExitStayBtn, #practiceExitConfirmBtn, #practiceExitOverlay, #testerNotesCopyReportBtn, #testerNotesCopyDebugBtn, #testerNotesCloseBtn, #testerNotesOverlay, #reviewEditOverlay, #reviewEditCopyBtn, #reviewEditClearBtn, #reviewEditCloseBtn, [data-review-test-decision]") : null;
@@ -25059,12 +25957,33 @@ window.ozmosisTesterReportSummary=testerReportSummary; window.ozmosisLearnerRead
     summary.b1Path = b1PathProgressData();
     summary.b1PathDebug = b1PathDebugSummary();
     summary.b1PathUnlocks = safeGetB1PathUnlockOverrides();
+    summary.progressSummaryStorageKey = B1_PROGRESS_SUMMARY_STORAGE_KEY;
+    summary.progressSummary = safeGetB1ProgressSummary();
+    summary.progressSummaryValid = b1ProgressSummaryIsValid(summary.progressSummary, safeGetB1Evidence());
+    summary.performanceTimings = ozmosisPerfRecent();
     summary.routeFiltering = b1RouteFilteringSummary();
     summary.reviewTests = b1ReviewTestsDebugSummary();
     summary.reviewFlaggedCount = summary.reviewTests.reviewFlaggedCount;
     summary.reviewEditQueueCount = summary.reviewTests.reviewEditQueueCount;
     summary.reviewEditQueue = safeGetB1ReviewEditQueue();
     return summary;
+  };
+  window.ozmosisRebuildB1ProgressSummary = function(reason){
+    return rebuildB1ProgressSummaryFromEvidence({ reason:reason || "manual_debug_rebuild" });
+  };
+  window.ozmosisProgressSummaryDebug = function(){
+    var evidence = safeGetB1Evidence();
+    var summary = safeGetB1ProgressSummary();
+    return {
+      storageKey:B1_PROGRESS_SUMMARY_STORAGE_KEY,
+      exists:storageKeyExists(B1_PROGRESS_SUMMARY_STORAGE_KEY),
+      structurallyCurrent:b1ProgressSummaryStructurallyCurrent(summary),
+      valid:b1ProgressSummaryIsValid(summary, evidence),
+      evidenceFingerprint:b1ProgressEvidenceFingerprint(evidence),
+      summaryFingerprint:summary && summary.evidenceFingerprint || null,
+      totals:summary && summary.totals || null,
+      performanceTimings:ozmosisPerfRecent()
+    };
   };
   window.ozmosisStartB1M06 = function(filter){ startB1M06Round(filter || "mixed"); };
   window.ozmosisStartB1M07 = function(filter){ startB1M07Round(filter || "mixed"); };
@@ -25391,13 +26310,6 @@ window.ozmosisTesterReportSummary=testerReportSummary; window.ozmosisLearnerRead
     if (el("genitiveHelpOverlay")) el("genitiveHelpOverlay").addEventListener("click",function(event){ if (event.target === el("genitiveHelpOverlay")) closeGenitiveHelp(); },false); bind("englishSupport","change",function(){ savePersistent(); if (b1Runtime.active) renderB1Translation(false); else if (current) renderQuestion(); }); bind("roundTarget","change",function(){ if (shouldApplyLiveSettings()) newRound(); else savePersistent(); }); bind("adaptiveMode","change",function(){ savePersistent(); if (shouldApplyLiveSettings()) newRound(); }); bind("menuHomeBtn","click",function(){ setMenu(false); showHomeScreen(); }); bind("menuSprintBtn","click",function(){ setMenu(false); startB1Round("mixed"); }); bind("menuRecommendedBtn","click",function(){ setMenu(false); openB1RecommendationRoute(homeRecommendedRouteKey || "today"); }); bind("menuGrammarBtn","click",function(){ setMenu(false); showGrammarHub(); }); bind("menuRedemittelBtn","click",function(){ setMenu(false); showRedemittelHub(); }); bind("menuCaseTrainerBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("menuReviewPracticeBtn","click",function(){ setMenu(false); startB1ReviewPractice(); }); bind("restartBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("resetBestBtn","click",function(){window.kasusResetBest();}); bind("resetProfileBtn","click",function(){window.kasusResetProfile();}); bind("exportBtn","click",exportProgress); bind("importBtn","click",function(){el("importFile").click();}); bind("copyLearnerReportBtn","click",copyLearnerReadableProgressReport); bind("downloadLearnerReportBtn","click",downloadLearnerReadableProgressReport); bind("importFile","change",function(event){ importProgress(event.target.files && event.target.files[0]); event.target.value=""; }); bind("devToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("devMenuBtn","click",function(event){ event.stopPropagation(); setMenu(!el("settingsPanel").classList.contains("open")); }); bind("devCloseBtn","click",function(){ setDevTools(false); }); bind("newGameCloseBtn","click",function(){ setDevTools(false); }); bind("leitnerCloseBtn","click",closeLeitnerPrototype); bind("openNewGameMockBtn","click",showNewGameMock); bind("openLeitnerPrototypeBtn","click",showLeitnerPrototype); bind("resetLeitnerPrototypeBtn","click",showLeitnerResetConfirm); bind("backToDevListBtn","click",showDevList); bind("leitnerResetCloseBtn","click",showDevList); bind("cancelLeitnerResetBtn","click",showDevList); bind("confirmLeitnerResetBtn","click",resetLeitnerPrototypeProgress); bind("leitnerRestartBtn","click",startLeitnerQueue); bind("leitnerCheckBtn","click",checkLeitnerAnswer); bind("leitnerNextBtn","click",nextLeitnerCard); bind("leitnerAnswerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (leitnerRuntime.answered) nextLeitnerCard(); else checkLeitnerAnswer(); }); bind("applyNewGameMockBtn","click",applyNewGameMock); bind("homeSprintBtn","click",function(){ startB1Round("mixed"); }); bind("homeDiagnosticBtn","click",startB1DiagnosticSprint); bind("homeLearningMapBtn","click",showLearningMapScreen); bind("learningMapBackBtn","click",showHomeScreen); bind("diagnosticExitBtn","click",exitB1Diagnostic); bind("homeGrammarBtn","click",showGrammarHub); bind("grammarBackBtn","click",showHomeScreen); bind("grammarSeedBtn","click",function(){ startB1Round("grammar_cloze"); }); bind("connectorAllBtn","click",function(){ startConnectorSprint("all"); }); bind("connectorReasonBtn","click",function(){ startConnectorSprint("reason"); }); bind("connectorContrastBtn","click",function(){ startConnectorSprint("contrast"); }); bind("connectorPurposeBtn","click",function(){ startConnectorSprint("purpose"); }); bind("connectorTimeBtn","click",function(){ startConnectorSprint("time"); }); bind("connectorRepairBtn","click",function(){ startConnectorSprint("repair"); }); bind("homeWortschatzBtn","click",function(){ startWortschatzRound("mixed"); }); bind("homeRedemittelBtn","click",function(){ startB1Round("redemittel_cloze"); }); bind("homeCaseTrainerBtn","click",showStartScreen); bind("caseTrainerBackBtn","click",showHomeScreen); bind("homeOptionsBtn","click",function(event){ event.stopPropagation(); setDevTools(false); setMenu(true); if (el("menuOptionsDetails")) el("menuOptionsDetails").open = true; setTimeout(function(){ var summary = el("menuOptionsDetails") && el("menuOptionsDetails").querySelector("summary"); if (summary) focusWithoutScroll(summary); }, 0); }); bind("homeDevToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("hubBackBtn","click",showHomeScreen); document.querySelectorAll(".homePlaceholderBtn").forEach(function(btn){ btn.addEventListener("click",function(){ showHubPlaceholder(btn.getAttribute("data-title") || btn.textContent.trim()); }); }); document.addEventListener("click",function(event){ var routeButton = event.target && event.target.closest ? event.target.closest(".b1PathRouteAction") : null; if (routeButton) { event.preventDefault(); openB1PathCategory(routeButton.getAttribute("data-category-id")); return; } }); bind("b1PathKeepPractisingBtn","click",function(){ var categoryId = b1PathPendingUnlockId; var progress = b1PathProgressData(); var categories = (progress.categories || []).filter(function(category){ return category.coreTargetCount > 0 && !category.preview; }); var category = b1PathCategoryById(progress, categoryId); var index = categories.findIndex(function(row){ return row.categoryId === categoryId; }); var practiceCategory = index > 0 ? categories[index - 1] : category; closeB1PathUnlockDialog(); openB1RecommendationRoute(practiceCategory && practiceCategory.routeKey || "today"); }); bind("b1PathUnlockAnywayBtn","click",function(){ var categoryId = b1PathPendingUnlockId; if (!categoryId) return; b1PathRecordUnlockOverride(categoryId); closeB1PathUnlockDialog(); openB1PathCategory(categoryId); }); if (el("b1PathUnlockOverlay")) el("b1PathUnlockOverlay").addEventListener("click",function(event){ if (event.target === el("b1PathUnlockOverlay")) closeB1PathUnlockDialog(); },false); var devOverlay=el("devOverlay"); if (devOverlay) devOverlay.addEventListener("click",function(event){ if (event.target === devOverlay && !devOverlay.classList.contains("leitnerFullscreen")) setDevTools(false); },false); document.addEventListener("keydown",function(event){ if ((event.key === "Escape" || event.key === "Esc") && el("b1PathUnlockOverlay") && !el("b1PathUnlockOverlay").hidden) { closeB1PathUnlockDialog(); return; } if ((event.key === "Escape" || event.key === "Esc") && el("genitiveHelpOverlay") && !el("genitiveHelpOverlay").hidden) { el("genitiveHelpOverlay").hidden = true; return; } if ((event.key === "Escape" || event.key === "Esc") && el("devOverlay") && !el("devOverlay").hidden) { setDevTools(false); return; } if ((event.key === "Escape" || event.key === "Esc") && b1Runtime.mode === "b1_diagnostic" && (state === "b1Checking" || state === "b1Next")) { exitB1Diagnostic(); return; } if ((event.key === "Escape" || event.key === "Esc") && (state === "placeholder" || state === "grammarHub" || state === "learningMap")) showHomeScreen(); }); bind("checkBtn","click",function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }); bind("noArticleBtn","click",function(){checkAnswer("none");}); bind("nextBtn","click",proceed); bind("hintBtn","click",showHint); bind("supportPlaceholder","click",showHint); bind("translationToggle","click",toggleB1Translation); bind("whyNoStarsBtn","click",explainExtraPracticeStars); bind("startRoundBtn","click",startConfiguredRound); document.querySelectorAll(".langBtn").forEach(function(btn){ btn.addEventListener("click",function(){ setSupportLanguage(btn.getAttribute("data-lang")); }); }); bind("answerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (state==="b1Checking") checkB1Answer(); else if (state==="checking") checkAnswer(); else proceed(); }); renderHud(); applyLanguage(); showHomeScreen(); }
   function initOzmosisApp() {
     init();
-    if (el("homeSprintBtn")) {
-      el("homeSprintBtn").addEventListener("click", function(event){
-        event.preventDefault();
-        event.stopImmediatePropagation();
-        openB1RecommendationRoute(homeRecommendedRouteKey || "today");
-      }, true);
-    }
     window.setTimeout(function(){
       showFirstRunLanguagePanel();
       document.body.classList.remove("booting");
