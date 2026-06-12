@@ -8339,6 +8339,807 @@ body.b1Mode .clozeAnswerText {
   }
 }
 
+/* v0.80.14.13: landing page visual alignment to supplied reference. */
+:root {
+  --landingPageBg:#020713;
+  --landingShellBg:#06111d;
+  --landingCardBg:#071425;
+  --landingCyan:#66e8ff;
+  --landingCyanDim:#2b5874;
+  --landingText:#e8eef8;
+  --landingMuted:#9cadc0;
+  --landingAmber:#ffbf3f;
+  --landingGreen:#38f398;
+  --landingPurple:#9c65ff;
+  --landingBlue:#2f94ff;
+  --landingRadius:12px;
+  --landingShellRadius:20px;
+}
+
+body.homeMode {
+  background:radial-gradient(circle at 50% 0%, rgba(43,88,116,.4), transparent 42%), linear-gradient(180deg, #05121f 0%, var(--landingPageBg) 100%) !important;
+}
+
+body.homeMode main {
+  width:min(660px, calc(100vw - 28px)) !important;
+  margin:0 auto !important;
+  padding:12px 0 20px !important;
+  overflow:visible !important;
+}
+
+body.homeMode .header {
+  top:42px !important;
+  right:36px !important;
+  z-index:20;
+}
+
+body.homeMode #menuToggle {
+  width:70px !important;
+  height:70px !important;
+  min-width:70px !important;
+  min-height:70px !important;
+  border:1.4px solid var(--landingCyan) !important;
+  border-radius:18px !important;
+  background:#071425 !important;
+  color:var(--landingMuted) !important;
+  box-shadow:0 0 26px rgba(102,232,255,.36), inset 0 0 0 1px rgba(255,255,255,.03) !important;
+  font-size:2.1rem !important;
+  line-height:1 !important;
+}
+
+.homeScreen {
+  width:100% !important;
+  margin:0 auto !important;
+  padding:34px 30px 44px !important;
+  gap:0 !important;
+  border:1.2px solid var(--landingCyanDim);
+  border-radius:var(--landingShellRadius);
+  background:linear-gradient(180deg, rgba(6,17,29,.98), rgba(4,12,22,.98));
+  box-shadow:0 28px 80px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.025);
+}
+
+.homeIntro {
+  padding-right:92px !important;
+  margin:0 0 30px !important;
+}
+
+.homeScreen h2#homeTitle {
+  margin:0 !important;
+  color:var(--landingMuted);
+  font-size:clamp(3rem, 9vw, 4.05rem) !important;
+  line-height:.94;
+  font-weight:1000;
+  letter-spacing:0;
+}
+
+.homeSubtitle,
+.visuallyQuiet {
+  position:absolute !important;
+  width:1px !important;
+  height:1px !important;
+  padding:0 !important;
+  margin:-1px !important;
+  overflow:hidden !important;
+  clip:rect(0, 0, 0, 0) !important;
+  white-space:nowrap !important;
+  border:0 !important;
+}
+
+.homeSection {
+  gap:10px !important;
+  margin-top:18px !important;
+}
+
+.homeSection.recommended {
+  margin-top:0 !important;
+}
+
+.homeSectionTitle {
+  margin:0 !important;
+  color:var(--landingCyan) !important;
+  font-size:1.38rem !important;
+  line-height:1.05;
+  font-weight:1000;
+  letter-spacing:0;
+}
+
+.homeHero {
+  min-height:110px !important;
+  padding:18px 34px !important;
+  border:1.5px solid var(--landingCyan) !important;
+  border-radius:10px !important;
+  background:linear-gradient(100deg, rgba(10,44,74,.82), rgba(5,14,27,.96) 54%, rgba(4,11,22,.98)) !important;
+  box-shadow:0 0 22px rgba(102,232,255,.16), inset 0 1px 0 rgba(255,255,255,.04) !important;
+}
+
+.homeHeroTop {
+  grid-template-columns:minmax(0, 1fr) auto !important;
+  align-items:center !important;
+  gap:16px !important;
+}
+
+.homeHeroKicker {
+  display:block;
+  margin-bottom:7px;
+  color:var(--landingCyan);
+  font-size:.88rem;
+  line-height:1;
+  font-weight:1000;
+  letter-spacing:.02em;
+  text-transform:uppercase;
+}
+
+.homeHeroTitle {
+  color:var(--landingText) !important;
+  font-size:clamp(2rem, 7vw, 2.72rem) !important;
+  line-height:1 !important;
+}
+
+.homeHeroMeta {
+  display:none !important;
+}
+
+.homeHeroCta,
+.homeRefArrow {
+  width:auto !important;
+  min-width:auto !important;
+  min-height:auto !important;
+  padding:0 !important;
+  border:0 !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  color:var(--landingCyan) !important;
+  font-size:2rem !important;
+  font-weight:650 !important;
+  line-height:1 !important;
+  box-shadow:none !important;
+}
+
+.homeHeroProgress {
+  display:none !important;
+}
+
+.homeTesterCard {
+  grid-template-columns:64px minmax(0, 1fr) auto !important;
+  align-items:center;
+  gap:14px !important;
+  min-height:106px;
+  margin:12px 0 0 !important;
+  padding:18px !important;
+  border:1.4px solid var(--landingAmber) !important;
+  border-radius:18px !important;
+  background:linear-gradient(100deg, rgba(20,18,18,.88), rgba(6,14,25,.96)) !important;
+}
+
+.homeFirstVisitIcon {
+  width:64px;
+  height:64px;
+  display:grid;
+  place-items:center;
+  border:3px solid var(--landingAmber);
+  border-radius:50%;
+  color:var(--landingAmber);
+  font-size:2.55rem;
+  font-weight:1000;
+  line-height:1;
+}
+
+.homeFirstVisitCopy {
+  display:grid;
+  gap:4px;
+  min-width:0;
+}
+
+.homeFirstVisitCopy strong {
+  color:var(--landingText) !important;
+  font-size:1.48rem !important;
+  line-height:1;
+  font-weight:1000;
+}
+
+.homeFirstVisitCopy span {
+  color:var(--landingMuted);
+  font-size:1.08rem;
+  line-height:1.17;
+  font-weight:900;
+}
+
+.homeTesterActions {
+  display:flex !important;
+  flex-wrap:nowrap !important;
+  justify-content:end;
+  gap:12px !important;
+}
+
+.homeTesterActions button {
+  min-height:46px !important;
+  padding:0 22px !important;
+  border:1.2px solid color-mix(in srgb, var(--landingAmber) 80%, var(--landingCyanDim)) !important;
+  border-radius:10px !important;
+  background:rgba(7,20,36,.72) !important;
+  color:var(--landingText) !important;
+  font-weight:1000 !important;
+  font-size:1.05rem !important;
+}
+
+.homeTesterActions button:first-child {
+  color:var(--landingAmber) !important;
+  border-color:var(--landingAmber) !important;
+}
+
+.homePathStack,
+.homeRefGrid {
+  display:grid !important;
+  grid-template-columns:1fr;
+  gap:10px !important;
+}
+
+.homePathCard,
+.homeRefCard {
+  position:relative;
+  width:100%;
+  min-width:0;
+  border:1.2px solid var(--landingCyanDim) !important;
+  border-radius:var(--landingRadius) !important;
+  background:linear-gradient(100deg, rgba(7,24,41,.82), rgba(5,15,27,.96)) !important;
+  color:var(--landingText);
+  font:inherit;
+  text-align:left;
+  cursor:pointer;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.03);
+  overflow:hidden;
+}
+
+.homePathCard {
+  display:grid;
+  grid-template-columns:62px minmax(0, 1fr) auto;
+  gap:14px;
+  align-items:center;
+  min-height:136px;
+  padding:16px 18px 14px 13px;
+}
+
+.homePathCard.locked {
+  opacity:.86;
+  background:linear-gradient(100deg, rgba(6,19,34,.76), rgba(4,12,22,.93)) !important;
+}
+
+.homePathBadge,
+.homeAllProgressBadge {
+  width:62px;
+  height:62px;
+  display:grid;
+  place-items:center;
+  border:1.3px solid var(--landingCyanDim);
+  border-radius:50%;
+  color:var(--landingCyan);
+  background:rgba(4,16,29,.62);
+  font-size:1.05rem;
+  font-weight:1000;
+  line-height:1;
+}
+
+.homePathMain {
+  display:grid;
+  min-width:0;
+  gap:8px;
+}
+
+.homePathTitleLine {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  min-width:0;
+}
+
+.homePathTitle {
+  color:var(--landingText);
+  font-size:1.48rem;
+  line-height:1.08;
+  font-weight:1000;
+  overflow-wrap:anywhere;
+}
+
+.homePathSub {
+  color:var(--landingMuted);
+  font-size:1.02rem;
+  line-height:1.2;
+  font-weight:900;
+}
+
+.homePathStarStats {
+  display:grid;
+  grid-template-columns:auto repeat(5, minmax(0, 1fr));
+  align-items:end;
+  gap:8px 12px;
+}
+
+.homePathOverall {
+  color:var(--landingText);
+  font-size:1.45rem;
+  line-height:1;
+  font-weight:1000;
+  white-space:nowrap;
+}
+
+.homePathOverall span {
+  color:var(--landingMuted);
+}
+
+.homePathStarMetric {
+  color:var(--landingMuted);
+  font-size:.92rem;
+  line-height:1;
+  font-weight:850;
+  white-space:nowrap;
+}
+
+.homePathStarMetric span {
+  color:var(--landingAmber);
+}
+
+.homePathStackedBar {
+  grid-column:2 / -1;
+  display:flex;
+  height:9px;
+  border:1px solid rgba(102,232,255,.14);
+  border-radius:999px;
+  background:rgba(3,10,20,.92);
+  overflow:hidden;
+}
+
+.homePathStackedBar span {
+  min-width:2px;
+  height:100%;
+  background:var(--segment);
+  opacity:.95;
+}
+
+.homePathChevron {
+  color:var(--landingCyan);
+  font-size:2rem;
+  line-height:1;
+}
+
+.homePathLock {
+  width:34px;
+  height:34px;
+  display:grid;
+  place-items:center;
+  border-radius:8px;
+  background:rgba(102,232,255,.16);
+}
+
+.homePathLock::before {
+  content:"";
+  width:15px;
+  height:13px;
+  display:block;
+  border:3px solid var(--landingCyanDim);
+  border-top-width:8px;
+  border-radius:4px;
+  box-shadow:0 -11px 0 -6px var(--landingCyanDim);
+}
+
+.homeAllPracticeCard {
+  min-height:98px;
+}
+
+.homeAllProgressBadge {
+  position:relative;
+  border-color:var(--landingCyanDim);
+  background:conic-gradient(var(--landingAmber) var(--homeAllProgress, 0%), rgba(4,16,29,.62) 0), rgba(4,16,29,.62);
+  color:var(--landingText);
+  font-size:1.1rem;
+}
+
+.homeAllProgressBadge::after {
+  content:"";
+  position:absolute;
+  inset:8px;
+  border-radius:50%;
+  background:#06111d;
+  z-index:0;
+}
+
+.homeAllProgressBadge span {
+  position:relative;
+  z-index:1;
+}
+
+.homeRefGrid {
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+}
+
+.homeRefCard {
+  display:grid;
+  grid-template-columns:50px minmax(0, 1fr) auto;
+  align-items:center;
+  gap:14px;
+  min-height:82px;
+  padding:14px 17px;
+}
+
+.homeRefCardWide {
+  margin-top:10px;
+}
+
+.homeRefIcon {
+  width:46px;
+  height:46px;
+  display:grid;
+  place-items:center;
+  border:2px solid var(--iconColour, var(--landingCyan));
+  border-radius:12px;
+  color:var(--iconColour, var(--landingCyan));
+  font-weight:1000;
+  font-size:1.25rem;
+  line-height:1;
+}
+
+.homeThemeGrammar { --iconColour:var(--landingPurple); }
+.homeThemeWortschatz { --iconColour:var(--landingGreen); }
+.homeThemeRedemittel { --iconColour:var(--landingAmber); }
+.homeThemeCase,
+.homeThemeMap { --iconColour:var(--landingBlue); }
+.homeThemeDiagnostic { --iconColour:var(--landingGreen); }
+.homeThemeProduction { --iconColour:var(--landingPurple); }
+.homeThemeSettings,
+.homeThemeQa { --iconColour:var(--landingMuted); }
+
+.homeRefText {
+  display:grid;
+  gap:4px;
+  min-width:0;
+}
+
+.homeRouteLabel {
+  color:var(--landingText) !important;
+  font-size:1.16rem !important;
+  line-height:1.08 !important;
+  font-weight:1000 !important;
+}
+
+.homeRouteSub {
+  color:var(--landingMuted) !important;
+  font-size:.86rem !important;
+  line-height:1.25 !important;
+  font-weight:760 !important;
+}
+
+.homeIconCalendar::before,
+.homeIconBook::before,
+.homeIconChat::before,
+.homeIconCase::before,
+.homeIconMap::before,
+.homeIconTarget::before,
+.homeIconPencil::before,
+.homeIconGear::before,
+.homeIconQa::before {
+  content:"";
+  display:block;
+}
+
+.homeIconCalendar::before {
+  width:25px;
+  height:25px;
+  border:2px solid currentColor;
+  border-radius:5px;
+  box-shadow:inset 0 7px 0 rgba(102,232,255,.16);
+}
+
+.homeIconBook::before {
+  width:27px;
+  height:24px;
+  border:2px solid currentColor;
+  border-radius:4px 9px 9px 4px;
+  box-shadow:inset 11px 0 0 rgba(56,243,152,.08);
+}
+
+.homeIconChat::before {
+  width:26px;
+  height:22px;
+  border:2px solid currentColor;
+  border-radius:6px;
+  box-shadow:7px 7px 0 -5px currentColor;
+}
+
+.homeIconCase::before {
+  width:28px;
+  height:21px;
+  border:2px solid currentColor;
+  border-radius:5px;
+  box-shadow:inset 0 6px 0 rgba(47,148,255,.12), 0 -7px 0 -4px currentColor;
+}
+
+.homeIconMap::before {
+  width:26px;
+  height:28px;
+  border:2px solid currentColor;
+  border-radius:5px;
+  transform:skewY(-8deg);
+  box-shadow:inset 8px 0 0 rgba(47,148,255,.1), inset -8px 0 0 rgba(47,148,255,.08);
+}
+
+.homeIconTarget::before,
+.homeIconQa::before {
+  width:27px;
+  height:27px;
+  border:2px solid currentColor;
+  border-radius:50%;
+  box-shadow:inset 0 0 0 5px #06111d, inset 0 0 0 7px currentColor;
+}
+
+.homeIconPencil::before {
+  width:26px;
+  height:8px;
+  border:2px solid currentColor;
+  border-radius:3px;
+  transform:rotate(-42deg);
+}
+
+.homeIconGear::before {
+  width:26px;
+  height:26px;
+  border:2px solid currentColor;
+  border-radius:50%;
+  box-shadow:inset 0 0 0 5px #06111d, inset 0 0 0 7px currentColor;
+}
+
+.homeFeedback {
+  margin:30px 0 0 !important;
+  color:var(--landingMuted) !important;
+  text-align:center;
+  font-size:1rem !important;
+  font-weight:900;
+}
+
+.homeStatusStrip[hidden],
+.homeReviewPracticeSection[hidden] {
+  display:none !important;
+}
+
+.homePathCard:hover,
+.homePathCard:focus-visible,
+.homeRefCard:hover,
+.homeRefCard:focus-visible,
+.homeTesterActions button:hover,
+.homeTesterActions button:focus-visible,
+.homeHero:hover,
+.homeHero:focus-visible {
+  outline:none;
+  border-color:var(--landingCyan) !important;
+  box-shadow:0 0 22px rgba(102,232,255,.2), inset 0 1px 0 rgba(255,255,255,.05) !important;
+}
+
+body[data-support-lang="ar"] .homeRouteLabel,
+body[data-support-lang="ar"] .homeRouteSub,
+body[data-support-lang="ar"] .homeHeroTitle,
+body[data-support-lang="ar"] .homeHeroMeta,
+body[data-support-lang="ar"] .homePathTitle,
+body[data-support-lang="ar"] .homePathSub,
+body[data-support-lang="ar"] .homePathBadge {
+  direction:ltr;
+  unicode-bidi:isolate;
+}
+
+@media (max-width:560px) {
+  body.homeMode main {
+    width:min(100%, calc(100vw - 16px)) !important;
+    padding-top:8px !important;
+  }
+
+  .homeScreen {
+    padding:28px 20px 34px !important;
+    border-radius:18px;
+  }
+
+  body.homeMode .header {
+    top:32px !important;
+    right:28px !important;
+  }
+
+  body.homeMode #menuToggle {
+    width:56px !important;
+    height:56px !important;
+    min-width:56px !important;
+    min-height:56px !important;
+    border-radius:15px !important;
+    font-size:1.7rem !important;
+  }
+
+  .homeIntro {
+    padding-right:70px !important;
+    margin-bottom:26px !important;
+  }
+
+  .homeScreen h2#homeTitle {
+    font-size:clamp(2.85rem, 15vw, 3.55rem) !important;
+  }
+
+  .homeHero {
+    min-height:102px !important;
+    padding:16px 18px !important;
+  }
+
+  .homeHeroTitle {
+    font-size:clamp(1.8rem, 10vw, 2.25rem) !important;
+  }
+
+  .homeTesterCard {
+    grid-template-columns:54px minmax(0, 1fr) !important;
+    align-items:start;
+  }
+
+  .homeFirstVisitIcon {
+    width:54px;
+    height:54px;
+    font-size:2.05rem;
+  }
+
+  .homeTesterActions {
+    grid-column:1 / -1;
+    justify-content:stretch;
+  }
+
+  .homeTesterActions button {
+    flex:1 1 0;
+    padding:0 12px !important;
+  }
+
+  .homePathCard {
+    grid-template-columns:56px minmax(0, 1fr) auto;
+    gap:11px;
+    padding:14px 13px;
+  }
+
+  .homePathBadge,
+  .homeAllProgressBadge {
+    width:52px;
+    height:52px;
+    font-size:.98rem;
+  }
+
+  .homePathTitle {
+    font-size:1.26rem;
+  }
+
+  .homePathSub {
+    font-size:.92rem;
+  }
+
+  .homePathStarStats {
+    grid-template-columns:1fr repeat(2, auto);
+    gap:7px 10px;
+  }
+
+  .homePathOverall {
+    grid-column:1 / -1;
+    font-size:1.3rem;
+  }
+
+  .homePathStackedBar {
+    grid-column:1 / -1;
+  }
+
+  .homeRefGrid {
+    grid-template-columns:1fr;
+  }
+
+  .homeRefCard {
+    min-height:74px;
+    padding:12px 14px;
+  }
+}
+
+@media (max-width:340px) {
+  .homeScreen {
+    padding:24px 14px 30px !important;
+  }
+
+  body.homeMode .header {
+    right:22px !important;
+  }
+
+  .homePathCard,
+  .homeRefCard {
+    grid-template-columns:46px minmax(0, 1fr) auto;
+    gap:9px;
+  }
+
+  .homeRefIcon {
+    width:42px;
+    height:42px;
+  }
+
+  .homePathBadge,
+  .homeAllProgressBadge {
+    width:46px;
+    height:46px;
+  }
+}
+
+/* v0.80.14.13 corrective landing order: follow the supplied reference shell. */
+body.homeMode .homeScreen {
+  display:flex !important;
+  flex-direction:column !important;
+  grid-template-columns:none !important;
+  grid-template-areas:none !important;
+  gap:18px !important;
+  align-items:stretch !important;
+}
+
+body.homeMode .homeIntro,
+body.homeMode .homeSection,
+body.homeMode .homeTesterCard {
+  grid-area:auto !important;
+  width:100% !important;
+  max-width:none !important;
+}
+
+body.homeMode .homeIntro { order:0; }
+body.homeMode .homeSection.recommended { order:1; }
+body.homeMode .homeTesterCard { order:2; }
+body.homeMode .homeSection.b1PathSection { order:3; }
+body.homeMode .homeSection.practiceModes { order:4; }
+body.homeMode .homeSection.checkProgress { order:5; }
+body.homeMode .homeSection.production { order:6 !important; }
+body.homeMode .homeSection.system { order:7 !important; }
+body.homeMode #homeReviewPracticeSection { display:none !important; }
+
+body.homeMode #homeTitle {
+  font-size:clamp(2.35rem, 8vw, 3.25rem) !important;
+  line-height:.94 !important;
+}
+
+body.homeMode .homeHero {
+  min-height:118px !important;
+}
+
+body.homeMode .homeHeroTitle {
+  font-size:clamp(2.35rem, 9vw, 3.45rem) !important;
+  max-width:8ch;
+}
+
+body.homeMode .homeTesterCard {
+  display:grid !important;
+  grid-template-columns:70px minmax(0, 1fr) auto !important;
+  gap:16px !important;
+  align-items:center !important;
+}
+
+body.homeMode .homeTesterActions {
+  display:flex !important;
+  flex-wrap:wrap !important;
+  justify-content:flex-end !important;
+}
+
+body.homeMode .homePathCard {
+  min-height:112px !important;
+}
+
+body.homeMode .homeRefGrid {
+  grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+}
+
+body.homeMode .homeRefCardSmall {
+  min-height:96px !important;
+}
+
+@media (max-width: 520px) {
+  body.homeMode .homeTesterCard {
+    grid-template-columns:56px minmax(0, 1fr) !important;
+  }
+  body.homeMode .homeTesterActions {
+    grid-column:2;
+    justify-content:flex-start !important;
+  }
+  body.homeMode .homeHeroTitle {
+    max-width:7ch;
+  }
+}
+
 </style>
 </head>
 <body class="booting" data-mode="definite">
@@ -8490,117 +9291,125 @@ body.b1Mode .clozeAnswerText {
   <section class="homeScreen" id="homeScreen" aria-labelledby="homeTitle" hidden>
     <div class="homeIntro">
       <h2 id="homeTitle">Ozmosis</h2>
-      <p class="homeSubtitle">B1 Test Sprint</p>
     </div>
 
-    <section class="homeTesterCard" id="homeTesterCard" aria-labelledby="homeTesterTitle" hidden>
-      <strong id="homeTesterTitle">New to this test build?</strong>
-      <p>Best first path: run the diagnostic snapshot, try suggested practice, open the Learning Map, report anything confusing. This is not an exam score.</p>
-      <div class="homeTesterActions">
-        <button id="homeTesterDiagnosticBtn" type="button">Start diagnostic</button>
-        <button id="homeTesterSkipBtn" type="button">Skip for now</button>
-      </div>
-    </section>
-
     <section class="homeSection recommended" aria-labelledby="homeRecommendedTitle">
-      <h3 class="homeSectionTitle" id="homeRecommendedTitle">What should I do now?</h3>
-    <button class="homeHero" id="homeSprintBtn" type="button" aria-describedby="homeHeroMeta">
-      <span class="homeHeroTop">
-        <span>
-          <span class="homeHeroTitle" id="homeHeroTitle">Start Today’s B1 Sprint</span>
-          <span class="homeHeroMeta" id="homeHeroMeta">12 mixed B1 items · fast practice</span>
+      <h3 class="homeSectionTitle visuallyQuiet" id="homeRecommendedTitle">Recommended Task</h3>
+      <button class="homeHero" id="homeSprintBtn" type="button" aria-describedby="homeHeroMeta">
+        <span class="homeHeroTop">
+          <span>
+          <span class="homeHeroKicker">Recommended Task</span>
+          <span class="homeHeroTitle" id="homeHeroTitle">B1.1 Practice</span>
+          <span class="homeHeroMeta" id="homeHeroMeta">Practical Admin and Appointments</span>
         </span>
-        <span class="homeHeroCta" id="homeHeroCta">START</span>
+          <span class="homeHeroCta" id="homeHeroCta" aria-hidden="true">&gt;</span>
       </span>
       <span class="homeHeroProgress" id="homeHeroProgress" aria-hidden="true">
         <span></span><span></span><span></span><span></span><span></span><span></span>
         <span></span><span></span><span></span><span></span><span></span><span></span>
       </span>
-    </button>
-    <details class="homeWhy" id="homeWhyDetails">
-      <summary>Why this appears</summary>
-      <p id="homeWhyText">Ozmosis chooses a cautious next step from your current local progress.</p>
-    </details>
+      </button>
     </section>
 
-    <section class="homeSection routeGroups" aria-labelledby="homeRoutesTitle">
-      <h3 class="homeSectionTitle" id="homeRoutesTitle">Main routes</h3>
-      <div class="homeRouteGroupGrid" data-home-route-groups>
-        <details class="homeRouteGroupCard" id="homeRouteGroupLearn" data-home-top-card="Learn" open>
-          <summary class="homeRouteGroupSummary">
-            <span class="homeRouteBadge">LEARN</span>
-            <span class="homeRouteMain"><span class="homeRouteLabel">Learn</span><span class="homeRouteSub">Start or continue B1 practice</span></span>
-            <span class="homePill ready">OPEN</span>
-          </summary>
-          <div class="homeRouteGroupBody">
-            <button class="homeRouteCard groupedRoute" id="homeTodaySecondaryBtn" type="button"><span class="homeRouteBadge">SPRINT</span><span class="homeRouteMain"><span class="homeRouteLabel">Today's B1 Sprint</span><span class="homeRouteSub">12 mixed B1 items</span></span><span class="homePill ready">START</span></button>
-            <button class="homeRouteCard groupedRoute" id="homeGrammarBtn" type="button"><span class="homeRouteBadge">PRACTICE</span><span class="homeRouteMain"><span class="homeRouteLabel">Grammar</span><span class="homeRouteSub">Connectors &middot; word order &middot; cases</span></span><span class="homePill ready">OPEN</span></button>
-            <button class="homeRouteCard groupedRoute" id="homeWortschatzBtn" type="button"><span class="homeRouteBadge">PRACTICE</span><span class="homeRouteMain"><span class="homeRouteLabel">Wortschatz</span><span class="homeRouteSub">Vocabulary practice; imported review rows stay out</span></span><span class="homePill ready">OPEN</span></button>
-            <button class="homeRouteCard groupedRoute" id="homeRedemittelBtn" type="button"><span class="homeRouteBadge">PRACTICE</span><span class="homeRouteMain"><span class="homeRouteLabel">Redemittel</span><span class="homeRouteSub">Useful phrases and short responses</span></span><span class="homePill ready">OPEN</span></button>
-            <p class="homeRouteGroupNote">Some imported items are in review, so these routes are temporarily smaller.</p>
-          </div>
-        </details>
-
-        <details class="homeRouteGroupCard" id="homeRouteGroupReview" data-home-top-card="Review">
-          <summary class="homeRouteGroupSummary"><span class="homeRouteBadge">REVIEW</span><span class="homeRouteMain"><span class="homeRouteLabel">Review</span><span class="homeRouteSub">Practise older checked items again</span></span><span class="homePill ready">OPEN</span></summary>
-          <div class="homeRouteGroupBody">
-            <section class="homeSection reviewPractice" id="homeReviewPracticeSection" aria-labelledby="homeReviewPracticeTitle" hidden>
-              <h3 class="homeSectionTitle" id="homeReviewPracticeTitle">Review practice</h3>
-              <button class="homeRouteCard groupedRoute" id="homeReviewPracticeBtn" type="button" aria-label="Review practice. Practise older checked items again. Start review."><span class="homeRouteBadge">REVIEW</span><span class="homeRouteMain"><span class="homeRouteLabel">Review practice</span><span class="homeRouteSub">Practise older items again</span><span class="homeRouteMeta" id="homeReviewPracticeMeta">Older checked items available</span></span><span class="homePill ready">START</span></button>
-            </section>
-            <p class="homeRouteGroupNote">Review appears when older checked items are ready for extra practice.</p>
-          </div>
-        </details>
-
-        <details class="homeRouteGroupCard" id="homeRouteGroupProgress" data-home-top-card="Progress">
-          <summary class="homeRouteGroupSummary"><span class="homeRouteBadge">PROGRESS</span><span class="homeRouteMain"><span class="homeRouteLabel">Progress</span><span class="homeRouteSub">See your B1 Path and star progress</span></span><span class="homePill ready">OPEN</span></summary>
-          <div class="homeRouteGroupBody">
-            <button class="homeRouteCard groupedRoute" id="homeLearningMapBtn" type="button" aria-label="Learning Map. B1 progress overview. Shows what has progress and what still needs practice. Open."><span class="homeRouteBadge">MAP</span><span class="homeRouteMain"><span class="homeRouteLabel">Learning Map</span><span class="homeRouteSub">Progress overview and B1 Path detail</span></span><span class="homePill ready">OPEN</span></button>
-            <button class="homeRouteCard groupedRoute" id="homeDiagnosticBtn" type="button" aria-label="B1 Diagnostic Sprint. Find your starting points. 18 short items across B1 grammar, connectors, phrases, vocabulary, repair, and production readiness. Start."><span class="homeRouteBadge">CHECK</span><span class="homeRouteMain"><span class="homeRouteLabel">Diagnostic Sprint</span><span class="homeRouteSub">Find your starting points</span><span class="homeRouteMeta">18 items &middot; progress snapshot</span></span><span class="homePill new">START</span></button>
-            <button class="homeRouteCard groupedRoute unavailable homePlaceholderBtn" id="homeCourseMapBtn" type="button" data-title="Course Map"><span class="homeRouteBadge">PLANNED</span><span class="homeRouteMain"><span class="homeRouteLabel">Course Map</span><span class="homeRouteSub">Planned structure view</span></span><span class="homePill soon">SOON</span></button>
-          </div>
-        </details>
-
-        <details class="homeRouteGroupCard" id="homeRouteGroupProduction" data-home-top-card="Production">
-          <summary class="homeRouteGroupSummary"><span class="homeRouteBadge">PRODUCTION</span><span class="homeRouteMain"><span class="homeRouteLabel">Production</span><span class="homeRouteSub">Writing and speaking practice</span></span><span class="homePill ready">OPEN</span></summary>
-          <div class="homeRouteGroupBody">
-            <button class="homeRouteCard groupedRoute" id="homeRedemittelProductionBtn" type="button"><span class="homeRouteBadge">SELF-MARKED</span><span class="homeRouteMain"><span class="homeRouteLabel">Redemittel production cards</span><span class="homeRouteSub">Self-marked writing and speaking prompts</span></span><span class="homePill ready">OPEN</span></button>
-            <button class="homeRouteCard groupedRoute unavailable homePlaceholderBtn" id="homeSchreibenBtn" type="button" data-title="Schreiben"><span class="homeRouteBadge">PLANNED</span><span class="homeRouteMain"><span class="homeRouteLabel">Schreiben</span><span class="homeRouteSub">Full writing route planned later</span></span><span class="homePill soon">SOON</span></button>
-            <button class="homeRouteCard groupedRoute unavailable homePlaceholderBtn" id="homeSprechenBtn" type="button" data-title="Sprechen"><span class="homeRouteBadge">PLANNED</span><span class="homeRouteMain"><span class="homeRouteLabel">Sprechen</span><span class="homeRouteSub">Full speaking route planned later</span></span><span class="homePill soon">SOON</span></button>
-          </div>
-        </details>
-
-        <details class="homeRouteGroupCard" id="homeRouteGroupTools" data-home-top-card="Tools">
-          <summary class="homeRouteGroupSummary"><span class="homeRouteBadge">TOOLS</span><span class="homeRouteMain"><span class="homeRouteLabel">Tools</span><span class="homeRouteSub">Case Trainer and helper tools</span></span><span class="homePill ready">OPEN</span></summary>
-          <div class="homeRouteGroupBody">
-            <button class="homeRouteCard groupedRoute" id="homeCaseTrainerBtn" type="button"><span class="homeRouteBadge">TOOL</span><span class="homeRouteMain"><span class="homeRouteLabel">Case Trainer</span><span class="homeRouteSub">Articles and cases</span></span><span class="homePill ready">OPEN</span></button>
-          </div>
-        </details>
-
-        <details class="homeRouteGroupCard quiet" id="homeRouteGroupSettings" data-home-top-card="Settings">
-          <summary class="homeRouteGroupSummary"><span class="homeRouteBadge">SETTINGS</span><span class="homeRouteMain"><span class="homeRouteLabel">Settings</span><span class="homeRouteSub">Language, data, and developer tools</span></span><span class="homePill ready">OPEN</span></summary>
-          <div class="homeRouteGroupBody">
-            <button class="homeChip system" id="homeOptionsBtn" type="button"><span>Settings</span></button>
-            <details class="homeDeveloperDetails" id="homeDeveloperDetails">
-              <summary>Developer / QA</summary>
-              <div class="homeChipGrid">
-                <button class="homeChip" id="homeTesterNotesBtn" type="button"><span>Tester Notes / Known Bugs</span><span class="homeChipArrow">&gt;</span></button>
-                <button class="homeChip system" id="homeDevToolsBtn" type="button"><span>Dev Tools</span></button>
-              </div>
-            </details>
-          </div>
-        </details>
-      </div>
+    <section class="homeTesterCard" id="homeTesterCard" aria-labelledby="homeTesterTitle" hidden>
+      <span class="homeFirstVisitIcon" aria-hidden="true">?</span>
+      <span class="homeFirstVisitCopy">
+        <strong id="homeTesterTitle">First visit?</strong>
+        <span>Test yourself to let us know your level</span>
+      </span>
+      <span class="homeTesterActions">
+        <button id="homeTesterDiagnosticBtn" type="button">Mini-Test</button>
+        <button id="homeTesterSkipBtn" type="button">Skip</button>
+      </span>
     </section>
 
     <section class="homeSection b1PathSection" aria-labelledby="homeB1PathTitle">
-      <h3 class="homeSectionTitle" id="homeB1PathTitle">B1 Progress preview</h3>
-      <p class="b1PathLead">A short preview of your current B1 Path area. Full details live in Progress.</p>
-      <div class="b1PathCardGrid" id="homeB1PathCards" aria-label="Compact B1 Path progress"></div>
-      <p class="b1PathDisclaimer">Stars guide practice. They are not a mastery or exam-readiness score.</p>
+      <h3 class="homeSectionTitle" id="homeB1PathTitle">B1 Practice</h3>
+      <div class="b1PathCardGrid homePathStack" id="homeB1PathCards" aria-label="B1 Practice progress"></div>
     </section>
 
-    <div class="homeStatusStrip" id="homeStatusStrip" aria-label="Local B1 practice status">
+    <section class="homeSection practiceModes" aria-labelledby="homePracticeModesTitle">
+      <h3 class="homeSectionTitle" id="homePracticeModesTitle">Practice Modes</h3>
+      <div class="homeRefGrid homeRefGridModes">
+        <button class="homeRefCard homeRefCardSmall" id="homeTodaySecondaryBtn" type="button">
+          <span class="homeRefIcon homeIconCalendar" aria-hidden="true"></span>
+          <span class="homeRefText"><span class="homeRouteLabel">Today's B1 Sprint</span><span class="homeRouteSub">12 mixed items</span></span>
+          <span class="homeRefArrow" aria-hidden="true">&gt;</span>
+        </button>
+        <button class="homeRefCard homeRefCardSmall homeThemeGrammar" id="homeGrammarBtn" type="button">
+          <span class="homeRefIcon homeIconAa" aria-hidden="true">Aa</span>
+          <span class="homeRefText"><span class="homeRouteLabel">Grammar</span><span class="homeRouteSub">Word order &middot; Cases</span></span>
+          <span class="homeRefArrow" aria-hidden="true">&gt;</span>
+        </button>
+        <button class="homeRefCard homeRefCardSmall homeThemeWortschatz" id="homeWortschatzBtn" type="button">
+          <span class="homeRefIcon homeIconBook" aria-hidden="true"></span>
+          <span class="homeRefText"><span class="homeRouteLabel">Wortschatz</span><span class="homeRouteSub">Work &middot; Illness &middot; Admin</span></span>
+          <span class="homeRefArrow" aria-hidden="true">&gt;</span>
+        </button>
+        <button class="homeRefCard homeRefCardSmall homeThemeRedemittel" id="homeRedemittelBtn" type="button">
+          <span class="homeRefIcon homeIconChat" aria-hidden="true"></span>
+          <span class="homeRefText"><span class="homeRouteLabel">Redemittel</span><span class="homeRouteSub">Email &middot; Appointments</span></span>
+          <span class="homeRefArrow" aria-hidden="true">&gt;</span>
+        </button>
+      </div>
+      <button class="homeRefCard homeRefCardWide homeThemeCase" id="homeCaseTrainerBtn" type="button">
+        <span class="homeRefIcon homeIconCase" aria-hidden="true"></span>
+        <span class="homeRefText"><span class="homeRouteLabel">Case Trainer</span><span class="homeRouteSub">Articles and cases</span></span>
+        <span class="homeRefArrow" aria-hidden="true">&gt;</span>
+      </button>
+    </section>
+
+    <section class="homeSection checkProgress" aria-labelledby="homeProgressTitle">
+      <h3 class="homeSectionTitle" id="homeProgressTitle">Progress</h3>
+      <div class="homeRefGrid">
+        <button class="homeRefCard homeRefCardSmall homeThemeMap" id="homeLearningMapBtn" type="button" aria-label="Learning Map. B1 progress overview. Open.">
+          <span class="homeRefIcon homeIconMap" aria-hidden="true"></span>
+          <span class="homeRefText"><span class="homeRouteLabel">Learning Map</span><span class="homeRouteSub">See how you are performing</span></span>
+          <span class="homeRefArrow" aria-hidden="true">&gt;</span>
+        </button>
+        <button class="homeRefCard homeRefCardSmall homeThemeDiagnostic" id="homeDiagnosticBtn" type="button" aria-label="Diagnostic Sprint. Find your starting points. Start.">
+          <span class="homeRefIcon homeIconTarget" aria-hidden="true"></span>
+          <span class="homeRefText"><span class="homeRouteLabel">Diagnostic Sprint</span><span class="homeRouteSub">Test your Progress</span></span>
+          <span class="homeRefArrow" aria-hidden="true">&gt;</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="homeSection production" aria-labelledby="homeProductionTitle">
+      <h3 class="homeSectionTitle" id="homeProductionTitle">Writing / Speaking</h3>
+      <button class="homeRefCard homeRefCardWide homeThemeProduction" id="homeRedemittelProductionBtn" type="button">
+        <span class="homeRefIcon homeIconPencil" aria-hidden="true"></span>
+        <span class="homeRefText"><span class="homeRouteLabel">Production cards</span><span class="homeRouteSub">Self-marked writing and speaking prompts</span></span>
+        <span class="homeRefArrow" aria-hidden="true">&gt;</span>
+      </button>
+    </section>
+
+    <section class="homeSection system" aria-labelledby="homeSettingsTitle">
+      <h3 class="homeSectionTitle" id="homeSettingsTitle">Settings</h3>
+      <div class="homeRefGrid">
+        <button class="homeRefCard homeRefCardSmall homeThemeSettings" id="homeOptionsBtn" type="button">
+          <span class="homeRefIcon homeIconGear" aria-hidden="true"></span>
+          <span class="homeRefText"><span class="homeRouteLabel">Settings</span></span>
+          <span class="homeRefArrow" aria-hidden="true">&gt;</span>
+        </button>
+        <button class="homeRefCard homeRefCardSmall homeThemeQa" id="homeDevToolsBtn" type="button">
+          <span class="homeRefIcon homeIconQa" aria-hidden="true"></span>
+          <span class="homeRefText"><span class="homeRouteLabel">Advanced / QA</span></span>
+          <span class="homeRefArrow" aria-hidden="true">&gt;</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="homeSection reviewPractice" id="homeReviewPracticeSection" aria-labelledby="homeReviewPracticeTitle" hidden>
+      <h3 class="homeSectionTitle" id="homeReviewPracticeTitle">Review practice</h3>
+      <button class="homeRefCard homeRefCardWide" id="homeReviewPracticeBtn" type="button" aria-label="Review practice. Practise older checked items again. Start review.">
+        <span class="homeRefIcon homeIconTarget" aria-hidden="true"></span>
+        <span class="homeRefText"><span class="homeRouteLabel">Review practice</span><span class="homeRouteSub" id="homeReviewPracticeMeta">Older checked items available</span></span>
+        <span class="homeRefArrow" aria-hidden="true">&gt;</span>
+      </button>
+    </section>
+
+    <div class="homeStatusStrip" id="homeStatusStrip" aria-label="Local B1 practice status" hidden>
       <div class="homeStatusItem"><span>Today</span><span class="homeStatusValue" id="homeStatusToday">Ready</span></div>
       <div class="homeStatusItem"><span>Current focus</span><span class="homeStatusValue" id="homeStatusDue">--</span></div>
       <div class="homeStatusItem"><span>Practice gaps</span><span class="homeStatusValue" id="homeStatusWeak">--</span></div>
@@ -9304,8 +10113,8 @@ body.b1Mode .clozeAnswerText {
   var B1_PATH_UNLOCK_STORAGE_KEY = "ozmosis_b1_path_unlock_overrides_v1";
   var B1_REVIEW_EDIT_QUEUE_STORAGE_KEY = "ozmosis_b1_review_edit_queue_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.80.14.12";
-  var OZMOSIS_EXPORT_VERSION = "v0.80.14.12-verification-learner-facing-artefact-hotfix";
+  var OZMOSIS_APP_VERSION = "v0.80.14.13";
+  var OZMOSIS_EXPORT_VERSION = "v0.80.14.13-landing-page-visual-reference-alignment";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -15798,24 +16607,67 @@ body.b1Mode .clozeAnswerText {
       '</div>' +
     '</article>';
   }
+  function homePathCategorySubtitle(category) {
+    var id = String(category && category.categoryId || category && category.pathId || "");
+    if (id === "B1.1") return "Appointments • Callbacks • Availability";
+    if (id === "B1.2") return "Choices • Contracts • Starting at work";
+    var subs = Array.isArray(category && category.subcategories) ? category.subcategories : [];
+    return subs.slice(0, 3).map(function(label){
+      return String(label || "").replace(/^B1\.\d+(?:\.\d+)?\s+/, "");
+    }).filter(Boolean).join(" • ") || category && category.subcategoryLabel || "B1 practice";
+  }
+  function homePathPercent(category, level) {
+    var total = Number(category && category.coreTargetCount || 0);
+    if (!total) return 0;
+    return Math.max(0, Math.min(100, Math.round(Number(category && category.starCounts && category.starCounts[level] || 0) * 100 / total)));
+  }
+  function homePathStackedBarHtml(category) {
+    var colours = ["#c8871d", "#9d8f81", "#8798ac", "#8b735d", "#b4751d"];
+    return '<span class="homePathStackedBar" aria-hidden="true">' + [1,2,3,4,5].map(function(level, index){
+      return '<span style="--segment:' + colours[index] + '; width:' + homePathPercent(category, level) + '%"></span>';
+    }).join("") + '</span>';
+  }
+  function homePathCategoryCardHtml(category) {
+    var id = category && category.categoryId || category && category.pathId || "";
+    var locked = category && category.status === "Locked" && !category.override;
+    var title = category && category.label || "";
+    if (id === "B1.1") title = "Practical Admin";
+    var overall = homePathPercent(category, 1);
+    return '<button class="homePathCard b1PathRouteAction ' + (locked ? "locked" : "open") + '" type="button" data-category-id="' + escapeHtml(id) + '">' +
+      '<span class="homePathBadge">' + escapeHtml(id) + '</span>' +
+      '<span class="homePathMain">' +
+        '<span class="homePathTitleLine"><span class="homePathTitle">' + escapeHtml(title) + '</span>' + (locked ? '<span class="homePathLock" aria-label="Locked"></span>' : '') + '</span>' +
+        '<span class="homePathSub">' + escapeHtml(homePathCategorySubtitle(category)) + '</span>' +
+        '<span class="homePathStarStats">' +
+          '<strong class="homePathOverall"><span>☆</span>' + overall + '%</strong>' +
+          [1,2,3,4,5].map(function(level){
+            return '<span class="homePathStarMetric"><span>★</span>' + homePathPercent(category, level) + '%</span>';
+          }).join("") +
+          homePathStackedBarHtml(category) +
+        '</span>' +
+      '</span>' +
+      '<span class="homePathChevron" aria-hidden="true">&gt;</span>' +
+    '</button>';
+  }
+  function homeAllPracticeCardHtml(progress) {
+    var pct = Math.max(0, Math.min(100, Math.round(Number(progress && progress.allB1 && progress.allB1.percentAt1Star || 0))));
+    return '<button class="homePathCard homeAllPracticeCard" id="homeB1PathSeeAllBtn" type="button" style="--homeAllProgress:' + pct + '%">' +
+      '<span class="homeAllProgressBadge"><span>' + pct + '%</span></span>' +
+      '<span class="homePathMain"><span class="homePathTitleLine"><span class="homePathTitle">All Practice</span></span><span class="homePathSub">See all modules</span></span>' +
+      '<span class="homePathChevron" aria-hidden="true">&gt;</span>' +
+    '</button>';
+  }
   function renderHomeB1Path(progress) {
     var target = el("homeB1PathCards");
     if (!target) return;
     progress = progress || b1PathProgressData();
-    var categories = (progress.categories || []).filter(function(category){
-      return category.coreTargetCount > 0 && !category.preview;
-    });
-    var recommended = progress.recommendedTask ? b1PathCategoryById(progress, progress.recommendedTask.categoryId) : null;
-    var selected = [];
-    if (recommended) selected.push(recommended);
-    categories.forEach(function(category){
-      if (selected.length >= 2) return;
-      if (selected.some(function(row){ return row.categoryId === category.categoryId; })) return;
-      if (category.status === "Open" || category.status === "Recommended" || category.percentAt1Star > 0 || selected.length < 2) selected.push(category);
-    });
-    if (!selected.length) selected = categories.slice(0, 2);
-    target.innerHTML = selected.slice(0, 2).map(function(category){ return b1PathCategoryCardHtml(category, true); }).join("") +
-      '<button class="homeChip system b1PathSeeAll" id="homeB1PathSeeAllBtn" type="button"><span>See all progress</span><span class="homeChipArrow">&gt;</span></button>';
+    var b11 = b1PathCategoryById(progress, "B1.1");
+    var b12 = b1PathCategoryById(progress, "B1.2");
+    var cards = [];
+    if (b11) cards.push(homePathCategoryCardHtml(b11));
+    if (b12) cards.push(homePathCategoryCardHtml(b12));
+    cards.push(homeAllPracticeCardHtml(progress));
+    target.innerHTML = cards.join("");
   }
   function learningMapB1PathHtml(progress) {
     progress = progress || b1PathProgressData();
@@ -15895,6 +16747,7 @@ body.b1Mode .clozeAnswerText {
     var learnerRecords = b1LearnerProgressRecords();
     var map = b1LearningMapScaffold({ records:learnerRecords });
     var pathProgress = b1PathProgressData();
+    var pathRecommended = pathProgress && pathProgress.recommendedTask || null;
     var evidenceSummary = b1EvidenceSummary(learnerRecords);
     var mapSummary = learningMapSummaryFor(map, evidenceSummary);
     var recommendation = b1NextRecommendedPractice({ map:map, matrix:b1SkillMatrixData({ records:learnerRecords }), evidenceSummary:evidenceSummary, records:learnerRecords });
@@ -15928,9 +16781,15 @@ body.b1Mode .clozeAnswerText {
       retryFill = summary.retryCount;
       homeRecommendedRouteKey = "today";
     }
+    if (pathRecommended && pathRecommended.categoryId) {
+      title = pathRecommended.categoryId + " Practice";
+      meta = pathRecommended.categoryId === "B1.1" ? "Practical Admin and Appointments" : homeLearnerCopy(pathRecommended.reason || "Continue the next B1 practice path.");
+      cta = "OPEN";
+      homeRecommendedRouteKey = pathRecommended.routeKey || homeRecommendedRouteKey || "today";
+    }
     if (el("homeHeroTitle")) el("homeHeroTitle").textContent = title;
     if (el("homeHeroMeta")) el("homeHeroMeta").textContent = meta;
-    if (el("homeHeroCta")) el("homeHeroCta").textContent = cta;
+    if (el("homeHeroCta")) el("homeHeroCta").textContent = ">";
     if (el("homeWhyText")) el("homeWhyText").textContent = meta || "Ozmosis chooses a cautious next step from your current local progress.";
     if (el("homeSprintBtn")) el("homeSprintBtn").setAttribute("aria-label", title + ". " + meta);
     if (el("homeHeroProgress")) el("homeHeroProgress").hidden = homeRecommendedRouteKey !== "today";
@@ -24532,6 +25391,13 @@ window.ozmosisTesterReportSummary=testerReportSummary; window.ozmosisLearnerRead
     if (el("genitiveHelpOverlay")) el("genitiveHelpOverlay").addEventListener("click",function(event){ if (event.target === el("genitiveHelpOverlay")) closeGenitiveHelp(); },false); bind("englishSupport","change",function(){ savePersistent(); if (b1Runtime.active) renderB1Translation(false); else if (current) renderQuestion(); }); bind("roundTarget","change",function(){ if (shouldApplyLiveSettings()) newRound(); else savePersistent(); }); bind("adaptiveMode","change",function(){ savePersistent(); if (shouldApplyLiveSettings()) newRound(); }); bind("menuHomeBtn","click",function(){ setMenu(false); showHomeScreen(); }); bind("menuSprintBtn","click",function(){ setMenu(false); startB1Round("mixed"); }); bind("menuRecommendedBtn","click",function(){ setMenu(false); openB1RecommendationRoute(homeRecommendedRouteKey || "today"); }); bind("menuGrammarBtn","click",function(){ setMenu(false); showGrammarHub(); }); bind("menuRedemittelBtn","click",function(){ setMenu(false); showRedemittelHub(); }); bind("menuCaseTrainerBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("menuReviewPracticeBtn","click",function(){ setMenu(false); startB1ReviewPractice(); }); bind("restartBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("resetBestBtn","click",function(){window.kasusResetBest();}); bind("resetProfileBtn","click",function(){window.kasusResetProfile();}); bind("exportBtn","click",exportProgress); bind("importBtn","click",function(){el("importFile").click();}); bind("copyLearnerReportBtn","click",copyLearnerReadableProgressReport); bind("downloadLearnerReportBtn","click",downloadLearnerReadableProgressReport); bind("importFile","change",function(event){ importProgress(event.target.files && event.target.files[0]); event.target.value=""; }); bind("devToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("devMenuBtn","click",function(event){ event.stopPropagation(); setMenu(!el("settingsPanel").classList.contains("open")); }); bind("devCloseBtn","click",function(){ setDevTools(false); }); bind("newGameCloseBtn","click",function(){ setDevTools(false); }); bind("leitnerCloseBtn","click",closeLeitnerPrototype); bind("openNewGameMockBtn","click",showNewGameMock); bind("openLeitnerPrototypeBtn","click",showLeitnerPrototype); bind("resetLeitnerPrototypeBtn","click",showLeitnerResetConfirm); bind("backToDevListBtn","click",showDevList); bind("leitnerResetCloseBtn","click",showDevList); bind("cancelLeitnerResetBtn","click",showDevList); bind("confirmLeitnerResetBtn","click",resetLeitnerPrototypeProgress); bind("leitnerRestartBtn","click",startLeitnerQueue); bind("leitnerCheckBtn","click",checkLeitnerAnswer); bind("leitnerNextBtn","click",nextLeitnerCard); bind("leitnerAnswerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (leitnerRuntime.answered) nextLeitnerCard(); else checkLeitnerAnswer(); }); bind("applyNewGameMockBtn","click",applyNewGameMock); bind("homeSprintBtn","click",function(){ startB1Round("mixed"); }); bind("homeDiagnosticBtn","click",startB1DiagnosticSprint); bind("homeLearningMapBtn","click",showLearningMapScreen); bind("learningMapBackBtn","click",showHomeScreen); bind("diagnosticExitBtn","click",exitB1Diagnostic); bind("homeGrammarBtn","click",showGrammarHub); bind("grammarBackBtn","click",showHomeScreen); bind("grammarSeedBtn","click",function(){ startB1Round("grammar_cloze"); }); bind("connectorAllBtn","click",function(){ startConnectorSprint("all"); }); bind("connectorReasonBtn","click",function(){ startConnectorSprint("reason"); }); bind("connectorContrastBtn","click",function(){ startConnectorSprint("contrast"); }); bind("connectorPurposeBtn","click",function(){ startConnectorSprint("purpose"); }); bind("connectorTimeBtn","click",function(){ startConnectorSprint("time"); }); bind("connectorRepairBtn","click",function(){ startConnectorSprint("repair"); }); bind("homeWortschatzBtn","click",function(){ startWortschatzRound("mixed"); }); bind("homeRedemittelBtn","click",function(){ startB1Round("redemittel_cloze"); }); bind("homeCaseTrainerBtn","click",showStartScreen); bind("caseTrainerBackBtn","click",showHomeScreen); bind("homeOptionsBtn","click",function(event){ event.stopPropagation(); setDevTools(false); setMenu(true); if (el("menuOptionsDetails")) el("menuOptionsDetails").open = true; setTimeout(function(){ var summary = el("menuOptionsDetails") && el("menuOptionsDetails").querySelector("summary"); if (summary) focusWithoutScroll(summary); }, 0); }); bind("homeDevToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("hubBackBtn","click",showHomeScreen); document.querySelectorAll(".homePlaceholderBtn").forEach(function(btn){ btn.addEventListener("click",function(){ showHubPlaceholder(btn.getAttribute("data-title") || btn.textContent.trim()); }); }); document.addEventListener("click",function(event){ var routeButton = event.target && event.target.closest ? event.target.closest(".b1PathRouteAction") : null; if (routeButton) { event.preventDefault(); openB1PathCategory(routeButton.getAttribute("data-category-id")); return; } }); bind("b1PathKeepPractisingBtn","click",function(){ var categoryId = b1PathPendingUnlockId; var progress = b1PathProgressData(); var categories = (progress.categories || []).filter(function(category){ return category.coreTargetCount > 0 && !category.preview; }); var category = b1PathCategoryById(progress, categoryId); var index = categories.findIndex(function(row){ return row.categoryId === categoryId; }); var practiceCategory = index > 0 ? categories[index - 1] : category; closeB1PathUnlockDialog(); openB1RecommendationRoute(practiceCategory && practiceCategory.routeKey || "today"); }); bind("b1PathUnlockAnywayBtn","click",function(){ var categoryId = b1PathPendingUnlockId; if (!categoryId) return; b1PathRecordUnlockOverride(categoryId); closeB1PathUnlockDialog(); openB1PathCategory(categoryId); }); if (el("b1PathUnlockOverlay")) el("b1PathUnlockOverlay").addEventListener("click",function(event){ if (event.target === el("b1PathUnlockOverlay")) closeB1PathUnlockDialog(); },false); var devOverlay=el("devOverlay"); if (devOverlay) devOverlay.addEventListener("click",function(event){ if (event.target === devOverlay && !devOverlay.classList.contains("leitnerFullscreen")) setDevTools(false); },false); document.addEventListener("keydown",function(event){ if ((event.key === "Escape" || event.key === "Esc") && el("b1PathUnlockOverlay") && !el("b1PathUnlockOverlay").hidden) { closeB1PathUnlockDialog(); return; } if ((event.key === "Escape" || event.key === "Esc") && el("genitiveHelpOverlay") && !el("genitiveHelpOverlay").hidden) { el("genitiveHelpOverlay").hidden = true; return; } if ((event.key === "Escape" || event.key === "Esc") && el("devOverlay") && !el("devOverlay").hidden) { setDevTools(false); return; } if ((event.key === "Escape" || event.key === "Esc") && b1Runtime.mode === "b1_diagnostic" && (state === "b1Checking" || state === "b1Next")) { exitB1Diagnostic(); return; } if ((event.key === "Escape" || event.key === "Esc") && (state === "placeholder" || state === "grammarHub" || state === "learningMap")) showHomeScreen(); }); bind("checkBtn","click",function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }); bind("noArticleBtn","click",function(){checkAnswer("none");}); bind("nextBtn","click",proceed); bind("hintBtn","click",showHint); bind("supportPlaceholder","click",showHint); bind("translationToggle","click",toggleB1Translation); bind("whyNoStarsBtn","click",explainExtraPracticeStars); bind("startRoundBtn","click",startConfiguredRound); document.querySelectorAll(".langBtn").forEach(function(btn){ btn.addEventListener("click",function(){ setSupportLanguage(btn.getAttribute("data-lang")); }); }); bind("answerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (state==="b1Checking") checkB1Answer(); else if (state==="checking") checkAnswer(); else proceed(); }); renderHud(); applyLanguage(); showHomeScreen(); }
   function initOzmosisApp() {
     init();
+    if (el("homeSprintBtn")) {
+      el("homeSprintBtn").addEventListener("click", function(event){
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        openB1RecommendationRoute(homeRecommendedRouteKey || "today");
+      }, true);
+    }
     window.setTimeout(function(){
       showFirstRunLanguagePanel();
       document.body.classList.remove("booting");
