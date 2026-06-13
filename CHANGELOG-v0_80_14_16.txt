@@ -1,0 +1,64 @@
+# Ozmosis Changelog v0.80.14.16
+
+## v0.80.14.16 - Export Save / Import Save File Workflow
+
+### Added
+
+- Added the primary `Export Save` workflow in the existing Settings/Data area.
+- Added the primary `Import Save` workflow in the existing Settings/Data area.
+- Added a save-workflow status line near the save buttons.
+- Added `buildOzmosisSavePayload()` for the current local save/export payload.
+- Added `validateOzmosisSavePayload(...)` for in-memory validation before import writes occur.
+- Added transaction-style import application with a localStorage snapshot and restore path.
+- Added QA documentation at `docs/qa/v0.80.14.16_save_file_workflow.md`.
+
+### Changed
+
+- Changed the existing export/import button labels to `Export Save` and `Import Save`.
+- Changed exported save filenames to the `ozmosis-save-v0_80_14_16-YYYYMMDDHHMM.json` pattern.
+- Changed import failure messages to the `Failed due to [specific reason].` format.
+- Changed successful save workflow messages to `Confirmed - save exported.` and `Confirmed - save imported.`.
+- Changed import handling so selected JSON is parsed and validated before any localStorage mutation.
+- Changed app/export metadata to `v0.80.14.16 - Export Save / Import Save File Workflow` and `v0.80.14.16-save-file-workflow`.
+- Updated AGENTS.md to point to v0.80.14.16 docs.
+
+### Preserved
+
+- Static single-file app architecture.
+- Existing German-learning content.
+- Existing task answers.
+- Existing scoring semantics.
+- Existing star logic.
+- Existing Star Threshold Overlay rendering.
+- Existing evidence semantics.
+- Existing protected localStorage key names.
+- Existing export fields for compatibility.
+- Existing support for older safe Ozmosis saves without derived progress-summary cache data.
+- Existing Settings, Dev Tools, Home, Learning Map, B1 Path, and Case Trainer routes.
+- B1 active learner scope.
+
+### Not changed
+
+- No v0.81 work.
+- No Cases and Articles Completion Pass work.
+- No German-learning content edits.
+- No source CSV/source ZIP edits.
+- No backend/framework/build step/package manager/dependencies.
+- No runtime AI.
+- No runtime German generation.
+- No external API calls.
+- No analytics/tracking/accounts.
+- No scoring, star-earning, storage-key, or evidence-model changes.
+
+### Testing
+
+- Parsed inline `index.html` script.
+- Parsed `content/b1-connectors.js`, `content/b1-redemittel.js`, and `content/b1-wortschatz.js`.
+- Validated that the current export payload passes `validateOzmosisSavePayload(...)`.
+- Validated that an older save without `b1ProgressSummary` is accepted.
+- Validated that a random object fails with `missing Ozmosis save data`.
+- Validated that corrupted evidence fails with `corrupted progress evidence`.
+- Validated that an invalid import candidate does not mutate the protected B1 progress key.
+- Validated that a valid save applies in a local VM harness and rebuilds the summary path.
+
+Previous detailed history remains in `CHANGELOG-v0_80_14_15.txt`.

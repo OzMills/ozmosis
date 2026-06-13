@@ -50,14 +50,16 @@
   --stateError:var(--bad);
   --stateAssist:var(--warn);
   --star-empty:#536073;
-  --star-bronze:#b97538;
-  --star-brass:#d39b4a;
-  --star-silver:#d7e4f0;
-  --star-electrum:#efe0a8;
-  --star-gold:#ffd66b;
-  --star-glow-bronze:rgba(185,117,56,.34);
-  --star-glow-silver:rgba(215,228,240,.34);
-  --star-glow-gold:rgba(255,214,107,.42);
+  --star-bronze:#b87333;
+  --star-silver:#b8c4d6;
+  --star-gold:#f2c94c;
+  --star-sky:#38bdf8;
+  --star-cyan:#67e8f9;
+  --star-glow-bronze:rgba(184,115,51,.34);
+  --star-glow-silver:rgba(184,196,214,.34);
+  --star-glow-gold:rgba(242,201,76,.42);
+  --star-glow-sky:rgba(56,189,248,.42);
+  --star-glow-cyan:rgba(103,232,249,.48);
   --mono:ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
 }
 
@@ -486,27 +488,27 @@ select, .menuButton {
 }
 
 .b1Star.earned.level2 {
-  color:var(--star-brass);
+  color:var(--star-silver);
   opacity:.92;
-  filter:drop-shadow(0 0 5px var(--star-glow-bronze));
+  filter:drop-shadow(0 0 5px var(--star-glow-silver));
 }
 
 .b1Star.earned.level3 {
-  color:var(--star-silver);
+  color:var(--star-gold);
   opacity:1;
-  filter:drop-shadow(0 0 6px var(--star-glow-silver));
+  filter:drop-shadow(0 0 6px var(--star-glow-gold));
 }
 
 .b1Star.earned.level4 {
-  color:var(--star-electrum);
+  color:var(--star-sky);
   opacity:1;
-  filter:drop-shadow(0 0 7px var(--star-glow-gold));
+  filter:drop-shadow(0 0 7px var(--star-glow-sky));
 }
 
 .b1Star.earned.level5 {
-  color:var(--star-gold);
+  color:var(--star-cyan);
   opacity:1;
-  filter:drop-shadow(0 0 8px var(--star-glow-gold));
+  filter:drop-shadow(0 0 8px var(--star-glow-cyan));
 }
 
 .b1Star.current.level3,
@@ -516,10 +518,10 @@ select, .menuButton {
 }
 
 .b1Star.bronze { color:var(--star-bronze); }
-.b1Star.brass { color:var(--star-brass); }
 .b1Star.silver { color:var(--star-silver); }
-.b1Star.electrum { color:var(--star-electrum); }
 .b1Star.gold { color:var(--star-gold); }
+.b1Star.sky { color:var(--star-sky); }
+.b1Star.cyan { color:var(--star-cyan); }
 
 .productionChecklist {
   width:min(520px,100%);
@@ -2081,6 +2083,18 @@ body .modeTitle.clozeNeutral,
   min-height:1.1em;
 }
 
+.devStatus.good {
+  color:color-mix(in srgb, var(--good) 82%, var(--text));
+}
+
+.devStatus.bad {
+  color:color-mix(in srgb, var(--bad) 86%, var(--text));
+}
+
+.devStatus.warn {
+  color:color-mix(in srgb, var(--warn) 86%, var(--text));
+}
+
 .devSnapshotFallback {
   width:100%;
   min-height:140px;
@@ -2434,9 +2448,9 @@ body .modeTitle.clozeNeutral,
   text-shadow:0 0 12px rgba(122,229,255,.10);
 }
 
-.leitnerStar.bronze { color:#c9824c; }
-.leitnerStar.silver { color:#dbe7f2; }
-.leitnerStar.gold { color:#ffd66b; }
+.leitnerStar.bronze { color:var(--star-bronze); }
+.leitnerStar.silver { color:var(--star-silver); }
+.leitnerStar.gold { color:var(--star-gold); }
 
 .leitnerPrompt {
   padding:14px;
@@ -5185,9 +5199,8 @@ body.homeMode #settingsPanel {
 }
 
 .b1PathStarBar {
-  display:grid;
-  grid-template-columns:repeat(5, minmax(0, 1fr));
-  gap:3px;
+  position:relative;
+  display:block;
   height:10px;
   overflow:hidden;
   border:1px solid color-mix(in srgb, var(--star-silver) 20%, var(--line));
@@ -5196,15 +5209,19 @@ body.homeMode #settingsPanel {
 }
 
 .b1PathStarBar span {
+  position:absolute;
+  inset:0 auto 0 0;
+  width:0;
   min-width:0;
-  background:color-mix(in srgb, var(--star-empty) 30%, rgba(2,8,16,.86));
+  border-radius:inherit;
+  background:var(--star-empty);
 }
 
-.b1PathStarBar span.filled-1 { background:linear-gradient(90deg, color-mix(in srgb, var(--star-bronze) 55%, #121b2c), var(--star-bronze)); }
-.b1PathStarBar span.filled-2 { background:linear-gradient(90deg, color-mix(in srgb, var(--star-brass) 52%, #121b2c), var(--star-brass)); }
-.b1PathStarBar span.filled-3 { background:linear-gradient(90deg, color-mix(in srgb, var(--star-silver) 48%, #121b2c), var(--star-silver)); }
-.b1PathStarBar span.filled-4 { background:linear-gradient(90deg, color-mix(in srgb, var(--star-electrum) 52%, #121b2c), var(--star-electrum)); }
-.b1PathStarBar span.filled-5 { background:linear-gradient(90deg, color-mix(in srgb, var(--star-gold) 54%, #121b2c), var(--star-gold)); }
+.b1PathStarBar span.layer-1 { z-index:1; background:linear-gradient(90deg, color-mix(in srgb, var(--star-bronze) 55%, #121b2c), var(--star-bronze)); }
+.b1PathStarBar span.layer-2 { z-index:2; background:linear-gradient(90deg, color-mix(in srgb, var(--star-silver) 52%, #121b2c), var(--star-silver)); }
+.b1PathStarBar span.layer-3 { z-index:3; background:linear-gradient(90deg, color-mix(in srgb, var(--star-gold) 48%, #121b2c), var(--star-gold)); }
+.b1PathStarBar span.layer-4 { z-index:4; background:linear-gradient(90deg, color-mix(in srgb, var(--star-sky) 52%, #121b2c), var(--star-sky)); }
+.b1PathStarBar span.layer-5 { z-index:5; background:linear-gradient(90deg, color-mix(in srgb, var(--star-cyan) 54%, #121b2c), var(--star-cyan)); }
 
 .b1PathStarRows {
   display:grid;
@@ -8684,9 +8701,10 @@ body.homeMode #menuToggle {
   color:var(--landingAmber);
 }
 
-.homePathStackedBar {
+.homePathThresholdBar {
   grid-column:2 / -1;
-  display:flex;
+  position:relative;
+  display:block;
   height:9px;
   border:1px solid rgba(102,232,255,.14);
   border-radius:999px;
@@ -8694,12 +8712,22 @@ body.homeMode #menuToggle {
   overflow:hidden;
 }
 
-.homePathStackedBar span {
-  min-width:2px;
+.homePathThresholdBar span {
+  position:absolute;
+  inset:0 auto 0 0;
+  width:0;
+  min-width:0;
   height:100%;
-  background:var(--segment);
+  border-radius:inherit;
+  background:var(--threshold-colour);
   opacity:.95;
 }
+
+.homePathThresholdBar .layer-1 { z-index:1; }
+.homePathThresholdBar .layer-2 { z-index:2; }
+.homePathThresholdBar .layer-3 { z-index:3; }
+.homePathThresholdBar .layer-4 { z-index:4; }
+.homePathThresholdBar .layer-5 { z-index:5; }
 
 .homePathChevron {
   color:var(--landingCyan);
@@ -9024,7 +9052,7 @@ body[data-support-lang="ar"] .homePathBadge {
     font-size:1.3rem;
   }
 
-  .homePathStackedBar {
+  .homePathThresholdBar {
     grid-column:1 / -1;
   }
 
@@ -9263,11 +9291,13 @@ body.homeMode .homeRefCardSmall {
         <button class="menuButton" id="restartBtn" type="button">Neue Runde / New Game</button>
             <details class="menuSubDetails menuDataDetails">
               <summary>Data</summary>
-        <button class="menuButton" id="exportBtn" type="button">Fortschritt exportieren</button>
-        <button class="menuButton" id="importBtn" type="button">Fortschritt importieren</button>
+        <div class="comingSoon">Export or import your local Ozmosis progress file.</div>
+        <button class="menuButton" id="exportBtn" type="button">Export Save</button>
+        <button class="menuButton" id="importBtn" type="button">Import Save</button>
         <button class="menuButton" id="copyLearnerReportBtn" type="button">Copy learning summary</button>
         <button class="menuButton" id="downloadLearnerReportBtn" type="button">Download learning summary</button>
         <input class="hiddenFileInput" id="importFile" type="file" accept="application/json,.json">
+        <div class="devStatus" id="saveWorkflowStatus" aria-live="polite"></div>
         <div class="devStatus" id="learnerReportStatus" aria-live="polite"></div>
         <textarea class="devSnapshotFallback" id="learnerReportFallback" readonly hidden aria-label="Learner-readable progress summary fallback text"></textarea>
               <div class="menuDestructiveActions" aria-label="Destructive data actions">
@@ -10119,8 +10149,8 @@ body.homeMode .homeRefCardSmall {
   var B1_PATH_UNLOCK_STORAGE_KEY = "ozmosis_b1_path_unlock_overrides_v1";
   var B1_REVIEW_EDIT_QUEUE_STORAGE_KEY = "ozmosis_b1_review_edit_queue_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.80.14.14";
-  var OZMOSIS_EXPORT_VERSION = "v0.80.14.14-progress-summary-cache-interaction-latency-hotfix";
+  var OZMOSIS_APP_VERSION = "v0.80.14.16 - Export Save / Import Save File Workflow";
+  var OZMOSIS_EXPORT_VERSION = "v0.80.14.16-save-file-workflow";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -11150,6 +11180,13 @@ body.homeMode .homeRefCardSmall {
     "Got right 4 times",
     "Got right 5 times"
   ];
+  const B1_STAR_PALETTE = {
+    1:{ level:1, label:"Bronze", className:"bronze", color:"#b87333" },
+    2:{ level:2, label:"Silver", className:"silver", color:"#b8c4d6" },
+    3:{ level:3, label:"Gold", className:"gold", color:"#f2c94c" },
+    4:{ level:4, label:"Sky Blue", className:"sky", color:"#38bdf8" },
+    5:{ level:5, label:"Electric Cyan", className:"cyan", color:"#67e8f9" }
+  };
   const B1_PATH_AREAS = [
     { pathId:"B1.1", order:1, label:"Practical Admin and Appointments", routeKey:"b1_m02", banks:["b1_m02"], subcategoryLabel:"Appointments / callbacks", subcategories:["B1.1.1 Appointments", "B1.1.2 Callbacks", "B1.1.3 Availability", "B1.1.4 Rescheduling", "B1.1.5 Confirming details"] },
     { pathId:"B1.2", order:2, label:"Course and Work Starting Point", routeKey:"b1_m01", banks:["b1_m01"], subcategoryLabel:"Course and work basics", subcategories:["B1.2.1 Introducing yourself", "B1.2.2 Course language", "B1.2.3 Work basics", "B1.2.4 Asking for help", "B1.2.5 Materials and documents"] },
@@ -16625,15 +16662,43 @@ body.homeMode .homeRefCardSmall {
     if (/locked|preview/.test(label)) return "locked";
     return "open";
   }
+  function b1StarPaletteEntry(level) {
+    return B1_STAR_PALETTE[b1PathStarLevel(level)] || { level:0, label:"Not yet correct", className:"empty", color:"#536073" };
+  }
+  function buildStarThresholdOverlayData(starCounts, totalTargets) {
+    var total = Math.max(0, Number(totalTargets || 0));
+    var previous = 100;
+    var layers = [1,2,3,4,5].map(function(level){
+      var count = Math.max(0, Number(starCounts && starCounts[level] || 0));
+      var pct = total ? Math.round(count * 100 / total) : 0;
+      pct = Math.max(0, Math.min(100, pct));
+      pct = Math.min(previous, pct);
+      previous = pct;
+      var palette = b1StarPaletteEntry(level);
+      return {
+        level:level,
+        label:palette.label,
+        color:palette.color,
+        className:palette.className,
+        widthPct:pct,
+        count:count,
+        total:total
+      };
+    });
+    layers.forEach(function(layer, index){
+      var next = layers[index + 1];
+      layer.visiblePct = Math.max(0, layer.widthPct - (next ? next.widthPct : 0));
+    });
+    return layers;
+  }
   function b1PathStarBarHtml(category) {
     var total = Math.max(1, Number(category && category.coreTargetCount || 0));
-    var aria = [1,2,3,4,5].map(function(level){
-      var count = Number(category && category.starCounts && category.starCounts[level] || 0);
-      return B1_PATH_STAR_LABELS[level] + ": " + count + " of " + total;
+    var layers = buildStarThresholdOverlayData(category && category.starCounts, total);
+    var aria = layers.map(function(layer){
+      return layer.level + B1_PATH_STAR + " " + layer.label + " threshold: " + layer.count + " of " + total + " (" + layer.widthPct + "%)";
     }).join("; ");
-    return '<div class="b1PathStarBar" role="img" aria-label="' + escapeHtml(aria) + '">' + [1,2,3,4,5].map(function(level){
-      var pct = Math.round(Number(category && category.starCounts && category.starCounts[level] || 0) * 100 / total);
-      return '<span class="' + (pct > 0 ? "filled-" + level : "") + '" title="' + escapeHtml(B1_PATH_STAR_LABELS[level]) + ': ' + pct + '%"></span>';
+    return '<div class="b1PathStarBar" role="img" aria-label="' + escapeHtml(aria) + '">' + layers.map(function(layer){
+      return '<span class="layer-' + layer.level + '" style="width:' + layer.widthPct + '%" title="' + layer.level + B1_PATH_STAR + ' ' + escapeHtml(layer.label) + ': ' + layer.widthPct + '%"></span>';
     }).join("") + '</div>';
   }
   function b1PathTypeSummary(category) {
@@ -16649,7 +16714,7 @@ body.homeMode .homeRefCardSmall {
     var out = [];
     for (var i = 1; i <= 5; i += 1) {
       var earned = i <= level;
-      var tier = i === 1 ? "bronze" : (i === 2 ? "brass" : (i === 3 ? "silver" : (i === 4 ? "electrum" : "gold")));
+      var tier = b1StarPaletteEntry(i).className;
       var classes = ["b1Star", tier, "level" + i, earned ? "earned" : "unearned"];
       if (earned && i === level) classes.push("current");
       out.push('<span class="' + classes.join(" ") + '" aria-hidden="true">' + (earned ? '&#9733;' : '&#9734;') + '</span>');
@@ -16824,10 +16889,11 @@ body.homeMode .homeRefCardSmall {
     if (!total) return 0;
     return Math.max(0, Math.min(100, Math.round(Number(category && category.starCounts && category.starCounts[level] || 0) * 100 / total)));
   }
-  function homePathStackedBarHtml(category) {
-    var colours = ["#c8871d", "#9d8f81", "#8798ac", "#8b735d", "#b4751d"];
-    return '<span class="homePathStackedBar" aria-hidden="true">' + [1,2,3,4,5].map(function(level, index){
-      return '<span style="--segment:' + colours[index] + '; width:' + homePathPercent(category, level) + '%"></span>';
+  function homePathThresholdBarHtml(category) {
+    var total = Math.max(1, Number(category && category.coreTargetCount || 0));
+    var layers = buildStarThresholdOverlayData(category && category.starCounts, total);
+    return '<span class="homePathThresholdBar" aria-hidden="true">' + layers.map(function(layer){
+      return '<span class="layer-' + layer.level + '" style="--threshold-colour:' + layer.color + '; width:' + layer.widthPct + '%"></span>';
     }).join("") + '</span>';
   }
   function homePathCategoryCardHtml(category) {
@@ -16846,7 +16912,7 @@ body.homeMode .homeRefCardSmall {
           [1,2,3,4,5].map(function(level){
             return '<span class="homePathStarMetric"><span>★</span>' + homePathPercent(category, level) + '%</span>';
           }).join("") +
-          homePathStackedBarHtml(category) +
+          homePathThresholdBarHtml(category) +
         '</span>' +
       '</span>' +
       '<span class="homePathChevron" aria-hidden="true">&gt;</span>' +
@@ -16900,7 +16966,9 @@ body.homeMode .homeRefCardSmall {
       '<details class="learningMapDisclosure"><summary>How stars work</summary>' +
         '<div class="learningMapDetail">' + escapeHtml(progress.disclaimerLong) + '</div>' +
         '<div class="b1PathDetailGrid">' + [0,1,2,3,4,5].map(function(level){
-          return '<div class="learningMapDetail">' + level + B1_PATH_STAR + ' - ' + escapeHtml(B1_PATH_STAR_LABELS[level]) + '</div>';
+          var palette = b1StarPaletteEntry(level);
+          var label = level ? palette.label + " - " + B1_PATH_STAR_LABELS[level] : B1_PATH_STAR_LABELS[level];
+          return '<div class="learningMapDetail">' + level + B1_PATH_STAR + ' - ' + escapeHtml(label) + '</div>';
         }).join("") + '</div>' +
         '<div class="learningMapLimitation">Practice variants are grouped so repeats do not inflate progress.</div>' +
       '</details>' +
@@ -22741,10 +22809,10 @@ body.homeMode .homeRefCardSmall {
     step = Math.max(0, Math.min(5, Number(step || 0)));
     var colors = ["grey", "grey", "grey", "grey", "grey"];
     if (step >= 1) colors[0] = "bronze level1";
-    if (step >= 2) colors[1] = "brass level2";
-    if (step >= 3) colors[2] = "silver level3";
-    if (step >= 4) colors[3] = "electrum level4";
-    if (step >= 5) colors[4] = "gold level5";
+    if (step >= 2) colors[1] = "silver level2";
+    if (step >= 3) colors[2] = "gold level3";
+    if (step >= 4) colors[3] = "sky level4";
+    if (step >= 5) colors[4] = "cyan level5";
     return '<div class="b1Stars" role="img" aria-label="Leitner rating ' + step + ' of 5">' +
       colors.map(function(color, index){
         var earned = index < step;
@@ -24862,82 +24930,238 @@ body.homeMode .homeRefCardSmall {
     if (el("learnerReportStatus")) el("learnerReportStatus").textContent = "Learning summary download created. The JSON export/import format is unchanged.";
     setTimeout(function(){ URL.revokeObjectURL(url); },250);
   }
-  function exportProgress(){
-    var timing = ozmosisPerfStart("export");
+  function showSaveWorkflowStatus(message, tone) {
+    var status = el("saveWorkflowStatus");
+    if (status) {
+      status.textContent = String(message || "");
+      status.className = "devStatus" + (tone ? " " + tone : "");
+    }
+    showAppStatus(message, tone);
+  }
+  function saveWorkflowFailure(reason) {
+    var text = "Failed due to " + String(reason || "browser storage error").replace(/\.+$/,"") + ".";
+    showSaveWorkflowStatus(text, "bad");
+    return { ok:false, reason:reason || "browser storage error", message:text };
+  }
+  function saveWorkflowConfirmed(detail) {
+    var text = detail ? "Confirmed - " + detail + "." : "Confirmed";
+    showSaveWorkflowStatus(text, "good");
+    return { ok:true, message:text };
+  }
+  function buildOzmosisSavePayload() {
     savePersistent();
     var b1Store=safeGetB1Progress();
     var evidenceStore=safeGetB1Evidence();
-    var progressSummary=getB1ProgressSummary({ allowRebuild:true, reason:"export" });
-    var payload={app:"Ozmosis",appVersion:OZMOSIS_APP_VERSION,version:OZMOSIS_EXPORT_VERSION,taskDepthSchemaVersion:B1_TASK_DEPTH_SCHEMA_VERSION,supportLevelSchemaVersion:B1_SUPPORT_LEVEL_SCHEMA_VERSION,b1PathStarSchemaVersion:"v1",progressSummarySchemaVersion:B1_PROGRESS_SUMMARY_SCHEMA_VERSION,exportedAt:new Date().toISOString(),sessionLog:sessionLog.slice(-80),data:safeGetObject(),leitner:safeGetLeitner(),b1:b1Store,evidence:evidenceStore,b1ProgressSummary:progressSummary,b1PathUnlocks:safeGetB1PathUnlockOverrides(),b1ReviewEditQueue:safeGetB1ReviewEditQueue()};
-    var blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"});
-    var url=URL.createObjectURL(blob);
-    var a=document.createElement("a");
-    a.href=url;
-    a.download="ozmosis-progress.json";
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    showAppStatus("Export created: " + b1ProgressCount(b1Store) + " B1 progress items and " + b1EvidenceCount(evidenceStore) + " evidence records.", "good");
-    ozmosisPerfEnd(timing, { evidence:b1EvidenceCount(evidenceStore) });
-    setTimeout(function(){ URL.revokeObjectURL(url); },250);
+    var progressSummary=getB1ProgressSummary({ allowRebuild:true, reason:"export_save" });
+    return {app:"Ozmosis",appVersion:OZMOSIS_APP_VERSION,version:OZMOSIS_EXPORT_VERSION,taskDepthSchemaVersion:B1_TASK_DEPTH_SCHEMA_VERSION,supportLevelSchemaVersion:B1_SUPPORT_LEVEL_SCHEMA_VERSION,b1PathStarSchemaVersion:"v1",progressSummarySchemaVersion:B1_PROGRESS_SUMMARY_SCHEMA_VERSION,exportedAt:new Date().toISOString(),sessionLog:sessionLog.slice(-80),data:safeGetObject(),leitner:safeGetLeitner(),b1:b1Store,evidence:evidenceStore,b1ProgressSummary:progressSummary,b1PathUnlocks:safeGetB1PathUnlockOverrides(),b1ReviewEditQueue:safeGetB1ReviewEditQueue()};
+  }
+  function ozmosisSaveFilename() {
+    var stamp = new Date().toISOString().slice(0,16).replace(/[-:T]/g,"");
+    return "ozmosis-save-v0_80_14_16-" + stamp + ".json";
+  }
+  function isPlainSaveObject(value) {
+    return !!value && typeof value === "object" && !Array.isArray(value);
+  }
+  function validateB1ProgressCandidate(value) {
+    if (!isPlainSaveObject(value)) return "corrupted sprint progress";
+    if (value.items !== undefined && !isPlainSaveObject(value.items)) return "corrupted sprint progress";
+    if (value.meta !== undefined && !isPlainSaveObject(value.meta)) return "corrupted sprint progress";
+    if (value.meta && value.meta.recentRoundStarts !== undefined && !isPlainSaveObject(value.meta.recentRoundStarts)) return "corrupted sprint progress";
+    if (value.items) {
+      var ids = Object.keys(value.items);
+      for (var i=0;i<ids.length;i+=1) {
+        if (!value.items[ids[i]] || typeof value.items[ids[i]] !== "object" || Array.isArray(value.items[ids[i]])) return "corrupted sprint progress";
+      }
+    }
+    return "";
+  }
+  function validateB1EvidenceCandidate(value) {
+    var records;
+    if (Array.isArray(value)) records = value;
+    else if (isPlainSaveObject(value) && Array.isArray(value.records)) records = value.records;
+    else return "corrupted progress evidence";
+    for (var i=0;i<records.length;i+=1) {
+      var record = records[i];
+      if (!record || typeof record !== "object" || Array.isArray(record) || !String(record.itemId || "").trim()) return "corrupted progress evidence";
+    }
+    return "";
+  }
+  function validateB1UnlockCandidate(value) {
+    if (!isPlainSaveObject(value)) return "corrupted unlock override data";
+    if (value.categories !== undefined && !isPlainSaveObject(value.categories)) return "corrupted unlock override data";
+    if (value.categories) {
+      var ids = Object.keys(value.categories);
+      for (var i=0;i<ids.length;i+=1) {
+        if (!isPlainSaveObject(value.categories[ids[i]])) return "corrupted unlock override data";
+      }
+    }
+    return "";
+  }
+  function validateB1ReviewQueueCandidate(value) {
+    var rows;
+    if (Array.isArray(value)) rows = value;
+    else if (isPlainSaveObject(value) && (value.items === undefined || Array.isArray(value.items))) rows = value.items || [];
+    else return "corrupted review queue data";
+    for (var i=0;i<rows.length;i+=1) {
+      if (!rows[i] || typeof rows[i] !== "object" || Array.isArray(rows[i])) return "corrupted review queue data";
+    }
+    return "";
+  }
+  function validateOzmosisSavePayload(payload) {
+    if (!isPlainSaveObject(payload)) return { ok:false, reason:"missing Ozmosis save data" };
+    var hasSaveData = payload.data !== undefined || payload.b1 !== undefined || payload.evidence !== undefined || payload.leitner !== undefined;
+    var hasCoreSaveField = payload.b1 !== undefined || payload.evidence !== undefined || payload.leitner !== undefined;
+    var hasOzmosisMetadata = payload.app === "Ozmosis" || typeof payload.appVersion === "string" || typeof payload.version === "string";
+    if (payload.app !== undefined && payload.app !== "Ozmosis") return { ok:false, reason:"missing Ozmosis save data" };
+    if (!hasOzmosisMetadata && !hasCoreSaveField) return { ok:false, reason:"missing Ozmosis save data" };
+    if (!hasSaveData) return { ok:false, reason:"missing required progress data" };
+    if (payload.version !== undefined && typeof payload.version !== "string") return { ok:false, reason:"incompatible save version" };
+    if (payload.appVersion !== undefined && typeof payload.appVersion !== "string") return { ok:false, reason:"incompatible save version" };
+    if (payload.data !== undefined && !isPlainSaveObject(payload.data)) return { ok:false, reason:"missing required progress data" };
+    if (payload.leitner !== undefined && !isPlainSaveObject(payload.leitner)) return { ok:false, reason:"missing required progress data" };
+    if (payload.b1 !== undefined) {
+      var b1Error = validateB1ProgressCandidate(payload.b1);
+      if (b1Error) return { ok:false, reason:b1Error };
+    }
+    if (payload.evidence !== undefined) {
+      var evidenceError = validateB1EvidenceCandidate(payload.evidence);
+      if (evidenceError) return { ok:false, reason:evidenceError };
+    }
+    if (payload.b1PathUnlocks !== undefined) {
+      var unlockError = validateB1UnlockCandidate(payload.b1PathUnlocks);
+      if (unlockError) return { ok:false, reason:unlockError };
+    }
+    if (payload.b1ReviewEditQueue !== undefined) {
+      var queueError = validateB1ReviewQueueCandidate(payload.b1ReviewEditQueue);
+      if (queueError) return { ok:false, reason:queueError };
+    }
+    if (payload.b1ProgressSummary !== undefined && payload.b1ProgressSummary !== null && !isPlainSaveObject(payload.b1ProgressSummary)) return { ok:false, reason:"missing required progress data" };
+    return { ok:true, payload:payload };
+  }
+  function ozmosisImportStorageKeys() {
+    return [STORAGE_KEY, LEITNER_STORAGE_KEY, B1_STORAGE_KEY, B1_EVIDENCE_STORAGE_KEY, B1_PROGRESS_SUMMARY_STORAGE_KEY, B1_PATH_UNLOCK_STORAGE_KEY, B1_REVIEW_EDIT_QUEUE_STORAGE_KEY];
+  }
+  function captureOzmosisStorageSnapshot() {
+    var snapshot = {};
+    ozmosisImportStorageKeys().forEach(function(key){
+      try { snapshot[key] = window.localStorage.getItem(key); }
+      catch (e) { snapshot[key] = null; }
+    });
+    return snapshot;
+  }
+  function restoreOzmosisStorageSnapshot(snapshot) {
+    ozmosisImportStorageKeys().forEach(function(key){
+      try {
+        if (snapshot && snapshot[key] !== null && snapshot[key] !== undefined) window.localStorage.setItem(key, snapshot[key]);
+        else window.localStorage.removeItem(key);
+      } catch (e) {}
+    });
+    B1_PROGRESS_SUMMARY_MEMORY = null;
+    B1_REVIEW_PRACTICE_PREVIEW_CACHE = null;
+  }
+  function normaliseLeitnerSaveCandidate(value) {
+    var out = isPlainSaveObject(value) ? value : {};
+    if (!isPlainSaveObject(out.cards)) out.cards = {};
+    return out;
+  }
+  function normaliseB1ProgressSaveCandidate(value) {
+    var out = isPlainSaveObject(value) ? value : {};
+    if (!isPlainSaveObject(out.items)) out.items = {};
+    if (!isPlainSaveObject(out.meta)) out.meta = {};
+    if (!isPlainSaveObject(out.meta.recentRoundStarts)) out.meta.recentRoundStarts = {};
+    return out;
+  }
+  function assertOzmosisStorageAvailable() {
+    var key = "__ozmosis_save_probe__";
+    window.localStorage.setItem(key, "1");
+    window.localStorage.removeItem(key);
+  }
+  function setOzmosisStorageJson(key, value) {
+    window.localStorage.setItem(key, JSON.stringify(value));
+  }
+  function applyValidatedOzmosisSave(payload) {
+    var validation = validateOzmosisSavePayload(payload);
+    if (!validation.ok) return validation;
+    var snapshot = captureOzmosisStorageSnapshot();
+    try {
+      assertOzmosisStorageAvailable();
+      var parsed = validation.payload;
+      var data = parsed.data || parsed;
+      setOzmosisStorageJson(STORAGE_KEY, data);
+      if (parsed.leitner !== undefined) setOzmosisStorageJson(LEITNER_STORAGE_KEY, normaliseLeitnerSaveCandidate(parsed.leitner));
+      if (parsed.b1 !== undefined) setOzmosisStorageJson(B1_STORAGE_KEY, normaliseB1ProgressSaveCandidate(parsed.b1));
+      if (parsed.evidence !== undefined) setOzmosisStorageJson(B1_EVIDENCE_STORAGE_KEY, normaliseB1EvidenceStore(parsed.evidence));
+      if (parsed.b1PathUnlocks !== undefined) setOzmosisStorageJson(B1_PATH_UNLOCK_STORAGE_KEY, normaliseB1PathUnlockOverrides(parsed.b1PathUnlocks));
+      if (parsed.b1ReviewEditQueue !== undefined) setOzmosisStorageJson(B1_REVIEW_EDIT_QUEUE_STORAGE_KEY, normaliseB1ReviewEditQueue(parsed.b1ReviewEditQueue));
+      safeClearB1ProgressSummary();
+      rebuildB1ProgressSummaryFromEvidence({ reason:"import_save" });
+      B1_REVIEW_PRACTICE_PREVIEW_CACHE = null;
+      loadPersistent();
+      setMenu(false);
+      showHomeScreen();
+      return { ok:true };
+    } catch (e) {
+      restoreOzmosisStorageSnapshot(snapshot);
+      if (window.console && console.warn) console.warn("[Ozmosis] Save import apply failed", e);
+      return { ok:false, reason:"browser storage error" };
+    }
+  }
+  function exportProgress(){
+    var timing = ozmosisPerfStart("export_save");
+    var url = "";
+    try {
+      var payload=buildOzmosisSavePayload();
+      var blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"});
+      url=URL.createObjectURL(blob);
+      var a=document.createElement("a");
+      a.href=url;
+      a.download=ozmosisSaveFilename();
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      saveWorkflowConfirmed("save exported");
+      ozmosisPerfEnd(timing, { evidence:b1EvidenceCount(payload.evidence), filename:a.download });
+      setTimeout(function(){ URL.revokeObjectURL(url); },250);
+    } catch (e) {
+      if (url) { try { URL.revokeObjectURL(url); } catch (revokeError) {} }
+      if (window.console && console.warn) console.warn("[Ozmosis] Save export failed", e);
+      saveWorkflowFailure("browser storage error");
+      ozmosisPerfEnd(timing, { failed:true });
+    }
   }
   function importProgress(file){
-    if (!file) return;
-    var reader=new FileReader();
-    reader.onload=function(){
-      var timing = ozmosisPerfStart("import");
-      try {
-        var parsed=JSON.parse(String(reader.result || "{}")), data=parsed.data || parsed;
-        safeSetObject(data);
-        if (parsed.leitner && typeof parsed.leitner === "object") safeSetLeitner(parsed.leitner);
-        if (parsed.b1 && typeof parsed.b1 === "object") safeSetB1Progress(parsed.b1);
-        if (parsed.evidence && typeof parsed.evidence === "object") safeSetB1Evidence(parsed.evidence);
-        if (parsed.b1PathUnlocks && typeof parsed.b1PathUnlocks === "object") safeSetB1PathUnlockOverrides(parsed.b1PathUnlocks);
-        if (parsed.b1ReviewEditQueue && typeof parsed.b1ReviewEditQueue === "object") safeSetB1ReviewEditQueue(parsed.b1ReviewEditQueue);
-        safeClearB1ProgressSummary();
-        rebuildB1ProgressSummaryFromEvidence({ reason:"import" });
-        B1_REVIEW_PRACTICE_PREVIEW_CACHE = null;
-        loadPersistent();
-        newRound();
-      } catch(e){
-        el("feedback").textContent="Import fehlgeschlagen: ungultige JSON-Datei.";
-        el("feedback").className="feedback missed";
-      } finally {
-        ozmosisPerfEnd(timing);
-      }
-    };
-    reader.readAsText(file);
+    return importProgressWithFeedback(file);
   }
   function importProgressWithFeedback(file){
-    if (!file) { showAppStatus("No import file selected.", "warn"); return; }
+    if (!file) { saveWorkflowFailure("no file selected"); return; }
     var reader=new FileReader();
+    reader.onerror=function(){ saveWorkflowFailure("file read error"); };
     reader.onload=function(){
-      var timing = ozmosisPerfStart("import");
+      var timing = ozmosisPerfStart("import_save");
       try {
-        var parsed=JSON.parse(String(reader.result || "{}")), data=parsed.data || parsed;
-        safeSetObject(data);
-        if (parsed.leitner && typeof parsed.leitner === "object") safeSetLeitner(parsed.leitner);
-        if (parsed.b1 && typeof parsed.b1 === "object") safeSetB1Progress(parsed.b1);
-        if (parsed.evidence && typeof parsed.evidence === "object") safeSetB1Evidence(parsed.evidence);
-        if (parsed.b1PathUnlocks && typeof parsed.b1PathUnlocks === "object") safeSetB1PathUnlockOverrides(parsed.b1PathUnlocks);
-        if (parsed.b1ReviewEditQueue && typeof parsed.b1ReviewEditQueue === "object") safeSetB1ReviewEditQueue(parsed.b1ReviewEditQueue);
-        safeClearB1ProgressSummary();
-        rebuildB1ProgressSummaryFromEvidence({ reason:"import" });
-        B1_REVIEW_PRACTICE_PREVIEW_CACHE = null;
-        loadPersistent();
-        setMenu(false);
-        showHomeScreen();
-        showAppStatus("Import successful: " + b1ProgressCount() + " B1 progress items and " + b1EvidenceCount() + " evidence records available.", "good");
+        var parsed=JSON.parse(String(reader.result || ""));
+        var result=applyValidatedOzmosisSave(parsed);
+        if (!result.ok) {
+          saveWorkflowFailure(result.reason);
+          return;
+        }
+        saveWorkflowConfirmed("save imported");
       } catch(e){
-        showAppStatus("Import failed: invalid JSON file.", "bad");
-        if (el("feedback")) { el("feedback").textContent="Import failed: invalid JSON file."; el("feedback").className="feedback missed"; }
+        if (e instanceof SyntaxError) saveWorkflowFailure("invalid JSON");
+        else {
+          if (window.console && console.warn) console.warn("[Ozmosis] Save import failed", e);
+          saveWorkflowFailure("browser storage error");
+        }
       } finally {
-        ozmosisPerfEnd(timing);
+        ozmosisPerfEnd(timing, { evidence:b1EvidenceCount(), progress:b1ProgressCount() });
       }
     };
-    reader.readAsText(file);
+    try {
+      reader.readAsText(file);
+    } catch (e) {
+      saveWorkflowFailure("file read error");
+    }
   }
-  importProgress = importProgressWithFeedback;
   document.addEventListener("click", function(event){
     var target = event.target && event.target.closest ? event.target.closest("#diagnosticIntroStartBtn, #diagnosticIntroCancelBtn, #diagnosticIntroOverlay, #practiceExitControl, #practiceExitStayBtn, #practiceExitConfirmBtn, #practiceExitOverlay, #testerNotesCopyReportBtn, #testerNotesCopyDebugBtn, #testerNotesCloseBtn, #testerNotesOverlay, #reviewEditOverlay, #reviewEditCopyBtn, #reviewEditClearBtn, #reviewEditCloseBtn, [data-review-test-decision]") : null;
     if (!target) return;
@@ -25937,7 +26161,7 @@ body.homeMode .homeRefCardSmall {
       diff:repairDiffSummary(item, rawAnswer, comparison)
     };
   }
-window.ozmosisTesterReportSummary=testerReportSummary; window.ozmosisLearnerReadableProgressReport=buildLearnerReadableProgressReport; window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }; window.kasusNoArticle=function(){checkAnswer("none");}; window.kasusProceed=function(){proceed();}; window.kasusHint=function(){showHint();}; window.kasusNewRound=function(){showStartScreen();}; window.kasusStartRound=function(){startConfiguredRound();}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusSessionLog=function(){return sessionLog.slice();}; window.kasusCurrent=function(){return current ? cloneQuestion(current) : cloneB1Item(b1Runtime.current || {});}; window.kasusLeitnerDebug=function(){ return { storageKey:LEITNER_STORAGE_KEY, runtime:leitnerRuntime, progress:safeGetLeitner() }; }; window.ozmosisChoiceShuffleDebug=function(item, count){ return b1ChoiceShuffleDebugSummary(item, count); }; window.ozmosisB1Debug=function(){ return { storageKey:B1_STORAGE_KEY, evidenceStorageKey:B1_EVIDENCE_STORAGE_KEY, progressStateLabelVersion:PROGRESS_STATE_LABEL_VERSION, taskDepthSchemaVersion:B1_TASK_DEPTH_SCHEMA_VERSION, taskDepthDefinitions:b1TaskDepthDefinitions(), supportLevelSchemaVersion:B1_SUPPORT_LEVEL_SCHEMA_VERSION, supportLevelDefinitions:b1SupportLevelDefinitions(), itemCount:B1_ITEMS.length, connectorCount:B1_CONNECTOR_ITEMS.length, redemittelCount:B1_REDEMITTEL_ITEMS.length, wortschatzCount:B1_WORTSCHATZ_ITEMS.length, b1M02Count:B1_M02_ITEMS.length, b1M03Count:B1_M03_ITEMS.length, b1M04Count:B1_M04_ITEMS.length, b1M05Count:B1_M05_ITEMS.length, registry:b1RegistrySummary(), runtime:b1Runtime, progress:safeGetB1Progress(), evidence:b1EvidenceSummary(), supportLevelSummary:b1SupportLevelSummaryForRecords(safeGetB1Evidence().records), learningMap:b1LearningMapScaffold(), skillMatrix:b1SkillMatrixData(), skillMatrixSummary:debugSkillMatrixSummary(), recommendation:b1NextRecommendedPractice(), recommendationSummary:debugRecommendationSummary(), learnerReadableProgressReport:buildLearnerReadableProgressReport(), errorPatterns:b1ErrorPatternSignals(), errorPatternSummary:debugErrorPatternSummary(), errorTypeSummaries:b1ErrorTypeSummaries(), errorTypeSummary:debugErrorTypeSummary(), connectorDiagnostics:b1ConnectorDiagnosticCards(), connectorDiagnosticSummary:debugConnectorDiagnosticSummary(), diagnosticRepairQa:b1DiagnosticRepairQaSummary(), diagnosticRepairStability:b1DiagnosticRepairStabilitySummary(), durabilityReadiness:buildB1DurabilityReadinessSnapshot(), durabilityQa:buildB1DurabilityQaAudit(), reviewSystemStability:buildB1ReviewSystemStabilityAudit(), reviewEligibility:buildB1ReviewEligibility(), reviewCandidatePreview:buildB1ReviewCandidatePreview(), metadataReviewCoverage:buildB1MetadataReviewCoverageAudit(), b1CoverageAudit:buildB1CoverageAudit(), repairCandidates:b1WeaknessRepairCandidates(), repairCandidateSummary:debugWeaknessRepairSummary(), repairQueues:b1BuildWeaknessRepairQueue(), repairQueueSummary:b1RepairQueueDebugSummary(), diagnosticPlan:b1Runtime.diagnosticPlan, qaStageItemById:b1QaStageItemById, qaRepairPreview:b1QaRepairPreview, choiceShuffle:b1ChoiceShuffleDebugSummary(), debugSnapshot:buildDebugSnapshot }; }; window.ozmosisStartB1Round=function(mode){ startB1Round(mode || "mixed"); }; window.ozmosisStartDiagnostic=function(){ startB1DiagnosticSprint(); }; window.ozmosisStartConnector=function(family){ startConnectorSprint(family || "all"); }; window.ozmosisStartRedemittel=function(filter){ startRedemittelRound(filter || "mixed"); }; window.ozmosisStartWortschatz=function(filter){ startWortschatzRound(filter || "mixed"); }; window.ozmosisStartB1M01=function(filter){ startB1M01Round(filter || "mixed"); }; window.ozmosisStartB1M02=function(filter){ startB1M02Round(filter || "mixed"); }; window.ozmosisStartB1M03=function(filter){ startB1M03Round(filter || "mixed"); }; window.ozmosisStartB1M04=function(filter){ startB1M04Round(filter || "mixed"); }; window.ozmosisStartB1M05=function(filter){ startB1M05Round(filter || "mixed"); }; window.ozmosisStartTargetedRepair=function(queueId){ startTargetedRepairPractice(queueId || ""); }; window.ozmosisStartReviewPractice=function(){ startB1ReviewPractice(); }; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusResetBest=function(){ highScore=0; bestStreakAll=0; savePersistent(); if (state === "results") showResults(); else renderHud(); }; window.kasusResetProfile=function(){ resetLearnerModel(); }; window.kasusToggleMenu=function(){ var panel=el("settingsPanel"); panel.classList.toggle("open"); document.body.classList.toggle("menuOpen", panel.classList.contains("open")); };
+window.ozmosisTesterReportSummary=testerReportSummary; window.ozmosisLearnerReadableProgressReport=buildLearnerReadableProgressReport; window.ozmosisBuildSavePayload=buildOzmosisSavePayload; window.ozmosisValidateSavePayload=validateOzmosisSavePayload; window.ozmosisApplyValidatedSave=applyValidatedOzmosisSave; window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }; window.kasusNoArticle=function(){checkAnswer("none");}; window.kasusProceed=function(){proceed();}; window.kasusHint=function(){showHint();}; window.kasusNewRound=function(){showStartScreen();}; window.kasusStartRound=function(){startConfiguredRound();}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusSessionLog=function(){return sessionLog.slice();}; window.kasusCurrent=function(){return current ? cloneQuestion(current) : cloneB1Item(b1Runtime.current || {});}; window.kasusLeitnerDebug=function(){ return { storageKey:LEITNER_STORAGE_KEY, runtime:leitnerRuntime, progress:safeGetLeitner() }; }; window.ozmosisChoiceShuffleDebug=function(item, count){ return b1ChoiceShuffleDebugSummary(item, count); }; window.ozmosisB1Debug=function(){ return { storageKey:B1_STORAGE_KEY, evidenceStorageKey:B1_EVIDENCE_STORAGE_KEY, progressStateLabelVersion:PROGRESS_STATE_LABEL_VERSION, taskDepthSchemaVersion:B1_TASK_DEPTH_SCHEMA_VERSION, taskDepthDefinitions:b1TaskDepthDefinitions(), supportLevelSchemaVersion:B1_SUPPORT_LEVEL_SCHEMA_VERSION, supportLevelDefinitions:b1SupportLevelDefinitions(), itemCount:B1_ITEMS.length, connectorCount:B1_CONNECTOR_ITEMS.length, redemittelCount:B1_REDEMITTEL_ITEMS.length, wortschatzCount:B1_WORTSCHATZ_ITEMS.length, b1M02Count:B1_M02_ITEMS.length, b1M03Count:B1_M03_ITEMS.length, b1M04Count:B1_M04_ITEMS.length, b1M05Count:B1_M05_ITEMS.length, registry:b1RegistrySummary(), runtime:b1Runtime, progress:safeGetB1Progress(), evidence:b1EvidenceSummary(), supportLevelSummary:b1SupportLevelSummaryForRecords(safeGetB1Evidence().records), learningMap:b1LearningMapScaffold(), skillMatrix:b1SkillMatrixData(), skillMatrixSummary:debugSkillMatrixSummary(), recommendation:b1NextRecommendedPractice(), recommendationSummary:debugRecommendationSummary(), learnerReadableProgressReport:buildLearnerReadableProgressReport(), errorPatterns:b1ErrorPatternSignals(), errorPatternSummary:debugErrorPatternSummary(), errorTypeSummaries:b1ErrorTypeSummaries(), errorTypeSummary:debugErrorTypeSummary(), connectorDiagnostics:b1ConnectorDiagnosticCards(), connectorDiagnosticSummary:debugConnectorDiagnosticSummary(), diagnosticRepairQa:b1DiagnosticRepairQaSummary(), diagnosticRepairStability:b1DiagnosticRepairStabilitySummary(), durabilityReadiness:buildB1DurabilityReadinessSnapshot(), durabilityQa:buildB1DurabilityQaAudit(), reviewSystemStability:buildB1ReviewSystemStabilityAudit(), reviewEligibility:buildB1ReviewEligibility(), reviewCandidatePreview:buildB1ReviewCandidatePreview(), metadataReviewCoverage:buildB1MetadataReviewCoverageAudit(), b1CoverageAudit:buildB1CoverageAudit(), repairCandidates:b1WeaknessRepairCandidates(), repairCandidateSummary:debugWeaknessRepairSummary(), repairQueues:b1BuildWeaknessRepairQueue(), repairQueueSummary:b1RepairQueueDebugSummary(), diagnosticPlan:b1Runtime.diagnosticPlan, qaStageItemById:b1QaStageItemById, qaRepairPreview:b1QaRepairPreview, choiceShuffle:b1ChoiceShuffleDebugSummary(), debugSnapshot:buildDebugSnapshot }; }; window.ozmosisStartB1Round=function(mode){ startB1Round(mode || "mixed"); }; window.ozmosisStartDiagnostic=function(){ startB1DiagnosticSprint(); }; window.ozmosisStartConnector=function(family){ startConnectorSprint(family || "all"); }; window.ozmosisStartRedemittel=function(filter){ startRedemittelRound(filter || "mixed"); }; window.ozmosisStartWortschatz=function(filter){ startWortschatzRound(filter || "mixed"); }; window.ozmosisStartB1M01=function(filter){ startB1M01Round(filter || "mixed"); }; window.ozmosisStartB1M02=function(filter){ startB1M02Round(filter || "mixed"); }; window.ozmosisStartB1M03=function(filter){ startB1M03Round(filter || "mixed"); }; window.ozmosisStartB1M04=function(filter){ startB1M04Round(filter || "mixed"); }; window.ozmosisStartB1M05=function(filter){ startB1M05Round(filter || "mixed"); }; window.ozmosisStartTargetedRepair=function(queueId){ startTargetedRepairPractice(queueId || ""); }; window.ozmosisStartReviewPractice=function(){ startB1ReviewPractice(); }; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusResetBest=function(){ highScore=0; bestStreakAll=0; savePersistent(); if (state === "results") showResults(); else renderHud(); }; window.kasusResetProfile=function(){ resetLearnerModel(); }; window.kasusToggleMenu=function(){ var panel=el("settingsPanel"); panel.classList.toggle("open"); document.body.classList.toggle("menuOpen", panel.classList.contains("open")); };
   var ozmosisB1DebugBase = window.ozmosisB1Debug;
   window.ozmosisB1Debug = function(){
     var summary = ozmosisB1DebugBase ? ozmosisB1DebugBase() : {};
@@ -26307,7 +26531,7 @@ window.ozmosisTesterReportSummary=testerReportSummary; window.ozmosisLearnerRead
     bind("genitiveHelpBtn","click",openGenitiveHelp);
     bind("startGenitiveHelpBtn","click",openGenitiveHelp);
     bind("genitiveHelpCloseBtn","click",closeGenitiveHelp);
-    if (el("genitiveHelpOverlay")) el("genitiveHelpOverlay").addEventListener("click",function(event){ if (event.target === el("genitiveHelpOverlay")) closeGenitiveHelp(); },false); bind("englishSupport","change",function(){ savePersistent(); if (b1Runtime.active) renderB1Translation(false); else if (current) renderQuestion(); }); bind("roundTarget","change",function(){ if (shouldApplyLiveSettings()) newRound(); else savePersistent(); }); bind("adaptiveMode","change",function(){ savePersistent(); if (shouldApplyLiveSettings()) newRound(); }); bind("menuHomeBtn","click",function(){ setMenu(false); showHomeScreen(); }); bind("menuSprintBtn","click",function(){ setMenu(false); startB1Round("mixed"); }); bind("menuRecommendedBtn","click",function(){ setMenu(false); openB1RecommendationRoute(homeRecommendedRouteKey || "today"); }); bind("menuGrammarBtn","click",function(){ setMenu(false); showGrammarHub(); }); bind("menuRedemittelBtn","click",function(){ setMenu(false); showRedemittelHub(); }); bind("menuCaseTrainerBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("menuReviewPracticeBtn","click",function(){ setMenu(false); startB1ReviewPractice(); }); bind("restartBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("resetBestBtn","click",function(){window.kasusResetBest();}); bind("resetProfileBtn","click",function(){window.kasusResetProfile();}); bind("exportBtn","click",exportProgress); bind("importBtn","click",function(){el("importFile").click();}); bind("copyLearnerReportBtn","click",copyLearnerReadableProgressReport); bind("downloadLearnerReportBtn","click",downloadLearnerReadableProgressReport); bind("importFile","change",function(event){ importProgress(event.target.files && event.target.files[0]); event.target.value=""; }); bind("devToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("devMenuBtn","click",function(event){ event.stopPropagation(); setMenu(!el("settingsPanel").classList.contains("open")); }); bind("devCloseBtn","click",function(){ setDevTools(false); }); bind("newGameCloseBtn","click",function(){ setDevTools(false); }); bind("leitnerCloseBtn","click",closeLeitnerPrototype); bind("openNewGameMockBtn","click",showNewGameMock); bind("openLeitnerPrototypeBtn","click",showLeitnerPrototype); bind("resetLeitnerPrototypeBtn","click",showLeitnerResetConfirm); bind("backToDevListBtn","click",showDevList); bind("leitnerResetCloseBtn","click",showDevList); bind("cancelLeitnerResetBtn","click",showDevList); bind("confirmLeitnerResetBtn","click",resetLeitnerPrototypeProgress); bind("leitnerRestartBtn","click",startLeitnerQueue); bind("leitnerCheckBtn","click",checkLeitnerAnswer); bind("leitnerNextBtn","click",nextLeitnerCard); bind("leitnerAnswerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (leitnerRuntime.answered) nextLeitnerCard(); else checkLeitnerAnswer(); }); bind("applyNewGameMockBtn","click",applyNewGameMock); bind("homeSprintBtn","click",function(){ startB1Round("mixed"); }); bind("homeDiagnosticBtn","click",startB1DiagnosticSprint); bind("homeLearningMapBtn","click",showLearningMapScreen); bind("learningMapBackBtn","click",showHomeScreen); bind("diagnosticExitBtn","click",exitB1Diagnostic); bind("homeGrammarBtn","click",showGrammarHub); bind("grammarBackBtn","click",showHomeScreen); bind("grammarSeedBtn","click",function(){ startB1Round("grammar_cloze"); }); bind("connectorAllBtn","click",function(){ startConnectorSprint("all"); }); bind("connectorReasonBtn","click",function(){ startConnectorSprint("reason"); }); bind("connectorContrastBtn","click",function(){ startConnectorSprint("contrast"); }); bind("connectorPurposeBtn","click",function(){ startConnectorSprint("purpose"); }); bind("connectorTimeBtn","click",function(){ startConnectorSprint("time"); }); bind("connectorRepairBtn","click",function(){ startConnectorSprint("repair"); }); bind("homeWortschatzBtn","click",function(){ startWortschatzRound("mixed"); }); bind("homeRedemittelBtn","click",function(){ startB1Round("redemittel_cloze"); }); bind("homeCaseTrainerBtn","click",showStartScreen); bind("caseTrainerBackBtn","click",showHomeScreen); bind("homeOptionsBtn","click",function(event){ event.stopPropagation(); setDevTools(false); setMenu(true); if (el("menuOptionsDetails")) el("menuOptionsDetails").open = true; setTimeout(function(){ var summary = el("menuOptionsDetails") && el("menuOptionsDetails").querySelector("summary"); if (summary) focusWithoutScroll(summary); }, 0); }); bind("homeDevToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("hubBackBtn","click",showHomeScreen); document.querySelectorAll(".homePlaceholderBtn").forEach(function(btn){ btn.addEventListener("click",function(){ showHubPlaceholder(btn.getAttribute("data-title") || btn.textContent.trim()); }); }); document.addEventListener("click",function(event){ var routeButton = event.target && event.target.closest ? event.target.closest(".b1PathRouteAction") : null; if (routeButton) { event.preventDefault(); openB1PathCategory(routeButton.getAttribute("data-category-id")); return; } }); bind("b1PathKeepPractisingBtn","click",function(){ var categoryId = b1PathPendingUnlockId; var progress = b1PathProgressData(); var categories = (progress.categories || []).filter(function(category){ return category.coreTargetCount > 0 && !category.preview; }); var category = b1PathCategoryById(progress, categoryId); var index = categories.findIndex(function(row){ return row.categoryId === categoryId; }); var practiceCategory = index > 0 ? categories[index - 1] : category; closeB1PathUnlockDialog(); openB1RecommendationRoute(practiceCategory && practiceCategory.routeKey || "today"); }); bind("b1PathUnlockAnywayBtn","click",function(){ var categoryId = b1PathPendingUnlockId; if (!categoryId) return; b1PathRecordUnlockOverride(categoryId); closeB1PathUnlockDialog(); openB1PathCategory(categoryId); }); if (el("b1PathUnlockOverlay")) el("b1PathUnlockOverlay").addEventListener("click",function(event){ if (event.target === el("b1PathUnlockOverlay")) closeB1PathUnlockDialog(); },false); var devOverlay=el("devOverlay"); if (devOverlay) devOverlay.addEventListener("click",function(event){ if (event.target === devOverlay && !devOverlay.classList.contains("leitnerFullscreen")) setDevTools(false); },false); document.addEventListener("keydown",function(event){ if ((event.key === "Escape" || event.key === "Esc") && el("b1PathUnlockOverlay") && !el("b1PathUnlockOverlay").hidden) { closeB1PathUnlockDialog(); return; } if ((event.key === "Escape" || event.key === "Esc") && el("genitiveHelpOverlay") && !el("genitiveHelpOverlay").hidden) { el("genitiveHelpOverlay").hidden = true; return; } if ((event.key === "Escape" || event.key === "Esc") && el("devOverlay") && !el("devOverlay").hidden) { setDevTools(false); return; } if ((event.key === "Escape" || event.key === "Esc") && b1Runtime.mode === "b1_diagnostic" && (state === "b1Checking" || state === "b1Next")) { exitB1Diagnostic(); return; } if ((event.key === "Escape" || event.key === "Esc") && (state === "placeholder" || state === "grammarHub" || state === "learningMap")) showHomeScreen(); }); bind("checkBtn","click",function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }); bind("noArticleBtn","click",function(){checkAnswer("none");}); bind("nextBtn","click",proceed); bind("hintBtn","click",showHint); bind("supportPlaceholder","click",showHint); bind("translationToggle","click",toggleB1Translation); bind("whyNoStarsBtn","click",explainExtraPracticeStars); bind("startRoundBtn","click",startConfiguredRound); document.querySelectorAll(".langBtn").forEach(function(btn){ btn.addEventListener("click",function(){ setSupportLanguage(btn.getAttribute("data-lang")); }); }); bind("answerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (state==="b1Checking") checkB1Answer(); else if (state==="checking") checkAnswer(); else proceed(); }); renderHud(); applyLanguage(); showHomeScreen(); }
+    if (el("genitiveHelpOverlay")) el("genitiveHelpOverlay").addEventListener("click",function(event){ if (event.target === el("genitiveHelpOverlay")) closeGenitiveHelp(); },false); bind("englishSupport","change",function(){ savePersistent(); if (b1Runtime.active) renderB1Translation(false); else if (current) renderQuestion(); }); bind("roundTarget","change",function(){ if (shouldApplyLiveSettings()) newRound(); else savePersistent(); }); bind("adaptiveMode","change",function(){ savePersistent(); if (shouldApplyLiveSettings()) newRound(); }); bind("menuHomeBtn","click",function(){ setMenu(false); showHomeScreen(); }); bind("menuSprintBtn","click",function(){ setMenu(false); startB1Round("mixed"); }); bind("menuRecommendedBtn","click",function(){ setMenu(false); openB1RecommendationRoute(homeRecommendedRouteKey || "today"); }); bind("menuGrammarBtn","click",function(){ setMenu(false); showGrammarHub(); }); bind("menuRedemittelBtn","click",function(){ setMenu(false); showRedemittelHub(); }); bind("menuCaseTrainerBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("menuReviewPracticeBtn","click",function(){ setMenu(false); startB1ReviewPractice(); }); bind("restartBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("resetBestBtn","click",function(){window.kasusResetBest();}); bind("resetProfileBtn","click",function(){window.kasusResetProfile();}); bind("exportBtn","click",exportProgress); bind("importBtn","click",function(){ var input=el("importFile"); if (!input) { saveWorkflowFailure("file read error"); return; } input.value=""; input.click(); }); bind("copyLearnerReportBtn","click",copyLearnerReadableProgressReport); bind("downloadLearnerReportBtn","click",downloadLearnerReadableProgressReport); bind("importFile","change",function(event){ importProgress(event.target.files && event.target.files[0]); event.target.value=""; }); bind("devToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("devMenuBtn","click",function(event){ event.stopPropagation(); setMenu(!el("settingsPanel").classList.contains("open")); }); bind("devCloseBtn","click",function(){ setDevTools(false); }); bind("newGameCloseBtn","click",function(){ setDevTools(false); }); bind("leitnerCloseBtn","click",closeLeitnerPrototype); bind("openNewGameMockBtn","click",showNewGameMock); bind("openLeitnerPrototypeBtn","click",showLeitnerPrototype); bind("resetLeitnerPrototypeBtn","click",showLeitnerResetConfirm); bind("backToDevListBtn","click",showDevList); bind("leitnerResetCloseBtn","click",showDevList); bind("cancelLeitnerResetBtn","click",showDevList); bind("confirmLeitnerResetBtn","click",resetLeitnerPrototypeProgress); bind("leitnerRestartBtn","click",startLeitnerQueue); bind("leitnerCheckBtn","click",checkLeitnerAnswer); bind("leitnerNextBtn","click",nextLeitnerCard); bind("leitnerAnswerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (leitnerRuntime.answered) nextLeitnerCard(); else checkLeitnerAnswer(); }); bind("applyNewGameMockBtn","click",applyNewGameMock); bind("homeSprintBtn","click",function(){ startB1Round("mixed"); }); bind("homeDiagnosticBtn","click",startB1DiagnosticSprint); bind("homeLearningMapBtn","click",showLearningMapScreen); bind("learningMapBackBtn","click",showHomeScreen); bind("diagnosticExitBtn","click",exitB1Diagnostic); bind("homeGrammarBtn","click",showGrammarHub); bind("grammarBackBtn","click",showHomeScreen); bind("grammarSeedBtn","click",function(){ startB1Round("grammar_cloze"); }); bind("connectorAllBtn","click",function(){ startConnectorSprint("all"); }); bind("connectorReasonBtn","click",function(){ startConnectorSprint("reason"); }); bind("connectorContrastBtn","click",function(){ startConnectorSprint("contrast"); }); bind("connectorPurposeBtn","click",function(){ startConnectorSprint("purpose"); }); bind("connectorTimeBtn","click",function(){ startConnectorSprint("time"); }); bind("connectorRepairBtn","click",function(){ startConnectorSprint("repair"); }); bind("homeWortschatzBtn","click",function(){ startWortschatzRound("mixed"); }); bind("homeRedemittelBtn","click",function(){ startB1Round("redemittel_cloze"); }); bind("homeCaseTrainerBtn","click",showStartScreen); bind("caseTrainerBackBtn","click",showHomeScreen); bind("homeOptionsBtn","click",function(event){ event.stopPropagation(); setDevTools(false); setMenu(true); if (el("menuOptionsDetails")) el("menuOptionsDetails").open = true; setTimeout(function(){ var summary = el("menuOptionsDetails") && el("menuOptionsDetails").querySelector("summary"); if (summary) focusWithoutScroll(summary); }, 0); }); bind("homeDevToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("hubBackBtn","click",showHomeScreen); document.querySelectorAll(".homePlaceholderBtn").forEach(function(btn){ btn.addEventListener("click",function(){ showHubPlaceholder(btn.getAttribute("data-title") || btn.textContent.trim()); }); }); document.addEventListener("click",function(event){ var routeButton = event.target && event.target.closest ? event.target.closest(".b1PathRouteAction") : null; if (routeButton) { event.preventDefault(); openB1PathCategory(routeButton.getAttribute("data-category-id")); return; } }); bind("b1PathKeepPractisingBtn","click",function(){ var categoryId = b1PathPendingUnlockId; var progress = b1PathProgressData(); var categories = (progress.categories || []).filter(function(category){ return category.coreTargetCount > 0 && !category.preview; }); var category = b1PathCategoryById(progress, categoryId); var index = categories.findIndex(function(row){ return row.categoryId === categoryId; }); var practiceCategory = index > 0 ? categories[index - 1] : category; closeB1PathUnlockDialog(); openB1RecommendationRoute(practiceCategory && practiceCategory.routeKey || "today"); }); bind("b1PathUnlockAnywayBtn","click",function(){ var categoryId = b1PathPendingUnlockId; if (!categoryId) return; b1PathRecordUnlockOverride(categoryId); closeB1PathUnlockDialog(); openB1PathCategory(categoryId); }); if (el("b1PathUnlockOverlay")) el("b1PathUnlockOverlay").addEventListener("click",function(event){ if (event.target === el("b1PathUnlockOverlay")) closeB1PathUnlockDialog(); },false); var devOverlay=el("devOverlay"); if (devOverlay) devOverlay.addEventListener("click",function(event){ if (event.target === devOverlay && !devOverlay.classList.contains("leitnerFullscreen")) setDevTools(false); },false); document.addEventListener("keydown",function(event){ if ((event.key === "Escape" || event.key === "Esc") && el("b1PathUnlockOverlay") && !el("b1PathUnlockOverlay").hidden) { closeB1PathUnlockDialog(); return; } if ((event.key === "Escape" || event.key === "Esc") && el("genitiveHelpOverlay") && !el("genitiveHelpOverlay").hidden) { el("genitiveHelpOverlay").hidden = true; return; } if ((event.key === "Escape" || event.key === "Esc") && el("devOverlay") && !el("devOverlay").hidden) { setDevTools(false); return; } if ((event.key === "Escape" || event.key === "Esc") && b1Runtime.mode === "b1_diagnostic" && (state === "b1Checking" || state === "b1Next")) { exitB1Diagnostic(); return; } if ((event.key === "Escape" || event.key === "Esc") && (state === "placeholder" || state === "grammarHub" || state === "learningMap")) showHomeScreen(); }); bind("checkBtn","click",function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }); bind("noArticleBtn","click",function(){checkAnswer("none");}); bind("nextBtn","click",proceed); bind("hintBtn","click",showHint); bind("supportPlaceholder","click",showHint); bind("translationToggle","click",toggleB1Translation); bind("whyNoStarsBtn","click",explainExtraPracticeStars); bind("startRoundBtn","click",startConfiguredRound); document.querySelectorAll(".langBtn").forEach(function(btn){ btn.addEventListener("click",function(){ setSupportLanguage(btn.getAttribute("data-lang")); }); }); bind("answerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (state==="b1Checking") checkB1Answer(); else if (state==="checking") checkAnswer(); else proceed(); }); renderHud(); applyLanguage(); showHomeScreen(); }
   function initOzmosisApp() {
     init();
     window.setTimeout(function(){
