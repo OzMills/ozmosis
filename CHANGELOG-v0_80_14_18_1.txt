@@ -1,0 +1,25 @@
+# Ozmosis v0.80.14.18.1 - Route Isolation Acceptance Hotfix
+
+## Changed
+
+- Treated v0.80.14.18 route isolation as failed manual acceptance.
+- Fixed the route-isolation root cause where late landing CSS could override `hidden` on Home while `body.homeMode` was active.
+- Added a late high-specificity hidden guard for top-level route screens.
+- Added a small active-screen helper so Home, Learning Map, Settings, route hubs, Case Trainer setup, and practice starts use a consistent route-screen ownership path.
+- Updated Dev Tools overlay behaviour so it hides persistent route screens while open and restores the previous screen when closed.
+- Updated app/export version metadata to v0.80.14.18.1.
+
+## Preserved
+
+- German-learning content and answers.
+- Scoring semantics.
+- Star earning logic.
+- Star Threshold Overlay semantics.
+- Aggregate star percentage logic.
+- localStorage key names.
+- Export Save / Import Save workflow and validation.
+- Static, dependency-free app architecture.
+
+## Next
+
+`v0.81 - Cases and Articles Completion Pass`

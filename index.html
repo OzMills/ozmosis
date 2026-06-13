@@ -8694,7 +8694,7 @@ body.homeMode #menuToggle {
 }
 
 .homePathOverall span {
-  color:var(--star-bronze);
+  color:currentColor;
 }
 
 .homePathMiniGrid {
@@ -8769,6 +8769,10 @@ body.homeMode #menuToggle {
   min-height:118px;
 }
 
+.learningMapB1PathCards {
+  grid-template-columns:1fr !important;
+}
+
 .learningMapB1PathCards .homePathTitle {
   font-size:clamp(1.04rem, 2.3vw, 1.24rem);
 }
@@ -8821,6 +8825,8 @@ body.homeMode #menuToggle {
 .homeAllProgressBadge span {
   position:relative;
   z-index:1;
+  font-size:clamp(.68rem, 2vw, .86rem);
+  white-space:nowrap;
 }
 
 .homeRefGrid {
@@ -9209,6 +9215,30 @@ body.homeMode .homeRefGrid {
 
 body.homeMode .homeRefCardSmall {
   min-height:96px !important;
+}
+
+body.homeMode main > .homeScreen[hidden],
+body.homeMode main > .hubPlaceholder[hidden],
+body.homeMode main > .grammarHub[hidden],
+body.homeMode main > .redemittelHub[hidden],
+body.homeMode main > .learningMapScreen[hidden],
+body.homeMode main > .settingsScreen[hidden],
+body.homeMode main > .startScreen[hidden],
+body.setupMode main > .homeScreen[hidden],
+body.setupMode main > .hubPlaceholder[hidden],
+body.setupMode main > .grammarHub[hidden],
+body.setupMode main > .redemittelHub[hidden],
+body.setupMode main > .learningMapScreen[hidden],
+body.setupMode main > .settingsScreen[hidden],
+body.setupMode main > .startScreen[hidden],
+body.b1Mode main > .homeScreen[hidden],
+body.b1Mode main > .hubPlaceholder[hidden],
+body.b1Mode main > .grammarHub[hidden],
+body.b1Mode main > .redemittelHub[hidden],
+body.b1Mode main > .learningMapScreen[hidden],
+body.b1Mode main > .settingsScreen[hidden],
+body.b1Mode main > .startScreen[hidden] {
+  display:none !important;
 }
 
 @media (max-width: 520px) {
@@ -10200,8 +10230,8 @@ body.homeMode .homeRefCardSmall {
   var B1_PATH_UNLOCK_STORAGE_KEY = "ozmosis_b1_path_unlock_overrides_v1";
   var B1_REVIEW_EDIT_QUEUE_STORAGE_KEY = "ozmosis_b1_review_edit_queue_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.80.14.17 - Compact Star Indicators / Learning Map Card Unification";
-  var OZMOSIS_EXPORT_VERSION = "v0.80.14.17-compact-star-cards-learning-map";
+  var OZMOSIS_APP_VERSION = "v0.80.14.18.1 - Route Isolation Acceptance Hotfix";
+  var OZMOSIS_EXPORT_VERSION = "v0.80.14.18.1-route-isolation-acceptance-hotfix";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -16941,12 +16971,20 @@ body.homeMode .homeRefCardSmall {
     if (!total) return 0;
     return Math.max(0, Math.min(100, Math.round(Number(category && category.starCounts && category.starCounts[level] || 0) * 100 / total)));
   }
+  function homePathAggregateStarPercent(category) {
+    var total = Number(category && category.coreTargetCount || 0);
+    if (!total) return 0;
+    if (category && category.totalStarPercent !== undefined) {
+      return Math.max(0, Math.min(100, Math.round(Number(category.totalStarPercent || 0))));
+    }
+    return Math.max(0, Math.min(100, Math.round(Number(category && category.totalStars || 0) * 100 / (total * 5))));
+  }
   function b1PathMiniStarGridHtml(category) {
     return '<span class="homePathMiniGrid" aria-label="Star progress by threshold">' + [1,2,3,4,5].map(function(level){
       var palette = b1StarPaletteEntry(level);
       var pct = homePathPercent(category, level);
-      var label = level + B1_PATH_STAR + " " + palette.label + " threshold " + pct + "%";
-      return '<span class="homePathStarMetric starLevel' + level + '" style="--star-colour:' + escapeHtml(palette.color) + '" title="' + escapeHtml(label) + '" aria-label="' + escapeHtml(label) + '"><span aria-hidden="true">' + level + B1_PATH_STAR + '</span><strong>' + pct + '%</strong></span>';
+      var label = level + " star threshold: " + pct + " percent";
+      return '<span class="homePathStarMetric starLevel' + level + '" style="--star-colour:' + escapeHtml(palette.color) + '" title="' + escapeHtml(label) + '" aria-label="' + escapeHtml(label) + '"><span aria-hidden="true">' + B1_PATH_STAR + '</span> <strong>' + pct + '%</strong></span>';
     }).join("") + '</span>';
   }
   function homePathThresholdBarHtml(category) {
@@ -16965,7 +17003,7 @@ body.homeMode .homeRefCardSmall {
     var locked = category && category.status === "Locked" && !category.override;
     var title = category && category.label || "";
     if (options.shortHomeTitle && id === "B1.1") title = "Practical Admin";
-    var overall = homePathPercent(category, 1);
+    var overall = homePathAggregateStarPercent(category);
     var classes = ["homePathCard", "b1PathRouteAction", locked ? "locked" : "open"];
     if (options.extraClass) classes.push(options.extraClass);
     return '<button class="' + classes.join(" ") + '" type="button" data-category-id="' + escapeHtml(id) + '">' +
@@ -16974,7 +17012,7 @@ body.homeMode .homeRefCardSmall {
         '<span class="homePathTitleLine"><span class="homePathTitle">' + escapeHtml(title) + '</span>' + (locked ? '<span class="homePathLock" aria-label="Locked"></span>' : '') + '</span>' +
         '<span class="homePathSub">' + escapeHtml(homePathCategorySubtitle(category)) + '</span>' +
         '<span class="homePathStarStats">' +
-          '<strong class="homePathOverall"><span>☆</span>' + overall + '%</strong>' +
+          '<strong class="homePathOverall"><span>' + B1_PATH_STAR + '</span>' + overall + '%</strong>' +
           b1PathMiniStarGridHtml(category) +
           homePathThresholdBarHtml(category) +
         '</span>' +
@@ -16986,9 +17024,9 @@ body.homeMode .homeRefCardSmall {
     return b1PathCompactCollectionCardHtml(category, { shortHomeTitle:true });
   }
   function homeAllPracticeCardHtml(progress) {
-    var pct = Math.max(0, Math.min(100, Math.round(Number(progress && progress.allB1 && progress.allB1.percentAt1Star || 0))));
+    var pct = Math.max(0, Math.min(100, Math.round(Number(progress && progress.allB1 && progress.allB1.totalStarPercent || 0))));
     return '<button class="homePathCard homeAllPracticeCard" id="homeB1PathSeeAllBtn" type="button" style="--homeAllProgress:' + pct + '%">' +
-      '<span class="homeAllProgressBadge"><span>' + pct + '%</span></span>' +
+      '<span class="homeAllProgressBadge"><span>' + B1_PATH_STAR + ' ' + pct + '%</span></span>' +
       '<span class="homePathMain"><span class="homePathTitleLine"><span class="homePathTitle">All Practice</span></span><span class="homePathSub">See all modules</span></span>' +
       '<span class="homePathChevron" aria-hidden="true">&gt;</span>' +
     '</button>';
@@ -17027,7 +17065,7 @@ body.homeMode .homeRefCardSmall {
     var categories = (progress.categories || []).filter(function(category){ return category.coreTargetCount > 0 || category.preview; });
     return '<section class="learningMapPanel b1PathSection" aria-labelledby="learningMapB1PathTitle">' +
       '<h3 id="learningMapB1PathTitle">B1 Path</h3>' +
-      '<p class="learningMapText">Practice progress: ' + Number(progress.allB1.percentAt1Star || 0) + '% got right once. Star colours show repeated correct answers.</p>' +
+      '<p class="learningMapText">Star progress: ' + Number(progress.allB1.totalStarPercent || 0) + '% of available stars. Star colours show repeated correct answers.</p>' +
       '<p class="b1PathDisclaimer">' + escapeHtml(progress.disclaimerShort) + '</p>' +
       '<div class="b1PathAreaGrid learningMapB1PathCards">' + categories.map(function(category){ return b1PathCompactCollectionCardHtml(category, { extraClass:"learningMapCollectionCard" }); }).join("") + '</div>' +
       '<details class="learningMapDisclosure"><summary>How stars work</summary>' +
@@ -17163,20 +17201,45 @@ body.homeMode .homeRefCardSmall {
     if (el("homeTesterCard")) el("homeTesterCard").hidden = testerIntroDismissed || b1EvidenceCount() > 0;
     ozmosisPerfEnd(timing, { evidence:mapSummary.evidenceCount || 0 });
   }
+  var ROUTE_SCREEN_IDS = ["homeScreen", "hubPlaceholder", "grammarHub", "redemittelHub", "learningMapScreen", "settingsScreen", "startScreen"];
+  function setRouteScreenHidden(screenId, hidden) {
+    var node = el(screenId);
+    if (!node) return;
+    node.hidden = !!hidden;
+    node.setAttribute("aria-hidden", hidden ? "true" : "false");
+    node.toggleAttribute("data-route-active", !hidden);
+    if ("inert" in node) node.inert = !!hidden;
+  }
+  function setActiveScreen(screenId) {
+    ROUTE_SCREEN_IDS.forEach(function(id){
+      setRouteScreenHidden(id, id !== screenId);
+    });
+  }
+  function currentActiveScreenId() {
+    for (var i = 0; i < ROUTE_SCREEN_IDS.length; i += 1) {
+      var node = el(ROUTE_SCREEN_IDS[i]);
+      if (node && !node.hidden) return ROUTE_SCREEN_IDS[i];
+    }
+    return "";
+  }
+  function routeScreenForState() {
+    if (state === "home") return "homeScreen";
+    if (state === "learningMap") return "learningMapScreen";
+    if (state === "settings") return "settingsScreen";
+    if (state === "grammarHub") return "grammarHub";
+    if (state === "redemittelHub") return "redemittelHub";
+    if (state === "placeholder") return "hubPlaceholder";
+    if (state === "setup") return "startScreen";
+    return "";
+  }
   function setLearningMapVisible(visible) {
-    if (el("learningMapScreen")) el("learningMapScreen").hidden = !visible;
+    setRouteScreenHidden("learningMapScreen", !visible);
   }
   function setSettingsScreenVisible(visible) {
-    if (el("settingsScreen")) el("settingsScreen").hidden = !visible;
+    setRouteScreenHidden("settingsScreen", !visible);
   }
   function hideHubScreens() {
-    if (el("homeScreen")) el("homeScreen").hidden = true;
-    if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
-    if (el("grammarHub")) el("grammarHub").hidden = true;
-    if (el("redemittelHub")) el("redemittelHub").hidden = true;
-    if (el("startScreen")) el("startScreen").hidden = true;
-    setLearningMapVisible(false);
-    setSettingsScreenVisible(false);
+    setActiveScreen("");
   }
   function showSettingsScreen() {
     var timing = ozmosisPerfStart("settings open");
@@ -17200,9 +17263,8 @@ body.homeMode .homeRefCardSmall {
     setDevTools(false);
     document.body.classList.add("homeMode");
     document.body.classList.remove("setupMode", "resultsMode", "placeholderMode", "b1Mode", "b1TypedCloze", "b1LongAnswer");
-    hideHubScreens();
+    setActiveScreen("settingsScreen");
     applyLanguage();
-    setSettingsScreenVisible(true);
     renderHud();
     ozmosisPerfEnd(timing);
     setTimeout(function(){
@@ -17232,9 +17294,8 @@ body.homeMode .homeRefCardSmall {
     setDevTools(false);
     document.body.classList.add("homeMode");
     document.body.classList.remove("setupMode", "resultsMode", "placeholderMode", "b1Mode", "b1TypedCloze", "b1LongAnswer");
-    hideHubScreens();
+    setActiveScreen("learningMapScreen");
     renderLearningMapScreen();
-    setLearningMapVisible(true);
     renderHud();
     ozmosisPerfEnd(timing);
     setTimeout(function(){
@@ -17261,13 +17322,7 @@ body.homeMode .homeRefCardSmall {
     setMenu(false);
     document.body.classList.add("homeMode");
     document.body.classList.remove("setupMode", "resultsMode", "placeholderMode", "b1Mode", "b1TypedCloze", "b1LongAnswer");
-    if (el("homeScreen")) el("homeScreen").hidden = false;
-    if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
-    if (el("grammarHub")) el("grammarHub").hidden = true;
-    if (el("redemittelHub")) el("redemittelHub").hidden = true;
-    if (el("startScreen")) el("startScreen").hidden = true;
-    setLearningMapVisible(false);
-    setSettingsScreenVisible(false);
+    setActiveScreen("homeScreen");
     applyLanguage();
     renderHomeCommandScreen();
     renderHud();
@@ -17283,12 +17338,7 @@ body.homeMode .homeRefCardSmall {
     document.body.classList.add("homeMode", "placeholderMode");
     document.body.classList.remove("setupMode", "resultsMode", "b1Mode", "b1TypedCloze", "b1LongAnswer");
     setDiagnosticUiVisible(false);
-    if (el("homeScreen")) el("homeScreen").hidden = true;
-    if (el("grammarHub")) el("grammarHub").hidden = true;
-    if (el("redemittelHub")) el("redemittelHub").hidden = true;
-    if (el("startScreen")) el("startScreen").hidden = true;
-    setLearningMapVisible(false);
-    setSettingsScreenVisible(false);
+    setActiveScreen("hubPlaceholder");
     if (el("hubPlaceholderTitle")) el("hubPlaceholderTitle").textContent = title || "Ozmosis";
     if (el("hubPlaceholderBody")) {
       var heading = title || "Ozmosis";
@@ -17300,7 +17350,6 @@ body.homeMode .homeRefCardSmall {
         '<button class="learningMapAction learningMapPatternAction" type="button" data-route-key="redemittel_production">Open Redemittel production cards</button>';
       el("hubPlaceholderBody").innerHTML = '<p class="learningMapText">' + escapeHtml(copy) + '</p><div class="learningMapActionGrid">' + action + '</div>';
     }
-    if (el("hubPlaceholder")) el("hubPlaceholder").hidden = false;
     renderHud();
     setTimeout(function(){
       window.scrollTo(0, 0);
@@ -17315,9 +17364,7 @@ body.homeMode .homeRefCardSmall {
     document.body.classList.add("homeMode");
     document.body.classList.remove("setupMode", "resultsMode", "placeholderMode", "b1Mode", "b1TypedCloze", "b1LongAnswer");
     setDiagnosticUiVisible(false);
-    if (el("homeScreen")) el("homeScreen").hidden = true;
-    if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
-    if (el("grammarHub")) el("grammarHub").hidden = false;
+    setActiveScreen("grammarHub");
     if (el("grammarB101Btn") && !el("grammarB101Btn").getAttribute("data-bound")) {
       el("grammarB101Btn").setAttribute("data-bound", "true");
       el("grammarB101Btn").addEventListener("click", function(){ startB1M01Round("mixed"); }, false);
@@ -17362,10 +17409,6 @@ body.homeMode .homeRefCardSmall {
       el("grammarB111Btn").setAttribute("data-bound", "true");
       el("grammarB111Btn").addEventListener("click", function(){ startB1M11Round("mixed"); }, false);
     }
-    if (el("redemittelHub")) el("redemittelHub").hidden = true;
-    if (el("startScreen")) el("startScreen").hidden = true;
-    setLearningMapVisible(false);
-    setSettingsScreenVisible(false);
     renderHud();
     setTimeout(function(){
       window.scrollTo(0, 0);
@@ -17380,13 +17423,7 @@ body.homeMode .homeRefCardSmall {
     document.body.classList.add("homeMode");
     document.body.classList.remove("setupMode", "resultsMode", "placeholderMode", "b1Mode", "b1TypedCloze", "b1LongAnswer");
     setDiagnosticUiVisible(false);
-    if (el("homeScreen")) el("homeScreen").hidden = true;
-    if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
-    if (el("grammarHub")) el("grammarHub").hidden = true;
-    if (el("redemittelHub")) el("redemittelHub").hidden = false;
-    if (el("startScreen")) el("startScreen").hidden = true;
-    setLearningMapVisible(false);
-    setSettingsScreenVisible(false);
+    setActiveScreen("redemittelHub");
     renderHud();
     setTimeout(function(){
       window.scrollTo(0, 0);
@@ -17401,13 +17438,7 @@ body.homeMode .homeRefCardSmall {
     document.body.classList.remove("homeMode", "placeholderMode", "b1Mode", "b1TypedCloze", "b1LongAnswer");
     document.body.classList.add("setupMode");
     document.body.classList.remove("resultsMode");
-    if (el("homeScreen")) el("homeScreen").hidden = true;
-    if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
-    if (el("grammarHub")) el("grammarHub").hidden = true;
-    if (el("redemittelHub")) el("redemittelHub").hidden = true;
-    if (el("startScreen")) el("startScreen").hidden = false;
-    setLearningMapVisible(false);
-    setSettingsScreenVisible(false);
+    setActiveScreen("startScreen");
     syncStartFromSettings();
     syncStartAccordions();
     applyLanguage();
@@ -21853,13 +21884,7 @@ body.homeMode .homeRefCardSmall {
     setDevTools(false);
     document.body.classList.add("b1Mode");
     document.body.classList.remove("homeMode", "setupMode", "placeholderMode", "resultsMode");
-    if (el("homeScreen")) el("homeScreen").hidden = true;
-    if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
-    if (el("grammarHub")) el("grammarHub").hidden = true;
-    if (el("redemittelHub")) el("redemittelHub").hidden = true;
-    if (el("startScreen")) el("startScreen").hidden = true;
-    setLearningMapVisible(false);
-    setSettingsScreenVisible(false);
+    setActiveScreen("");
     nextB1Question();
   }
   function startB1M12Round(filter) { startB1ImportedModuleRound("b1_m12", filter); }
@@ -22956,13 +22981,7 @@ body.homeMode .homeRefCardSmall {
     setDevTools(false);
     document.body.classList.add("b1Mode");
     document.body.classList.remove("homeMode", "setupMode", "placeholderMode", "resultsMode");
-    if (el("homeScreen")) el("homeScreen").hidden = true;
-    if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
-    if (el("grammarHub")) el("grammarHub").hidden = true;
-    if (el("redemittelHub")) el("redemittelHub").hidden = true;
-    if (el("startScreen")) el("startScreen").hidden = true;
-    setLearningMapVisible(false);
-    setSettingsScreenVisible(false);
+    setActiveScreen("");
     nextB1Question();
     ozmosisPerfEnd(timing, { mode:mode || "", queue:queue.length });
   }
@@ -23006,13 +23025,7 @@ body.homeMode .homeRefCardSmall {
     setDevTools(false);
     document.body.classList.add("b1Mode");
     document.body.classList.remove("homeMode", "setupMode", "placeholderMode", "resultsMode");
-    if (el("homeScreen")) el("homeScreen").hidden = true;
-    if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
-    if (el("grammarHub")) el("grammarHub").hidden = true;
-    if (el("redemittelHub")) el("redemittelHub").hidden = true;
-    if (el("startScreen")) el("startScreen").hidden = true;
-    setLearningMapVisible(false);
-    setSettingsScreenVisible(false);
+    setActiveScreen("");
     nextB1Question();
   }
   function startB1M01Round(filter) {
@@ -23057,13 +23070,7 @@ body.homeMode .homeRefCardSmall {
     setDevTools(false);
     document.body.classList.add("b1Mode");
     document.body.classList.remove("homeMode", "setupMode", "placeholderMode", "resultsMode");
-    if (el("homeScreen")) el("homeScreen").hidden = true;
-    if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
-    if (el("grammarHub")) el("grammarHub").hidden = true;
-    if (el("redemittelHub")) el("redemittelHub").hidden = true;
-    if (el("startScreen")) el("startScreen").hidden = true;
-    setLearningMapVisible(false);
-    setSettingsScreenVisible(false);
+    setActiveScreen("");
     nextB1Question();
   }
   function startB1M02Round(filter) {
@@ -23108,13 +23115,7 @@ body.homeMode .homeRefCardSmall {
     setDevTools(false);
     document.body.classList.add("b1Mode");
     document.body.classList.remove("homeMode", "setupMode", "placeholderMode", "resultsMode");
-    if (el("homeScreen")) el("homeScreen").hidden = true;
-    if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
-    if (el("grammarHub")) el("grammarHub").hidden = true;
-    if (el("redemittelHub")) el("redemittelHub").hidden = true;
-    if (el("startScreen")) el("startScreen").hidden = true;
-    setLearningMapVisible(false);
-    setSettingsScreenVisible(false);
+    setActiveScreen("");
     nextB1Question();
   }
   function startB1M03Round(filter) {
@@ -23159,13 +23160,7 @@ body.homeMode .homeRefCardSmall {
     setDevTools(false);
     document.body.classList.add("b1Mode");
     document.body.classList.remove("homeMode", "setupMode", "placeholderMode", "resultsMode");
-    if (el("homeScreen")) el("homeScreen").hidden = true;
-    if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
-    if (el("grammarHub")) el("grammarHub").hidden = true;
-    if (el("redemittelHub")) el("redemittelHub").hidden = true;
-    if (el("startScreen")) el("startScreen").hidden = true;
-    setLearningMapVisible(false);
-    setSettingsScreenVisible(false);
+    setActiveScreen("");
     nextB1Question();
   }
   function startB1M04Round(filter) {
@@ -23210,13 +23205,7 @@ body.homeMode .homeRefCardSmall {
     setDevTools(false);
     document.body.classList.add("b1Mode");
     document.body.classList.remove("homeMode", "setupMode", "placeholderMode", "resultsMode");
-    if (el("homeScreen")) el("homeScreen").hidden = true;
-    if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
-    if (el("grammarHub")) el("grammarHub").hidden = true;
-    if (el("redemittelHub")) el("redemittelHub").hidden = true;
-    if (el("startScreen")) el("startScreen").hidden = true;
-    setLearningMapVisible(false);
-    setSettingsScreenVisible(false);
+    setActiveScreen("");
     nextB1Question();
   }
   function startB1M05Round(filter) {
@@ -23261,13 +23250,7 @@ body.homeMode .homeRefCardSmall {
     setDevTools(false);
     document.body.classList.add("b1Mode");
     document.body.classList.remove("homeMode", "setupMode", "placeholderMode", "resultsMode");
-    if (el("homeScreen")) el("homeScreen").hidden = true;
-    if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
-    if (el("grammarHub")) el("grammarHub").hidden = true;
-    if (el("redemittelHub")) el("redemittelHub").hidden = true;
-    if (el("startScreen")) el("startScreen").hidden = true;
-    setLearningMapVisible(false);
-    setSettingsScreenVisible(false);
+    setActiveScreen("");
     nextB1Question();
   }
   function startB1M06Round(filter) {
@@ -23312,13 +23295,7 @@ body.homeMode .homeRefCardSmall {
     setDevTools(false);
     document.body.classList.add("b1Mode");
     document.body.classList.remove("homeMode", "setupMode", "placeholderMode", "resultsMode");
-    if (el("homeScreen")) el("homeScreen").hidden = true;
-    if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
-    if (el("grammarHub")) el("grammarHub").hidden = true;
-    if (el("redemittelHub")) el("redemittelHub").hidden = true;
-    if (el("startScreen")) el("startScreen").hidden = true;
-    setLearningMapVisible(false);
-    setSettingsScreenVisible(false);
+    setActiveScreen("");
     nextB1Question();
   }
   function startB1M07Round(filter) {
@@ -23363,13 +23340,7 @@ body.homeMode .homeRefCardSmall {
     setDevTools(false);
     document.body.classList.add("b1Mode");
     document.body.classList.remove("homeMode", "setupMode", "placeholderMode", "resultsMode");
-    if (el("homeScreen")) el("homeScreen").hidden = true;
-    if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
-    if (el("grammarHub")) el("grammarHub").hidden = true;
-    if (el("redemittelHub")) el("redemittelHub").hidden = true;
-    if (el("startScreen")) el("startScreen").hidden = true;
-    setLearningMapVisible(false);
-    setSettingsScreenVisible(false);
+    setActiveScreen("");
     nextB1Question();
   }
   function startB1M08Round(filter) {
@@ -23414,13 +23385,7 @@ body.homeMode .homeRefCardSmall {
     setDevTools(false);
     document.body.classList.add("b1Mode");
     document.body.classList.remove("homeMode", "setupMode", "placeholderMode", "resultsMode");
-    if (el("homeScreen")) el("homeScreen").hidden = true;
-    if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
-    if (el("grammarHub")) el("grammarHub").hidden = true;
-    if (el("redemittelHub")) el("redemittelHub").hidden = true;
-    if (el("startScreen")) el("startScreen").hidden = true;
-    setLearningMapVisible(false);
-    setSettingsScreenVisible(false);
+    setActiveScreen("");
     nextB1Question();
   }
   function startB1M09Round(filter) {
@@ -23465,13 +23430,7 @@ body.homeMode .homeRefCardSmall {
     setDevTools(false);
     document.body.classList.add("b1Mode");
     document.body.classList.remove("homeMode", "setupMode", "placeholderMode", "resultsMode");
-    if (el("homeScreen")) el("homeScreen").hidden = true;
-    if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
-    if (el("grammarHub")) el("grammarHub").hidden = true;
-    if (el("redemittelHub")) el("redemittelHub").hidden = true;
-    if (el("startScreen")) el("startScreen").hidden = true;
-    setLearningMapVisible(false);
-    setSettingsScreenVisible(false);
+    setActiveScreen("");
     nextB1Question();
   }
   function startB1M10Round(filter) {
@@ -23516,13 +23475,7 @@ body.homeMode .homeRefCardSmall {
     setDevTools(false);
     document.body.classList.add("b1Mode");
     document.body.classList.remove("homeMode", "setupMode", "placeholderMode", "resultsMode");
-    if (el("homeScreen")) el("homeScreen").hidden = true;
-    if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
-    if (el("grammarHub")) el("grammarHub").hidden = true;
-    if (el("redemittelHub")) el("redemittelHub").hidden = true;
-    if (el("startScreen")) el("startScreen").hidden = true;
-    setLearningMapVisible(false);
-    setSettingsScreenVisible(false);
+    setActiveScreen("");
     nextB1Question();
   }
   function startB1M11Round(filter) {
@@ -23567,13 +23520,7 @@ body.homeMode .homeRefCardSmall {
     setDevTools(false);
     document.body.classList.add("b1Mode");
     document.body.classList.remove("homeMode", "setupMode", "placeholderMode", "resultsMode");
-    if (el("homeScreen")) el("homeScreen").hidden = true;
-    if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
-    if (el("grammarHub")) el("grammarHub").hidden = true;
-    if (el("redemittelHub")) el("redemittelHub").hidden = true;
-    if (el("startScreen")) el("startScreen").hidden = true;
-    setLearningMapVisible(false);
-    setSettingsScreenVisible(false);
+    setActiveScreen("");
     nextB1Question();
   }
   function startWortschatzRound(filter) {
@@ -23618,13 +23565,7 @@ body.homeMode .homeRefCardSmall {
     setDevTools(false);
     document.body.classList.add("b1Mode");
     document.body.classList.remove("homeMode", "setupMode", "placeholderMode", "resultsMode");
-    if (el("homeScreen")) el("homeScreen").hidden = true;
-    if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
-    if (el("grammarHub")) el("grammarHub").hidden = true;
-    if (el("redemittelHub")) el("redemittelHub").hidden = true;
-    if (el("startScreen")) el("startScreen").hidden = true;
-    setLearningMapVisible(false);
-    setSettingsScreenVisible(false);
+    setActiveScreen("");
     nextB1Question();
   }
   function startRedemittelRound(filter) {
@@ -23669,13 +23610,7 @@ body.homeMode .homeRefCardSmall {
     setDevTools(false);
     document.body.classList.add("b1Mode");
     document.body.classList.remove("homeMode", "setupMode", "placeholderMode", "resultsMode");
-    if (el("homeScreen")) el("homeScreen").hidden = true;
-    if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
-    if (el("grammarHub")) el("grammarHub").hidden = true;
-    if (el("redemittelHub")) el("redemittelHub").hidden = true;
-    if (el("startScreen")) el("startScreen").hidden = true;
-    setLearningMapVisible(false);
-    setSettingsScreenVisible(false);
+    setActiveScreen("");
     nextB1Question();
   }
   function b1RepairQueuePracticeItems(queue) {
@@ -23732,13 +23667,7 @@ body.homeMode .homeRefCardSmall {
     setDevTools(false);
     document.body.classList.add("b1Mode");
     document.body.classList.remove("homeMode", "setupMode", "placeholderMode", "resultsMode");
-    if (el("homeScreen")) el("homeScreen").hidden = true;
-    if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
-    if (el("grammarHub")) el("grammarHub").hidden = true;
-    if (el("redemittelHub")) el("redemittelHub").hidden = true;
-    if (el("startScreen")) el("startScreen").hidden = true;
-    setLearningMapVisible(false);
-    setSettingsScreenVisible(false);
+    setActiveScreen("");
     nextB1Question();
   }
   function b1ReviewPracticeItems() {
@@ -23853,13 +23782,7 @@ body.homeMode .homeRefCardSmall {
     setDevTools(false);
     document.body.classList.add("b1Mode");
     document.body.classList.remove("homeMode", "setupMode", "placeholderMode", "resultsMode");
-    if (el("homeScreen")) el("homeScreen").hidden = true;
-    if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
-    if (el("grammarHub")) el("grammarHub").hidden = true;
-    if (el("redemittelHub")) el("redemittelHub").hidden = true;
-    if (el("startScreen")) el("startScreen").hidden = true;
-    setLearningMapVisible(false);
-    setSettingsScreenVisible(false);
+    setActiveScreen("");
     showAppStatus("Review Tests started: " + items.length + " review-flagged imported rows.", "good");
     nextB1Question();
   }
@@ -23986,13 +23909,7 @@ body.homeMode .homeRefCardSmall {
     setDevTools(false);
     document.body.classList.add("b1Mode");
     document.body.classList.remove("homeMode", "setupMode", "placeholderMode", "resultsMode");
-    if (el("homeScreen")) el("homeScreen").hidden = true;
-    if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
-    if (el("grammarHub")) el("grammarHub").hidden = true;
-    if (el("redemittelHub")) el("redemittelHub").hidden = true;
-    if (el("startScreen")) el("startScreen").hidden = true;
-    setLearningMapVisible(false);
-    setSettingsScreenVisible(false);
+    setActiveScreen("");
     nextB1Question();
     ozmosisPerfEnd(timing, { queue:items.length });
   }
@@ -24040,13 +23957,7 @@ body.homeMode .homeRefCardSmall {
     setDevTools(false);
     document.body.classList.add("b1Mode");
     document.body.classList.remove("homeMode", "setupMode", "placeholderMode", "resultsMode");
-    if (el("homeScreen")) el("homeScreen").hidden = true;
-    if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
-    if (el("grammarHub")) el("grammarHub").hidden = true;
-    if (el("redemittelHub")) el("redemittelHub").hidden = true;
-    if (el("startScreen")) el("startScreen").hidden = true;
-    setLearningMapVisible(false);
-    setSettingsScreenVisible(false);
+    setActiveScreen("");
     nextB1Question();
   }
   function exitB1Diagnostic() {
@@ -25765,14 +25676,25 @@ body.homeMode .homeRefCardSmall {
     ];
     pairs.forEach(function(pair){ if (el(pair[0]) && el(pair[1])) el(pair[1]).value = el(pair[0]).value; });
   }
+  var devToolsReturnScreenId = "";
   function setDevTools(open) {
     var overlay = el("devOverlay");
     if (!overlay) return;
+    if (open && overlay.hidden) {
+      devToolsReturnScreenId = currentActiveScreenId() || routeScreenForState();
+      setMenu(false);
+      setActiveScreen("");
+    }
     overlay.hidden = !open;
+    overlay.setAttribute("aria-hidden", open ? "false" : "true");
     if (!open) {
       overlay.classList.remove("leitnerFullscreen");
       setLeitnerHud(false);
       setMenu(false);
+      if (devToolsReturnScreenId && state !== "b1Checking" && state !== "b1Next" && state !== "checking" && state !== "results") {
+        setActiveScreen(devToolsReturnScreenId);
+      }
+      devToolsReturnScreenId = "";
     }
     if (open) {
       showDevList();
@@ -26205,13 +26127,7 @@ body.homeMode .homeRefCardSmall {
     setDevTools(false);
     document.body.classList.add("b1Mode");
     document.body.classList.remove("homeMode", "setupMode", "placeholderMode", "resultsMode");
-    if (el("homeScreen")) el("homeScreen").hidden = true;
-    if (el("hubPlaceholder")) el("hubPlaceholder").hidden = true;
-    if (el("grammarHub")) el("grammarHub").hidden = true;
-    if (el("redemittelHub")) el("redemittelHub").hidden = true;
-    if (el("startScreen")) el("startScreen").hidden = true;
-    setLearningMapVisible(false);
-    setSettingsScreenVisible(false);
+    setActiveScreen("");
     renderB1Question();
     return cloneB1Item(item);
   }
@@ -26598,7 +26514,7 @@ window.ozmosisTesterReportSummary=testerReportSummary; window.ozmosisLearnerRead
     bind("genitiveHelpBtn","click",openGenitiveHelp);
     bind("startGenitiveHelpBtn","click",openGenitiveHelp);
     bind("genitiveHelpCloseBtn","click",closeGenitiveHelp);
-    if (el("genitiveHelpOverlay")) el("genitiveHelpOverlay").addEventListener("click",function(event){ if (event.target === el("genitiveHelpOverlay")) closeGenitiveHelp(); },false); bind("englishSupport","change",function(){ savePersistent(); if (b1Runtime.active) renderB1Translation(false); else if (current) renderQuestion(); }); bind("roundTarget","change",function(){ if (shouldApplyLiveSettings()) newRound(); else savePersistent(); }); bind("adaptiveMode","change",function(){ savePersistent(); if (shouldApplyLiveSettings()) newRound(); }); bind("menuHomeBtn","click",function(){ setMenu(false); showHomeScreen(); }); bind("menuSprintBtn","click",function(){ setMenu(false); startB1Round("mixed"); }); bind("menuRecommendedBtn","click",function(){ setMenu(false); openB1RecommendationRoute(homeRecommendedRouteKey || "today"); }); bind("menuGrammarBtn","click",function(){ setMenu(false); showGrammarHub(); }); bind("menuRedemittelBtn","click",function(){ setMenu(false); showRedemittelHub(); }); bind("menuCaseTrainerBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("menuReviewPracticeBtn","click",function(){ setMenu(false); startB1ReviewPractice(); }); bind("restartBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("resetBestBtn","click",function(){window.kasusResetBest();}); bind("resetProfileBtn","click",function(){window.kasusResetProfile();}); bind("exportBtn","click",exportProgress); bind("importBtn","click",function(){ var input=el("importFile"); if (!input) { saveWorkflowFailure("file read error"); return; } input.value=""; input.click(); }); bind("copyLearnerReportBtn","click",copyLearnerReadableProgressReport); bind("downloadLearnerReportBtn","click",downloadLearnerReadableProgressReport); bind("importFile","change",function(event){ importProgress(event.target.files && event.target.files[0]); event.target.value=""; }); bind("devToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("devMenuBtn","click",function(event){ event.stopPropagation(); setMenu(!el("settingsPanel").classList.contains("open")); }); bind("devCloseBtn","click",function(){ setDevTools(false); }); bind("newGameCloseBtn","click",function(){ setDevTools(false); }); bind("leitnerCloseBtn","click",closeLeitnerPrototype); bind("openNewGameMockBtn","click",showNewGameMock); bind("openLeitnerPrototypeBtn","click",showLeitnerPrototype); bind("resetLeitnerPrototypeBtn","click",showLeitnerResetConfirm); bind("backToDevListBtn","click",showDevList); bind("leitnerResetCloseBtn","click",showDevList); bind("cancelLeitnerResetBtn","click",showDevList); bind("confirmLeitnerResetBtn","click",resetLeitnerPrototypeProgress); bind("leitnerRestartBtn","click",startLeitnerQueue); bind("leitnerCheckBtn","click",checkLeitnerAnswer); bind("leitnerNextBtn","click",nextLeitnerCard); bind("leitnerAnswerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (leitnerRuntime.answered) nextLeitnerCard(); else checkLeitnerAnswer(); }); bind("applyNewGameMockBtn","click",applyNewGameMock); bind("homeSprintBtn","click",function(){ startB1Round("mixed"); }); bind("homeDiagnosticBtn","click",startB1DiagnosticSprint); bind("homeLearningMapBtn","click",showLearningMapScreen); bind("learningMapBackBtn","click",showHomeScreen); bind("diagnosticExitBtn","click",exitB1Diagnostic); bind("homeGrammarBtn","click",showGrammarHub); bind("grammarBackBtn","click",showHomeScreen); bind("grammarSeedBtn","click",function(){ startB1Round("grammar_cloze"); }); bind("connectorAllBtn","click",function(){ startConnectorSprint("all"); }); bind("connectorReasonBtn","click",function(){ startConnectorSprint("reason"); }); bind("connectorContrastBtn","click",function(){ startConnectorSprint("contrast"); }); bind("connectorPurposeBtn","click",function(){ startConnectorSprint("purpose"); }); bind("connectorTimeBtn","click",function(){ startConnectorSprint("time"); }); bind("connectorRepairBtn","click",function(){ startConnectorSprint("repair"); }); bind("homeWortschatzBtn","click",function(){ startWortschatzRound("mixed"); }); bind("homeRedemittelBtn","click",function(){ startB1Round("redemittel_cloze"); }); bind("homeCaseTrainerBtn","click",showStartScreen); bind("caseTrainerBackBtn","click",showHomeScreen); bind("homeOptionsBtn","click",function(event){ event.stopPropagation(); setDevTools(false); setMenu(true); if (el("menuOptionsDetails")) el("menuOptionsDetails").open = true; setTimeout(function(){ var summary = el("menuOptionsDetails") && el("menuOptionsDetails").querySelector("summary"); if (summary) focusWithoutScroll(summary); }, 0); }); bind("homeDevToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("hubBackBtn","click",showHomeScreen); document.querySelectorAll(".homePlaceholderBtn").forEach(function(btn){ btn.addEventListener("click",function(){ showHubPlaceholder(btn.getAttribute("data-title") || btn.textContent.trim()); }); }); document.addEventListener("click",function(event){ var routeButton = event.target && event.target.closest ? event.target.closest(".b1PathRouteAction") : null; if (routeButton) { event.preventDefault(); openB1PathCategory(routeButton.getAttribute("data-category-id")); return; } }); bind("b1PathKeepPractisingBtn","click",function(){ var categoryId = b1PathPendingUnlockId; var progress = b1PathProgressData(); var categories = (progress.categories || []).filter(function(category){ return category.coreTargetCount > 0 && !category.preview; }); var category = b1PathCategoryById(progress, categoryId); var index = categories.findIndex(function(row){ return row.categoryId === categoryId; }); var practiceCategory = index > 0 ? categories[index - 1] : category; closeB1PathUnlockDialog(); openB1RecommendationRoute(practiceCategory && practiceCategory.routeKey || "today"); }); bind("b1PathUnlockAnywayBtn","click",function(){ var categoryId = b1PathPendingUnlockId; if (!categoryId) return; b1PathRecordUnlockOverride(categoryId); closeB1PathUnlockDialog(); openB1PathCategory(categoryId); }); if (el("b1PathUnlockOverlay")) el("b1PathUnlockOverlay").addEventListener("click",function(event){ if (event.target === el("b1PathUnlockOverlay")) closeB1PathUnlockDialog(); },false); var devOverlay=el("devOverlay"); if (devOverlay) devOverlay.addEventListener("click",function(event){ if (event.target === devOverlay && !devOverlay.classList.contains("leitnerFullscreen")) setDevTools(false); },false); document.addEventListener("keydown",function(event){ if ((event.key === "Escape" || event.key === "Esc") && el("b1PathUnlockOverlay") && !el("b1PathUnlockOverlay").hidden) { closeB1PathUnlockDialog(); return; } if ((event.key === "Escape" || event.key === "Esc") && el("genitiveHelpOverlay") && !el("genitiveHelpOverlay").hidden) { el("genitiveHelpOverlay").hidden = true; return; } if ((event.key === "Escape" || event.key === "Esc") && el("devOverlay") && !el("devOverlay").hidden) { setDevTools(false); return; } if ((event.key === "Escape" || event.key === "Esc") && b1Runtime.mode === "b1_diagnostic" && (state === "b1Checking" || state === "b1Next")) { exitB1Diagnostic(); return; } if ((event.key === "Escape" || event.key === "Esc") && (state === "placeholder" || state === "grammarHub" || state === "learningMap")) showHomeScreen(); }); bind("checkBtn","click",function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }); bind("noArticleBtn","click",function(){checkAnswer("none");}); bind("nextBtn","click",proceed); bind("hintBtn","click",showHint); bind("supportPlaceholder","click",showHint); bind("translationToggle","click",toggleB1Translation); bind("whyNoStarsBtn","click",explainExtraPracticeStars); bind("startRoundBtn","click",startConfiguredRound); document.querySelectorAll(".langBtn").forEach(function(btn){ btn.addEventListener("click",function(){ setSupportLanguage(btn.getAttribute("data-lang")); }); }); bind("answerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (state==="b1Checking") checkB1Answer(); else if (state==="checking") checkAnswer(); else proceed(); }); renderHud(); applyLanguage(); showHomeScreen(); }
+    if (el("genitiveHelpOverlay")) el("genitiveHelpOverlay").addEventListener("click",function(event){ if (event.target === el("genitiveHelpOverlay")) closeGenitiveHelp(); },false); bind("englishSupport","change",function(){ savePersistent(); if (b1Runtime.active) renderB1Translation(false); else if (current) renderQuestion(); }); bind("roundTarget","change",function(){ if (shouldApplyLiveSettings()) newRound(); else savePersistent(); }); bind("adaptiveMode","change",function(){ savePersistent(); if (shouldApplyLiveSettings()) newRound(); }); bind("menuHomeBtn","click",function(){ setMenu(false); showHomeScreen(); }); bind("menuSprintBtn","click",function(){ setMenu(false); startB1Round("mixed"); }); bind("menuRecommendedBtn","click",function(){ setMenu(false); openB1RecommendationRoute(homeRecommendedRouteKey || "today"); }); bind("menuGrammarBtn","click",function(){ setMenu(false); showGrammarHub(); }); bind("menuRedemittelBtn","click",function(){ setMenu(false); showRedemittelHub(); }); bind("menuCaseTrainerBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("menuReviewPracticeBtn","click",function(){ setMenu(false); startB1ReviewPractice(); }); bind("restartBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("resetBestBtn","click",function(){window.kasusResetBest();}); bind("resetProfileBtn","click",function(){window.kasusResetProfile();}); bind("exportBtn","click",exportProgress); bind("importBtn","click",function(){ var input=el("importFile"); if (!input) { saveWorkflowFailure("file read error"); return; } input.value=""; input.click(); }); bind("copyLearnerReportBtn","click",copyLearnerReadableProgressReport); bind("downloadLearnerReportBtn","click",downloadLearnerReadableProgressReport); bind("importFile","change",function(event){ importProgress(event.target.files && event.target.files[0]); event.target.value=""; }); bind("devToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("devMenuBtn","click",function(event){ event.stopPropagation(); setMenu(!el("settingsPanel").classList.contains("open")); }); bind("devCloseBtn","click",function(){ setDevTools(false); }); bind("newGameCloseBtn","click",function(){ setDevTools(false); }); bind("leitnerCloseBtn","click",closeLeitnerPrototype); bind("openNewGameMockBtn","click",showNewGameMock); bind("openLeitnerPrototypeBtn","click",showLeitnerPrototype); bind("resetLeitnerPrototypeBtn","click",showLeitnerResetConfirm); bind("backToDevListBtn","click",showDevList); bind("leitnerResetCloseBtn","click",showDevList); bind("cancelLeitnerResetBtn","click",showDevList); bind("confirmLeitnerResetBtn","click",resetLeitnerPrototypeProgress); bind("leitnerRestartBtn","click",startLeitnerQueue); bind("leitnerCheckBtn","click",checkLeitnerAnswer); bind("leitnerNextBtn","click",nextLeitnerCard); bind("leitnerAnswerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (leitnerRuntime.answered) nextLeitnerCard(); else checkLeitnerAnswer(); }); bind("applyNewGameMockBtn","click",applyNewGameMock); bind("homeSprintBtn","click",function(){ startB1Round("mixed"); }); bind("homeDiagnosticBtn","click",startB1DiagnosticSprint); bind("homeLearningMapBtn","click",showLearningMapScreen); bind("learningMapBackBtn","click",showHomeScreen); bind("diagnosticExitBtn","click",exitB1Diagnostic); bind("homeGrammarBtn","click",showGrammarHub); bind("grammarBackBtn","click",showHomeScreen); bind("grammarSeedBtn","click",function(){ startB1Round("grammar_cloze"); }); bind("connectorAllBtn","click",function(){ startConnectorSprint("all"); }); bind("connectorReasonBtn","click",function(){ startConnectorSprint("reason"); }); bind("connectorContrastBtn","click",function(){ startConnectorSprint("contrast"); }); bind("connectorPurposeBtn","click",function(){ startConnectorSprint("purpose"); }); bind("connectorTimeBtn","click",function(){ startConnectorSprint("time"); }); bind("connectorRepairBtn","click",function(){ startConnectorSprint("repair"); }); bind("homeWortschatzBtn","click",function(){ startWortschatzRound("mixed"); }); bind("homeRedemittelBtn","click",function(){ startB1Round("redemittel_cloze"); }); bind("homeCaseTrainerBtn","click",showStartScreen); bind("caseTrainerBackBtn","click",showHomeScreen); bind("homeOptionsBtn","click",function(){ showSettingsScreen(); }); bind("homeDevToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("hubBackBtn","click",showHomeScreen); document.querySelectorAll(".homePlaceholderBtn").forEach(function(btn){ btn.addEventListener("click",function(){ showHubPlaceholder(btn.getAttribute("data-title") || btn.textContent.trim()); }); }); document.addEventListener("click",function(event){ var routeButton = event.target && event.target.closest ? event.target.closest(".b1PathRouteAction") : null; if (routeButton) { event.preventDefault(); openB1PathCategory(routeButton.getAttribute("data-category-id")); return; } }); bind("b1PathKeepPractisingBtn","click",function(){ var categoryId = b1PathPendingUnlockId; var progress = b1PathProgressData(); var categories = (progress.categories || []).filter(function(category){ return category.coreTargetCount > 0 && !category.preview; }); var category = b1PathCategoryById(progress, categoryId); var index = categories.findIndex(function(row){ return row.categoryId === categoryId; }); var practiceCategory = index > 0 ? categories[index - 1] : category; closeB1PathUnlockDialog(); openB1RecommendationRoute(practiceCategory && practiceCategory.routeKey || "today"); }); bind("b1PathUnlockAnywayBtn","click",function(){ var categoryId = b1PathPendingUnlockId; if (!categoryId) return; b1PathRecordUnlockOverride(categoryId); closeB1PathUnlockDialog(); openB1PathCategory(categoryId); }); if (el("b1PathUnlockOverlay")) el("b1PathUnlockOverlay").addEventListener("click",function(event){ if (event.target === el("b1PathUnlockOverlay")) closeB1PathUnlockDialog(); },false); var devOverlay=el("devOverlay"); if (devOverlay) devOverlay.addEventListener("click",function(event){ if (event.target === devOverlay && !devOverlay.classList.contains("leitnerFullscreen")) setDevTools(false); },false); document.addEventListener("keydown",function(event){ if ((event.key === "Escape" || event.key === "Esc") && el("b1PathUnlockOverlay") && !el("b1PathUnlockOverlay").hidden) { closeB1PathUnlockDialog(); return; } if ((event.key === "Escape" || event.key === "Esc") && el("genitiveHelpOverlay") && !el("genitiveHelpOverlay").hidden) { el("genitiveHelpOverlay").hidden = true; return; } if ((event.key === "Escape" || event.key === "Esc") && el("devOverlay") && !el("devOverlay").hidden) { setDevTools(false); return; } if ((event.key === "Escape" || event.key === "Esc") && b1Runtime.mode === "b1_diagnostic" && (state === "b1Checking" || state === "b1Next")) { exitB1Diagnostic(); return; } if ((event.key === "Escape" || event.key === "Esc") && (state === "placeholder" || state === "grammarHub" || state === "learningMap")) showHomeScreen(); }); bind("checkBtn","click",function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }); bind("noArticleBtn","click",function(){checkAnswer("none");}); bind("nextBtn","click",proceed); bind("hintBtn","click",showHint); bind("supportPlaceholder","click",showHint); bind("translationToggle","click",toggleB1Translation); bind("whyNoStarsBtn","click",explainExtraPracticeStars); bind("startRoundBtn","click",startConfiguredRound); document.querySelectorAll(".langBtn").forEach(function(btn){ btn.addEventListener("click",function(){ setSupportLanguage(btn.getAttribute("data-lang")); }); }); bind("answerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (state==="b1Checking") checkB1Answer(); else if (state==="checking") checkAnswer(); else proceed(); }); renderHud(); applyLanguage(); showHomeScreen(); }
   function initOzmosisApp() {
     init();
     window.setTimeout(function(){

@@ -1466,6 +1466,94 @@ From `docs/qa/v0.80.14.16_save_file_workflow.md`:
 
 `v0.81 - Cases and Articles Completion Pass`
 
+# Ozmosis v0.80.14.18 - Star Card / Route Isolation Bugfix
+
+## Changed
+
+- Corrected compact mini star indicators so they show only the filled star icon and percentage, for example `★ 1%`, without the visible `1★` level prefix.
+- Kept mini star levels available through `title` and `aria-label` text such as `1 star threshold: 4 percent`.
+- Preserved the requested five-colour mini star palette:
+  - 1 star: Bronze `#b87333`
+  - 2 stars: Silver `#b8c4d6`
+  - 3 stars: Gold `#f2c94c`
+  - 4 stars: Sky Blue `#38bdf8`
+  - 5 stars: Electric Cyan `#67e8f9`
+- Corrected the large compact-card star indicator to use a filled `★`, not outline `☆`.
+- Corrected the large compact-card percentage to use aggregate secured stars out of all possible stars, not one-star threshold coverage.
+- Kept the Star Threshold Overlay bar calculation unchanged.
+- Forced the Learning Map B1 Path card list to stay vertical while using the same compact card layout as the landing B1 Practice cards.
+- Updated the Home Settings action so it opens the Settings screen instead of opening Options inline in the drawer.
+- Verified Export Save and Import Save remain reachable in Settings / Data.
+- Updated app/export version metadata to v0.80.14.18.
+
+## Preserved
+
+- German-learning content and answers.
+- Existing scoring semantics and star-earning rules.
+- Star Threshold Overlay threshold-coverage semantics.
+- localStorage key names.
+- Export Save / Import Save validation workflow.
+- Static, dependency-free app architecture.
+
+# Ozmosis v0.80.14.18 - Star Card / Route Isolation Bugfix
+
+## Changed
+
+- Corrected compact mini star indicators so they show only the filled star icon and percentage, for example `★ 1%`, without the visible `1★` level prefix.
+- Kept mini star levels available through `title` and `aria-label` text such as `1 star threshold: 4 percent`.
+- Preserved the requested five-colour mini star palette:
+  - 1 star: Bronze `#b87333`
+  - 2 stars: Silver `#b8c4d6`
+  - 3 stars: Gold `#f2c94c`
+  - 4 stars: Sky Blue `#38bdf8`
+  - 5 stars: Electric Cyan `#67e8f9`
+- Corrected the large compact-card star indicator to use a filled `★`, not outline `☆`.
+- Corrected the large compact-card percentage to use aggregate secured stars out of all possible stars, not one-star threshold coverage.
+- Kept the Star Threshold Overlay bar calculation unchanged.
+- Forced the Learning Map B1 Path card list to stay vertical while using the same compact card layout as the landing B1 Practice cards.
+- Updated the Home Settings action so it opens the Settings screen instead of opening Options inline in the drawer.
+- Verified Export Save and Import Save remain reachable in Settings / Data.
+- Updated app/export version metadata to v0.80.14.18.
+
+## Preserved
+
+- German-learning content and answers.
+- Existing scoring semantics and star-earning rules.
+- Star Threshold Overlay threshold-coverage semantics.
+- localStorage key names.
+- Export Save / Import Save validation workflow.
+- Static, dependency-free app architecture.
+
+## Next
+
+`v0.81 - Cases and Articles Completion Pass`
+
+# Ozmosis v0.80.14.18.1 - Route Isolation Acceptance Hotfix
+
+## Changed
+
+- Treated v0.80.14.18 route isolation as failed manual acceptance.
+- Fixed the route-isolation root cause where late landing CSS could override `hidden` on Home while `body.homeMode` was active.
+- Added a late high-specificity hidden guard for top-level route screens.
+- Added a small active-screen helper so Home, Learning Map, Settings, route hubs, Case Trainer setup, and practice starts use a consistent route-screen ownership path.
+- Updated Dev Tools overlay behaviour so it hides persistent route screens while open and restores the previous screen when closed.
+- Updated app/export version metadata to v0.80.14.18.1.
+
+## Preserved
+
+- German-learning content and answers.
+- Scoring semantics.
+- Star earning logic.
+- Star Threshold Overlay semantics.
+- Aggregate star percentage logic.
+- localStorage key names.
+- Export Save / Import Save workflow and validation.
+- Static, dependency-free app architecture.
+
+## Next
+
+`v0.81 - Cases and Articles Completion Pass`
+
 
 ## Older Development Artefacts Present Without Canonical Changelog Files
 
