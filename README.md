@@ -158,7 +158,7 @@ Ozmosis is actively evolving. This README describes the current form of the app,
 Current app version in `index.html`:
 
 ```text
-v0.80.14.16 - Export Save / Import Save File Workflow
+v0.80.14.17 - Compact Star Indicators / Learning Map Card Unification
 ```
 
 The current active scope is B1-focused German practice. Planned work should not be read as current app behaviour until it appears in the app.

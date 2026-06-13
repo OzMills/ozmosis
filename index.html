@@ -5245,10 +5245,18 @@ body.homeMode #settingsPanel {
   font-weight:850;
 }
 
+.b1PathStarRow {
+  color:var(--star-colour, var(--muted));
+}
+
 .b1PathStarRow strong,
 .b1PathMissingList strong {
   color:var(--text);
   font-variant-numeric:tabular-nums;
+}
+
+.b1PathStarRow strong {
+  color:var(--star-colour, var(--text));
 }
 
 .b1PathSubcategories {
@@ -8672,9 +8680,9 @@ body.homeMode #menuToggle {
 
 .homePathStarStats {
   display:grid;
-  grid-template-columns:auto repeat(5, minmax(0, 1fr));
-  align-items:end;
-  gap:8px 12px;
+  grid-template-columns:minmax(88px, auto) minmax(0, 1fr);
+  align-items:center;
+  gap:7px 12px;
 }
 
 .homePathOverall {
@@ -8686,23 +8694,45 @@ body.homeMode #menuToggle {
 }
 
 .homePathOverall span {
-  color:var(--landingMuted);
+  color:var(--star-bronze);
+}
+
+.homePathMiniGrid {
+  display:grid;
+  grid-template-columns:repeat(5, minmax(3.35rem, 1fr));
+  align-items:center;
+  gap:5px 8px;
+  min-width:0;
 }
 
 .homePathStarMetric {
-  color:var(--landingMuted);
-  font-size:.92rem;
+  display:inline-flex;
+  align-items:baseline;
+  justify-content:flex-start;
+  gap:2px;
+  min-width:0;
+  color:var(--star-colour, var(--landingMuted));
+  font-size:clamp(.78rem, 1.6vw, .88rem);
   line-height:1;
   font-weight:850;
   white-space:nowrap;
+  font-variant-numeric:tabular-nums;
 }
 
 .homePathStarMetric span {
-  color:var(--landingAmber);
+  color:currentColor;
+  font-size:1.08em;
+  line-height:1;
+}
+
+.homePathStarMetric strong {
+  color:currentColor;
+  font:inherit;
+  font-weight:900;
 }
 
 .homePathThresholdBar {
-  grid-column:2 / -1;
+  grid-column:2;
   position:relative;
   display:block;
   height:9px;
@@ -8733,6 +8763,18 @@ body.homeMode #menuToggle {
   color:var(--landingCyan);
   font-size:2rem;
   line-height:1;
+}
+
+.learningMapB1PathCards .homePathCard {
+  min-height:118px;
+}
+
+.learningMapB1PathCards .homePathTitle {
+  font-size:clamp(1.04rem, 2.3vw, 1.24rem);
+}
+
+.learningMapB1PathCards .homePathSub {
+  font-size:clamp(.78rem, 1.75vw, .9rem);
 }
 
 .homePathLock {
@@ -9043,13 +9085,22 @@ body[data-support-lang="ar"] .homePathBadge {
   }
 
   .homePathStarStats {
-    grid-template-columns:1fr repeat(2, auto);
-    gap:7px 10px;
+    grid-template-columns:1fr;
+    gap:7px;
   }
 
   .homePathOverall {
     grid-column:1 / -1;
     font-size:1.3rem;
+  }
+
+  .homePathMiniGrid {
+    grid-template-columns:repeat(3, minmax(2.85rem, 1fr));
+    gap:5px 7px;
+  }
+
+  .homePathStarMetric {
+    font-size:clamp(.78rem, 3.6vw, .88rem);
   }
 
   .homePathThresholdBar {
@@ -10149,8 +10200,8 @@ body.homeMode .homeRefCardSmall {
   var B1_PATH_UNLOCK_STORAGE_KEY = "ozmosis_b1_path_unlock_overrides_v1";
   var B1_REVIEW_EDIT_QUEUE_STORAGE_KEY = "ozmosis_b1_review_edit_queue_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.80.14.16 - Export Save / Import Save File Workflow";
-  var OZMOSIS_EXPORT_VERSION = "v0.80.14.16-save-file-workflow";
+  var OZMOSIS_APP_VERSION = "v0.80.14.17 - Compact Star Indicators / Learning Map Card Unification";
+  var OZMOSIS_EXPORT_VERSION = "v0.80.14.17-compact-star-cards-learning-map";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -16834,9 +16885,10 @@ body.homeMode .homeRefCardSmall {
     var total = Number(category && category.coreTargetCount || 0);
     if (!total) return "";
     return '<div class="b1PathStarRows" aria-label="B1 Path star counts">' + [1,2,3,4,5].map(function(level){
+      var palette = b1StarPaletteEntry(level);
       var count = Number(category.starCounts && category.starCounts[level] || 0);
       var pct = Math.round(count * 100 / total);
-      return '<div class="b1PathStarRow"><span>' + escapeHtml(B1_PATH_STAR_LABELS[level]) + '</span><strong>' + count + ' of ' + total + ' (' + pct + '%)</strong></div>';
+      return '<div class="b1PathStarRow" style="--star-colour:' + escapeHtml(palette.color) + '"><span>' + level + B1_PATH_STAR + ' ' + escapeHtml(palette.label) + '</span><strong>' + count + ' of ' + total + ' (' + pct + '%)</strong></div>';
     }).join("") + '</div>';
   }
   function b1PathSubcategoryHtml(category) {
@@ -16889,34 +16941,49 @@ body.homeMode .homeRefCardSmall {
     if (!total) return 0;
     return Math.max(0, Math.min(100, Math.round(Number(category && category.starCounts && category.starCounts[level] || 0) * 100 / total)));
   }
+  function b1PathMiniStarGridHtml(category) {
+    return '<span class="homePathMiniGrid" aria-label="Star progress by threshold">' + [1,2,3,4,5].map(function(level){
+      var palette = b1StarPaletteEntry(level);
+      var pct = homePathPercent(category, level);
+      var label = level + B1_PATH_STAR + " " + palette.label + " threshold " + pct + "%";
+      return '<span class="homePathStarMetric starLevel' + level + '" style="--star-colour:' + escapeHtml(palette.color) + '" title="' + escapeHtml(label) + '" aria-label="' + escapeHtml(label) + '"><span aria-hidden="true">' + level + B1_PATH_STAR + '</span><strong>' + pct + '%</strong></span>';
+    }).join("") + '</span>';
+  }
   function homePathThresholdBarHtml(category) {
     var total = Math.max(1, Number(category && category.coreTargetCount || 0));
     var layers = buildStarThresholdOverlayData(category && category.starCounts, total);
-    return '<span class="homePathThresholdBar" aria-hidden="true">' + layers.map(function(layer){
+    var aria = layers.map(function(layer){
+      return layer.level + B1_PATH_STAR + " " + layer.label + " threshold " + layer.widthPct + "%";
+    }).join("; ");
+    return '<span class="homePathThresholdBar" role="img" aria-label="' + escapeHtml(aria) + '">' + layers.map(function(layer){
       return '<span class="layer-' + layer.level + '" style="--threshold-colour:' + layer.color + '; width:' + layer.widthPct + '%"></span>';
     }).join("") + '</span>';
   }
-  function homePathCategoryCardHtml(category) {
+  function b1PathCompactCollectionCardHtml(category, options) {
+    options = options || {};
     var id = category && category.categoryId || category && category.pathId || "";
     var locked = category && category.status === "Locked" && !category.override;
     var title = category && category.label || "";
-    if (id === "B1.1") title = "Practical Admin";
+    if (options.shortHomeTitle && id === "B1.1") title = "Practical Admin";
     var overall = homePathPercent(category, 1);
-    return '<button class="homePathCard b1PathRouteAction ' + (locked ? "locked" : "open") + '" type="button" data-category-id="' + escapeHtml(id) + '">' +
+    var classes = ["homePathCard", "b1PathRouteAction", locked ? "locked" : "open"];
+    if (options.extraClass) classes.push(options.extraClass);
+    return '<button class="' + classes.join(" ") + '" type="button" data-category-id="' + escapeHtml(id) + '">' +
       '<span class="homePathBadge">' + escapeHtml(id) + '</span>' +
       '<span class="homePathMain">' +
         '<span class="homePathTitleLine"><span class="homePathTitle">' + escapeHtml(title) + '</span>' + (locked ? '<span class="homePathLock" aria-label="Locked"></span>' : '') + '</span>' +
         '<span class="homePathSub">' + escapeHtml(homePathCategorySubtitle(category)) + '</span>' +
         '<span class="homePathStarStats">' +
           '<strong class="homePathOverall"><span>☆</span>' + overall + '%</strong>' +
-          [1,2,3,4,5].map(function(level){
-            return '<span class="homePathStarMetric"><span>★</span>' + homePathPercent(category, level) + '%</span>';
-          }).join("") +
+          b1PathMiniStarGridHtml(category) +
           homePathThresholdBarHtml(category) +
         '</span>' +
       '</span>' +
       '<span class="homePathChevron" aria-hidden="true">&gt;</span>' +
     '</button>';
+  }
+  function homePathCategoryCardHtml(category) {
+    return b1PathCompactCollectionCardHtml(category, { shortHomeTitle:true });
   }
   function homeAllPracticeCardHtml(progress) {
     var pct = Math.max(0, Math.min(100, Math.round(Number(progress && progress.allB1 && progress.allB1.percentAt1Star || 0))));
@@ -16960,9 +17027,9 @@ body.homeMode .homeRefCardSmall {
     var categories = (progress.categories || []).filter(function(category){ return category.coreTargetCount > 0 || category.preview; });
     return '<section class="learningMapPanel b1PathSection" aria-labelledby="learningMapB1PathTitle">' +
       '<h3 id="learningMapB1PathTitle">B1 Path</h3>' +
-      '<p class="learningMapText">All B1 Progress: ' + Number(progress.allB1.percentAt1Star || 0) + '% got right once. Star colours show repeated correct answers.</p>' +
+      '<p class="learningMapText">Practice progress: ' + Number(progress.allB1.percentAt1Star || 0) + '% got right once. Star colours show repeated correct answers.</p>' +
       '<p class="b1PathDisclaimer">' + escapeHtml(progress.disclaimerShort) + '</p>' +
-      '<div class="b1PathAreaGrid">' + categories.map(function(category){ return b1PathCategoryCardHtml(category, false); }).join("") + '</div>' +
+      '<div class="b1PathAreaGrid learningMapB1PathCards">' + categories.map(function(category){ return b1PathCompactCollectionCardHtml(category, { extraClass:"learningMapCollectionCard" }); }).join("") + '</div>' +
       '<details class="learningMapDisclosure"><summary>How stars work</summary>' +
         '<div class="learningMapDetail">' + escapeHtml(progress.disclaimerLong) + '</div>' +
         '<div class="b1PathDetailGrid">' + [0,1,2,3,4,5].map(function(level){

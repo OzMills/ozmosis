@@ -33,16 +33,26 @@ Future runs must add to this file, not replace it.
 
 Current state is based only on current repo files.
 
-- Current app version in `index.html`: `v0.80.14.16 - Export Save / Import Save File Workflow`
-- Current export version in `index.html`: `v0.80.14.16-save-file-workflow`
-- Current README: `README-v0_80_14_16.md`
-- Current changelog: `CHANGELOG-v0_80_14_16.txt`
-- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.80.14.16.md`
-- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.80.14.16.md`
-- Current QA report: `docs/qa/v0.80.14.16_save_file_workflow.md`
+- Current app version in `index.html`: `v0.80.14.17 - Compact Star Indicators / Learning Map Card Unification`
+- Current export version in `index.html`: `v0.80.14.17-compact-star-cards-learning-map`
+- Current README: `README-v0_80_14_17.md`
+- Current changelog: `CHANGELOG-v0_80_14_17.txt`
+- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.80.14.17.md`
+- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.80.14.17.md`
+- Current QA report: `docs/qa/v0.80.14.17_compact_star_cards_learning_map.md`
 - Next planned patch documented in current files: `v0.81 - Cases and Articles Completion Pass`
 
 No live deployment status is claimed here.
+
+## v0.80.14.17 - Compact Star Indicators / Learning Map Card Unification
+
+- Corrected compact star indicators to use the requested five-colour palette: Bronze `#b87333`, Silver `#b8c4d6`, Gold `#f2c94c`, Sky Blue `#38bdf8`, and Electric Cyan `#67e8f9`.
+- Reduced and aligned mobile mini star-percentage indicators with a deterministic compact grid.
+- Added visible `1★` to `5★` level markers to compact indicators so colour is not the only cue.
+- Reused the landing-page B1 Practice compact collection-card layout for Learning Map B1 Path collection cards.
+- Simplified default Learning Map B1 Path cards while preserving expandable star explanation details.
+- Preserved Star Threshold Overlay threshold-coverage semantics, star-earning rules, scoring, content, localStorage keys, and Export Save / Import Save behaviour.
+- Added version docs and QA documentation at `docs/qa/v0.80.14.17_compact_star_cards_learning_map.md`.
 
 ## Historical Naming Note
 
@@ -1424,6 +1434,39 @@ From `docs/qa/v0.80.14.16_save_file_workflow.md`:
   - Commit object was not present locally, so author/body/changed-file summary could not be extracted from the current `.git` object database.
   - `packed-refs` also records `e583151f83ccdb181a877d3425490f3cf7205326 refs/remotes/origin/main`.
 
+# Ozmosis v0.80.14.17 - Compact Star Indicators / Learning Map Card Unification
+
+## Changed
+
+- Corrected compact star indicators to use the requested five-colour star palette:
+  - 1 star: Bronze `#b87333`
+  - 2 stars: Silver `#b8c4d6`
+  - 3 stars: Gold `#f2c94c`
+  - 4 stars: Sky Blue `#38bdf8`
+  - 5 stars: Electric Cyan `#67e8f9`
+- Reduced mini star-percentage indicator sizing on mobile.
+- Reworked mini star indicator layout into a deterministic compact grid.
+- Added visible star levels (`1★` to `5★`) to the mini indicators so colour is not the only cue.
+- Reused the landing-page B1 Practice compact collection-card layout for Learning Map B1 Path collection cards.
+- Simplified the default Learning Map B1 Path card view by removing dense per-card detail rows from the default card surface.
+- Kept detailed star explanation in the existing expandable Learning Map section.
+- Updated app/export version metadata to v0.80.14.17.
+
+## Preserved
+
+- Star Threshold Overlay threshold-coverage semantics.
+- Existing star-earning rules.
+- Existing scoring semantics.
+- German-learning content and answers.
+- localStorage key names.
+- Export Save / Import Save workflow.
+- Static, dependency-free app architecture.
+
+## Next
+
+`v0.81 - Cases and Articles Completion Pass`
+
+
 ## Older Development Artefacts Present Without Canonical Changelog Files
 
 The current repo contains many `_development-files` gate, smoke, import, audit, and report artefacts for earlier version labels, including:
@@ -1473,4 +1516,3 @@ No matching official versioned changelog files for those earlier versions are pr
 - Current repo references `docs/qa/v0.80.14.14_progress_summary_cache_latency_hotfix.md`, but that file is missing.
 - `docs/qa/v0.80.14.15_star_threshold_overlay.md` says the Leitner prototype still has a simpler three-colour rating display while visible star colours were updated; this is recorded as a known limitation, not a contradiction.
 - The local history includes a v0.80.14.16 commit that also introduced v0.80.14.15 docs.
-
