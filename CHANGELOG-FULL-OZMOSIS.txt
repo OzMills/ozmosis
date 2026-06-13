@@ -1,0 +1,1476 @@
+# Ozmosis Master Changelog
+
+## Purpose
+
+This is the canonical cumulative changelist for Ozmosis.
+
+Git is the saved history of changes. Commit messages are useful, but they are not enough by themselves. Versioned changelogs, README files, source briefs, roadmaps, QA reports, and committed logs can contain extra detail. This file collects those sources in one place so future work has one master changelist to check.
+
+Future runs must add to this file, not replace it.
+
+## Append / Update Policy
+
+- Preserve existing content.
+- Append missing or new information.
+- Add correction notes instead of silently changing historical entries.
+- Keep original source wording where practical.
+- Keep the source ledger at the bottom of this file.
+- Do not turn planned work into completed work.
+- Do not claim tests passed unless a source says they were run.
+
+## Current Run Metadata
+
+- Update type: first-run backfill.
+- Update date: 2026-06-13.
+- Branch from `.git/HEAD`: `main`.
+- Current HEAD from `.git/refs/heads/main`: `f37168656b89a21756ecffba9cc3c066a07c59a2`.
+- Normal `git` executable: unavailable in this environment.
+- Git history source used: raw `.git/logs/HEAD`, `.git/logs/refs/heads/main`, loose commit objects, and loose tree objects.
+- `git status --short`: blocked because no `git` executable was available.
+- Git tags: no local tags found in `packed-refs`; `git tag --sort=creatordate` could not be run because no `git` executable was available.
+
+## Current Known State
+
+Current state is based only on current repo files.
+
+- Current app version in `index.html`: `v0.80.14.16 - Export Save / Import Save File Workflow`
+- Current export version in `index.html`: `v0.80.14.16-save-file-workflow`
+- Current README: `README-v0_80_14_16.md`
+- Current changelog: `CHANGELOG-v0_80_14_16.txt`
+- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.80.14.16.md`
+- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.80.14.16.md`
+- Current QA report: `docs/qa/v0.80.14.16_save_file_workflow.md`
+- Next planned patch documented in current files: `v0.81 - Cases and Articles Completion Pass`
+
+No live deployment status is claimed here.
+
+## Historical Naming Note
+
+Historical source wording may use `Kasuskonsole` or older version labels. Current project naming uses `Ozmosis` and pre-1.0 version names.
+
+
+## Correction / Additional Evidence Added on 2026-06-13 - Versions Folder Backfill
+
+The parent workspace \German Learning\Versions contains older packaged Ozmosis ZIPs with changelog files. This section was added after the first master changelog pass because those ZIPs were explicitly identified as older changelog sources.
+
+Selection policy: the v0.80.14.9 packaged changelog is cumulative from the historical v30/v31 labels through v0.80.14.9. Separate packaged changelogs for v0.80.14.12 and v0.80.14.13 are included because they are later standalone sources. Current repo files already cover v0.80.14.14 through v0.80.14.16.
+
+### Verbatim package changelog source: ozmosis-v0_80_14_9.zip / CHANGELOG-v0_80_14_9.txt
+
+<!-- BEGIN VERBATIM ozmosis-v0_80_14_9.zip / CHANGELOG-v0_80_14_9.txt -->
+# Ozmosis Full Changelog
+
+Chronological changelog from the earliest retained project history through the current package.
+
+Historical standalone changelog files before `CHANGELOG-v0_80_14.txt` are not present in the current repo package. Where exact earlier changelog files are unavailable, entries are reconstructed from the surviving versioned QA reports in `docs/qa/`. The current `v0.80.14` entry is preserved from the active versioned changelog.
+
+## v0.80.14.9 - Full B1 v0_2 Content Import with Review-Flagged Live QA
+
+- Imported the reconciled CAT01-CAT18 v0_2 B1 content package into the static Ozmosis app.
+- Used the revised category CSVs as the active task source and preserved master-ledger/audit metadata on imported rows.
+- Imported normal decision rows covering `keep_as_is`, `revise_light`, `rewrite_heavy`, `convert_task_shape`, and `downgrade_evidence`.
+- Imported renderer-compatible former `move_to_human_review` rows as active practice where safe, preserving `needsHumanReview`, `reviewFlag`, `reviewStatus`, `originalStage3Decision`, `humanReviewReason`, `issueCodes`, source file/row metadata, and `sourceRowAuditKey`.
+- Excluded `cut` and `defer` rows from active imported content arrays.
+- Imported CAT18 as preview-only B1/B2 bridge material with `previewOnly: true`, `activeB1Evidence: false`, and `importStatus: "preview_imported_not_active_b1"`, without activating CAT18 for B1 scoring, progress, unlock, or Review Tests evidence.
+- Added active CAT12-CAT17 route starters using the existing static B1 practice renderer and existing scoring/evidence rules.
+- Added a Dev Tools-only Review Tests workflow for active review-flagged imported rows, excluding CAT18 preview rows by default.
+- Added an additive Review Edit List under `ozmosis_b1_review_edit_queue_v1`, deduped by `sourceRowAuditKey`, with copy format `categoryId<TAB>taskType<TAB>sourceRowAuditKey<TAB>itemId<TAB>issueCodes<TAB>humanReviewReason`.
+- Added additive export/import support for the Review Edit List while preserving older imports and protected storage keys.
+- Added review/debug metadata for review-flagged counts, review edit queue count, current review test item, and CAT12-CAT18 counts.
+- Preserved v0.80.14.8 medal/rank star visuals and avoided green progress-star regressions.
+- Preserved scoring, correctness rules, production self-marking, choice shuffling safety, protected storage keys, export/import compatibility, Today B1 Sprint composition, Diagnostic Sprint composition, B1-only active scope, and German LTR behaviour under Arabic UI.
+- Added `_development-files/v080149_import_b1_v02_content.cjs`.
+- Added `_development-files/v080149_full_b1_v02_content_import_gate.cjs`.
+- Added `_development-files/v080149_full_b1_v02_content_import_browser_smoke.cjs`.
+- Added QA documentation at `docs/qa/v0.80.14.9_full_b1_v02_content_import.md`.
+
+## v0.80.14.8 - Restore Medal Star Visual System
+
+- Restored the B1 Progress Path and task-screen star visual language to a medal/rank hierarchy instead of green success-style stars.
+- Added explicit star colour tokens for empty, bronze, brass, silver, electrum, gold, and matching glow states.
+- Reused and extended the existing `.b1Stars` / `.b1Star` component classes for B1 Path task strips, post-answer star updates, and compact star glyphs.
+- Replaced green B1 Path stacked star bars with metal-tier threshold bars: 1 star bronze, 2 stars brass, 3 stars silver, 4 stars electrum, and 5 stars gold.
+- Simplified task-screen star copy so normal B1 tasks show a compact medal strip and short label such as `Got right twice`, without large `Practice progress` banners or internal category/task labels.
+- Simplified post-answer star copy:
+  - correct answers show medal stars plus concise copy such as `Now got right 3 times.`;
+  - wrong answers show `No new star. This will return for practice.`;
+  - assisted practice shows `Practised with help. Stars need an unaided correct answer.`;
+  - production practice shows `Production practised.` and `Not star-rated.`.
+- Kept correctness feedback green/red where appropriate, while separating that meaning from B1 progress stars.
+- Preserved the existing star logic: stars still come only from unassisted correct auto-graded repetitions for the same practice target.
+- Preserved production as self-marked/practised-only and Diagnostic Sprint as snapshot-only.
+- Preserved Home compact progress cards, Learning Map B1 Path details, scoring, correctness rules, protected storage keys, additive path unlock overrides, export/import compatibility, content banks, route composition, Today B1 Sprint composition, Diagnostic Sprint composition, B1-only active scope, and German LTR behaviour under Arabic UI.
+- Added `_development-files/v080148_restore_medal_star_visual_system_gate.cjs`.
+- Added `_development-files/v080148_restore_medal_star_visual_system_browser_smoke.cjs`.
+- Added QA documentation at `docs/qa/v0.80.14.8_restore_medal_star_visual_system.md`.
+
+## v0.80.14.7 - B1 Progress Stars Task-Screen Integration Pass
+
+- Integrated the v0.80.14.6 B1 Progress Path star system into individual B1 task screens.
+- Added a compact task-screen star strip showing current practice progress for the current practice target.
+- Added post-answer star update feedback for correct, wrong, assisted, diagnostic, and production/self-marked paths.
+- Preserved the star rule `starLevel = min(5, nonAssistedCorrectCountForThisPracticeTarget)`.
+- Prevented Diagnostic Sprint evidence from incrementing B1 Path stars.
+- Kept Teach Me / assisted attempts from counting as normal correct star credit.
+- Kept production cards practised-only and not star-rated.
+- Improved Learning Map B1 Path details with cumulative 1-5 star rows, subcategory lists, practice-point wording, and clearer recommended-unlock requirements.
+- Updated soft unlock copy and additive override metadata so `Unlock anyway` clearly does not mark the previous area complete.
+- Added B1 Path debug summaries for category status, target star levels, tag summaries, task-type breadth, and unlock overrides.
+- Preserved Home compact progress cards and avoided giant landing-page progress tables.
+- Preserved scoring, correctness rules, protected storage keys, export/import compatibility, content banks, route composition, Today B1 Sprint composition, Diagnostic Sprint composition, B1-only active scope, and German LTR behaviour under Arabic UI.
+- Added `_development-files/v080147_b1_progress_stars_task_screen_gate.cjs`.
+- Added `_development-files/v080147_b1_progress_stars_task_screen_browser_smoke.cjs`.
+- Added QA documentation at `docs/qa/v0.80.14.7_b1_progress_stars_task_screen.md`.
+
+## v0.80.14.6 - B1 Progress Path and Star-Gated Category System
+
+- Added a derived B1 Progress Path from B1.1 through B1.18 based on `docs/design docs/OZMOSIS B1 Progress Path and Star-Gated Category System v0.1.md`.
+- Added compact Home `Your B1 Progress` cards below the recommended task, using stacked star bars and category percentages rather than giant landing-page progress tables.
+- Added a detailed Learning Map `B1 Path` section with category cards, star-ladder explanation, and conservative limitations.
+- Added repeated-correct star calculations at target-family/practice-target level so raw item variants do not inflate category denominators.
+- Added star labels from 0 stars through 5 stars without calling 5 stars mastered.
+- Added task-type breadth checks before a category is recommended for continuation.
+- Added soft path unlocks with `Keep practising` and `Unlock anyway`; manual overrides are additive and do not mark previous categories complete.
+- Added additive unlock override storage under `ozmosis_b1_path_unlock_overrides_v1`.
+- Added additive export/import support for B1 Path unlock overrides while preserving older imports.
+- Added B1 Path progress and unlock metadata to the debug summary.
+- Preserved Teach Me/revealed/assisted semantics so those attempts do not count as normal correct star credit.
+- Preserved production self-marking as practised-only evidence, never correctness stars.
+- Preserved scoring, correctness rules, protected storage keys, export/import compatibility, content banks, route composition, Today B1 Sprint composition, Diagnostic Sprint composition, B1-only active scope, and German LTR behaviour under Arabic UI.
+- Added `_development-files/v080146_b1_progress_path_star_gate.cjs`.
+- Added `_development-files/v080146_b1_progress_path_browser_smoke.cjs`.
+- Added QA documentation at `docs/qa/v0.80.14.6_b1_progress_path_star_gate.md`.
+
+## v0.80.14.5 - B1-03 Admin Office Candidate Addendum
+
+- Added a small B1-03 official-office/job-search admin-language content addendum covering proof/document phrases, official confirmations, copies, applications, deadline phrasing, polite help requests, required documents, reflexive contact phrasing, and yes/no office questions.
+- Imported ten approved active rows into `content/b1-m03-job-search-offices.js`: `ext_b1_03_001`, `ext_b1_03_002`, `ext_b1_03_003`, `ext_b1_03_004`, `ext_b1_03_005`, `ext_b1_03_006`, `ext_b1_03_007`, `ext_b1_03_008`, `ext_b1_03_011`, and `ext_b1_03_017`.
+- Kept the patch narrow: no redesign, no new dependencies, no runtime AI, no runtime German generation, no storage-key changes, no B1-12, no v0.81, no Satzi, no Genitive expansion, and no B2 active content.
+- Deferred same-target repair siblings, vocabulary-only rows, prompt-giveaway rows, rewrite-needed rows, B1-02-adjacent rows, and a near-duplicate production card rather than activating weak or crowding-prone evidence.
+- Kept legal-adjacent work-permit vocabulary as language practice only, not legal advice or legal-competence evidence.
+- Added `_development-files/v080145_b1_m03_admin_office_addendum_gate.cjs` to validate imported IDs, answer fields, deferred IDs, source safety, storage keys, and version metadata.
+- Added `_development-files/v080145_b1_m03_admin_office_browser_smoke.cjs` to stage and validate the new `Luecke`, `Satzbau`, `Reparatur`, and `Umformen` rows through local Edge/CDP.
+- Preserved scoring, correctness rules, production self-marking, choice shuffling safety, protected storage keys, export/import compatibility, static architecture, Today B1 Sprint composition, Diagnostic Sprint composition, existing content bank IDs/statuses, and B1-only active scope.
+- Added QA documentation at `docs/qa/v0.80.14.5_b1_m03_admin_office_candidate_addendum.md`.
+
+## v0.80.14.4 - B1 Practice Flow UX Catch-up
+
+- Replaced the disabled `Weiter` confidence prompt with separate guidance text: "Select answer confidence to continue."
+- Changed normal auto-graded B1 confidence selection so choosing confidence records it and advances immediately, without requiring a second Continue press.
+- Kept production/self-marked practice outside the auto-advance confidence path.
+- Stabilised typed B1 `Luecke` actions so `Teach me` and `Prüfen` share the same right-hand action slot while typing swaps the action.
+- Clarified translation/support labels with `Show translation`, `Hide translation`, `Translation`, and `Meaning / translation` wording.
+- Removed the bare learner-facing `Corrected.` repair fallback.
+- Replaced vague learner-facing `<summary>Explain</summary>` disclosures with more specific evidence/correction labels.
+- Removed redundant `Selected answer:` choice feedback.
+- Replaced the generic fallback `Welche Form ist höflicher?` with contextual wording: `Welche Form passt in dieser Situation am besten?`
+- Added `_development-files/v080144_b1_practice_flow_ux_gate.cjs` to hard-fail on the B1 practice-flow UX regressions targeted by this patch.
+- Added `_development-files/v080144_b1_practice_flow_browser_smoke.cjs` for targeted Edge/CDP browser validation of typed cloze, confidence, feedback, production, responsive, and Arabic/LTR states.
+- Preserved content banks, scoring, correctness rules, production self-marking, choice shuffling, protected storage keys, export/import compatibility, static architecture, and B1-only active scope.
+- Added QA documentation at `docs/qa/v0.80.14.4_b1_practice_flow_ux_catchup.md`.
+
+## v0.80.14.3 - B1 Question Quality Safe Fix Patch
+
+- Applied the 177 safe, self-audited B1 question-quality fixes from the 09B safe-for-Codex CSV.
+- Reconciled every safe row by `itemId`, source file, prompt, choices, answer, accepted answers, and feedback before release.
+- Converted approved fake-repair and raw-slash contrast items into constrained `Luecke`, `Kontrast`, or `Auswahl` tasks where the 09B safe CSV specified that change.
+- Revised approved choice distractors, prompts, accepted answers, and micro-feedback across Connector, Redemittel, Wortschatz, and B1-01 through B1-11 content banks.
+- Preserved the three human/native review rows untouched: `draft_b1_03_022`, `draft_b1_04_018`, and `draft_b1_08_016`.
+- Added `_development-files/v080143_b1_question_quality_gate.cjs` to validate safe-row reconciliation, blind-cloze guardrails, repair guardrails, stable choice identity, storage keys, and v0.80.14.3 version metadata.
+- Updated current-era validation gates where required so their expectations match the approved 09B safe conversions.
+- Preserved scoring, correctness rules, content IDs, content statuses, production self-marking, Today B1 Sprint composition, Diagnostic Sprint composition, protected storage keys, export/import compatibility, static architecture, and B1-only active scope.
+- Added QA documentation at `docs/qa/v0.80.14.3_b1_question_quality_safe_fix_patch.md`.
+
+## v30-b1-sprint-landing-page
+
+- Added a numbered OZMOSIS landing page for B1 sprint navigation.
+- Kept existing Case Trainer, Options, and Dev Tools accessible.
+- Added placeholder navigation for upcoming Grammar, Wortschatz, Redemittel, Schreiben, Sprechen, and Course Map tools.
+- Preserved existing static single-file architecture and local progress.
+
+## v31 - Dev Leitner prototype with external TSV data
+
+- Added a Dev Tools Leitner article prototype.
+- Added external TSV data files for article items and Leitner card configuration.
+- Added local Leitner progress persistence using a separate localStorage namespace.
+- Added five-step star rating display with due-card scheduling and early-practice handling.
+
+## v31-b1-content-engine-lite
+
+- Added a lightweight B1 practice engine.
+- Added 24 seed B1 sprint items across Grammar, Wortschatz, and Redemittel.
+- Connected Today's B1 Sprint, Grammar, Wortschatz, and Redemittel landing-page buttons to real practice rounds.
+- Added basic B1 item progress persistence under `ozmosis_b1_sprint_progress_v1`.
+- Preserved existing Case Trainer, Options, Dev Tools, and localStorage compatibility.
+
+## v32 - Fullscreen Lernbox cloze prototype
+
+- Changed the Dev Tools Leitner prototype into a fullscreen `LERNBOX PROTOTYPE` cloze session.
+- Switched the prototype data source to `LeitnerTest.json`.
+- Randomised each prototype round to a maximum of 10 initial clozes and requeued missed clozes for retry.
+- Added a compact Lernbox results screen with strongest and weakest category summaries.
+- Moved prototype progress reset to the Dev Tools list with a confirmation screen.
+- Removed visible due-card status text, step text, intro copy, and in-prototype Dev Tools/back controls.
+
+## v33 - Lernbox footer HUD and progress strips
+
+- Moved the Lernbox prompt, answer input, and actions out of the extra outer play box.
+- Added a fixed Lernbox footer HUD with done, right, wrong, retry, and thin top progress-bar status.
+- Added the same thin top progress-bar treatment to the main practice HUD.
+- Kept the fullscreen Lernbox prototype flow and existing article trainer behaviour intact.
+
+## v0.32 - B1 Connector Sprint Bank
+
+- Added a structured B1 Connector Sprint under Grammar.
+- Added the 120-item B1 connector bank covering reason, contrast, purpose, time, repair, and production transfer.
+- Added support for connector-choice, word-order cloze, error-repair, and production-card item types.
+- Added connector-family filtering for All, Reason, Contrast, Purpose, Time, and Repair.
+- Preserved existing v31 B1 seed practice, Case Trainer, Options, Dev Tools, and localStorage compatibility.
+- Extended B1 progress tracking for connector attempts and practised production cards.
+
+## v0.33.1 - B1 Renderer Contract and Feedback Cleanup
+
+- Verified the renderer contract and feedback cleanup from the surviving QA report.
+- Confirmed current version markers in `index.html`, `README.md`, `AGENTS.md`, and the then-current changelog.
+- Preserved the next planned content patch path toward `v0.34`.
+
+## v0.34 - Daily Sprint Queue / Teach Me / Wortschatz Integration
+
+- Added daily sprint queue, Teach me, cloze feedback, and Wortschatz integration.
+- Preserved the B1 static learning scope and existing storage compatibility.
+
+## v0.38 - B1 Content Registry Normalisation
+
+- Normalised the B1 content registry.
+- Made connector inclusion policy explicit through registry metadata.
+- Preserved current B1 route behaviour while identifying stale export-version metadata for follow-up.
+
+## v0.39 - Static Content QA
+
+- Audited static content loading and registry behaviour.
+- Verified current v0.38 state before the v0.39 QA pass.
+- Documented connector-bank inclusion expectations and export metadata risk.
+
+## v0.40 - Progress Evidence Model v1
+
+- Added the B1 progress evidence model v1.
+- Introduced the protected evidence storage key `ozmosis_b1_progress_evidence_v1`.
+- Preserved the existing B1 sprint progress key `ozmosis_b1_sprint_progress_v1`.
+- Updated export metadata away from stale v0.34 export references.
+
+## v0.40.1 - Confidence / Guess Tracking
+
+- Added confidence and guess tracking to the evidence model.
+- Preserved safe confidence values and export/import compatibility.
+- Kept scoring semantics unchanged.
+
+## v0.41 - B1 Skill Tag Audit
+
+- Audited B1 skill tagging across the active B1 content banks.
+- Strengthened metadata consistency for progress and evidence views.
+- Preserved static content loading and storage compatibility.
+
+## v0.42 - Learning Map Data Scaffold
+
+- Added the Learning Map data scaffold.
+- Prepared conservative progress/evidence summaries without adding mastery claims.
+- Updated documentation and QA references for the v0.42 progress layer.
+
+## v0.42.1 - B1 Diagnostic Entry Sprint
+
+- Added the B1 Diagnostic Entry Sprint.
+- Preserved diagnostic evidence as snapshot evidence rather than pass/fail scoring.
+- Kept the active B1 scope local and static.
+
+## v0.42.2 - Diagnostic Flow Recovery
+
+- Repaired diagnostic flow recovery.
+- Preserved diagnostic evidence semantics and export/import behaviour.
+- Documented remaining diagnostic UX risks.
+
+## v0.42.3 - Production Card Support Repair
+
+- Repaired production-card support handling.
+- Preserved production as self-marked practice rather than auto-graded correctness.
+- Kept production evidence conservative.
+
+## v0.42.4 - Debug Stamp + State Snapshot Export
+
+- Added a debug stamp and state snapshot export support.
+- Improved tester/debug visibility without changing learner scoring.
+- Preserved existing app storage keys.
+
+## v0.43 - Learning Map UI Preparation
+
+- Prepared the Learning Map UI surface.
+- Kept progress language conservative and evidence-limited.
+- Preserved existing routes and B1 practice flows.
+
+## v0.44 - Skill Matrix Data Model
+
+- Added the Skill Matrix data model.
+- Started separating progress evidence by skill and task depth.
+- Preserved learner-facing labels as conservative progress states.
+
+## v0.45 - Next Recommended Practice v1
+
+- Added Suggested Next Practice v1.
+- Kept recommendations rules-based and conservative.
+- Preserved existing route targets and avoided new scheduler behaviour.
+
+## v0.46 - Progress State Labels v1
+
+- Added progress state labels.
+- Preserved safe learner-facing states: Not tested, Not enough evidence, Introduced, Emerging, and Developing.
+- Avoided mastery, durability, readiness, and pass/fail claims.
+
+## v0.47 - Not Enough Evidence Handling
+
+- Improved Not enough evidence handling.
+- Kept empty and thin evidence states neutral rather than punitive.
+- Preserved scoring and storage behaviour.
+
+## v0.48 - Tester-Ready UX / Visual System
+
+- Added tester-ready UX and visual-system improvements.
+- Added Tester Notes / Known Bugs and stronger Dev Tools access.
+- Preserved core route hooks for Home, Learning Map, B1 practice routes, Case Trainer, Options, and Dev Tools.
+
+## v0.48.1 - Confidence-as-Next
+
+- Made confidence selection part of the post-answer next-action rhythm.
+- Preserved null-confidence continue behaviour.
+- Avoided duplicate evidence records when confidence was selected.
+
+## v0.49 - Progress Foundation QA
+
+- Audited the progress foundation.
+- Verified recommendation, Learning Map, Skill Matrix, confidence, and evidence behaviour together.
+- Preserved learner-facing conservatism and storage compatibility.
+
+## v0.50 - Task Depth Formalisation
+
+- Formalised task-depth metadata.
+- Preserved task-depth separation for recognition, cloze, repair, contrast, and production evidence.
+- Documented browser-validation limitations and Edge/CDP gate follow-up.
+
+## v0.50 - Browser Validation Blocked
+
+- Documented the blocked browser-validation state.
+- Preserved static and syntax checks while browser validation was unavailable.
+- Recorded the need for an Edge/CDP validation path.
+
+## v0.50 - Browser Gate / Edge-CDP Clarification
+
+- Clarified Edge/CDP as the accepted browser gate path.
+- Confirmed browser validation could proceed through local static serving and headless Edge/CDP.
+
+## v0.51 - Skill Matrix v1
+
+- Added Skill Matrix v1.
+- Rendered skill/task-depth evidence views while preserving conservative labels.
+- Kept production and diagnostic limitations visible.
+
+## v0.51 - Deployment / Device QA Gate
+
+- Added deployment/device QA gate coverage.
+- Verified route and device smoke expectations for the v0.51 matrix layer.
+- Preserved documentation and changelog alignment.
+
+## v0.52 - Support-Level Tracking
+
+- Added support-level tracking.
+- Preserved additive, conservative support metadata.
+- Kept scoring unchanged.
+
+## v0.52.1 - Support Visibility Policy
+
+- Added support visibility policy handling.
+- Preserved support reveal semantics and conservative evidence interpretation.
+- Kept German learning content LTR.
+
+## v0.53 - Controlled Production Tracking
+
+- Added controlled production tracking.
+- Preserved production cards as self-marked evidence only.
+- Avoided inferring correctness from production practice.
+
+## v0.53 - Documentation Filename Hygiene
+
+- Audited and repaired documentation filename hygiene.
+- Preserved historical changelog and QA naming.
+- Kept current documentation pointers aligned.
+
+## v0.53.1 - Mobile UX Stabilisation
+
+- Stabilised mobile UX.
+- Improved menu sections, close behaviour, scrollable overflow, and route access.
+- Preserved Diagnostic Sprint, Learning Map, Wortschatz, and Tester Notes navigation.
+
+## v0.54 - Repair Mode Strengthening
+
+- Strengthened repair-mode handling.
+- Preserved repair evidence as repair task-depth evidence.
+- Kept feedback concise and route behaviour stable.
+
+## v0.55 - Contrast Tasks
+
+- Added contrast-task support.
+- Preserved contrast metadata as conservative evidence.
+- Kept route and storage compatibility.
+
+## v0.56 - Skill-Task Recommendations
+
+- Added skill-task recommendations.
+- Connected recommendations to task-depth evidence while keeping copy cautious.
+- Preserved existing progress states and B1-only active scope.
+
+## v0.56 - Documentation Filename Hygiene
+
+- Aligned versioned README, changelog, source brief, and roadmap filenames.
+- Preserved historical docs and QA files.
+- Confirmed root README/changelog files were not required by the versioned convention.
+
+## v0.56 - Restore Cleanup Gate
+
+- Verified restored v0.56 state.
+- Documented temporary artifact cleanup and preserved uncertain files.
+- Confirmed current docs and QA reports after restore.
+
+## v0.57 - Recommendation QA and Evidence Inflation Audit
+
+- Hardened Suggested Next Practice against evidence inflation.
+- Audited thin, scaffolded, diagnostic, self-marked, broad-category, and repair/contrast evidence.
+- Preserved v0.56 recommendation behaviour while making learner-facing copy cautious.
+
+## v0.57.1 - Big UX Update
+
+- Performed a full mobile-first UX and visual-system audit across the app.
+- Refined Home, menu, Options, active practice, feedback, production cards, diagnostics, Learning Map, Skill Matrix, Case Trainer, Dev Tools, and tester surfaces.
+- Preserved v0.57 recommendation hardening, scoring, evidence semantics, storage keys, export/import, content banks, and B1-only scope.
+
+## v0.57.2 - Flow, Navigation, and Mobile UX Corrections
+
+- Fixed post-v0.57.1 mobile navigation and flow issues.
+- Made Home and route hubs purpose-grouped rather than falsely numbered.
+- Improved menu scrollability, Settings access, production-card reveals, diagnostic hierarchy, Learning Map copy, mobile Skill Matrix readability, Case Trainer harmony, cloze sizing, feedback hierarchy, toast placement, HUD clearance, and Arabic/LTR smoke behaviour.
+
+## v0.58 - Skill Matrix QA
+
+- Audited the Skill Matrix for evidence-inflation risks.
+- Added conservative matrix QA handling for thin samples, scaffolded evidence, diagnostic records, self-marked production, derived metadata, and unknown task depths.
+- Preserved learner-facing conservative labels and mobile matrix readability.
+
+## v0.59 - Skill Matrix Stabilisation
+
+- Stabilised the Learning Map, Skill Matrix, and Suggested Next Practice foundation.
+- Aligned recommendation copy, matrix limitations, debug/tester output, documentation, and export metadata.
+- Preserved v0.57.2 UX fixes.
+
+## v0.60 - Error Pattern Detection v1
+
+- Added conservative rules-based Error Pattern Detection v1.
+- Added cautious possible-pattern signals where existing evidence and metadata met thresholds.
+- Kept pattern signals separate from progress states, scoring, weakness repair, and review scheduling.
+
+## v0.60.1 - Repair Feedback Precision
+
+- Improved repair feedback precision.
+- Preserved error-pattern signals and repair evidence semantics.
+- Kept broader v0.60 regression coverage intact.
+
+## v0.61 - Error Pattern QA / Weakness Repair Preparation
+
+- Audited error-pattern output for QA and future weakness-repair preparation.
+- Preserved cautious pattern language and avoided learner-facing diagnosis claims.
+- Kept weakness repair as preparation only.
+
+## v0.62 - Error-Type Summaries v1
+
+- Added Error-Type Summaries v1.
+- Summarised repeated error-type evidence conservatively.
+- Preserved scoring, storage keys, and learner-facing progress-state limits.
+
+## v0.63 - Weakness Repair Design Gate
+
+- Added the Weakness Repair Design Gate.
+- Prepared repair design constraints without shipping broad repair queues.
+- Preserved route smoke and storage compatibility.
+
+## v0.64 - Weakness Repair Queue Scaffold
+
+- Added a scaffold for weakness repair queues.
+- Kept repair queue behaviour conservative and bounded.
+- Preserved existing B1 routes and evidence semantics.
+
+## v0.65 - Targeted Repair Practice v1
+
+- Added Targeted Repair Practice v1.
+- Routed eligible repair practice through existing B1 evidence and task-depth semantics.
+- Preserved export/import and storage compatibility.
+
+## v0.66 - Targeted Repair QA / Route Expansion
+
+- Expanded targeted repair QA and route coverage.
+- Preserved conservative repair evidence and route smoke behaviour.
+- Kept storage and scoring unchanged.
+
+## v0.67 - Connector Diagnostic Cards
+
+- Added Connector Diagnostic Cards.
+- Preserved diagnostic evidence as snapshot/context evidence.
+- Kept existing route and storage behaviour.
+
+## v0.68 - Diagnostic QA
+
+- Audited diagnostic behaviour.
+- Preserved diagnostic copy, evidence limits, and route semantics.
+- Kept pass/fail and mastery claims out of learner-facing UI.
+
+## v0.69 - Diagnostic Repair Stabilisation
+
+- Stabilised diagnostic repair behaviour.
+- Preserved diagnostic repair evidence and route smoke coverage.
+- Updated v0.69 README, changelog, source brief, roadmap, AGENTS pointers, and QA report.
+
+## v0.69.1 - Holistic UX Legibility and Access Hierarchy Pass
+
+- Audited first-run picker, menu, Settings, Home, placeholders, Learning Map, production cards, Diagnostic, route hubs, Case Trainer, Dev Tools, Tester Notes, evidence, import, and responsive states.
+- Improved visual hierarchy, access hierarchy, and legibility.
+- Kept Settings, Tester Notes, and Dev Tools reachable without competing with primary practice.
+
+## v0.69.2 - v0.69.1 Completion Fix
+
+- Completed v0.69.1 documentation/package follow-through.
+- Created v0.69.2 README, changelog, source brief, roadmap, and QA report.
+- Updated AGENTS to v0.69.2 with next planned patch v0.70.
+
+## v0.70 - Durability / Review Design Gate
+
+- Added a durability/review design gate.
+- Preserved review as design-gated rather than broad scheduler behaviour.
+- Smoke-tested first-run, Home, menu, Settings, Learning Map, Grammar, Wortschatz, Redemittel, production, Diagnostic, Case Trainer, Dev Tools, Tester Notes, and export/import UI.
+
+## v0.71 - Review Eligibility Rules v1
+
+- Added Review Eligibility Rules v1.
+- Kept review eligibility conservative and evidence-based.
+- Preserved current changelog/docs pointers and storage compatibility.
+
+## v0.72 - Review Candidate Preview v1
+
+- Added Review Candidate Preview v1.
+- Previewed review candidates without forcing a scheduler.
+- Preserved export/import and conservative learner-facing copy.
+
+## v0.73 - Opt-in Review Practice v1
+
+- Added Opt-in Review Practice v1.
+- Kept review practice opt-in rather than automatic scheduling.
+- Preserved current scoring and evidence behaviour.
+
+## v0.74 - Review UX Integration v1
+
+- Integrated review UX into existing app surfaces.
+- Preserved current route access and conservative review language.
+- Kept documentation and QA pointers aligned.
+
+## v0.75 - Review/Durability QA Stabilisation
+
+- Stabilised review and durability QA.
+- Clarified Tester Notes and Dev Tools review copy.
+- Kept Review Practice optional and available only when eligible older auto-graded items exist.
+
+## v0.75.1 - Holistic UX Redesign / Access Hierarchy / Visual System Pass
+
+- Audited first-run language picker, Home, Menu, Settings, active practice, feedback, Diagnostic, Grammar, Wortschatz, Redemittel, production, Case Trainer, Learning Map, Skill Matrix, review practice, Dev Tools, Tester Notes, export/import, Arabic, desktop, and short-laptop states.
+- Improved access hierarchy and visual-system consistency.
+- Generated screenshot coverage for named UX states.
+
+## v0.76 - B1 Content Metadata Repair / Review Coverage Pass
+
+- Repaired B1 content metadata for review coverage.
+- Preserved B1 content semantics and review eligibility safety.
+- Kept Tester Notes and route smoke coverage.
+
+## v0.77 - Learner-Readable Progress Export
+
+- Added learner-readable progress export.
+- Preserved internal export/import compatibility.
+- Smoke-tested Home, Menu, Settings, Today's B1 Sprint, Diagnostic Sprint, Grammar/Connector, Wortschatz, Redemittel, production card, Case Trainer, Learning Map, Skill Matrix, Review Practice, Dev Tools, Tester Notes, and export/import UI.
+
+## v0.78 - Durability QA
+
+- Audited durability/review behaviour.
+- Preserved conservative durability and review language.
+- Kept scoring and storage unchanged.
+
+## v0.79 - Stabilise B1 Review System
+
+- Stabilised the B1 review system.
+- Preserved opt-in review, eligibility rules, and learner-readable export behaviour.
+- Kept next work scoped to B1 coverage.
+
+## v0.80 - B1 Coverage Audit
+
+- Audited B1 coverage.
+- Prepared the B1 module coverage track.
+- Preserved the versioned README/changelog convention.
+
+## v0.80 - Documentation Filename Hygiene
+
+- Aligned v0.80 documentation filenames.
+- Preserved versioned README/changelog/source brief/roadmap convention.
+- Confirmed no root README or root changelog was required.
+
+## v0.80.1 - Live / Real Device / Screenshot Harness Stabilisation
+
+- Stabilised live, real-device, and screenshot QA harness expectations.
+- Preserved first-run, Home, Menu, Settings, active practice, feedback, Diagnostic, route hubs, production, Case Trainer, Learning Map, Skill Matrix, review practice, Dev Tools, Tester Notes, export/import, Arabic, desktop, and short-laptop coverage.
+
+## v0.80.1 - Documentation Filename Hygiene
+
+- Aligned v0.80.1 documentation filenames.
+- Preserved the versioned README/changelog convention.
+- Confirmed no root README or root changelog was required.
+
+## v0.80.2 - Multiple-Choice Choice Shuffling Safety
+
+- Added multiple-choice shuffling safety.
+- Verified shuffled choice identity for correct and wrong selections.
+- Preserved confidence updates without duplicate evidence.
+
+## v0.80.3 - B1-01 Curated Variant Families
+
+- Added B1-01 curated variant families.
+- Preserved variant metadata, review-group constraints, and static content architecture.
+- Kept storage/export/import compatibility.
+
+## v0.80.3.1 - B1-01 Cue Alignment / Translation Hotfix
+
+- Fixed B1-01 cue alignment and translation issues.
+- Preserved B1-01 content IDs and evidence semantics.
+- Kept the patch narrow and content-focused.
+
+## v0.80.4 - B1-01 Extension Variant Families
+
+- Added B1-01 extension variant families.
+- Preserved Today/Diagnostic composition and storage compatibility.
+- Updated v0.80.4 docs and QA.
+
+## v0.80.5 - B1-02 Appointments / callbacks
+
+- Added approved B1-02 Appointments / callbacks content as static module content.
+- Registered B1-02 under the existing B1 module system.
+- Preserved Today B1 Sprint, Diagnostic Sprint, storage, export/import, and existing B1-01 behaviour.
+
+## v0.80.6 - B1-03 Job search / offices
+
+- Added approved B1-03 Job search / offices content as static module content.
+- Registered B1-03 under the existing B1 module system.
+- Preserved previous B1 module behaviour and storage/export/import compatibility.
+
+## v0.80.7 - B1-04 Applications
+
+- Added approved B1-04 Applications content as static module content.
+- Registered B1-04 under the existing B1 module system.
+- Preserved previous B1 module behaviour and Today/Diagnostic composition.
+
+## v0.80.8 - B1-05 First day / contract basics
+
+- Added approved B1-05 First day / contract basics content as static module content.
+- Registered B1-05 under the existing B1 module system.
+- Preserved storage keys, export/import, and earlier module behaviour.
+
+## v0.80.9 - B1-06 Sick Leave
+
+- Added approved B1-06 Sick Leave content as static module content.
+- Registered B1-06 under the existing B1 module system.
+- Preserved previous B1 route behaviour, storage, export/import, and B1-only scope.
+
+## v0.80.10 - B1-07 Meetings / Leave Requests
+
+- Added approved B1-07 Meetings / Leave Requests content as static module content.
+- Registered B1-07 under the existing B1 module system.
+- Preserved previous B1 module behaviour, storage, export/import, and B1-only scope.
+
+## v0.80.11 - B1-08 Orders / Delivery
+
+- Added approved B1-08 Orders / Delivery content as static module content.
+- Registered B1-08 under the existing B1 module system.
+- Preserved previous B1 module behaviour, storage, export/import, and B1-only scope.
+
+## v0.80.12 - B1-09 Complaints / Customer Service
+
+- Added approved B1-09 Complaints / Customer Service content as static module content.
+- Registered B1-09 under the existing B1 module system.
+- Preserved previous B1 module behaviour, storage, export/import, and B1-only scope.
+
+## v0.80.13 - B1-10 Technical Problems
+
+- Added approved B1-10 Technical Problems content as static module content.
+- Registered B1-10 under the existing B1 module system.
+- Preserved previous B1 module behaviour, storage, export/import, and B1-only scope.
+
+## v0.80.14 - B1-11 Colleague feedback / conflict
+
+### Added
+
+- Added approved B1-11 Colleague feedback / conflict content as a static module file.
+- Added 15 active B1-11 practice items and 3 B1-11 notice/concept cards.
+- Added a B1-11 module practice entry under Grammar.
+- Added B1-11 debug/start helpers for QA.
+- Added a v0.80.14 static verifier and Edge/CDP QA gate for B1-11 counts, route registration, task rendering, evidence metadata, export/import, responsive checks, and Arabic/LTR smoke.
+
+### Implementation
+
+- Imported rows from the approved B1-11 planning inventory and schema mapping.
+- Preserved planning IDs, target-family IDs, target IDs, evidence types, support presentation, and review-eligibility metadata where the current schema supports them.
+- Mapped `Auswahl`, `Luecke`, `Satzbau`, `Reparatur`, `Kontrast`, and `Produktion` to existing renderers.
+- Kept B1-11 out of Today's B1 Sprint and Diagnostic Sprint by registry flags.
+- Kept production cards self-marked only.
+
+### Preserved
+
+- Existing localStorage keys.
+- Existing export/import compatibility.
+- Existing B1-01 through B1-10 behaviour.
+- Existing multiple-choice shuffling behaviour.
+- Existing production self-marking behaviour.
+- Today B1 Sprint and Diagnostic Sprint composition.
+- German LTR handling in Arabic UI contexts.
+- Static, dependency-free app architecture.
+
+### Excluded
+
+- Did not add B1-12 review items.
+- Did not add v0.81 Cases and Articles work.
+- Did not add Genitive.
+- Did not add Satzi.
+- Did not add runtime grammar generation.
+- Did not add dynamic German case/article inference.
+- Did not add B2 content.
+- Did not add a scheduler, delayed review, or weakness repair queue.
+
+### Testing
+
+- Parsed `index.html` inline script.
+- Parsed active content scripts.
+- Generated `content/b1-m11-colleague-feedback-conflict.js` from the approved B1-11 planning table.
+- Ran `_development-files/v0813_static_verify.cjs` before editing.
+- Ran `_development-files/v0814_static_verify.cjs`.
+- Ran `_development-files/v0814_b111_colleague_feedback_conflict_gate.cjs`.
+- Ran `_development-files/v0802_mc_choice_shuffle_gate.cjs` under v0.80.14 version labels.
+
+## v0.80.14.1 - Beta Readiness: Task Contract + Practice UX Repair
+
+### Fixed
+
+- Repaired the B1 task-rendering contract for imported B1-02 through B1-11 module content without changing content-bank item IDs, answers, or statuses.
+- Converted slash-style `Kontrast` prompts into generated choice-button tasks at render time.
+- Converted selected valid/style/register `Reparatur` prompts into bounded choice-button tasks where a free repair input would be misleading.
+- Reframed ordinary repair prompts so the learner sees a German repair target and not English planning/source text.
+- Hid answer-giving support before answer for repair and choice contexts where the source support would reveal the target.
+- Standardised typed cloze blank sizing so answer length no longer makes the blank look too large or too revealing.
+- Added wrapping safeguards for long answers, repair corrections, correction targets, micro-rules, and choice feedback.
+- Added visible button tap/press feedback for touch interaction.
+- Thickened the practice HUD progress strip and hid the fixed HUD in very short landscape B1 practice states where it would otherwise cover primary controls.
+- Added concrete repair micro-rules for common connector and word-order repairs such as `dass`, `weil`, `ob`, `wenn`, `bevor`, and V2-style fronted connector frames.
+- Added lightweight Review Practice anti-clumping so nearby review candidates are less likely to repeat the same cluster immediately.
+
+### Preserved
+
+- Preserved scoring, correctness, confidence values, review eligibility, review timing, production self-marking, diagnostic semantics, storage keys, export/import compatibility, Today B1 Sprint composition, Diagnostic Sprint composition, and B1-only active scope.
+- Preserved all existing content bank item IDs, answers, and statuses.
+- Preserved the static, dependency-free app architecture.
+- Did not add B1-12, v0.81 Cases and Articles, Genitive expansion, Satzi, B2 content, runtime grammar generation, runtime AI, a backend, a framework, package manager files, or dependencies.
+
+### QA
+
+- Added `_development-files/v080141_task_contract_beta_readiness_gate.cjs`.
+- Added `_development-files/v080141_beta_readiness_practice_ux_gate.cjs`.
+- Added QA documentation at `docs/qa/v0.80.14.1_beta_readiness_task_contract_practice_ux.md`.
+- Edge/CDP validation covered task-contract render states, B1-02 through B1-11 route smoke, production skip/self-marking, export/import, malformed import handling, Arabic/LTR, and the full required responsive viewport set.
+## v0.80.14.2 - Beta UX Interaction Pass
+
+- Fixed beta-blocking practice-flow UX friction reported from the v0.80.14.1 app line.
+- Allowed B1 choice-button tasks to submit on one click or tap through the existing answer/evidence path.
+- Kept explicit `Prüfen` submission for typed cloze, repair text, Satzbau, production contexts, and Case Trainer inputs.
+- Required confidence selection after auto-graded and assisted B1 submissions before the learner can continue.
+- Reordered confidence buttons to `I GUESSED`, `I WAS UNSURE`, `I KNEW IT`.
+- Replaced normal auto-graded skip-confidence continuation with the blocked copy `Select answer confidence to continue`.
+- Kept confidence writes additive to the current evidence record and avoided duplicate evidence records.
+- Integrated `Teach me` with inline typed cloze action state so empty input shows support and typed input switches to `Prüfen`.
+- Updated Teach Me support copy to `Practice answer — This will reappear at the end of the session for recall.`
+- Relaxed B1 practice scroll constraints so Edge/Chromium mouse wheel scrolling can use the document rather than a nested trapped panel.
+- Tightened practice prompt sizing, prompt-to-choice spacing, and choice-button rhythm without changing route design.
+- Normalised inline cloze punctuation spacing so punctuation after blanks does not sit awkwardly.
+- Kept typed cloze inputs at a standard width, thinned outlines, preserved accessible focus, and reinforced long-answer wrapping.
+- Reinforced reduced-motion-safe button press feedback and made the HUD progress strip easier to see.
+- Preserved v0.80.14.1 task-contract repairs, multiple-choice shuffling, Review Practice anti-clumping, scoring, evidence semantics, storage keys, export/import compatibility, content banks, B1-only scope, and static architecture.
+- Added `_development-files/v080142_beta_ux_interaction_gate.cjs`.
+- Added QA documentation at `docs/qa/v0.80.14.2_beta_ux_interaction_pass.md`.
+<!-- END VERBATIM ozmosis-v0_80_14_9.zip / CHANGELOG-v0_80_14_9.txt -->
+
+### Verbatim package changelog source: ozmosis-v0_80_14_12.zip / CHANGELOG-v0_80_14_12.txt
+
+<!-- BEGIN VERBATIM ozmosis-v0_80_14_12.zip / CHANGELOG-v0_80_14_12.txt -->
+# Ozmosis Changelog v0.80.14.12
+
+## v0.80.14.12 - Verification / Learner-Facing Artefact Hotfix
+
+### Added
+
+- Added v0.80.14.12 validation checks for learner-facing source/generated artefact leakage.
+- Added browser smoke coverage for deterministic A/B/C choice-prefix rendering, structured production-card rendering, seeded completed/max-star item filtering, Dev Tools Review Tests, Review Edit List, responsive screenshots, Arabic/German LTR behaviour, and export/import.
+- Added portable source-preservation path normalisation in the validation gate.
+- Added structured learner-facing rendering for production prompt metadata where safe.
+
+### Changed
+
+- Hardened normal learner route filtering for source-shaped prompt and choice artefacts.
+- Normalised learner-facing multiple-choice display to suppress visible A/B/C source labels while preserving stable answer identity and current shuffling.
+- Ensured unsafe generated/source-shaped rows remain preserved for Dev Tools Review Tests and Review Edit List rather than normal learner routes.
+- Added safe empty-state status copy for B1 module routes when completed/max-star filtering leaves no unfinished items.
+- Updated version/export metadata from v0.80.14.11 to v0.80.14.12.
+
+### Fixed
+
+- Fixed normal learner leakage of `Beste Bitte um Lösung:`.
+- Fixed visible A/B/C source-label artefacts in learner-facing choices.
+- Fixed raw inline production labels appearing in normal production cards where structured rendering is possible.
+- Fixed path-fragile source-preservation validation across Windows/Linux/macOS-style manifest separators.
+- Verified completed/max-star exclusion from ordinary practice contexts with a seeded evidence localStorage profile.
+- Verified production `I can't do this now` records no production-practice evidence.
+
+### Preserved
+
+- Static single-file app architecture.
+- No backend/framework/build step/package manager/dependencies.
+- Source package and source CSV immutability.
+- Protected localStorage keys.
+- Additive B1 path unlock and Review Edit List keys.
+- Export/import compatibility, including v0.80.14.11-compatible imports.
+- Dev Tools Review Tests.
+- Review Edit List.
+- v0.80.14.10/v0.80.14.11 grouped Home route collections.
+- German LTR handling inside Arabic UI.
+- Production self-marking.
+- Today’s B1 Sprint composition.
+- B1-only active learner scope.
+
+### Not changed
+
+- No v0.81 Cases and Articles work.
+- No Satzi.
+- No Genitive expansion.
+- No CAT18/B2 activation.
+- No runtime AI.
+- No runtime German morphology.
+- No broad learner-facing German content rewrite.
+- No new German task generation.
+- No source CSV or source ZIP edits.
+
+### Testing
+
+- Ran `_development-files/v0801412_verification_learner_facing_artefact_gate.cjs`.
+- Ran `_development-files/v0801412_browser_smoke.cjs` with headless Microsoft Edge through Chrome DevTools Protocol against a local static server.
+- Saved responsive/browser screenshots to `docs/qa/screenshots/v0.80.14.12/`.
+- Created QA documentation at `docs/qa/v0.80.14.12_verification_learner_facing_artefact_hotfix.md`.
+
+Previous detailed history remains in `CHANGELOG-v0_80_14_11.txt`.
+<!-- END VERBATIM ozmosis-v0_80_14_12.zip / CHANGELOG-v0_80_14_12.txt -->
+
+### Verbatim package changelog source: ozmosis-v0_80_14_13.zip / CHANGELOG-v0_80_14_13.txt
+
+<!-- BEGIN VERBATIM ozmosis-v0_80_14_13.zip / CHANGELOG-v0_80_14_13.txt -->
+# Ozmosis Changelog v0.80.14.13
+
+## v0.80.14.13 - Landing Page Visual Reference Alignment
+
+### Added
+
+- Added a reference-aligned Home landing shell using the supplied v0.80.14.13 landing SVG/PNG as QA/design references.
+- Added B1.1, B1.2, and All Practice landing cards with numeric/star progress visibility.
+- Added v0.80.14.13 static validation at `_development-files/v0801413_landing_visual_alignment_gate.cjs`.
+- Added v0.80.14.13 Edge/CDP browser smoke at `_development-files/v0801413_landing_visual_alignment_browser_smoke.cjs`.
+- Added responsive screenshot output under `docs/qa/screenshots/v0.80.14.13/`.
+- Added QA documentation at `docs/qa/v0.80.14.13_landing_page_visual_reference_alignment.md`.
+
+### Changed
+
+- Reordered the Home landing page to match the supplied UI: title/menu, Recommended Task, First visit, B1 Practice, Practice Modes, Case Trainer, Progress, Writing / Speaking, Settings.
+- Replaced the old Home grid behaviour with a centred, mobile-first vertical landing shell.
+- Made the Recommended Task card use the current B1 path route target rather than the older mixed-sprint binding.
+- Reduced Home-only explanatory clutter and removed the Home-only `Why this appears` landing disclosure.
+- Hid the legacy Review practice Home card from the landing page while preserving review tooling elsewhere.
+- Updated app/export metadata to `v0.80.14.13` and `v0.80.14.13-landing-page-visual-reference-alignment`.
+- Updated AGENTS.md to point to v0.80.14.13 docs.
+
+### Fixed
+
+- Fixed the landing page order so B1 Practice no longer appears beside the logo at the 941px reference viewport.
+- Fixed the Recommended Task text/action mismatch.
+- Fixed Home section ordering for Writing / Speaking and Settings.
+- Fixed QA smoke malformed-import detection so it validates the active UI listener reliably.
+
+### Preserved
+
+- Static single-file app architecture.
+- No backend/framework/build step/package manager/dependencies.
+- Reference image files are not embedded as runtime UI.
+- Source package and source CSV immutability.
+- Content bank files.
+- Protected localStorage key names.
+- Export/import compatibility, including v0.80.14.12-style imports.
+- Dev Tools Review Tests.
+- Review Edit List.
+- Settings, Learning Map, Case Trainer, and existing routes.
+- Scoring, correctness, production self-marking, Today’s B1 Sprint composition, and B1-only active learner scope.
+- German LTR handling inside Arabic support-language contexts.
+
+### Not changed
+
+- No v0.81 Cases and Articles work.
+- No Satzi.
+- No Genitive expansion.
+- No CAT18/B2 activation.
+- No runtime AI.
+- No runtime German morphology.
+- No broad learner-facing German content rewrite.
+- No new German task generation.
+- No source CSV or source ZIP edits.
+
+### Testing
+
+- Ran `_development-files/v0801413_landing_visual_alignment_gate.cjs`.
+- Ran `_development-files/v0801413_landing_visual_alignment_browser_smoke.cjs` with headless Microsoft Edge through Chrome DevTools Protocol against a local static server.
+- Saved responsive/browser screenshots to `docs/qa/screenshots/v0.80.14.13/`.
+
+Previous detailed history remains in `CHANGELOG-v0_80_14_12.txt`.
+<!-- END VERBATIM ozmosis-v0_80_14_13.zip / CHANGELOG-v0_80_14_13.txt -->
+
+## v0.80.14.13 - Landing Page Reference
+
+### Source files used
+
+- `README.md`
+
+### Official changelog entries
+
+No `CHANGELOG-v0_80_14_13.txt` file is present in the current repo.
+
+### README / source brief facts
+
+From `README.md`:
+
+- `Purpose: design reference for the Ozmosis landing/home screen visual-alignment patch.`
+- `ozmosis-landing-mobile-reference-v0_80_14_13.svg` - primary vector reference, 941 x 1672 viewBox.
+- `ozmosis-landing-mobile-reference-v0_80_14_13.png` - raster visual reference, 941 x 1672.
+- `Use these as reference images for HTML/CSS implementation and visual comparison. Do not ship the landing page as a static screenshot. The app UI must remain real HTML controls with accessible buttons, live progress values, existing routing, and existing localStorage/export/import behaviour.`
+
+### Known issues / contradictions
+
+- Later v0.80.14.14 files reference `README-v0_80_14_13.md`, `CHANGELOG-v0_80_14_13.txt`, `docs/OZMOSIS_SOURCE_BRIEF_v0.80.14.13.md`, and `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.80.14.13.md`; those files are not present in the current repo.
+
+## v0.80.14.14 - Progress Summary Cache / Interaction Latency Hotfix
+
+### Source files used
+
+- `CHANGELOG-v0_80_14_14.txt`
+- `README-v0_80_14_14.md`
+- `docs/OZMOSIS_SOURCE_BRIEF_v0.80.14.14.md`
+- `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.80.14.14.md`
+- Git commit `59ec459b4eb64d2e42f0de8051721176ee8018c2`
+
+### Official changelog entries
+
+From `CHANGELOG-v0_80_14_14.txt`:
+
+#### Added
+
+- Added additive B1 progress summary cache under `ozmosis_b1_progress_summary_v1`.
+- Added summary rebuild from existing raw B1 evidence.
+- Added incremental progress-summary updates when a learner completes a task.
+- Added a static in-memory B1 content index for route, item, task type, review group, and practice-unit lookup.
+- Added dev-only timing checks for key Home, route, summary, review, export, import, and task-completion paths.
+- Added local validation at `_development-files/v0801414_progress_summary_cache_gate.cjs`.
+- Added QA documentation at `docs/qa/v0.80.14.14_progress_summary_cache_latency_hotfix.md`.
+
+#### Changed
+
+- Home and B1 progress surfaces now read compact summary/path data instead of repeatedly building the full Learning Map, Skill Matrix, evidence summary, and recommendation data on every Home render.
+- Normal daily route filtering now uses the static content index and compact path progress where safe.
+- Review practice preview work is deferred until after Home renders or until the review surface is opened.
+- Incremental evidence writes now update the affected practice unit immediately and defer the heavier aggregate refresh out of the immediate answer-submit path.
+- Export now includes the progress summary as an additive field when available.
+- Import now clears/rebuilds the derived summary from raw evidence, including older exports that do not contain the summary key.
+- Dev Tools/debug output now exposes summary key, validity, fingerprint, and recent timing information.
+
+#### Preserved
+
+- Static single-file app architecture.
+- No backend/framework/build step/package manager/dependencies.
+- Existing German learning content and content bank files.
+- Source CSV/source ZIP immutability.
+- Protected localStorage key names.
+- Existing raw evidence history.
+- Export/import compatibility.
+- Existing B1 scoring/correctness semantics.
+- Production self-marking.
+- `I can't do this now` production skip path recording no production evidence.
+- Dev Tools and Review Edit List availability.
+- Settings, Learning Map, Case Trainer, and existing routes.
+- Today's B1 Sprint composition and B1-only active learner scope.
+- German LTR handling inside Arabic support-language contexts.
+
+#### Not changed
+
+- No v0.81 Cases and Articles work.
+- No Satzi.
+- No new German content.
+- No source CSV or source ZIP edits.
+- No backend/framework/dependencies.
+- No runtime AI.
+- No runtime German morphology.
+- No mastery, fluency, exam-readiness, or certification claims.
+
+#### Known limitations
+
+- The progress summary is a derived cache; raw evidence remains the rebuild source.
+- If content routing metadata changes substantially, the summary may rebuild once after update/import.
+- The deferred aggregate refresh still scans compact path targets, but it no longer blocks the immediate evidence-write path in normal browser timing.
+- Full browser smoke was not completed in this pass because the in-app browser path was previously blocked by `CreateProcessAsUserW failed: 5`.
+- Full Leitner scheduling remains deferred.
+
+#### Testing
+
+- Ran inline `index.html` script parse.
+- Parsed `content/b1-connectors.js`, `content/b1-redemittel.js`, and `content/b1-wortschatz.js`.
+- Ran `_development-files/v0801414_progress_summary_cache_gate.cjs`.
+
+Previous detailed history remains in `CHANGELOG-v0_80_14_13.txt`.
+
+### Git commits
+
+- `59ec459` | author date 2026-06-13T08:22:29Z | subject: `Consolidated folders locally`
+  - Changed files summary from raw tree comparison:
+    - `A .gitignore`
+    - `A AGENTS.md`
+    - `A CHANGELOG-v0_80_14_14.txt`
+    - `A README-v0_80_14_14.md`
+    - `A README.md`
+    - `A docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.80.14.14.md`
+    - `A docs/OZMOSIS_SOURCE_BRIEF_v0.80.14.14.md`
+    - `A index.html`
+    - `A list.txt`
+    - `A manifest.json`
+
+### README / source brief facts
+
+From `README-v0_80_14_14.md`:
+
+- `Ozmosis v0.80.14.14 is a narrow performance and progress-state patch after v0.80.14.13.`
+- `Raw evidence remains the audit trail. The new summary is a rebuildable cache.`
+- `Browser validation:`
+- `Not completed in this pass. The previous in-app browser path had been blocked by `CreateProcessAsUserW failed: 5`; this patch was validated with static parsing and the local VM cache gate instead.`
+
+From `docs/OZMOSIS_SOURCE_BRIEF_v0.80.14.14.md`:
+
+- `Ozmosis remains:`
+- `static;`
+- `dependency-free;`
+- `single deployed app file at `index.html`;`
+- `GitHub Pages compatible;`
+- `localStorage-backed;`
+- `export/import compatible;`
+- `B1-only for active learner scope.`
+- `The summary key may be deleted and rebuilt without losing learning history.`
+
+### Roadmap / deferred work
+
+From `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.80.14.14.md`:
+
+- `Browser screenshot/smoke validation for this patch, because the in-app browser path was previously blocked by `CreateProcessAsUserW failed: 5`.`
+- `Further optimisation of the deferred aggregate refresh if live browser traces show it still competes with interaction work.`
+- `Full Leitner scheduling.`
+- `v0.81 Cases and Articles Completion Pass.`
+- `Satzi.`
+- `Runtime morphology or runtime AI.`
+- `Backend/API/accounts/analytics.`
+- `Broad German task-text rewrite.`
+- `New German task generation.`
+- `Any source CSV/source ZIP edits.`
+
+### QA / validation evidence
+
+No `docs/qa/v0.80.14.14_progress_summary_cache_latency_hotfix.md` file is present in the current repo, although the changelog, README, source brief, and roadmap reference it.
+
+Repo sources say these checks were run:
+
+- code inspection / source inspection: v0.80.14.13 layout and runtime baseline inspected.
+- syntax check: inline `index.html` script parse; `content/b1-connectors.js`, `content/b1-redemittel.js`, and `content/b1-wortschatz.js`.
+- validation gate: `_development-files/v0801414_progress_summary_cache_gate.cjs`.
+- browser smoke: blocked by `CreateProcessAsUserW failed: 5`.
+- export/import test: export summary presence and import rebuild wiring.
+- localStorage persistence/evidence test: summary rebuild, incremental update, wrong-answer no-star behaviour, production practised summary update, and production skip no-evidence behaviour.
+- Arabic RTL/LTR: German LTR handling inside Arabic support-language contexts preserved.
+
+### Known issues / contradictions
+
+- `CHANGELOG-v0_80_14_14.txt` says QA documentation was added at `docs/qa/v0.80.14.14_progress_summary_cache_latency_hotfix.md`, but that file is missing from the current repo.
+- `CHANGELOG-v0_80_14_14.txt` references `CHANGELOG-v0_80_14_13.txt`, which is missing from the current repo.
+
+## v0.80.14.15 - Star Palette / Star Threshold Overlay
+
+### Source files used
+
+- `CHANGELOG-v0_80_14_15.txt`
+- `README-v0_80_14_15.md`
+- `docs/OZMOSIS_SOURCE_BRIEF_v0.80.14.15.md`
+- `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.80.14.15.md`
+- `docs/qa/v0.80.14.15_star_threshold_overlay.md`
+- Git commit `f37168656b89a21756ecffba9cc3c066a07c59a2`
+
+### Official changelog entries
+
+From `CHANGELOG-v0_80_14_15.txt`:
+
+#### Added
+
+- Added a central five-star palette map for Bronze, Silver, Gold, Sky Blue, and Electric Cyan star tiers.
+- Added `buildStarThresholdOverlayData(...)` for display-only Star Threshold Overlay progress data.
+- Added QA documentation at `docs/qa/v0.80.14.15_star_threshold_overlay.md`.
+
+#### Changed
+
+- Updated all star-tier colours to:
+  - 1 star Bronze `#b87333`
+  - 2 stars Silver `#b8c4d6`
+  - 3 stars Gold `#f2c94c`
+  - 4 stars Sky Blue `#38bdf8`
+  - 5 stars Electric Cyan `#67e8f9`
+- Changed B1 Path progress bars from equal slot/faux stacked rendering to overlaid threshold layers.
+- Changed Home path progress bars from `stacked` wording/rendering to Star Threshold Overlay rendering.
+- Updated star glyph tier mapping from the old five-tier sequence to Bronze/Silver/Gold/Sky Blue/Electric Cyan.
+- Updated app/export metadata to `v0.80.14.15 - Star Palette / Star Threshold Overlay` and `v0.80.14.15-star-palette-threshold-overlay`.
+- Updated AGENTS.md to point to v0.80.14.15 docs.
+
+#### Preserved
+
+- Static single-file app architecture.
+- Existing German-learning content.
+- Existing task answers.
+- Existing scoring and star-earning semantics.
+- Existing evidence semantics.
+- Existing protected localStorage key names.
+- Existing export/import compatibility.
+- Existing B1 Path, Learning Map, Home, Dev Tools, Settings, and Case Trainer routes.
+- B1-only active learner scope.
+
+#### Not changed
+
+- No v0.81 work.
+- No Cases and Articles Completion Pass work.
+- No source CSV/source ZIP edits.
+- No backend/framework/build step/package manager/dependencies.
+- No runtime AI.
+- No runtime German generation.
+- No analytics/tracking/accounts/API calls.
+- No mastery, fluency, exam-readiness, or certification claims.
+
+#### Testing
+
+- Ran inline `index.html` script parse.
+- Parsed `content/b1-connectors.js`, `content/b1-redemittel.js`, and `content/b1-wortschatz.js`.
+- Ran Star Threshold Overlay validation cases A-E from the v0.80.14.15 prompt.
+- Verified protected storage-key strings remained present.
+
+Previous detailed history remains in `CHANGELOG-v0_80_14_14.txt`.
+
+### Git commits
+
+- `f371686` | author date 2026-06-13T09:15:07Z | subject: `## v0.80.14.16 - Export Save / Import Save File Workflow`
+  - Changed files relevant to v0.80.14.15:
+    - `A CHANGELOG-v0_80_14_15.txt`
+    - `A README-v0_80_14_15.md`
+    - `A docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.80.14.15.md`
+    - `A docs/OZMOSIS_SOURCE_BRIEF_v0.80.14.15.md`
+    - `A docs/qa/v0.80.14.15_star_threshold_overlay.md`
+
+### README / source brief facts
+
+From `README-v0_80_14_15.md`:
+
+- `Ozmosis v0.80.14.15 is a narrow UI/progress-visualisation patch after v0.80.14.14.`
+- `It updates the five-star palette and corrects B1 Path/Home progress bars to use a Star Threshold Overlay model.`
+- `The progress bars now show coverage for targets that have reached at least each star threshold, rather than implying additive segments.`
+
+From `docs/OZMOSIS_SOURCE_BRIEF_v0.80.14.15.md`:
+
+- `This patch changes only star palette and progress-bar visualisation:`
+- `five-star palette updated to Bronze, Silver, Gold, Sky Blue, and Electric Cyan;`
+- `B1 Path/Home path progress bars now render threshold overlay layers;`
+- `existing threshold percentage calculations are preserved;`
+- `score/evidence/localStorage/export/import semantics are unchanged.`
+
+### Roadmap / deferred work
+
+From `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.80.14.15.md`:
+
+- `Browser screenshot validation, because browser automation was blocked before page load by `CreateProcessAsUserW failed: 5`.`
+- `v0.81 Cases and Articles Completion Pass.`
+- `Satzi.`
+- `Source CSV/source ZIP edits.`
+- `Runtime German generation, runtime morphology, backend, API, accounts, analytics, or dependencies.`
+
+### QA / validation evidence
+
+From `docs/qa/v0.80.14.15_star_threshold_overlay.md`:
+
+- code inspection: `index.html`, `content/*.js`, v0.80.14.14 README/changelog/source brief/roadmap.
+- syntax check: inline `index.html`, `content/b1-connectors.js`, `content/b1-redemittel.js`, `content/b1-wortschatz.js`.
+- validation gate: Star Threshold Overlay cases A-E.
+- browser/responsive checks: attempted through Browser plugin; blocked before page load by `CreateProcessAsUserW failed: 5`.
+- protected storage-key check: run.
+- final verdict: `IMPLEMENTED_STATIC_ONLY`.
+
+### Known issues / contradictions
+
+- Browser/responsive visual smoke was not completed.
+- The v0.80.14.15 docs were introduced in commit `f371686`, whose commit subject is v0.80.14.16.
+
+## v0.80.14.16 - Export Save / Import Save File Workflow
+
+### Source files used
+
+- `CHANGELOG-v0_80_14_16.txt`
+- `README-v0_80_14_16.md`
+- `docs/OZMOSIS_SOURCE_BRIEF_v0.80.14.16.md`
+- `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.80.14.16.md`
+- `docs/qa/v0.80.14.16_save_file_workflow.md`
+- Git commit `f37168656b89a21756ecffba9cc3c066a07c59a2`
+
+### Official changelog entries
+
+From `CHANGELOG-v0_80_14_16.txt`:
+
+#### Added
+
+- Added the primary `Export Save` workflow in the existing Settings/Data area.
+- Added the primary `Import Save` workflow in the existing Settings/Data area.
+- Added a save-workflow status line near the save buttons.
+- Added `buildOzmosisSavePayload()` for the current local save/export payload.
+- Added `validateOzmosisSavePayload(...)` for in-memory validation before import writes occur.
+- Added transaction-style import application with a localStorage snapshot and restore path.
+- Added QA documentation at `docs/qa/v0.80.14.16_save_file_workflow.md`.
+
+#### Changed
+
+- Changed the existing export/import button labels to `Export Save` and `Import Save`.
+- Changed exported save filenames to the `ozmosis-save-v0_80_14_16-YYYYMMDDHHMM.json` pattern.
+- Changed import failure messages to the `Failed due to [specific reason].` format.
+- Changed successful save workflow messages to `Confirmed - save exported.` and `Confirmed - save imported.`.
+- Changed import handling so selected JSON is parsed and validated before any localStorage mutation.
+- Changed app/export metadata to `v0.80.14.16 - Export Save / Import Save File Workflow` and `v0.80.14.16-save-file-workflow`.
+- Updated AGENTS.md to point to v0.80.14.16 docs.
+
+#### Preserved
+
+- Static single-file app architecture.
+- Existing German-learning content.
+- Existing task answers.
+- Existing scoring semantics.
+- Existing star logic.
+- Existing Star Threshold Overlay rendering.
+- Existing evidence semantics.
+- Existing protected localStorage key names.
+- Existing export fields for compatibility.
+- Existing support for older safe Ozmosis saves without derived progress-summary cache data.
+- Existing Settings, Dev Tools, Home, Learning Map, B1 Path, and Case Trainer routes.
+- B1 active learner scope.
+
+#### Not changed
+
+- No v0.81 work.
+- No Cases and Articles Completion Pass work.
+- No German-learning content edits.
+- No source CSV/source ZIP edits.
+- No backend/framework/build step/package manager/dependencies.
+- No runtime AI.
+- No runtime German generation.
+- No external API calls.
+- No analytics/tracking/accounts.
+- No scoring, star-earning, storage-key, or evidence-model changes.
+
+#### Testing
+
+- Parsed inline `index.html` script.
+- Parsed `content/b1-connectors.js`, `content/b1-redemittel.js`, and `content/b1-wortschatz.js`.
+- Validated that the current export payload passes `validateOzmosisSavePayload(...)`.
+- Validated that an older save without `b1ProgressSummary` is accepted.
+- Validated that a random object fails with `missing Ozmosis save data`.
+- Validated that corrupted evidence fails with `corrupted progress evidence`.
+- Validated that an invalid import candidate does not mutate the protected B1 progress key.
+- Validated that a valid save applies in a local VM harness and rebuilds the summary path.
+
+Previous detailed history remains in `CHANGELOG-v0_80_14_15.txt`.
+
+### Git commits
+
+- `f371686` | author date 2026-06-13T09:15:07Z | subject: `## v0.80.14.16 - Export Save / Import Save File Workflow`
+
+Commit body:
+
+```text
+## v0.80.14.16 - Export Save / Import Save File Workflow
+
+## v0.80.14.16 - Export Save / Import Save File Workflow
+
+### Added
+
+- Added the primary `Export Save` workflow in the existing Settings/Data area.
+- Added the primary `Import Save` workflow in the existing Settings/Data area.
+- Added a save-workflow status line near the save buttons.
+- Added `buildOzmosisSavePayload()` for the current local save/export payload.
+- Added `validateOzmosisSavePayload(...)` for in-memory validation before import writes occur.
+- Added transaction-style import application with a localStorage snapshot and restore path.
+- Added QA documentation at `docs/qa/v0.80.14.16_save_file_workflow.md`.
+
+### Changed
+
+- Changed the existing export/import button labels to `Export Save` and `Import Save`.
+- Changed exported save filenames to the `ozmosis-save-v0_80_14_16-YYYYMMDDHHMM.json` pattern.
+- Changed import failure messages to the `Failed due to [specific reason].` format.
+- Changed successful save workflow messages to `Confirmed - save exported.` and `Confirmed - save imported.`.
+- Changed import handling so selected JSON is parsed and validated before any localStorage mutation.
+```
+
+Changed files summary from raw tree comparison:
+
+- `M AGENTS.md`
+- `A CHANGELOG-v0_80_14_15.txt`
+- `A CHANGELOG-v0_80_14_16.txt`
+- `A README-v0_80_14_15.md`
+- `A README-v0_80_14_16.md`
+- `A docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.80.14.15.md`
+- `A docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.80.14.16.md`
+- `A docs/OZMOSIS_SOURCE_BRIEF_v0.80.14.15.md`
+- `A docs/OZMOSIS_SOURCE_BRIEF_v0.80.14.16.md`
+- `A docs/qa/v0.80.14.15_star_threshold_overlay.md`
+- `A docs/qa/v0.80.14.16_save_file_workflow.md`
+- `M index.html`
+
+### README / source brief facts
+
+From `README-v0_80_14_16.md`:
+
+- `Ozmosis v0.80.14.16 is a narrow save-management UX patch after v0.80.14.15.`
+- `Export Save downloads a local `.json` save file.`
+- `Import Save opens the existing file picker for a local `.json` save file.`
+- `Imports validate the selected payload before writing to localStorage.`
+- `Failed imports keep the existing browser save untouched.`
+- `Derived progress-summary data remains rebuildable and is not required in older valid saves.`
+
+From `docs/OZMOSIS_SOURCE_BRIEF_v0.80.14.16.md`:
+
+- `This patch changes only local save-file import/export workflow:`
+- ``Export Save` creates a local JSON save download.`
+- ``Import Save` opens the existing hidden JSON file input.`
+- `Imports are parsed and validated in memory before any localStorage write.`
+- `Failed imports do not clear or overwrite existing progress.`
+- `Successful imports rebuild the derived B1 progress summary from raw evidence.`
+
+### Roadmap / deferred work
+
+From `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.80.14.16.md`:
+
+- `Browser/native file-picker validation, because browser automation remains blocked by the environment before page load.`
+- `v0.81 Cases and Articles Completion Pass.`
+- `Any backend/API/account/sync save system.`
+- `Any cloud save workflow.`
+- `Any storage-key migration.`
+- `Any German-learning content changes.`
+
+### QA / validation evidence
+
+From `docs/qa/v0.80.14.16_save_file_workflow.md`:
+
+- code inspection: export/import code, storage keys, Settings/Data UI, current export JSON structure, import validation, summary rebuild, hidden file input, mutation-before-validation issue.
+- syntax check: inline `index.html`, `content/b1-connectors.js`, `content/b1-redemittel.js`, `content/b1-wortschatz.js`.
+- save validator tests: current export payload, older save without `b1ProgressSummary`, random object, corrupted evidence.
+- localStorage persistence test: invalid import candidate does not mutate protected B1 progress key before validation.
+- export/import test: valid save applies in a local VM harness and rebuilds/refreshes the import path.
+- browser/file-picker checks: attempted through Browser plugin; blocked before page load by `CreateProcessAsUserW failed: 5`.
+- final verdict: `IMPLEMENTED_STATIC_ONLY`.
+
+### Known issues / contradictions
+
+- Native browser download confirmation was not observed from automated tests.
+- Native file-picker cancel behaviour could not be forced in the VM harness.
+- Some browsers may stay silent on file-picker cancel if they do not fire `change`.
+
+## Unversioned / Uncategorised Git Commits
+
+### Source files used
+
+- `.git/logs/HEAD`
+- `.git/logs/refs/heads/main`
+- `.git/packed-refs`
+
+### Git commits / reflog entries
+
+- `e583151` | reflog date 2026-06-13T08:18:41Z | `clone: from https://github.com/OzMills/ozmosis.git`
+  - Commit object was not present locally, so author/body/changed-file summary could not be extracted from the current `.git` object database.
+  - `packed-refs` also records `e583151f83ccdb181a877d3425490f3cf7205326 refs/remotes/origin/main`.
+
+## Older Development Artefacts Present Without Canonical Changelog Files
+
+The current repo contains many `_development-files` gate, smoke, import, audit, and report artefacts for earlier version labels, including:
+
+- v0.53.1 UX gate
+- v0.57.1 Big UX gate
+- v0.57.2 Flow/Mobile gate
+- v0.58 Skill Matrix gate
+- v0.59 Stabilisation gate
+- v0.60 Error Pattern gate
+- v0.60.1 Repair Feedback gate
+- v0.61 Error Pattern QA gate
+- v0.62 Error Type Summaries gate
+- v0.63 Weakness Repair gate
+- v0.64 Repair Queue Scaffold gate
+- v0.65 Targeted Repair Practice gate
+- v0.66 Targeted Repair QA Route Expansion gate
+- v0.67 Connector Diagnostic Cards gate
+- v0.68 Diagnostic QA gate
+- v0.69 Diagnostic Repair Stabilisation gate
+- v0.69.1 Holistic UX Legibility/Access/Hierarchy gate
+- v0.70 Durability Review Design gate
+- v0.71 Review Eligibility Rules gate
+- v0.72 Review Candidate Preview gate
+- v0.73 Opt-In Review Practice gate
+- v0.74 Review UX Integration gate
+- v0.75 Review Durability QA Stabilisation gate
+- v0.75.1 Holistic UX Redesign/Access/Hierarchy gate
+- v0.76 B1 Content Metadata Review Coverage gate
+- v0.77 Learner-Readable Progress Export gate
+- v0.78 Durability QA gate
+- v0.79 Stabilise B1 Review System gate
+- v0.80 B1 Coverage Audit gate
+- v0.80.1 live-device screenshot QA gate and beta-readiness gates
+- v0.80.2 MC Choice Shuffle gate
+- v0.80.3 through v0.81.4 B1 content/category gates and static verification scripts
+- v0.80.14.9 through v0.80.14.14 route filtering, source preservation, learner-facing artefact, landing visual alignment, and progress-summary artefacts
+
+No matching official versioned changelog files for those earlier versions are present in the current repo. These artefacts should be mined in a future append pass if the user wants full pre-v0.80.14.14 reconstruction from gate script internals.
+
+## Known Gaps / Contradictions
+
+- Normal Git CLI commands could not be run because `git` was unavailable in this environment.
+- Raw `.git` metadata was available and used instead for branch, HEAD, reflog, commit, and changed-file summaries.
+- Current repo references `CHANGELOG-v0_80_14_13.txt`, but that file is missing.
+- Current repo references `README-v0_80_14_13.md`, `docs/OZMOSIS_SOURCE_BRIEF_v0.80.14.13.md`, and `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.80.14.13.md`, but those files are missing.
+- Current repo references `docs/qa/v0.80.14.14_progress_summary_cache_latency_hotfix.md`, but that file is missing.
+- `docs/qa/v0.80.14.15_star_threshold_overlay.md` says the Leitner prototype still has a simpler three-colour rating display while visible star colours were updated; this is recorded as a known limitation, not a contradiction.
+- The local history includes a v0.80.14.16 commit that also introduced v0.80.14.15 docs.
+
