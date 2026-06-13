@@ -33,16 +33,28 @@ Future runs must add to this file, not replace it.
 
 Current state is based only on current repo files.
 
-- Current app version in `index.html`: `v0.80.14.17 - Compact Star Indicators / Learning Map Card Unification`
-- Current export version in `index.html`: `v0.80.14.17-compact-star-cards-learning-map`
-- Current README: `README-v0_80_14_17.md`
-- Current changelog: `CHANGELOG-v0_80_14_17.txt`
-- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.80.14.17.md`
-- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.80.14.17.md`
-- Current QA report: `docs/qa/v0.80.14.17_compact_star_cards_learning_map.md`
-- Next planned patch documented in current files: `v0.81 - Cases and Articles Completion Pass`
+- Current app version in `index.html`: `v0.81 - Cases and Articles Completion Pass`
+- Current export version in `index.html`: `v0.81-cases-articles-completion`
+- Current README: `README-v0_81.md`
+- Current changelog: `CHANGELOG-v0_81.txt`
+- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.81.md`
+- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.81.md`
+- Current QA report: `docs/qa/v0.81_cases_articles_completion.md`
+- Next planned patch documented in current files: `v0.81.x or v0.82-planning - Phase 2.5 normalisation addendum v0.2 and B1-01 extension survival audit`
 
 No live deployment status is claimed here.
+
+## v0.81 - Cases and Articles Completion Pass
+
+- Added a focused B1 Cases & Articles content bank at `content/b1-cases-articles.js`.
+- Added 32 original B1-safe items across recognition, typed cloze, repair, and contrast task depths.
+- Covered nominative vs accusative, accusative direct objects, dative indirect objects, fixed dative triggers, definite/indefinite/negative article-family contrasts, pronoun case, plural dative article use, and common article-form confusions.
+- Added a `Cases & Articles` route from the menu and Grammar hub while preserving the existing Case Trainer as a separate table/form drill tool.
+- Routed case/article recommendations, diagnostics, Learning Map, Skill Matrix, review hints, error-pattern hints, and debug counts through the new bank where appropriate.
+- Kept the new topical route out of B1 Path star-gated category progress so star semantics were not reinterpreted.
+- Preserved scoring, star earning, Star Threshold Overlay semantics, localStorage keys, Export Save / Import Save, import validation, Today’s B1 Sprint composition, Case Trainer, B1-only active scope, and GitHub Pages compatibility.
+- Did not implement prepositions completion, word-order completion, connectors completion, Satzi, B2/CAT18 activation, Genitive normal-route expansion, dependencies, backend, build step, runtime AI, or dynamic German generation.
+- Added QA documentation at `docs/qa/v0.81_cases_articles_completion.md`.
 
 ## v0.80.14.17 - Compact Star Indicators / Learning Map Card Unification
 
@@ -1566,6 +1578,27 @@ From `docs/qa/v0.80.14.16_save_file_workflow.md`:
 - localStorage key names.
 - Export Save / Import Save workflow and validation.
 - Static, dependency-free app architecture.
+
+# Ozmosis v0.80.14.18.3 - Strategic Source Brief / Roadmap Restoration + Feature Register
+
+## Changed
+
+- Restored the strategic source brief and roadmap as evergreen CURRENT documents.
+- Added versioned strategic snapshots under `docs/strategy/`.
+- Added a practical feature register with allowed-now status, earliest safe version, blockers, and do-not-implement-before rules.
+- Clarified the difference between patch-local source briefs and strategic source briefs.
+- Updated `AGENTS.md` source hierarchy to distinguish runtime, strategic, patch-local, and historical sources.
+
+## Preserved
+
+- App runtime behaviour.
+- German-learning content and answers.
+- Scoring semantics.
+- Star earning logic.
+- Star Threshold Overlay semantics.
+- localStorage key names.
+- Export/import workflow and payload shape.
+- Static, dependency-free architecture.
 
 ## Next
 

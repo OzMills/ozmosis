@@ -6,17 +6,19 @@ Ozmosis is a static, dependency-free German learning app deployed through GitHub
 
 Ozmosis was formerly called Kasuskonsole. Historical notes may still use that name, but current user-facing and repo-facing language should use `Ozmosis`.
 
-Current working version: `v0.80.14.18.2`
+Current working version: `v0.81 - Cases and Articles Completion Pass`.
 
-Next planned patch: `v0.81 - Cases and Articles Completion Pass`
+Current runtime baseline: `v0.81 - Cases and Articles Completion Pass`.
 
-Current README: `README-v0_80_14_18_2.md`
+Next planned patch: `v0.81.x or v0.82-planning - Phase 2.5 normalisation addendum v0.2 and B1-01 extension survival audit`
 
-Current changelog: `CHANGELOG-v0_80_14_18_2.txt`
+Current README: `README-v0_81.md`
 
-Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.80.14.18.2.md`
+Current changelog: `CHANGELOG-v0_81.txt`
 
-Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.80.14.18.2.md`
+Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.81.md`
+
+Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.81.md`
 
 Use pre-1.0 version naming from now on: `v0.30`, `v0.31`, `v0.32`, `v0.32.1`, `v0.33`, and later.
 
@@ -25,13 +27,18 @@ Use the current repository files as source of truth. If the user supplies a newe
 Source-of-truth order:
 
 1. Latest user-supplied file/package for the current task.
-2. Current repository files.
-3. Live GitHub Pages app.
-4. Current Codex chatlog or implementation log.
-5. Older shared chats/historical notes.
-6. Memory or assumptions.
+2. Runtime source of truth: current repository files, repo-root `index.html`, `content/*.js`, and `data/*`.
+3. Strategic source of truth: `docs/OZMOSIS_SOURCE_BRIEF_CURRENT.md`, `docs/OZMOSIS_DEVELOPMENT_ROADMAP_CURRENT.md`, and `docs/OZMOSIS_FEATURE_REGISTER_CURRENT.md`.
+4. Patch-local source of truth: current versioned README, changelog, source brief, roadmap, and QA report.
+5. Current full changelog and QA reports.
+6. Historical sources: older changelogs, older Codex logs, old uploaded packages, and old chats as background only.
+7. Memory or assumptions.
 
 If sources disagree, prefer the newest concrete file/package. Do not treat old chat claims as proof that a feature or bug still exists.
+
+Patch-local source briefs must not delete, flatten, or replace the strategic source brief. If a patch creates a narrow source brief, it must preserve and reference the CURRENT strategic docs.
+
+Before starting any major feature, check `docs/OZMOSIS_FEATURE_REGISTER_CURRENT.md` and confirm `allowed_now` and `earliest_safe_version`.
 
 ## Architecture Constraints
 

@@ -1,0 +1,11 @@
+## v0.81 - Cases and Articles Completion Pass
+
+- Added a focused B1 Cases & Articles practice bank at `content/b1-cases-articles.js`.
+- Added 32 original B1-safe case/article items across recognition, cloze, repair, and contrast task depths.
+- Covered nominative vs accusative, accusative direct objects, dative indirect objects, fixed dative triggers, definite/indefinite/negative article families, pronoun case, plural dative articles, and common article-form confusions.
+- Added the route to the Grammar hub and menu while preserving the existing Case Trainer as a separate table/form drill tool.
+- Routed case/article recommendations, error-pattern hints, review hints, diagnostics, Learning Map, Skill Matrix, and debug counts through the new bank where appropriate.
+- Kept the new topical route outside B1 Path star-gated category progress to preserve existing star semantics.
+- Preserved scoring, star earning, Star Threshold Overlay semantics, localStorage keys, Export Save / Import Save, import validation, Today’s B1 Sprint composition, Case Trainer, B1-only active scope, and GitHub Pages compatibility.
+- Did not add Genitive as a normal B1 route, B2/CAT18 activation, Satzi, dependencies, runtime AI, backend, build step, or dynamic German generation.
+- Added QA documentation at `docs/qa/v0.81_cases_articles_completion.md`.

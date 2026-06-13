@@ -1,0 +1,21 @@
+# Ozmosis v0.80.14.18.3 - Strategic Source Brief / Roadmap Restoration + Feature Register
+
+## Changed
+
+- Restored the strategic source brief and roadmap as evergreen CURRENT documents.
+- Added versioned strategic snapshots under `docs/strategy/`.
+- Added a practical feature register with allowed-now status, earliest safe version, blockers, and do-not-implement-before rules.
+- Clarified the difference between patch-local source briefs and strategic source briefs.
+- Updated `AGENTS.md` source hierarchy to distinguish runtime, strategic, patch-local, and historical sources.
+
+## Preserved
+
+- App runtime behaviour.
+- German-learning content and answers.
+- Scoring semantics.
+- Star earning logic.
+- Star Threshold Overlay semantics.
+- localStorage key names.
+- Export/import workflow and payload shape.
+- Static, dependency-free architecture.
+
