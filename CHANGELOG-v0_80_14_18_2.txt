@@ -1,0 +1,21 @@
+# Ozmosis v0.80.14.18.2 - Baseline Acceptance / Package Hygiene Gate
+
+## Changed
+
+- Accepted v0.80.14.18.1 as the current baseline after a focused Edge/CDP route-isolation and save-workflow gate.
+- Added the missing standalone `CHANGELOG-v0_80_14_18_1.txt` referenced by current documentation.
+- Deduplicated the repeated v0.80.14.18.1 entry in `CHANGELOG-FULL-OZMOSIS.txt` while preserving the historical content.
+- Added a concise deployment-surface and package-hygiene QA audit.
+- Updated app/export version metadata and current documentation pointers to v0.80.14.18.2.
+
+## Preserved
+
+- German-learning content and answers.
+- Scoring semantics.
+- Star earning logic.
+- Star Threshold Overlay semantics.
+- Aggregate star percentage logic.
+- localStorage key names.
+- Export Save / Import Save workflow and validation.
+- Static, dependency-free app architecture.
+

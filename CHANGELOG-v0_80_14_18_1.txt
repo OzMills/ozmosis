@@ -20,6 +20,3 @@
 - Export Save / Import Save workflow and validation.
 - Static, dependency-free app architecture.
 
-## Next
-
-`v0.81 - Cases and Articles Completion Pass`
