@@ -2,11 +2,11 @@
 
 ## 1. Current Baseline
 
-Current accepted runtime baseline: `v0.81 - Cases and Articles Completion Pass`.
+Current runtime baseline: `v0.82 - Prepositions Completion Pass`.
 
-Current documentation/planning readiness patch: `v0.81.1 - Cases & Articles Acceptance / Phase 2.5 Readiness`.
+Current acceptance status: v0.82 Prepositions passed the v0.82.1 browser acceptance gate. Runtime metadata remains v0.82 because no app fix was required.
 
-Next implementation patch: `v0.82 - Prepositions Completion Pass`.
+Next required patch: `v0.83 - Word Order Completion Pass`.
 
 ## 2. Completed Foundation
 
@@ -34,6 +34,7 @@ This summary is not a replacement for `CHANGELOG-FULL-OZMOSIS.txt`.
 - `v0.81` - Cases and Articles Completion Pass
 - `v0.81.1` - Cases & Articles Acceptance / Phase 2.5 Readiness
 - `v0.82` - Prepositions Completion Pass
+- `v0.82.1` - Prepositions Browser Acceptance Gate
 - `v0.83` - Word Order Completion Pass
 - `v0.84` - Connectors Completion Pass
 - `v0.85` - Repair / Transformation Completion Pass

@@ -1,0 +1,16 @@
+# Ozmosis v0.82.1 - Prepositions Browser Acceptance Gate
+
+- Accepted the v0.82 Prepositions route with a file-based headless Edge browser gate after the local HTTP Edge dump path hung in this environment.
+- Verified the Prepositions route opens from the Grammar hub and enters B1 practice mode with `b1_prepositions_*` items.
+- Completed one real Prepositions item through answer submission, feedback display, confidence selection, and evidence persistence.
+- Verified the evidence record uses the `prepositions` bank and confidence updates the same record rather than creating duplicate evidence.
+- Verified mixed and repair Prepositions filters can surface prepositions items.
+- Verified Home, Learning Map, Settings, Dev Tools, and Case Trainer setup remain route-isolated after Prepositions practice.
+- Verified Export Save, Import Save, import input, and save validation remain reachable.
+- Verified responsive smoke at requested 430x932, 390x844, 320x568, and 1365x599 browser window targets.
+- Verified Arabic UI smoke keeps German learner prompt/input/choice surfaces LTR/readable.
+- Preserved runtime metadata at `v0.82 - Prepositions Completion Pass` and `v0.82-prepositions-completion` because no runtime fix was required.
+- Updated the feature register, roadmap, source brief, AGENTS handoff, and master changelog so `v0.83 - Word Order Completion Pass` is the next allowed implementation patch.
+- Preserved German-learning content, scoring, star logic, storage keys, save/export/import compatibility, Case Trainer, Today’s B1 Sprint composition, Learning Map, Skill Matrix, route composition, B1-only active scope, and GitHub Pages compatibility.
+- Did not implement Word Order, Connectors, Satzi, B2/CAT18 activation, Genitive expansion, adjective-ending expansion, dependencies, backend, build step, runtime AI, or runtime German generation.
+- Added QA documentation at `docs/qa/v0.82.1_prepositions_browser_acceptance.md`.

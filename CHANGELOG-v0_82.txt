@@ -1,0 +1,12 @@
+## v0.82 - Prepositions Completion Pass
+
+- Added a focused B1 Prepositions content bank at `content/b1-prepositions.js`.
+- Added 92 original B1-safe items across recognition, typed cloze, repair, and contrast task depths.
+- Covered fixed dative prepositions (`mit`, `bei`, `nach`, `von`, `zu`, `aus`, `seit`), fixed accusative prepositions (`für`, `ohne`, `durch`, `gegen`, `um`), two-way prepositions (`in`, `an`, `auf`, `unter`, `über`, `vor`, `hinter`, `neben`, `zwischen`), and temporal phrases (`am`, `um`, `im`, `seit`, `ab`, `vor`, `nach`, `bis`).
+- Added a `Prepositions` route from the menu and Grammar hub while preserving route isolation source wiring.
+- Mapped preposition evidence to the existing Learning Map / Skill Matrix prepositions node and added prepositions to debug/content-bank counts.
+- Kept the new topical route out of Today's B1 Sprint and Diagnostic Sprint.
+- Preserved scoring, star earning, Star Threshold Overlay semantics, localStorage keys, Export Save / Import Save, import validation, Case Trainer, B1-only active scope, and GitHub Pages compatibility.
+- Did not implement Word Order Completion Pass, Connectors Completion Pass, Satzi, B2/CAT18 activation, Genitive normal-route expansion, adjective-ending expansion, dependencies, backend, build step, runtime AI, or dynamic German generation.
+- Added QA documentation at `docs/qa/v0.82_prepositions_completion.md`.
+- Browser acceptance remains pending because local Edge/CDP and in-app browser validation were blocked in this environment.

@@ -160,14 +160,15 @@ Deferred features must not be forgotten or implemented early:
 
 ## 11. Current Baseline
 
-Current accepted runtime baseline: `v0.81 - Cases and Articles Completion Pass`.
+Current runtime baseline: `v0.82 - Prepositions Completion Pass`.
 
-Current docs/planning readiness patch: `v0.81.1 - Cases & Articles Acceptance / Phase 2.5 Readiness`.
+Current acceptance status: v0.82 Prepositions passed the v0.82.1 browser acceptance gate. Runtime metadata remains v0.82 because no app fix was required.
 
-Next implementation patch: `v0.82 - Prepositions Completion Pass`.
+Next required patch: `v0.83 - Word Order Completion Pass`.
 
 Current planning handoff:
 
 - Phase 2.5 normalisation addendum v0.2 is complete.
 - B1-01 survival audit status is `SURVIVED_WITH_METADATA_GAPS`.
-- Prepositions Completion Pass is the next allowed implementation patch.
+- Prepositions Completion Pass has been implemented as v0.82 and accepted by v0.82.1 browser validation.
+- Word Order Completion Pass is allowed next as v0.83.

@@ -33,16 +33,46 @@ Future runs must add to this file, not replace it.
 
 Current state is based only on current repo files.
 
-- Current app version in `index.html`: `v0.81 - Cases and Articles Completion Pass`
-- Current export version in `index.html`: `v0.81-cases-articles-completion`
-- Current README: `README-v0_81_1.md`
-- Current changelog: `CHANGELOG-v0_81_1.txt`
-- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.81.1.md`
-- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.81.1.md`
-- Current QA report: `docs/qa/v0.81.1_cases_articles_acceptance_phase25_readiness.md`
-- Next planned patch documented in current files: `v0.82 - Prepositions Completion Pass`
+- Current app version in `index.html`: `v0.82 - Prepositions Completion Pass`
+- Current export version in `index.html`: `v0.82-prepositions-completion`
+- Current README: `README-v0_82_1.md`
+- Current changelog: `CHANGELOG-v0_82_1.txt`
+- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.82.1.md`
+- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.82.1.md`
+- Current QA report: `docs/qa/v0.82.1_prepositions_browser_acceptance.md`
+- Next required patch documented in current files: `v0.83 - Word Order Completion Pass`
 
 No live deployment status is claimed here.
+
+## v0.82.1 - Prepositions Browser Acceptance Gate
+
+- Accepted the v0.82 Prepositions route with a file-based headless Edge browser gate after the local HTTP Edge dump path hung in this environment.
+- Verified the Prepositions route opens from the Grammar hub and enters B1 practice mode with `b1_prepositions_*` items.
+- Completed one real Prepositions item through answer submission, feedback display, confidence selection, and evidence persistence.
+- Verified the evidence record uses the `prepositions` bank and confidence updates the same record rather than creating duplicate evidence.
+- Verified mixed and repair Prepositions filters can surface prepositions items.
+- Verified Home, Learning Map, Settings, Dev Tools, and Case Trainer setup remain route-isolated after Prepositions practice.
+- Verified Export Save, Import Save, import input, and save validation remain reachable.
+- Verified responsive smoke at requested 430x932, 390x844, 320x568, and 1365x599 browser window targets.
+- Verified Arabic UI smoke keeps German learner prompt/input/choice surfaces LTR/readable.
+- Preserved runtime metadata at `v0.82 - Prepositions Completion Pass` and `v0.82-prepositions-completion` because no runtime fix was required.
+- Updated the feature register, roadmap, source brief, AGENTS handoff, and master changelog so `v0.83 - Word Order Completion Pass` is the next allowed implementation patch.
+- Preserved German-learning content, scoring, star logic, storage keys, save/export/import compatibility, Case Trainer, Today's B1 Sprint composition, Learning Map, Skill Matrix, route composition, B1-only active scope, and GitHub Pages compatibility.
+- Did not implement Word Order, Connectors, Satzi, B2/CAT18 activation, Genitive expansion, adjective-ending expansion, dependencies, backend, build step, runtime AI, or runtime German generation.
+- Added QA documentation at `docs/qa/v0.82.1_prepositions_browser_acceptance.md`.
+
+## v0.82 - Prepositions Completion Pass
+
+- Added a focused B1 Prepositions content bank at `content/b1-prepositions.js`.
+- Added 92 original B1-safe items across recognition, typed cloze, repair, and contrast task depths.
+- Covered fixed dative, fixed accusative, two-way, and temporal preposition decisions with structured variant-family metadata.
+- Added a `Prepositions` route from the menu and Grammar hub.
+- Mapped preposition evidence to the existing Learning Map / Skill Matrix prepositions node and added prepositions to debug/content-bank counts.
+- Kept the new topical route out of Today's B1 Sprint and Diagnostic Sprint.
+- Preserved scoring, star earning, Star Threshold Overlay semantics, localStorage keys, Export Save / Import Save, import validation, Case Trainer, B1-only active scope, and GitHub Pages compatibility.
+- Did not implement Word Order Completion Pass, Connectors Completion Pass, Satzi, B2/CAT18 activation, Genitive normal-route expansion, adjective-ending expansion, dependencies, backend, build step, runtime AI, or dynamic German generation.
+- Added QA documentation at `docs/qa/v0.82_prepositions_completion.md`.
+- Browser route acceptance remains pending because local Edge/CDP timed out waiting for the loaded app marker and the in-app Browser path was blocked by the Windows sandbox.
 
 ## v0.81.1 - Cases & Articles Acceptance / Phase 2.5 Readiness
 
