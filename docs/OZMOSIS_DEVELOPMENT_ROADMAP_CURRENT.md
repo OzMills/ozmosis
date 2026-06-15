@@ -2,11 +2,11 @@
 
 ## 1. Current Baseline
 
-Current accepted runtime baseline: `v0.80.14.18.2 - Baseline Acceptance / Package Hygiene Gate`.
+Current accepted runtime baseline: `v0.81 - Cases and Articles Completion Pass`.
 
-Current documentation-governance patch: `v0.80.14.18.3 - Strategic Source Brief / Roadmap Restoration + Feature Register`.
+Current documentation/planning readiness patch: `v0.81.1 - Cases & Articles Acceptance / Phase 2.5 Readiness`.
 
-Next implementation patch: `v0.81 - Cases and Articles Completion Pass`.
+Next implementation patch: `v0.82 - Prepositions Completion Pass`.
 
 ## 2. Completed Foundation
 
@@ -32,7 +32,7 @@ This summary is not a replacement for `CHANGELOG-FULL-OZMOSIS.txt`.
 ## 3. Corrected Roadmap Sequence
 
 - `v0.81` - Cases and Articles Completion Pass
-- `v0.81.x` or `v0.82-planning` - Phase 2.5 normalisation addendum v0.2 and B1-01 extension survival audit
+- `v0.81.1` - Cases & Articles Acceptance / Phase 2.5 Readiness
 - `v0.82` - Prepositions Completion Pass
 - `v0.83` - Word Order Completion Pass
 - `v0.84` - Connectors Completion Pass
@@ -79,12 +79,11 @@ Stop if the hub fails.
 
 ## 6. Roadmap Feature Dependencies
 
-- Phase 2.5 normalisation must happen before broad module generation.
-- B1-01 extension survival audit must happen before assuming B1-01 coverage is stable.
+- Phase 2.5 normalisation addendum v0.2 is complete and must be followed before broad module generation.
+- B1-01 extension survival audit is complete with `SURVIVED_WITH_METADATA_GAPS`; do not claim B1-01 is clean or complete until those gaps are repaired.
 - Weakness repair must wait until Skill Matrix and task-depth evidence are stable.
 - Durability/spaced review must wait until enough reviewable B1 coverage exists.
 - External Review must wait until production cards and save/import are stable.
 - Satzi must wait until recommendation logic is trustworthy.
 - B2 planning can happen after B1 completion work is structured.
 - B2 implementation must wait until the B1 functional completion gate passes.
-

@@ -6,19 +6,19 @@ Ozmosis is a static, dependency-free German learning app deployed through GitHub
 
 Ozmosis was formerly called Kasuskonsole. Historical notes may still use that name, but current user-facing and repo-facing language should use `Ozmosis`.
 
-Current working version: `v0.81 - Cases and Articles Completion Pass`.
+Current working version: `v0.81.1 - Cases & Articles Acceptance / Phase 2.5 Readiness`.
 
 Current runtime baseline: `v0.81 - Cases and Articles Completion Pass`.
 
-Next planned patch: `v0.81.x or v0.82-planning - Phase 2.5 normalisation addendum v0.2 and B1-01 extension survival audit`
+Next planned patch: `v0.82 - Prepositions Completion Pass`
 
-Current README: `README-v0_81.md`
+Current README: `README-v0_81_1.md`
 
-Current changelog: `CHANGELOG-v0_81.txt`
+Current changelog: `CHANGELOG-v0_81_1.txt`
 
-Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.81.md`
+Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.81.1.md`
 
-Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.81.md`
+Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.81.1.md`
 
 Use pre-1.0 version naming from now on: `v0.30`, `v0.31`, `v0.32`, `v0.32.1`, `v0.33`, and later.
 

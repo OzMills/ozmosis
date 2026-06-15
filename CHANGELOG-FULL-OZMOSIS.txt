@@ -35,14 +35,29 @@ Current state is based only on current repo files.
 
 - Current app version in `index.html`: `v0.81 - Cases and Articles Completion Pass`
 - Current export version in `index.html`: `v0.81-cases-articles-completion`
-- Current README: `README-v0_81.md`
-- Current changelog: `CHANGELOG-v0_81.txt`
-- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.81.md`
-- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.81.md`
-- Current QA report: `docs/qa/v0.81_cases_articles_completion.md`
-- Next planned patch documented in current files: `v0.81.x or v0.82-planning - Phase 2.5 normalisation addendum v0.2 and B1-01 extension survival audit`
+- Current README: `README-v0_81_1.md`
+- Current changelog: `CHANGELOG-v0_81_1.txt`
+- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.81.1.md`
+- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.81.1.md`
+- Current QA report: `docs/qa/v0.81.1_cases_articles_acceptance_phase25_readiness.md`
+- Next planned patch documented in current files: `v0.82 - Prepositions Completion Pass`
 
 No live deployment status is claimed here.
+
+## v0.81.1 - Cases & Articles Acceptance / Phase 2.5 Readiness
+
+- Accepted the v0.81 Cases & Articles route after Edge/CDP browser automation completed one real route item through feedback, confidence, and evidence writing.
+- Verified Cases & Articles remains separate from Case Trainer.
+- Verified route isolation across Home, Learning Map, Settings, Dev Tools, Case Trainer, and Cases & Articles route transitions.
+- Verified Export Save, Import Save, and import validation remain reachable in Settings/Data.
+- Verified responsive route smoke at 320x568, 390x844, 430x932, 768x1024, 1365x599, and 1440x900.
+- Verified Arabic UI smoke keeps German prompt/input direction LTR.
+- Added Phase 2.5 normalisation addendum v0.2 at `docs/planning/ozmosis_phase2_5_full_b1_normalisation_addendum_v0_2.md`.
+- Added B1-01 extension survival audit at `docs/qa/v0.81.1_b1_01_extension_survival_audit.md` with status `SURVIVED_WITH_METADATA_GAPS`.
+- Updated feature register and roadmap handoff so `v0.82 - Prepositions Completion Pass` is the next implementation patch.
+- Preserved v0.81 runtime app/export metadata because no runtime behaviour changed.
+- Preserved scoring, star semantics, localStorage keys, Export Save / Import Save payload compatibility, Today's B1 Sprint composition, Case Trainer, B1-only active scope, content banks, and GitHub Pages compatibility.
+- Did not implement prepositions, word order, connectors, Satzi, B2/CAT18 activation, Genitive expansion, dependencies, backend, build step, runtime AI, or runtime German generation.
 
 ## v0.81 - Cases and Articles Completion Pass
 

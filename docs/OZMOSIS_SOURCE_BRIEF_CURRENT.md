@@ -160,9 +160,14 @@ Deferred features must not be forgotten or implemented early:
 
 ## 11. Current Baseline
 
-Current accepted runtime baseline: `v0.80.14.18.2 - Baseline Acceptance / Package Hygiene Gate`.
+Current accepted runtime baseline: `v0.81 - Cases and Articles Completion Pass`.
 
-Current docs-governance patch: `v0.80.14.18.3 - Strategic Source Brief / Roadmap Restoration + Feature Register`.
+Current docs/planning readiness patch: `v0.81.1 - Cases & Articles Acceptance / Phase 2.5 Readiness`.
 
-Next implementation patch: `v0.81 - Cases and Articles Completion Pass`.
+Next implementation patch: `v0.82 - Prepositions Completion Pass`.
 
+Current planning handoff:
+
+- Phase 2.5 normalisation addendum v0.2 is complete.
+- B1-01 survival audit status is `SURVIVED_WITH_METADATA_GAPS`.
+- Prepositions Completion Pass is the next allowed implementation patch.
