@@ -2,11 +2,11 @@
 
 ## 1. Current Baseline
 
-Current runtime baseline: `v0.82 - Prepositions Completion Pass`.
+Current runtime baseline: `v0.83 - Word Order Completion Pass`.
 
-Current acceptance status: v0.82 Prepositions passed the v0.82.1 browser acceptance gate. Runtime metadata remains v0.82 because no app fix was required.
+Current acceptance status: v0.83 Word Order passed static, file-based headless Edge browser, responsive, save, route-isolation, and Arabic/LTR smoke gates.
 
-Next required patch: `v0.83 - Word Order Completion Pass`.
+Next required patch: `v0.84 - Connectors Completion Pass`.
 
 ## 2. Completed Foundation
 

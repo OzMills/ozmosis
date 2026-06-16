@@ -9286,6 +9286,7 @@ body.b1Mode main > .startScreen[hidden] {
             <button class="menuButton" id="menuGrammarBtn" type="button">Grammar</button>
             <button class="menuButton" id="menuCasesArticlesBtn" type="button">Cases &amp; Articles</button>
             <button class="menuButton" id="menuPrepositionsBtn" type="button">Prepositions</button>
+            <button class="menuButton" id="menuWordOrderBtn" type="button">Word Order</button>
             <button class="menuButton" id="menuWortschatzBtn" type="button">Wortschatz</button>
             <button class="menuButton" id="menuRedemittelBtn" type="button">Redemittel</button>
             <button class="menuButton" id="menuCaseTrainerBtn" type="button">Case Trainer</button>
@@ -9550,6 +9551,7 @@ body.b1Mode main > .startScreen[hidden] {
       <button class="homeNavButton" id="grammarSeedBtn" type="button"><span class="homeNavBadge">Mixed practice</span><span class="homeNavMain"><span class="homeNavTitle">Mixed Grammar</span><span class="homeNavSub">Broad B1 grammar practice</span></span></button>
       <button class="homeNavButton" id="casesArticlesBtn" type="button"><span class="homeNavBadge">Topic drill</span><span class="homeNavMain"><span class="homeNavTitle">Cases &amp; Articles</span><span class="homeNavSub">der/den/dem &middot; ein/kein &middot; pronouns</span></span></button>
       <button class="homeNavButton" id="prepositionsBtn" type="button"><span class="homeNavBadge">Topic drill</span><span class="homeNavMain"><span class="homeNavTitle">Prepositions</span><span class="homeNavSub">mit &middot; f&uuml;r &middot; in/auf &middot; time phrases</span></span></button>
+      <button class="homeNavButton" id="wordOrderBtn" type="button"><span class="homeNavBadge">Topic drill</span><span class="homeNavMain"><span class="homeNavTitle">Word Order</span><span class="homeNavSub">V2 &middot; sentence bracket &middot; questions</span></span></button>
       <button class="homeNavButton" id="grammarB101Btn" type="button"><span class="homeNavBadge">Module practice</span><span class="homeNavMain"><span class="homeNavTitle">B1-01 Getting Started</span><span class="homeNavSub">Entry sentences · course words · self-marked production</span></span></button>
       <button class="homeNavButton" id="grammarB102Btn" type="button"><span class="homeNavBadge">Module practice</span><span class="homeNavMain"><span class="homeNavTitle">B1-02 Appointments / callbacks</span><span class="homeNavSub">Appointments · callbacks · self-marked production</span></span></button>
       <button class="homeNavButton" id="grammarB103Btn" type="button"><span class="homeNavBadge">Module practice</span><span class="homeNavMain"><span class="homeNavTitle">B1-03 Job search / offices</span><span class="homeNavSub">Office documents · admin actions · self-marked production</span></span></button>
@@ -10206,6 +10208,7 @@ body.b1Mode main > .startScreen[hidden] {
 <script src="content/b1-wortschatz.js"></script>
 <script src="content/b1-cases-articles.js"></script>
 <script src="content/b1-prepositions.js"></script>
+<script src="content/b1-word-order.js"></script>
 <script src="content/b1-m01-variant-families.js"></script>
 <script src="content/b1-m02-appointments-callbacks.js"></script>
 <script src="content/b1-m03-job-search-offices.js"></script>
@@ -10236,8 +10239,8 @@ body.b1Mode main > .startScreen[hidden] {
   var B1_PATH_UNLOCK_STORAGE_KEY = "ozmosis_b1_path_unlock_overrides_v1";
   var B1_REVIEW_EDIT_QUEUE_STORAGE_KEY = "ozmosis_b1_review_edit_queue_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.82 - Prepositions Completion Pass";
-  var OZMOSIS_EXPORT_VERSION = "v0.82-prepositions-completion";
+  var OZMOSIS_APP_VERSION = "v0.83 - Word Order Completion Pass";
+  var OZMOSIS_EXPORT_VERSION = "v0.83-word-order-completion";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -10854,6 +10857,7 @@ body.b1Mode main > .startScreen[hidden] {
   const B1_CONNECTOR_ITEMS = (window.OZMOSIS_CONTENT && Array.isArray(window.OZMOSIS_CONTENT.b1Connectors)) ? window.OZMOSIS_CONTENT.b1Connectors : [];
   const B1_CASE_ARTICLE_ITEMS = (window.OZMOSIS_CONTENT && Array.isArray(window.OZMOSIS_CONTENT.b1CasesArticles)) ? window.OZMOSIS_CONTENT.b1CasesArticles : [];
   const B1_PREPOSITION_ITEMS = (window.OZMOSIS_CONTENT && Array.isArray(window.OZMOSIS_CONTENT.b1Prepositions)) ? window.OZMOSIS_CONTENT.b1Prepositions : [];
+  const B1_WORD_ORDER_ITEMS = (window.OZMOSIS_CONTENT && Array.isArray(window.OZMOSIS_CONTENT.b1WordOrder)) ? window.OZMOSIS_CONTENT.b1WordOrder : [];
   function redBase(id, section, itemType, prompt, answer, full, support, note, family, tags, extra) {
     var item = {
       id:id,
@@ -10966,6 +10970,15 @@ body.b1Mode main > .startScreen[hidden] {
       label:"Prepositions",
       items:B1_PREPOSITION_ITEMS,
       source:"content/b1-prepositions.js",
+      includeInDaily:false,
+      includeInDiagnostic:false,
+      excludeProductionFromAutoGradedDaily:false
+    },
+    word_order:{
+      key:"word_order",
+      label:"Word Order",
+      items:B1_WORD_ORDER_ITEMS,
+      source:"content/b1-word-order.js",
       includeInDaily:false,
       includeInDiagnostic:false,
       excludeProductionFromAutoGradedDaily:false
@@ -12576,7 +12589,7 @@ body.b1Mode main > .startScreen[hidden] {
       redemittel:{ routeKey:"redemittel", routeLabel:"Open Redemittel", shortLabel:"Redemittel practice" },
       wortschatz:{ routeKey:"wortschatz", routeLabel:"Open Wortschatz", shortLabel:"Wortschatz practice" },
       cases_articles:{ routeKey:"cases_articles", routeLabel:"Open Cases & Articles", shortLabel:"Case/article practice" },
-      word_order:{ routeKey:"connectors", routeLabel:"Open Connector Sprint", shortLabel:"Word order practice" },
+      word_order:{ routeKey:"word_order", routeLabel:"Open Word Order", shortLabel:"Word order practice" },
       prepositions:{ routeKey:"prepositions", routeLabel:"Open Prepositions", shortLabel:"Preposition practice" },
       repair:{ routeKey:"today", routeLabel:"Start Today's Sprint", shortLabel:"Repair evidence" },
       production:{ routeKey:"today", routeLabel:"Start Today's Sprint", shortLabel:"More evidence" }
@@ -12587,7 +12600,10 @@ body.b1Mode main > .startScreen[hidden] {
     var base = b1RecommendationRouteForNode(nodeKey);
     var depth = b1CanonicalTaskDepth(taskDepth);
     var grammarTask = depth === "repair" || depth === "contrast" || depth === "sentence_building";
-    if (grammarTask && (nodeKey === "connectors" || nodeKey === "word_order")) {
+    if (grammarTask && nodeKey === "word_order") {
+      return { routeKey:"word_order", routeLabel:"Open Word Order", shortLabel:"Word order practice", closestAvailable:false };
+    }
+    if (grammarTask && nodeKey === "connectors") {
       return { routeKey:"grammar", routeLabel:"Open Grammar", shortLabel:depth === "repair" ? "Repair practice" : depth === "contrast" ? "Contrast practice" : "Word order practice", closestAvailable:true };
     }
     if (grammarTask && nodeKey === "cases_articles") {
@@ -13208,6 +13224,7 @@ body.b1Mode main > .startScreen[hidden] {
     if (routeKey === "wortschatz") { startWortschatzRound("mixed"); return; }
     if (routeKey === "cases_articles") { startCasesArticlesRound("mixed"); return; }
     if (routeKey === "prepositions") { startPrepositionsRound("mixed"); return; }
+    if (routeKey === "word_order") { startWordOrderRound("mixed"); return; }
     if (routeKey === "case_trainer") { showStartScreen(); return; }
     if (routeKey === "learning_map") { showLearningMapScreen(); return; }
     if (routeKey === "home") { showHomeScreen(); return; }
@@ -18469,6 +18486,7 @@ body.b1Mode main > .startScreen[hidden] {
     if (bankKey === "connectors") add("connectors");
     else if (bankKey === "cases_articles") { add("cases_articles"); add("case_article"); }
     else if (bankKey === "prepositions") { add("prepositions"); add("praeposition"); add("preposition"); }
+    else if (bankKey === "word_order") { add("word_order"); add("satzbau"); add("sentence_building"); }
     else if (bankKey === "redemittel") add("redemittel");
     else if (bankKey === "wortschatz") add("wortschatz");
     else if (bankKey === "b1_m01") add("b1_01");
@@ -18506,6 +18524,7 @@ body.b1Mode main > .startScreen[hidden] {
     }
     if (bankKey === "connectors") return "connectors";
     if (bankKey === "cases_articles") return "cases_articles";
+    if (bankKey === "word_order") return "word_order";
     if (bankKey === "redemittel") return "redemittel";
     if (bankKey === "wortschatz") return "wortschatz";
     if (bankKey === "b1_m01") return "b1_01";
@@ -20399,6 +20418,7 @@ body.b1Mode main > .startScreen[hidden] {
         core:B1_ITEMS.length,
         connectors:B1_CONNECTOR_ITEMS.length,
         prepositions:B1_PREPOSITION_ITEMS.length,
+        wordOrder:B1_WORD_ORDER_ITEMS.length,
         redemittel:B1_REDEMITTEL_ITEMS.length,
         wortschatz:B1_WORTSCHATZ_ITEMS.length
       },
@@ -21868,6 +21888,7 @@ body.b1Mode main > .startScreen[hidden] {
   const B1_IMPORTED_MODULE_TITLES = {
     cases_articles:"Cases & Articles",
     prepositions:"Prepositions",
+    word_order:"Word Order",
     b1_m12:"B1-12 Forms / admin / certificates",
     b1_m13:"B1-13 Learning / exam language",
     b1_m14:"B1-14 Connectors / sentence functions",
@@ -21939,6 +21960,7 @@ body.b1Mode main > .startScreen[hidden] {
   }
   function startCasesArticlesRound(filter) { startB1ImportedModuleRound("cases_articles", filter); }
   function startPrepositionsRound(filter) { startB1ImportedModuleRound("prepositions", filter); }
+  function startWordOrderRound(filter) { startB1ImportedModuleRound("word_order", filter); }
   function startB1M12Round(filter) { startB1ImportedModuleRound("b1_m12", filter); }
   function startB1M13Round(filter) { startB1ImportedModuleRound("b1_m13", filter); }
   function startB1M14Round(filter) { startB1ImportedModuleRound("b1_m14", filter); }
@@ -26198,9 +26220,12 @@ body.b1Mode main > .startScreen[hidden] {
   }
 window.ozmosisTesterReportSummary=testerReportSummary; window.ozmosisLearnerReadableProgressReport=buildLearnerReadableProgressReport; window.ozmosisBuildSavePayload=buildOzmosisSavePayload; window.ozmosisValidateSavePayload=validateOzmosisSavePayload; window.ozmosisApplyValidatedSave=applyValidatedOzmosisSave; window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }; window.kasusNoArticle=function(){checkAnswer("none");}; window.kasusProceed=function(){proceed();}; window.kasusHint=function(){showHint();}; window.kasusNewRound=function(){showStartScreen();}; window.kasusStartRound=function(){startConfiguredRound();}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusSessionLog=function(){return sessionLog.slice();}; window.kasusCurrent=function(){return current ? cloneQuestion(current) : cloneB1Item(b1Runtime.current || {});}; window.kasusLeitnerDebug=function(){ return { storageKey:LEITNER_STORAGE_KEY, runtime:leitnerRuntime, progress:safeGetLeitner() }; }; window.ozmosisChoiceShuffleDebug=function(item, count){ return b1ChoiceShuffleDebugSummary(item, count); }; window.ozmosisB1Debug=function(){ return { storageKey:B1_STORAGE_KEY, evidenceStorageKey:B1_EVIDENCE_STORAGE_KEY, progressStateLabelVersion:PROGRESS_STATE_LABEL_VERSION, taskDepthSchemaVersion:B1_TASK_DEPTH_SCHEMA_VERSION, taskDepthDefinitions:b1TaskDepthDefinitions(), supportLevelSchemaVersion:B1_SUPPORT_LEVEL_SCHEMA_VERSION, supportLevelDefinitions:b1SupportLevelDefinitions(), itemCount:B1_ITEMS.length, connectorCount:B1_CONNECTOR_ITEMS.length, casesArticlesCount:B1_CASE_ARTICLE_ITEMS.length, redemittelCount:B1_REDEMITTEL_ITEMS.length, wortschatzCount:B1_WORTSCHATZ_ITEMS.length, b1M02Count:B1_M02_ITEMS.length, b1M03Count:B1_M03_ITEMS.length, b1M04Count:B1_M04_ITEMS.length, b1M05Count:B1_M05_ITEMS.length, registry:b1RegistrySummary(), runtime:b1Runtime, progress:safeGetB1Progress(), evidence:b1EvidenceSummary(), supportLevelSummary:b1SupportLevelSummaryForRecords(safeGetB1Evidence().records), learningMap:b1LearningMapScaffold(), skillMatrix:b1SkillMatrixData(), skillMatrixSummary:debugSkillMatrixSummary(), recommendation:b1NextRecommendedPractice(), recommendationSummary:debugRecommendationSummary(), learnerReadableProgressReport:buildLearnerReadableProgressReport(), errorPatterns:b1ErrorPatternSignals(), errorPatternSummary:debugErrorPatternSummary(), errorTypeSummaries:b1ErrorTypeSummaries(), errorTypeSummary:debugErrorTypeSummary(), connectorDiagnostics:b1ConnectorDiagnosticCards(), connectorDiagnosticSummary:debugConnectorDiagnosticSummary(), diagnosticRepairQa:b1DiagnosticRepairQaSummary(), diagnosticRepairStability:b1DiagnosticRepairStabilitySummary(), durabilityReadiness:buildB1DurabilityReadinessSnapshot(), durabilityQa:buildB1DurabilityQaAudit(), reviewSystemStability:buildB1ReviewSystemStabilityAudit(), reviewEligibility:buildB1ReviewEligibility(), reviewCandidatePreview:buildB1ReviewCandidatePreview(), metadataReviewCoverage:buildB1MetadataReviewCoverageAudit(), b1CoverageAudit:buildB1CoverageAudit(), repairCandidates:b1WeaknessRepairCandidates(), repairCandidateSummary:debugWeaknessRepairSummary(), repairQueues:b1BuildWeaknessRepairQueue(), repairQueueSummary:b1RepairQueueDebugSummary(), diagnosticPlan:b1Runtime.diagnosticPlan, qaStageItemById:b1QaStageItemById, qaRepairPreview:b1QaRepairPreview, choiceShuffle:b1ChoiceShuffleDebugSummary(), debugSnapshot:buildDebugSnapshot }; }; window.ozmosisStartB1Round=function(mode){ startB1Round(mode || "mixed"); }; window.ozmosisStartDiagnostic=function(){ startB1DiagnosticSprint(); }; window.ozmosisStartConnector=function(family){ startConnectorSprint(family || "all"); }; window.ozmosisStartCasesArticles=function(filter){ startCasesArticlesRound(filter || "mixed"); }; window.ozmosisStartRedemittel=function(filter){ startRedemittelRound(filter || "mixed"); }; window.ozmosisStartWortschatz=function(filter){ startWortschatzRound(filter || "mixed"); }; window.ozmosisStartB1M01=function(filter){ startB1M01Round(filter || "mixed"); }; window.ozmosisStartB1M02=function(filter){ startB1M02Round(filter || "mixed"); }; window.ozmosisStartB1M03=function(filter){ startB1M03Round(filter || "mixed"); }; window.ozmosisStartB1M04=function(filter){ startB1M04Round(filter || "mixed"); }; window.ozmosisStartB1M05=function(filter){ startB1M05Round(filter || "mixed"); }; window.ozmosisStartTargetedRepair=function(queueId){ startTargetedRepairPractice(queueId || ""); }; window.ozmosisStartReviewPractice=function(){ startB1ReviewPractice(); }; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusResetBest=function(){ highScore=0; bestStreakAll=0; savePersistent(); if (state === "results") showResults(); else renderHud(); }; window.kasusResetProfile=function(){ resetLearnerModel(); }; window.kasusToggleMenu=function(){ var panel=el("settingsPanel"); panel.classList.toggle("open"); document.body.classList.toggle("menuOpen", panel.classList.contains("open")); };
   window.ozmosisStartPrepositions=function(filter){ startPrepositionsRound(filter || "mixed"); };
+  window.ozmosisStartWordOrder=function(filter){ startWordOrderRound(filter || "mixed"); };
   var ozmosisB1DebugBase = window.ozmosisB1Debug;
   window.ozmosisB1Debug = function(){
     var summary = ozmosisB1DebugBase ? ozmosisB1DebugBase() : {};
+    summary.appVersion = OZMOSIS_APP_VERSION;
+    summary.exportVersion = OZMOSIS_EXPORT_VERSION;
     summary.b1M06Count = B1_M06_ITEMS.length;
     summary.b1M07Count = B1_M07_ITEMS.length;
     summary.b1M08Count = B1_M08_ITEMS.length;
@@ -26216,6 +26241,7 @@ window.ozmosisTesterReportSummary=testerReportSummary; window.ozmosisLearnerRead
     summary.b1M18Count = B1_M18_ITEMS.length;
     summary.casesArticlesCount = B1_CASE_ARTICLE_ITEMS.length;
     summary.prepositionsCount = B1_PREPOSITION_ITEMS.length;
+    summary.wordOrderCount = B1_WORD_ORDER_ITEMS.length;
     summary.b1Path = b1PathProgressData();
     summary.b1PathDebug = b1PathDebugSummary();
     summary.b1PathUnlocks = safeGetB1PathUnlockOverrides();
@@ -26574,6 +26600,8 @@ window.ozmosisTesterReportSummary=testerReportSummary; window.ozmosisLearnerRead
     init();
     bind("menuPrepositionsBtn","click",function(){ setMenu(false); startPrepositionsRound("mixed"); });
     bind("prepositionsBtn","click",function(){ startPrepositionsRound("mixed"); });
+    bind("menuWordOrderBtn","click",function(){ setMenu(false); startWordOrderRound("mixed"); });
+    bind("wordOrderBtn","click",function(){ startWordOrderRound("mixed"); });
     window.setTimeout(function(){
       showFirstRunLanguagePanel();
       document.body.classList.remove("booting");
