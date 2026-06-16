@@ -2,11 +2,11 @@
 
 ## 1. Current Baseline
 
-Current runtime baseline: `v0.83 - Word Order Completion Pass`.
+Current runtime baseline: `v0.84 - Connectors Completion Pass`.
 
-Current acceptance status: v0.83 Word Order passed static, file-based headless Edge browser, responsive, save, route-isolation, and Arabic/LTR smoke gates.
+Current acceptance status: v0.84 Connectors passed static, coverage, file-based headless Edge browser, responsive, save, route-isolation, and Arabic/LTR smoke gates.
 
-Next required patch: `v0.84 - Connectors Completion Pass`.
+Next required patch: `v0.85 - Repair / Transformation Completion Pass`.
 
 ## 2. Completed Foundation
 
@@ -25,7 +25,8 @@ The current foundation includes:
 - UX stabilisation;
 - B1 Path/star progress;
 - import/export save workflow;
-- route isolation baseline.
+- route isolation baseline;
+- focused route-bank coverage for Cases and Articles, Prepositions, Word Order, and Connectors.
 
 This summary is not a replacement for `CHANGELOG-FULL-OZMOSIS.txt`.
 
@@ -82,6 +83,8 @@ Stop if the hub fails.
 
 - Phase 2.5 normalisation addendum v0.2 is complete and must be followed before broad module generation.
 - B1-01 extension survival audit is complete with `SURVIVED_WITH_METADATA_GAPS`; do not claim B1-01 is clean or complete until those gaps are repaired.
+- Connectors Completion Pass is complete and accepted as v0.84.
+- Repair / Transformation Completion Pass is the next allowed implementation patch.
 - Weakness repair must wait until Skill Matrix and task-depth evidence are stable.
 - Durability/spaced review must wait until enough reviewable B1 coverage exists.
 - External Review must wait until production cards and save/import are stable.

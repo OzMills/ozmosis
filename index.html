@@ -9563,9 +9563,9 @@ body.b1Mode main > .startScreen[hidden] {
       <button class="homeNavButton" id="grammarB109Btn" type="button"><span class="homeNavBadge">Module practice</span><span class="homeNavMain"><span class="homeNavTitle">B1-09 Complaints / customer service</span><span class="homeNavSub">Complaints - service requests - self-marked production</span></span></button>
       <button class="homeNavButton" id="grammarB110Btn" type="button"><span class="homeNavBadge">Module practice</span><span class="homeNavMain"><span class="homeNavTitle">B1-10 Technical problems</span><span class="homeNavSub">Device issues - instructions - self-marked production</span></span></button>
       <button class="homeNavButton" id="grammarB111Btn" type="button"><span class="homeNavBadge">Module practice</span><span class="homeNavMain"><span class="homeNavTitle">B1-11 Colleague feedback / conflict</span><span class="homeNavSub">Apologies - soft disagreement - self-marked production</span></span></button>
-      <button class="homeNavButton" id="connectorAllBtn" type="button"><span class="homeNavBadge">Topic drill</span><span class="homeNavMain"><span class="homeNavTitle">Connectors</span><span class="homeNavSub">weil · denn · deshalb · obwohl · trotzdem</span></span></button>
+      <button class="homeNavButton" id="connectorAllBtn" type="button"><span class="homeNavBadge">Topic drill</span><span class="homeNavMain"><span class="homeNavTitle">Connectors</span><span class="homeNavSub">reason · contrast · purpose · time · condition</span></span></button>
       <button class="homeNavButton" id="connectorReasonBtn" type="button"><span class="homeNavBadge">Topic drill</span><span class="homeNavMain"><span class="homeNavTitle">Reason</span><span class="homeNavSub">weil · denn · deshalb</span></span></button>
-      <button class="homeNavButton" id="connectorContrastBtn" type="button"><span class="homeNavBadge">Contrast</span><span class="homeNavMain"><span class="homeNavTitle">Contrast</span><span class="homeNavSub">obwohl · trotzdem</span></span></button>
+      <button class="homeNavButton" id="connectorContrastBtn" type="button"><span class="homeNavBadge">Contrast</span><span class="homeNavMain"><span class="homeNavTitle">Contrast</span><span class="homeNavSub">obwohl · trotzdem · aber</span></span></button>
       <button class="homeNavButton" id="connectorPurposeBtn" type="button"><span class="homeNavBadge">Topic drill</span><span class="homeNavMain"><span class="homeNavTitle">Purpose</span><span class="homeNavSub">damit · um ... zu</span></span></button>
       <button class="homeNavButton" id="connectorTimeBtn" type="button"><span class="homeNavBadge">Topic drill</span><span class="homeNavMain"><span class="homeNavTitle">Time</span><span class="homeNavSub">wenn · als · bevor · nachdem</span></span></button>
       <button class="homeNavButton" id="connectorRepairBtn" type="button"><span class="homeNavBadge">Repair</span><span class="homeNavMain"><span class="homeNavTitle">Repair</span><span class="homeNavSub">Fix sentence errors</span></span></button>
@@ -10239,8 +10239,8 @@ body.b1Mode main > .startScreen[hidden] {
   var B1_PATH_UNLOCK_STORAGE_KEY = "ozmosis_b1_path_unlock_overrides_v1";
   var B1_REVIEW_EDIT_QUEUE_STORAGE_KEY = "ozmosis_b1_review_edit_queue_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.83 - Word Order Completion Pass";
-  var OZMOSIS_EXPORT_VERSION = "v0.83-word-order-completion";
+  var OZMOSIS_APP_VERSION = "v0.84 - Connectors Completion Pass";
+  var OZMOSIS_EXPORT_VERSION = "v0.84-connectors-completion";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -11321,7 +11321,7 @@ body.b1Mode main > .startScreen[hidden] {
     { pathId:"B1.11", order:11, label:"Colleague Feedback and Conflict", routeKey:"b1_m11", banks:["b1_m11"], subcategoryLabel:"Colleague feedback / conflict", subcategories:["B1.11.1 Giving feedback", "B1.11.2 Receiving feedback", "B1.11.3 Disagreeing politely", "B1.11.4 Apologising and repairing", "B1.11.5 Setting boundaries"] },
     { pathId:"B1.12", order:12, label:"Forms, Admin, and Certificates", routeKey:"b1_m12", banks:["b1_m12"], subcategoryLabel:"Forms / admin / certificates", subcategories:["B1.12.1 Forms", "B1.12.2 Applications and requests", "B1.12.3 Certificates and proof", "B1.12.4 Deadlines", "B1.12.5 Official replies"] },
     { pathId:"B1.13", order:13, label:"Learning and Exam Language", routeKey:"b1_m13", banks:["b1_m13"], subcategoryLabel:"Learning / exam language", subcategories:["B1.13.1 Tasks and instructions", "B1.13.2 Asking for explanation", "B1.13.3 Talking about mistakes", "B1.13.4 Exam preparation", "B1.13.5 Progress and review"] },
-    { pathId:"B1.14", order:14, label:"Connectors and Sentence Functions", routeKey:"b1_m14", banks:["b1_m14"], subcategoryLabel:"Connectors / sentence functions", subcategories:["B1.14.1 Reasons: weil, denn, deshalb", "B1.14.2 Contrast: obwohl, trotzdem", "B1.14.3 Time: wenn, als, bevor, nachdem", "B1.14.4 Purpose: damit, um ... zu", "B1.14.5 Word order after connectors"] },
+    { pathId:"B1.14", order:14, label:"Connectors and Sentence Functions", routeKey:"b1_m14", banks:["b1_m14"], subcategoryLabel:"Connectors / sentence functions", subcategories:["B1.14.1 Reasons: weil, denn, deshalb", "B1.14.2 Contrast: obwohl, trotzdem, aber", "B1.14.3 Time: wenn, als, bevor, nachdem", "B1.14.4 Purpose/result: damit, um ... zu, sodass", "B1.14.5 Sequence and condition: dann, außerdem, falls"] },
     { pathId:"B1.15", order:15, label:"Time, Place, and Movement", routeKey:"b1_m15", banks:["b1_m15"], subcategoryLabel:"Time / place / movement", subcategories:["B1.15.1 Time phrases", "B1.15.2 Places", "B1.15.3 Movement and direction", "B1.15.4 Two-way prepositions", "B1.15.5 Local and temporal prepositions"] },
     { pathId:"B1.16", order:16, label:"Money, Payment, and Contracts", routeKey:"b1_m16", banks:["b1_m16"], subcategoryLabel:"Money / contracts", subcategories:["B1.16.1 Payment", "B1.16.2 Charges and fees", "B1.16.3 Contract conditions", "B1.16.4 Cancellation", "B1.16.5 Written confirmation"] },
     { pathId:"B1.17", order:17, label:"Home, Family, and Daily Life Support", routeKey:"b1_m17", banks:["b1_m17"], subcategoryLabel:"Daily life support", subcategories:["B1.17.1 Household", "B1.17.2 Family logistics", "B1.17.3 Kindergarten and school", "B1.17.4 Neighbourhood", "B1.17.5 Everyday problems"] },
@@ -11763,7 +11763,7 @@ body.b1Mode main > .startScreen[hidden] {
       key:"connectors",
       label:"Connectors",
       cluster:"sentence_control",
-      skillTags:["connectors", "connector_meaning", "connector_word_order", "weil_denn_deshalb", "obwohl_trotzdem", "damit_um_zu", "temporal_connectors", "reason", "contrast", "purpose", "time", "weil", "denn", "deshalb", "obwohl", "trotzdem", "damit", "um_zu", "wenn", "als", "bevor", "nachdem"]
+      skillTags:["connectors", "connector_meaning", "connector_word_order", "weil_denn_deshalb", "obwohl_trotzdem", "obwohl_trotzdem_aber", "damit_um_zu", "temporal_connectors", "sequence_connectors", "condition_connectors", "reason", "contrast", "purpose", "result", "time", "sequence", "condition", "weil", "denn", "deshalb", "obwohl", "trotzdem", "aber", "damit", "um_zu", "sodass", "wenn", "als", "bevor", "nachdem", "außerdem", "dann", "falls"]
     },
     redemittel:{
       key:"redemittel",
@@ -21652,9 +21652,12 @@ body.b1Mode main > .startScreen[hidden] {
     var tags = item && Array.isArray(item.tags) ? item.tags : [];
     if (tags.indexOf("production") !== -1 || item.itemType === "production_card") return "production";
     if (tags.indexOf("repair") !== -1 || item.variantRole === "repair" || item.itemType === "error_repair") return "repair";
+    if (item && item.connectorFamily) return item.connectorFamily;
     if (tags.indexOf("reason") !== -1) return "reason";
     if (tags.indexOf("contrast") !== -1) return "contrast";
     if (tags.indexOf("purpose") !== -1) return "purpose";
+    if (tags.indexOf("condition") !== -1) return "condition";
+    if (tags.indexOf("sequence") !== -1 || tags.indexOf("addition") !== -1 || tags.indexOf("alternative") !== -1) return "sequence";
     if (tags.indexOf("time") !== -1) return "time";
     return "all";
   }
@@ -21663,6 +21666,8 @@ body.b1Mode main > .startScreen[hidden] {
     if (family === "contrast") return "Contrast";
     if (family === "purpose") return "Purpose";
     if (family === "time") return "Time";
+    if (family === "condition") return "Condition";
+    if (family === "sequence") return "Sequence";
     if (family === "repair") return "Repair";
     return "Connector Sprint";
   }

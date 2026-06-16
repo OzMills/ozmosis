@@ -160,11 +160,11 @@ Deferred features must not be forgotten or implemented early:
 
 ## 11. Current Baseline
 
-Current runtime baseline: `v0.83 - Word Order Completion Pass`.
+Current runtime baseline: `v0.84 - Connectors Completion Pass`.
 
-Current acceptance status: v0.83 Word Order passed static, file-based headless Edge browser, responsive, save, route-isolation, and Arabic/LTR smoke gates.
+Current acceptance status: v0.84 Connectors passed static, coverage, file-based headless Edge browser, responsive, save, route-isolation, and Arabic/LTR smoke gates.
 
-Next required patch: `v0.84 - Connectors Completion Pass`.
+Next required patch: `v0.85 - Repair / Transformation Completion Pass`.
 
 Current planning handoff:
 
@@ -172,4 +172,5 @@ Current planning handoff:
 - B1-01 survival audit status is `SURVIVED_WITH_METADATA_GAPS`.
 - Prepositions Completion Pass has been implemented as v0.82 and accepted by v0.82.1 browser validation.
 - Word Order Completion Pass has been implemented and accepted as v0.83.
-- Connectors Completion Pass is allowed next as v0.84.
+- Connectors Completion Pass has been implemented and accepted as v0.84.
+- Repair / Transformation Completion Pass is allowed next as v0.85.

@@ -1,0 +1,18 @@
+# Ozmosis v0.84 - Connectors Completion Pass
+
+- Expanded the existing B1 Connector route bank in `content/b1-connectors.js` from 120 to 144 items.
+- Added 24 original B1-safe connector items across reason, contrast, purpose/result, time, sequence/addition/alternative, and condition families.
+- Added focused B1-safe coverage for `aber`, `sodass`, `dann`, `danach`, `außerdem`, `oder`, and `falls`.
+- Added or normalised connector metadata for connector target, connector family, clause type, word-order target, meaning function, target IDs, review groups, contrast groups, and support/evidence mapping.
+- Updated Grammar hub connector copy, B1.14 connector labels, and connector skill tags so the existing route reflects the expanded coverage.
+- Preserved the existing Connector Sprint route instead of creating a duplicate route.
+- Kept v0.84 connector items out of Today's B1 Sprint and Diagnostic Sprint.
+- Verified a real Connector item can be opened, answered correctly, recorded as `connectors` evidence, and updated with confidence without duplicate evidence.
+- Verified a wrong Connector repair item writes one `connectors` evidence record and shows feedback.
+- Verified Home, Learning Map, Settings, Dev Tools, and the Connector route remain route-isolated.
+- Verified Export Save, Import Save, save payload creation, and save validation remain reachable.
+- Verified responsive smoke at 320x568, 390x844, 430x932, 768x1024, 1365x599, and 1440x900 browser window targets.
+- Verified Arabic UI smoke keeps German connector prompt/input/choice surfaces LTR/readable.
+- Preserved scoring, star logic, storage keys, save/export/import compatibility, Case Trainer, Today's B1 Sprint composition, Diagnostic Sprint composition, Learning Map, Skill Matrix, B1-only active scope, and GitHub Pages compatibility.
+- Did not implement Repair / Transformation Completion Pass, Production Completion Pass, Satzi, B2/CAT18 activation, genitive expansion, adjective-ending expansion, dependencies, backend, build step, runtime AI, or runtime German generation.
+- Added QA documentation at `docs/qa/v0.84_connectors_completion.md`.
