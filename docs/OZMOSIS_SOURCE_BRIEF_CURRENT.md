@@ -160,11 +160,11 @@ Deferred features must not be forgotten or implemented early:
 
 ## 11. Current Baseline
 
-Current runtime baseline: `v0.84 - Connectors Completion Pass`.
+Current runtime baseline: `v0.85 - Repair / Transformation Completion Pass`.
 
-Current acceptance status: v0.84 Connectors passed static, coverage, file-based headless Edge browser, responsive, save, route-isolation, and Arabic/LTR smoke gates.
+Current acceptance status: v0.85 Repair / Transformation Completion Pass passed static parse, scoped coverage checks, headless Edge/CDP route smoke, route isolation, save-control visibility, responsive checks, and Arabic/LTR smoke while preserving storage, scoring, save/import, route isolation, and B1-only scope.
 
-Next required patch: `v0.85 - Repair / Transformation Completion Pass`.
+Next required patch: `v0.86 - Production Completion Pass`.
 
 Current planning handoff:
 
@@ -173,4 +173,6 @@ Current planning handoff:
 - Prepositions Completion Pass has been implemented as v0.82 and accepted by v0.82.1 browser validation.
 - Word Order Completion Pass has been implemented and accepted as v0.83.
 - Connectors Completion Pass has been implemented and accepted as v0.84.
-- Repair / Transformation Completion Pass is allowed next as v0.85.
+- Cases & Articles Repair Editing Pilot has been implemented and accepted as v0.84.1.
+- Repair / Transformation Completion Pass has been implemented as v0.85.
+- Production Completion Pass is allowed next as v0.86.

@@ -9568,7 +9568,8 @@ body.b1Mode main > .startScreen[hidden] {
       <button class="homeNavButton" id="connectorContrastBtn" type="button"><span class="homeNavBadge">Contrast</span><span class="homeNavMain"><span class="homeNavTitle">Contrast</span><span class="homeNavSub">obwohl · trotzdem · aber</span></span></button>
       <button class="homeNavButton" id="connectorPurposeBtn" type="button"><span class="homeNavBadge">Topic drill</span><span class="homeNavMain"><span class="homeNavTitle">Purpose</span><span class="homeNavSub">damit · um ... zu</span></span></button>
       <button class="homeNavButton" id="connectorTimeBtn" type="button"><span class="homeNavBadge">Topic drill</span><span class="homeNavMain"><span class="homeNavTitle">Time</span><span class="homeNavSub">wenn · als · bevor · nachdem</span></span></button>
-      <button class="homeNavButton" id="connectorRepairBtn" type="button"><span class="homeNavBadge">Repair</span><span class="homeNavMain"><span class="homeNavTitle">Repair</span><span class="homeNavSub">Fix sentence errors</span></span></button>
+      <button class="homeNavButton" id="repairTransformationBtn" type="button"><span class="homeNavBadge">Repair + transform</span><span class="homeNavMain"><span class="homeNavTitle">Repair &amp; Transformation</span><span class="homeNavSub">Fix errors &middot; rewrite short sentences</span></span></button>
+      <button class="homeNavButton" id="connectorRepairBtn" type="button"><span class="homeNavBadge">Connector repair</span><span class="homeNavMain"><span class="homeNavTitle">Connector Repair</span><span class="homeNavSub">Fix connector sentence errors</span></span></button>
     </nav>
     <button class="homeBackButton" id="grammarBackBtn" type="button">Back</button>
   </section>
@@ -10239,8 +10240,8 @@ body.b1Mode main > .startScreen[hidden] {
   var B1_PATH_UNLOCK_STORAGE_KEY = "ozmosis_b1_path_unlock_overrides_v1";
   var B1_REVIEW_EDIT_QUEUE_STORAGE_KEY = "ozmosis_b1_review_edit_queue_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.84 - Connectors Completion Pass";
-  var OZMOSIS_EXPORT_VERSION = "v0.84-connectors-completion";
+  var OZMOSIS_APP_VERSION = "v0.85 - Repair / Transformation Completion Pass";
+  var OZMOSIS_EXPORT_VERSION = "v0.85-repair-transformation-completion";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -12591,7 +12592,7 @@ body.b1Mode main > .startScreen[hidden] {
       cases_articles:{ routeKey:"cases_articles", routeLabel:"Open Cases & Articles", shortLabel:"Case/article practice" },
       word_order:{ routeKey:"word_order", routeLabel:"Open Word Order", shortLabel:"Word order practice" },
       prepositions:{ routeKey:"prepositions", routeLabel:"Open Prepositions", shortLabel:"Preposition practice" },
-      repair:{ routeKey:"today", routeLabel:"Start Today's Sprint", shortLabel:"Repair evidence" },
+      repair:{ routeKey:"grammar_repair", routeLabel:"Open Repair & Transformation", shortLabel:"Repair practice" },
       production:{ routeKey:"today", routeLabel:"Start Today's Sprint", shortLabel:"More evidence" }
     };
     return routes[nodeKey] || { routeKey:"today", routeLabel:"Start Today's Sprint", shortLabel:"B1 practice" };
@@ -12599,7 +12600,10 @@ body.b1Mode main > .startScreen[hidden] {
   function b1RecommendationRouteForTask(nodeKey, taskDepth) {
     var base = b1RecommendationRouteForNode(nodeKey);
     var depth = b1CanonicalTaskDepth(taskDepth);
-    var grammarTask = depth === "repair" || depth === "contrast" || depth === "sentence_building";
+    if (depth === "repair" || depth === "transformation") {
+      return { routeKey:"grammar_repair", routeLabel:"Open Repair & Transformation", shortLabel:depth === "transformation" ? "Transformation practice" : "Repair practice", closestAvailable:false };
+    }
+    var grammarTask = depth === "contrast" || depth === "sentence_building";
     if (grammarTask && nodeKey === "word_order") {
       return { routeKey:"word_order", routeLabel:"Open Word Order", shortLabel:"Word order practice", closestAvailable:false };
     }
@@ -13217,7 +13221,7 @@ body.b1Mode main > .startScreen[hidden] {
     if (routeKey === "b1_m16") { startB1M16Round("mixed"); return; }
     if (routeKey === "b1_m17") { startB1M17Round("mixed"); return; }
     if (routeKey === "grammar") { showGrammarHub(); return; }
-    if (routeKey === "grammar_repair") { startConnectorSprint("repair"); return; }
+    if (routeKey === "grammar_repair") { startRepairTransformationRound("mixed"); return; }
     if (routeKey === "connectors") { startConnectorSprint("all"); return; }
     if (routeKey === "redemittel") { showRedemittelHub(); return; }
     if (routeKey === "redemittel_production") { startRedemittelRound("production"); return; }
@@ -18402,12 +18406,22 @@ body.b1Mode main > .startScreen[hidden] {
   function b1EvidenceTaskType(item) {
     return String(item && (item.itemType || item.type) || "other");
   }
+  function b1IsVariableErrorRepairItem(item) {
+    return !!(item && (item.itemType === "variable_error_repair" || item.variableErrorRepair === true || Array.isArray(item.errorSlots)));
+  }
+  function b1IsRepairPracticeItem(item) {
+    return !!(item && (item.itemType === "error_repair" || b1IsVariableErrorRepairItem(item) || item.taskDepth === "repair" && item.answerMode === "edit_text"));
+  }
+  function b1IsTransformationItem(item) {
+    return !!(item && (item.itemType === "transformation" || item.taskDepth === "transformation" || item.taskType === "Umformen"));
+  }
   function b1EvidenceTaskDepth(item) {
     if (item && item.taskDepth) return b1CanonicalTaskDepth(item.taskDepth);
     var type = b1EvidenceTaskType(item);
     var tags = (item && Array.isArray(item.tags)) ? item.tags.join(" ").toLowerCase() : "";
     if (type === "production_card") return b1CanonicalTaskDepth("controlled_production");
-    if (type === "error_repair") return b1CanonicalTaskDepth("repair");
+    if (type === "transformation") return b1CanonicalTaskDepth("transformation");
+    if (type === "error_repair" || type === "variable_error_repair") return b1CanonicalTaskDepth("repair");
     if (type === "word_order_cloze") return b1CanonicalTaskDepth("sentence_building");
     if (type === "connector_choice") return b1CanonicalTaskDepth((item && item.contrastTargets && item.contrastTargets.length) || tags.indexOf("contrast") !== -1 ? "contrast" : "recognition");
     if (type === "phrase_choice") return b1CanonicalTaskDepth(tags.indexOf("contrast") !== -1 ? "contrast" : "recognition");
@@ -18510,6 +18524,7 @@ body.b1Mode main > .startScreen[hidden] {
     else if (bankKey === "core") add("b1_core");
     if (item && item.itemType === "word_order_cloze") add("word_order");
     if (item && item.itemType === "error_repair") add("repair");
+    if (item && b1IsTransformationItem(item)) add("transformation");
     if (item && item.itemType === "production_card") add("production");
     if (item && item.grammarDomain) add(item.grammarDomain);
     if (item && item.courseDomain) add(item.courseDomain);
@@ -18595,7 +18610,9 @@ body.b1Mode main > .startScreen[hidden] {
     if (!item) return "unknown";
     if (item.itemType === "production_card") return "mark_practised";
     if (b1UsesChoices(item)) return "choice";
-    if (b1UsesInlineInput(item) || item.itemType === "error_repair") return "typed";
+    if (item.answerMode === "edit_text") return "edit_text";
+    if (b1IsTransformationItem(item)) return item.answerMode || "typed_text";
+    if (b1UsesInlineInput(item) || b1IsRepairPracticeItem(item)) return "typed";
     return "unknown";
   }
   function b1EvidenceHasSameSessionSibling(item, store) {
@@ -18694,7 +18711,7 @@ body.b1Mode main > .startScreen[hidden] {
       evidenceType:item.evidenceType || item.familyEvidenceTypeDefault || null,
       sourceTaskType:item.taskType || null,
       surfacePromptHash:b1EvidencePromptHash(b1EvidencePromptSurface(item)),
-      errorCategory:item.itemType === "error_repair" ? b1RepairCategory(item, options.rawAnswer) : null,
+      errorCategory:b1IsRepairPracticeItem(item) ? b1RepairCategory(item, options.rawAnswer) : null,
       nearMissType:null,
       correctWithNote:!!options.correctWithNote,
       orthographyNote:!!options.orthographyNote,
@@ -18730,6 +18747,15 @@ body.b1Mode main > .startScreen[hidden] {
       record.correctChoiceId = options.choiceMetadata.correctChoiceId || null;
       record.correctChoiceText = options.choiceMetadata.correctChoiceText || null;
       record.ambiguousCorrectText = !!options.choiceMetadata.ambiguousCorrectText;
+    }
+    if (options.repairEdit || item.answerMode === "edit_text" || item.prefillRepairText) {
+      record.repairEdit = true;
+      record.prefilledRepair = !!options.prefilledRepair;
+      record.repairAnswerMode = answerModeValue;
+    }
+    if (Array.isArray(options.activeErrorSlotIds) && options.activeErrorSlotIds.length) {
+      record.activeErrorSlotIds = options.activeErrorSlotIds.map(function(id){ return String(id || ""); }).filter(Boolean);
+      record.variableErrorRepair = !!options.variableErrorRepair;
     }
     store.records.push(record);
     var evidenceTrimmed = false;
@@ -21155,6 +21181,76 @@ body.b1Mode main > .startScreen[hidden] {
     resolved._diagnosticCategory = item._diagnosticCategory || "";
     return resolved;
   }
+  function b1VariableErrorRepairSlotRange(sentence, slot) {
+    var correctText = String(slot && slot.correctText || "");
+    if (!sentence || !correctText) return null;
+    var start = sentence.indexOf(correctText);
+    if (start === -1) return null;
+    return { start:start, end:start + correctText.length };
+  }
+  function b1VariableErrorRepairCompatible(ranges, range) {
+    if (!range) return false;
+    return ranges.every(function(existing){
+      return range.end <= existing.start || range.start >= existing.end;
+    });
+  }
+  function b1ResolveVariableErrorRepairItem(item, options) {
+    if (!b1IsVariableErrorRepairItem(item)) return item;
+    options = options || {};
+    var correct = String(item.correctSentence_de || item.answer || item.fullAnswer_de || "").trim();
+    var slots = Array.isArray(item.errorSlots) ? item.errorSlots.filter(function(slot){
+      return slot && slot.id && slot.wrongText && slot.correctText && b1VariableErrorRepairSlotRange(correct, slot);
+    }) : [];
+    if (!correct || !slots.length) return item;
+    var minErrors = Math.max(1, Math.min(slots.length, Number(item.minErrors || 1)));
+    var maxErrors = Math.max(minErrors, Math.min(slots.length, Number(item.maxErrors || minErrors)));
+    var rand = seededRandom(options.seed || [b1Runtime.roundSeed || "variable_repair", item.id || "item", b1AnsweredCount(), b1Runtime.queue.length].join("|"));
+    var wanted = minErrors + Math.floor(rand() * (maxErrors - minErrors + 1));
+    var candidates = shuffleWithSeed(slots, String(options.seed || item.id || "variable_repair") + "|slots");
+    var selected = [];
+    var ranges = [];
+    candidates.forEach(function(slot){
+      if (selected.length >= wanted) return;
+      var range = b1VariableErrorRepairSlotRange(correct, slot);
+      if (!b1VariableErrorRepairCompatible(ranges, range)) return;
+      selected.push(slot);
+      ranges.push(range);
+    });
+    if (selected.length < minErrors) selected = slots.slice(0, minErrors);
+    var flawed = correct;
+    selected.forEach(function(slot){
+      flawed = flawed.replace(String(slot.correctText || ""), String(slot.wrongText || ""));
+    });
+    if (!flawed || flawed === correct) return item;
+    var resolved = cloneB1Item(item);
+    resolved.prompt_de = flawed;
+    resolved.repairSource_de = flawed;
+    resolved.fullAnswer_de = correct;
+    resolved.answer = correct;
+    resolved.acceptedAnswers = [correct];
+    resolved.prefillRepairText = true;
+    resolved.answerMode = "edit_text";
+    resolved._activeErrorSlots = selected.map(function(slot){
+      return {
+        id:String(slot.id || ""),
+        wrongText:String(slot.wrongText || ""),
+        correctText:String(slot.correctText || ""),
+        microRule:String(slot.microRule || "")
+      };
+    });
+    resolved._activeErrorSlotIds = resolved._activeErrorSlots.map(function(slot){ return slot.id; }).filter(Boolean);
+    resolved._variableErrorSeed = String(options.seed || "");
+    return resolved;
+  }
+  function b1VariableRepairSlotNotes(item) {
+    if (!item || !Array.isArray(item._activeErrorSlots)) return [];
+    var seen = {};
+    return item._activeErrorSlots.map(function(slot){ return String(slot && slot.microRule || "").trim(); }).filter(function(note){
+      if (!note || seen[note]) return false;
+      seen[note] = true;
+      return true;
+    });
+  }
   function b1ItemHasLearnerStatus(item) {
     return !!(item && (item.status === "active" || item.status === "recognition"));
   }
@@ -21905,6 +22001,7 @@ body.b1Mode main > .startScreen[hidden] {
     var base = B1_IMPORTED_MODULE_TITLES[bankKey] || "B1 category practice";
     if (filter === "production") return base + " Production";
     if (filter === "repair") return base + " Repair";
+    if (filter === "transformation") return base + " Transformation";
     return base;
   }
   function b1ImportedModulePoolFor(bankKey, filter) {
@@ -21914,7 +22011,8 @@ body.b1Mode main > .startScreen[hidden] {
       if (!b1ItemIsPracticeSelectable(item, progress)) return false;
       if (item.previewOnly || item.activeB1Evidence === false) return false;
       if (filter === "production") return item.itemType === "production_card";
-      if (filter === "repair") return item.itemType === "error_repair";
+      if (filter === "repair") return b1IsRepairPracticeItem(item);
+      if (filter === "transformation") return b1IsTransformationItem(item);
       return true;
     });
   }
@@ -21966,6 +22064,73 @@ body.b1Mode main > .startScreen[hidden] {
   function startCasesArticlesRound(filter) { startB1ImportedModuleRound("cases_articles", filter); }
   function startPrepositionsRound(filter) { startB1ImportedModuleRound("prepositions", filter); }
   function startWordOrderRound(filter) { startB1ImportedModuleRound("word_order", filter); }
+  const B1_REPAIR_TRANSFORMATION_BANK_KEYS = ["cases_articles", "prepositions", "word_order", "connectors"];
+  function b1IsRepairTransformationPracticeItem(item) {
+    return b1IsRepairPracticeItem(item) || b1IsTransformationItem(item);
+  }
+  function b1RepairTransformationPoolFor(filter) {
+    filter = filter || "mixed";
+    var progress = b1PathProgressData();
+    var pool = [];
+    B1_REPAIR_TRANSFORMATION_BANK_KEYS.forEach(function(bankKey){
+      b1RegistryItems(bankKey).forEach(function(item){
+        if (!item || !item.id) return;
+        if (!b1ItemIsPracticeSelectable(item, progress)) return;
+        if (item.previewOnly || item.activeB1Evidence === false || item.itemType === "production_card") return;
+        if (filter === "repair" && !b1IsRepairPracticeItem(item)) return;
+        if (filter === "transformation" && !b1IsTransformationItem(item)) return;
+        if (filter !== "repair" && filter !== "transformation" && !b1IsRepairTransformationPracticeItem(item)) return;
+        pool.push(item);
+      });
+    });
+    return pool;
+  }
+  function startRepairTransformationRound(filter) {
+    filter = filter || "mixed";
+    var pool = b1RepairTransformationPoolFor(filter);
+    if (!pool.length) {
+      showLearningMapScreen();
+      showAppStatus("No unfinished repair or transformation items are available for this route.", "warn");
+      return;
+    }
+    var round = buildB1Round({ deckKey:"repair_transformation", filterKey:filter, items:pool, roundLength:10 });
+    var queue = round.queue;
+    b1Runtime.active = true;
+    b1Runtime.mode = "repair_transformation";
+    b1Runtime.title = filter === "transformation" ? "Transformation" : (filter === "repair" ? "Repair Practice" : "Repair & Transformation");
+    b1Runtime.queue = queue;
+    b1Runtime.current = null;
+    b1Runtime.target = queue.length;
+    b1Runtime.correct = 0;
+    b1Runtime.wrong = 0;
+    b1Runtime.practised = 0;
+    b1Runtime.assisted = 0;
+    b1Runtime.streak = 0;
+    b1Runtime.connectorFamily = "";
+    b1Runtime.deckKey = "repair_transformation";
+    b1Runtime.filterKey = filter;
+    b1Runtime.roundSeed = round.seed;
+    if (queue.length) rememberB1RoundStart("repair_transformation", filter, queue[0].id);
+    resetB1ChoiceSelection();
+    b1Runtime.translationOpen = false;
+    b1Runtime.currentExtraPractice = false;
+    b1Runtime.currentAssisted = false;
+    b1Runtime.dailySprint = false;
+    b1Runtime.dailyDateKey = "";
+    clearB1DiagnosticRuntime();
+    state = "b1Checking";
+    current = null;
+    hintUsed = false;
+    clearMobileClozeFocus();
+    setDiagnosticUiVisible(false);
+    document.body.classList.remove("b1TypedCloze", "b1LongAnswer");
+    setMenu(false);
+    setDevTools(false);
+    document.body.classList.add("b1Mode");
+    document.body.classList.remove("homeMode", "setupMode", "placeholderMode", "resultsMode");
+    setActiveScreen("");
+    nextB1Question();
+  }
   function startB1M12Round(filter) { startB1ImportedModuleRound("b1_m12", filter); }
   function startB1M13Round(filter) { startB1ImportedModuleRound("b1_m13", filter); }
   function startB1M14Round(filter) { startB1ImportedModuleRound("b1_m14", filter); }
@@ -22469,6 +22634,22 @@ body.b1Mode main > .startScreen[hidden] {
   function b1UsesInlineInput(item) {
     return b1IsTypedCloze(item);
   }
+  function b1RepairEditPrefillText(item) {
+    if (!b1IsRepairPracticeItem(item)) return "";
+    if (!(item.prefillRepairText === true || item.answerMode === "edit_text")) return "";
+    var source = String(item.repairSource_de || "");
+    if (source) return source;
+    var prompt = String(item.prompt_de || "");
+    if (prompt && prompt.indexOf("___") === -1 && !/^korrigiere\b/i.test(prompt.trim())) return prompt;
+    return "";
+  }
+  function b1AttemptAnswerMode(item, usesChoices) {
+    if (usesChoices) return "choice";
+    if (item && item.answerMode === "edit_text") return "edit_text";
+    if (b1RepairEditPrefillText(item)) return "edit_text";
+    if (b1IsTransformationItem(item)) return item.answerMode || "typed_text";
+    return "typed";
+  }
   function b1ClozeWidthStyle(item) {
     return "--clozeWidth:10ch";
   }
@@ -22529,6 +22710,10 @@ body.b1Mode main > .startScreen[hidden] {
     if (item && item.strictSurfaceAnswer) {
       var surfaceValue = b1SurfaceAnswer(raw);
       return accepted.some(function(answer){ return surfaceValue === b1SurfaceAnswer(answer); });
+    }
+    if (item && b1IsTransformationItem(item)) {
+      var transformValue = normaliseGermanRepairAnswer(raw);
+      return accepted.some(function(answer){ return transformValue === normaliseGermanRepairAnswer(answer); });
     }
     if (item && item.itemType === "error_repair") {
       var repairValue = normaliseGermanRepairAnswer(raw);
@@ -22595,6 +22780,15 @@ body.b1Mode main > .startScreen[hidden] {
     var line = correctText ? "Correct answer: " + correctText : "Check the highlighted option.";
     return "<div class=\"microRule b1ChoiceFeedback\" dir=\"ltr\">" + escapeHtml(line) + "</div>";
   }
+  function b1TransformationFeedbackHtml(item, rawAnswer, isCorrect) {
+    if (!b1IsTransformationItem(item)) return "";
+    var expected = b1SurfaceAnswer(item.fullAnswer_de || item.answer || "");
+    var submitted = b1SurfaceAnswer(rawAnswer || "");
+    var html = expected ? "<span class=\"repairFeedbackLine\">Target sentence:<span class=\"repairAnswerLine\">" + escapeHtml(expected) + "</span></span>" : "";
+    if (submitted && !isCorrect) html += "<span class=\"repairFeedbackLine\">Your answer: " + escapeHtml(submitted) + "</span>";
+    if (item && item.microRule) html += "<span class=\"repairFeedbackLine\">Rule: " + escapeHtml(item.microRule) + "</span>";
+    return html ? "<div class=\"microRule b1TransformationFeedback\" dir=\"ltr\">" + html + "</div>" : "";
+  }
   function b1ChoiceShuffleDebugSummary(item, count) {
     var source = item || b1Runtime.current || {};
     var total = Math.max(1, Math.min(12, Number(count || 4)));
@@ -22637,7 +22831,7 @@ body.b1Mode main > .startScreen[hidden] {
     ].join(" ").toLowerCase();
   }
   function b1RepairCategory(item) {
-    if (!item || item.itemType !== "error_repair") return "";
+    if (!item || !b1IsRepairPracticeItem(item)) return "";
     var explicit = item.repairCategory || item.errorFocus || item.errorCategory || item.repairTarget || "";
     if (explicit) return String(explicit).trim().toLowerCase().replace(/[\s-]+/g, "_");
     var text = b1RepairContextText(item);
@@ -22711,7 +22905,7 @@ body.b1Mode main > .startScreen[hidden] {
     return "capitalisation: " + diff;
   }
   function compareRepairAnswer(item, rawAnswer) {
-    if (!item || item.itemType !== "error_repair") return null;
+    if (!item || !b1IsRepairPracticeItem(item)) return null;
     if (item.strictSurfaceAnswer) {
       var surfaceUser = b1SurfaceAnswer(rawAnswer);
       var surfaceAccepted = (item.acceptedAnswers && item.acceptedAnswers.length ? item.acceptedAnswers : [item.answer]).map(function(answer){ return b1SurfaceAnswer(answer); }).filter(Boolean);
@@ -22855,7 +23049,9 @@ body.b1Mode main > .startScreen[hidden] {
     comparison = comparison || compareRepairAnswer(item, rawAnswer);
     if (!comparison) return "";
     if (comparison.correctWithNote) return "Correct - " + (comparison.capitalisationNote || "capitalisation note.");
-    if (isCorrect) return "Correction matches the target sentence.";
+    var variableNotes = b1VariableRepairSlotNotes(item);
+    if (isCorrect) return variableNotes.length ? "Correct - " + variableNotes[0] : "Correction matches the target sentence.";
+    if (variableNotes.length) return variableNotes[0];
     var ruleHint = b1SafeRepairRuleHint(item, comparison.submitted || rawAnswer, comparison.expected || comparison.displaySentence, "");
     if (ruleHint) return ruleHint;
     return repairDiffSummary(item, rawAnswer, comparison);
@@ -22872,6 +23068,9 @@ body.b1Mode main > .startScreen[hidden] {
     if (userSentence) html += "<span class=\"repairFeedbackLine\">Your answer: " + escapeHtml(userSentence) + "</span>";
     if (ruleHint) html += "<span class=\"repairFeedbackLine\">Rule: " + escapeHtml(ruleHint) + "</span>";
     if (item && item.targetRule && item.targetRule !== ruleHint && !b1RepairRuleHintIsSelfComparison(item.targetRule)) html += "<span class=\"repairFeedbackLine\">Target rule: " + escapeHtml(item.targetRule) + "</span>";
+    b1VariableRepairSlotNotes(item).forEach(function(note){
+      if (note && note !== ruleHint && (!item || item.targetRule !== note)) html += "<span class=\"repairFeedbackLine\">Slot note: " + escapeHtml(note) + "</span>";
+    });
     if (contrast) html += "<span class=\"repairFeedbackLine\">" + contrast + "</span>";
     if (comparison && comparison.correctWithNote) html += "<span class=\"repairFeedbackLine\">Accepted with a capitalisation note. The target repair was otherwise satisfied.</span>";
     html += "</div></details>";
@@ -24327,8 +24526,14 @@ body.b1Mode main > .startScreen[hidden] {
     var usesChoices = b1UsesChoices(item);
     var isProduction = item.itemType === "production_card";
     var inlineInput = el("b1InlineInput");
+    var repairEditPrefill = b1RepairEditPrefillText(item);
+    var isTransformation = b1IsTransformationItem(item);
+    if (repairEditPrefill) {
+      input.value = repairEditPrefill;
+      input.placeholder = "Satz bearbeiten";
+    }
     document.body.classList.toggle("b1TypedCloze", !!inlineInput);
-    document.body.classList.toggle("b1LongAnswer", item.itemType === "error_repair" && !usesChoices && !inlineInput);
+    document.body.classList.toggle("b1LongAnswer", (b1IsRepairPracticeItem(item) || isTransformation) && !usesChoices && !inlineInput);
     setDiagnosticUiVisible(b1Runtime.mode === "b1_diagnostic");
     if (inlineInput) {
       bindInlineClozeFocus(inlineInput);
@@ -24342,7 +24547,7 @@ body.b1Mode main > .startScreen[hidden] {
       }, false);
       inlineInput.addEventListener("input", updateB1TypedClozeActionState, false);
     }
-    if (item.itemType === "error_repair" && !usesChoices && !inlineInput) input.placeholder = item.taskType === "Umformen" ? "Satz umformen" : "Korrektur eingeben";
+    if ((b1IsRepairPracticeItem(item) || isTransformation) && !usesChoices && !inlineInput && !repairEditPrefill) input.placeholder = isTransformation ? "Satz umformen" : "Korrektur eingeben";
     if (usesChoices || isProduction || inlineInput) input.style.display = "none";
     if (usesChoices) renderConnectorChoices(item);
     if (isProduction) renderProductionControls(item);
@@ -24369,7 +24574,13 @@ body.b1Mode main > .startScreen[hidden] {
       var firstChoice = el("connectorChoiceGrid") && el("connectorChoiceGrid").querySelector("button");
       if (firstChoice) firstChoice.focus();
       else if (inlineInput) inlineInput.focus();
-      else input.focus();
+      else {
+        input.focus();
+        if (repairEditPrefill && input.setSelectionRange) {
+          var end = input.value.length;
+          input.setSelectionRange(end, end);
+        }
+      }
     }, 0);
   }
   function renderB1Feedback(isCorrect, assisted, rawAnswer, repairComparison, starUpdateHtml) {
@@ -24377,10 +24588,11 @@ body.b1Mode main > .startScreen[hidden] {
     var block = el("correctionBlock");
     var extraLine = b1Runtime.currentExtraPractice ? "<div class=\"microRule\">Extra practice helps rehearsal, but it does not move review timing early.</div>" : "";
     var assistedLine = assisted ? "<div class=\"microRule\">Assisted practice - try it again later.</div>" : "";
-    var repairLine = (item.itemType === "error_repair") ? "<div class=\"microRule\">" + b1RepairFeedbackHtmlV2(item, rawAnswer, isCorrect, repairComparison) + "</div>" : "";
-    var contrastLine = item.itemType === "error_repair" ? "" : renderB1ContrastNote(item, rawAnswer, isCorrect);
+    var repairLine = b1IsRepairPracticeItem(item) ? "<div class=\"microRule\">" + b1RepairFeedbackHtmlV2(item, rawAnswer, isCorrect, repairComparison) + "</div>" : "";
+    var contrastLine = b1IsRepairPracticeItem(item) ? "" : renderB1ContrastNote(item, rawAnswer, isCorrect);
     var choiceLine = b1ChoiceFeedbackHtml(item, rawAnswer);
-    var ruleLine = (item.microRule && !repairLine && !contrastLine) ? "<div class=\"microRule\">" + escapeHtml(item.microRule) + "</div>" : "";
+    var transformationLine = b1TransformationFeedbackHtml(item, rawAnswer, isCorrect);
+    var ruleLine = (item.microRule && !repairLine && !contrastLine && !transformationLine) ? "<div class=\"microRule\">" + escapeHtml(item.microRule) + "</div>" : "";
     var label = assisted ? "Assisted practice" : (repairComparison && repairComparison.correctWithNote ? "Correct - note" : (isCorrect ? "Correct" : "Not quite"));
     var resultClass = assisted ? "assisted" : (isCorrect ? "correct" : "wrong");
     block.className = "correctionBlock" + (isCorrect && !assisted ? " success" : "");
@@ -24389,6 +24601,7 @@ body.b1Mode main > .startScreen[hidden] {
       extraLine +
       repairLine +
       choiceLine +
+      transformationLine +
       contrastLine +
       ruleLine +
       (starUpdateHtml || "");
@@ -24500,7 +24713,7 @@ body.b1Mode main > .startScreen[hidden] {
       return;
     }
     clearMobileClozeFocus();
-    var repairComparison = b1Runtime.current.itemType === "error_repair" ? compareRepairAnswer(b1Runtime.current, raw) : null;
+    var repairComparison = b1IsRepairPracticeItem(b1Runtime.current) ? compareRepairAnswer(b1Runtime.current, raw) : null;
     var isCorrect = repairComparison ? repairComparison.isCorrect : (usesChoices ? b1ChoiceMatchesCorrect(b1Runtime.current, selectedChoice || raw) : b1AnswerMatches(b1Runtime.current, raw));
     var assisted = !!b1Runtime.currentAssisted;
     var starBefore = b1PathTaskStarSummary(b1Runtime.current);
@@ -24508,7 +24721,7 @@ body.b1Mode main > .startScreen[hidden] {
       extraPractice:b1Runtime.currentExtraPractice,
       assisted:assisted,
       isCorrect:isCorrect,
-      answerMode:usesChoices ? "choice" : "typed",
+      answerMode:b1AttemptAnswerMode(b1Runtime.current, usesChoices),
       rawAnswer:raw,
       choiceMetadata:usesChoices ? b1ChoiceAttemptMetadata(b1Runtime.current, selectedChoice || raw) : null,
       correctWithNote:!!(repairComparison && repairComparison.correctWithNote),
@@ -24521,7 +24734,11 @@ body.b1Mode main > .startScreen[hidden] {
       reviewPractice:b1Runtime.mode === "review_practice" || !!b1Runtime.current._reviewPractice,
       reviewCandidateReason:b1Runtime.current._reviewCandidateReason || "",
       reviewDelayBucket:b1Runtime.current._reviewDelayBucket || "",
-      daysSinceLastAttempt:b1Runtime.current._reviewDaysSinceLastAttempt
+      daysSinceLastAttempt:b1Runtime.current._reviewDaysSinceLastAttempt,
+      repairEdit:!!(b1Runtime.current.answerMode === "edit_text" || b1Runtime.current.prefillRepairText),
+      prefilledRepair:!!b1RepairEditPrefillText(b1Runtime.current),
+      variableErrorRepair:!!b1IsVariableErrorRepairItem(b1Runtime.current),
+      activeErrorSlotIds:Array.isArray(b1Runtime.current._activeErrorSlotIds) ? b1Runtime.current._activeErrorSlotIds.slice() : []
     });
     b1Runtime.currentEvidenceRecordId = evidenceRecord ? evidenceRecord.id : "";
     recordB1Progress(b1Runtime.current, assisted ? "assisted" : isCorrect, { extraPractice:b1Runtime.currentExtraPractice, assisted:assisted });
@@ -24598,7 +24815,7 @@ body.b1Mode main > .startScreen[hidden] {
     }
     var queuedItem = b1Runtime.queue.shift();
     var variantSeed = [b1Runtime.roundSeed || "round", queuedItem && queuedItem.id || "item", b1AnsweredCount(), b1Runtime.queue.length].join("|");
-    b1Runtime.current = b1ResolveVariantFamilyItem(queuedItem, { seed:variantSeed });
+    b1Runtime.current = b1ResolveVariableErrorRepairItem(b1ResolveVariantFamilyItem(queuedItem, { seed:variantSeed }), { seed:variantSeed });
     b1Runtime.currentAssisted = false;
     b1Runtime.currentExtraPractice = !!(b1Runtime.current && b1Runtime.current._extraPractice);
     b1Runtime.currentEvidenceRecordId = "";
@@ -24730,7 +24947,7 @@ body.b1Mode main > .startScreen[hidden] {
     rp.classList.add("visible");
     var next = el("nextBtn");
     el("answerArea").insertBefore(rp, next);
-    next.textContent = (b1Runtime.mode === "b1_diagnostic" || b1Runtime.mode === "targeted_repair") ? "Open Learning Map" : (b1Runtime.mode === "connector_sprint" ? "Grammar" : (b1Runtime.mode === "redemittel" ? "Redemittel" : "Home"));
+    next.textContent = (b1Runtime.mode === "b1_diagnostic" || b1Runtime.mode === "targeted_repair") ? "Open Learning Map" : (b1Runtime.mode === "connector_sprint" || b1Runtime.mode === "repair_transformation" ? "Grammar" : (b1Runtime.mode === "redemittel" ? "Redemittel" : "Home"));
     next.classList.add("visible");
     renderHud();
     scrollAppPanelToTop();
@@ -24837,7 +25054,7 @@ body.b1Mode main > .startScreen[hidden] {
     renderHud();
   }
   function newRound() { b1Runtime.active=false; hideStartScreen(); score=0; correct=0; wrong=0; streak=0; bestStreakRound=0; mistakeCounts={}; retryQueue=[]; sessionLog=[]; sessionMisses={}; sessionPromptCounts={}; currentWasRetry=false; currentShowMicroRule=false; state="checking"; hintUsed=false; lastKey=null; savePersistent(); pickQuestion(); }
-  function proceed() { if (state === "b1Next") nextB1Question(); else if (state === "b1Results") { if (b1Runtime.mode === "b1_diagnostic" || b1Runtime.mode === "targeted_repair") showLearningMapScreen(); else if (b1Runtime.mode === "connector_sprint") showGrammarHub(); else if (b1Runtime.mode === "redemittel") showRedemittelHub(); else showHomeScreen(); } else if (state === "next") pickQuestion(); else if (state === "results") showStartScreen(); }
+  function proceed() { if (state === "b1Next") nextB1Question(); else if (state === "b1Results") { if (b1Runtime.mode === "b1_diagnostic" || b1Runtime.mode === "targeted_repair") showLearningMapScreen(); else if (b1Runtime.mode === "connector_sprint" || b1Runtime.mode === "repair_transformation") showGrammarHub(); else if (b1Runtime.mode === "redemittel") showRedemittelHub(); else showHomeScreen(); } else if (state === "next") pickQuestion(); else if (state === "results") showStartScreen(); }
   function bind(id,event,fn){
     if (event === "click" && (id === "homeSprintBtn" || id === "homeRedemittelBtn")) return;
     var node=el(id);
@@ -26172,7 +26389,8 @@ body.b1Mode main > .startScreen[hidden] {
     var item = b1QaFindItemById(id);
     if (!item) return null;
     Object.keys(overrides || {}).forEach(function(key){ item[key] = overrides[key]; });
-    item = b1ResolveVariantFamilyItem(item, { requestedVariantId:item._requestedVariantId || (overrides && overrides.variantId) || "", seed:"qa|" + String(id || "") });
+    var qaSeed = overrides && overrides.seed ? String(overrides.seed) : "qa|" + String(id || "");
+    item = b1ResolveVariableErrorRepairItem(b1ResolveVariantFamilyItem(item, { requestedVariantId:item._requestedVariantId || (overrides && overrides.variantId) || "", seed:qaSeed }), { seed:qaSeed });
     b1Runtime.active = true;
     b1Runtime.mode = "qa_repair";
     b1Runtime.title = "QA repair";
@@ -26214,7 +26432,8 @@ body.b1Mode main > .startScreen[hidden] {
     var item = b1QaFindItemById(id);
     if (!item) return null;
     Object.keys(overrides || {}).forEach(function(key){ item[key] = overrides[key]; });
-    item = b1ResolveVariantFamilyItem(item, { requestedVariantId:item._requestedVariantId || (overrides && overrides.variantId) || "", seed:"qa-preview|" + String(id || "") });
+    var qaSeed = overrides && overrides.seed ? String(overrides.seed) : "qa-preview|" + String(id || "");
+    item = b1ResolveVariableErrorRepairItem(b1ResolveVariantFamilyItem(item, { requestedVariantId:item._requestedVariantId || (overrides && overrides.variantId) || "", seed:qaSeed }), { seed:qaSeed });
     var comparison = compareRepairAnswer(item, rawAnswer);
     return {
       item:cloneB1Item(item),
@@ -26223,7 +26442,23 @@ body.b1Mode main > .startScreen[hidden] {
       diff:repairDiffSummary(item, rawAnswer, comparison)
     };
   }
-window.ozmosisTesterReportSummary=testerReportSummary; window.ozmosisLearnerReadableProgressReport=buildLearnerReadableProgressReport; window.ozmosisBuildSavePayload=buildOzmosisSavePayload; window.ozmosisValidateSavePayload=validateOzmosisSavePayload; window.ozmosisApplyValidatedSave=applyValidatedOzmosisSave; window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }; window.kasusNoArticle=function(){checkAnswer("none");}; window.kasusProceed=function(){proceed();}; window.kasusHint=function(){showHint();}; window.kasusNewRound=function(){showStartScreen();}; window.kasusStartRound=function(){startConfiguredRound();}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusSessionLog=function(){return sessionLog.slice();}; window.kasusCurrent=function(){return current ? cloneQuestion(current) : cloneB1Item(b1Runtime.current || {});}; window.kasusLeitnerDebug=function(){ return { storageKey:LEITNER_STORAGE_KEY, runtime:leitnerRuntime, progress:safeGetLeitner() }; }; window.ozmosisChoiceShuffleDebug=function(item, count){ return b1ChoiceShuffleDebugSummary(item, count); }; window.ozmosisB1Debug=function(){ return { storageKey:B1_STORAGE_KEY, evidenceStorageKey:B1_EVIDENCE_STORAGE_KEY, progressStateLabelVersion:PROGRESS_STATE_LABEL_VERSION, taskDepthSchemaVersion:B1_TASK_DEPTH_SCHEMA_VERSION, taskDepthDefinitions:b1TaskDepthDefinitions(), supportLevelSchemaVersion:B1_SUPPORT_LEVEL_SCHEMA_VERSION, supportLevelDefinitions:b1SupportLevelDefinitions(), itemCount:B1_ITEMS.length, connectorCount:B1_CONNECTOR_ITEMS.length, casesArticlesCount:B1_CASE_ARTICLE_ITEMS.length, redemittelCount:B1_REDEMITTEL_ITEMS.length, wortschatzCount:B1_WORTSCHATZ_ITEMS.length, b1M02Count:B1_M02_ITEMS.length, b1M03Count:B1_M03_ITEMS.length, b1M04Count:B1_M04_ITEMS.length, b1M05Count:B1_M05_ITEMS.length, registry:b1RegistrySummary(), runtime:b1Runtime, progress:safeGetB1Progress(), evidence:b1EvidenceSummary(), supportLevelSummary:b1SupportLevelSummaryForRecords(safeGetB1Evidence().records), learningMap:b1LearningMapScaffold(), skillMatrix:b1SkillMatrixData(), skillMatrixSummary:debugSkillMatrixSummary(), recommendation:b1NextRecommendedPractice(), recommendationSummary:debugRecommendationSummary(), learnerReadableProgressReport:buildLearnerReadableProgressReport(), errorPatterns:b1ErrorPatternSignals(), errorPatternSummary:debugErrorPatternSummary(), errorTypeSummaries:b1ErrorTypeSummaries(), errorTypeSummary:debugErrorTypeSummary(), connectorDiagnostics:b1ConnectorDiagnosticCards(), connectorDiagnosticSummary:debugConnectorDiagnosticSummary(), diagnosticRepairQa:b1DiagnosticRepairQaSummary(), diagnosticRepairStability:b1DiagnosticRepairStabilitySummary(), durabilityReadiness:buildB1DurabilityReadinessSnapshot(), durabilityQa:buildB1DurabilityQaAudit(), reviewSystemStability:buildB1ReviewSystemStabilityAudit(), reviewEligibility:buildB1ReviewEligibility(), reviewCandidatePreview:buildB1ReviewCandidatePreview(), metadataReviewCoverage:buildB1MetadataReviewCoverageAudit(), b1CoverageAudit:buildB1CoverageAudit(), repairCandidates:b1WeaknessRepairCandidates(), repairCandidateSummary:debugWeaknessRepairSummary(), repairQueues:b1BuildWeaknessRepairQueue(), repairQueueSummary:b1RepairQueueDebugSummary(), diagnosticPlan:b1Runtime.diagnosticPlan, qaStageItemById:b1QaStageItemById, qaRepairPreview:b1QaRepairPreview, choiceShuffle:b1ChoiceShuffleDebugSummary(), debugSnapshot:buildDebugSnapshot }; }; window.ozmosisStartB1Round=function(mode){ startB1Round(mode || "mixed"); }; window.ozmosisStartDiagnostic=function(){ startB1DiagnosticSprint(); }; window.ozmosisStartConnector=function(family){ startConnectorSprint(family || "all"); }; window.ozmosisStartCasesArticles=function(filter){ startCasesArticlesRound(filter || "mixed"); }; window.ozmosisStartRedemittel=function(filter){ startRedemittelRound(filter || "mixed"); }; window.ozmosisStartWortschatz=function(filter){ startWortschatzRound(filter || "mixed"); }; window.ozmosisStartB1M01=function(filter){ startB1M01Round(filter || "mixed"); }; window.ozmosisStartB1M02=function(filter){ startB1M02Round(filter || "mixed"); }; window.ozmosisStartB1M03=function(filter){ startB1M03Round(filter || "mixed"); }; window.ozmosisStartB1M04=function(filter){ startB1M04Round(filter || "mixed"); }; window.ozmosisStartB1M05=function(filter){ startB1M05Round(filter || "mixed"); }; window.ozmosisStartTargetedRepair=function(queueId){ startTargetedRepairPractice(queueId || ""); }; window.ozmosisStartReviewPractice=function(){ startB1ReviewPractice(); }; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusResetBest=function(){ highScore=0; bestStreakAll=0; savePersistent(); if (state === "results") showResults(); else renderHud(); }; window.kasusResetProfile=function(){ resetLearnerModel(); }; window.kasusToggleMenu=function(){ var panel=el("settingsPanel"); panel.classList.toggle("open"); document.body.classList.toggle("menuOpen", panel.classList.contains("open")); };
+  window.ozmosisCasesArticlesRepairPilotDebug = function(id, seeds) {
+    var source = b1QaFindItemById(id || "b1_cases_articles_v0841_variable_001");
+    var seedList = Array.isArray(seeds) && seeds.length ? seeds : ["pilot-a", "pilot-b", "pilot-c", "pilot-d"];
+    return seedList.map(function(seed){
+      var resolved = b1ResolveVariableErrorRepairItem(cloneB1Item(source || {}), { seed:String(seed) });
+      return {
+        seed:String(seed),
+        itemId:resolved && resolved.id || "",
+        prompt:resolved && resolved.prompt_de || "",
+        answer:resolved && resolved.answer || "",
+        answerMode:resolved && resolved.answerMode || "",
+        activeErrorSlotIds:Array.isArray(resolved && resolved._activeErrorSlotIds) ? resolved._activeErrorSlotIds.slice() : [],
+        notes:b1VariableRepairSlotNotes(resolved)
+      };
+    });
+  };
+window.ozmosisTesterReportSummary=testerReportSummary; window.ozmosisLearnerReadableProgressReport=buildLearnerReadableProgressReport; window.ozmosisBuildSavePayload=buildOzmosisSavePayload; window.ozmosisValidateSavePayload=validateOzmosisSavePayload; window.ozmosisApplyValidatedSave=applyValidatedOzmosisSave; window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }; window.kasusNoArticle=function(){checkAnswer("none");}; window.kasusProceed=function(){proceed();}; window.kasusHint=function(){showHint();}; window.kasusNewRound=function(){showStartScreen();}; window.kasusStartRound=function(){startConfiguredRound();}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusSessionLog=function(){return sessionLog.slice();}; window.kasusCurrent=function(){return current ? cloneQuestion(current) : cloneB1Item(b1Runtime.current || {});}; window.kasusLeitnerDebug=function(){ return { storageKey:LEITNER_STORAGE_KEY, runtime:leitnerRuntime, progress:safeGetLeitner() }; }; window.ozmosisChoiceShuffleDebug=function(item, count){ return b1ChoiceShuffleDebugSummary(item, count); }; window.ozmosisB1Debug=function(){ return { storageKey:B1_STORAGE_KEY, evidenceStorageKey:B1_EVIDENCE_STORAGE_KEY, progressStateLabelVersion:PROGRESS_STATE_LABEL_VERSION, taskDepthSchemaVersion:B1_TASK_DEPTH_SCHEMA_VERSION, taskDepthDefinitions:b1TaskDepthDefinitions(), supportLevelSchemaVersion:B1_SUPPORT_LEVEL_SCHEMA_VERSION, supportLevelDefinitions:b1SupportLevelDefinitions(), itemCount:B1_ITEMS.length, connectorCount:B1_CONNECTOR_ITEMS.length, casesArticlesCount:B1_CASE_ARTICLE_ITEMS.length, redemittelCount:B1_REDEMITTEL_ITEMS.length, wortschatzCount:B1_WORTSCHATZ_ITEMS.length, b1M02Count:B1_M02_ITEMS.length, b1M03Count:B1_M03_ITEMS.length, b1M04Count:B1_M04_ITEMS.length, b1M05Count:B1_M05_ITEMS.length, registry:b1RegistrySummary(), runtime:b1Runtime, progress:safeGetB1Progress(), evidence:b1EvidenceSummary(), supportLevelSummary:b1SupportLevelSummaryForRecords(safeGetB1Evidence().records), learningMap:b1LearningMapScaffold(), skillMatrix:b1SkillMatrixData(), skillMatrixSummary:debugSkillMatrixSummary(), recommendation:b1NextRecommendedPractice(), recommendationSummary:debugRecommendationSummary(), learnerReadableProgressReport:buildLearnerReadableProgressReport(), errorPatterns:b1ErrorPatternSignals(), errorPatternSummary:debugErrorPatternSummary(), errorTypeSummaries:b1ErrorTypeSummaries(), errorTypeSummary:debugErrorTypeSummary(), connectorDiagnostics:b1ConnectorDiagnosticCards(), connectorDiagnosticSummary:debugConnectorDiagnosticSummary(), diagnosticRepairQa:b1DiagnosticRepairQaSummary(), diagnosticRepairStability:b1DiagnosticRepairStabilitySummary(), durabilityReadiness:buildB1DurabilityReadinessSnapshot(), durabilityQa:buildB1DurabilityQaAudit(), reviewSystemStability:buildB1ReviewSystemStabilityAudit(), reviewEligibility:buildB1ReviewEligibility(), reviewCandidatePreview:buildB1ReviewCandidatePreview(), metadataReviewCoverage:buildB1MetadataReviewCoverageAudit(), b1CoverageAudit:buildB1CoverageAudit(), repairCandidates:b1WeaknessRepairCandidates(), repairCandidateSummary:debugWeaknessRepairSummary(), repairQueues:b1BuildWeaknessRepairQueue(), repairQueueSummary:b1RepairQueueDebugSummary(), diagnosticPlan:b1Runtime.diagnosticPlan, qaStageItemById:b1QaStageItemById, qaRepairPreview:b1QaRepairPreview, choiceShuffle:b1ChoiceShuffleDebugSummary(), debugSnapshot:buildDebugSnapshot }; }; window.ozmosisStartB1Round=function(mode){ startB1Round(mode || "mixed"); }; window.ozmosisStartDiagnostic=function(){ startB1DiagnosticSprint(); }; window.ozmosisStartConnector=function(family){ startConnectorSprint(family || "all"); }; window.ozmosisStartRepairTransformation=function(filter){ startRepairTransformationRound(filter || "mixed"); }; window.ozmosisStartCasesArticles=function(filter){ startCasesArticlesRound(filter || "mixed"); }; window.ozmosisStartRedemittel=function(filter){ startRedemittelRound(filter || "mixed"); }; window.ozmosisStartWortschatz=function(filter){ startWortschatzRound(filter || "mixed"); }; window.ozmosisStartB1M01=function(filter){ startB1M01Round(filter || "mixed"); }; window.ozmosisStartB1M02=function(filter){ startB1M02Round(filter || "mixed"); }; window.ozmosisStartB1M03=function(filter){ startB1M03Round(filter || "mixed"); }; window.ozmosisStartB1M04=function(filter){ startB1M04Round(filter || "mixed"); }; window.ozmosisStartB1M05=function(filter){ startB1M05Round(filter || "mixed"); }; window.ozmosisStartTargetedRepair=function(queueId){ startTargetedRepairPractice(queueId || ""); }; window.ozmosisStartReviewPractice=function(){ startB1ReviewPractice(); }; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusResetBest=function(){ highScore=0; bestStreakAll=0; savePersistent(); if (state === "results") showResults(); else renderHud(); }; window.kasusResetProfile=function(){ resetLearnerModel(); }; window.kasusToggleMenu=function(){ var panel=el("settingsPanel"); panel.classList.toggle("open"); document.body.classList.toggle("menuOpen", panel.classList.contains("open")); };
   window.ozmosisStartPrepositions=function(filter){ startPrepositionsRound(filter || "mixed"); };
   window.ozmosisStartWordOrder=function(filter){ startWordOrderRound(filter || "mixed"); };
   var ozmosisB1DebugBase = window.ozmosisB1Debug;
@@ -26600,7 +26835,7 @@ window.ozmosisTesterReportSummary=testerReportSummary; window.ozmosisLearnerRead
     bind("genitiveHelpBtn","click",openGenitiveHelp);
     bind("startGenitiveHelpBtn","click",openGenitiveHelp);
     bind("genitiveHelpCloseBtn","click",closeGenitiveHelp);
-    if (el("genitiveHelpOverlay")) el("genitiveHelpOverlay").addEventListener("click",function(event){ if (event.target === el("genitiveHelpOverlay")) closeGenitiveHelp(); },false); bind("englishSupport","change",function(){ savePersistent(); if (b1Runtime.active) renderB1Translation(false); else if (current) renderQuestion(); }); bind("roundTarget","change",function(){ if (shouldApplyLiveSettings()) newRound(); else savePersistent(); }); bind("adaptiveMode","change",function(){ savePersistent(); if (shouldApplyLiveSettings()) newRound(); }); bind("menuHomeBtn","click",function(){ setMenu(false); showHomeScreen(); }); bind("menuSprintBtn","click",function(){ setMenu(false); startB1Round("mixed"); }); bind("menuRecommendedBtn","click",function(){ setMenu(false); openB1RecommendationRoute(homeRecommendedRouteKey || "today"); }); bind("menuGrammarBtn","click",function(){ setMenu(false); showGrammarHub(); }); bind("menuCasesArticlesBtn","click",function(){ setMenu(false); startCasesArticlesRound("mixed"); }); bind("menuRedemittelBtn","click",function(){ setMenu(false); showRedemittelHub(); }); bind("menuCaseTrainerBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("menuReviewPracticeBtn","click",function(){ setMenu(false); startB1ReviewPractice(); }); bind("restartBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("resetBestBtn","click",function(){window.kasusResetBest();}); bind("resetProfileBtn","click",function(){window.kasusResetProfile();}); bind("exportBtn","click",exportProgress); bind("importBtn","click",function(){ var input=el("importFile"); if (!input) { saveWorkflowFailure("file read error"); return; } input.value=""; input.click(); }); bind("copyLearnerReportBtn","click",copyLearnerReadableProgressReport); bind("downloadLearnerReportBtn","click",downloadLearnerReadableProgressReport); bind("importFile","change",function(event){ importProgress(event.target.files && event.target.files[0]); event.target.value=""; }); bind("devToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("devMenuBtn","click",function(event){ event.stopPropagation(); setMenu(!el("settingsPanel").classList.contains("open")); }); bind("devCloseBtn","click",function(){ setDevTools(false); }); bind("newGameCloseBtn","click",function(){ setDevTools(false); }); bind("leitnerCloseBtn","click",closeLeitnerPrototype); bind("openNewGameMockBtn","click",showNewGameMock); bind("openLeitnerPrototypeBtn","click",showLeitnerPrototype); bind("resetLeitnerPrototypeBtn","click",showLeitnerResetConfirm); bind("backToDevListBtn","click",showDevList); bind("leitnerResetCloseBtn","click",showDevList); bind("cancelLeitnerResetBtn","click",showDevList); bind("confirmLeitnerResetBtn","click",resetLeitnerPrototypeProgress); bind("leitnerRestartBtn","click",startLeitnerQueue); bind("leitnerCheckBtn","click",checkLeitnerAnswer); bind("leitnerNextBtn","click",nextLeitnerCard); bind("leitnerAnswerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (leitnerRuntime.answered) nextLeitnerCard(); else checkLeitnerAnswer(); }); bind("applyNewGameMockBtn","click",applyNewGameMock); bind("homeSprintBtn","click",function(){ startB1Round("mixed"); }); bind("homeDiagnosticBtn","click",startB1DiagnosticSprint); bind("homeLearningMapBtn","click",showLearningMapScreen); bind("learningMapBackBtn","click",showHomeScreen); bind("diagnosticExitBtn","click",exitB1Diagnostic); bind("homeGrammarBtn","click",showGrammarHub); bind("grammarBackBtn","click",showHomeScreen); bind("grammarSeedBtn","click",function(){ startB1Round("grammar_cloze"); }); bind("casesArticlesBtn","click",function(){ startCasesArticlesRound("mixed"); }); bind("connectorAllBtn","click",function(){ startConnectorSprint("all"); }); bind("connectorReasonBtn","click",function(){ startConnectorSprint("reason"); }); bind("connectorContrastBtn","click",function(){ startConnectorSprint("contrast"); }); bind("connectorPurposeBtn","click",function(){ startConnectorSprint("purpose"); }); bind("connectorTimeBtn","click",function(){ startConnectorSprint("time"); }); bind("connectorRepairBtn","click",function(){ startConnectorSprint("repair"); }); bind("homeWortschatzBtn","click",function(){ startWortschatzRound("mixed"); }); bind("homeRedemittelBtn","click",function(){ startB1Round("redemittel_cloze"); }); bind("homeCaseTrainerBtn","click",showStartScreen); bind("caseTrainerBackBtn","click",showHomeScreen); bind("homeOptionsBtn","click",function(){ showSettingsScreen(); }); bind("homeDevToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("hubBackBtn","click",showHomeScreen); document.querySelectorAll(".homePlaceholderBtn").forEach(function(btn){ btn.addEventListener("click",function(){ showHubPlaceholder(btn.getAttribute("data-title") || btn.textContent.trim()); }); }); document.addEventListener("click",function(event){ var routeButton = event.target && event.target.closest ? event.target.closest(".b1PathRouteAction") : null; if (routeButton) { event.preventDefault(); openB1PathCategory(routeButton.getAttribute("data-category-id")); return; } }); bind("b1PathKeepPractisingBtn","click",function(){ var categoryId = b1PathPendingUnlockId; var progress = b1PathProgressData(); var categories = (progress.categories || []).filter(function(category){ return category.coreTargetCount > 0 && !category.preview; }); var category = b1PathCategoryById(progress, categoryId); var index = categories.findIndex(function(row){ return row.categoryId === categoryId; }); var practiceCategory = index > 0 ? categories[index - 1] : category; closeB1PathUnlockDialog(); openB1RecommendationRoute(practiceCategory && practiceCategory.routeKey || "today"); }); bind("b1PathUnlockAnywayBtn","click",function(){ var categoryId = b1PathPendingUnlockId; if (!categoryId) return; b1PathRecordUnlockOverride(categoryId); closeB1PathUnlockDialog(); openB1PathCategory(categoryId); }); if (el("b1PathUnlockOverlay")) el("b1PathUnlockOverlay").addEventListener("click",function(event){ if (event.target === el("b1PathUnlockOverlay")) closeB1PathUnlockDialog(); },false); var devOverlay=el("devOverlay"); if (devOverlay) devOverlay.addEventListener("click",function(event){ if (event.target === devOverlay && !devOverlay.classList.contains("leitnerFullscreen")) setDevTools(false); },false); document.addEventListener("keydown",function(event){ if ((event.key === "Escape" || event.key === "Esc") && el("b1PathUnlockOverlay") && !el("b1PathUnlockOverlay").hidden) { closeB1PathUnlockDialog(); return; } if ((event.key === "Escape" || event.key === "Esc") && el("genitiveHelpOverlay") && !el("genitiveHelpOverlay").hidden) { el("genitiveHelpOverlay").hidden = true; return; } if ((event.key === "Escape" || event.key === "Esc") && el("devOverlay") && !el("devOverlay").hidden) { setDevTools(false); return; } if ((event.key === "Escape" || event.key === "Esc") && b1Runtime.mode === "b1_diagnostic" && (state === "b1Checking" || state === "b1Next")) { exitB1Diagnostic(); return; } if ((event.key === "Escape" || event.key === "Esc") && (state === "placeholder" || state === "grammarHub" || state === "learningMap")) showHomeScreen(); }); bind("checkBtn","click",function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }); bind("noArticleBtn","click",function(){checkAnswer("none");}); bind("nextBtn","click",proceed); bind("hintBtn","click",showHint); bind("supportPlaceholder","click",showHint); bind("translationToggle","click",toggleB1Translation); bind("whyNoStarsBtn","click",explainExtraPracticeStars); bind("startRoundBtn","click",startConfiguredRound); document.querySelectorAll(".langBtn").forEach(function(btn){ btn.addEventListener("click",function(){ setSupportLanguage(btn.getAttribute("data-lang")); }); }); bind("answerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (state==="b1Checking") checkB1Answer(); else if (state==="checking") checkAnswer(); else proceed(); }); renderHud(); applyLanguage(); showHomeScreen(); }
+    if (el("genitiveHelpOverlay")) el("genitiveHelpOverlay").addEventListener("click",function(event){ if (event.target === el("genitiveHelpOverlay")) closeGenitiveHelp(); },false); bind("englishSupport","change",function(){ savePersistent(); if (b1Runtime.active) renderB1Translation(false); else if (current) renderQuestion(); }); bind("roundTarget","change",function(){ if (shouldApplyLiveSettings()) newRound(); else savePersistent(); }); bind("adaptiveMode","change",function(){ savePersistent(); if (shouldApplyLiveSettings()) newRound(); }); bind("menuHomeBtn","click",function(){ setMenu(false); showHomeScreen(); }); bind("menuSprintBtn","click",function(){ setMenu(false); startB1Round("mixed"); }); bind("menuRecommendedBtn","click",function(){ setMenu(false); openB1RecommendationRoute(homeRecommendedRouteKey || "today"); }); bind("menuGrammarBtn","click",function(){ setMenu(false); showGrammarHub(); }); bind("menuCasesArticlesBtn","click",function(){ setMenu(false); startCasesArticlesRound("mixed"); }); bind("menuRedemittelBtn","click",function(){ setMenu(false); showRedemittelHub(); }); bind("menuCaseTrainerBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("menuReviewPracticeBtn","click",function(){ setMenu(false); startB1ReviewPractice(); }); bind("restartBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("resetBestBtn","click",function(){window.kasusResetBest();}); bind("resetProfileBtn","click",function(){window.kasusResetProfile();}); bind("exportBtn","click",exportProgress); bind("importBtn","click",function(){ var input=el("importFile"); if (!input) { saveWorkflowFailure("file read error"); return; } input.value=""; input.click(); }); bind("copyLearnerReportBtn","click",copyLearnerReadableProgressReport); bind("downloadLearnerReportBtn","click",downloadLearnerReadableProgressReport); bind("importFile","change",function(event){ importProgress(event.target.files && event.target.files[0]); event.target.value=""; }); bind("devToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("devMenuBtn","click",function(event){ event.stopPropagation(); setMenu(!el("settingsPanel").classList.contains("open")); }); bind("devCloseBtn","click",function(){ setDevTools(false); }); bind("newGameCloseBtn","click",function(){ setDevTools(false); }); bind("leitnerCloseBtn","click",closeLeitnerPrototype); bind("openNewGameMockBtn","click",showNewGameMock); bind("openLeitnerPrototypeBtn","click",showLeitnerPrototype); bind("resetLeitnerPrototypeBtn","click",showLeitnerResetConfirm); bind("backToDevListBtn","click",showDevList); bind("leitnerResetCloseBtn","click",showDevList); bind("cancelLeitnerResetBtn","click",showDevList); bind("confirmLeitnerResetBtn","click",resetLeitnerPrototypeProgress); bind("leitnerRestartBtn","click",startLeitnerQueue); bind("leitnerCheckBtn","click",checkLeitnerAnswer); bind("leitnerNextBtn","click",nextLeitnerCard); bind("leitnerAnswerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (leitnerRuntime.answered) nextLeitnerCard(); else checkLeitnerAnswer(); }); bind("applyNewGameMockBtn","click",applyNewGameMock); bind("homeSprintBtn","click",function(){ startB1Round("mixed"); }); bind("homeDiagnosticBtn","click",startB1DiagnosticSprint); bind("homeLearningMapBtn","click",showLearningMapScreen); bind("learningMapBackBtn","click",showHomeScreen); bind("diagnosticExitBtn","click",exitB1Diagnostic); bind("homeGrammarBtn","click",showGrammarHub); bind("grammarBackBtn","click",showHomeScreen); bind("grammarSeedBtn","click",function(){ startB1Round("grammar_cloze"); }); bind("casesArticlesBtn","click",function(){ startCasesArticlesRound("mixed"); }); bind("connectorAllBtn","click",function(){ startConnectorSprint("all"); }); bind("connectorReasonBtn","click",function(){ startConnectorSprint("reason"); }); bind("connectorContrastBtn","click",function(){ startConnectorSprint("contrast"); }); bind("connectorPurposeBtn","click",function(){ startConnectorSprint("purpose"); }); bind("connectorTimeBtn","click",function(){ startConnectorSprint("time"); }); bind("repairTransformationBtn","click",function(){ startRepairTransformationRound("mixed"); }); bind("connectorRepairBtn","click",function(){ startConnectorSprint("repair"); }); bind("homeWortschatzBtn","click",function(){ startWortschatzRound("mixed"); }); bind("homeRedemittelBtn","click",function(){ startB1Round("redemittel_cloze"); }); bind("homeCaseTrainerBtn","click",showStartScreen); bind("caseTrainerBackBtn","click",showHomeScreen); bind("homeOptionsBtn","click",function(){ showSettingsScreen(); }); bind("homeDevToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("hubBackBtn","click",showHomeScreen); document.querySelectorAll(".homePlaceholderBtn").forEach(function(btn){ btn.addEventListener("click",function(){ showHubPlaceholder(btn.getAttribute("data-title") || btn.textContent.trim()); }); }); document.addEventListener("click",function(event){ var routeButton = event.target && event.target.closest ? event.target.closest(".b1PathRouteAction") : null; if (routeButton) { event.preventDefault(); openB1PathCategory(routeButton.getAttribute("data-category-id")); return; } }); bind("b1PathKeepPractisingBtn","click",function(){ var categoryId = b1PathPendingUnlockId; var progress = b1PathProgressData(); var categories = (progress.categories || []).filter(function(category){ return category.coreTargetCount > 0 && !category.preview; }); var category = b1PathCategoryById(progress, categoryId); var index = categories.findIndex(function(row){ return row.categoryId === categoryId; }); var practiceCategory = index > 0 ? categories[index - 1] : category; closeB1PathUnlockDialog(); openB1RecommendationRoute(practiceCategory && practiceCategory.routeKey || "today"); }); bind("b1PathUnlockAnywayBtn","click",function(){ var categoryId = b1PathPendingUnlockId; if (!categoryId) return; b1PathRecordUnlockOverride(categoryId); closeB1PathUnlockDialog(); openB1PathCategory(categoryId); }); if (el("b1PathUnlockOverlay")) el("b1PathUnlockOverlay").addEventListener("click",function(event){ if (event.target === el("b1PathUnlockOverlay")) closeB1PathUnlockDialog(); },false); var devOverlay=el("devOverlay"); if (devOverlay) devOverlay.addEventListener("click",function(event){ if (event.target === devOverlay && !devOverlay.classList.contains("leitnerFullscreen")) setDevTools(false); },false); document.addEventListener("keydown",function(event){ if ((event.key === "Escape" || event.key === "Esc") && el("b1PathUnlockOverlay") && !el("b1PathUnlockOverlay").hidden) { closeB1PathUnlockDialog(); return; } if ((event.key === "Escape" || event.key === "Esc") && el("genitiveHelpOverlay") && !el("genitiveHelpOverlay").hidden) { el("genitiveHelpOverlay").hidden = true; return; } if ((event.key === "Escape" || event.key === "Esc") && el("devOverlay") && !el("devOverlay").hidden) { setDevTools(false); return; } if ((event.key === "Escape" || event.key === "Esc") && b1Runtime.mode === "b1_diagnostic" && (state === "b1Checking" || state === "b1Next")) { exitB1Diagnostic(); return; } if ((event.key === "Escape" || event.key === "Esc") && (state === "placeholder" || state === "grammarHub" || state === "learningMap")) showHomeScreen(); }); bind("checkBtn","click",function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }); bind("noArticleBtn","click",function(){checkAnswer("none");}); bind("nextBtn","click",proceed); bind("hintBtn","click",showHint); bind("supportPlaceholder","click",showHint); bind("translationToggle","click",toggleB1Translation); bind("whyNoStarsBtn","click",explainExtraPracticeStars); bind("startRoundBtn","click",startConfiguredRound); document.querySelectorAll(".langBtn").forEach(function(btn){ btn.addEventListener("click",function(){ setSupportLanguage(btn.getAttribute("data-lang")); }); }); bind("answerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (state==="b1Checking") checkB1Answer(); else if (state==="checking") checkAnswer(); else proceed(); }); renderHud(); applyLanguage(); showHomeScreen(); }
   function initOzmosisApp() {
     init();
     bind("menuPrepositionsBtn","click",function(){ setMenu(false); startPrepositionsRound("mixed"); });

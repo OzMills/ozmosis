@@ -163,6 +163,33 @@
     }));
   }
 
+  function variableRepair(id, familyId, correct, slots, support, rule, meta) {
+    return base(id, familyId, "variable_repair", "repair", Object.assign({}, meta || {}, {
+      source:"Ozmosis v0.85 Repair / Transformation Completion Pass",
+      contentImportVersion:"v0.85",
+      originalStage3Decision:"v0.85_authored_keep",
+      reviewStatus:"authored_v0.85",
+      itemType:"variable_error_repair",
+      taskType:"Reparatur",
+      answerMode:"edit_text",
+      answerShape:"full_sentence",
+      prefillRepairText:true,
+      prompt_de:"Korrigiere den Satz.",
+      correctSentence_de:correct,
+      answer:correct,
+      acceptedAnswers:[correct],
+      fullAnswer_de:correct,
+      support_en:support,
+      microRule:rule,
+      targetRule:rule,
+      repairCategory:"preposition",
+      variableErrorRepair:true,
+      minErrors:1,
+      maxErrors:2,
+      errorSlots:slots
+    }));
+  }
+
   function fixedFamily(key, prep, prepClass, caseTarget, prepFunction, target, recognition, clozeItem, repairItem, contrastItem) {
     var family = "fixed_" + prepClass + "_" + key;
     var classTag = prepClass === "dative" ? "fixed_dative" : "fixed_accusative";
@@ -317,6 +344,34 @@
     cloze("b1_prepositions_temporal_appointments_006", "temporal_appointments", "Bitte kommen Sie ___ dem Termin zehn Minuten früher.", "vor", "Bitte kommen Sie vor dem Termin zehn Minuten früher.", "Please come ten minutes earlier before the appointment.", "Use vor for before an event.", temporalMeta),
     cloze("b1_prepositions_temporal_appointments_007", "temporal_appointments", "Ich rufe Sie ___ dem Kurs an.", "nach", "Ich rufe Sie nach dem Kurs an.", "I will call you after the course.", "Use nach for after an event.", temporalMeta),
     choice("b1_prepositions_temporal_appointments_008", "temporal_appointments", "contrast", "Welche Zeitangabe passt für bis Freitag?", "bis Freitag", ["bis Freitag", "seit Freitag", "ab Freitag"], "until Friday", "Use bis for until a deadline.", temporalMeta)
+  ].forEach(function(item){ items.push(item); });
+
+  [
+    variableRepair(
+      "b1_prepositions_v085_variable_001",
+      "v085_variable_fixed_dative_route",
+      "Ich fahre mit dem Bus zu dem Termin.",
+      [
+        { id:"mit_dative_bus", wrongText:"mit den Bus", correctText:"mit dem Bus", microRule:"mit takes dative: mit dem Bus." },
+        { id:"zu_dative_termin", wrongText:"zu den Termin", correctText:"zu dem Termin", microRule:"zu takes dative: zu dem Termin." }
+      ],
+      "I travel to the appointment by bus.",
+      "Repair the selected preposition-case errors.",
+      { familyTarget:"fixed dative prepositions in route phrases", prepositionTargets:["mit", "zu"], prepositionClasses:["fixed_dative"], prepositionFunctions:["means_with", "direction"], caseTarget:"dative", tags:["fixed_prepositions", "fixed_dative", "variable_error_repair", "edit_text", "v0.85"], skillTags:["fixed_prepositions", "preposition_case", "repair_transformation_v085"] }
+    ),
+
+    variableRepair(
+      "b1_prepositions_v085_variable_002",
+      "v085_variable_two_way_location_direction",
+      "Ich gehe in die Praxis und warte vor dem Eingang.",
+      [
+        { id:"direction_in_accusative", wrongText:"in der Praxis", correctText:"in die Praxis", microRule:"Movement into a place answers wohin: in die Praxis." },
+        { id:"location_vor_dative", wrongText:"vor den Eingang", correctText:"vor dem Eingang", microRule:"Location answers wo: vor dem Eingang." }
+      ],
+      "I go into the practice and wait in front of the entrance.",
+      "Repair the selected two-way preposition errors.",
+      { familyTarget:"two-way preposition location and direction", prepositionTargets:["in", "vor"], prepositionClass:"two_way", prepositionFunctions:["direction", "place", "location_vs_movement"], caseTargets:["accusative", "dative"], tags:["two_way_prepositions", "wechselpraeposition", "variable_error_repair", "edit_text", "v0.85"], skillTags:["two_way_prepositions", "location_vs_movement", "repair_transformation_v085"] }
+    )
   ].forEach(function(item){ items.push(item); });
 
   window.OZMOSIS_CONTENT.b1Prepositions = items;

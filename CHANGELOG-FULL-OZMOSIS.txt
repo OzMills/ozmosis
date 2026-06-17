@@ -33,16 +33,53 @@ Future runs must add to this file, not replace it.
 
 Current state is based only on current repo files.
 
-- Current app version in `index.html`: `v0.84 - Connectors Completion Pass`
-- Current export version in `index.html`: `v0.84-connectors-completion`
-- Current README: `README-v0_84.md`
-- Current changelog: `CHANGELOG-v0_84.txt`
-- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.84.md`
-- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.84.md`
-- Current QA report: `docs/qa/v0.84_connectors_completion.md`
-- Next required patch documented in current files: `v0.85 - Repair / Transformation Completion Pass`
+- Current app version in `index.html`: `v0.85 - Repair / Transformation Completion Pass`
+- Current export version in `index.html`: `v0.85-repair-transformation-completion`
+- Current README: `README-v0_85.md`
+- Current changelog: `CHANGELOG-v0_85.txt`
+- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.md`
+- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.md`
+- Current QA report: `docs/qa/v0.85_repair_transformation_completion.md`
+- Next required patch documented in current files: `v0.86 - Production Completion Pass`
 
 No live deployment status is claimed here.
+
+## v0.85 - Repair / Transformation Completion Pass
+
+- Added a focused Grammar hub `Repair & Transformation` route covering repair and short controlled transformation practice across Cases & Articles, Prepositions, Word Order, and Connectors.
+- Renamed existing connector-only repair access to `Connector Repair`.
+- Added 14 original B1-safe v0.85 items: 2 Cases & Articles transformations, 2 Prepositions variable-error repairs, 2 Word Order variable-error repairs, 2 Word Order transformations, 2 Connector variable-error repairs, and 4 Connector transformations.
+- Kept variable-error repair expansion capped at 6 new authored-slot items.
+- Reused the existing edit-prefill and variable-error repair architecture; no runtime German generation was added.
+- Added transformation detection, typed answer mode, feedback, route selection, recommendation route targeting, and evidence mapping as additive runtime support.
+- Kept repair evidence distinct from recognition, cloze, contrast, diagnostic, and production evidence.
+- Kept transformation evidence distinct from production evidence.
+- Kept all new v0.85 items out of Today's B1 Sprint and Diagnostic Sprint.
+- Preserved Learning Map, Skill Matrix, Suggested Next Practice conservatism, B1 Path/star semantics, scoring, storage keys, save/export/import compatibility, B1-only active scope, and GitHub Pages compatibility.
+- Did not implement Production Completion Pass, Redemittel Completion Pass, Wortschatz Completion Pass, Satzi, B2/CAT18 activation, genitive expansion, adjective-ending expansion, dependencies, backend, build step, runtime AI, or runtime German generation.
+- Added QA documentation at `docs/qa/v0.85_repair_transformation_completion.md`.
+
+## v0.84.1 - Cases & Articles Repair Editing Pilot
+
+- Audited all 16 Cases & Articles multiple-choice items for answer-elimination risk.
+- Classified the audit as 4 high-risk, 10 medium-risk, and 2 low-risk multiple-choice items.
+- Documented high-risk multiple-choice items for later repair/edit or tighter form-choice work without rewriting them in this patch.
+- Added explicit edit-prefill metadata to selected Cases & Articles repair items.
+- Added 3 pre-authored variable-error repair pilot items for Cases & Articles.
+- Added field-driven repair edit mode so only explicitly marked repair items pre-fill a flawed sentence for editing.
+- Added deterministic variable-error selection from authored error slots only.
+- Added additive evidence metadata for edit-prefill repair attempts and active variable-error slots.
+- Verified unchanged flawed prefill is marked incorrect and corrected edit-prefill answers are marked correct.
+- Verified variable-error repairs can render different authored flawed versions across seeds, mark unchanged flawed prompts incorrect, and mark corrected answers correct.
+- Verified one normal Cases & Articles multiple-choice item still records ordinary evidence.
+- Verified the existing Connector route still opens and the v0.84 connector baseline remains intact.
+- Verified Home, Learning Map, Settings, Dev Tools, and route transitions remain isolated.
+- Verified Export Save, Import Save, save payload creation, and save validation remain reachable.
+- Verified responsive smoke at 320x568, 390x844, 430x932, and 1365x599 browser window targets.
+- Verified Arabic UI smoke keeps German repair prompt/input surfaces LTR/readable.
+- Preserved scoring, star logic, storage keys, save/export/import compatibility, Today's B1 Sprint composition, Diagnostic Sprint composition, Learning Map, Skill Matrix, B1-only active scope, and GitHub Pages compatibility.
+- Did not implement v0.85, the full Repair / Transformation Completion Pass, Production Completion Pass, Satzi, B2/CAT18 activation, genitive expansion, adjective-ending expansion, dependencies, backend, build step, runtime AI, or runtime German generation.
+- Added QA documentation at `docs/qa/v0.84.1_cases_articles_repair_editing_pilot.md`.
 
 ## v0.84 - Connectors Completion Pass
 

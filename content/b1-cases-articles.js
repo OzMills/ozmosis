@@ -145,11 +145,12 @@
   function repair(id, familyId, role, target, wrong, correct, support, rule, extra) {
     extra = extra || {};
     return base(id, familyId, role, target, "repair", Object.assign({}, extra, {
-      itemType:"error_repair",
+      itemType:extra.itemType || "error_repair",
       taskType:"Reparatur",
-      answerMode:"typed",
+      answerMode:extra.answerMode || "typed",
       answerShape:"full_sentence",
       prompt_de:wrong,
+      repairSource_de:extra.repairSource_de || wrong,
       answer:correct,
       acceptedAnswers:[correct],
       fullAnswer_de:correct,
@@ -157,6 +158,52 @@
       microRule:rule,
       targetRule:rule,
       repairCategory:"case_article"
+    }));
+  }
+
+  function variableRepair(id, familyId, role, target, correct, slots, support, rule, extra) {
+    extra = extra || {};
+    return base(id, familyId, role, target, "repair", Object.assign({}, extra, {
+      itemType:"variable_error_repair",
+      taskType:"Reparatur",
+      answerMode:"edit_text",
+      answerShape:"full_sentence",
+      prefillRepairText:true,
+      prompt_de:"Korrigiere den Satz.",
+      correctSentence_de:correct,
+      answer:correct,
+      acceptedAnswers:[correct],
+      fullAnswer_de:correct,
+      support_en:support,
+      microRule:rule,
+      targetRule:rule,
+      repairCategory:"case_article",
+      variableErrorRepair:true,
+      minErrors:1,
+      maxErrors:2,
+      errorSlots:slots
+    }));
+  }
+
+  function transform(id, familyId, role, target, prompt, answer, support, rule, extra) {
+    extra = extra || {};
+    return base(id, familyId, role, target, "transformation", Object.assign({}, extra, {
+      source:"Ozmosis v0.85 Repair / Transformation Completion Pass",
+      contentImportVersion:"v0.85",
+      originalStage3Decision:"v0.85_authored_keep",
+      reviewStatus:"authored_v0.85",
+      itemType:"transformation",
+      taskType:"Umformen",
+      answerMode:"typed_text",
+      answerShape:"controlled_form_transformation",
+      prompt_de:prompt,
+      answer:answer,
+      acceptedAnswers:[answer],
+      fullAnswer_de:answer,
+      support_en:support,
+      microRule:rule,
+      targetRule:rule,
+      transformationType:extra.transformationType || "case_article_form"
     }));
   }
 
@@ -195,7 +242,7 @@
       "Ich sehe den Mitarbeiter am Empfang.",
       "I see the employee at reception.",
       "sehen takes an accusative object; masculine der changes to den.",
-      { caseTarget:"accusative", articleFamily:"definite", genderNumber:"masculine_singular", caseTags:["accusative", "akkusativ"], articleTags:["definite", "article_gender", "der_den"] }
+      { answerMode:"edit_text", prefillRepairText:true, repairSource_de:"Ich sehe der Mitarbeiter am Empfang.", caseTarget:"accusative", articleFamily:"definite", genderNumber:"masculine_singular", caseTags:["accusative", "akkusativ"], articleTags:["definite", "article_gender", "der_den"] }
     ),
     choice(
       "b1_cases_articles_nom_acc_masc_004",
@@ -244,7 +291,7 @@
       "Ich kaufe eine Fahrkarte.",
       "I buy a ticket.",
       "Fahrkarte is feminine; the accusative form is eine Fahrkarte.",
-      { caseTarget:"accusative", articleFamily:"indefinite", genderNumber:"feminine_singular", caseTags:["accusative", "akkusativ"], articleTags:["indefinite", "article_gender"] }
+      { answerMode:"edit_text", prefillRepairText:true, repairSource_de:"Ich kaufe ein Fahrkarte.", caseTarget:"accusative", articleFamily:"indefinite", genderNumber:"feminine_singular", caseTags:["accusative", "akkusativ"], articleTags:["indefinite", "article_gender"] }
     ),
     choice(
       "b1_cases_articles_acc_direct_004",
@@ -293,7 +340,7 @@
       "Ich komme nach der Arbeit.",
       "I come after work.",
       "nach takes dative in this time phrase: nach der Arbeit.",
-      { caseTarget:"dative", articleFamily:"definite", genderNumber:"feminine_singular", caseTags:["dative", "dativ"], articleTags:["definite", "article_gender"] }
+      { answerMode:"edit_text", prefillRepairText:true, repairSource_de:"Ich komme nach die Arbeit.", caseTarget:"dative", articleFamily:"definite", genderNumber:"feminine_singular", caseTags:["dative", "dativ"], articleTags:["definite", "article_gender"] }
     ),
     choice(
       "b1_cases_articles_fixed_dative_004",
@@ -342,7 +389,7 @@
       "Ich zeige der Kollegin die Liste.",
       "I show the colleague the list.",
       "zeigen has a recipient in dative: der Kollegin.",
-      { caseTarget:"dative", articleFamily:"definite", genderNumber:"feminine_singular", caseTags:["dative", "dativ"], articleTags:["definite", "article_gender"] }
+      { answerMode:"edit_text", prefillRepairText:true, repairSource_de:"Ich zeige die Kollegin die Liste.", caseTarget:"dative", articleFamily:"definite", genderNumber:"feminine_singular", caseTags:["dative", "dativ"], articleTags:["definite", "article_gender"] }
     ),
     choice(
       "b1_cases_articles_indirect_dative_004",
@@ -551,6 +598,75 @@
       "I am writing an email.",
       "E-Mail is feminine; in this sentence use eine E-Mail.",
       { caseTarget:"accusative", articleFamily:"indefinite", genderNumber:"feminine_singular", contrastTargets:["eine", "no_article", "einem"], caseTags:["accusative", "akkusativ"], articleTags:["indefinite", "article_required", "article_gender"] }
+    ),
+
+    variableRepair(
+      "b1_cases_articles_v0841_variable_001",
+      "v0841_variable_acc_masc_location",
+      "variable_repair_acc_masc",
+      "Variable repair: accusative masculine article plus reception phrase",
+      "Ich sehe den Mitarbeiter am Empfang.",
+      [
+        { id:"acc_masc_article", wrongText:"der Mitarbeiter", correctText:"den Mitarbeiter", microRule:"sehen takes an accusative object: den Mitarbeiter." },
+        { id:"reception_article", wrongText:"an Empfang", correctText:"am Empfang", microRule:"Use am Empfang for at reception." }
+      ],
+      "I see the employee at reception.",
+      "Repair the selected article errors without changing the meaning.",
+      { caseTarget:"accusative", articleFamily:"definite", genderNumber:"masculine_singular", caseTags:["accusative", "akkusativ"], articleTags:["definite", "article_gender", "der_den"], skillTags:["repair_edit_pilot"], tags:["variable_error_repair", "edit_text", "v0.84.1"] }
+    ),
+
+    variableRepair(
+      "b1_cases_articles_v0841_variable_002",
+      "v0841_variable_recipient_document",
+      "variable_repair_recipient_document",
+      "Variable repair: dative recipient and accusative plural object",
+      "Ich schicke dem Team die Unterlagen.",
+      [
+        { id:"dative_recipient", wrongText:"das Team", correctText:"dem Team", microRule:"The recipient is dative: dem Team." },
+        { id:"plural_object_article", wrongText:"den Unterlagen", correctText:"die Unterlagen", microRule:"The documents are the direct object here: die Unterlagen." }
+      ],
+      "I send the team the documents.",
+      "Repair the selected case/article errors without changing the meaning.",
+      { caseTarget:"dative", caseTargets:["dative", "accusative"], articleFamily:"definite", genderNumber:"neuter_singular", genderNumberTargets:["neuter_singular", "plural"], caseTags:["dative", "dativ", "accusative", "akkusativ"], articleTags:["definite", "article_gender", "den_dem"], skillTags:["repair_edit_pilot"], tags:["variable_error_repair", "edit_text", "v0.84.1"] }
+    ),
+
+    variableRepair(
+      "b1_cases_articles_v0841_variable_003",
+      "v0841_variable_signature_forms",
+      "variable_repair_signature_forms",
+      "Variable repair: subject article and dative plural phrase",
+      "Die Unterschrift fehlt bei den Formularen.",
+      [
+        { id:"subject_article", wrongText:"Der Unterschrift", correctText:"Die Unterschrift", microRule:"Unterschrift is feminine, so the subject is die Unterschrift." },
+        { id:"plural_dative_article", wrongText:"bei die Formularen", correctText:"bei den Formularen", microRule:"bei takes dative; plural dative uses den." }
+      ],
+      "The signature is missing on the forms.",
+      "Repair the selected case/article errors without changing the meaning.",
+      { caseTarget:"dative", caseTargets:["nominative", "dative"], articleFamily:"definite", genderNumber:"plural", genderNumberTargets:["feminine_singular", "plural"], caseTags:["nominative", "nominativ", "dative", "dativ"], articleTags:["definite", "article_gender", "plural_dative"], skillTags:["repair_edit_pilot"], tags:["variable_error_repair", "edit_text", "v0.84.1"] }
+    ),
+
+    transform(
+      "b1_cases_articles_v085_transform_acc_masc_001",
+      "v085_transform_der_den_dem",
+      "transform_acc_masc",
+      "Case/article transformation: masculine definite accusative",
+      "Forme die Gruppe in den Akkusativ um: der Mitarbeiter.",
+      "den Mitarbeiter",
+      "Change the noun group to accusative.",
+      "Direct masculine object: der becomes den.",
+      { diagnosticEligible:false, caseTarget:"accusative", articleFamily:"definite", genderNumber:"masculine_singular", caseTags:["accusative", "akkusativ"], articleTags:["definite", "article_gender", "der_den"], skillTags:["repair_transformation_v085"], tags:["transformation", "umformen", "v0.85"] }
+    ),
+
+    transform(
+      "b1_cases_articles_v085_transform_dat_neuter_001",
+      "v085_transform_ein_einem",
+      "transform_dat_neuter",
+      "Case/article transformation: neuter indefinite dative",
+      "Forme die Gruppe in den Dativ um: ein Formular.",
+      "einem Formular",
+      "Change the noun group to dative.",
+      "Dative neuter uses einem Formular.",
+      { diagnosticEligible:false, caseTarget:"dative", articleFamily:"indefinite", genderNumber:"neuter_singular", caseTags:["dative", "dativ"], articleTags:["indefinite", "article_gender", "ein_einem"], skillTags:["repair_transformation_v085"], tags:["transformation", "umformen", "v0.85"] }
     )
   ];
 })();

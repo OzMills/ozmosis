@@ -170,6 +170,55 @@
     }));
   }
 
+  function variableRepair(id, familyId, correct, slots, support, rule, meta) {
+    return base(id, familyId, "variable_repair", "repair", Object.assign({}, meta || {}, {
+      source:"Ozmosis v0.85 Repair / Transformation Completion Pass",
+      contentImportVersion:"v0.85",
+      originalStage3Decision:"v0.85_authored_keep",
+      reviewStatus:"authored_v0.85",
+      itemType:"variable_error_repair",
+      taskType:"Reparatur",
+      answerMode:"edit_text",
+      answerShape:"full_sentence",
+      prefillRepairText:true,
+      prompt_de:"Korrigiere den Satz.",
+      correctSentence_de:correct,
+      answer:correct,
+      acceptedAnswers:[correct],
+      fullAnswer_de:correct,
+      support_en:support,
+      microRule:rule,
+      targetRule:rule,
+      repairCategory:"word_order",
+      variableErrorRepair:true,
+      minErrors:1,
+      maxErrors:2,
+      errorSlots:slots
+    }));
+  }
+
+  function transform(id, familyId, role, prompt, answer, support, rule, meta) {
+    return base(id, familyId, role, "transformation", Object.assign({}, meta || {}, {
+      source:"Ozmosis v0.85 Repair / Transformation Completion Pass",
+      contentImportVersion:"v0.85",
+      originalStage3Decision:"v0.85_authored_keep",
+      reviewStatus:"authored_v0.85",
+      itemType:"transformation",
+      taskType:"Umformen",
+      answerMode:"typed_text",
+      answerShape:"controlled_sentence_transformation",
+      prompt_de:prompt,
+      answer:answer,
+      acceptedAnswers:unique([answer, stripFinalPunctuation(answer)]),
+      fullAnswer_de:answer,
+      support_en:support,
+      microRule:rule,
+      targetRule:rule,
+      strictSurfaceAnswer:true,
+      transformationType:(meta && meta.transformationType) || "word_order_transformation"
+    }));
+  }
+
   function family(key, meta, rows) {
     return [
       choice("b1_word_order_" + key + "_001", key, "recognition", rows.recognition.prompt, rows.recognition.answer, rows.recognition.choices, rows.recognition.support, rows.recognition.rule, meta),
@@ -293,6 +342,56 @@
       contrast:{ prompt:"Welche Version ist besser?", answer:"Ich bringe morgen die Unterlagen zur Praxis.", choices:["Ich bringe morgen die Unterlagen zur Praxis.", "Ich bringe zur Praxis morgen die Unterlagen.", "Morgen die Unterlagen bringe ich zur Praxis."], support:"I am bringing the documents to the practice tomorrow.", rule:"A simple B1 main clause often uses time before object/place information." }
     })
   ].forEach(function(group){ items = items.concat(group); });
+
+  [
+    variableRepair(
+      "b1_word_order_v085_variable_001",
+      "v085_variable_main_clause_v2",
+      "Morgen rufe ich die Praxis an.",
+      [
+        { id:"fronted_time_v2", wrongText:"Morgen ich rufe", correctText:"Morgen rufe ich", microRule:"After a fronted time phrase, the finite verb stays in position 2." },
+        { id:"separable_prefix_final", wrongText:"an die Praxis", correctText:"die Praxis an", microRule:"With anrufen, the separable prefix goes to the end." }
+      ],
+      "Tomorrow I will call the practice.",
+      "Repair the selected word-order errors.",
+      { wordOrderTarget:"main_clause_v2", wordOrderTargets:["main_clause_v2", "separable_verb_bracket"], triggerWords:["morgen", "anrufen"], tags:["v2_main_clause", "separable_verbs", "variable_error_repair", "edit_text", "v0.85"], skillTags:["v2_main_clause", "separable_verb_bracket", "repair_transformation_v085"] }
+    ),
+
+    variableRepair(
+      "b1_word_order_v085_variable_002",
+      "v085_variable_subordinate_inversion",
+      "Wenn ich Zeit habe, rufe ich zurück.",
+      [
+        { id:"subordinate_verb_final", wrongText:"Wenn ich habe Zeit", correctText:"Wenn ich Zeit habe", microRule:"In a wenn-clause, the finite verb goes to the end." },
+        { id:"fronted_clause_inversion", wrongText:"ich rufe zurück", correctText:"rufe ich zurück", microRule:"After a fronted subordinate clause, the main verb comes before the subject." }
+      ],
+      "If I have time, I will call back.",
+      "Repair the selected subordinate-clause word-order errors.",
+      { wordOrderTarget:"fronted_subordinate_clause", wordOrderTargets:["fronted_subordinate_clause", "subordinate_verb_final"], triggerWord:"wenn", tags:["wenn", "subordinate_verb_final", "fronted_subordinate_clause", "variable_error_repair", "edit_text", "v0.85"], skillTags:["fronted_subordinate_clause", "subordinate_verb_final", "repair_transformation_v085"] }
+    ),
+
+    transform(
+      "b1_word_order_v085_transform_question_001",
+      "v085_transform_question_order",
+      "transform_yes_no_question",
+      "Mache daraus eine Frage: Sie können mich morgen zurückrufen.",
+      "Können Sie mich morgen zurückrufen?",
+      "Turn the statement into a yes/no question.",
+      "Question: a yes/no question starts with the finite verb.",
+      { source_de:"Sie können mich morgen zurückrufen.", wordOrderTarget:"question_order", wordOrderTargets:["question_order", "modal_bracket"], triggerWords:["können"], transformationType:"make_question", tags:["question_order", "modal_structure", "transformation", "umformen", "v0.85"], skillTags:["question_order", "modal_bracket", "repair_transformation_v085"] }
+    ),
+
+    transform(
+      "b1_word_order_v085_transform_fronted_v2_001",
+      "v085_transform_fronted_v2",
+      "transform_fronted_time",
+      "Beginne mit Morgen: Ich bringe die Unterlagen morgen mit.",
+      "Morgen bringe ich die Unterlagen mit.",
+      "Start the sentence with Morgen and keep a normal main-clause order.",
+      "V2: Morgen is position 1, so bringe is position 2.",
+      { source_de:"Ich bringe die Unterlagen morgen mit.", wordOrderTarget:"main_clause_v2", wordOrderTargets:["main_clause_v2", "separable_verb_bracket"], triggerWord:"morgen", transformationType:"fronted_v2", tags:["v2_main_clause", "time_fronting", "transformation", "umformen", "v0.85"], skillTags:["v2_main_clause", "separable_verb_bracket", "repair_transformation_v085"] }
+    )
+  ].forEach(function(item){ items.push(item); });
 
   window.OZMOSIS_CONTENT.b1WordOrder = items;
 })();

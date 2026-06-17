@@ -2,11 +2,11 @@
 
 ## 1. Current Baseline
 
-Current runtime baseline: `v0.84 - Connectors Completion Pass`.
+Current runtime baseline: `v0.85 - Repair / Transformation Completion Pass`.
 
-Current acceptance status: v0.84 Connectors passed static, coverage, file-based headless Edge browser, responsive, save, route-isolation, and Arabic/LTR smoke gates.
+Current acceptance status: v0.85 Repair / Transformation Completion Pass passed static parse, scoped coverage checks, headless Edge/CDP route smoke, route isolation, save-control visibility, responsive checks, and Arabic/LTR smoke while preserving scoring, storage keys, save/export/import, route isolation, and B1-only scope.
 
-Next required patch: `v0.85 - Repair / Transformation Completion Pass`.
+Next required patch: `v0.86 - Production Completion Pass`.
 
 ## 2. Completed Foundation
 
@@ -38,6 +38,7 @@ This summary is not a replacement for `CHANGELOG-FULL-OZMOSIS.txt`.
 - `v0.82.1` - Prepositions Browser Acceptance Gate
 - `v0.83` - Word Order Completion Pass
 - `v0.84` - Connectors Completion Pass
+- `v0.84.1` - Cases & Articles Repair Editing Pilot
 - `v0.85` - Repair / Transformation Completion Pass
 - `v0.86` - Production Completion Pass
 - `v0.87` - Redemittel Completion Pass
@@ -84,7 +85,9 @@ Stop if the hub fails.
 - Phase 2.5 normalisation addendum v0.2 is complete and must be followed before broad module generation.
 - B1-01 extension survival audit is complete with `SURVIVED_WITH_METADATA_GAPS`; do not claim B1-01 is clean or complete until those gaps are repaired.
 - Connectors Completion Pass is complete and accepted as v0.84.
-- Repair / Transformation Completion Pass is the next allowed implementation patch.
+- Cases & Articles Repair Editing Pilot is complete and accepted as v0.84.1.
+- Repair / Transformation Completion Pass is complete as v0.85.
+- Production Completion Pass is the next allowed implementation patch.
 - Weakness repair must wait until Skill Matrix and task-depth evidence are stable.
 - Durability/spaced review must wait until enough reviewable B1 coverage exists.
 - External Review must wait until production cards and save/import are stable.
