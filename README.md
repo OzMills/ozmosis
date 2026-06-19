@@ -9,24 +9,23 @@ Future README updates should be made in this file. Do not create new `README-v*.
 
 ## Current App
 
-# Ozmosis v0.85.1 - Prompt/Cue Schema Migration and Learner-Facing Cleanup
+# Ozmosis v0.85.2 - Practice Screen Template Alignment Pass
 
 Ozmosis is a static, local-first German learning app. The deployed app remains `index.html`.
 
-v0.85.1 cleans up the learner-facing prompt/cue layer after the v0.85 Repair / Transformation Completion Pass.
+v0.85.2 aligns the live B1 practice screen with the supplied ScreenConcept templates for choice, cloze, hint, and correction states.
 
-- App version: `v0.85.1 - Prompt/Cue Schema Migration and Learner-Facing Cleanup`
-- Export version: `v0.85.1-prompt-cue-schema-cleanup`
+- App version: `v0.85.2 - Practice Screen Template Alignment Pass`
+- Export version: `v0.85.2-practice-screen-template-alignment`
 
 ## What changed
 
-- Added a display-safe prompt/cue/hint resolver for B1 practice items.
-- Added `content/b1-display-schema.js` for repeated display defaults while preserving source/provenance/audit metadata on items.
-- Stopped learner-facing prompts from showing source labels such as backtick-delimited contrast labels and `show vs find` style labels.
-- Made meaning-choice cues visible before answer where the task otherwise lacked enough context.
-- Cleaned production-card prompt rendering so source prompt scaffolding is not shown as the main task prompt.
-- Added `docs/qa/v0.85.1_prompt_cue_review_queue.csv` for unresolved display-risk rows.
-- Preserved scoring, star logic, storage keys, save/export/import compatibility, Today's B1 Sprint composition, Diagnostic Sprint composition, B1-only active scope, and GitHub Pages compatibility.
+- Added B1 practice-surface and visual-state hooks for the live renderer.
+- Aligned choice, cloze, hint, success, fail, and correction edit surfaces with the supplied 430x932 ScreenConcept references.
+- Removed learner-facing `Cue:` and `Hint:` prefixes from the B1 support/hint surface while preserving the display schema.
+- Kept German prompts, choices, input, correction text, support, and production support LTR under Arabic UI.
+- Added a local Edge/CDP capture harness for the 11 required template states and generated comparison output.
+- Preserved scoring, evidence semantics, confidence values, star logic, storage keys, save/export/import compatibility, Today's B1 Sprint composition, Diagnostic Sprint composition, B1-only active scope, and GitHub Pages compatibility.
 
 ## What did not change
 
@@ -40,9 +39,10 @@ v0.85.1 cleans up the learner-facing prompt/cue layer after the v0.85 Repair / T
 ## Current docs
 
 - Changelog: `CHANGELOG-FULL-OZMOSIS.txt`
-- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.1.md`
-- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.1.md`
-- QA report: `docs/qa/v0.85.1_prompt_cue_schema_migration.md`
+- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.2.md`
+- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.2.md`
+- QA report: `docs/qa/v0.85.2_practice_screen_template_alignment.md`
+- Screenshot comparison: `docs/qa/screenshots/v0.85.2-practice-screen-template-alignment/comparison.html`
 - Review queue: `docs/qa/v0.85.1_prompt_cue_review_queue.csv`
 
 Next planned patch: `v0.86 - Production Completion Pass`.

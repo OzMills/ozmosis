@@ -35,16 +35,35 @@ This is the only changelog moving forward. Do not create standalone `CHANGELOG-v
 
 Current state is based only on current repo files.
 
-- Current app version in `index.html`: `v0.85.1 - Prompt/Cue Schema Migration and Learner-Facing Cleanup`
-- Current export version in `index.html`: `v0.85.1-prompt-cue-schema-cleanup`
+- Current app version in `index.html`: `v0.85.2 - Practice Screen Template Alignment Pass`
+- Current export version in `index.html`: `v0.85.2-practice-screen-template-alignment`
 - Current README: `README.md`
 - Current changelog: `CHANGELOG-FULL-OZMOSIS.txt`
-- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.1.md`
-- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.1.md`
-- Current QA report: `docs/qa/v0.85.1_prompt_cue_schema_migration.md`
+- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.2.md`
+- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.2.md`
+- Current QA report: `docs/qa/v0.85.2_practice_screen_template_alignment.md`
 - Next required patch documented in current files: `v0.86 - Production Completion Pass`
 
 No live deployment status is claimed here.
+
+## v0.85.2 - Practice Screen Template Alignment Pass
+
+- Verified the supplied ScreenConcept assets under `_development-files/ScreenConcepts/` and `_development-files/ScreenConcepts.zip`.
+- Added scoped B1 practice-surface and visual-state hooks for choice, cloze, correction, and production surfaces.
+- Aligned the live B1 choice, hint, cloze default/typing/fail/success, and correction default/fail/success screens with the supplied 430x932 reference templates.
+- Removed visible learner-facing `Cue:` and `Hint:` prefixes from B1 support/hint presentation while preserving the v0.85.1 display schema and underlying item metadata.
+- Adjusted prefilled repair-edit focus and correction-input sizing so filled correction text starts visibly.
+- Preserved production-card self-marking semantics and did not redesign production cards in this patch.
+- Preserved Case Trainer behaviour; this patch smoke-tested it as a route, but did not change Case Trainer logic.
+- Added `_development-files/v0852_practice_template_capture.cjs` for local Edge/CDP visual capture and `_development-files/v0852_static_gate.cjs` for static parsing/version/storage checks.
+- Generated actual screenshots for the 11 required states under `docs/qa/screenshots/v0.85.2-practice-screen-template-alignment/actual/`.
+- Added the side-by-side comparison page at `docs/qa/screenshots/v0.85.2-practice-screen-template-alignment/comparison.html`.
+- Verified no body horizontal overflow in captured states and responsive smoke at 320x568, 390x844, 430x932, and 1365x599.
+- Verified Arabic UI preserves German/support/input LTR in B1 practice.
+- Verified Export Save and Import Save remain visible in Settings/Data.
+- Preserved scoring, evidence semantics, confidence values, support/task-depth semantics, star earning, Star Threshold Overlay semantics, localStorage keys, save/export/import compatibility, Today's B1 Sprint composition, Diagnostic Sprint composition, content banks, B1-only active scope, and GitHub Pages compatibility.
+- Did not implement Production Completion Pass, Redemittel Completion Pass, Wortschatz Completion Pass, Satzi, B2/CAT18 activation, genitive expansion, adjective-ending expansion, dependencies, backend, build step, runtime AI, or runtime German generation.
+- Added QA documentation at `docs/qa/v0.85.2_practice_screen_template_alignment.md`.
 
 ## v0.85.1 - Prompt/Cue Schema Migration and Learner-Facing Cleanup
 

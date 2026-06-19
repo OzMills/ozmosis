@@ -9254,6 +9254,347 @@ body.b1Mode main > .startScreen[hidden] {
   }
 }
 
+/* v0.85.2: practice screen template alignment against ScreenConcepts. */
+body.b1Mode {
+  --b1-template-panel:rgba(8,15,28,.96);
+  --b1-template-line:rgba(126,224,255,.3);
+  --b1-template-line-strong:rgba(126,224,255,.68);
+  --b1-template-soft:rgba(126,224,255,.08);
+  --b1-template-choice-h:46px;
+  --b1-template-width:min(100%, 430px);
+}
+
+body.b1Mode main {
+  width:var(--b1-template-width) !important;
+  min-height:100dvh;
+  margin:0 auto !important;
+  padding:calc(11px + env(safe-area-inset-top)) 9px calc(104px + env(safe-area-inset-bottom)) !important;
+  border:1px solid rgba(72,116,154,.74);
+  border-radius:24px 24px 0 0;
+  background:linear-gradient(180deg, rgba(11,25,43,.96), rgba(3,7,15,.98));
+  box-shadow:0 0 0 1px rgba(0,0,0,.45), 0 20px 60px rgba(0,0,0,.42);
+}
+
+body.b1Mode .header {
+  width:var(--b1-template-width) !important;
+  left:50% !important;
+  right:auto !important;
+  transform:translateX(-50%);
+  padding:calc(30px + env(safe-area-inset-top)) 38px 0 !important;
+}
+
+body.b1Mode .header h1 {
+  font-size:clamp(1.05rem,4.8vw,1.3rem) !important;
+  letter-spacing:.04em !important;
+  line-height:1 !important;
+}
+
+body.b1Mode .content {
+  width:100% !important;
+  max-width:100% !important;
+  grid-template-columns:1fr !important;
+  align-content:start !important;
+  gap:10px !important;
+  padding:clamp(84px,11.5vh,108px) 16px 0 !important;
+}
+
+body.b1Mode .taskColumn,
+body.b1Mode .answerArea {
+  width:100% !important;
+  max-width:100% !important;
+}
+
+body.b1Mode .taskColumn {
+  gap:10px !important;
+}
+
+body.b1Mode .challengeCard {
+  width:100% !important;
+  max-width:100% !important;
+  min-height:0 !important;
+  padding:0 0 4px !important;
+  border:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+}
+
+body.b1Mode .modeTitle {
+  margin:0 0 11px !important;
+  color:rgba(140,232,255,.86) !important;
+  font-size:clamp(.64rem,2.5vw,.76rem) !important;
+  letter-spacing:.12em !important;
+  line-height:1.15 !important;
+  text-align:center !important;
+}
+
+body.b1Mode .promptStack {
+  display:flex !important;
+  justify-content:center !important;
+  width:100% !important;
+}
+
+body.b1Mode .promptWord,
+body.b1Mode .promptWord.clozePrompt {
+  width:100% !important;
+  max-width:36ch !important;
+  margin:0 auto !important;
+  color:var(--text) !important;
+  font-size:clamp(1.08rem,4.7vw,1.38rem) !important;
+  font-weight:950 !important;
+  line-height:1.18 !important;
+  letter-spacing:0 !important;
+  text-align:center !important;
+}
+
+body.b1Mode[data-b1-surface="correction"] .promptWord,
+body.b1Mode[data-b1-surface="correction"] .promptWord.clozePrompt {
+  max-width:38ch !important;
+  font-size:clamp(.98rem,4.15vw,1.18rem) !important;
+  text-align:left !important;
+}
+
+body.b1Mode .englishGloss {
+  max-width:34ch;
+  min-height:1.15em;
+  margin:9px auto 0 !important;
+  color:rgba(194,227,239,.76) !important;
+  font-size:clamp(.78rem,3.05vw,.93rem) !important;
+  line-height:1.22 !important;
+  text-align:center !important;
+}
+
+body.b1Mode .translationToggle {
+  min-height:40px;
+  margin:9px auto 0;
+  border-radius:12px;
+}
+
+body.b1Mode .answerArea {
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:stretch !important;
+  gap:9px !important;
+  min-height:0 !important;
+  padding:0 !important;
+}
+
+body.b1Mode .connectorChoiceGrid {
+  width:100% !important;
+  max-width:380px !important;
+  margin:2px auto 0 !important;
+  gap:8px !important;
+}
+
+body.b1Mode .connectorChoiceGrid button {
+  min-height:var(--b1-template-choice-h) !important;
+  padding:8px 13px !important;
+  border:1px solid var(--b1-template-line-strong) !important;
+  border-radius:12px !important;
+  background:rgba(8,18,32,.78) !important;
+  color:var(--text) !important;
+  font-size:clamp(.78rem,3.15vw,.94rem) !important;
+  line-height:1.15 !important;
+  letter-spacing:0 !important;
+  text-align:center !important;
+}
+
+body.b1Mode .connectorChoiceGrid button.selected {
+  border-color:var(--accent) !important;
+  background:rgba(126,224,255,.14) !important;
+}
+
+body.b1Mode .connectorChoiceGrid button.correct {
+  border-color:rgba(95,244,157,.9) !important;
+  background:rgba(30,117,75,.72) !important;
+  color:#f2fff7 !important;
+}
+
+body.b1Mode .connectorChoiceGrid button.missed {
+  border-color:rgba(255,99,125,.92) !important;
+  background:rgba(111,25,43,.78) !important;
+  color:#fff3f5 !important;
+}
+
+body.b1Mode #answerInput {
+  width:100% !important;
+  max-width:380px !important;
+  min-height:52px !important;
+  margin:0 auto !important;
+  border:1px solid var(--b1-template-line-strong) !important;
+  border-radius:12px !important;
+  background:rgba(5,12,22,.86) !important;
+  color:var(--text) !important;
+  font-size:clamp(.9rem,3.45vw,1.02rem) !important;
+  line-height:1.18 !important;
+  letter-spacing:0 !important;
+  direction:ltr !important;
+  unicode-bidi:isolate !important;
+}
+
+body.b1Mode[data-b1-surface="correction"] #answerInput {
+  min-height:66px !important;
+  padding:12px 13px !important;
+  font-size:clamp(.78rem,3vw,.9rem) !important;
+  font-weight:850 !important;
+}
+
+body.b1Mode .inlineClozeInput,
+body.b1Mode.b1TypedCloze .inlineClozeInput {
+  min-width:clamp(78px,25vw,132px) !important;
+  max-width:min(52vw,176px) !important;
+  min-height:36px !important;
+  padding:4px 10px !important;
+  border:1px solid var(--b1-template-line-strong) !important;
+  border-bottom:3px solid var(--accent) !important;
+  border-radius:10px !important;
+  background:rgba(4,11,20,.9) !important;
+}
+
+body.b1Mode[data-b1-state="typing"] .inlineClozeInput,
+body.b1Mode[data-b1-state="typing"] #answerInput {
+  border-color:var(--accent) !important;
+  box-shadow:0 0 0 3px rgba(126,224,255,.18), inset 0 1px 0 rgba(255,255,255,.05) !important;
+}
+
+body.b1Mode #actionGrid {
+  width:100% !important;
+  max-width:380px !important;
+  margin:2px auto 0 !important;
+  gap:8px !important;
+}
+
+body.b1Mode #checkBtn,
+body.b1Mode #noArticleBtn,
+body.b1Mode #hintBtn,
+body.b1Mode #nextBtn,
+body.b1Mode .b1ConfidenceRow button {
+  min-height:46px !important;
+  border-radius:12px !important;
+  font-size:clamp(.74rem,3vw,.88rem) !important;
+  letter-spacing:.02em !important;
+}
+
+body.b1Mode #hintBtn:not([hidden]) {
+  display:block !important;
+  width:min(172px,48%) !important;
+  margin:6px 0 0 auto !important;
+  border:1px solid var(--b1-template-line-strong) !important;
+  background:rgba(8,18,32,.82) !important;
+  color:var(--accent) !important;
+}
+
+body.b1Mode #noArticleBtn.teachBtn {
+  width:min(172px,48%) !important;
+  justify-self:end !important;
+}
+
+body.b1Mode .feedback {
+  width:100% !important;
+  max-width:380px !important;
+  margin:0 auto !important;
+  color:rgba(202,232,241,.84) !important;
+  font-size:clamp(.78rem,3vw,.9rem) !important;
+  line-height:1.28 !important;
+  text-align:left !important;
+}
+
+body.b1Mode[data-b1-state="hint"] .feedback.warn {
+  padding:10px 12px !important;
+  border:1px solid rgba(255,214,120,.52) !important;
+  border-radius:12px !important;
+  background:rgba(66,50,14,.5) !important;
+  color:#ffe8a9 !important;
+}
+
+body.b1Mode .correctionBlock.visible {
+  width:100% !important;
+  max-width:380px !important;
+  margin:4px auto 0 !important;
+  padding:11px 12px !important;
+  border:1px solid var(--b1-template-line) !important;
+  border-radius:14px !important;
+  background:rgba(5,13,24,.86) !important;
+  box-shadow:0 12px 30px rgba(0,0,0,.18) !important;
+}
+
+body.b1Mode[data-b1-state="success"] .correctionBlock.visible {
+  border-color:rgba(95,244,157,.62) !important;
+  background:linear-gradient(180deg, rgba(23,79,55,.72), rgba(6,18,26,.9)) !important;
+}
+
+body.b1Mode[data-b1-state="fail"] .correctionBlock.visible {
+  border-color:rgba(255,99,125,.62) !important;
+  background:linear-gradient(180deg, rgba(84,24,39,.72), rgba(6,18,26,.9)) !important;
+}
+
+body.b1Mode .feedbackResultLine {
+  justify-content:flex-start !important;
+  min-height:30px !important;
+  padding:0 !important;
+  background:transparent !important;
+  text-align:left !important;
+}
+
+body.b1Mode .microRule,
+body.b1Mode .repairAnswerLine,
+body.b1Mode .repairFeedbackLine,
+body.b1Mode .correctionPattern {
+  font-size:clamp(.78rem,3vw,.92rem) !important;
+  line-height:1.28 !important;
+}
+
+body.b1Mode .b1ConfidenceRow {
+  width:100% !important;
+  max-width:380px !important;
+  margin:4px auto 0 !important;
+  grid-template-columns:repeat(3, minmax(0,1fr)) !important;
+  gap:7px !important;
+}
+
+body.b1Mode #nextBtn.visible {
+  width:100% !important;
+  max-width:380px !important;
+  margin:3px auto 0 !important;
+}
+
+body.b1Mode .productionGrid {
+  max-width:380px !important;
+  margin:0 auto !important;
+}
+
+body[data-support-lang="ar"].b1Mode .promptWord,
+body[data-support-lang="ar"].b1Mode .englishGloss,
+body[data-support-lang="ar"].b1Mode .feedback,
+body[data-support-lang="ar"].b1Mode .correctionBlock,
+body[data-support-lang="ar"].b1Mode .connectorChoiceGrid,
+body[data-support-lang="ar"].b1Mode .connectorChoiceGrid button,
+body[data-support-lang="ar"].b1Mode #answerInput,
+body[data-support-lang="ar"].b1Mode .inlineClozeInput,
+body[data-support-lang="ar"].b1Mode .productionEvidenceNote,
+body[data-support-lang="ar"].b1Mode .productionChecklist,
+body[data-support-lang="ar"].b1Mode .productionRevealBody {
+  direction:ltr !important;
+  unicode-bidi:isolate !important;
+}
+
+@media (max-width:360px) {
+  body.b1Mode main {
+    padding-left:8px !important;
+    padding-right:8px !important;
+  }
+
+  body.b1Mode .content {
+    padding-left:12px !important;
+    padding-right:12px !important;
+  }
+
+  body.b1Mode .connectorChoiceGrid button {
+    min-height:44px !important;
+    padding-left:10px !important;
+    padding-right:10px !important;
+  }
+}
+
 </style>
 </head>
 <body class="booting" data-mode="definite">
@@ -10241,8 +10582,8 @@ body.b1Mode main > .startScreen[hidden] {
   var B1_PATH_UNLOCK_STORAGE_KEY = "ozmosis_b1_path_unlock_overrides_v1";
   var B1_REVIEW_EDIT_QUEUE_STORAGE_KEY = "ozmosis_b1_review_edit_queue_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.85.1 - Prompt/Cue Schema Migration and Learner-Facing Cleanup";
-  var OZMOSIS_EXPORT_VERSION = "v0.85.1-prompt-cue-schema-cleanup";
+  var OZMOSIS_APP_VERSION = "v0.85.2 - Practice Screen Template Alignment Pass";
+  var OZMOSIS_EXPORT_VERSION = "v0.85.2-practice-screen-template-alignment";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -24580,6 +24921,41 @@ body.b1Mode main > .startScreen[hidden] {
     grid.className = "connectorChoiceGrid";
     grid.innerHTML = "";
   }
+  function b1VisualTemplateSurfaceForItem(item) {
+    if (!item) return "none";
+    if (item.itemType === "production_card") return "production";
+    if (b1UsesChoices(item)) return "choice";
+    if (b1IsTypedCloze(item)) return "cloze";
+    if (item.answerMode === "edit_text" || item.prefillRepairText || b1IsRepairPracticeItem(item) || b1IsTransformationItem(item)) return "correction";
+    return "correction";
+  }
+  function b1SetVisualTemplateState(surface, visualState) {
+    surface = String(surface || "none");
+    visualState = String(visualState || "default");
+    document.body.setAttribute("data-b1-surface", surface);
+    document.body.setAttribute("data-b1-state", visualState);
+    var answer = el("answerArea");
+    if (answer) {
+      answer.setAttribute("data-b1-surface", surface);
+      answer.setAttribute("data-b1-state", visualState);
+    }
+  }
+  function b1UpdateVisualTemplateInputState() {
+    if (!b1Runtime.active || !b1Runtime.current || state !== "b1Checking") return;
+    var item = b1Runtime.current;
+    var surface = b1VisualTemplateSurfaceForItem(item);
+    var input = el("b1InlineInput");
+    if (!input && surface === "correction") input = el("answerInput");
+    var hasTyped = !!(input && b1CleanAnswer(input.value));
+    b1SetVisualTemplateState(surface, hasTyped ? "typing" : "default");
+  }
+  function b1BindVisualTemplateInput(input) {
+    if (!input || input._b1VisualTemplateBound) return;
+    input._b1VisualTemplateBound = true;
+    input.addEventListener("focus", b1UpdateVisualTemplateInputState, false);
+    input.addEventListener("input", b1UpdateVisualTemplateInputState, false);
+    input.addEventListener("blur", b1UpdateVisualTemplateInputState, false);
+  }
   function b1SupportMode() {
     return el("englishSupport") ? el("englishSupport").value : "smart";
   }
@@ -24621,8 +24997,7 @@ body.b1Mode main > .startScreen[hidden] {
   }
   function b1SupportDisplayText(text, answered, role) {
     var value = String(text || "");
-    if (role === "cue") return "Cue: " + value.replace(/^Correct:\s*/i, "");
-    if (role === "hint") return "Hint: " + value.replace(/^Correct:\s*/i, "");
+    if (role === "cue" || role === "hint") return value.replace(/^Correct:\s*/i, "");
     var prefix = b1Runtime.current && b1Runtime.current.itemType === "error_repair" ? "Meaning / translation: " : "Translation: ";
     return value.replace(/^Correct:\s*/i, prefix);
   }
@@ -24690,6 +25065,7 @@ body.b1Mode main > .startScreen[hidden] {
     var hint = display && (display.hint_de || display.hint_en) || "";
     if (!hint) return false;
     hintUsed = true;
+    b1SetVisualTemplateState(b1VisualTemplateSurfaceForItem(b1Runtime.current), "hint");
     var feedback = el("feedback");
     feedback.textContent = b1SupportDisplayText(hint, false, "hint");
     feedback.className = "feedback warn";
@@ -24777,7 +25153,7 @@ body.b1Mode main > .startScreen[hidden] {
     if (segments.cue) {
       var cue = document.createElement("div");
       cue.className = "productionEvidenceNote";
-      cue.textContent = "Cue: " + segments.cue;
+      cue.textContent = segments.cue;
       grid.appendChild(cue);
     }
     if (segments.scenario) {
@@ -24867,6 +25243,7 @@ body.b1Mode main > .startScreen[hidden] {
   }
   function renderB1Question() {
     var item = b1Runtime.current;
+    b1SetVisualTemplateState(b1VisualTemplateSurfaceForItem(item), "default");
     clearMobileClozeFocus();
     resetB1ChoiceSelection();
     b1Runtime.translationOpen = false;
@@ -24895,6 +25272,7 @@ body.b1Mode main > .startScreen[hidden] {
     input.style.display = "";
     input.placeholder = "Lücke ausfüllen";
     input.classList.remove("correct", "missed");
+    b1BindVisualTemplateInput(input);
     el("feedback").innerHTML = "";
     el("feedback").className = "feedback";
     if (el("whyNoStarsBtn")) el("whyNoStarsBtn").hidden = !b1Runtime.currentExtraPractice;
@@ -24927,6 +25305,7 @@ body.b1Mode main > .startScreen[hidden] {
         checkB1Answer();
       }, false);
       inlineInput.addEventListener("input", updateB1TypedClozeActionState, false);
+      b1BindVisualTemplateInput(inlineInput);
     }
     if ((b1IsRepairPracticeItem(item) || isTransformation) && !usesChoices && !inlineInput && !repairEditPrefill) input.placeholder = isTransformation ? "Satz umformen" : "Korrektur eingeben";
     if (usesChoices || isProduction || inlineInput) input.style.display = "none";
@@ -24944,6 +25323,7 @@ body.b1Mode main > .startScreen[hidden] {
     el("noArticleBtn").disabled = !inlineInput;
     el("noArticleBtn").style.display = inlineInput ? "" : "none";
     updateB1TypedClozeActionState();
+    b1UpdateVisualTemplateInputState();
     renderB1DisplayHintButton();
     el("nextBtn").classList.remove("visible");
     el("nextBtn").textContent = "Weiter";
@@ -24956,8 +25336,8 @@ body.b1Mode main > .startScreen[hidden] {
       else {
         input.focus();
         if (repairEditPrefill && input.setSelectionRange) {
-          var end = input.value.length;
-          input.setSelectionRange(end, end);
+          input.setSelectionRange(0, 0);
+          input.scrollLeft = 0;
         }
       }
     }, 0);
@@ -24990,6 +25370,7 @@ body.b1Mode main > .startScreen[hidden] {
     if (state !== "b1Checking" || !b1Runtime.active || !b1Runtime.current || !b1UsesInlineInput(b1Runtime.current)) return;
     var input = el("b1InlineInput");
     if (!input) return;
+    b1SetVisualTemplateState(b1VisualTemplateSurfaceForItem(b1Runtime.current), "hint");
     b1Runtime.currentAssisted = true;
     input.placeholder = b1Runtime.current.answer || "";
     input.classList.add("teachGhost");
@@ -25015,6 +25396,7 @@ body.b1Mode main > .startScreen[hidden] {
   }
   function skipB1ProductionCard() {
     if (state !== "b1Checking" || !b1Runtime.current || b1Runtime.current.itemType !== "production_card") return;
+    b1SetVisualTemplateState("production", "skip");
     b1Runtime.currentEvidenceRecordId = "";
     state = "b1Next";
     el("answerArea").classList.add("answered");
@@ -25036,6 +25418,7 @@ body.b1Mode main > .startScreen[hidden] {
   }
   function markB1ProductionPractised() {
     if (state !== "b1Checking" || !b1Runtime.current || b1Runtime.current.itemType !== "production_card") return;
+    b1SetVisualTemplateState("production", "success");
     var evidenceRecord = appendB1EvidenceRecord(b1Runtime.current, "practised", {
       extraPractice:b1Runtime.currentExtraPractice,
       answerMode:"mark_practised",
@@ -25095,6 +25478,7 @@ body.b1Mode main > .startScreen[hidden] {
     var repairComparison = b1IsRepairPracticeItem(b1Runtime.current) ? compareRepairAnswer(b1Runtime.current, raw) : null;
     var isCorrect = repairComparison ? repairComparison.isCorrect : (usesChoices ? b1ChoiceMatchesCorrect(b1Runtime.current, selectedChoice || raw) : b1AnswerMatches(b1Runtime.current, raw));
     var assisted = !!b1Runtime.currentAssisted;
+    b1SetVisualTemplateState(b1VisualTemplateSurfaceForItem(b1Runtime.current), assisted ? "assisted" : (isCorrect ? "success" : "fail"));
     var starBefore = b1PathTaskStarSummary(b1Runtime.current);
     var evidenceRecord = appendB1EvidenceRecord(b1Runtime.current, assisted ? "assisted" : (isCorrect ? "correct" : "wrong"), {
       extraPractice:b1Runtime.currentExtraPractice,
