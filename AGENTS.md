@@ -6,19 +6,21 @@ Ozmosis is a static, dependency-free German learning app deployed through GitHub
 
 Ozmosis was formerly called Kasuskonsole. Historical notes may still use that name, but current user-facing and repo-facing language should use `Ozmosis`.
 
-Current working version: `v0.85 - Repair / Transformation Completion Pass`.
+Current working version: `v0.85.1 - Prompt/Cue Schema Migration and Learner-Facing Cleanup`.
 
-Current runtime baseline: `v0.85 - Repair / Transformation Completion Pass`.
+Current runtime baseline: `v0.85.1 - Prompt/Cue Schema Migration and Learner-Facing Cleanup`.
 
 Next planned patch: `v0.86 - Production Completion Pass`
 
-Current README: `README-v0_85.md`
+Current README: `README.md`
 
-Current changelog: `CHANGELOG-v0_85.txt`
+Current changelog: `CHANGELOG-FULL-OZMOSIS.txt`
 
-Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.md`
+Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.1.md`
 
-Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.md`
+Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.1.md`
+
+README/changelog convention: one canonical root `README.md` and one canonical `CHANGELOG-FULL-OZMOSIS.txt`. Do not create versioned README/changelog files moving forward unless the user explicitly asks for a standalone export.
 
 Use pre-1.0 version naming from now on: `v0.30`, `v0.31`, `v0.32`, `v0.32.1`, `v0.33`, and later.
 
@@ -29,7 +31,7 @@ Source-of-truth order:
 1. Latest user-supplied file/package for the current task.
 2. Runtime source of truth: current repository files, repo-root `index.html`, `content/*.js`, and `data/*`.
 3. Strategic source of truth: `docs/OZMOSIS_SOURCE_BRIEF_CURRENT.md`, `docs/OZMOSIS_DEVELOPMENT_ROADMAP_CURRENT.md`, and `docs/OZMOSIS_FEATURE_REGISTER_CURRENT.md`.
-4. Patch-local source of truth: current versioned README, changelog, source brief, roadmap, and QA report.
+4. Patch-local source of truth: current README, full changelog, versioned source brief, roadmap, and QA report.
 5. Current full changelog and QA reports.
 6. Historical sources: older changelogs, older Codex logs, old uploaded packages, and old chats as background only.
 7. Memory or assumptions.
@@ -124,4 +126,4 @@ Report tests not run and why.
 
 ## Release Notes
 
-Update the current versioned changelog for user-facing changes. New entries should use pre-1.0 version names.
+Update `CHANGELOG-FULL-OZMOSIS.txt` for user-facing changes. Do not create standalone `CHANGELOG-v*.txt` files unless the user explicitly asks for one. New entries should use pre-1.0 version names.

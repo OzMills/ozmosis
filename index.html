@@ -10204,6 +10204,7 @@ body.b1Mode main > .startScreen[hidden] {
   </div>
 </div>
 
+<script src="content/b1-display-schema.js"></script>
 <script src="content/b1-connectors.js"></script>
 <script src="content/b1-redemittel.js"></script>
 <script src="content/b1-wortschatz.js"></script>
@@ -10240,8 +10241,8 @@ body.b1Mode main > .startScreen[hidden] {
   var B1_PATH_UNLOCK_STORAGE_KEY = "ozmosis_b1_path_unlock_overrides_v1";
   var B1_REVIEW_EDIT_QUEUE_STORAGE_KEY = "ozmosis_b1_review_edit_queue_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.85 - Repair / Transformation Completion Pass";
-  var OZMOSIS_EXPORT_VERSION = "v0.85-repair-transformation-completion";
+  var OZMOSIS_APP_VERSION = "v0.85.1 - Prompt/Cue Schema Migration and Learner-Facing Cleanup";
+  var OZMOSIS_EXPORT_VERSION = "v0.85.1-prompt-cue-schema-cleanup";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -21361,6 +21362,33 @@ body.b1Mode main > .startScreen[hidden] {
     });
     return segments;
   }
+  function b1ProductionDisplaySegments(item) {
+    var raw = String(item && item.prompt_de || "");
+    var segments = b1ProductionPromptSegments(item);
+    var instruction = b1ProductionCleanSegment(segments.instruction || raw);
+    var cue = "";
+    var firstSentenceCue = raw.match(/^Schreibe einen kurzen Satz\.\s*(.*?)(?:\s+Useful phrase:|\s+\|\s+Scenario:|\s+Scenario:|\s+Checklist:|$)/i);
+    if (firstSentenceCue && firstSentenceCue[1]) cue = b1ProductionCleanSegment(firstSentenceCue[1]);
+    if (/^Schreibe einen kurzen Satz\./i.test(instruction)) instruction = "Schreibe einen kurzen Satz.";
+    if (!instruction || /Useful phrase|Scenario|Checklist|Optional model answer|Model answer|`/i.test(instruction) || b1DisplayLooksInternalLabel(instruction)) {
+      instruction = "Schreibe eine kurze B1-Antwort.";
+    }
+    var sourceUseful = [];
+    var inlinePhrase = raw.match(/Useful phrase:\s*`([^`]+)`/i);
+    if (inlinePhrase && inlinePhrase[1]) sourceUseful.push(inlinePhrase[1]);
+    return {
+      instruction:instruction,
+      cue:cue,
+      scenario:b1ProductionCleanSegment(segments.scenario),
+      usefulPhrases:b1MergeUniqueLines(sourceUseful, segments.usefulPhrases).filter(function(line){
+        return line && !/^self[- ]marked$/i.test(line) && !b1DisplayLooksInternalLabel(line);
+      }),
+      checklist:b1MergeUniqueLines(segments.checklist).filter(function(line){
+        return line && !b1DisplayLooksInternalLabel(line);
+      }),
+      modelAnswer:b1ProductionCleanSegment(segments.modelAnswer)
+    };
+  }
   function b1ProductionSplitList(value) {
     var text = b1ProductionCleanSegment(value);
     if (!text) return [];
@@ -21411,6 +21439,11 @@ body.b1Mode main > .startScreen[hidden] {
       return choice && choice.isCorrect === true && /^[A-D]$/i.test(String(choice.text || choice.label || choice.value || "").trim());
     });
   }
+  function b1ItemHasChoiceInternalLabelArtifact(item) {
+    return b1ChoiceTextValues(item).some(function(choice){
+      return b1DisplayLooksInternalLabel(choice);
+    });
+  }
   function b1ItemHasGeneratedPromptRisk(item) {
     var prompt = String(item && (item.prompt_de || item.prompt || item.question || "") || "").trim();
     var learnerSurface = [
@@ -21423,6 +21456,7 @@ body.b1Mode main > .startScreen[hidden] {
     if (/\[(English|Deutsch|German|source|translation)\]/i.test(learnerSurface)) return true;
     if (b1ItemHasPlaceholderChoices(item)) return true;
     if (b1ItemHasLetterOnlyCorrectChoice(item)) return true;
+    if (b1ItemHasChoiceInternalLabelArtifact(item)) return true;
     if (b1ItemHasSourcePromptArtifact(item)) return true;
     if (b1ItemHasUnsafeChoiceDisplayArtifact(item)) return true;
     if (b1ItemHasUnstructuredProductionPromptRisk(item)) return true;
@@ -21433,6 +21467,8 @@ body.b1Mode main > .startScreen[hidden] {
     if (!item || !item.id) return ["missing_item"];
     if (!b1ItemHasLearnerStatus(item)) reasons.push("not_active");
     if (item.itemType === "notice" || item.taskType === "notice" || item.evidenceType === "excluded") reasons.push("non_practice");
+    var displayModel = b1DisplayModel(item);
+    if (displayModel && displayModel.displayStatus === "review") reasons.push("display_schema_review");
     if (b1ItemHasGeneratedPromptRisk(item)) reasons.push("generated_prompt_or_choice_risk");
     if (b1IsImportedV02Item(item)) {
       if (b1ItemIsPreviewOrInactiveImport(item)) reasons.push("preview_or_inactive_import");
@@ -21443,6 +21479,72 @@ body.b1Mode main > .startScreen[hidden] {
   }
   function b1ItemIsNormalEligible(item) {
     return b1NormalPracticeExclusionReasons(item).length === 0;
+  }
+  function b1DisplaySchemaAudit(options) {
+    options = options || {};
+    var includeReviewQueue = options.includeReviewQueue !== false;
+    var rows = b1RegistryPracticeItems();
+    var summary = {
+      schemaVersion:B1_DISPLAY_SCHEMA_VERSION,
+      totalItems:rows.length,
+      learnerStatusItems:0,
+      normalEligibleItems:0,
+      displayReviewItems:0,
+      rawPromptBackticks:0,
+      rawPromptVsLabels:0,
+      rawLearnerCueInternalLabels:0,
+      renderedPromptLeaks:0,
+      visibleCueBeforeAnswer:0,
+      hintRevealItems:0,
+      unresolvedClozeCueItems:0,
+      meaningChoiceCueItems:0,
+      choiceInternalLabelArtifacts:0,
+      genericContrastFeedbackItems:0,
+      renderedPromptLeakExamples:[],
+      reviewQueue:includeReviewQueue ? [] : null,
+      reviewQueueRowCount:0
+    };
+    rows.forEach(function(item){
+      if (!item || !item.id) return;
+      if (b1ItemHasLearnerStatus(item)) summary.learnerStatusItems += 1;
+      if (/`[^`]+`/.test(String(item.prompt_de || ""))) summary.rawPromptBackticks += 1;
+      if (/\s+vs\s+/i.test(String(item.prompt_de || ""))) summary.rawPromptVsLabels += 1;
+      if (b1DisplayLooksInternalLabel(item.learnerCue)) summary.rawLearnerCueInternalLabels += 1;
+      if (b1ItemHasChoiceInternalLabelArtifact(item)) summary.choiceInternalLabelArtifacts += 1;
+      if (/nearby contrast|related word/i.test(String(item.microRule || item.micro_rule || ""))) summary.genericContrastFeedbackItems += 1;
+      var model = b1DisplayModel(item);
+      if (model.displayStatus === "review") summary.displayReviewItems += 1;
+      if (model.cueVisibility === "before_answer") summary.visibleCueBeforeAnswer += 1;
+      if (model.hintVisibility === "reveal") summary.hintRevealItems += 1;
+      if (model.cueRole === "meaning" && model.cueVisibility === "before_answer") summary.meaningChoiceCueItems += 1;
+      if (b1IsTypedCloze(item) && model.displayStatus === "review") summary.unresolvedClozeCueItems += 1;
+      if (b1ItemIsNormalEligible(item)) {
+        summary.normalEligibleItems += 1;
+        var rendered = b1DisplayClean(b1PromptHtml(item).replace(/<[^>]+>/g, " "));
+        if (b1DisplayLooksInternalLabel(rendered)) {
+          summary.renderedPromptLeaks += 1;
+          if (summary.renderedPromptLeakExamples.length < 30) summary.renderedPromptLeakExamples.push({ itemId:item.id, renderedPrompt:rendered, sourcePrompt:item.prompt_de || "" });
+        }
+      } else if (model.displayStatus === "review" || b1ItemHasChoiceInternalLabelArtifact(item)) {
+        summary.reviewQueueRowCount += 1;
+        if (includeReviewQueue) summary.reviewQueue.push({
+          itemId:item.id,
+          sourceFile:b1RegistryBank(b1EvidenceBankKeyFor(item)) && b1RegistryBank(b1EvidenceBankKeyFor(item)).source || "",
+          routeOrModule:model.moduleDefaultsRef || item.contentBankKey || item.moduleKey || "",
+          itemType:item.itemType || item.taskType || "",
+          currentPrompt:item.prompt_de || "",
+          currentStimulus:model.stimulus_de || "",
+          currentAnswer:item.answer || "",
+          issueType:model.reviewQueueReason || (b1ItemHasChoiceInternalLabelArtifact(item) ? "choice_internal_label_artifact" : "normal_practice_excluded"),
+          issueSeverity:"medium",
+          reason:(model.issues || []).join(";") || "Excluded from normal practice by existing safeguards.",
+          recommendedAction:"Human review or source-safe cue rewrite.",
+          normalPracticeEligible:false,
+          reviewStatus:"queued"
+        });
+      }
+    });
+    return summary;
   }
   function b1ItemStarLevelForNormalPractice(item, progress) {
     if (!item || item.itemType === "production_card") return 0;
@@ -22624,6 +22726,219 @@ body.b1Mode main > .startScreen[hidden] {
     if (!item || b1UsesChoices(item) || item.itemType === "production_card") return false;
     return ["grammar_cloze", "vocab_cloze", "redemittel_cloze", "word_order_cloze", "phrase_cloze"].indexOf(item.itemType) !== -1 || String(item.prompt_de || "").indexOf("___") !== -1;
   }
+  const B1_DISPLAY_SCHEMA_VERSION = "v0.85.1-prompt-cue-display-v1";
+  function b1DisplaySchemaManifest() {
+    return window.OZMOSIS_CONTENT_MANIFESTS && window.OZMOSIS_CONTENT_MANIFESTS.b1DisplaySchema || { bankDefaults:{} };
+  }
+  function b1DisplayClean(value) {
+    var text = String(value === null || value === undefined ? "" : value);
+    if (text.normalize) text = text.normalize("NFC");
+    return text.replace(/\s+/g, " ").trim();
+  }
+  function b1DisplayBankKeyForItem(item) {
+    return String(item && (item.contentBankKey || item.bankKey || item._bankKey || "") || "");
+  }
+  function b1DisplayBankDefaults(item) {
+    var manifest = b1DisplaySchemaManifest();
+    var defaults = manifest.bankDefaults || {};
+    var key = b1DisplayBankKeyForItem(item);
+    if (key && defaults[key]) return defaults[key];
+    var moduleKey = String(item && item.moduleKey || "");
+    for (var bankKey in defaults) {
+      if (defaults[bankKey] && defaults[bankKey].moduleKey === moduleKey) return defaults[bankKey];
+    }
+    return {};
+  }
+  function b1DisplayIsSameCueAsPrompt(cue, prompt) {
+    var a = b1DisplayClean(cue).toLocaleLowerCase("de-DE");
+    var b = b1DisplayClean(prompt).toLocaleLowerCase("de-DE");
+    return !!(a && b && a === b);
+  }
+  function b1DisplayLooksInternalLabel(value) {
+    var text = b1DisplayClean(value);
+    if (!text) return false;
+    if (/`[^`]+`/.test(text)) return true;
+    if (/targetFamilyId|reviewGroup|familyTarget|moduleKey|contentBankKey|schema key|debug/i.test(text)) return true;
+    if (/^[a-z0-9_./ -]{3,90}$/i.test(text) && (/\s+vs\s+/i.test(text) || /[_-]vs[_-]/i.test(text))) return true;
+    if (/^[A-Za-zÄÖÜäöüß0-9][^.!?]{0,90}\s+vs\s+[A-Za-zÄÖÜäöüß0-9][^.!?]{0,90}$/i.test(text)) return true;
+    if (/^[A-Za-z][A-Za-z /-]{3,70}$/.test(text) && /(?:course|work|office|people|room|entrance|exit|show|find|ask|bring|fill|register|finished|request|approve|cover|handover|callback|meaning|instruction)/i.test(text)) return true;
+    return false;
+  }
+  function b1DisplayExtractInternalLabel(item) {
+    var fields = [
+      item && item.internalLabel,
+      item && item.internalContrastLabel,
+      item && item.familyTarget,
+      item && item.learnerCue,
+      item && item.prompt_de
+    ];
+    for (var i = 0; i < fields.length; i += 1) {
+      var text = b1DisplayClean(fields[i]);
+      if (!text) continue;
+      var tick = text.match(/`([^`]+)`/);
+      if (tick && tick[1]) return tick[1].trim();
+      var promptSuffix = text.match(/^Welche Form passt\?\s*(.+)$/i);
+      if (promptSuffix && promptSuffix[1]) return promptSuffix[1].trim();
+      if (b1DisplayLooksInternalLabel(text)) return text;
+    }
+    return "";
+  }
+  function b1DisplayPromptLooksGeneric(item) {
+    var prompt = b1DisplayClean(item && (item.prompt_de || item.prompt || item.question || ""));
+    return /^Welche Form passt(?:\?| zu\b| in dieser Situation)/i.test(prompt) ||
+      /^Welche Option passt/i.test(prompt) ||
+      /^Welches Wort passt\?\s*[^.?!]+$/i.test(prompt);
+  }
+  function b1DisplayChoiceLikelyUsesMeaningCue(item) {
+    if (!b1UsesChoices(item)) return false;
+    var prompt = b1DisplayClean(item && (item.prompt_de || item.prompt || item.question || ""));
+    if (prompt.indexOf("___") !== -1) return false;
+    if (b1DisplayExtractInternalLabel(item)) return true;
+    if (b1DisplayPromptLooksGeneric(item)) return true;
+    if (String(item && item.taskDepth || "") === "contrast") return true;
+    if (/Auswahl|Kontrast|meaning|recognition/i.test(String(item && (item.taskType || item.itemType || "") || ""))) return true;
+    return false;
+  }
+  function b1DisplaySafeCueValue(item) {
+    var prompt = b1DisplayClean(item && (item.prompt_de || item.prompt || item.question || ""));
+    var cueFields = [
+      item && item.learnerCue_de,
+      item && item.learnerCue_en,
+      item && item.learnerCue,
+      item && item.situation_de,
+      item && item.situation_en,
+      item && item.context_de,
+      item && item.context_en,
+      item && item.translation_en,
+      item && item.support_en,
+      item && item.support_de
+    ];
+    for (var i = 0; i < cueFields.length; i += 1) {
+      var cue = b1DisplayClean(cueFields[i]);
+      if (!cue || b1DisplayIsSameCueAsPrompt(cue, prompt) || b1DisplayLooksInternalLabel(cue)) continue;
+      return cue;
+    }
+    return "";
+  }
+  function b1DisplayClozeCueFromTarget(item) {
+    var answer = b1DisplayClean(item && item.answer);
+    var full = b1DisplayClean(item && item.fullAnswer_de);
+    if (/B1[- ]?Niveau/i.test(answer) || /B1[- ]?Niveau/i.test(full)) return "Sie nennen Ihr Sprachniveau.";
+    if (/Deutschkenntnisse/i.test(answer + " " + full)) return "Sie beschreiben Deutschkenntnisse.";
+    if (/Termin/i.test(answer + " " + full)) return "Es geht um einen Termin.";
+    if (/Krankmeldung|Arbeitsunf[aä]higkeitsbescheinigung/i.test(answer + " " + full)) return "Es geht um Krankheit oder eine Bescheinigung.";
+    return "";
+  }
+  function b1DisplayClozeNeedsCue(item) {
+    if (!b1IsTypedCloze(item)) return false;
+    var prompt = b1DisplayClean(item && item.prompt_de);
+    if (prompt.indexOf("___") === -1) return false;
+    var cue = b1DisplaySafeCueValue(item);
+    if (cue) return false;
+    return true;
+  }
+  function b1DisplayInstructionForItem(item, model) {
+    if (item && item.instruction_de) return b1DisplayClean(item.instruction_de);
+    if (item && item.itemType === "production_card") return b1ProductionDisplaySegments(item).instruction || "Produziere eine kurze B1-Antwort.";
+    if (item && item.itemType === "error_repair") return item.taskType === "Umformen" ? "Forme den Satz um." : "Korrigiere den Satz.";
+    if (b1IsTypedCloze(item)) return "Ergänze den Satz.";
+    if (b1DisplayChoiceLikelyUsesMeaningCue(item)) return "Welche Form passt zur Bedeutung?";
+    if (b1UsesChoices(item)) return "Wähle die passende Form.";
+    return "Bearbeite die Aufgabe.";
+  }
+  function b1DisplaySupportSource(item) {
+    return b1DisplayClean(item && (item.support_en || item.translation_en || item.support_de || ""));
+  }
+  function b1DisplayContrastNote(item) {
+    var explicit = b1DisplayClean(item && (item.contrastNote || item.contrast_note));
+    if (explicit && !b1DisplayLooksInternalLabel(explicit)) return explicit;
+    var support = b1DisplaySupportSource(item);
+    var answer = b1DisplayClean(item && (item.answer || item.correct_choice || item.correctChoice || ""));
+    var targets = Array.isArray(item && item.contrastTargets) ? item.contrastTargets.map(function(value){ return b1DisplayClean(value); }).filter(Boolean) : [];
+    var distractors = targets.filter(function(value){ return value && value !== answer; }).slice(0, 3);
+    if (answer && support && distractors.length) return answer + " = " + support.replace(/[.!?]\s*$/g, "") + ". Contrast: " + distractors.join(" / ") + ".";
+    if (answer && support) return answer + " = " + support.replace(/[.!?]\s*$/g, "") + ".";
+    return "";
+  }
+  function b1DisplayModel(item) {
+    if (!item) return { schemaVersion:B1_DISPLAY_SCHEMA_VERSION, displayStatus:"review", issues:["missing_item"] };
+    if (item._displayModel && item._displayModel.schemaVersion === B1_DISPLAY_SCHEMA_VERSION) return item._displayModel;
+    var defaults = b1DisplayBankDefaults(item);
+    var prompt = b1DisplayClean(item.prompt_de || item.prompt || item.question || "");
+    var internalLabel = b1DisplayExtractInternalLabel(item);
+    var promptHasLeak = b1DisplayLooksInternalLabel(prompt) || /`[^`]+`/.test(prompt) || /\s+vs\s+/i.test(prompt);
+    var cue = b1DisplaySafeCueValue(item);
+    var support = b1DisplaySupportSource(item);
+    var meaningChoice = b1DisplayChoiceLikelyUsesMeaningCue(item);
+    var clozeCue = b1DisplayClozeNeedsCue(item) ? b1DisplayClozeCueFromTarget(item) : "";
+    var cueText = "";
+    var cueRole = "none";
+    var cueVisibility = "hidden";
+    var supportVisibility = item.supportVisibility || item.supportVisibilityPolicy || item.supportPolicy || defaults.supportPolicy || "after_answer";
+    var stimulus = prompt;
+    var issues = [];
+    if (internalLabel) issues.push("internal_label_sanitised");
+    if (promptHasLeak) issues.push("prompt_internal_label_sanitised");
+    if (meaningChoice && (cue || support)) {
+      cueText = cue || support;
+      cueRole = "meaning";
+      cueVisibility = "before_answer";
+      supportVisibility = "after_answer";
+      if (promptHasLeak || b1DisplayPromptLooksGeneric(item)) stimulus = "";
+    } else if (b1IsTypedCloze(item)) {
+      cueText = cue || clozeCue;
+      cueRole = cueText ? "context" : "none";
+      cueVisibility = cueText ? "before_answer" : "hidden";
+      if (!cueText && b1DisplayClozeNeedsCue(item)) issues.push("cloze_needs_review");
+    } else if (cue && !b1DisplayLooksInternalLabel(cue)) {
+      cueText = cue;
+      cueRole = "situation";
+      cueVisibility = b1CanonicalSupportVisibility(supportVisibility) === "after_answer" ? "after_answer" : "before_answer";
+    }
+    if (promptHasLeak && !stimulus) {
+      stimulus = "";
+    } else if (promptHasLeak) {
+      stimulus = prompt.replace(/`[^`]+`/g, "").replace(/\s+vs\s+[^.?!]+/ig, "").replace(/\s+/g, " ").trim();
+    }
+    var displayStatus = issues.indexOf("cloze_needs_review") !== -1 || (meaningChoice && !cueText) ? "review" : "active";
+    if (displayStatus === "review") issues.push("normal_practice_excluded_by_display_schema");
+    var model = {
+      schemaVersion:B1_DISPLAY_SCHEMA_VERSION,
+      instruction_de:b1DisplayInstructionForItem(item),
+      instruction_en:"",
+      stimulus_de:stimulus,
+      learnerCue_de:cueRole === "context" && cueText && !/[A-Za-z]{3,}/.test(cueText) ? cueText : "",
+      learnerCue_en:cueRole !== "context" || /[A-Za-z]{3,}/.test(cueText) ? cueText : "",
+      cueText:cueText,
+      cueRole:cueRole,
+      cueVisibility:cueVisibility,
+      hint_de:b1DisplayClean(item.hint_de || ""),
+      hint_en:b1DisplayClean(item.hint_en || item.hint || ""),
+      hintVisibility:b1DisplayClean(item.hint_de || item.hint_en || item.hint) ? "reveal" : "hidden",
+      support_de:b1DisplayClean(item.support_de || ""),
+      support_en:support,
+      supportRole:cueText === support ? "post_answer_repeat" : "translation",
+      supportVisibility:supportVisibility,
+      internalLabel:internalLabel,
+      internalContrastLabel:item.internalContrastLabel || internalLabel,
+      contrastNote:b1DisplayContrastNote(item),
+      contextRecoverable:!b1DisplayClozeNeedsCue(item),
+      displayStatus:displayStatus,
+      normalPracticeEligible:displayStatus !== "review",
+      reviewQueueReason:displayStatus === "review" ? issues.join(";") : "",
+      moduleDefaultsRef:b1DisplayBankKeyForItem(item) || defaults.contentBankKey || "",
+      issues:issues
+    };
+    item._displayModel = model;
+    return model;
+  }
+  function b1DisplayLearnerPromptHtml(model, bodyHtml) {
+    var instruction = b1DisplayClean(model && model.instruction_de);
+    var body = String(bodyHtml || "");
+    if (!instruction) return body;
+    if (!body || b1DisplayClean(body.replace(/<[^>]+>/g, "")) === instruction) return '<span class="taskInstruction">' + escapeHtml(instruction) + '</span>';
+    return '<span class="taskInstruction">' + escapeHtml(instruction) + '</span><br><span dir="ltr">' + body + '</span>';
+  }
   function b1PromptWithoutFakeBlank(prompt) {
     return String(prompt || "").replace(/\s*___\s*$/g, "").replace(/\s+([:;,.?!])/g, "$1").trim();
   }
@@ -22657,21 +22972,32 @@ body.b1Mode main > .startScreen[hidden] {
     return String(prompt || "").replace(/___\s+([.,!?;:])/g, "___$1").replace(/\s+([.,!?;:])/g, "$1");
   }
   function b1PromptHtml(item, resultClass) {
-    if (item && item.itemType === "production_card") return escapeHtml(b1ProductionPromptSegments(item).instruction || item.prompt_de || "");
-    var rawPrompt = b1NormaliseInlineClozePunctuation(item && item.prompt_de || "");
+    if (item && item.itemType === "production_card") return escapeHtml(b1ProductionDisplaySegments(item).instruction || "Schreibe eine kurze B1-Antwort.");
+    var display = b1DisplayModel(item);
+    var rawPromptSource = display.stimulus_de;
+    if (!rawPromptSource && !(display.internalLabel || (display.issues || []).indexOf("prompt_internal_label_sanitised") !== -1)) rawPromptSource = item && item.prompt_de || "";
+    var rawPrompt = b1NormaliseInlineClozePunctuation(rawPromptSource || "");
+    var bodyHtml = "";
     if (b1UsesChoices(item)) {
-      if (b1IsKontrastSlashChoice(item) || b1RepairShouldUseChoiceContract(item)) return escapeHtml(b1TaskContractChoicePrompt(item));
-      if (item.itemType === "error_repair" && resultClass && rawPrompt.indexOf("___") !== -1) {
-        return escapeHtml(rawPrompt).replace(/___/g, b1ClozeReplacement(item, resultClass));
+      if (b1IsKontrastSlashChoice(item) || b1RepairShouldUseChoiceContract(item)) {
+        var contractPrompt = display.stimulus_de || "";
+        return b1DisplayLearnerPromptHtml(display, escapeHtml(contractPrompt));
       }
-      if (item.itemType === "error_repair") return escapeHtml(b1PromptWithoutFakeBlank(rawPrompt));
-      return escapeHtml(item.itemType === "phrase_choice" ? b1PromptWithoutFakeBlank(rawPrompt) : rawPrompt);
+      if (item.itemType === "error_repair" && resultClass && rawPrompt.indexOf("___") !== -1) {
+        bodyHtml = escapeHtml(rawPrompt).replace(/___/g, b1ClozeReplacement(item, resultClass));
+        return b1DisplayLearnerPromptHtml(display, bodyHtml);
+      }
+      if (item.itemType === "error_repair") bodyHtml = escapeHtml(b1PromptWithoutFakeBlank(rawPrompt));
+      else bodyHtml = escapeHtml(item.itemType === "phrase_choice" ? b1PromptWithoutFakeBlank(rawPrompt) : rawPrompt);
+      return b1DisplayLearnerPromptHtml(display, bodyHtml);
     }
     if (b1IsTypedCloze(item) && rawPrompt.indexOf("___") !== -1) {
-      return escapeHtml(rawPrompt).replace(/___/g, b1ClozeReplacement(item, resultClass));
+      bodyHtml = escapeHtml(rawPrompt).replace(/___/g, b1ClozeReplacement(item, resultClass));
+      return b1DisplayLearnerPromptHtml(display, bodyHtml);
     }
     if (item && item.itemType === "error_repair") return b1RepairPromptHtml(item);
-    return escapeHtml(b1PromptWithoutFakeBlank(rawPrompt));
+    bodyHtml = escapeHtml(b1PromptWithoutFakeBlank(rawPrompt));
+    return b1DisplayLearnerPromptHtml(display, bodyHtml);
   }
   function b1CapitalizationMatters(item) {
     return item && item.itemType === "vocab_cloze" && /^[A-ZÄÖÜ]/.test(String(item.answer || ""));
@@ -24269,6 +24595,9 @@ body.b1Mode main > .startScreen[hidden] {
   }
   function b1SupportVisibilityPolicy(item, context) {
     context = context || {};
+    var display = b1DisplayModel(item);
+    if (display && display.displayStatus === "review") return "hidden";
+    if (display && display.cueVisibility === "before_answer") return "visible";
     var policy = b1CanonicalSupportVisibility(item && (item.supportVisibilityPolicy || item.supportVisibility || item.supportPolicy));
     if (policy === "unknown") return "visible";
     if (item && item.itemType === "error_repair") return "hidden";
@@ -24290,8 +24619,10 @@ body.b1Mode main > .startScreen[hidden] {
   function b1SupportToggleText(item, shown) {
     return shown ? "Hide translation" : "Show translation";
   }
-  function b1SupportDisplayText(text, answered) {
+  function b1SupportDisplayText(text, answered, role) {
     var value = String(text || "");
+    if (role === "cue") return "Cue: " + value.replace(/^Correct:\s*/i, "");
+    if (role === "hint") return "Hint: " + value.replace(/^Correct:\s*/i, "");
     var prefix = b1Runtime.current && b1Runtime.current.itemType === "error_repair" ? "Meaning / translation: " : "Translation: ";
     return value.replace(/^Correct:\s*/i, prefix);
   }
@@ -24300,13 +24631,24 @@ body.b1Mode main > .startScreen[hidden] {
     var toggle = el("translationToggle");
     if (!gloss) return;
     var mode = b1SupportMode();
-    var text = b1Runtime.current && b1Runtime.current.support_en ? b1Runtime.current.support_en : "";
+    var display = b1DisplayModel(b1Runtime.current);
     var policy = b1SupportVisibilityPolicy(b1Runtime.current, { state:state });
     var answered = state !== "b1Checking";
+    var text = "";
+    var role = "support";
+    if (!answered && display && display.cueVisibility === "before_answer") {
+      text = display.cueText || "";
+      role = "cue";
+    } else if (answered) {
+      text = display && (display.support_en || display.cueText || display.contrastNote) || "";
+      role = "support";
+    } else {
+      text = display && display.supportVisibility !== "after_answer" ? (display.support_en || "") : "";
+    }
     var showSupport = answered ? b1ShouldShowSupportAfterAnswer(b1Runtime.current, { forceOpen:forceOpen, open:b1Runtime.translationOpen }) : b1ShouldShowSupportBeforeAnswer(b1Runtime.current, { forceOpen:forceOpen, open:b1Runtime.translationOpen });
     if (forceOpen && policy !== "hidden") showSupport = true;
     gloss.className = "englishGloss";
-    if (!text || mode === "off") {
+    if (!text || (mode === "off" && role !== "cue")) {
       gloss.textContent = "";
       if (toggle) toggle.hidden = true;
       b1Runtime.translationOpen = false;
@@ -24323,13 +24665,42 @@ body.b1Mode main > .startScreen[hidden] {
       }
       return;
     }
-    gloss.textContent = b1SupportDisplayText(text, answered);
+    gloss.textContent = b1SupportDisplayText(text, answered, role);
     if (state === "b1Checking") b1Runtime.translationOpen = true;
     if (toggle) {
       toggle.hidden = policy !== "collapsed";
       toggle.textContent = policy === "collapsed" ? b1SupportToggleText(b1Runtime.current, true) : "";
       toggle.setAttribute("aria-expanded", "true");
     }
+  }
+  function renderB1DisplayHintButton() {
+    var btn = el("hintBtn");
+    if (!btn || !b1Runtime.active || !b1Runtime.current) return;
+    var display = b1DisplayModel(b1Runtime.current);
+    var hasHint = display && display.hintVisibility === "reveal" && (display.hint_de || display.hint_en);
+    btn.disabled = !hasHint;
+    btn.hidden = !hasHint;
+    btn.style.display = hasHint ? "" : "none";
+    btn.textContent = hasHint ? "Hint" : "Show table";
+    btn.setAttribute("aria-expanded", "false");
+  }
+  function showB1DisplayHint() {
+    if (state !== "b1Checking" || !b1Runtime.active || !b1Runtime.current || hintUsed) return false;
+    var display = b1DisplayModel(b1Runtime.current);
+    var hint = display && (display.hint_de || display.hint_en) || "";
+    if (!hint) return false;
+    hintUsed = true;
+    var feedback = el("feedback");
+    feedback.textContent = b1SupportDisplayText(hint, false, "hint");
+    feedback.className = "feedback warn";
+    if (el("hintBtn")) {
+      el("hintBtn").disabled = true;
+      el("hintBtn").setAttribute("aria-expanded", "true");
+    }
+    var inlineInput = el("b1InlineInput");
+    if (inlineInput) inlineInput.focus();
+    else if (el("answerInput")) el("answerInput").focus();
+    return true;
   }
   function toggleB1Translation() {
     if (!b1Runtime.active || !b1Runtime.current) return;
@@ -24398,11 +24769,17 @@ body.b1Mode main > .startScreen[hidden] {
       }, false);
       grid.appendChild(details);
     }
-    var segments = b1ProductionPromptSegments(item);
+    var segments = b1ProductionDisplaySegments(item);
     var note = document.createElement("div");
     note.className = "productionEvidenceNote";
     note.textContent = "Write or say your answer, then self-mark. No auto-grading.";
     grid.appendChild(note);
+    if (segments.cue) {
+      var cue = document.createElement("div");
+      cue.className = "productionEvidenceNote";
+      cue.textContent = "Cue: " + segments.cue;
+      grid.appendChild(cue);
+    }
     if (segments.scenario) {
       var situation = document.createElement("div");
       situation.className = "productionEvidenceNote";
@@ -24410,7 +24787,9 @@ body.b1Mode main > .startScreen[hidden] {
       situation.innerHTML = "<strong>Situation</strong><br>" + escapeHtml(segments.scenario);
       grid.appendChild(situation);
     }
-    var usefulPhrases = b1MergeUniqueLines(item.usefulPhrases || [], segments.usefulPhrases);
+    var usefulPhrases = b1MergeUniqueLines(item.usefulPhrases || [], segments.usefulPhrases).filter(function(line){
+      return line && !/^self[- ]marked$/i.test(line) && !b1DisplayLooksInternalLabel(line);
+    });
     if (usefulPhrases.length) {
       var phrases = document.createElement("ul");
       phrases.className = "productionChecklist";
@@ -24422,7 +24801,9 @@ body.b1Mode main > .startScreen[hidden] {
       });
       appendReveal("Useful phrases", phrases, function(){ b1Runtime.currentProductionUsefulPhrasesShown = true; });
     }
-    var checklistLines = b1MergeUniqueLines(item.productionChecklist || [], segments.checklist);
+    var checklistLines = b1MergeUniqueLines(item.productionChecklist || [], segments.checklist).filter(function(line){
+      return line && !b1DisplayLooksInternalLabel(line);
+    });
     if (checklistLines.length) {
       var checklist = document.createElement("ul");
       checklist.className = "productionChecklist";
@@ -24563,9 +24944,7 @@ body.b1Mode main > .startScreen[hidden] {
     el("noArticleBtn").disabled = !inlineInput;
     el("noArticleBtn").style.display = inlineInput ? "" : "none";
     updateB1TypedClozeActionState();
-    el("hintBtn").disabled = true;
-    el("hintBtn").hidden = true;
-    el("hintBtn").style.display = "none";
+    renderB1DisplayHintButton();
     el("nextBtn").classList.remove("visible");
     el("nextBtn").textContent = "Weiter";
     updatePracticeExitControl();
@@ -24720,6 +25099,7 @@ body.b1Mode main > .startScreen[hidden] {
     var evidenceRecord = appendB1EvidenceRecord(b1Runtime.current, assisted ? "assisted" : (isCorrect ? "correct" : "wrong"), {
       extraPractice:b1Runtime.currentExtraPractice,
       assisted:assisted,
+      hintUsed:hintUsed,
       isCorrect:isCorrect,
       answerMode:b1AttemptAnswerMode(b1Runtime.current, usesChoices),
       rawAnswer:raw,
@@ -25009,7 +25389,7 @@ body.b1Mode main > .startScreen[hidden] {
     savePersistent();
     el("nextBtn").focus();
   }
-  function showHint() { if (state !== "checking" || hintUsed) return; hintUsed=true; setSupportPlaceholder(false, true); el("feedback").innerHTML=current.kind === "cloze" ? escapeHtml(current.hint || "Article table shown.") : "Article table shown."; el("feedback").className="feedback warn"; el("hintBtn").disabled=true; renderMiniTable("hint"); el("answerInput").focus(); }
+  function showHint() { if (b1Runtime.active && state === "b1Checking" && showB1DisplayHint()) return; if (state !== "checking" || hintUsed) return; hintUsed=true; setSupportPlaceholder(false, true); el("feedback").innerHTML=current.kind === "cloze" ? escapeHtml(current.hint || "Article table shown.") : "Article table shown."; el("feedback").className="feedback warn"; el("hintBtn").disabled=true; renderMiniTable("hint"); el("answerInput").focus(); }
   function renderMiniTable(mode) { var wrap=el("miniTableWrap"); wrap.innerHTML=""; if (!current || !paradigms[current.type]) return; var table=document.createElement("table"); table.className="miniTable"; var thead=document.createElement("thead"), headRow=document.createElement("tr"); headRow.appendChild(document.createElement("th")); genders.forEach(function(g){ var th=document.createElement("th"); th.textContent=g.short; headRow.appendChild(th); }); thead.appendChild(headRow); table.appendChild(thead); var tbody=document.createElement("tbody"); activeCases().forEach(function(c){ var row=document.createElement("tr"), th=document.createElement("th"); th.textContent=c.short; row.appendChild(th); genders.forEach(function(g){ var td=document.createElement("td"), value=paradigms[current.type].table[c.key+"|"+g.key], isTarget=c.key===current.caseKey && g.key===current.genderKey; if (mode === "hint" && isTarget) { td.textContent="???"; td.className="target"; } else td.textContent=displayAnswer(value); if (mode === "correct" && isTarget) td.className="hitCorrect"; if (mode === "missed" && isTarget) td.className="hitMissed"; row.appendChild(td); }); tbody.appendChild(row); }); table.appendChild(tbody); wrap.appendChild(table); setTimeout(function(){ table.classList.add("visible"); },0); }
   function rankName(acc, mistakes, finalStreak) { if (acc===100 && finalStreak>=targetCount()) return "Perfekter Lauf"; if (acc>=95) return "Kasuskommandant"; if (acc>=85) return "Formstabil"; if (acc>=70) return "Auf Kurs"; if (mistakes<=targetCount()/2) return "Wacklig, aber lebendig"; return "Reparaturmodus"; }
   function showResults() {
@@ -26458,7 +26838,9 @@ body.b1Mode main > .startScreen[hidden] {
       };
     });
   };
-window.ozmosisTesterReportSummary=testerReportSummary; window.ozmosisLearnerReadableProgressReport=buildLearnerReadableProgressReport; window.ozmosisBuildSavePayload=buildOzmosisSavePayload; window.ozmosisValidateSavePayload=validateOzmosisSavePayload; window.ozmosisApplyValidatedSave=applyValidatedOzmosisSave; window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }; window.kasusNoArticle=function(){checkAnswer("none");}; window.kasusProceed=function(){proceed();}; window.kasusHint=function(){showHint();}; window.kasusNewRound=function(){showStartScreen();}; window.kasusStartRound=function(){startConfiguredRound();}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusSessionLog=function(){return sessionLog.slice();}; window.kasusCurrent=function(){return current ? cloneQuestion(current) : cloneB1Item(b1Runtime.current || {});}; window.kasusLeitnerDebug=function(){ return { storageKey:LEITNER_STORAGE_KEY, runtime:leitnerRuntime, progress:safeGetLeitner() }; }; window.ozmosisChoiceShuffleDebug=function(item, count){ return b1ChoiceShuffleDebugSummary(item, count); }; window.ozmosisB1Debug=function(){ return { storageKey:B1_STORAGE_KEY, evidenceStorageKey:B1_EVIDENCE_STORAGE_KEY, progressStateLabelVersion:PROGRESS_STATE_LABEL_VERSION, taskDepthSchemaVersion:B1_TASK_DEPTH_SCHEMA_VERSION, taskDepthDefinitions:b1TaskDepthDefinitions(), supportLevelSchemaVersion:B1_SUPPORT_LEVEL_SCHEMA_VERSION, supportLevelDefinitions:b1SupportLevelDefinitions(), itemCount:B1_ITEMS.length, connectorCount:B1_CONNECTOR_ITEMS.length, casesArticlesCount:B1_CASE_ARTICLE_ITEMS.length, redemittelCount:B1_REDEMITTEL_ITEMS.length, wortschatzCount:B1_WORTSCHATZ_ITEMS.length, b1M02Count:B1_M02_ITEMS.length, b1M03Count:B1_M03_ITEMS.length, b1M04Count:B1_M04_ITEMS.length, b1M05Count:B1_M05_ITEMS.length, registry:b1RegistrySummary(), runtime:b1Runtime, progress:safeGetB1Progress(), evidence:b1EvidenceSummary(), supportLevelSummary:b1SupportLevelSummaryForRecords(safeGetB1Evidence().records), learningMap:b1LearningMapScaffold(), skillMatrix:b1SkillMatrixData(), skillMatrixSummary:debugSkillMatrixSummary(), recommendation:b1NextRecommendedPractice(), recommendationSummary:debugRecommendationSummary(), learnerReadableProgressReport:buildLearnerReadableProgressReport(), errorPatterns:b1ErrorPatternSignals(), errorPatternSummary:debugErrorPatternSummary(), errorTypeSummaries:b1ErrorTypeSummaries(), errorTypeSummary:debugErrorTypeSummary(), connectorDiagnostics:b1ConnectorDiagnosticCards(), connectorDiagnosticSummary:debugConnectorDiagnosticSummary(), diagnosticRepairQa:b1DiagnosticRepairQaSummary(), diagnosticRepairStability:b1DiagnosticRepairStabilitySummary(), durabilityReadiness:buildB1DurabilityReadinessSnapshot(), durabilityQa:buildB1DurabilityQaAudit(), reviewSystemStability:buildB1ReviewSystemStabilityAudit(), reviewEligibility:buildB1ReviewEligibility(), reviewCandidatePreview:buildB1ReviewCandidatePreview(), metadataReviewCoverage:buildB1MetadataReviewCoverageAudit(), b1CoverageAudit:buildB1CoverageAudit(), repairCandidates:b1WeaknessRepairCandidates(), repairCandidateSummary:debugWeaknessRepairSummary(), repairQueues:b1BuildWeaknessRepairQueue(), repairQueueSummary:b1RepairQueueDebugSummary(), diagnosticPlan:b1Runtime.diagnosticPlan, qaStageItemById:b1QaStageItemById, qaRepairPreview:b1QaRepairPreview, choiceShuffle:b1ChoiceShuffleDebugSummary(), debugSnapshot:buildDebugSnapshot }; }; window.ozmosisStartB1Round=function(mode){ startB1Round(mode || "mixed"); }; window.ozmosisStartDiagnostic=function(){ startB1DiagnosticSprint(); }; window.ozmosisStartConnector=function(family){ startConnectorSprint(family || "all"); }; window.ozmosisStartRepairTransformation=function(filter){ startRepairTransformationRound(filter || "mixed"); }; window.ozmosisStartCasesArticles=function(filter){ startCasesArticlesRound(filter || "mixed"); }; window.ozmosisStartRedemittel=function(filter){ startRedemittelRound(filter || "mixed"); }; window.ozmosisStartWortschatz=function(filter){ startWortschatzRound(filter || "mixed"); }; window.ozmosisStartB1M01=function(filter){ startB1M01Round(filter || "mixed"); }; window.ozmosisStartB1M02=function(filter){ startB1M02Round(filter || "mixed"); }; window.ozmosisStartB1M03=function(filter){ startB1M03Round(filter || "mixed"); }; window.ozmosisStartB1M04=function(filter){ startB1M04Round(filter || "mixed"); }; window.ozmosisStartB1M05=function(filter){ startB1M05Round(filter || "mixed"); }; window.ozmosisStartTargetedRepair=function(queueId){ startTargetedRepairPractice(queueId || ""); }; window.ozmosisStartReviewPractice=function(){ startB1ReviewPractice(); }; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusResetBest=function(){ highScore=0; bestStreakAll=0; savePersistent(); if (state === "results") showResults(); else renderHud(); }; window.kasusResetProfile=function(){ resetLearnerModel(); }; window.kasusToggleMenu=function(){ var panel=el("settingsPanel"); panel.classList.toggle("open"); document.body.classList.toggle("menuOpen", panel.classList.contains("open")); };
+window.ozmosisTesterReportSummary=testerReportSummary; window.ozmosisLearnerReadableProgressReport=buildLearnerReadableProgressReport; window.ozmosisBuildSavePayload=buildOzmosisSavePayload; window.ozmosisValidateSavePayload=validateOzmosisSavePayload; window.ozmosisApplyValidatedSave=applyValidatedOzmosisSave; window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }; window.kasusNoArticle=function(){checkAnswer("none");}; window.kasusProceed=function(){proceed();}; window.kasusHint=function(){showHint();}; window.kasusNewRound=function(){showStartScreen();}; window.kasusStartRound=function(){startConfiguredRound();}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusSessionLog=function(){return sessionLog.slice();}; window.kasusCurrent=function(){return current ? cloneQuestion(current) : cloneB1Item(b1Runtime.current || {});}; window.kasusLeitnerDebug=function(){ return { storageKey:LEITNER_STORAGE_KEY, runtime:leitnerRuntime, progress:safeGetLeitner() }; }; window.ozmosisChoiceShuffleDebug=function(item, count){ return b1ChoiceShuffleDebugSummary(item, count); }; window.ozmosisB1Debug=function(){ return { storageKey:B1_STORAGE_KEY, evidenceStorageKey:B1_EVIDENCE_STORAGE_KEY, progressStateLabelVersion:PROGRESS_STATE_LABEL_VERSION, taskDepthSchemaVersion:B1_TASK_DEPTH_SCHEMA_VERSION, taskDepthDefinitions:b1TaskDepthDefinitions(), supportLevelSchemaVersion:B1_SUPPORT_LEVEL_SCHEMA_VERSION, supportLevelDefinitions:b1SupportLevelDefinitions(), displaySchemaAudit:b1DisplaySchemaAudit({includeReviewQueue:false}), itemCount:B1_ITEMS.length, connectorCount:B1_CONNECTOR_ITEMS.length, casesArticlesCount:B1_CASE_ARTICLE_ITEMS.length, redemittelCount:B1_REDEMITTEL_ITEMS.length, wortschatzCount:B1_WORTSCHATZ_ITEMS.length, b1M02Count:B1_M02_ITEMS.length, b1M03Count:B1_M03_ITEMS.length, b1M04Count:B1_M04_ITEMS.length, b1M05Count:B1_M05_ITEMS.length, registry:b1RegistrySummary(), runtime:b1Runtime, progress:safeGetB1Progress(), evidence:b1EvidenceSummary(), supportLevelSummary:b1SupportLevelSummaryForRecords(safeGetB1Evidence().records), learningMap:b1LearningMapScaffold(), skillMatrix:b1SkillMatrixData(), skillMatrixSummary:debugSkillMatrixSummary(), recommendation:b1NextRecommendedPractice(), recommendationSummary:debugRecommendationSummary(), learnerReadableProgressReport:buildLearnerReadableProgressReport(), errorPatterns:b1ErrorPatternSignals(), errorPatternSummary:debugErrorPatternSummary(), errorTypeSummaries:b1ErrorTypeSummaries(), errorTypeSummary:debugErrorTypeSummary(), connectorDiagnostics:b1ConnectorDiagnosticCards(), connectorDiagnosticSummary:debugConnectorDiagnosticSummary(), diagnosticRepairQa:b1DiagnosticRepairQaSummary(), diagnosticRepairStability:b1DiagnosticRepairStabilitySummary(), durabilityReadiness:buildB1DurabilityReadinessSnapshot(), durabilityQa:buildB1DurabilityQaAudit(), reviewSystemStability:buildB1ReviewSystemStabilityAudit(), reviewEligibility:buildB1ReviewEligibility(), reviewCandidatePreview:buildB1ReviewCandidatePreview(), metadataReviewCoverage:buildB1MetadataReviewCoverageAudit(), b1CoverageAudit:buildB1CoverageAudit(), repairCandidates:b1WeaknessRepairCandidates(), repairCandidateSummary:debugWeaknessRepairSummary(), repairQueues:b1BuildWeaknessRepairQueue(), repairQueueSummary:b1RepairQueueDebugSummary(), diagnosticPlan:b1Runtime.diagnosticPlan, qaStageItemById:b1QaStageItemById, qaRepairPreview:b1QaRepairPreview, choiceShuffle:b1ChoiceShuffleDebugSummary(), debugSnapshot:buildDebugSnapshot }; }; window.ozmosisStartB1Round=function(mode){ startB1Round(mode || "mixed"); }; window.ozmosisStartDiagnostic=function(){ startB1DiagnosticSprint(); }; window.ozmosisStartConnector=function(family){ startConnectorSprint(family || "all"); }; window.ozmosisStartRepairTransformation=function(filter){ startRepairTransformationRound(filter || "mixed"); }; window.ozmosisStartCasesArticles=function(filter){ startCasesArticlesRound(filter || "mixed"); }; window.ozmosisStartRedemittel=function(filter){ startRedemittelRound(filter || "mixed"); }; window.ozmosisStartWortschatz=function(filter){ startWortschatzRound(filter || "mixed"); }; window.ozmosisStartB1M01=function(filter){ startB1M01Round(filter || "mixed"); }; window.ozmosisStartB1M02=function(filter){ startB1M02Round(filter || "mixed"); }; window.ozmosisStartB1M03=function(filter){ startB1M03Round(filter || "mixed"); }; window.ozmosisStartB1M04=function(filter){ startB1M04Round(filter || "mixed"); }; window.ozmosisStartB1M05=function(filter){ startB1M05Round(filter || "mixed"); }; window.ozmosisStartTargetedRepair=function(queueId){ startTargetedRepairPractice(queueId || ""); }; window.ozmosisStartReviewPractice=function(){ startB1ReviewPractice(); }; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusResetBest=function(){ highScore=0; bestStreakAll=0; savePersistent(); if (state === "results") showResults(); else renderHud(); }; window.kasusResetProfile=function(){ resetLearnerModel(); }; window.kasusToggleMenu=function(){ var panel=el("settingsPanel"); panel.classList.toggle("open"); document.body.classList.toggle("menuOpen", panel.classList.contains("open")); };
+  window.ozmosisVersionInfo=function(){ return { appVersion:OZMOSIS_APP_VERSION, exportVersion:OZMOSIS_EXPORT_VERSION }; };
+  window.ozmosisDisplaySchemaAudit=function(options){ return b1DisplaySchemaAudit(options || {includeReviewQueue:true}); };
   window.ozmosisStartPrepositions=function(filter){ startPrepositionsRound(filter || "mixed"); };
   window.ozmosisStartWordOrder=function(filter){ startWordOrderRound(filter || "mixed"); };
   var ozmosisB1DebugBase = window.ozmosisB1Debug;

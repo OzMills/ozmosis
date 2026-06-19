@@ -8,6 +8,8 @@ Git is the saved history of changes. Commit messages are useful, but they are no
 
 Future runs must add to this file, not replace it.
 
+This is the only changelog moving forward. Do not create standalone `CHANGELOG-v*.txt` files unless the user explicitly asks for a historical export.
+
 ## Append / Update Policy
 
 - Preserve existing content.
@@ -33,16 +35,30 @@ Future runs must add to this file, not replace it.
 
 Current state is based only on current repo files.
 
-- Current app version in `index.html`: `v0.85 - Repair / Transformation Completion Pass`
-- Current export version in `index.html`: `v0.85-repair-transformation-completion`
-- Current README: `README-v0_85.md`
-- Current changelog: `CHANGELOG-v0_85.txt`
-- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.md`
-- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.md`
-- Current QA report: `docs/qa/v0.85_repair_transformation_completion.md`
+- Current app version in `index.html`: `v0.85.1 - Prompt/Cue Schema Migration and Learner-Facing Cleanup`
+- Current export version in `index.html`: `v0.85.1-prompt-cue-schema-cleanup`
+- Current README: `README.md`
+- Current changelog: `CHANGELOG-FULL-OZMOSIS.txt`
+- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.1.md`
+- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.1.md`
+- Current QA report: `docs/qa/v0.85.1_prompt_cue_schema_migration.md`
 - Next required patch documented in current files: `v0.86 - Production Completion Pass`
 
 No live deployment status is claimed here.
+
+## v0.85.1 - Prompt/Cue Schema Migration and Learner-Facing Cleanup
+
+- Added a display-safe prompt/cue/hint resolver for B1 practice rendering.
+- Added `content/b1-display-schema.js` with repeated display defaults while preserving source/provenance/audit metadata on content rows.
+- Stopped learner-facing prompts from rendering source labels such as backtick-delimited contrast labels, `show vs find`, `Kurs vs Unterricht`, and similar internal/audit labels.
+- Made meaning-choice cues visible before answer through the existing support area where the visible prompt would otherwise be under-contextualised.
+- Kept unresolved display-risk rows out of normal learner-facing practice through existing eligibility/display safeguards and recorded them in `docs/qa/v0.85.1_prompt_cue_review_queue.csv`.
+- Cleaned production-card prompt rendering so source prompt scaffolding is not shown as the main task prompt.
+- Added debug/QA display-schema audit output without dumping the full review queue into the default Dev Tools snapshot.
+- Verified browser/runtime rendered prompt leaks are `0` after the display resolver.
+- Preserved scoring, evidence semantics, star earning, Star Threshold Overlay semantics, localStorage keys, Export Save / Import Save compatibility, Today's B1 Sprint composition, Diagnostic Sprint composition, B1-only active scope, and GitHub Pages compatibility.
+- Did not implement Production Completion Pass, Redemittel Completion Pass, Wortschatz Completion Pass, Satzi, B2/CAT18 activation, genitive expansion, adjective-ending expansion, dependencies, backend, build step, runtime AI, or runtime German generation.
+- Added QA documentation at `docs/qa/v0.85.1_prompt_cue_schema_migration.md`.
 
 ## v0.85 - Repair / Transformation Completion Pass
 
@@ -1774,3 +1790,147 @@ No matching official versioned changelog files for those earlier versions are pr
 - Current repo references `docs/qa/v0.80.14.14_progress_summary_cache_latency_hotfix.md`, but that file is missing.
 - `docs/qa/v0.80.14.15_star_threshold_overlay.md` says the Leitner prototype still has a simpler three-colour rating display while visible star colours were updated; this is recorded as a known limitation, not a contradiction.
 - The local history includes a v0.80.14.16 commit that also introduced v0.80.14.15 docs.
+
+## Root Standalone Changelog Consolidation - 2026-06-19
+
+The root `CHANGELOG-v*.txt` files listed here were consolidated into this master changelog and removed from the repo root. Future changelog entries should be added directly to `CHANGELOG-FULL-OZMOSIS.txt`.
+
+### Consolidated from `CHANGELOG-v0_85.txt`
+
+# Ozmosis v0.85 - Repair / Transformation Completion Pass
+
+- Added a focused Grammar hub `Repair & Transformation` route covering repair and short controlled transformation practice across Cases & Articles, Prepositions, Word Order, and Connectors.
+- Renamed the existing connector-only repair access to `Connector Repair` so it remains available without being confused with the mixed route.
+- Added 14 original B1-safe v0.85 items:
+  - 2 Cases & Articles controlled form transformations.
+  - 2 Prepositions authored variable-error repairs.
+  - 2 Word Order authored variable-error repairs.
+  - 2 Word Order controlled sentence transformations.
+  - 2 Connector authored variable-error repairs.
+  - 4 Connector controlled sentence transformations.
+- Kept the v0.85 variable-error expansion within the required maximum of 6 new items.
+- Reused the existing edit-prefill and variable-error repair architecture; no runtime German generation was added.
+- Added transformation detection, typed answer mode, feedback, route selection, recommendation route targeting, and evidence mapping as additive runtime support.
+- Kept repair evidence distinct from recognition, cloze, contrast, diagnostic, and production evidence.
+- Kept transformation evidence distinct from production evidence.
+- Kept all new v0.85 items out of Today's B1 Sprint and Diagnostic Sprint.
+- Preserved Learning Map, Skill Matrix, Suggested Next Practice conservatism, B1 Path/star semantics, scoring, storage keys, save/export/import compatibility, B1-only active scope, and GitHub Pages compatibility.
+- Did not implement Production Completion Pass, Redemittel Completion Pass, Wortschatz Completion Pass, Satzi, B2/CAT18 activation, genitive expansion, adjective-ending expansion, dependencies, backend, build step, runtime AI, or runtime German generation.
+- Added QA documentation at `docs/qa/v0.85_repair_transformation_completion.md`.
+
+### Consolidated from `CHANGELOG-v0_84_1.txt`
+
+# Ozmosis v0.84.1 - Cases & Articles Repair Editing Pilot
+
+- Audited all 16 Cases & Articles multiple-choice items for answer-elimination risk.
+- Classified the audit as 4 high-risk, 10 medium-risk, and 2 low-risk multiple-choice items.
+- Documented high-risk multiple-choice items for later repair/edit or tighter form-choice work without rewriting them in this patch.
+- Added explicit edit-prefill metadata to selected Cases & Articles repair items.
+- Added 3 pre-authored variable-error repair pilot items for Cases & Articles.
+- Added field-driven repair edit mode so only explicitly marked repair items pre-fill a flawed sentence for editing.
+- Added deterministic variable-error selection from authored error slots only.
+- Added additive evidence metadata for edit-prefill repair attempts and active variable-error slots.
+- Verified unchanged flawed prefill is marked incorrect and corrected edit-prefill answers are marked correct.
+- Verified variable-error repairs can render different authored flawed versions across seeds, mark unchanged flawed prompts incorrect, and mark corrected answers correct.
+- Verified one normal Cases & Articles multiple-choice item still records ordinary evidence.
+- Verified the existing Connector route still opens and the v0.84 connector baseline remains intact.
+- Verified Home, Learning Map, Settings, Dev Tools, and route transitions remain isolated.
+- Verified Export Save, Import Save, save payload creation, and save validation remain reachable.
+- Verified responsive smoke at 320x568, 390x844, 430x932, and 1365x599 browser window targets.
+- Verified Arabic UI smoke keeps German repair prompt/input surfaces LTR/readable.
+- Preserved scoring, star logic, storage keys, save/export/import compatibility, Today's B1 Sprint composition, Diagnostic Sprint composition, Learning Map, Skill Matrix, B1-only active scope, and GitHub Pages compatibility.
+- Did not implement v0.85, the full Repair / Transformation Completion Pass, Production Completion Pass, Satzi, B2/CAT18 activation, genitive expansion, adjective-ending expansion, dependencies, backend, build step, runtime AI, or runtime German generation.
+- Added QA documentation at `docs/qa/v0.84.1_cases_articles_repair_editing_pilot.md`.
+
+### Consolidated from `CHANGELOG-v0_84.txt`
+
+# Ozmosis v0.84 - Connectors Completion Pass
+
+- Expanded the existing B1 Connector route bank in `content/b1-connectors.js` from 120 to 144 items.
+- Added 24 original B1-safe connector items across reason, contrast, purpose/result, time, sequence/addition/alternative, and condition families.
+- Added focused B1-safe coverage for `aber`, `sodass`, `dann`, `danach`, `außerdem`, `oder`, and `falls`.
+- Added or normalised connector metadata for connector target, connector family, clause type, word-order target, meaning function, target IDs, review groups, contrast groups, and support/evidence mapping.
+- Updated Grammar hub connector copy, B1.14 connector labels, and connector skill tags so the existing route reflects the expanded coverage.
+- Preserved the existing Connector Sprint route instead of creating a duplicate route.
+- Kept v0.84 connector items out of Today's B1 Sprint and Diagnostic Sprint.
+- Verified a real Connector item can be opened, answered correctly, recorded as `connectors` evidence, and updated with confidence without duplicate evidence.
+- Verified a wrong Connector repair item writes one `connectors` evidence record and shows feedback.
+- Verified Home, Learning Map, Settings, Dev Tools, and the Connector route remain route-isolated.
+- Verified Export Save, Import Save, save payload creation, and save validation remain reachable.
+- Verified responsive smoke at 320x568, 390x844, 430x932, 768x1024, 1365x599, and 1440x900 browser window targets.
+- Verified Arabic UI smoke keeps German connector prompt/input/choice surfaces LTR/readable.
+- Preserved scoring, star logic, storage keys, save/export/import compatibility, Case Trainer, Today's B1 Sprint composition, Diagnostic Sprint composition, Learning Map, Skill Matrix, B1-only active scope, and GitHub Pages compatibility.
+- Did not implement Repair / Transformation Completion Pass, Production Completion Pass, Satzi, B2/CAT18 activation, genitive expansion, adjective-ending expansion, dependencies, backend, build step, runtime AI, or runtime German generation.
+- Added QA documentation at `docs/qa/v0.84_connectors_completion.md`.
+
+### Consolidated from `CHANGELOG-v0_83.txt`
+
+# Ozmosis v0.83 - Word Order Completion Pass
+
+- Added a focused B1 Word Order content bank at `content/b1-word-order.js`.
+- Added 36 original B1-safe items across recognition, sentence-build, repair, and contrast task depths.
+- Covered main-clause V2, separable-verb sentence brackets, modal brackets, perfect tense brackets, subordinate verb-final order, fronted subordinate clauses, question order, negation position, and basic TeKaMoLo order.
+- Added a `Word Order` route from the menu and Grammar hub.
+- Mapped word-order evidence to the existing Learning Map / Skill Matrix word-order node and added word-order debug counts.
+- Added exact Suggested Next Practice routing to the Word Order route where current evidence targets the word-order node.
+- Kept the new topical route out of Today's B1 Sprint and Diagnostic Sprint.
+- Verified one real Word Order item can be opened, answered correctly, corrected, recorded as `word_order` evidence, and updated with confidence.
+- Verified a wrong Word Order answer writes one `word_order` evidence record and shows feedback.
+- Verified Learning Map, Settings, Dev Tools, Home, and Case Trainer setup remain route-isolated after Word Order practice.
+- Verified Export Save, Import Save, import input, save payload creation, and save validation remain reachable.
+- Verified responsive smoke at 320x568, 390x844, 430x932, 768x1024, 1365x599, and 1440x900 browser window targets.
+- Verified Arabic UI smoke keeps German Word Order prompt/input surfaces LTR/readable.
+- Preserved German-learning content outside the new Word Order bank, scoring, star logic, storage keys, save/export/import compatibility, Case Trainer, Today's B1 Sprint composition, Learning Map, Skill Matrix, B1-only active scope, and GitHub Pages compatibility.
+- Did not implement Connectors Completion Pass, Repair / Transformation Completion Pass, Production Completion Pass, Satzi, B2/CAT18 activation, Genitive expansion, adjective-ending expansion, dependencies, backend, build step, runtime AI, or runtime German generation.
+- Added QA documentation at `docs/qa/v0.83_word_order_completion.md`.
+
+### Consolidated from `CHANGELOG-v0_82_1.txt`
+
+# Ozmosis v0.82.1 - Prepositions Browser Acceptance Gate
+
+- Accepted the v0.82 Prepositions route with a file-based headless Edge browser gate after the local HTTP Edge dump path hung in this environment.
+- Verified the Prepositions route opens from the Grammar hub and enters B1 practice mode with `b1_prepositions_*` items.
+- Completed one real Prepositions item through answer submission, feedback display, confidence selection, and evidence persistence.
+- Verified the evidence record uses the `prepositions` bank and confidence updates the same record rather than creating duplicate evidence.
+- Verified mixed and repair Prepositions filters can surface prepositions items.
+- Verified Home, Learning Map, Settings, Dev Tools, and Case Trainer setup remain route-isolated after Prepositions practice.
+- Verified Export Save, Import Save, import input, and save validation remain reachable.
+- Verified responsive smoke at requested 430x932, 390x844, 320x568, and 1365x599 browser window targets.
+- Verified Arabic UI smoke keeps German learner prompt/input/choice surfaces LTR/readable.
+- Preserved runtime metadata at `v0.82 - Prepositions Completion Pass` and `v0.82-prepositions-completion` because no runtime fix was required.
+- Updated the feature register, roadmap, source brief, AGENTS handoff, and master changelog so `v0.83 - Word Order Completion Pass` is the next allowed implementation patch.
+- Preserved German-learning content, scoring, star logic, storage keys, save/export/import compatibility, Case Trainer, Today’s B1 Sprint composition, Learning Map, Skill Matrix, route composition, B1-only active scope, and GitHub Pages compatibility.
+- Did not implement Word Order, Connectors, Satzi, B2/CAT18 activation, Genitive expansion, adjective-ending expansion, dependencies, backend, build step, runtime AI, or runtime German generation.
+- Added QA documentation at `docs/qa/v0.82.1_prepositions_browser_acceptance.md`.
+
+### Consolidated from `CHANGELOG-v0_82.txt`
+
+## v0.82 - Prepositions Completion Pass
+
+- Added a focused B1 Prepositions content bank at `content/b1-prepositions.js`.
+- Added 92 original B1-safe items across recognition, typed cloze, repair, and contrast task depths.
+- Covered fixed dative prepositions (`mit`, `bei`, `nach`, `von`, `zu`, `aus`, `seit`), fixed accusative prepositions (`für`, `ohne`, `durch`, `gegen`, `um`), two-way prepositions (`in`, `an`, `auf`, `unter`, `über`, `vor`, `hinter`, `neben`, `zwischen`), and temporal phrases (`am`, `um`, `im`, `seit`, `ab`, `vor`, `nach`, `bis`).
+- Added a `Prepositions` route from the menu and Grammar hub while preserving route isolation source wiring.
+- Mapped preposition evidence to the existing Learning Map / Skill Matrix prepositions node and added prepositions to debug/content-bank counts.
+- Kept the new topical route out of Today's B1 Sprint and Diagnostic Sprint.
+- Preserved scoring, star earning, Star Threshold Overlay semantics, localStorage keys, Export Save / Import Save, import validation, Case Trainer, B1-only active scope, and GitHub Pages compatibility.
+- Did not implement Word Order Completion Pass, Connectors Completion Pass, Satzi, B2/CAT18 activation, Genitive normal-route expansion, adjective-ending expansion, dependencies, backend, build step, runtime AI, or dynamic German generation.
+- Added QA documentation at `docs/qa/v0.82_prepositions_completion.md`.
+- Browser acceptance remains pending because local Edge/CDP and in-app browser validation were blocked in this environment.
+
+### Consolidated from `CHANGELOG-v0_81_1.txt`
+
+## v0.81.1 - Cases & Articles Acceptance / Phase 2.5 Readiness
+
+- Accepted the v0.81 Cases & Articles route after Edge/CDP browser automation completed one real route item through feedback, confidence, and evidence writing.
+- Verified Cases & Articles remains a separate B1 practice route and does not replace Case Trainer.
+- Verified route isolation across Home, Learning Map, Settings, Dev Tools, Case Trainer, and Cases & Articles route transitions.
+- Verified Export Save, Import Save, and import validation remain reachable in Settings/Data.
+- Verified responsive route smoke at 320x568, 390x844, 430x932, 768x1024, 1365x599, and 1440x900.
+- Verified Arabic UI smoke keeps German prompt/input direction LTR.
+- Added Phase 2.5 normalisation addendum v0.2 at `docs/planning/ozmosis_phase2_5_full_b1_normalisation_addendum_v0_2.md`.
+- Added B1-01 extension survival audit at `docs/qa/v0.81.1_b1_01_extension_survival_audit.md` with status `SURVIVED_WITH_METADATA_GAPS`.
+- Updated feature register and roadmap handoff so `v0.82 - Prepositions Completion Pass` is the next implementation patch.
+- Preserved v0.81 runtime app/export metadata because no runtime behaviour changed.
+- Preserved scoring, star semantics, localStorage keys, Export Save / Import Save payload compatibility, Today's B1 Sprint composition, Case Trainer, B1-only active scope, content banks, and GitHub Pages compatibility.
+- Did not implement prepositions, word order, connectors, Satzi, B2/CAT18 activation, Genitive expansion, dependencies, backend, build step, runtime AI, or runtime German generation.
