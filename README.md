@@ -9,22 +9,23 @@ Future README updates should be made in this file. Do not create new `README-v*.
 
 ## Current App
 
-# Ozmosis v0.85.2 - Practice Screen Template Alignment Pass
+# Ozmosis v0.85.3 - Practice UI Reality and Completion Pass
 
 Ozmosis is a static, local-first German learning app. The deployed app remains `index.html`.
 
-v0.85.2 aligns the live B1 practice screen with the supplied ScreenConcept templates for choice, cloze, hint, and correction states.
+v0.85.3 completes the active B1 practice-screen UI recovery after the v0.85.2 alignment attempt did not match the supplied ScreenConcept references in live screenshots.
 
-- App version: `v0.85.2 - Practice Screen Template Alignment Pass`
-- Export version: `v0.85.2-practice-screen-template-alignment`
+- App version: `v0.85.3 - Practice UI Reality and Completion Pass`
+- Export version: `v0.85.3-practice-ui-completion`
 
 ## What changed
 
-- Added B1 practice-surface and visual-state hooks for the live renderer.
-- Aligned choice, cloze, hint, success, fail, and correction edit surfaces with the supplied 430x932 ScreenConcept references.
-- Removed learner-facing `Cue:` and `Hint:` prefixes from the B1 support/hint surface while preserving the display schema.
-- Kept German prompts, choices, input, correction text, support, and production support LTR under Arabic UI.
-- Added a local Edge/CDP capture harness for the 11 required template states and generated comparison output.
+- Removed the large centred active-practice Ozmosis title and replaced it with a compact ScreenConcept-style header.
+- Hid the pre-answer task star/status strip from the main task area; post-answer star feedback remains inside the compact feedback block.
+- Moved active B1 task content higher and tightened choice, cloze, correction, hint, feedback, confidence, and HUD spacing.
+- Made inline cloze inputs slimmer and more sentence-integrated.
+- Changed B1 reveal-hint affordances to the smaller `Teach me` secondary action.
+- Added v0.85.3 Edge/CDP geometry, screenshot, comparison, responsive, route, Arabic/LTR, export/import, and focus QA outputs.
 - Preserved scoring, evidence semantics, confidence values, star logic, storage keys, save/export/import compatibility, Today's B1 Sprint composition, Diagnostic Sprint composition, B1-only active scope, and GitHub Pages compatibility.
 
 ## What did not change
@@ -39,13 +40,14 @@ v0.85.2 aligns the live B1 practice screen with the supplied ScreenConcept templ
 ## Current docs
 
 - Changelog: `CHANGELOG-FULL-OZMOSIS.txt`
-- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.2.md`
-- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.2.md`
-- QA report: `docs/qa/v0.85.2_practice_screen_template_alignment.md`
-- Screenshot comparison: `docs/qa/screenshots/v0.85.2-practice-screen-template-alignment/comparison.html`
+- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.md`
+- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.md`
+- QA report: `docs/qa/v0.85.3_practice_ui_reality_completion.md`
+- Screenshot comparison: `docs/qa/screenshots/v0.85.3-practice-ui-completion/comparison.html`
+- ScreenConcept measurements: `docs/qa/screenshots/v0.85.3-practice-ui-completion/screenconcept_measurements.json`
 - Review queue: `docs/qa/v0.85.1_prompt_cue_review_queue.csv`
 
-Next planned patch: `v0.86 - Production Completion Pass`.
+Next planned patch: `v0.85.4 - Completion Gate Harness`.
 
 ## Historical README Archive
 

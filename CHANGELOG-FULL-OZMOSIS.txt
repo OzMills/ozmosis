@@ -35,16 +35,37 @@ This is the only changelog moving forward. Do not create standalone `CHANGELOG-v
 
 Current state is based only on current repo files.
 
-- Current app version in `index.html`: `v0.85.2 - Practice Screen Template Alignment Pass`
-- Current export version in `index.html`: `v0.85.2-practice-screen-template-alignment`
+- Current app version in `index.html`: `v0.85.3 - Practice UI Reality and Completion Pass`
+- Current export version in `index.html`: `v0.85.3-practice-ui-completion`
 - Current README: `README.md`
 - Current changelog: `CHANGELOG-FULL-OZMOSIS.txt`
-- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.2.md`
-- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.2.md`
-- Current QA report: `docs/qa/v0.85.2_practice_screen_template_alignment.md`
-- Next required patch documented in current files: `v0.86 - Production Completion Pass`
+- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.md`
+- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.md`
+- Current QA report: `docs/qa/v0.85.3_practice_ui_reality_completion.md`
+- Next required patch documented in current files: `v0.85.4 - Completion Gate Harness`
 
 No live deployment status is claimed here.
+
+## v0.85.3 - Practice UI Reality and Completion Pass
+
+- Treated v0.85.2 as an attempted practice-screen alignment, not accepted final UI proof, because user screenshot comparison showed the old active-practice shell persisted.
+- Used `_development-files/ScreenConcepts/*.svg` as the primary 430x932 layout source and PNGs as visual confirmation.
+- Recorded ScreenConcept measurement evidence at `docs/qa/screenshots/v0.85.3-practice-ui-completion/screenconcept_measurements.json`.
+- Removed the large centred active-practice Ozmosis title from B1 practice screens and replaced it with a compact ScreenConcept-style wordmark/header treatment.
+- Hid the pre-answer B1 task star/status strip from above the question; compact post-answer star feedback remains in the existing feedback block.
+- Moved active B1 task content higher and tightened choice, cloze, correction, hint, fail, success, confidence, and HUD spacing.
+- Made inline cloze inputs slimmer and more sentence-integrated.
+- Changed B1 reveal-hint affordances to the smaller `Teach me` secondary action where a hint exists.
+- Added `_development-files/v0853_practice_ui_capture.cjs`, `_development-files/v0853_practice_ui_geometry_gate.cjs`, and `_development-files/v0853_static_gate.cjs`.
+- Generated actual screenshots for ChoiceDefault, ChoiceTeachMeHint, ChoiceFail, ChoiceSuccess, ClozeDefault, ClozeTyping, ClozeFail, ClozeSuccess, CorrectionDefaultFilled, CorrectionFail, and CorrectionSuccess under `docs/qa/screenshots/v0.85.3-practice-ui-completion/actual/`.
+- Added side-by-side comparison output at `docs/qa/screenshots/v0.85.3-practice-ui-completion/comparison.html` and a generated contact sheet at `docs/qa/screenshots/v0.85.3-practice-ui-completion/comparison-contact-sheet.png`.
+- Passed the v0.85.3 geometry gate at 430x932 with checks for compact wordmark, absent pre-answer star strip, high task start, choice dimensions, slim cloze input, compact feedback, confidence reachability, and HUD non-overlap.
+- Passed responsive smoke at 320x568, 390x844, 430x932, 768x1024, 1365x599, and 1440x900.
+- Passed route smoke for Home, Today's B1 Sprint, Diagnostic Sprint, Grammar / Repair & Transformation, Connectors, Wortschatz, Redemittel, Case Trainer, Learning Map, Options, Dev Tools, and Tester Notes / Known Bugs.
+- Passed Arabic/LTR, keyboard/focus, and export/import smoke checks in the v0.85.3 capture harness.
+- Preserved scoring, evidence semantics, confidence values, support/task-depth semantics, star earning, Star Threshold Overlay semantics, localStorage keys, save/export/import compatibility, Today's B1 Sprint composition, Diagnostic Sprint composition, content banks, B1-only active scope, and GitHub Pages compatibility.
+- Did not implement Production Completion Pass, Redemittel Completion Pass, Wortschatz Completion Pass, Satzi, B2/CAT18 activation, genitive expansion, adjective-ending expansion, dependencies, backend, build step, runtime AI, or runtime German generation.
+- Added QA documentation at `docs/qa/v0.85.3_practice_ui_reality_completion.md`.
 
 ## v0.85.2 - Practice Screen Template Alignment Pass
 

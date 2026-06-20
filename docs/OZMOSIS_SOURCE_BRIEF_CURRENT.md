@@ -160,11 +160,11 @@ Deferred features must not be forgotten or implemented early:
 
 ## 11. Current Baseline
 
-Current runtime baseline: `v0.85 - Repair / Transformation Completion Pass`.
+Current runtime baseline: `v0.85.3 - Practice UI Reality and Completion Pass`.
 
-Current acceptance status: v0.85 Repair / Transformation Completion Pass passed static parse, scoped coverage checks, headless Edge/CDP route smoke, route isolation, save-control visibility, responsive checks, and Arabic/LTR smoke while preserving storage, scoring, save/import, route isolation, and B1-only scope.
+Current acceptance status: v0.85.3 passed static parse, 430x932 ScreenConcept geometry checks, 11-state Edge/CDP screenshot capture, responsive smoke, route smoke, Arabic/LTR smoke, keyboard/focus smoke, and export/import smoke while preserving storage, scoring, save/import, route isolation, content banks, and B1-only scope.
 
-Next required patch: `v0.86 - Production Completion Pass`.
+Next required patch: `v0.85.4 - Completion Gate Harness`.
 
 Current planning handoff:
 
@@ -175,4 +175,8 @@ Current planning handoff:
 - Connectors Completion Pass has been implemented and accepted as v0.84.
 - Cases & Articles Repair Editing Pilot has been implemented and accepted as v0.84.1.
 - Repair / Transformation Completion Pass has been implemented as v0.85.
-- Production Completion Pass is allowed next as v0.86.
+- Prompt/Cue Schema Migration and Learner-Facing Cleanup has been implemented as v0.85.1.
+- Practice Screen Template Alignment Pass was attempted as v0.85.2.
+- Practice UI Reality and Completion Pass has been implemented and accepted as v0.85.3.
+- Completion Gate Harness is next as v0.85.4.
+- Production Completion Pass remains blocked until v0.85.11 reports `READY_FOR_V0.86`.

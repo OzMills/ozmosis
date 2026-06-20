@@ -2,11 +2,11 @@
 
 ## 1. Current Baseline
 
-Current runtime baseline: `v0.85 - Repair / Transformation Completion Pass`.
+Current runtime baseline: `v0.85.3 - Practice UI Reality and Completion Pass`.
 
-Current acceptance status: v0.85 Repair / Transformation Completion Pass passed static parse, scoped coverage checks, headless Edge/CDP route smoke, route isolation, save-control visibility, responsive checks, and Arabic/LTR smoke while preserving scoring, storage keys, save/export/import, route isolation, and B1-only scope.
+Current acceptance status: v0.85.3 passed static parse, 430x932 ScreenConcept geometry checks, 11-state Edge/CDP screenshot capture, responsive smoke, route smoke, Arabic/LTR smoke, keyboard/focus smoke, and export/import smoke while preserving scoring, storage keys, save/export/import, route isolation, content banks, and B1-only scope.
 
-Next required patch: `v0.86 - Production Completion Pass`.
+Next required patch: `v0.85.4 - Completion Gate Harness`.
 
 ## 2. Completed Foundation
 
@@ -40,7 +40,18 @@ This summary is not a replacement for `CHANGELOG-FULL-OZMOSIS.txt`.
 - `v0.84` - Connectors Completion Pass
 - `v0.84.1` - Cases & Articles Repair Editing Pilot
 - `v0.85` - Repair / Transformation Completion Pass
-- `v0.86` - Production Completion Pass
+- `v0.85.1` - Prompt/Cue Schema Migration and Learner-Facing Cleanup
+- `v0.85.2` - Practice Screen Template Alignment Pass
+- `v0.85.3` - Practice UI Reality and Completion Pass
+- `v0.85.4` - Completion Gate Harness
+- `v0.85.5` - Runtime Display Contract Lock
+- `v0.85.6` - Source Cleanup Batch 1: Internal Labels and Meaning Cues
+- `v0.85.7` - Source Cleanup Batch 2: Under-Contextualised Clozes
+- `v0.85.8` - Feedback Cleanup: Contrast Notes and Micro-rules
+- `v0.85.9` - Metadata Manifest Migration
+- `v0.85.10` - Review Queue Resolution Pass
+- `v0.85.11` - Final Regression and Live Readiness Gate
+- `v0.86` - Production Completion Pass, blocked until v0.85.11 reports `READY_FOR_V0.86`
 - `v0.87` - Redemittel Completion Pass
 - `v0.88` - Wortschatz + Content QA Batch
 - `v0.89` - B1 Coverage Stabilisation + Review Coverage Readiness
@@ -87,7 +98,9 @@ Stop if the hub fails.
 - Connectors Completion Pass is complete and accepted as v0.84.
 - Cases & Articles Repair Editing Pilot is complete and accepted as v0.84.1.
 - Repair / Transformation Completion Pass is complete as v0.85.
-- Production Completion Pass is the next allowed implementation patch.
+- Practice UI Reality and Completion Pass is complete as v0.85.3.
+- Completion Gate Harness is the next allowed implementation patch as v0.85.4.
+- Production Completion Pass is blocked until v0.85.11 reports `READY_FOR_V0.86`.
 - Weakness repair must wait until Skill Matrix and task-depth evidence are stable.
 - Durability/spaced review must wait until enough reviewable B1 coverage exists.
 - External Review must wait until production cards and save/import are stable.
