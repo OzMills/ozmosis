@@ -2,11 +2,11 @@
 
 ## 1. Current Baseline
 
-Current runtime baseline: `v0.85.3 - Practice UI Reality and Completion Pass`.
+Current runtime baseline: `v0.85.3.2 - Strict Layout Geometry Fix Pass`.
 
-Current acceptance status: v0.85.3.1 strict proof gate rejected the v0.85.3 runtime as a content-ratchet baseline. The old giant active-practice title is gone and the pre-answer star/status strip is absent in measured question states, but strict ScreenConcept geometry still fails for choice width, Teach me placement, cloze prompt/input placement, cloze input width, correction input width, and measured post-answer feedback/confidence width.
+Current acceptance status: v0.85.3.2 strict layout geometry gate accepted the active-practice UI as the current strict geometry baseline. The old giant active-practice title remains gone, the pre-answer star/status strip remains absent in measured question states, and the v0.85.3.1 strict geometry misses for choice, Teach me, cloze, correction, feedback, and confidence surfaces are fixed.
 
-Next required patch: `v0.85.3.2 - Header / Task Hierarchy / Star-Strip Removal Pass`.
+Next required patch: `v0.85.3.3 - Cloze Integration Pass`.
 
 ## 2. Completed Foundation
 
@@ -44,7 +44,8 @@ This summary is not a replacement for `CHANGELOG-FULL-OZMOSIS.txt`.
 - `v0.85.2` - Practice Screen Template Alignment Pass
 - `v0.85.3` - Practice UI Reality and Completion Pass
 - `v0.85.3.1` - Strict UI Proof and Screenshot Recovery Gate
-- `v0.85.3.2` - Header / Task Hierarchy / Star-Strip Removal Pass
+- `v0.85.3.2` - Strict Layout Geometry Fix Pass
+- `v0.85.3.3` - Cloze Integration Pass
 - `v0.85.4` - Completion Gate Harness
 - `v0.85.5` - Runtime Display Contract Lock
 - `v0.85.6` - Source Cleanup Batch 1: Internal Labels and Meaning Cues
@@ -100,9 +101,10 @@ Stop if the hub fails.
 - Connectors Completion Pass is complete and accepted as v0.84.
 - Cases & Articles Repair Editing Pilot is complete and accepted as v0.84.1.
 - Repair / Transformation Completion Pass is complete as v0.85.
-- Practice UI Reality and Completion Pass reached runtime v0.85.3, but strict proof gate v0.85.3.1 did not accept it for the content ratchet.
-- Header / Task Hierarchy / Star-Strip Removal Pass is the next allowed implementation patch as v0.85.3.2.
-- Completion Gate Harness is blocked until v0.85.3.2 passes the strict UI proof gate.
+- Practice UI Reality and Completion Pass reached runtime v0.85.3, and strict proof gate v0.85.3.1 did not accept it for the content ratchet.
+- Strict Layout Geometry Fix Pass is implemented and accepted as v0.85.3.2.
+- Cloze Integration Pass is the next allowed implementation patch as v0.85.3.3.
+- Completion Gate Harness is blocked until v0.85.3.3 is handled or explicitly deferred.
 - Production Completion Pass is blocked until v0.85.11 reports `READY_FOR_V0.86`.
 - Weakness repair must wait until Skill Matrix and task-depth evidence are stable.
 - Durability/spaced review must wait until enough reviewable B1 coverage exists.

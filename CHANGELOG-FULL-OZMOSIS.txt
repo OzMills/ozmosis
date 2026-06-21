@@ -35,17 +35,41 @@ This is the only changelog moving forward. Do not create standalone `CHANGELOG-v
 
 Current state is based only on current repo files.
 
-- Current app version in `index.html`: `v0.85.3 - Practice UI Reality and Completion Pass`
-- Current export version in `index.html`: `v0.85.3-practice-ui-completion`
+- Current app version in `index.html`: `v0.85.3.2 - Strict Layout Geometry Fix Pass`
+- Current export version in `index.html`: `v0.85.3.2-strict-layout-geometry`
 - Current README: `README.md`
 - Current changelog: `CHANGELOG-FULL-OZMOSIS.txt`
-- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.md`
-- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.md`
-- Current QA report: `docs/qa/v0.85.3.1_strict_ui_proof_gate.md`
-- Current strict UI gate result: `UI_NOT_ACCEPTED_NEEDS_V0.85.3.2`
-- Next required patch documented in current files: `v0.85.3.2 - Header / Task Hierarchy / Star-Strip Removal Pass`
+- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.2.md`
+- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.2.md`
+- Current QA report: `docs/qa/v0.85.3.2_strict_layout_geometry_fix.md`
+- Current strict UI gate result: `STRICT_GEOMETRY_ACCEPTED`
+- Next required patch documented in current files: `v0.85.3.3 - Cloze Integration Pass`
 
 No live deployment status is claimed here.
+
+## v0.85.3.2 - Strict Layout Geometry Fix Pass
+
+- Fixed the strict ScreenConcept layout geometry failures documented by the v0.85.3.1 proof gate.
+- Brought choice, correction, feedback, and confidence surfaces to the strict `378px` content lane at `430x932`.
+- Repositioned the `Teach me` secondary action to the strict reference position.
+- Moved the typed cloze prompt/input to the strict reference y-position.
+- Set the typed cloze input to the strict reference width where safe.
+- Preserved the removed old giant active-practice title.
+- Preserved the absence of the pre-answer star/status strip during measured question states.
+- Preserved post-answer result/star feedback.
+- Added `_development-files/v08532_static_gate.cjs`, `_development-files/v08532_practice_ui_geometry_gate.cjs`, and `_development-files/v08532_practice_ui_capture.cjs`.
+- Generated fresh actual screenshots and comparison artefacts under `docs/qa/screenshots/v0.85.3.2-strict-layout-geometry/`.
+- Created `docs/qa/screenshots/v0.85.3.2-strict-layout-geometry/comparison.html`, `comparison-contact-sheet.png`, `screenconcept-measurements.json`, and `geometry-results.json`.
+- Created `docs/qa/v0.85.3.2_strict_layout_geometry_fix.md` and `docs/qa/v0.85.3.2_strict_layout_geometry_results.json`.
+- Passed the v0.85.3.2 static gate, strict geometry gate, and capture gate.
+- Passed `38` strict geometry checks with `0` failed checks.
+- Generated `17` screenshots.
+- Passed responsive smoke at `320x568`, `390x844`, `430x932`, `768x1024`, `1365x599`, and `1440x900`.
+- Passed Arabic/LTR, keyboard/focus, and export/import smoke in the v0.85.3.2 capture harness.
+- Set the gate decision to `STRICT_GEOMETRY_ACCEPTED`.
+- Updated the runtime to `v0.85.3.2 - Strict Layout Geometry Fix Pass` and export version to `v0.85.3.2-strict-layout-geometry`.
+- Set the next planned patch to `v0.85.3.3 - Cloze Integration Pass`.
+- Preserved scoring, evidence semantics, confidence values, star earning logic, storage keys, save/export/import compatibility, route composition, content banks, B1-only scope, and GitHub Pages compatibility.
 
 ## v0.85.3.1 - Strict UI Proof and Screenshot Recovery Gate
 

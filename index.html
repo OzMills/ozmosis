@@ -10004,6 +10004,101 @@ body.b1Mode .bottomHud .statValue {
   }
 }
 
+/* v0.85.3.2: strict ScreenConcept geometry correction. */
+body.b1Mode {
+  --practice-x:6px;
+  --practice-choice-h:42px;
+  --practice-choice-gap:2px;
+}
+
+body.b1Mode .content {
+  padding:var(--practice-content-y) var(--practice-x) 0 !important;
+}
+
+body.b1Mode .connectorChoiceGrid,
+body.b1Mode #actionGrid,
+body.b1Mode #answerInput,
+body.b1Mode .feedback,
+body.b1Mode .correctionBlock.visible,
+body.b1Mode .b1ConfidenceRow,
+body.b1Mode #nextBtn.visible,
+body.b1Mode .productionGrid {
+  max-width:378px !important;
+}
+
+body.b1Mode .connectorChoiceGrid {
+  margin-top:10px !important;
+  gap:var(--practice-choice-gap) !important;
+}
+
+body.b1Mode .connectorChoiceGrid button {
+  min-height:var(--practice-choice-h) !important;
+  padding-top:7px !important;
+  padding-bottom:7px !important;
+}
+
+body.b1Mode[data-b1-surface="choice"] .answerArea {
+  gap:0 !important;
+}
+
+body.b1Mode[data-b1-surface="choice"] #hintBtn:not([hidden]) {
+  margin-top:36px !important;
+}
+
+body.b1Mode.b1TypedCloze .content {
+  padding-top:73px !important;
+}
+
+body.b1Mode.b1TypedCloze .promptWord,
+body.b1Mode.b1TypedCloze .promptWord.clozePrompt {
+  max-width:378px !important;
+  min-height:58px !important;
+  text-align:center !important;
+}
+
+body.b1Mode.b1TypedCloze .promptWord .taskInstruction {
+  display:none !important;
+}
+
+body.b1Mode .inlineClozeInput,
+body.b1Mode.b1TypedCloze .inlineClozeInput {
+  width:258px !important;
+  min-width:258px !important;
+  max-width:258px !important;
+  box-sizing:border-box !important;
+}
+
+body.b1Mode[data-b1-surface="correction"] #answerInput {
+  width:100% !important;
+  max-width:378px !important;
+  box-sizing:border-box !important;
+}
+
+body.b1Mode .correctionBlock.visible,
+body.b1Mode .b1ConfidenceRow {
+  width:100% !important;
+  box-sizing:border-box !important;
+}
+
+@media (max-width:360px), (max-height:620px) {
+  body.b1Mode {
+    --practice-x:6px;
+    --practice-choice-h:42px;
+    --practice-choice-gap:3px;
+  }
+
+  body.b1Mode.b1TypedCloze .content {
+    padding-top:68px !important;
+  }
+
+  body.b1Mode .inlineClozeInput,
+  body.b1Mode.b1TypedCloze .inlineClozeInput {
+    width:min(258px, 84vw) !important;
+    min-width:min(258px, 84vw) !important;
+    max-width:min(258px, 84vw) !important;
+  }
+}
+
 </style>
 </head>
 <body class="booting" data-mode="definite">
@@ -10991,8 +11086,8 @@ body.b1Mode .bottomHud .statValue {
   var B1_PATH_UNLOCK_STORAGE_KEY = "ozmosis_b1_path_unlock_overrides_v1";
   var B1_REVIEW_EDIT_QUEUE_STORAGE_KEY = "ozmosis_b1_review_edit_queue_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.85.3 - Practice UI Reality and Completion Pass";
-  var OZMOSIS_EXPORT_VERSION = "v0.85.3-practice-ui-completion";
+  var OZMOSIS_APP_VERSION = "v0.85.3.2 - Strict Layout Geometry Fix Pass";
+  var OZMOSIS_EXPORT_VERSION = "v0.85.3.2-strict-layout-geometry";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
