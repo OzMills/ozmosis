@@ -162,9 +162,9 @@ Deferred features must not be forgotten or implemented early:
 
 Current runtime baseline: `v0.85.3 - Practice UI Reality and Completion Pass`.
 
-Current acceptance status: v0.85.3 passed static parse, 430x932 ScreenConcept geometry checks, 11-state Edge/CDP screenshot capture, responsive smoke, route smoke, Arabic/LTR smoke, keyboard/focus smoke, and export/import smoke while preserving storage, scoring, save/import, route isolation, content banks, and B1-only scope.
+Current acceptance status: v0.85.3.1 strict proof gate rejected the v0.85.3 runtime as a content-ratchet baseline. The old giant active-practice title is gone and the pre-answer star/status strip is absent in measured question states, but strict ScreenConcept geometry still fails for choice width, Teach me placement, cloze prompt/input placement, cloze input width, correction input width, and measured post-answer feedback/confidence width.
 
-Next required patch: `v0.85.4 - Completion Gate Harness`.
+Next required patch: `v0.85.3.2 - Header / Task Hierarchy / Star-Strip Removal Pass`.
 
 Current planning handoff:
 
@@ -177,6 +177,8 @@ Current planning handoff:
 - Repair / Transformation Completion Pass has been implemented as v0.85.
 - Prompt/Cue Schema Migration and Learner-Facing Cleanup has been implemented as v0.85.1.
 - Practice Screen Template Alignment Pass was attempted as v0.85.2.
-- Practice UI Reality and Completion Pass has been implemented and accepted as v0.85.3.
-- Completion Gate Harness is next as v0.85.4.
+- Practice UI Reality and Completion Pass reached runtime v0.85.3.
+- Strict UI Proof and Screenshot Recovery Gate v0.85.3.1 did not accept the current practice UI for the content ratchet.
+- Header / Task Hierarchy / Star-Strip Removal Pass is next as v0.85.3.2.
+- Completion Gate Harness v0.85.4 is blocked until v0.85.3.2 passes the strict UI proof gate.
 - Production Completion Pass remains blocked until v0.85.11 reports `READY_FOR_V0.86`.

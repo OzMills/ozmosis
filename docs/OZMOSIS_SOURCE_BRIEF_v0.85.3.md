@@ -45,6 +45,33 @@ The patch is deliberately limited:
 - Made B1 reveal hints use the smaller `Teach me` secondary action.
 - Added v0.85.3 static, geometry, and capture harnesses.
 
+## v0.85.3.1 Strict Proof Addendum
+
+v0.85.3.1 did not change runtime UI. It reran the v0.85.3 runtime through a stricter ScreenConcept proof gate.
+
+Gate decision:
+
+`UI_NOT_ACCEPTED_NEEDS_V0.85.3.2`
+
+Accepted evidence:
+
+- the old giant active-practice title is gone in the measured state;
+- the pre-answer star/status strip is absent in measured question states;
+- strict screenshot recovery artefacts exist under `docs/qa/screenshots/v0.85.3.1-strict-ui-proof/`.
+
+Blocking evidence:
+
+- choice button width misses the strict ScreenConcept target;
+- `Teach me` sits too low against the reference;
+- cloze prompt/input placement is too low;
+- cloze input width is too narrow;
+- correction textarea width misses the reference input style;
+- measured post-answer feedback/confidence width misses the strict reference.
+
+The next patch is therefore:
+
+`v0.85.3.2 - Header / Task Hierarchy / Star-Strip Removal Pass`
+
 ## Guardrails Preserved
 
 - Static browser app.
@@ -60,8 +87,8 @@ The patch is deliberately limited:
 
 ## Handoff
 
-`practice_ui_reality_completion` is complete for this focused pass.
+`practice_ui_reality_completion` reached runtime v0.85.3, but v0.85.3.1 did not accept it as the strict content-ratchet baseline.
 
-Next planned patch: `v0.85.4 - Completion Gate Harness`.
+Next planned patch: `v0.85.3.2 - Header / Task Hierarchy / Star-Strip Removal Pass`.
 
-Do not implement v0.85.5, v0.86, Production Completion Pass, source cleanup, schema ratchet work, Satzi, B2/CAT18 activation, or broader completion work before v0.85.4 is accepted.
+Do not implement v0.85.4, v0.85.5, v0.86, Production Completion Pass, source cleanup, schema ratchet work, Satzi, B2/CAT18 activation, or broader completion work before v0.85.3.2 passes the strict UI proof gate.

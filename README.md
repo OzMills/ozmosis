@@ -9,17 +9,24 @@ Future README updates should be made in this file. Do not create new `README-v*.
 
 ## Current App
 
-# Ozmosis v0.85.3 - Practice UI Reality and Completion Pass
+# Ozmosis v0.85.3 runtime / v0.85.3.1 strict UI proof gate
 
 Ozmosis is a static, local-first German learning app. The deployed app remains `index.html`.
 
-v0.85.3 completes the active B1 practice-screen UI recovery after the v0.85.2 alignment attempt did not match the supplied ScreenConcept references in live screenshots.
+The runtime remains v0.85.3. The v0.85.3.1 strict proof gate rechecked that runtime against the supplied ScreenConcept references and did not accept it as the content-ratchet baseline.
 
 - App version: `v0.85.3 - Practice UI Reality and Completion Pass`
 - Export version: `v0.85.3-practice-ui-completion`
+- Current gate result: `UI_NOT_ACCEPTED_NEEDS_V0.85.3.2`
 
 ## What changed
 
+- Added a strict v0.85.3.1 UI proof and screenshot recovery gate without changing runtime UI.
+- Recovered fresh actual screenshots and comparison artefacts under `docs/qa/screenshots/v0.85.3.1-strict-ui-proof/`.
+- Confirmed the old giant active-practice shell title is gone.
+- Confirmed the pre-answer star/status strip is absent in measured question states.
+- Rejected the current UI for the content ratchet because choice, cloze, correction, feedback, and confidence geometry still miss the strict ScreenConcept target.
+- Blocked v0.85.4 until `v0.85.3.2 - Header / Task Hierarchy / Star-Strip Removal Pass` passes.
 - Removed the large centred active-practice Ozmosis title and replaced it with a compact ScreenConcept-style header.
 - Hid the pre-answer task star/status strip from the main task area; post-answer star feedback remains inside the compact feedback block.
 - Moved active B1 task content higher and tightened choice, cloze, correction, hint, feedback, confidence, and HUD spacing.
@@ -30,6 +37,8 @@ v0.85.3 completes the active B1 practice-screen UI recovery after the v0.85.2 al
 
 ## What did not change
 
+- No runtime UI fix was implemented in v0.85.3.1.
+- No app version/export version bump was made because this was a proof gate over the existing v0.85.3 runtime.
 - No Production Completion Pass was implemented.
 - No Redemittel Completion Pass was implemented.
 - No Wortschatz Completion Pass was implemented.
@@ -42,12 +51,14 @@ v0.85.3 completes the active B1 practice-screen UI recovery after the v0.85.2 al
 - Changelog: `CHANGELOG-FULL-OZMOSIS.txt`
 - Source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.md`
 - Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.md`
-- QA report: `docs/qa/v0.85.3_practice_ui_reality_completion.md`
-- Screenshot comparison: `docs/qa/screenshots/v0.85.3-practice-ui-completion/comparison.html`
-- ScreenConcept measurements: `docs/qa/screenshots/v0.85.3-practice-ui-completion/screenconcept_measurements.json`
+- Current QA gate: `docs/qa/v0.85.3.1_strict_ui_proof_gate.md`
+- Current gate result JSON: `docs/qa/v0.85.3.1_strict_ui_proof_gate_results.json`
+- Strict screenshot comparison: `docs/qa/screenshots/v0.85.3.1-strict-ui-proof/comparison.html`
+- Strict ScreenConcept measurements: `docs/qa/screenshots/v0.85.3.1-strict-ui-proof/screenconcept-measurements.json`
+- Previous v0.85.3 QA report: `docs/qa/v0.85.3_practice_ui_reality_completion.md`
 - Review queue: `docs/qa/v0.85.1_prompt_cue_review_queue.csv`
 
-Next planned patch: `v0.85.4 - Completion Gate Harness`.
+Next planned patch: `v0.85.3.2 - Header / Task Hierarchy / Star-Strip Removal Pass`.
 
 ## Historical README Archive
 

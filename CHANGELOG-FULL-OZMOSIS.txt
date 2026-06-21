@@ -41,10 +41,27 @@ Current state is based only on current repo files.
 - Current changelog: `CHANGELOG-FULL-OZMOSIS.txt`
 - Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.md`
 - Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.md`
-- Current QA report: `docs/qa/v0.85.3_practice_ui_reality_completion.md`
-- Next required patch documented in current files: `v0.85.4 - Completion Gate Harness`
+- Current QA report: `docs/qa/v0.85.3.1_strict_ui_proof_gate.md`
+- Current strict UI gate result: `UI_NOT_ACCEPTED_NEEDS_V0.85.3.2`
+- Next required patch documented in current files: `v0.85.3.2 - Header / Task Hierarchy / Star-Strip Removal Pass`
 
 No live deployment status is claimed here.
+
+## v0.85.3.1 - Strict UI Proof and Screenshot Recovery Gate
+
+- Ran a strict ScreenConcept proof gate against the existing `v0.85.3 - Practice UI Reality and Completion Pass` runtime without changing runtime UI.
+- Verified the current app/export versions remained `v0.85.3 - Practice UI Reality and Completion Pass` and `v0.85.3-practice-ui-completion`.
+- Verified required ScreenConcept PNG/SVG pairs for choice, hint, cloze, and correction states.
+- Added `_development-files/v08531_static_gate.cjs`, `_development-files/v08531_strict_ui_geometry_gate.cjs`, and `_development-files/v08531_strict_ui_capture.cjs`.
+- Recovered fresh actual screenshots and comparison artefacts under `docs/qa/screenshots/v0.85.3.1-strict-ui-proof/`.
+- Created `docs/qa/screenshots/v0.85.3.1-strict-ui-proof/comparison.html`, `comparison-contact-sheet.png`, `screenconcept-measurements.json`, and `geometry-results.json`.
+- Created `docs/qa/v0.85.3.1_strict_ui_proof_gate.md` and `docs/qa/v0.85.3.1_strict_ui_proof_gate_results.json`.
+- Confirmed the old giant centred active-practice Ozmosis title is gone in the measured state.
+- Confirmed the pre-answer star/status strip is absent in measured pre-answer question states.
+- Rejected the UI for the content ratchet because strict ScreenConcept geometry still fails on choice width, Teach me vertical placement, cloze prompt/input placement, cloze input width, correction textarea width, and measured post-answer feedback/confidence width.
+- Set the gate decision to `UI_NOT_ACCEPTED_NEEDS_V0.85.3.2`.
+- Blocked `v0.85.4 - Completion Gate Harness` until `v0.85.3.2 - Header / Task Hierarchy / Star-Strip Removal Pass` passes.
+- Did not change scoring, evidence semantics, confidence values, star logic, storage keys, save/export/import compatibility, route composition, content banks, B1-only scope, or runtime UI.
 
 ## v0.85.3 - Practice UI Reality and Completion Pass
 
