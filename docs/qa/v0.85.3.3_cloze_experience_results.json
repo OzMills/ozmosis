@@ -1,0 +1,117 @@
+{
+  "patch": "v0.85.3.3",
+  "title": "Cloze Experience and Representative Fixture Pass",
+  "startingVersionVerified": true,
+  "screenConceptsFound": true,
+  "v08532BaselineRead": true,
+  "runtimeFilesChanged": [
+    "index.html"
+  ],
+  "docsChanged": [
+    "README.md",
+    "CHANGELOG-FULL-OZMOSIS.txt",
+    "AGENTS.md",
+    "docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.3.md",
+    "docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.3.md",
+    "docs/OZMOSIS_SOURCE_BRIEF_CURRENT.md",
+    "docs/OZMOSIS_DEVELOPMENT_ROADMAP_CURRENT.md",
+    "docs/OZMOSIS_FEATURE_REGISTER_CURRENT.md",
+    "docs/qa/v0.85.3.3_cloze_experience_fixture_pass.md",
+    "docs/qa/v0.85.3.3_cloze_experience_results.json",
+    "docs/qa/screenshots/v0.85.3.3-cloze-experience/"
+  ],
+  "qaFixturesUsed": [
+    {
+      "key": "shortInline",
+      "prompt_de": "Welche ___ soll ich mitbringen?",
+      "answer": "Unterlagen",
+      "policy": "QA-only browser fixture"
+    },
+    {
+      "key": "withCue",
+      "prompt_de": "Ich lerne Deutsch auf ___.",
+      "cue": "Sie nennen Ihr Sprachniveau.",
+      "answer": "B1-Niveau",
+      "policy": "QA-only browser fixture"
+    },
+    {
+      "key": "longWrap",
+      "prompt_de": "Ich möchte den Termin auf ___ verschieben.",
+      "answer": "nächsten Montag",
+      "policy": "QA-only browser fixture"
+    }
+  ],
+  "normalContentChanged": false,
+  "geometryChecks": {
+    "shortInlineClozeAccepted": true,
+    "withCueClozeAccepted": true,
+    "longWrapClozeAccepted": true,
+    "typingStateAccepted": true,
+    "failStateAccepted": true,
+    "successStateAccepted": true,
+    "choiceRegression": false,
+    "correctionRegression": false
+  },
+  "measuredGeometry": {
+    "shortInline": {
+      "clozeSentence": { "x": 26, "y": 110, "width": 378, "height": 61.6 },
+      "clozeInput": { "x": 120.7, "y": 110, "width": 164, "height": 34, "baselineOffset": 0 }
+    },
+    "withCue": {
+      "clozeSentence": { "x": 26, "y": 110, "width": 378, "height": 61.6 },
+      "clozeInput": { "x": 145.8, "y": 136.2, "width": 126, "height": 34, "baselineOffset": 26.2 },
+      "cueBlock": { "x": 94.3, "y": 180.6, "width": 241.5, "height": 16 }
+    },
+    "longWrap": {
+      "clozeSentence": { "x": 26, "y": 110, "width": 378, "height": 91.8 },
+      "clozeInput": { "x": 106, "y": 138.2, "width": 218, "height": 34, "baselineOffset": 28.2 }
+    },
+    "failState": {
+      "feedbackPanel": { "x": 26, "y": 241.2, "width": 378, "height": 105.3 },
+      "confidenceRow": { "x": 26, "y": 364.5, "width": 378, "height": 44 }
+    },
+    "successState": {
+      "feedbackPanel": { "x": 26, "y": 241.2, "width": 378, "height": 109.5 },
+      "confidenceRow": { "x": 26, "y": 368.6, "width": 378, "height": 44 }
+    }
+  },
+  "artefactDurability": {
+    "screenshotsPath": "docs/qa/screenshots/v0.85.3.3-cloze-experience/",
+    "gitignoreChecked": true,
+    "artefactsTrackable": true
+  },
+  "screenshotsGenerated": {
+    "count": 11,
+    "states": [
+      "ClozeDefaultShortInline",
+      "ClozeTypingShortInline",
+      "ClozeFailShortInline",
+      "ClozeSuccessShortInline",
+      "ClozeDefaultWithCue",
+      "ClozeTypingWithCue",
+      "ClozeLongWrapDefault",
+      "ClozeLongWrapTyping",
+      "ChoiceDefault",
+      "ChoiceFail",
+      "CorrectionDefaultFilled"
+    ]
+  },
+  "testsRun": {
+    "static": "_development-files/v08533_static_gate.cjs",
+    "geometry": "_development-files/v08533_cloze_geometry_gate.cjs",
+    "capture": "_development-files/v08533_cloze_capture.cjs",
+    "responsive": "320x568, 390x844, 430x932, 768x1024, 1365x599, 1440x900",
+    "arabicLtr": true,
+    "exportImport": true,
+    "keyboardFocus": true
+  },
+  "testsNotRun": [
+    "Manual physical phone capture was not run.",
+    "Live GitHub Pages validation was not run.",
+    "Real mobile virtual-keyboard capture was not run; headless Edge does not expose the phone keyboard."
+  ],
+  "acceptancePassed": true,
+  "clozeExperienceAccepted": true,
+  "finalDecision": "CLOZE_EXPERIENCE_ACCEPTED",
+  "nextPatch": "v0.85.3.4 - Feedback Rhythm Pass"
+}

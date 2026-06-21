@@ -9,21 +9,25 @@ Future README updates should be made in this file. Do not create new `README-v*.
 
 ## Current App
 
-# Ozmosis v0.85.3.2 strict layout geometry baseline
+# Ozmosis v0.85.3.3 cloze experience baseline
 
 Ozmosis is a static, local-first German learning app. The deployed app remains `index.html`.
 
-v0.85.3.2 fixes the strict ScreenConcept geometry failures found by the v0.85.3.1 proof gate and accepts the active-practice layout as the current strict geometry baseline.
+v0.85.3.3 proves the active-practice cloze surface with representative B1 sentence fixtures instead of the artificial `Niveau ___.` proof shape.
 
-- App version: `v0.85.3.2 - Strict Layout Geometry Fix Pass`
-- Export version: `v0.85.3.2-strict-layout-geometry`
-- Current gate result: `STRICT_GEOMETRY_ACCEPTED`
+- App version: `v0.85.3.3 - Cloze Experience and Representative Fixture Pass`
+- Export version: `v0.85.3.3-cloze-experience-fixtures`
+- Current gate result: `CLOZE_EXPERIENCE_ACCEPTED`
 
 ## What changed
 
-- Fixed the v0.85.3.1 strict ScreenConcept geometry failures for choice width, Teach me position, cloze prompt/input position, cloze input width, correction input width, feedback width, and confidence width.
-- Generated fresh actual screenshots and comparison artefacts under `docs/qa/screenshots/v0.85.3.2-strict-layout-geometry/`.
-- Accepted the strict geometry gate with `38` checks run and `0` failed checks.
+- Proved a short inline cloze: `Welche ___ soll ich mitbringen?`.
+- Proved an under-contextualised cloze with visible cue: `Ich lerne Deutsch auf ___.`
+- Proved a longer wrapping cloze: `Ich möchte den Termin auf ___ verschieben.`
+- Generated fresh actual screenshots and comparison artefacts under `docs/qa/screenshots/v0.85.3.3-cloze-experience/`.
+- Accepted the cloze geometry gate with `50` checks run and `0` failed checks.
+- Made cloze blank width answer-aware instead of forcing every blank to `258px`.
+- Removed the hidden instruction line break that was pushing typed cloze sentences down.
 - Confirmed the old giant active-practice shell title remains gone.
 - Confirmed the pre-answer star/status strip remains absent in measured question states.
 - Kept post-answer result/star feedback allowed inside feedback.
@@ -41,23 +45,24 @@ v0.85.3.2 fixes the strict ScreenConcept geometry failures found by the v0.85.3.
 - No Redemittel Completion Pass was implemented.
 - No Wortschatz Completion Pass was implemented.
 - No broad content-bank rewrite was performed.
+- No normal practice content was changed; the new cloze fixtures are QA-only.
 - No task answers, scoring semantics, star earning rules, storage keys, save/export/import format, Today's B1 Sprint composition, or Diagnostic Sprint composition changed.
 - No Satzi, B2/CAT18 activation, genitive expansion, adjective-ending expansion, broad generator, backend, framework, build step, package manager, dependency, API, analytics, account system, runtime AI, or runtime German generation was added.
 
 ## Current docs
 
 - Changelog: `CHANGELOG-FULL-OZMOSIS.txt`
-- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.2.md`
-- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.2.md`
-- Current QA gate: `docs/qa/v0.85.3.2_strict_layout_geometry_fix.md`
-- Current gate result JSON: `docs/qa/v0.85.3.2_strict_layout_geometry_results.json`
-- Strict screenshot comparison: `docs/qa/screenshots/v0.85.3.2-strict-layout-geometry/comparison.html`
-- Strict ScreenConcept measurements: `docs/qa/screenshots/v0.85.3.2-strict-layout-geometry/screenconcept-measurements.json`
+- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.3.md`
+- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.3.md`
+- Current QA gate: `docs/qa/v0.85.3.3_cloze_experience_fixture_pass.md`
+- Current gate result JSON: `docs/qa/v0.85.3.3_cloze_experience_results.json`
+- Strict screenshot comparison: `docs/qa/screenshots/v0.85.3.3-cloze-experience/comparison.html`
+- Strict ScreenConcept measurements: `docs/qa/screenshots/v0.85.3.3-cloze-experience/screenconcept-measurements.json`
 - Previous v0.85.3 QA report: `docs/qa/v0.85.3_practice_ui_reality_completion.md`
 - Previous v0.85.3.1 proof gate: `docs/qa/v0.85.3.1_strict_ui_proof_gate.md`
 - Review queue: `docs/qa/v0.85.1_prompt_cue_review_queue.csv`
 
-Next planned patch: `v0.85.3.3 - Cloze Integration Pass`.
+Next planned patch: `v0.85.3.4 - Feedback Rhythm Pass`.
 
 ## Historical README Archive
 

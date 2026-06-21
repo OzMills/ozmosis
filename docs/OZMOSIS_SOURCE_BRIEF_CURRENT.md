@@ -160,11 +160,11 @@ Deferred features must not be forgotten or implemented early:
 
 ## 11. Current Baseline
 
-Current runtime baseline: `v0.85.3.2 - Strict Layout Geometry Fix Pass`.
+Current runtime baseline: `v0.85.3.3 - Cloze Experience and Representative Fixture Pass`.
 
-Current acceptance status: v0.85.3.2 strict layout geometry gate accepted the active-practice UI as the current strict geometry baseline. The old giant active-practice title remains gone, the pre-answer star/status strip remains absent in measured question states, and the v0.85.3.1 strict geometry misses for choice, Teach me, cloze, correction, feedback, and confidence surfaces are fixed.
+Current acceptance status: v0.85.3.3 accepted the cloze experience using representative QA-only B1 sentence fixtures. The old giant active-practice title remains gone, the pre-answer star/status strip remains absent, answer-aware inline cloze widths are active, cue placement is documented, and normal content banks remain unchanged.
 
-Next required patch: `v0.85.3.3 - Cloze Integration Pass`.
+Next required patch: `v0.85.3.4 - Feedback Rhythm Pass`.
 
 Current planning handoff:
 
@@ -180,6 +180,7 @@ Current planning handoff:
 - Practice UI Reality and Completion Pass reached runtime v0.85.3.
 - Strict UI Proof and Screenshot Recovery Gate v0.85.3.1 did not accept the current practice UI for the content ratchet.
 - Strict Layout Geometry Fix Pass has been implemented and accepted as v0.85.3.2.
-- Cloze Integration Pass is next as v0.85.3.3.
-- Completion Gate Harness v0.85.4 is blocked until v0.85.3.3 is handled or explicitly deferred.
+- Cloze Experience and Representative Fixture Pass has been implemented and accepted as v0.85.3.3.
+- Feedback Rhythm Pass is next as v0.85.3.4.
+- Completion Gate Harness v0.85.4 is blocked until v0.85.3.4 is handled or explicitly deferred.
 - Production Completion Pass remains blocked until v0.85.11 reports `READY_FOR_V0.86`.

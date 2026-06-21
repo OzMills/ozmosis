@@ -35,17 +35,37 @@ This is the only changelog moving forward. Do not create standalone `CHANGELOG-v
 
 Current state is based only on current repo files.
 
-- Current app version in `index.html`: `v0.85.3.2 - Strict Layout Geometry Fix Pass`
-- Current export version in `index.html`: `v0.85.3.2-strict-layout-geometry`
+- Current app version in `index.html`: `v0.85.3.3 - Cloze Experience and Representative Fixture Pass`
+- Current export version in `index.html`: `v0.85.3.3-cloze-experience-fixtures`
 - Current README: `README.md`
 - Current changelog: `CHANGELOG-FULL-OZMOSIS.txt`
-- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.2.md`
-- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.2.md`
-- Current QA report: `docs/qa/v0.85.3.2_strict_layout_geometry_fix.md`
-- Current strict UI gate result: `STRICT_GEOMETRY_ACCEPTED`
-- Next required patch documented in current files: `v0.85.3.3 - Cloze Integration Pass`
+- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.3.md`
+- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.3.md`
+- Current QA report: `docs/qa/v0.85.3.3_cloze_experience_fixture_pass.md`
+- Current strict UI gate result: `CLOZE_EXPERIENCE_ACCEPTED`
+- Next required patch documented in current files: `v0.85.3.4 - Feedback Rhythm Pass`
 
 No live deployment status is claimed here.
+
+## v0.85.3.3 - Cloze Experience and Representative Fixture Pass
+
+- Proved the cloze surface with representative QA-only B1 sentence fixtures rather than the artificial `Niveau ___.` proof fixture.
+- Added QA-only browser fixtures for `Welche ___ soll ich mitbringen?`, `Ich lerne Deutsch auf ___.`, and `Ich möchte den Termin auf ___ verschieben.`
+- Made typed cloze blank width answer-aware while preserving QA-only exact width overrides.
+- Removed the hidden typed-cloze instruction line break that was pushing sentence content down.
+- Kept the cue below the cloze sentence in the existing secondary support/cue line to preserve the ScreenConcept sentence zone.
+- Generated required screenshots for short inline default/typing/fail/success, cue default/typing, long-wrap default/typing, ChoiceDefault, ChoiceFail, and CorrectionDefaultFilled.
+- Created `docs/qa/screenshots/v0.85.3.3-cloze-experience/comparison.html`, `comparison-contact-sheet.png`, `screenconcept-measurements.json`, and `geometry-results.json`.
+- Added `_development-files/v08533_static_gate.cjs`, `_development-files/v08533_cloze_geometry_gate.cjs`, and `_development-files/v08533_cloze_capture.cjs`.
+- Passed the static gate, cloze geometry gate, and capture gate.
+- Passed `50` cloze geometry checks with `0` failures.
+- Passed responsive smoke at `320x568`, `390x844`, `430x932`, `768x1024`, `1365x599`, and `1440x900`.
+- Passed Arabic/LTR, keyboard/focus, and export/import smoke in the v0.85.3.3 capture harness.
+- Confirmed screenshot artefacts are stored under a trackable `docs/qa/` path.
+- Set the gate decision to `CLOZE_EXPERIENCE_ACCEPTED`.
+- Updated the runtime to `v0.85.3.3 - Cloze Experience and Representative Fixture Pass` and export version to `v0.85.3.3-cloze-experience-fixtures`.
+- Set the next planned patch to `v0.85.3.4 - Feedback Rhythm Pass`.
+- Preserved scoring, evidence semantics, confidence values, star earning logic, storage keys, save/export/import compatibility, route composition, normal content banks, B1-only scope, and GitHub Pages compatibility.
 
 ## v0.85.3.2 - Strict Layout Geometry Fix Pass
 

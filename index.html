@@ -10060,11 +10060,23 @@ body.b1Mode.b1TypedCloze .promptWord .taskInstruction {
   display:none !important;
 }
 
+body.b1Mode.b1TypedCloze .promptWord .taskInstruction + br {
+  display:none !important;
+}
+
 body.b1Mode .inlineClozeInput,
 body.b1Mode.b1TypedCloze .inlineClozeInput {
-  width:258px !important;
-  min-width:258px !important;
-  max-width:258px !important;
+  width:min(var(--clozeWidth, 168px), 84vw, 258px) !important;
+  min-width:min(max(var(--clozeWidth, 128px), 96px), 84vw, 258px) !important;
+  max-width:min(84vw, 258px) !important;
+  box-sizing:border-box !important;
+}
+
+body.b1Mode .clozeAnswerText,
+body.b1Mode.b1TypedCloze .clozeAnswerText {
+  width:min(var(--clozeWidth, 168px), 84vw, 258px) !important;
+  min-width:min(max(var(--clozeWidth, 128px), 96px), 84vw, 258px) !important;
+  max-width:min(84vw, 258px) !important;
   box-sizing:border-box !important;
 }
 
@@ -10093,9 +10105,16 @@ body.b1Mode .b1ConfidenceRow {
 
   body.b1Mode .inlineClozeInput,
   body.b1Mode.b1TypedCloze .inlineClozeInput {
-    width:min(258px, 84vw) !important;
-    min-width:min(258px, 84vw) !important;
-    max-width:min(258px, 84vw) !important;
+    width:min(var(--clozeWidth, 168px), 84vw, 258px) !important;
+    min-width:min(max(var(--clozeWidth, 112px), 88px), 84vw, 258px) !important;
+    max-width:min(84vw, 258px) !important;
+  }
+
+  body.b1Mode .clozeAnswerText,
+  body.b1Mode.b1TypedCloze .clozeAnswerText {
+    width:min(var(--clozeWidth, 168px), 84vw, 258px) !important;
+    min-width:min(max(var(--clozeWidth, 112px), 88px), 84vw, 258px) !important;
+    max-width:min(84vw, 258px) !important;
   }
 }
 
@@ -11086,8 +11105,8 @@ body.b1Mode .b1ConfidenceRow {
   var B1_PATH_UNLOCK_STORAGE_KEY = "ozmosis_b1_path_unlock_overrides_v1";
   var B1_REVIEW_EDIT_QUEUE_STORAGE_KEY = "ozmosis_b1_review_edit_queue_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.85.3.2 - Strict Layout Geometry Fix Pass";
-  var OZMOSIS_EXPORT_VERSION = "v0.85.3.2-strict-layout-geometry";
+  var OZMOSIS_APP_VERSION = "v0.85.3.3 - Cloze Experience and Representative Fixture Pass";
+  var OZMOSIS_EXPORT_VERSION = "v0.85.3.3-cloze-experience-fixtures";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -23811,7 +23830,18 @@ body.b1Mode .b1ConfidenceRow {
     return "typed";
   }
   function b1ClozeWidthStyle(item) {
-    return "--clozeWidth:10ch";
+    var explicit = Number(item && (item.clozeWidthPx || item.qaClozeWidthPx || item._qaClozeWidthPx));
+    if (isFinite(explicit) && explicit > 0) {
+      return "--clozeWidth:" + Math.max(88, Math.min(258, Math.round(explicit))) + "px";
+    }
+    var answer = b1DisplayClean(item && (item.answer || item.correctAnswer || ""));
+    var longestAccepted = Array.isArray(item && item.acceptedAnswers) ? item.acceptedAnswers.reduce(function(longest, value){
+      var text = b1DisplayClean(value);
+      return text.length > longest.length ? text : longest;
+    }, answer) : answer;
+    var length = Math.max(answer.length, longestAccepted.length, 6);
+    var width = Math.round(Math.min(258, Math.max(104, length * 11 + 54)));
+    return "--clozeWidth:" + width + "px";
   }
   function b1NormaliseInlineClozePunctuation(prompt) {
     return String(prompt || "").replace(/___\s+([.,!?;:])/g, "___$1").replace(/\s+([.,!?;:])/g, "$1");
