@@ -35,17 +35,33 @@ This is the only changelog moving forward. Do not create standalone `CHANGELOG-v
 
 Current state is based only on current repo files.
 
-- Current app version in `index.html`: `v0.85.3.6a - Feedback Rhythm Repair and Proof Artefact Fix`
-- Current export version in `index.html`: `v0.85.3.6a-feedback-rhythm-repair`
+- Current app version in `index.html`: `v0.85.3.7 - Correction and Satzbau Surface Pass`
+- Current export version in `index.html`: `v0.85.3.7-correction-satzbau-surface`
 - Current README: `README.md`
 - Current changelog: `CHANGELOG-FULL-OZMOSIS.txt`
-- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.6a.md`
-- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.6a.md`
-- Current QA report: `docs/qa/v0.85.3.6a_feedback_rhythm_repair.md`
-- Current strict UI gate result: `FEEDBACK_RHYTHM_REPAIR_ACCEPTED`
-- Next required patch documented in current files: `v0.85.3.7 - Correction and Satzbau Surface Pass`
+- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.7.md`
+- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.7.md`
+- Current QA report: `docs/qa/v0.85.3.7_correction_satzbau_surface.md`
+- Current strict UI gate result: `CORRECTION_SATZBAU_SURFACE_ACCEPTED`
+- Next required patch documented in current files: `v0.85.3.8 - HUD, Keyboard, and Live Mobile Verification Gate`
 
 No live deployment status is claimed here.
+
+## v0.85.3.7 - Correction and Satzbau Surface Pass
+
+- Implemented the narrow correction/repair and Satzbau/word-order surface pass after the accepted v0.85.3.6a feedback rhythm repair.
+- Added correction-only textarea ownership for full-sentence correction, edit-text repair, and transformation surfaces while keeping cloze, choice, production, and Case Trainer controls on their existing input paths.
+- Preserved answer checking semantics by keeping B1 correction answers routed through the existing `checkB1Answer` path and restoring a normal `#answerInput` for non-correction surfaces.
+- Added a dedicated `satzbau` visual surface for `word_order_cloze` items without changing the underlying typed-cloze evidence or scoring path.
+- Rendered existing Satzbau `learnerCue` word chunks as compact neon chips and kept the answer field visually separate and mobile-readable.
+- Added `scripts/ozmosis-correction-satzbau-surface-check.cjs`.
+- Generated screenshot/contact-sheet evidence under `docs/qa/screenshots/v0.85.3.7-correction-satzbau-surface/`.
+- Verified correction default, filled, long-typing, fail, and success states.
+- Verified Satzbau default, typing, fail, success, and 320px wrap states.
+- Verified choice and cloze non-regression, B1 cases/articles compact article-grid feedback, and Case Trainer article-grid feedback.
+- Verified responsive body-overflow checks, Arabic/LTR smoke, current and recent older export/import validation, and real contact-sheet image loading through Edge/CDP.
+- Preserved v0.85.3.6a feedback rhythm, v0.85.3.5 article-grid integration, scoring, evidence semantics, star earning logic, answer keys, content banks, localStorage keys, export/import format, item selection, and production-card semantics.
+- Set the next planned patch to `v0.85.3.8 - HUD, Keyboard, and Live Mobile Verification Gate`.
 
 ## v0.85.3.6a - Feedback Rhythm Repair and Proof Artefact Fix
 

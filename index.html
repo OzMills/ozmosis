@@ -9487,6 +9487,76 @@ body.b1Mode[data-b1-surface="correction"] #answerInput {
   font-weight:850 !important;
 }
 
+body.b1Mode[data-b1-surface="correction"] textarea#answerInput {
+  min-height:86px !important;
+  max-height:154px !important;
+  padding:11px 12px !important;
+  text-align:left !important;
+  resize:vertical !important;
+  overflow:auto !important;
+  white-space:pre-wrap !important;
+  line-height:1.32 !important;
+}
+
+body.b1Mode[data-b1-surface="correction"][data-b1-state="typing"] textarea#answerInput {
+  min-height:104px !important;
+}
+
+body.b1Mode[data-b1-surface="satzbau"] .promptWord,
+body.b1Mode[data-b1-surface="satzbau"] .promptWord.clozePrompt {
+  max-width:390px !important;
+  font-size:clamp(.9rem,3.8vw,1.08rem) !important;
+  line-height:1.22 !important;
+}
+
+body.b1Mode[data-b1-surface="satzbau"] .satzbauSurface,
+body.b1Mode[data-b1-surface="satzbau"] .satzbauChunkRow,
+body.b1Mode[data-b1-surface="satzbau"] .satzbauAnswerRow {
+  display:flex !important;
+  width:100% !important;
+  box-sizing:border-box !important;
+}
+
+body.b1Mode[data-b1-surface="satzbau"] .satzbauSurface {
+  flex-direction:column !important;
+  align-items:center !important;
+  gap:10px !important;
+  direction:ltr !important;
+  unicode-bidi:isolate !important;
+}
+
+body.b1Mode[data-b1-surface="satzbau"] .satzbauChunkRow {
+  flex-wrap:wrap !important;
+  justify-content:center !important;
+  gap:6px !important;
+}
+
+body.b1Mode[data-b1-surface="satzbau"] .satzbauChunk {
+  display:inline-flex !important;
+  align-items:center !important;
+  min-height:32px !important;
+  padding:5px 9px !important;
+  border:1px solid rgba(125,227,255,.38) !important;
+  border-radius:10px !important;
+  background:rgba(8,20,34,.82) !important;
+  color:#e8fbff !important;
+  font-size:clamp(.78rem,3.2vw,.92rem) !important;
+  font-weight:850 !important;
+  line-height:1.12 !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05) !important;
+}
+
+body.b1Mode[data-b1-surface="satzbau"] .satzbauAnswerRow {
+  justify-content:center !important;
+}
+
+body.b1Mode[data-b1-surface="satzbau"] .inlineClozeInput,
+body.b1Mode[data-b1-surface="satzbau"] .clozeAnswerText {
+  width:min(100%, 360px) !important;
+  max-width:min(88vw, 360px) !important;
+  min-width:min(88vw, 240px) !important;
+}
+
 body.b1Mode .inlineClozeInput,
 body.b1Mode.b1TypedCloze .inlineClozeInput {
   min-width:clamp(78px,25vw,132px) !important;
@@ -10251,6 +10321,20 @@ body.b1Mode.b1TypedCloze .promptWord .taskInstruction {
 }
 
 body.b1Mode.b1TypedCloze .promptWord .taskInstruction + br {
+  display:none !important;
+}
+
+body.b1Mode[data-b1-surface="satzbau"] .promptWord .taskInstruction {
+  display:block !important;
+  margin:0 0 10px !important;
+  color:rgba(140,232,255,.88) !important;
+  font-size:clamp(.72rem,2.8vw,.86rem) !important;
+  font-weight:850 !important;
+  letter-spacing:.08em !important;
+  text-transform:uppercase !important;
+}
+
+body.b1Mode[data-b1-surface="satzbau"] .promptWord .taskInstruction + br {
   display:none !important;
 }
 
@@ -11295,8 +11379,8 @@ body.b1Mode .b1ConfidenceRow {
   var B1_PATH_UNLOCK_STORAGE_KEY = "ozmosis_b1_path_unlock_overrides_v1";
   var B1_REVIEW_EDIT_QUEUE_STORAGE_KEY = "ozmosis_b1_review_edit_queue_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.85.3.6a - Feedback Rhythm Repair and Proof Artefact Fix";
-  var OZMOSIS_EXPORT_VERSION = "v0.85.3.6a-feedback-rhythm-repair";
+  var OZMOSIS_APP_VERSION = "v0.85.3.7 - Correction and Satzbau Surface Pass";
+  var OZMOSIS_EXPORT_VERSION = "v0.85.3.7-correction-satzbau-surface";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -24059,6 +24143,7 @@ body.b1Mode .b1ConfidenceRow {
     if (item && item.instruction_de) return b1DisplayClean(item.instruction_de);
     if (item && item.itemType === "production_card") return b1ProductionDisplaySegments(item).instruction || "Produziere eine kurze B1-Antwort.";
     if (item && item.itemType === "error_repair") return item.taskType === "Umformen" ? "Forme den Satz um." : "Korrigiere den Satz.";
+    if (b1IsSatzbauItem(item)) return "Bilde den Satz.";
     if (b1IsTypedCloze(item)) return "Ergänze den Satz.";
     if (b1DisplayChoiceLikelyUsesMeaningCue(item)) return "Welche Form passt zur Bedeutung?";
     if (b1UsesChoices(item)) return "Wähle die passende Form.";
@@ -24164,8 +24249,61 @@ body.b1Mode .b1ConfidenceRow {
     if (resultClass) return '<span class="clozeAnswerText ' + resultClass + '">' + escapeHtml(item.answer || "") + '</span>';
     return '<input id="b1InlineInput" class="inlineClozeInput" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Answer blank" style="' + b1ClozeWidthStyle(item) + '">';
   }
+  function b1IsSatzbauItem(item) {
+    return !!(item && item.itemType === "word_order_cloze");
+  }
   function b1UsesInlineInput(item) {
     return b1IsTypedCloze(item);
+  }
+  function b1AnswerControlNeedsTextarea(item) {
+    if (!item || b1UsesChoices(item) || b1UsesInlineInput(item) || item.itemType === "production_card") return false;
+    return !!(item.answerMode === "edit_text" || item.prefillRepairText || b1IsRepairPracticeItem(item) || b1IsTransformationItem(item));
+  }
+  function b1BindAnswerControlKeydown(input) {
+    if (!input || input._ozmosisAnswerKeydownBound) return;
+    input._ozmosisAnswerKeydownBound = true;
+    input.addEventListener("keydown", function(event){
+      var isEnter = event.key === "Enter" || event.key === "Return" || event.keyCode === 13 || event.which === 13;
+      if (!isEnter) return;
+      var isTextarea = String(input.tagName || "").toLowerCase() === "textarea";
+      if (isTextarea && !(event.ctrlKey || event.metaKey)) return;
+      event.preventDefault();
+      if (state === "b1Checking") checkB1Answer();
+      else if (state === "checking") checkAnswer();
+      else proceed();
+    }, false);
+  }
+  function ensureAnswerInputControl(useTextarea) {
+    var current = el("answerInput");
+    if (!current) return current;
+    var expectedTag = useTextarea ? "textarea" : "input";
+    if (String(current.tagName || "").toLowerCase() === expectedTag) {
+      if (current._ozmosisAnswerControlManaged || expectedTag === "textarea") b1BindAnswerControlKeydown(current);
+      return current;
+    }
+    var replacement = document.createElement(expectedTag);
+    replacement.id = "answerInput";
+    replacement.className = current.className || "";
+    replacement.value = current.value || "";
+    replacement.disabled = !!current.disabled;
+    replacement.placeholder = current.placeholder || "";
+    replacement.autocomplete = "off";
+    replacement.setAttribute("autocapitalize", "off");
+    replacement.setAttribute("autocorrect", "off");
+    replacement.spellcheck = false;
+    replacement.dir = "ltr";
+    replacement._ozmosisAnswerControlManaged = true;
+    if (useTextarea) {
+      replacement.rows = 3;
+      replacement.setAttribute("aria-label", "Correction answer");
+      replacement.setAttribute("data-correction-textarea", "true");
+    } else {
+      replacement.type = "text";
+      replacement.setAttribute("aria-label", "Answer");
+    }
+    current.parentNode.replaceChild(replacement, current);
+    b1BindAnswerControlKeydown(replacement);
+    return replacement;
   }
   function b1RepairEditPrefillText(item) {
     if (!b1IsRepairPracticeItem(item)) return "";
@@ -24200,6 +24338,27 @@ body.b1Mode .b1ConfidenceRow {
   function b1NormaliseInlineClozePunctuation(prompt) {
     return String(prompt || "").replace(/___\s+([.,!?;:])/g, "___$1").replace(/\s+([.,!?;:])/g, "$1");
   }
+  function b1SatzbauCueText(item, rawPrompt) {
+    var cue = b1DisplayClean(item && (item.learnerCue_de || item.learnerCue || item.cue_de || item.cue || ""));
+    if (cue) return cue;
+    var prompt = String(rawPrompt || "").replace(/___/g, "").trim();
+    var colonIndex = prompt.lastIndexOf(":");
+    if (colonIndex !== -1) return b1DisplayClean(prompt.slice(colonIndex + 1));
+    return "";
+  }
+  function b1SatzbauPromptHtml(item, resultClass, display, rawPrompt) {
+    var cue = b1SatzbauCueText(item, rawPrompt);
+    var chunks = cue ? cue.split(/\s*[·•]\s*/).map(function(chunk){ return b1DisplayClean(chunk); }).filter(Boolean) : [];
+    if (!chunks.length && cue) chunks = cue.split(/\s+/).map(function(chunk){ return b1DisplayClean(chunk); }).filter(Boolean);
+    var chunkHtml = chunks.map(function(chunk){
+      return '<span class="satzbauChunk">' + escapeHtml(chunk) + '</span>';
+    }).join("");
+    var bodyHtml = '<span class="satzbauSurface" dir="ltr">' +
+      (chunkHtml ? '<span class="satzbauChunkRow" aria-label="Word chunks">' + chunkHtml + '</span>' : "") +
+      '<span class="satzbauAnswerRow">' + b1ClozeReplacement(item, resultClass) + '</span>' +
+      '</span>';
+    return b1DisplayLearnerPromptHtml(display, bodyHtml);
+  }
   function b1PromptHtml(item, resultClass) {
     if (item && item.itemType === "production_card") return escapeHtml(b1ProductionDisplaySegments(item).instruction || "Schreibe eine kurze B1-Antwort.");
     var display = b1DisplayModel(item);
@@ -24220,6 +24379,7 @@ body.b1Mode .b1ConfidenceRow {
       else bodyHtml = escapeHtml(item.itemType === "phrase_choice" ? b1PromptWithoutFakeBlank(rawPrompt) : rawPrompt);
       return b1DisplayLearnerPromptHtml(display, bodyHtml);
     }
+    if (b1IsSatzbauItem(item)) return b1SatzbauPromptHtml(item, resultClass, display, rawPrompt);
     if (b1IsTypedCloze(item) && rawPrompt.indexOf("___") !== -1) {
       bodyHtml = escapeHtml(rawPrompt).replace(/___/g, b1ClozeReplacement(item, resultClass));
       return b1DisplayLearnerPromptHtml(display, bodyHtml);
@@ -25813,6 +25973,7 @@ body.b1Mode .b1ConfidenceRow {
     if (!item) return "none";
     if (item.itemType === "production_card") return "production";
     if (b1UsesChoices(item)) return "choice";
+    if (b1IsSatzbauItem(item)) return "satzbau";
     if (b1IsTypedCloze(item)) return "cloze";
     if (item.answerMode === "edit_text" || item.prefillRepairText || b1IsRepairPracticeItem(item) || b1IsTransformationItem(item)) return "correction";
     return "correction";
@@ -26223,7 +26384,7 @@ body.b1Mode .b1ConfidenceRow {
     if (el("b1PracticeTag")) el("b1PracticeTag").hidden = !b1Runtime.currentExtraPractice;
     clearB1TaskStarStatus();
     renderB1Translation(false);
-    var input = el("answerInput");
+    var input = ensureAnswerInputControl(b1AnswerControlNeedsTextarea(item));
     input.value = "";
     input.disabled = false;
     input.style.display = "";
@@ -26703,7 +26864,7 @@ body.b1Mode .b1ConfidenceRow {
     if (current.kind === "cloze") prompt.innerHTML=sentenceHtml(current.sentence);
     else prompt.textContent=current.caseKey+" "+current.genderKey;
     renderEnglishGloss();
-    var input=el("answerInput");
+    var input=ensureAnswerInputControl(false);
     input.value="";
     input.disabled=false;
     input.style.display="";

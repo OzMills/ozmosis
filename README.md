@@ -9,29 +9,37 @@ Future README updates should be made in this file. Do not create new `README-v*.
 
 ## Current App
 
-# Ozmosis v0.85.3.6a feedback rhythm repair
+# Ozmosis v0.85.3.7 correction and Satzbau surface pass
 
 Ozmosis is a static, local-first German learning app. The deployed app remains `index.html`.
 
-v0.85.3.6a repairs the v0.85.3.6 feedback-rhythm proof artefacts and remaining visual issues. It removes the remaining nested mini-card feedback clutter, makes the post-answer result/star area visibly distinct, fixes the cloze feedback mismatch caused by raw wrong-answer contrast matching, and regenerates a real screenshot contact sheet.
+v0.85.3.7 improves the correction/repair and Satzbau/word-order practice surfaces without changing content, scoring, evidence, storage, export/import, or the shared feedback rhythm. Correction/edit-text tasks now use a compact neon-styled textarea, while Satzbau tasks render existing word chunks as distinct chips with the same typed answer semantics as before.
+
+- Runtime app version: `v0.85.3.7 - Correction and Satzbau Surface Pass`
+- Runtime export version: `v0.85.3.7-correction-satzbau-surface`
+- Current gate result: `CORRECTION_SATZBAU_SURFACE_ACCEPTED`
+- Core result: correction default/filled/long typing/fail/success, Satzbau default/typing/fail/success/wrap, choice and cloze non-regression, B1 cases/articles compact grid, Case Trainer article-grid feedback, responsive, Arabic/LTR, contact-sheet thumbnail loading, and export/import were checked through the v0.85.3.7 Edge/CDP gate.
+
+## Current v0.85.3.7 docs
+
+- Changelog: `CHANGELOG-FULL-OZMOSIS.txt`
+- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.7.md`
+- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.7.md`
+- Shared frame contract: `docs/OZMOSIS_SHARED_PRACTICE_FRAME_CONTRACT_v0.85.3.4.md`
+- Current QA gate: `docs/qa/v0.85.3.7_correction_satzbau_surface.md`
+- Current gate result JSON: `docs/qa/v0.85.3.7_correction_satzbau_surface_results.json`
+- Screenshot comparison: `docs/qa/screenshots/v0.85.3.7-correction-satzbau-surface/comparison.html`
+- Package policy: `docs/OZMOSIS_QA_ARTEFACT_AND_PACKAGE_POLICY.md`
+
+Next planned patch: `v0.85.3.8 - HUD, Keyboard, and Live Mobile Verification Gate`.
+
+## Previous v0.85.3.6a feedback rhythm repair
+
+v0.85.3.6a repaired the v0.85.3.6 feedback-rhythm proof artefacts and remaining visual issues. It removed remaining nested mini-card feedback clutter, made the post-answer result/star area visibly distinct, fixed the cloze feedback mismatch caused by raw wrong-answer contrast matching, and regenerated a real screenshot contact sheet.
 
 - Runtime app version: `v0.85.3.6a - Feedback Rhythm Repair and Proof Artefact Fix`
 - Runtime export version: `v0.85.3.6a-feedback-rhythm-repair`
-- Current gate result: `FEEDBACK_RHYTHM_REPAIR_ACCEPTED`
-- Core result: choice, cloze, correction/repair, Satzbau, B1 cases/articles repair, Case Trainer article-grid feedback, production-card non-regression, confidence reachability, contact-sheet thumbnail loading, Arabic/LTR, and export/import were checked through the v0.85.3.6a repair gate.
-
-## Current v0.85.3.6a docs
-
-- Changelog: `CHANGELOG-FULL-OZMOSIS.txt`
-- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.6a.md`
-- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.6a.md`
-- Shared frame contract: `docs/OZMOSIS_SHARED_PRACTICE_FRAME_CONTRACT_v0.85.3.4.md`
-- Current QA gate: `docs/qa/v0.85.3.6a_feedback_rhythm_repair.md`
-- Current gate result JSON: `docs/qa/v0.85.3.6a_feedback_rhythm_repair_results.json`
-- Screenshot comparison: `docs/qa/screenshots/v0.85.3.6a-feedback-rhythm-repair/comparison.html`
-- Package policy: `docs/OZMOSIS_QA_ARTEFACT_AND_PACKAGE_POLICY.md`
-
-Next planned patch: `v0.85.3.7 - Correction and Satzbau Surface Pass`.
+- Gate result: `FEEDBACK_RHYTHM_REPAIR_ACCEPTED`
 
 ## Previous v0.85.3.6 feedback rhythm
 

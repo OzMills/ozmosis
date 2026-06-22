@@ -1,0 +1,172 @@
+{
+  "patch": "v0.85.3.7",
+  "title": "Correction and Satzbau Surface Pass",
+  "startingStateVerified": true,
+  "runtimeVersionUpdated": true,
+  "filesChanged": [
+    "index.html",
+    "AGENTS.md",
+    "README.md",
+    "CHANGELOG-FULL-OZMOSIS.txt",
+    "docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.7.md",
+    "docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.7.md",
+    "docs/qa/v0.85.3.7_correction_satzbau_surface.md",
+    "docs/qa/v0.85.3.7_correction_satzbau_surface_results.json",
+    "docs/qa/screenshots/v0.85.3.7-correction-satzbau-surface/",
+    "scripts/ozmosis-correction-satzbau-surface-check.cjs"
+  ],
+  "surfaceIssuesChecked": {
+    "correctionUsesTextarea": true,
+    "correctionLongTypingReadable": true,
+    "correctionFeedbackRhythmPreserved": true,
+    "satzbauUsesChunkRows": true,
+    "satzbauInlineAnswerReadable": true,
+    "satzbauLongWrapReadable": true,
+    "choiceNonRegression": true,
+    "clozeNonRegression": true,
+    "b1CasesArticlesGridPreserved": true,
+    "caseTrainerGridPreserved": true
+  },
+  "surfacesChecked": {
+    "correctionDefaultEmpty": true,
+    "correctionDefaultFilled": true,
+    "correctionTypingLong": true,
+    "correctionFail": true,
+    "correctionSuccess": true,
+    "satzbauDefault": true,
+    "satzbauTyping": true,
+    "satzbauFail": true,
+    "satzbauSuccess": true,
+    "satzbauLongWrap": true,
+    "choiceFailNonRegression": true,
+    "clozeFailNonRegression": true,
+    "b1CasesArticlesCompactGrid": true,
+    "caseTrainerWrongGrid": true
+  },
+  "preAnswerStarStatusAbsent": true,
+  "postAnswerFullResultShown": true,
+  "articleGridPreserved": true,
+  "compactGridPreserved": true,
+  "optionalRevealGridPreserved": true,
+  "practiceFramePreserved": true,
+  "contentChanged": false,
+  "contentChangesDocumented": [],
+  "scoringChanged": false,
+  "evidenceChanged": false,
+  "storageChanged": false,
+  "exportImportChanged": false,
+  "screenshotsGenerated": {
+    "correction-default-empty": "docs/qa/screenshots/v0.85.3.7-correction-satzbau-surface/correction-default-empty.png",
+    "correction-default-filled": "docs/qa/screenshots/v0.85.3.7-correction-satzbau-surface/correction-default-filled.png",
+    "correction-typing-long": "docs/qa/screenshots/v0.85.3.7-correction-satzbau-surface/correction-typing-long.png",
+    "correction-fail": "docs/qa/screenshots/v0.85.3.7-correction-satzbau-surface/correction-fail.png",
+    "correction-success": "docs/qa/screenshots/v0.85.3.7-correction-satzbau-surface/correction-success.png",
+    "satzbau-default": "docs/qa/screenshots/v0.85.3.7-correction-satzbau-surface/satzbau-default.png",
+    "satzbau-typing": "docs/qa/screenshots/v0.85.3.7-correction-satzbau-surface/satzbau-typing.png",
+    "satzbau-fail": "docs/qa/screenshots/v0.85.3.7-correction-satzbau-surface/satzbau-fail.png",
+    "satzbau-success": "docs/qa/screenshots/v0.85.3.7-correction-satzbau-surface/satzbau-success.png",
+    "satzbau-long-wrap": "docs/qa/screenshots/v0.85.3.7-correction-satzbau-surface/satzbau-long-wrap.png",
+    "choice-fail-non-regression": "docs/qa/screenshots/v0.85.3.7-correction-satzbau-surface/choice-fail-non-regression.png",
+    "cloze-fail-non-regression": "docs/qa/screenshots/v0.85.3.7-correction-satzbau-surface/cloze-fail-non-regression.png",
+    "b1-cases-articles-wrong-compact-grid-non-regression": "docs/qa/screenshots/v0.85.3.7-correction-satzbau-surface/b1-cases-articles-wrong-compact-grid-non-regression.png",
+    "case-trainer-full-grid-reveal": "docs/qa/screenshots/v0.85.3.7-correction-satzbau-surface/case-trainer-full-grid-reveal.png",
+    "case-trainer-wrong-grid-non-regression": "docs/qa/screenshots/v0.85.3.7-correction-satzbau-surface/case-trainer-wrong-grid-non-regression.png",
+    "comparison": "docs/qa/screenshots/v0.85.3.7-correction-satzbau-surface/comparison.html",
+    "comparison-contact-sheet": "docs/qa/screenshots/v0.85.3.7-correction-satzbau-surface/comparison-contact-sheet.png"
+  },
+  "contactSheetVerified": true,
+  "testsRun": {
+    "staticChecks": {
+      "inlineScriptsParsed": 1,
+      "contentScriptsParsed": 25,
+      "protectedStorageKeys": true,
+      "noPackageJson": true,
+      "noTypeModule": true,
+      "noDynamicImport": true
+    },
+    "confidenceReachabilityAfterAnswer": true,
+    "responsive": [
+      {
+        "width": 430,
+        "height": 932,
+        "bodyOverflow": false,
+        "confidenceReachableAfterB1Answer": true,
+        "germanDir": "ltr"
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "bodyOverflow": false,
+        "confidenceReachableAfterB1Answer": true,
+        "germanDir": "ltr"
+      },
+      {
+        "width": 320,
+        "height": 568,
+        "bodyOverflow": false,
+        "confidenceReachableAfterB1Answer": true,
+        "germanDir": "ltr"
+      },
+      {
+        "width": 1365,
+        "height": 599,
+        "bodyOverflow": false,
+        "confidenceReachableAfterB1Answer": true,
+        "germanDir": "ltr"
+      },
+      {
+        "width": 768,
+        "height": 1024,
+        "bodyOverflow": false,
+        "confidenceReachableAfterB1Answer": true,
+        "germanDir": "ltr"
+      },
+      {
+        "width": 1440,
+        "height": 900,
+        "bodyOverflow": false,
+        "confidenceReachableAfterB1Answer": true,
+        "germanDir": "ltr"
+      }
+    ],
+    "arabicLtr": {
+      "promptDir": "ltr",
+      "answerDir": "ltr",
+      "gridDir": "ltr"
+    },
+    "comparisonHtml": {
+      "imageRefs": 15,
+      "missingRefs": []
+    },
+    "contactSheetImages": {
+      "count": 15,
+      "loaded": 15,
+      "totalPixels": 5792400
+    },
+    "contactSheetFile": {
+      "bytes": 835177
+    },
+    "browserCapture": true
+  },
+  "testsNotRun": [],
+  "warnings": [
+    "Temporary Edge profile cleanup blocked by Windows file lock: C:\\Users\\rossm\\AppData\\Local\\Temp\\ozmosis-v08537-correction-satzbau-edge-profile-tkIZh5"
+  ],
+  "consoleErrors": [],
+  "runtimeExceptions": [],
+  "acceptancePassed": true,
+  "finalDecision": "CORRECTION_SATZBAU_SURFACE_ACCEPTED",
+  "nextPatch": "v0.85.3.8 - HUD, Keyboard, and Live Mobile Verification Gate",
+  "appVersion": "v0.85.3.7 - Correction and Satzbau Surface Pass",
+  "exportVersion": "v0.85.3.7-correction-satzbau-surface",
+  "generatedAt": "2026-06-22T23:40:33.431Z",
+  "exportImport": {
+    "exportOk": true,
+    "validationOk": true,
+    "applyOk": true,
+    "malformedRejected": true,
+    "oldValidationOk": true,
+    "appVersion": "v0.85.3.7 - Correction and Satzbau Surface Pass",
+    "exportVersion": "v0.85.3.7-correction-satzbau-surface"
+  }
+}
