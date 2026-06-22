@@ -9,29 +9,37 @@ Future README updates should be made in this file. Do not create new `README-v*.
 
 ## Current App
 
-# Ozmosis v0.85.3.6 feedback rhythm
+# Ozmosis v0.85.3.6a feedback rhythm repair
 
 Ozmosis is a static, local-first German learning app. The deployed app remains `index.html`.
 
-v0.85.3.6 implements the narrow post-answer feedback rhythm pass after the accepted shared practice-frame convergence layer. It keeps the protected article grid intact while making answered states follow a clearer rhythm: compact result feedback, full post-answer star/result area, then confidence or continue.
+v0.85.3.6a repairs the v0.85.3.6 feedback-rhythm proof artefacts and remaining visual issues. It removes the remaining nested mini-card feedback clutter, makes the post-answer result/star area visibly distinct, fixes the cloze feedback mismatch caused by raw wrong-answer contrast matching, and regenerates a real screenshot contact sheet.
 
-- Runtime app version: `v0.85.3.6 - Feedback Rhythm Pass`
-- Runtime export version: `v0.85.3.6-feedback-rhythm`
-- Current gate result: `FEEDBACK_RHYTHM_ACCEPTED`
-- Core result: choice, cloze, correction/repair, Satzbau, B1 cases/articles repair, Case Trainer article-grid feedback, and production-card non-regression were checked through the v0.85.3.6 browser gate.
+- Runtime app version: `v0.85.3.6a - Feedback Rhythm Repair and Proof Artefact Fix`
+- Runtime export version: `v0.85.3.6a-feedback-rhythm-repair`
+- Current gate result: `FEEDBACK_RHYTHM_REPAIR_ACCEPTED`
+- Core result: choice, cloze, correction/repair, Satzbau, B1 cases/articles repair, Case Trainer article-grid feedback, production-card non-regression, confidence reachability, contact-sheet thumbnail loading, Arabic/LTR, and export/import were checked through the v0.85.3.6a repair gate.
 
-## Current v0.85.3.6 docs
+## Current v0.85.3.6a docs
 
 - Changelog: `CHANGELOG-FULL-OZMOSIS.txt`
-- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.6.md`
-- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.6.md`
+- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.6a.md`
+- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.6a.md`
 - Shared frame contract: `docs/OZMOSIS_SHARED_PRACTICE_FRAME_CONTRACT_v0.85.3.4.md`
-- Current QA gate: `docs/qa/v0.85.3.6_feedback_rhythm.md`
-- Current gate result JSON: `docs/qa/v0.85.3.6_feedback_rhythm_results.json`
-- Screenshot comparison: `docs/qa/screenshots/v0.85.3.6-feedback-rhythm/comparison.html`
+- Current QA gate: `docs/qa/v0.85.3.6a_feedback_rhythm_repair.md`
+- Current gate result JSON: `docs/qa/v0.85.3.6a_feedback_rhythm_repair_results.json`
+- Screenshot comparison: `docs/qa/screenshots/v0.85.3.6a-feedback-rhythm-repair/comparison.html`
 - Package policy: `docs/OZMOSIS_QA_ARTEFACT_AND_PACKAGE_POLICY.md`
 
 Next planned patch: `v0.85.3.7 - Correction and Satzbau Surface Pass`.
+
+## Previous v0.85.3.6 feedback rhythm
+
+v0.85.3.6 implemented the narrow post-answer feedback rhythm pass after the accepted shared practice-frame convergence layer. Manual screenshot review then found proof artefact and remaining visual issues, repaired in v0.85.3.6a.
+
+- Runtime app version: `v0.85.3.6 - Feedback Rhythm Pass`
+- Runtime export version: `v0.85.3.6-feedback-rhythm`
+- Gate result before repair: `FEEDBACK_RHYTHM_ACCEPTED`
 
 ## Previous v0.85.3.5 shared practice frame convergence
 

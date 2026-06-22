@@ -160,11 +160,11 @@ Deferred features must not be forgotten or implemented early:
 
 ## 11. Current Baseline
 
-Current runtime baseline: `v0.85.3.5 - Shared Practice Frame Convergence Pass`.
+Current runtime baseline: `v0.85.3.6a - Feedback Rhythm Repair and Proof Artefact Fix`.
 
-Current acceptance status: v0.85.3.5 completed the shared practice-frame convergence pass. B1 and Case Trainer typed-answer surfaces now expose shared frame metadata, the protected article grid has full/compact/reveal adapter modes, and B1 cases/articles wrong repair feedback can show a compact highlighted article grid when metadata is explicit.
+Current acceptance status: v0.85.3.6a repaired the remaining feedback-rhythm proof issues after v0.85.3.6. Feedback proof screenshots now show real contact-sheet thumbnails, B1 cloze feedback is aligned with the staged item, and confidence reachability is measured in an answered B1 state.
 
-Next required patch: `v0.85.3.6 - Feedback Rhythm Pass`.
+Next required patch: `v0.85.3.7 - Correction and Satzbau Surface Pass`.
 
 Current planning handoff:
 
@@ -185,6 +185,7 @@ Current planning handoff:
 - Duplicate Teach Me Button Hotfix has been implemented and accepted as v0.85.3.3b.
 - Shared Practice Frame and Surface Inventory has been completed as v0.85.3.4 without changing runtime behaviour.
 - Shared Practice Frame Convergence Pass has been implemented and accepted as v0.85.3.5.
-- Feedback Rhythm Pass is next as v0.85.3.6.
-- Completion Gate Harness v0.85.4 is blocked until feedback rhythm is handled or explicitly deferred.
+- Feedback Rhythm Pass has been implemented as v0.85.3.6 and repaired/accepted as v0.85.3.6a.
+- Correction and Satzbau Surface Pass is next as v0.85.3.7.
+- Completion Gate Harness v0.85.4 is blocked until correction/Satzbau surface work is handled or explicitly deferred.
 - Production Completion Pass remains blocked until v0.85.11 reports `READY_FOR_V0.86`.

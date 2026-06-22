@@ -9994,9 +9994,11 @@ body.b1Mode #nextBtn.visible {
   font-weight:780;
 }
 
-.feedbackRhythmBlock .microRule,
-.feedbackRhythmBlock .correctionPattern,
-.feedbackRhythmBlock .repairFeedbackLine {
+body.b1Mode .correctionBlock.feedbackRhythmBlock.visible .microRule,
+body.b1Mode .correctionBlock.feedbackRhythmBlock.visible .correctionPattern,
+body.b1Mode .correctionBlock.feedbackRhythmBlock.visible .repairFeedbackLine,
+body.b1Mode .correctionBlock.feedbackRhythmBlock.visible .b1ChoiceFeedback,
+body.b1Mode .correctionBlock.feedbackRhythmBlock.visible .b1TransformationFeedback {
   margin:0 !important;
   border:0 !important;
   border-radius:0 !important;
@@ -10005,10 +10007,15 @@ body.b1Mode #nextBtn.visible {
   box-shadow:none !important;
 }
 
-.feedbackRhythmBlock .microRule + .microRule,
-.feedbackRhythmBlock .b1TransformationFeedback,
-.feedbackRhythmBlock .b1ChoiceFeedback,
-.feedbackRhythmBlock .articleGridAdapter {
+body.b1Mode .correctionBlock.feedbackRhythmBlock.visible .microRule strong {
+  display:inline !important;
+  margin:0 .35em 0 0 !important;
+}
+
+body.b1Mode .correctionBlock.feedbackRhythmBlock.visible .microRule + .microRule,
+body.b1Mode .correctionBlock.feedbackRhythmBlock.visible .b1TransformationFeedback,
+body.b1Mode .correctionBlock.feedbackRhythmBlock.visible .b1ChoiceFeedback,
+body.b1Mode .correctionBlock.feedbackRhythmBlock.visible .articleGridAdapter {
   padding-top:7px !important;
   border-top:1px solid color-mix(in srgb, var(--accent) 16%, var(--line)) !important;
 }
@@ -10040,15 +10047,32 @@ body.b1Mode #nextBtn.visible {
 
 .b1PostAnswerResultArea {
   display:grid;
-  gap:5px;
-  margin-top:2px;
-  padding:9px 10px;
-  border:1px solid color-mix(in srgb, var(--star-gold) 30%, var(--line));
+  gap:7px;
+  width:100%;
+  min-height:54px;
+  margin-top:4px;
+  padding:12px 13px;
+  border:1px solid color-mix(in srgb, var(--star-gold) 42%, var(--line));
+  border-left:4px solid color-mix(in srgb, var(--star-gold) 74%, var(--accent));
   border-radius:12px;
-  background:linear-gradient(180deg, rgba(255,210,99,.08), rgba(4,12,24,.72));
+  background:linear-gradient(180deg, rgba(255,210,99,.13), rgba(4,12,24,.82));
 }
 
-.feedbackRhythmBlock .b1PostAnswerResultArea .b1StarUpdateLine {
+.b1PostAnswerResultHeading {
+  color:color-mix(in srgb, var(--star-gold) 82%, var(--text));
+  font-size:clamp(.68rem,2.45vw,.78rem);
+  font-weight:950;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+body.b1Mode .correctionBlock.feedbackRhythmBlock.visible .b1PostAnswerResultArea {
+  margin-top:4px !important;
+  padding:12px 13px !important;
+  border-radius:12px !important;
+}
+
+body.b1Mode .correctionBlock.feedbackRhythmBlock.visible .b1PostAnswerResultArea .b1StarUpdateLine {
   margin:0 !important;
   padding:0 !important;
   border:0 !important;
@@ -11271,8 +11295,8 @@ body.b1Mode .b1ConfidenceRow {
   var B1_PATH_UNLOCK_STORAGE_KEY = "ozmosis_b1_path_unlock_overrides_v1";
   var B1_REVIEW_EDIT_QUEUE_STORAGE_KEY = "ozmosis_b1_review_edit_queue_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.85.3.6 - Feedback Rhythm Pass";
-  var OZMOSIS_EXPORT_VERSION = "v0.85.3.6-feedback-rhythm";
+  var OZMOSIS_APP_VERSION = "v0.85.3.6a - Feedback Rhythm Repair and Proof Artefact Fix";
+  var OZMOSIS_EXPORT_VERSION = "v0.85.3.6a-feedback-rhythm-repair";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -18001,7 +18025,7 @@ body.b1Mode .b1ConfidenceRow {
     return '<div class="b1StarUpdateLine ' + (changed ? "positive" : "neutral") + '">' + b1PathStarGlyphsHtml(afterLevel) + '<span>' + escapeHtml(copy) + '</span></div>';
   }
   function b1PostAnswerResultAreaHtml(starUpdateHtml) {
-    return starUpdateHtml ? '<div class="b1PostAnswerResultArea" aria-label="Post-answer result">' + starUpdateHtml + '</div>' : "";
+    return starUpdateHtml ? '<div class="b1PostAnswerResultArea" aria-label="Post-answer result"><div class="b1PostAnswerResultHeading">Result</div>' + starUpdateHtml + '</div>' : "";
   }
   function b1PathCategoryStarRowsHtml(category) {
     var total = Number(category && category.coreTargetCount || 0);
@@ -19480,7 +19504,6 @@ body.b1Mode .b1ConfidenceRow {
   function b1ContrastText(item, rawAnswer) {
     return [
       item && item.answer,
-      rawAnswer,
       item && item.targetRule,
       item && item.microRule,
       item && item.prompt_de,
