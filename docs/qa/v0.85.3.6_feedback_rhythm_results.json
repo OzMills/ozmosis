@@ -1,0 +1,127 @@
+{
+  "patch": "v0.85.3.6",
+  "title": "Feedback Rhythm Pass",
+  "startingStateVerified": true,
+  "runtimeVersionUpdated": true,
+  "filesChanged": [],
+  "feedbackSurfacesChecked": {
+    "choiceFail": true,
+    "choiceSuccess": true,
+    "clozeFail": true,
+    "clozeSuccess": true,
+    "correctionFail": true,
+    "correctionSuccess": true,
+    "satzbauFail": true,
+    "satzbauSuccess": true,
+    "b1CasesArticlesCompactGrid": true,
+    "caseTrainerWrongGrid": true,
+    "productionNonRegression": true
+  },
+  "preAnswerStarStatusAbsent": true,
+  "postAnswerFullResultShown": true,
+  "articleGridPreserved": true,
+  "compactGridPreserved": true,
+  "optionalRevealGridPreserved": true,
+  "contentChanged": false,
+  "scoringChanged": false,
+  "evidenceChanged": false,
+  "storageChanged": false,
+  "exportImportChanged": false,
+  "screenshotsGenerated": {
+    "choice-fail-before-after-style": "docs/qa/screenshots/v0.85.3.6-feedback-rhythm/choice-fail-before-after-style.png",
+    "choice-success": "docs/qa/screenshots/v0.85.3.6-feedback-rhythm/choice-success.png",
+    "cloze-fail": "docs/qa/screenshots/v0.85.3.6-feedback-rhythm/cloze-fail.png",
+    "cloze-success": "docs/qa/screenshots/v0.85.3.6-feedback-rhythm/cloze-success.png",
+    "correction-fail": "docs/qa/screenshots/v0.85.3.6-feedback-rhythm/correction-fail.png",
+    "correction-success": "docs/qa/screenshots/v0.85.3.6-feedback-rhythm/correction-success.png",
+    "satzbau-fail": "docs/qa/screenshots/v0.85.3.6-feedback-rhythm/satzbau-fail.png",
+    "satzbau-success": "docs/qa/screenshots/v0.85.3.6-feedback-rhythm/satzbau-success.png",
+    "b1-cases-articles-wrong-compact-grid": "docs/qa/screenshots/v0.85.3.6-feedback-rhythm/b1-cases-articles-wrong-compact-grid.png",
+    "production-card-non-regression": "docs/qa/screenshots/v0.85.3.6-feedback-rhythm/production-card-non-regression.png",
+    "case-trainer-full-grid-reveal": "docs/qa/screenshots/v0.85.3.6-feedback-rhythm/case-trainer-full-grid-reveal.png",
+    "case-trainer-wrong-answer-grid": "docs/qa/screenshots/v0.85.3.6-feedback-rhythm/case-trainer-wrong-answer-grid.png",
+    "comparison": "docs/qa/screenshots/v0.85.3.6-feedback-rhythm/comparison.html",
+    "comparison-contact-sheet": "docs/qa/screenshots/v0.85.3.6-feedback-rhythm/comparison-contact-sheet.png"
+  },
+  "testsRun": {
+    "staticChecks": {
+      "inlineScriptsParsed": 1,
+      "contentScriptsParsed": 25,
+      "protectedStorageKeys": true,
+      "noPackageJson": true,
+      "noTypeModule": true,
+      "noDynamicImport": true
+    },
+    "responsive": [
+      {
+        "width": 430,
+        "height": 932,
+        "bodyOverflow": false,
+        "confidenceVisible": false,
+        "germanDir": "ltr"
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "bodyOverflow": false,
+        "confidenceVisible": false,
+        "germanDir": "ltr"
+      },
+      {
+        "width": 320,
+        "height": 568,
+        "bodyOverflow": false,
+        "confidenceVisible": false,
+        "germanDir": "ltr"
+      },
+      {
+        "width": 1365,
+        "height": 599,
+        "bodyOverflow": false,
+        "confidenceVisible": false,
+        "germanDir": "ltr"
+      },
+      {
+        "width": 768,
+        "height": 1024,
+        "bodyOverflow": false,
+        "confidenceVisible": false,
+        "germanDir": "ltr"
+      },
+      {
+        "width": 1440,
+        "height": 900,
+        "bodyOverflow": false,
+        "confidenceVisible": false,
+        "germanDir": "ltr"
+      }
+    ],
+    "arabicLtr": {
+      "promptDir": "ltr",
+      "answerDir": "ltr",
+      "gridDir": "ltr"
+    },
+    "browserCapture": true
+  },
+  "testsNotRun": [],
+  "warnings": [
+    "Temporary Edge profile cleanup blocked by Windows file lock: C:\\Users\\rossm\\AppData\\Local\\Temp\\ozmosis-v08536-feedback-rhythm-edge-profile-gLafjF"
+  ],
+  "consoleErrors": [],
+  "runtimeExceptions": [],
+  "acceptancePassed": true,
+  "finalDecision": "FEEDBACK_RHYTHM_ACCEPTED",
+  "nextPatch": "v0.85.3.7 - Correction and Satzbau Surface Pass",
+  "appVersion": "v0.85.3.6 - Feedback Rhythm Pass",
+  "exportVersion": "v0.85.3.6-feedback-rhythm",
+  "generatedAt": "2026-06-22T21:20:46.159Z",
+  "exportImport": {
+    "exportOk": true,
+    "validationOk": true,
+    "applyOk": true,
+    "malformedRejected": true,
+    "oldValidationOk": true,
+    "appVersion": "v0.85.3.6 - Feedback Rhythm Pass",
+    "exportVersion": "v0.85.3.6-feedback-rhythm"
+  }
+}

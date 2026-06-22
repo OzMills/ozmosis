@@ -2,11 +2,11 @@
 
 ## 1. Current Baseline
 
-Current runtime baseline: `v0.85.3.5 - Shared Practice Frame Convergence Pass`.
+Current runtime baseline: `v0.85.3.6 - Feedback Rhythm Pass`.
 
-Current acceptance status: v0.85.3.5 completed the shared practice-frame convergence pass. B1 and Case Trainer typed-answer surfaces now expose shared frame metadata, the protected article grid has full/compact/reveal adapter modes, and B1 cases/articles wrong repair feedback can show compact highlighted grid support where metadata is explicit.
+Current acceptance status: v0.85.3.6 completed the feedback rhythm pass. Answered states now use a clearer rhythm of compact result feedback, full post-answer star/result area, and confidence or continue controls while preserving the v0.85.3.5 protected article-grid forms.
 
-Next required patch: `v0.85.3.6 - Feedback Rhythm Pass`.
+Next required patch: `v0.85.3.7 - Correction and Satzbau Surface Pass`.
 
 ## 2. Completed Foundation
 
@@ -51,6 +51,7 @@ This summary is not a replacement for `CHANGELOG-FULL-OZMOSIS.txt`.
 - `v0.85.3.4` - Shared Practice Frame and Surface Inventory
 - `v0.85.3.5` - Shared Practice Frame Convergence Pass
 - `v0.85.3.6` - Feedback Rhythm Pass
+- `v0.85.3.7` - Correction and Satzbau Surface Pass
 - `v0.85.4` - Completion Gate Harness
 - `v0.85.5` - Runtime Display Contract Lock
 - `v0.85.6` - Source Cleanup Batch 1: Internal Labels and Meaning Cues
@@ -113,8 +114,9 @@ Stop if the hub fails.
 - Duplicate Teach Me Button Hotfix is implemented and accepted as v0.85.3.3b.
 - Shared Practice Frame and Surface Inventory is complete as v0.85.3.4.
 - Shared Practice Frame Convergence Pass is implemented and accepted as v0.85.3.5.
-- Feedback Rhythm Pass is the next allowed implementation patch as v0.85.3.6.
-- Completion Gate Harness is blocked until feedback rhythm is handled or explicitly deferred.
+- Feedback Rhythm Pass is implemented and accepted as v0.85.3.6.
+- Correction and Satzbau Surface Pass is the next allowed implementation patch as v0.85.3.7.
+- Completion Gate Harness is blocked until correction/Satzbau surface work is handled or explicitly deferred.
 - Production Completion Pass is blocked until v0.85.11 reports `READY_FOR_V0.86`.
 - Weakness repair must wait until Skill Matrix and task-depth evidence are stable.
 - Durability/spaced review must wait until enough reviewable B1 coverage exists.

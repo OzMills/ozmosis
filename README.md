@@ -9,29 +9,38 @@ Future README updates should be made in this file. Do not create new `README-v*.
 
 ## Current App
 
-# Ozmosis v0.85.3.5 shared practice frame convergence
+# Ozmosis v0.85.3.6 feedback rhythm
 
 Ozmosis is a static, local-first German learning app. The deployed app remains `index.html`.
 
-v0.85.3.5 implements the narrow shared practice-frame convergence layer planned in v0.85.3.4. It keeps the Case Trainer article grid protected while adding shared frame metadata and compact article-grid feedback for B1 cases/articles repair where metadata is explicit.
+v0.85.3.6 implements the narrow post-answer feedback rhythm pass after the accepted shared practice-frame convergence layer. It keeps the protected article grid intact while making answered states follow a clearer rhythm: compact result feedback, full post-answer star/result area, then confidence or continue.
+
+- Runtime app version: `v0.85.3.6 - Feedback Rhythm Pass`
+- Runtime export version: `v0.85.3.6-feedback-rhythm`
+- Current gate result: `FEEDBACK_RHYTHM_ACCEPTED`
+- Core result: choice, cloze, correction/repair, Satzbau, B1 cases/articles repair, Case Trainer article-grid feedback, and production-card non-regression were checked through the v0.85.3.6 browser gate.
+
+## Current v0.85.3.6 docs
+
+- Changelog: `CHANGELOG-FULL-OZMOSIS.txt`
+- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.6.md`
+- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.6.md`
+- Shared frame contract: `docs/OZMOSIS_SHARED_PRACTICE_FRAME_CONTRACT_v0.85.3.4.md`
+- Current QA gate: `docs/qa/v0.85.3.6_feedback_rhythm.md`
+- Current gate result JSON: `docs/qa/v0.85.3.6_feedback_rhythm_results.json`
+- Screenshot comparison: `docs/qa/screenshots/v0.85.3.6-feedback-rhythm/comparison.html`
+- Package policy: `docs/OZMOSIS_QA_ARTEFACT_AND_PACKAGE_POLICY.md`
+
+Next planned patch: `v0.85.3.7 - Correction and Satzbau Surface Pass`.
+
+## Previous v0.85.3.5 shared practice frame convergence
+
+v0.85.3.5 implemented the narrow shared practice-frame convergence layer planned in v0.85.3.4. It kept the Case Trainer article grid protected while adding shared frame metadata and compact article-grid feedback for B1 cases/articles repair where metadata is explicit.
 
 - Runtime app version: `v0.85.3.5 - Shared Practice Frame Convergence Pass`
 - Runtime export version: `v0.85.3.5-shared-practice-frame-convergence`
-- Current gate result: `SHARED_FRAME_CONVERGENCE_ACCEPTED`
-- Core result: B1 and Case Trainer typed-answer surfaces now expose shared frame metadata, the protected article grid has full/compact/reveal adapter modes, and B1 cases/articles wrong repair feedback can show a compact highlighted article grid when case/family/gender metadata is explicit.
-
-## Current v0.85.3.5 docs
-
-- Changelog: `CHANGELOG-FULL-OZMOSIS.txt`
-- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.5.md`
-- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.5.md`
-- Shared frame contract: `docs/OZMOSIS_SHARED_PRACTICE_FRAME_CONTRACT_v0.85.3.4.md`
-- Current QA gate: `docs/qa/v0.85.3.5_shared_practice_frame_convergence.md`
-- Current gate result JSON: `docs/qa/v0.85.3.5_shared_practice_frame_convergence_results.json`
-- Screenshot comparison: `docs/qa/screenshots/v0.85.3.5-shared-practice-frame-convergence/comparison.html`
-- Package policy: `docs/OZMOSIS_QA_ARTEFACT_AND_PACKAGE_POLICY.md`
-
-Next planned patch: `v0.85.3.6 - Feedback Rhythm Pass`.
+- Gate result: `SHARED_FRAME_CONVERGENCE_ACCEPTED`
+- Core result: B1 and Case Trainer typed-answer surfaces expose shared frame metadata, the protected article grid has full/compact/reveal adapter modes, and B1 cases/articles wrong repair feedback can show a compact highlighted article grid when case/family/gender metadata is explicit.
 
 ## Previous v0.85.3.4 shared practice frame inventory
 

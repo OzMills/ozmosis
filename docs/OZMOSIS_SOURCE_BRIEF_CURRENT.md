@@ -24,8 +24,8 @@ Strategic source of truth:
 
 Patch-local source of truth:
 
-1. Current versioned README.
-2. Current versioned changelog.
+1. Current canonical `README.md`.
+2. Current canonical `CHANGELOG-FULL-OZMOSIS.txt`.
 3. Current versioned source brief and roadmap.
 4. Current QA report.
 

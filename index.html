@@ -9961,6 +9961,123 @@ body.b1Mode #nextBtn.visible {
   opacity:.78 !important;
 }
 
+/* v0.85.3.6: post-answer rhythm. Keep one feedback surface, then result/star, then confidence. */
+.feedbackRhythmBlock {
+  display:grid;
+  gap:7px;
+}
+
+.feedbackRhythmBlock .feedbackResultLine {
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  min-height:28px;
+  padding:0;
+  background:transparent;
+  font-weight:1000;
+  letter-spacing:.01em;
+}
+
+.feedbackRhythmBlock .feedbackAnswerLine,
+.feedbackRhythmBlock .feedbackNoticeLine {
+  display:block;
+  margin:0;
+  padding:0;
+  color:var(--text);
+  font-size:clamp(.78rem,2.75vw,.9rem);
+  font-weight:850;
+  line-height:1.28;
+}
+
+.feedbackRhythmBlock .feedbackNoticeLine {
+  color:var(--mutedText);
+  font-weight:780;
+}
+
+.feedbackRhythmBlock .microRule,
+.feedbackRhythmBlock .correctionPattern,
+.feedbackRhythmBlock .repairFeedbackLine {
+  margin:0 !important;
+  border:0 !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  padding:0 !important;
+  box-shadow:none !important;
+}
+
+.feedbackRhythmBlock .microRule + .microRule,
+.feedbackRhythmBlock .b1TransformationFeedback,
+.feedbackRhythmBlock .b1ChoiceFeedback,
+.feedbackRhythmBlock .articleGridAdapter {
+  padding-top:7px !important;
+  border-top:1px solid color-mix(in srgb, var(--accent) 16%, var(--line)) !important;
+}
+
+.feedbackRhythmBlock .repairAnswerLine {
+  display:block;
+  margin-top:2px;
+  color:var(--text);
+  font-weight:940;
+}
+
+.feedbackRhythmBlock .repairExplain {
+  margin-top:4px;
+  color:var(--mutedText);
+  font-size:.92em;
+}
+
+.feedbackRhythmBlock .repairExplain summary {
+  cursor:pointer;
+}
+
+.feedbackRhythmBlock .repairExplainBody {
+  display:grid;
+  gap:5px;
+  margin-top:5px;
+  padding-top:5px;
+  border-top:1px solid color-mix(in srgb, var(--accent) 14%, var(--line));
+}
+
+.b1PostAnswerResultArea {
+  display:grid;
+  gap:5px;
+  margin-top:2px;
+  padding:9px 10px;
+  border:1px solid color-mix(in srgb, var(--star-gold) 30%, var(--line));
+  border-radius:12px;
+  background:linear-gradient(180deg, rgba(255,210,99,.08), rgba(4,12,24,.72));
+}
+
+.feedbackRhythmBlock .b1PostAnswerResultArea .b1StarUpdateLine {
+  margin:0 !important;
+  padding:0 !important;
+  border:0 !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  font-size:clamp(.78rem,2.75vw,.9rem) !important;
+  line-height:1.25 !important;
+}
+
+.feedbackRhythmBlock .articleGridAdapter.compact {
+  width:100%;
+  margin-top:0;
+}
+
+body.b1Mode .correctionBlock.feedbackRhythmBlock.visible {
+  padding:12px 12px !important;
+  gap:8px !important;
+}
+
+body.b1Mode[data-b1-state="success"] .correctionBlock.feedbackRhythmBlock.visible,
+.correctionBlock.feedbackRhythmBlock.success.visible {
+  border-color:rgba(95,244,157,.62) !important;
+}
+
+body.b1Mode[data-b1-state="fail"] .correctionBlock.feedbackRhythmBlock.visible {
+  border-color:rgba(255,99,125,.62) !important;
+}
+
 body.b1Mode .bottomHud {
   height:var(--practice-hud-h) !important;
   min-height:var(--practice-hud-h) !important;
@@ -11154,8 +11271,8 @@ body.b1Mode .b1ConfidenceRow {
   var B1_PATH_UNLOCK_STORAGE_KEY = "ozmosis_b1_path_unlock_overrides_v1";
   var B1_REVIEW_EDIT_QUEUE_STORAGE_KEY = "ozmosis_b1_review_edit_queue_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.85.3.5 - Shared Practice Frame Convergence Pass";
-  var OZMOSIS_EXPORT_VERSION = "v0.85.3.5-shared-practice-frame-convergence";
+  var OZMOSIS_APP_VERSION = "v0.85.3.6 - Feedback Rhythm Pass";
+  var OZMOSIS_EXPORT_VERSION = "v0.85.3.6-feedback-rhythm";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -17883,6 +18000,9 @@ body.b1Mode .b1ConfidenceRow {
     var copy = changed ? ("Now " + b1PathStarSentence(afterLevel).toLowerCase() + ".") : ("Still " + afterLevel + "/5. Star unchanged.");
     return '<div class="b1StarUpdateLine ' + (changed ? "positive" : "neutral") + '">' + b1PathStarGlyphsHtml(afterLevel) + '<span>' + escapeHtml(copy) + '</span></div>';
   }
+  function b1PostAnswerResultAreaHtml(starUpdateHtml) {
+    return starUpdateHtml ? '<div class="b1PostAnswerResultArea" aria-label="Post-answer result">' + starUpdateHtml + '</div>' : "";
+  }
   function b1PathCategoryStarRowsHtml(category) {
     var total = Number(category && category.coreTargetCount || 0);
     if (!total) return "";
@@ -21924,8 +22044,10 @@ body.b1Mode .b1ConfidenceRow {
   function renderFeedbackCard(isCorrect) {
     var block = el("correctionBlock");
     var cue = cueFor(current);
-    block.className = "correctionBlock" + (isCorrect ? " success" : "");
-    block.innerHTML = "<div class=\"correctionTarget\">" + current.caseKey + " " + current.genderKey + " = " + displayAnswer(current.answer) + "</div>" +
+    var label = isCorrect ? "Correct" : "Not quite";
+    block.className = "correctionBlock feedbackRhythmBlock" + (isCorrect ? " success" : "");
+    block.innerHTML = "<div class=\"correctionTarget feedbackResultLine " + (isCorrect ? "correct" : "wrong") + "\" aria-label=\"" + label + "\">" + label + "</div>" +
+      "<div class=\"feedbackAnswerLine\">" + current.caseKey + " " + current.genderKey + " = " + displayAnswer(current.answer) + "</div>" +
       "<div class=\"correctionPattern\">" + escapeHtml(cue) + "</div>";
     if (!isCorrect && currentShowMicroRule) {
       block.innerHTML += "<div class=\"microRule\"><strong>Repair rule</strong>" + escapeHtml(microRuleFor(current)) + "</div>";
@@ -26168,7 +26290,7 @@ body.b1Mode .b1ConfidenceRow {
     var label = assisted ? "Assisted practice" : (repairComparison && repairComparison.correctWithNote ? "Correct - note" : (isCorrect ? "Correct" : "Not quite"));
     var resultClass = assisted ? "assisted" : (isCorrect ? "correct" : "wrong");
     b1SharedPracticeFrameMetadata("b1-feedback", articleGridLine ? "compact" : "none");
-    block.className = "correctionBlock" + (isCorrect && !assisted ? " success" : "");
+    block.className = "correctionBlock feedbackRhythmBlock" + (isCorrect && !assisted ? " success" : "");
     block.innerHTML = "<div class=\"correctionTarget feedbackResultLine " + resultClass + "\" aria-label=\"" + label + "\">" + label + "</div>" +
       assistedLine +
       extraLine +
@@ -26178,7 +26300,7 @@ body.b1Mode .b1ConfidenceRow {
       contrastLine +
       ruleLine +
       articleGridLine +
-      (starUpdateHtml || "");
+      b1PostAnswerResultAreaHtml(starUpdateHtml || "");
     block.classList.add("visible");
   }
   function teachB1Answer() {
@@ -26218,10 +26340,10 @@ body.b1Mode .b1ConfidenceRow {
     state = "b1Next";
     el("answerArea").classList.add("answered");
     var block = el("correctionBlock");
-    block.className = "correctionBlock visible";
-    block.innerHTML = "<div class=\"correctionTarget\" aria-label=\"Skipped\">Skipped</div>" +
+    block.className = "correctionBlock feedbackRhythmBlock visible";
+    block.innerHTML = "<div class=\"correctionTarget feedbackResultLine assisted\" aria-label=\"Skipped\">Skipped</div>" +
       "<div class=\"microRule\">No production evidence was recorded.</div>" +
-      "<div class=\"b1StarUpdateLine neutral\"><span>Not star-rated.</span></div>";
+      b1PostAnswerResultAreaHtml("<div class=\"b1StarUpdateLine neutral\"><span>Not star-rated.</span></div>");
     markB1ReviewTestDecisionPending();
     renderB1TaskStarStatus(b1Runtime.current);
     resetB1ConfidenceControls();
@@ -26257,11 +26379,10 @@ body.b1Mode .b1ConfidenceRow {
     state = "b1Next";
     el("answerArea").classList.add("answered");
     var block = el("correctionBlock");
-    block.className = "correctionBlock visible";
-    block.innerHTML = "<div class=\"correctionTarget\" aria-label=\"Practised\">✓</div>" +
+    block.className = "correctionBlock feedbackRhythmBlock visible";
+    block.innerHTML = "<div class=\"correctionTarget feedbackResultLine assisted\" aria-label=\"Practised\">Practised</div>" +
       "<div class=\"microRule\">Saved as self-marked practice evidence." + (b1Runtime.currentProductionModelShown ? " Model answer viewed." : "") + "</div>" +
-      "<div class=\"b1StarUpdateLine neutral\"><span>Production practised.</span><span>Not star-rated.</span></div>";
-    block.querySelector(".correctionTarget").textContent = "Practised";
+      b1PostAnswerResultAreaHtml("<div class=\"b1StarUpdateLine neutral\"><span>Production practised.</span><span>Not star-rated.</span></div>");
     markB1ReviewTestDecisionPending();
     renderB1TaskStarStatus(b1Runtime.current);
     renderB1ConfidenceControls(null);

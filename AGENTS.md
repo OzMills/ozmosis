@@ -6,13 +6,13 @@ Ozmosis is a static, dependency-free German learning app deployed through GitHub
 
 Ozmosis was formerly called Kasuskonsole. Historical notes may still use that name, but current user-facing and repo-facing language should use `Ozmosis`.
 
-Current working version: `v0.85.3.5 - Shared Practice Frame Convergence Pass`.
+Current working version: `v0.85.3.6 - Feedback Rhythm Pass`.
 
-Current runtime baseline: `v0.85.3.5 - Shared Practice Frame Convergence Pass`.
+Current runtime baseline: `v0.85.3.6 - Feedback Rhythm Pass`.
 
-Current strict UI gate result: `SHARED_FRAME_CONVERGENCE_ACCEPTED`.
+Current strict UI gate result: `FEEDBACK_RHYTHM_ACCEPTED`.
 
-Next planned patch: `v0.85.3.6 - Feedback Rhythm Pass`
+Next planned patch: `v0.85.3.7 - Correction and Satzbau Surface Pass`
 
 v0.86 status: blocked until final v0.85.x readiness gate reports `READY_FOR_V0.86`.
 
@@ -20,11 +20,11 @@ Current README: `README.md`
 
 Current changelog: `CHANGELOG-FULL-OZMOSIS.txt`
 
-Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.5.md`
+Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.6.md`
 
-Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.5.md`
+Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.6.md`
 
-Current strict UI proof QA: `docs/qa/v0.85.3.5_shared_practice_frame_convergence.md`
+Current strict UI proof QA: `docs/qa/v0.85.3.6_feedback_rhythm.md`
 
 README/changelog convention: one canonical root `README.md` and one canonical `CHANGELOG-FULL-OZMOSIS.txt`. Do not create versioned README/changelog files moving forward unless the user explicitly asks for a standalone export.
 

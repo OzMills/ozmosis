@@ -35,17 +35,32 @@ This is the only changelog moving forward. Do not create standalone `CHANGELOG-v
 
 Current state is based only on current repo files.
 
-- Current app version in `index.html`: `v0.85.3.5 - Shared Practice Frame Convergence Pass`
-- Current export version in `index.html`: `v0.85.3.5-shared-practice-frame-convergence`
+- Current app version in `index.html`: `v0.85.3.6 - Feedback Rhythm Pass`
+- Current export version in `index.html`: `v0.85.3.6-feedback-rhythm`
 - Current README: `README.md`
 - Current changelog: `CHANGELOG-FULL-OZMOSIS.txt`
-- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.5.md`
-- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.5.md`
-- Current QA report: `docs/qa/v0.85.3.5_shared_practice_frame_convergence.md`
-- Current strict UI gate result: `SHARED_FRAME_CONVERGENCE_ACCEPTED`
-- Next required patch documented in current files: `v0.85.3.6 - Feedback Rhythm Pass`
+- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.6.md`
+- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.6.md`
+- Current QA report: `docs/qa/v0.85.3.6_feedback_rhythm.md`
+- Current strict UI gate result: `FEEDBACK_RHYTHM_ACCEPTED`
+- Next required patch documented in current files: `v0.85.3.7 - Correction and Satzbau Surface Pass`
 
 No live deployment status is claimed here.
+
+## v0.85.3.6 - Feedback Rhythm Pass
+
+- Implemented a narrow post-answer feedback rhythm pass after the accepted v0.85.3.5 shared practice-frame convergence layer.
+- Unified answered-state feedback presentation around compact result feedback, a full post-answer star/result area, and then confidence/continue controls.
+- Added feedback-rhythm styling for B1 choice, cloze, correction/repair, Satzbau, B1 cases/articles repair, production skip/practised states, and Case Trainer feedback cards.
+- Preserved the v0.85.3.5 protected article-grid adapter forms: full grid, compact highlighted grid, and optional reveal grid.
+- Confirmed B1 cases/articles wrong repair feedback can still show compact article-grid support when metadata is explicit.
+- Confirmed Case Trainer wrong-answer grid and full-grid reveal continue to work.
+- Confirmed production-card default state does not show post-answer star/result feedback before the learner acts.
+- Added `scripts/ozmosis-feedback-rhythm-check.cjs`.
+- Generated screenshot/contact-sheet evidence under `docs/qa/screenshots/v0.85.3.6-feedback-rhythm/`.
+- Added QA documentation at `docs/qa/v0.85.3.6_feedback_rhythm.md`.
+- Preserved scoring, evidence semantics, star earning logic, content banks, answer keys, localStorage keys, save/export/import format, item selection, article-grid semantics, and production-card semantics.
+- Set the next planned patch to `v0.85.3.7 - Correction and Satzbau Surface Pass`.
 
 ## v0.85.3.5 - Shared Practice Frame Convergence Pass
 
