@@ -713,6 +713,55 @@ button {
 .miniTable .target { color:var(--accent-2); border-color:var(--accent-2); background:rgba(246,193,92,.08); }
 .miniTable .hitCorrect { color:#041018; background:var(--good); border-color:var(--good); }
 .miniTable .hitMissed { color:#041018; background:var(--good); border-color:var(--good); box-shadow:0 0 0 2px rgba(125,227,255,.28); }
+.miniTable .hitSelected { color:#041018; background:rgba(255,109,122,.9); border-color:var(--bad); box-shadow:0 0 0 2px rgba(255,109,122,.2); }
+
+.articleGridAdapter {
+  width:min(560px,100%);
+  display:grid;
+  gap:6px;
+}
+.articleGridAdapter.compact,
+.articleGridAdapter.reveal {
+  padding:8px;
+  border:1px solid color-mix(in srgb, var(--accent) 24%, var(--line));
+  border-radius:12px;
+  background:rgba(7,16,26,.76);
+}
+.articleGridAdapter.compact {
+  border-left:3px solid var(--accent-2);
+}
+.articleGridAdapter.reveal {
+  border-left:3px solid var(--accent);
+}
+.articleGridAdapterLabel {
+  display:flex;
+  justify-content:space-between;
+  gap:8px;
+  align-items:baseline;
+  color:var(--muted);
+  font-size:clamp(.68rem,2.3vw,.78rem);
+  font-weight:850;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.articleGridAdapterLabel span:last-child {
+  color:var(--accent-2);
+  text-align:right;
+}
+.articleGridAdapter.compact .miniTable {
+  font-size:clamp(.6rem,2.15vw,.74rem);
+  border-spacing:clamp(1px,.8vw,3px);
+}
+.articleGridAdapter.compact .miniTable th,
+.articleGridAdapter.compact .miniTable td {
+  padding:clamp(4px,1.35vw,7px) clamp(3px,1.1vw,6px);
+  border-radius:clamp(5px,1.8vw,8px);
+}
+.articleGridAdapterNote {
+  color:var(--muted);
+  font-size:clamp(.72rem,2.35vw,.82rem);
+  line-height:1.25;
+}
 
 
 .practiceSurface {
@@ -11105,8 +11154,8 @@ body.b1Mode .b1ConfidenceRow {
   var B1_PATH_UNLOCK_STORAGE_KEY = "ozmosis_b1_path_unlock_overrides_v1";
   var B1_REVIEW_EDIT_QUEUE_STORAGE_KEY = "ozmosis_b1_review_edit_queue_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.85.3.3b - Duplicate Teach Me Button Hotfix";
-  var OZMOSIS_EXPORT_VERSION = "v0.85.3.3b-duplicate-teach-me-hotfix";
+  var OZMOSIS_APP_VERSION = "v0.85.3.5 - Shared Practice Frame Convergence Pass";
+  var OZMOSIS_EXPORT_VERSION = "v0.85.3.5-shared-practice-frame-convergence";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -21636,6 +21685,166 @@ body.b1Mode .b1ConfidenceRow {
     return patternFor(q.type, q.caseKey, q.genderKey) || (q.grammarCue || "");
   }
 
+  function articleGridCanonicalCase(value) {
+    var raw = String(value || "").trim().toLowerCase();
+    if (!raw) return "";
+    if (caseFromEnglish[raw]) return caseFromEnglish[raw];
+    if (raw === "nominativ" || raw === "nom" || raw === "nom.") return "Nominativ";
+    if (raw === "akkusativ" || raw === "akk" || raw === "akk.") return "Akkusativ";
+    if (raw === "dativ" || raw === "dat" || raw === "dat.") return "Dativ";
+    if (raw === "genitiv" || raw === "gen" || raw === "gen.") return "Genitiv";
+    return "";
+  }
+  function articleGridCanonicalGender(value) {
+    var raw = String(value || "").trim().toLowerCase();
+    if (!raw) return "";
+    if (genderFromEnglish[raw]) return genderFromEnglish[raw];
+    if (raw === "masculine_singular" || raw === "masculine" || raw === "maskulinum" || raw === "masc" || raw === "m") return "Maskulinum";
+    if (raw === "neuter_singular" || raw === "neuter" || raw === "neutrum" || raw === "n") return "Neutrum";
+    if (raw === "feminine_singular" || raw === "feminine" || raw === "femininum" || raw === "f") return "Femininum";
+    if (raw === "plural" || raw === "pl" || raw === "pl.") return "Plural";
+    return "";
+  }
+  function articleGridCanonicalFamily(value) {
+    var raw = String(value || "").trim().toLowerCase().replace(/\s+/g, "_");
+    if (!raw) return "";
+    if (raw === "definite" || raw === "der" || raw === "der_die_das") return "definite";
+    if (raw === "indefinite" || raw === "ein" || raw === "ein_eine") return "indefinite";
+    if (raw === "negative" || raw === "kein" || raw === "kein_keine") return "negative";
+    return "";
+  }
+  function articleGridFirstCanonical(value, normaliser) {
+    if (Array.isArray(value)) {
+      for (var i = 0; i < value.length; i += 1) {
+        var canonical = normaliser(value[i]);
+        if (canonical) return canonical;
+      }
+      return "";
+    }
+    return normaliser(value);
+  }
+  function articleGridNormaliseForm(value) {
+    return normalise(displayAnswer(value)).replace(/[.,!?;:]+$/g, "");
+  }
+  function articleGridPossibleForms(familyKey) {
+    var paradigm = paradigms[familyKey];
+    var map = {};
+    if (!paradigm || !paradigm.table) return map;
+    Object.keys(paradigm.table).forEach(function(key){
+      var form = articleGridNormaliseForm(paradigm.table[key]);
+      if (form) map[form] = true;
+    });
+    return map;
+  }
+  function articleGridSelectedArticleFromRaw(rawAnswer, familyKey) {
+    var forms = articleGridPossibleForms(familyKey);
+    var direct = articleGridNormaliseForm(rawAnswer);
+    if (forms[direct]) return direct;
+    var tokens = String(rawAnswer || "").toLowerCase().split(/[^a-zäöüß]+/).map(function(token){ return articleGridNormaliseForm(token); }).filter(Boolean);
+    var seen = {}, matches = [];
+    tokens.forEach(function(token){
+      if (forms[token] && !seen[token]) {
+        seen[token] = true;
+        matches.push(token);
+      }
+    });
+    return matches.length === 1 ? matches[0] : "";
+  }
+  function renderArticleGridAdapter(options) {
+    options = options || {};
+    var host = options.target || null;
+    if (host && options.clear !== false) host.innerHTML = "";
+    var familyKey = articleGridCanonicalFamily(options.familyKey || options.family || options.articleFamily || (current && current.type));
+    var paradigm = paradigms[familyKey];
+    if (!paradigm) return null;
+    var mode = String(options.mode || "full");
+    var displayMode = String(options.displayMode || (mode === "hint" ? "reveal" : (mode === "missed" ? "compact" : "full")));
+    var targetCase = articleGridCanonicalCase(options.caseKey || options.caseTarget || (current && current.caseKey));
+    var targetGender = articleGridCanonicalGender(options.genderKey || options.genderNumber || (current && current.genderKey));
+    var selectedAnswer = articleGridNormaliseForm(options.selectedAnswer || "");
+    var expectedAnswer = articleGridNormaliseForm(options.correctAnswer || (targetCase && targetGender ? paradigm.table[targetCase + "|" + targetGender] : ""));
+    var selectedMatches = [];
+    if (selectedAnswer && selectedAnswer !== expectedAnswer) {
+      activeCases().forEach(function(c){
+        genders.forEach(function(g){
+          var value = articleGridNormaliseForm(paradigm.table[c.key + "|" + g.key]);
+          if (value === selectedAnswer) selectedMatches.push(c.key + "|" + g.key);
+        });
+      });
+    }
+    var selectedCellKey = selectedMatches.length === 1 ? selectedMatches[0] : "";
+    var adapter = document.createElement("div");
+    adapter.className = "articleGridAdapter " + displayMode;
+    adapter.setAttribute("data-article-grid-mode", displayMode);
+    adapter.setAttribute("data-article-grid-family", familyKey);
+    if (targetCase) adapter.setAttribute("data-article-grid-case", targetCase);
+    if (targetGender) adapter.setAttribute("data-article-grid-gender", targetGender);
+    if (options.label || displayMode !== "full") {
+      var label = document.createElement("div");
+      label.className = "articleGridAdapterLabel";
+      label.innerHTML = "<span>" + escapeHtml(options.label || "Article grid") + "</span><span>" + escapeHtml(paradigm.title + (targetCase ? " · " + targetCase : "")) + "</span>";
+      adapter.appendChild(label);
+    }
+    var table = document.createElement("table");
+    table.className = "miniTable articleGridTable" + (options.deferVisible === false ? " visible" : "");
+    table.setAttribute("data-article-grid-mode", displayMode);
+    var thead = document.createElement("thead");
+    var headRow = document.createElement("tr");
+    headRow.appendChild(document.createElement("th"));
+    genders.forEach(function(g){
+      var th = document.createElement("th");
+      th.textContent = g.short;
+      headRow.appendChild(th);
+    });
+    thead.appendChild(headRow);
+    table.appendChild(thead);
+    var tbody = document.createElement("tbody");
+    activeCases().forEach(function(c){
+      var row = document.createElement("tr");
+      var th = document.createElement("th");
+      th.textContent = c.short;
+      row.appendChild(th);
+      genders.forEach(function(g){
+        var cellKey = c.key + "|" + g.key;
+        var value = paradigm.table[cellKey];
+        var td = document.createElement("td");
+        var isTarget = c.key === targetCase && g.key === targetGender;
+        if (mode === "hint" && isTarget) {
+          td.textContent = "???";
+          td.className = "target";
+        } else {
+          td.textContent = displayAnswer(value);
+        }
+        if (mode === "correct" && isTarget) td.className = "hitCorrect";
+        if ((mode === "missed" || displayMode === "compact") && isTarget) td.className = "hitMissed";
+        if (selectedCellKey && selectedCellKey === cellKey && !isTarget) td.className = "hitSelected";
+        if (isTarget) td.setAttribute("data-article-grid-target", "true");
+        if (selectedCellKey && selectedCellKey === cellKey) td.setAttribute("data-article-grid-selected", "true");
+        row.appendChild(td);
+      });
+      tbody.appendChild(row);
+    });
+    table.appendChild(tbody);
+    adapter.appendChild(table);
+    if (options.note) {
+      var note = document.createElement("div");
+      note.className = "articleGridAdapterNote";
+      note.textContent = options.note;
+      adapter.appendChild(note);
+    }
+    if (host) {
+      host.appendChild(adapter);
+      if (options.deferVisible !== false) setTimeout(function(){ table.classList.add("visible"); }, 0);
+    }
+    return adapter;
+  }
+  function renderArticleGridAdapterHtml(options) {
+    options = options || {};
+    options.deferVisible = false;
+    var node = renderArticleGridAdapter(options);
+    return node ? node.outerHTML : "";
+  }
+
   function recordMistake(q) { var key = (q.kind === "cloze" ? "Cloze" : articleTitle(q.type)) + "|" + q.caseKey + "|" + q.genderKey + "|" + (q.errorType || "article"); if (!mistakeCounts[key]) mistakeCounts[key] = { count:0, type:q.type, caseKey:q.caseKey, genderKey:q.genderKey, kind:q.kind, errorType:q.errorType || "article" }; mistakeCounts[key].count += 1; }
   function logAttempt(q, isCorrect, choice) {
     sessionLog.push({
@@ -25474,6 +25683,67 @@ body.b1Mode .b1ConfidenceRow {
       answer.setAttribute("data-b1-state", visualState);
     }
   }
+  function setSharedPracticeFrameMetadata(metadata) {
+    metadata = metadata || {};
+    var attrs = {
+      "data-practice-frame": metadata.practiceFrame || "shared-practice-frame",
+      "data-answer-surface": metadata.answerSurface || "none",
+      "data-route-source": metadata.routeSource || "",
+      "data-launch-source": metadata.launchSource || "",
+      "data-feedback-surface": metadata.feedbackSurface || "pending",
+      "data-article-grid-mode": metadata.articleGridMode || "none"
+    };
+    var nodes = [document.body, document.querySelector("main"), el("answerArea")].filter(Boolean);
+    nodes.forEach(function(node){
+      Object.keys(attrs).forEach(function(name){
+        if (attrs[name] === "") node.removeAttribute(name);
+        else node.setAttribute(name, attrs[name]);
+      });
+    });
+  }
+  function b1SharedPracticeFrameMetadata(feedbackSurface, articleGridMode) {
+    var item = b1Runtime.current;
+    setSharedPracticeFrameMetadata({
+      practiceFrame:"b1-shared-practice",
+      answerSurface:b1VisualTemplateSurfaceForItem(item),
+      routeSource:b1Runtime.mode || "b1",
+      launchSource:b1Runtime.deckKey || b1Runtime.filterKey || "b1",
+      feedbackSurface:feedbackSurface || "pending",
+      articleGridMode:articleGridMode || "none"
+    });
+  }
+  function b1ArticleGridFeedbackMeta(item, rawAnswer) {
+    if (!item || b1EvidenceBankKeyFor(item) !== "cases_articles") return null;
+    var familyKey = articleGridFirstCanonical([item.articleFamily].concat(item.articleFamilies || []), articleGridCanonicalFamily);
+    var caseKey = articleGridFirstCanonical([item.caseTarget].concat(item.caseTargets || []), articleGridCanonicalCase);
+    var genderKey = articleGridFirstCanonical([item.genderNumber].concat(item.genderNumberTargets || []), articleGridCanonicalGender);
+    if (!familyKey || !caseKey || !genderKey || !paradigms[familyKey]) return null;
+    var correctAnswer = paradigms[familyKey].table[caseKey + "|" + genderKey];
+    if (!correctAnswer) return null;
+    return {
+      familyKey:familyKey,
+      caseKey:caseKey,
+      genderKey:genderKey,
+      correctAnswer:correctAnswer,
+      selectedAnswer:articleGridSelectedArticleFromRaw(rawAnswer, familyKey)
+    };
+  }
+  function b1ArticleGridFeedbackHtml(item, rawAnswer, isCorrect) {
+    if (isCorrect) return "";
+    var meta = b1ArticleGridFeedbackMeta(item, rawAnswer);
+    if (!meta) return "";
+    return renderArticleGridAdapterHtml({
+      displayMode:"compact",
+      mode:isCorrect ? "correct" : "missed",
+      familyKey:meta.familyKey,
+      caseKey:meta.caseKey,
+      genderKey:meta.genderKey,
+      correctAnswer:meta.correctAnswer,
+      selectedAnswer:meta.selectedAnswer,
+      label:"Article grid",
+      note:"Highlighted form: " + displayAnswer(meta.correctAnswer) + " · " + meta.caseKey + " · " + meta.genderKey
+    });
+  }
   function b1UpdateVisualTemplateInputState() {
     if (!b1Runtime.active || !b1Runtime.current || state !== "b1Checking") return;
     var item = b1Runtime.current;
@@ -25605,6 +25875,7 @@ body.b1Mode .b1ConfidenceRow {
     if (!hint) return false;
     hintUsed = true;
     b1SetVisualTemplateState(b1VisualTemplateSurfaceForItem(b1Runtime.current), "hint");
+    b1SharedPracticeFrameMetadata("hint", "none");
     var feedback = el("feedback");
     feedback.textContent = b1SupportDisplayText(hint, false, "hint");
     feedback.className = "feedback warn";
@@ -25784,6 +26055,7 @@ body.b1Mode .b1ConfidenceRow {
   function renderB1Question() {
     var item = b1Runtime.current;
     b1SetVisualTemplateState(b1VisualTemplateSurfaceForItem(item), "default");
+    b1SharedPracticeFrameMetadata("pending", "none");
     clearMobileClozeFocus();
     resetB1ChoiceSelection();
     b1Runtime.translationOpen = false;
@@ -25892,8 +26164,10 @@ body.b1Mode .b1ConfidenceRow {
     var choiceLine = b1ChoiceFeedbackHtml(item, rawAnswer);
     var transformationLine = b1TransformationFeedbackHtml(item, rawAnswer, isCorrect);
     var ruleLine = (item.microRule && !repairLine && !contrastLine && !transformationLine) ? "<div class=\"microRule\">" + escapeHtml(item.microRule) + "</div>" : "";
+    var articleGridLine = b1ArticleGridFeedbackHtml(item, rawAnswer, isCorrect);
     var label = assisted ? "Assisted practice" : (repairComparison && repairComparison.correctWithNote ? "Correct - note" : (isCorrect ? "Correct" : "Not quite"));
     var resultClass = assisted ? "assisted" : (isCorrect ? "correct" : "wrong");
+    b1SharedPracticeFrameMetadata("b1-feedback", articleGridLine ? "compact" : "none");
     block.className = "correctionBlock" + (isCorrect && !assisted ? " success" : "");
     block.innerHTML = "<div class=\"correctionTarget feedbackResultLine " + resultClass + "\" aria-label=\"" + label + "\">" + label + "</div>" +
       assistedLine +
@@ -25903,6 +26177,7 @@ body.b1Mode .b1ConfidenceRow {
       transformationLine +
       contrastLine +
       ruleLine +
+      articleGridLine +
       (starUpdateHtml || "");
     block.classList.add("visible");
   }
@@ -25911,6 +26186,7 @@ body.b1Mode .b1ConfidenceRow {
     var input = el("b1InlineInput");
     if (!input) return;
     b1SetVisualTemplateState(b1VisualTemplateSurfaceForItem(b1Runtime.current), "hint");
+    b1SharedPracticeFrameMetadata("hint", "none");
     b1Runtime.currentAssisted = true;
     input.placeholder = b1Runtime.current.answer || "";
     input.classList.add("teachGhost");
@@ -25937,6 +26213,7 @@ body.b1Mode .b1ConfidenceRow {
   function skipB1ProductionCard() {
     if (state !== "b1Checking" || !b1Runtime.current || b1Runtime.current.itemType !== "production_card") return;
     b1SetVisualTemplateState("production", "skip");
+    b1SharedPracticeFrameMetadata("production-skip", "none");
     b1Runtime.currentEvidenceRecordId = "";
     state = "b1Next";
     el("answerArea").classList.add("answered");
@@ -25959,6 +26236,7 @@ body.b1Mode .b1ConfidenceRow {
   function markB1ProductionPractised() {
     if (state !== "b1Checking" || !b1Runtime.current || b1Runtime.current.itemType !== "production_card") return;
     b1SetVisualTemplateState("production", "success");
+    b1SharedPracticeFrameMetadata("production-feedback", "none");
     var evidenceRecord = appendB1EvidenceRecord(b1Runtime.current, "practised", {
       extraPractice:b1Runtime.currentExtraPractice,
       answerMode:"mark_practised",
@@ -26256,7 +26534,60 @@ body.b1Mode .b1ConfidenceRow {
     renderHud();
     scrollAppPanelToTop();
   }
-  function renderQuestion() { clearB1TaskStarStatus(); b1Runtime.currentEvidenceRecordId=""; resetB1ConfidenceControls(); renderMode(); resetConnectorChoiceGrid(); document.body.classList.remove("resultsMode"); el("answerArea").classList.remove("answered", "resultsArea"); var supportColumn=document.querySelector(".supportColumn"); var resultPanel=el("resultPanel"); if (supportColumn && resultPanel && resultPanel.parentElement !== supportColumn) supportColumn.appendChild(resultPanel); el("resultPanel").classList.remove("visible"); var prompt=el("promptValue"); prompt.className="promptWord" + (current.kind === "cloze" ? " clozePrompt" : ""); if (current.kind === "cloze") prompt.innerHTML=sentenceHtml(current.sentence); else prompt.textContent=current.caseKey+" "+current.genderKey; renderEnglishGloss(); var input=el("answerInput"); input.value=""; input.disabled=false; input.style.display=""; input.placeholder=current.kind === "cloze" ? "Lücke ausfüllen" : "Artikel eingeben"; input.classList.remove("correct","missed"); el("feedback").innerHTML=""; el("feedback").className="feedback"; el("practiceSurface").classList.add("hidden"); setSupportPlaceholder(true, false); el("miniTableWrap").innerHTML=""; el("correctionBlock").className="correctionBlock"; el("correctionBlock").innerHTML=""; if (currentShowMicroRule) { el("correctionBlock").innerHTML="<div class=\"microRule\"><strong>Repair rule</strong>" + escapeHtml(microRuleFor(current)) + "</div>"; el("correctionBlock").classList.add("visible"); } el("actionGrid").classList.remove("singleAction", "rightAction"); el("actionGrid").style.display="grid"; el("checkBtn").disabled=false; el("noArticleBtn").disabled=false; el("noArticleBtn").style.display=""; el("hintBtn").disabled=false; el("hintBtn").hidden=false; el("hintBtn").style.display=""; el("nextBtn").classList.remove("visible"); el("nextBtn").textContent="Weiter"; setTimeout(function(){ input.focus(); },0); }
+  function renderQuestion() {
+    clearB1TaskStarStatus();
+    b1Runtime.currentEvidenceRecordId="";
+    resetB1ConfidenceControls();
+    renderMode();
+    resetConnectorChoiceGrid();
+    setSharedPracticeFrameMetadata({
+      practiceFrame:"case-trainer-shared-practice",
+      answerSurface:current && current.kind === "cloze" ? "case-trainer-cloze" : "case-trainer-table",
+      routeSource:"case_trainer",
+      launchSource:"case_trainer",
+      feedbackSurface:"pending",
+      articleGridMode:"none"
+    });
+    document.body.classList.remove("resultsMode");
+    el("answerArea").classList.remove("answered", "resultsArea");
+    var supportColumn=document.querySelector(".supportColumn");
+    var resultPanel=el("resultPanel");
+    if (supportColumn && resultPanel && resultPanel.parentElement !== supportColumn) supportColumn.appendChild(resultPanel);
+    el("resultPanel").classList.remove("visible");
+    var prompt=el("promptValue");
+    prompt.className="promptWord" + (current.kind === "cloze" ? " clozePrompt" : "");
+    if (current.kind === "cloze") prompt.innerHTML=sentenceHtml(current.sentence);
+    else prompt.textContent=current.caseKey+" "+current.genderKey;
+    renderEnglishGloss();
+    var input=el("answerInput");
+    input.value="";
+    input.disabled=false;
+    input.style.display="";
+    input.placeholder=current.kind === "cloze" ? "Lücke ausfüllen" : "Artikel eingeben";
+    input.classList.remove("correct","missed");
+    el("feedback").innerHTML="";
+    el("feedback").className="feedback";
+    el("practiceSurface").classList.add("hidden");
+    setSupportPlaceholder(true, false);
+    el("miniTableWrap").innerHTML="";
+    el("correctionBlock").className="correctionBlock";
+    el("correctionBlock").innerHTML="";
+    if (currentShowMicroRule) {
+      el("correctionBlock").innerHTML="<div class=\"microRule\"><strong>Repair rule</strong>" + escapeHtml(microRuleFor(current)) + "</div>";
+      el("correctionBlock").classList.add("visible");
+    }
+    el("actionGrid").classList.remove("singleAction", "rightAction");
+    el("actionGrid").style.display="grid";
+    el("checkBtn").disabled=false;
+    el("noArticleBtn").disabled=false;
+    el("noArticleBtn").style.display="";
+    el("hintBtn").disabled=false;
+    el("hintBtn").hidden=false;
+    el("hintBtn").style.display="";
+    el("nextBtn").classList.remove("visible");
+    el("nextBtn").textContent="Weiter";
+    setTimeout(function(){ input.focus(); },0);
+  }
   function checkAnswer(overrideChoice) {
     if (state !== "checking") return;
     var input=el("answerInput"), choice=overrideChoice === "none" ? "kein artikel" : normalise(input.value);
@@ -26314,13 +26645,47 @@ body.b1Mode .b1ConfidenceRow {
     el("nextBtn").focus();
   }
   function showHint() { if (b1Runtime.active && state === "b1Checking" && showB1DisplayHint()) return; if (state !== "checking" || hintUsed) return; hintUsed=true; setSupportPlaceholder(false, true); el("feedback").innerHTML=current.kind === "cloze" ? escapeHtml(current.hint || "Article table shown.") : "Article table shown."; el("feedback").className="feedback warn"; el("hintBtn").disabled=true; renderMiniTable("hint"); el("answerInput").focus(); }
-  function renderMiniTable(mode) { var wrap=el("miniTableWrap"); wrap.innerHTML=""; if (!current || !paradigms[current.type]) return; var table=document.createElement("table"); table.className="miniTable"; var thead=document.createElement("thead"), headRow=document.createElement("tr"); headRow.appendChild(document.createElement("th")); genders.forEach(function(g){ var th=document.createElement("th"); th.textContent=g.short; headRow.appendChild(th); }); thead.appendChild(headRow); table.appendChild(thead); var tbody=document.createElement("tbody"); activeCases().forEach(function(c){ var row=document.createElement("tr"), th=document.createElement("th"); th.textContent=c.short; row.appendChild(th); genders.forEach(function(g){ var td=document.createElement("td"), value=paradigms[current.type].table[c.key+"|"+g.key], isTarget=c.key===current.caseKey && g.key===current.genderKey; if (mode === "hint" && isTarget) { td.textContent="???"; td.className="target"; } else td.textContent=displayAnswer(value); if (mode === "correct" && isTarget) td.className="hitCorrect"; if (mode === "missed" && isTarget) td.className="hitMissed"; row.appendChild(td); }); tbody.appendChild(row); }); table.appendChild(tbody); wrap.appendChild(table); setTimeout(function(){ table.classList.add("visible"); },0); }
+  function renderMiniTable(mode) {
+    var wrap=el("miniTableWrap");
+    if (!current || !paradigms[current.type]) {
+      if (wrap) wrap.innerHTML="";
+      return;
+    }
+    var displayMode = mode === "hint" ? "reveal" : (mode === "missed" ? "compact" : "full");
+    setSharedPracticeFrameMetadata({
+      practiceFrame:"case-trainer-shared-practice",
+      answerSurface:current.kind === "cloze" ? "case-trainer-cloze" : "case-trainer-table",
+      routeSource:"case_trainer",
+      launchSource:"case_trainer",
+      feedbackSurface:mode === "hint" ? "hint" : "case-trainer-feedback",
+      articleGridMode:displayMode
+    });
+    renderArticleGridAdapter({
+      target:wrap,
+      displayMode:displayMode,
+      mode:mode,
+      familyKey:current.type,
+      caseKey:current.caseKey,
+      genderKey:current.genderKey,
+      correctAnswer:current.answer,
+      selectedAnswer:mode === "missed" ? el("answerInput").value : "",
+      label:mode === "hint" ? "Article table" : "Article grid"
+    });
+  }
   function rankName(acc, mistakes, finalStreak) { if (acc===100 && finalStreak>=targetCount()) return "Perfekter Lauf"; if (acc>=95) return "Kasuskommandant"; if (acc>=85) return "Formstabil"; if (acc>=70) return "Auf Kurs"; if (mistakes<=targetCount()/2) return "Wacklig, aber lebendig"; return "Reparaturmodus"; }
   function showResults() {
     state="results";
     b1Runtime.currentEvidenceRecordId="";
     resetB1ConfidenceControls();
     resetConnectorChoiceGrid();
+    setSharedPracticeFrameMetadata({
+      practiceFrame:"case-trainer-shared-practice",
+      answerSurface:"case-trainer-results",
+      routeSource:"case_trainer",
+      launchSource:"case_trainer",
+      feedbackSurface:"case-trainer-results",
+      articleGridMode:"results"
+    });
     document.body.classList.add("resultsMode");
     el("answerArea").classList.remove("answered");
     el("answerArea").classList.add("resultsArea");

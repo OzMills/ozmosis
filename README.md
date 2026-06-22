@@ -9,29 +9,38 @@ Future README updates should be made in this file. Do not create new `README-v*.
 
 ## Current App
 
-# Ozmosis v0.85.3.4 shared practice frame inventory
+# Ozmosis v0.85.3.5 shared practice frame convergence
 
 Ozmosis is a static, local-first German learning app. The deployed app remains `index.html`.
 
-v0.85.3.4 is a QA/planning patch. It audits whether all practice and test surfaces use one shared frame before any feedback-rhythm redesign starts.
+v0.85.3.5 implements the narrow shared practice-frame convergence layer planned in v0.85.3.4. It keeps the Case Trainer article grid protected while adding shared frame metadata and compact article-grid feedback for B1 cases/articles repair where metadata is explicit.
 
-- Runtime app version remains: `v0.85.3.3b - Duplicate Teach Me Button Hotfix`
-- Runtime export version remains: `v0.85.3.3b-duplicate-teach-me-hotfix`
-- Current gate result: `SHARED_FRAME_INVENTORY_ACCEPTED`
-- Core finding: B1 practice is mostly unified, but Case Trainer/article-grid typed-answer and result surfaces still use separate legacy render ownership.
+- Runtime app version: `v0.85.3.5 - Shared Practice Frame Convergence Pass`
+- Runtime export version: `v0.85.3.5-shared-practice-frame-convergence`
+- Current gate result: `SHARED_FRAME_CONVERGENCE_ACCEPTED`
+- Core result: B1 and Case Trainer typed-answer surfaces now expose shared frame metadata, the protected article grid has full/compact/reveal adapter modes, and B1 cases/articles wrong repair feedback can show a compact highlighted article grid when case/family/gender metadata is explicit.
 
-## Current v0.85.3.4 docs
+## Current v0.85.3.5 docs
 
 - Changelog: `CHANGELOG-FULL-OZMOSIS.txt`
-- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.4.md`
-- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.4.md`
+- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.5.md`
+- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.5.md`
 - Shared frame contract: `docs/OZMOSIS_SHARED_PRACTICE_FRAME_CONTRACT_v0.85.3.4.md`
-- Current QA gate: `docs/qa/v0.85.3.4_shared_practice_frame_inventory.md`
-- Current gate result JSON: `docs/qa/v0.85.3.4_shared_practice_frame_inventory_results.json`
-- Screenshot comparison: `docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/comparison.html`
+- Current QA gate: `docs/qa/v0.85.3.5_shared_practice_frame_convergence.md`
+- Current gate result JSON: `docs/qa/v0.85.3.5_shared_practice_frame_convergence_results.json`
+- Screenshot comparison: `docs/qa/screenshots/v0.85.3.5-shared-practice-frame-convergence/comparison.html`
 - Package policy: `docs/OZMOSIS_QA_ARTEFACT_AND_PACKAGE_POLICY.md`
 
-Next planned patch: `v0.85.3.5 - Shared Practice Frame Convergence Pass`.
+Next planned patch: `v0.85.3.6 - Feedback Rhythm Pass`.
+
+## Previous v0.85.3.4 shared practice frame inventory
+
+v0.85.3.4 was a QA/planning patch. It audited whether all practice and test surfaces use one shared frame before any feedback-rhythm redesign starts.
+
+- Runtime app version remained: `v0.85.3.3b - Duplicate Teach Me Button Hotfix`
+- Runtime export version remained: `v0.85.3.3b-duplicate-teach-me-hotfix`
+- Gate result: `SHARED_FRAME_INVENTORY_ACCEPTED`
+- Core finding: B1 practice was mostly unified, but Case Trainer/article-grid typed-answer and result surfaces still used separate legacy render ownership.
 
 ## Previous v0.85.3.3b duplicate Teach Me hotfix baseline
 

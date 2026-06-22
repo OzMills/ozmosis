@@ -1,0 +1,194 @@
+{
+  "patch": "v0.85.3.5",
+  "title": "Shared Practice Frame Convergence Pass",
+  "startingRuntimeExpected": {
+    "appVersion": "v0.85.3.3b - Duplicate Teach Me Button Hotfix",
+    "exportVersion": "v0.85.3.3b-duplicate-teach-me-hotfix"
+  },
+  "finalRuntimeExpected": {
+    "appVersion": "v0.85.3.5 - Shared Practice Frame Convergence Pass",
+    "exportVersion": "v0.85.3.5-shared-practice-frame-convergence"
+  },
+  "appVersion": "v0.85.3.5 - Shared Practice Frame Convergence Pass",
+  "exportVersion": "v0.85.3.5-shared-practice-frame-convergence",
+  "startingStateVerified": true,
+  "versionUpdated": true,
+  "contractUsed": true,
+  "staticChecks": {
+    "inlineScriptsParsed": 1,
+    "contentScriptsParsed": 4,
+    "protectedStorageKeys": true,
+    "exportSavePresent": true,
+    "importSavePresent": true,
+    "articleGridAdapterPresent": true,
+    "b1ArticleGridFeedbackPresent": true,
+    "sharedFrameMetadataPresent": true,
+    "noPackageJson": true,
+    "noTypeModule": true
+  },
+  "browserChecks": {
+    "versionInfo": {
+      "appVersion": "v0.85.3.5 - Shared Practice Frame Convergence Pass",
+      "exportVersion": "v0.85.3.5-shared-practice-frame-convergence"
+    },
+    "responsive": [
+      {
+        "width": 320,
+        "height": 568,
+        "bodyOverflow": false,
+        "nextVisible": false,
+        "articleGridMode": "none",
+        "answerSurface": "case-trainer-cloze"
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "bodyOverflow": false,
+        "nextVisible": false,
+        "articleGridMode": "none",
+        "answerSurface": "case-trainer-cloze"
+      },
+      {
+        "width": 430,
+        "height": 932,
+        "bodyOverflow": false,
+        "nextVisible": false,
+        "articleGridMode": "none",
+        "answerSurface": "case-trainer-cloze"
+      },
+      {
+        "width": 1365,
+        "height": 599,
+        "bodyOverflow": false,
+        "nextVisible": false,
+        "articleGridMode": "none",
+        "answerSurface": "case-trainer-cloze"
+      }
+    ],
+    "consoleErrorCount": 0,
+    "runtimeExceptionCount": 0
+  },
+  "articleGridAdapter": {
+    "fullGridFound": true,
+    "compactHighlightedGridFound": true,
+    "optionalRevealGridFound": true,
+    "wrongAnswerGridFound": true
+  },
+  "sharedFrameMetadata": {
+    "b1Choice": true,
+    "b1Cloze": true,
+    "b1Correction": true,
+    "b1CasesFeedback": true,
+    "caseTrainerTable": true,
+    "caseTrainerCloze": true
+  },
+  "b1CasesArticlesFeedback": {
+    "body": {
+      "practiceFrame": "b1-shared-practice",
+      "answerSurface": "correction",
+      "routeSource": "qa_repair",
+      "feedbackSurface": "b1-feedback",
+      "articleGridMode": "compact",
+      "b1Surface": "correction",
+      "b1State": "fail"
+    },
+    "answer": {
+      "practiceFrame": "b1-shared-practice",
+      "answerSurface": "correction",
+      "feedbackSurface": "b1-feedback",
+      "articleGridMode": "compact"
+    },
+    "adapterCount": 1,
+    "adapters": [
+      {
+        "mode": "compact",
+        "family": "definite",
+        "caseKey": "Akkusativ",
+        "gender": "Maskulinum",
+        "selected": false,
+        "target": true
+      }
+    ],
+    "miniTables": 1,
+    "compactTables": 1,
+    "revealTables": 0,
+    "fullTables": 0,
+    "visibleNext": false
+  },
+  "caseTrainer": {
+    "wrongGrid": {
+      "body": {
+        "practiceFrame": "case-trainer-shared-practice",
+        "answerSurface": "case-trainer-table",
+        "routeSource": "case_trainer",
+        "feedbackSurface": "case-trainer-feedback",
+        "articleGridMode": "compact",
+        "b1Surface": "correction",
+        "b1State": "fail"
+      },
+      "answer": {
+        "practiceFrame": "case-trainer-shared-practice",
+        "answerSurface": "case-trainer-table",
+        "feedbackSurface": "case-trainer-feedback",
+        "articleGridMode": "compact"
+      },
+      "adapterCount": 1,
+      "adapters": [
+        {
+          "mode": "compact",
+          "family": "definite",
+          "caseKey": "Nominativ",
+          "gender": "Plural",
+          "selected": false,
+          "target": true
+        }
+      ],
+      "miniTables": 1,
+      "compactTables": 1,
+      "revealTables": 0,
+      "fullTables": 0,
+      "visibleNext": true
+    }
+  },
+  "exportImport": {
+    "exportOk": true,
+    "validationOk": true,
+    "applyOk": true,
+    "malformedRejected": true,
+    "appVersion": "v0.85.3.5 - Shared Practice Frame Convergence Pass",
+    "exportVersion": "v0.85.3.5-shared-practice-frame-convergence"
+  },
+  "screenshotsGenerated": {
+    "b1-choice-current": "docs/qa/screenshots/v0.85.3.5-shared-practice-frame-convergence/b1-choice-current.png",
+    "b1-cloze-current": "docs/qa/screenshots/v0.85.3.5-shared-practice-frame-convergence/b1-cloze-current.png",
+    "b1-correction-current": "docs/qa/screenshots/v0.85.3.5-shared-practice-frame-convergence/b1-correction-current.png",
+    "b1-cases-articles-repair-without-grid-or-with-grid": "docs/qa/screenshots/v0.85.3.5-shared-practice-frame-convergence/b1-cases-articles-repair-without-grid-or-with-grid.png",
+    "b1-cases-articles-repair-wrong-with-compact-grid": "docs/qa/screenshots/v0.85.3.5-shared-practice-frame-convergence/b1-cases-articles-repair-wrong-with-compact-grid.png",
+    "article-grid-compact-feedback": "docs/qa/screenshots/v0.85.3.5-shared-practice-frame-convergence/article-grid-compact-feedback.png",
+    "case-trainer-table-active": "docs/qa/screenshots/v0.85.3.5-shared-practice-frame-convergence/case-trainer-table-active.png",
+    "case-trainer-full-grid-reveal": "docs/qa/screenshots/v0.85.3.5-shared-practice-frame-convergence/case-trainer-full-grid-reveal.png",
+    "article-grid-optional-reveal": "docs/qa/screenshots/v0.85.3.5-shared-practice-frame-convergence/article-grid-optional-reveal.png",
+    "case-trainer-wrong-answer-grid": "docs/qa/screenshots/v0.85.3.5-shared-practice-frame-convergence/case-trainer-wrong-answer-grid.png",
+    "case-trainer-typed-answer": "docs/qa/screenshots/v0.85.3.5-shared-practice-frame-convergence/case-trainer-typed-answer.png",
+    "comparison": "docs/qa/screenshots/v0.85.3.5-shared-practice-frame-convergence/comparison.html",
+    "comparison-contact-sheet": "docs/qa/screenshots/v0.85.3.5-shared-practice-frame-convergence/comparison-contact-sheet.png"
+  },
+  "consoleErrors": [],
+  "runtimeExceptions": [],
+  "warnings": [
+    "Temporary Edge profile cleanup blocked by Windows file lock: C:\\Users\\rossm\\AppData\\Local\\Temp\\ozmosis-v08535-frame-convergence-edge-profile-YbiIeQ"
+  ],
+  "testsRun": [
+    "static syntax parse",
+    "version/storage/export string check",
+    "browser runtime load",
+    "export/import workflow",
+    "responsive smoke",
+    "screenshot/contact sheet generation"
+  ],
+  "testsNotRun": [],
+  "errors": [],
+  "acceptancePassed": true,
+  "recommendedNextPatch": "v0.85.3.6 - Feedback Rhythm Pass",
+  "generatedAt": "2026-06-22T20:23:08.050Z"
+}

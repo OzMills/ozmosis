@@ -23,7 +23,7 @@ This is the only changelog moving forward. Do not create standalone `CHANGELOG-v
 ## Current Run Metadata
 
 - Update type: current-run append.
-- Update date: 2026-06-16.
+- Update date: 2026-06-22.
 - Branch from `.git/HEAD`: `main`.
 - Current HEAD from `.git/refs/heads/main`: `f37168656b89a21756ecffba9cc3c066a07c59a2`.
 - Normal `git` executable: unavailable in this environment.
@@ -35,17 +35,31 @@ This is the only changelog moving forward. Do not create standalone `CHANGELOG-v
 
 Current state is based only on current repo files.
 
-- Current app version in `index.html`: `v0.85.3.3b - Duplicate Teach Me Button Hotfix`
-- Current export version in `index.html`: `v0.85.3.3b-duplicate-teach-me-hotfix`
+- Current app version in `index.html`: `v0.85.3.5 - Shared Practice Frame Convergence Pass`
+- Current export version in `index.html`: `v0.85.3.5-shared-practice-frame-convergence`
 - Current README: `README.md`
 - Current changelog: `CHANGELOG-FULL-OZMOSIS.txt`
-- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.4.md`
-- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.4.md`
-- Current QA report: `docs/qa/v0.85.3.4_shared_practice_frame_inventory.md`
-- Current strict UI gate result: `SHARED_FRAME_INVENTORY_ACCEPTED`
-- Next required patch documented in current files: `v0.85.3.5 - Shared Practice Frame Convergence Pass`
+- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.5.md`
+- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.5.md`
+- Current QA report: `docs/qa/v0.85.3.5_shared_practice_frame_convergence.md`
+- Current strict UI gate result: `SHARED_FRAME_CONVERGENCE_ACCEPTED`
+- Next required patch documented in current files: `v0.85.3.6 - Feedback Rhythm Pass`
 
 No live deployment status is claimed here.
+
+## v0.85.3.5 - Shared Practice Frame Convergence Pass
+
+- Implemented the shared practice-frame convergence layer planned by v0.85.3.4.
+- Added a protected article-grid adapter around the existing Case Trainer article table, preserving full, compact highlighted, and optional reveal forms.
+- Kept the full Case Trainer article grid working for active support and preserved wrong-answer highlighted grid behaviour.
+- Added shared DOM metadata for practice frame, answer surface, route source, launch source, feedback surface, and article-grid mode.
+- Added compact highlighted article-grid feedback for B1 cases/articles repair feedback when metadata explicitly supplies article family, case, and gender/number.
+- Kept B1 compact article-grid feedback out of the pre-answer state and out of correct-answer feedback.
+- Preserved scoring, evidence semantics, star logic, content banks, answer keys, localStorage keys, save/export/import format, item selection, and production-card semantics.
+- Added `scripts/ozmosis-practice-frame-convergence-check.cjs`.
+- Generated screenshot/contact-sheet evidence under `docs/qa/screenshots/v0.85.3.5-shared-practice-frame-convergence/`.
+- Added QA documentation at `docs/qa/v0.85.3.5_shared_practice_frame_convergence.md`.
+- Set the next planned patch to `v0.85.3.6 - Feedback Rhythm Pass`.
 
 ## v0.85.3.4 - Shared Practice Frame and Surface Inventory
 

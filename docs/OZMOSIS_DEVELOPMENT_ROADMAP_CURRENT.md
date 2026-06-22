@@ -2,11 +2,11 @@
 
 ## 1. Current Baseline
 
-Current runtime baseline: `v0.85.3.3b - Duplicate Teach Me Button Hotfix`.
+Current runtime baseline: `v0.85.3.5 - Shared Practice Frame Convergence Pass`.
 
-Current acceptance status: v0.85.3.4 completed a QA/planning inventory of shared practice-frame surfaces. It found that B1 practice is mostly unified through `renderB1Question()` and shared DOM slots, but Case Trainer/article-grid typed-answer and result surfaces still use separate legacy render ownership. Runtime remains v0.85.3.3b because no app behaviour changed.
+Current acceptance status: v0.85.3.5 completed the shared practice-frame convergence pass. B1 and Case Trainer typed-answer surfaces now expose shared frame metadata, the protected article grid has full/compact/reveal adapter modes, and B1 cases/articles wrong repair feedback can show compact highlighted grid support where metadata is explicit.
 
-Next required patch: `v0.85.3.5 - Shared Practice Frame Convergence Pass`.
+Next required patch: `v0.85.3.6 - Feedback Rhythm Pass`.
 
 ## 2. Completed Foundation
 
@@ -112,9 +112,9 @@ Stop if the hub fails.
 - Package Size, Old ZIP Audit, and No-PowerShell Cleanup Pass is complete as v0.85.3.3a.
 - Duplicate Teach Me Button Hotfix is implemented and accepted as v0.85.3.3b.
 - Shared Practice Frame and Surface Inventory is complete as v0.85.3.4.
-- Shared Practice Frame Convergence Pass is the next allowed implementation patch as v0.85.3.5.
-- Feedback Rhythm Pass is blocked until shared-frame convergence is handled or explicitly deferred.
-- Completion Gate Harness is blocked until shared-frame convergence and feedback rhythm are handled or explicitly deferred.
+- Shared Practice Frame Convergence Pass is implemented and accepted as v0.85.3.5.
+- Feedback Rhythm Pass is the next allowed implementation patch as v0.85.3.6.
+- Completion Gate Harness is blocked until feedback rhythm is handled or explicitly deferred.
 - Production Completion Pass is blocked until v0.85.11 reports `READY_FOR_V0.86`.
 - Weakness repair must wait until Skill Matrix and task-depth evidence are stable.
 - Durability/spaced review must wait until enough reviewable B1 coverage exists.
