@@ -1,0 +1,4968 @@
+{
+  "patch": "v0.85.3.4",
+  "title": "Shared Practice Frame and Surface Inventory",
+  "startingStateVerified": true,
+  "runtimeChanged": false,
+  "routesInspected": [
+    "Today B1 Sprint",
+    "Diagnostic Sprint",
+    "Connector Sprint",
+    "Cases and Articles",
+    "Prepositions",
+    "Word Order",
+    "Repair and Transformation",
+    "Wortschatz",
+    "Redemittel",
+    "Case Trainer",
+    "Learning Map",
+    "Dev Tools / QA staging",
+    "Home"
+  ],
+  "surfacesFound": [
+    {
+      "key": "choice",
+      "owner": "B1 shared renderer",
+      "selectors": [
+        "#connectorChoiceGrid",
+        "#hintBtn",
+        "#correctionBlock"
+      ]
+    },
+    {
+      "key": "inline_cloze",
+      "owner": "B1 shared renderer",
+      "selectors": [
+        "#b1InlineInput",
+        "#noArticleBtn.teachBtn",
+        "#hintBtn"
+      ]
+    },
+    {
+      "key": "full_typed_answer",
+      "owner": "B1 shared renderer and Case Trainer",
+      "selectors": [
+        "#answerInput",
+        "#checkBtn"
+      ]
+    },
+    {
+      "key": "correction_repair",
+      "owner": "B1 shared renderer",
+      "selectors": [
+        "#answerInput",
+        "#correctionBlock"
+      ]
+    },
+    {
+      "key": "satzbau_word_order",
+      "owner": "B1 shared renderer",
+      "selectors": [
+        "#promptValue",
+        "#b1InlineInput, #answerInput"
+      ]
+    },
+    {
+      "key": "production_card",
+      "owner": "B1 shared renderer",
+      "selectors": [
+        ".productionGrid",
+        ".productionReveal",
+        ".productionActionRow"
+      ]
+    },
+    {
+      "key": "article_grid_case_table",
+      "owner": "Case Trainer legacy renderer",
+      "selectors": [
+        "#miniTableWrap",
+        ".miniTable"
+      ]
+    },
+    {
+      "key": "feedback",
+      "owner": "B1 shared renderer and Case Trainer",
+      "selectors": [
+        "#correctionBlock",
+        "#feedback"
+      ]
+    },
+    {
+      "key": "confidence_continue",
+      "owner": "B1 shared renderer",
+      "selectors": [
+        "#b1ConfidenceRow",
+        "#nextBtn"
+      ]
+    },
+    {
+      "key": "hud",
+      "owner": "shared visible footer renderer",
+      "selectors": [
+        ".bottomHud",
+        "#progressBar",
+        "#targetLabel"
+      ]
+    }
+  ],
+  "sharedFrameContractCreated": true,
+  "surfaceDivergences": [
+    {
+      "surface": "article_grid_case_table",
+      "routes": [
+        "Case Trainer"
+      ],
+      "divergence": "Article/case table is owned by the legacy Case Trainer renderer renderMiniTable(mode), not by the B1 display adapter layer.",
+      "risk": "Future feedback changes can miss article-grid feedback or flatten it into generic correction text.",
+      "allowed": "Protected component; keep as distinct adapter in the shared-frame contract."
+    },
+    {
+      "surface": "full_typed_answer",
+      "routes": [
+        "B1 repair/transformation",
+        "Case Trainer"
+      ],
+      "divergence": "Both use #answerInput, but B1 uses b1Runtime/checkB1Answer/renderB1Feedback while Case Trainer uses current/checkAnswer/renderMiniTable.",
+      "risk": "Same typed input can receive different feedback hierarchy and HUD/result behaviour."
+    },
+    {
+      "surface": "results",
+      "routes": [
+        "B1 practice",
+        "Case Trainer"
+      ],
+      "divergence": "B1 result flow uses b1Runtime summaries and Learning Map routing; Case Trainer result flow uses score/rank/heatmap and New Practice routing.",
+      "risk": "Feedback rhythm or article-grid result changes need explicit adapter rules."
+    }
+  ],
+  "sameSurfaceDifferentLayouts": [
+    {
+      "surface": "choice",
+      "comparison": "Today/diagnostic/connectors all use the B1 shared choice grid when rendered as B1 items.",
+      "status": "Mostly unified; route label/title and item pool differ."
+    },
+    {
+      "surface": "inline_cloze",
+      "comparison": "B1 cloze from Today, Wortschatz, Redemittel, and QA fixtures uses the B1 visual template and #b1InlineInput when item metadata resolves to inline cloze.",
+      "status": "Mostly unified; deterministic route comparison uses QA fixtures because route queues are adaptive."
+    },
+    {
+      "surface": "typed_repair",
+      "comparison": "B1 repair/transformation typed input and Case Trainer typed article input both use #answerInput but separate render/check/feedback ownership.",
+      "status": "Divergent; needs convergence adapter before feedback rhythm work."
+    },
+    {
+      "surface": "article_grid",
+      "comparison": "Only Case Trainer currently owns the article grid; B1 cases/articles repair items do not expose the grid as a protected adapter.",
+      "status": "Divergent; article-grid integration should be explicit."
+    }
+  ],
+  "articleGridAudit": {
+    "fullGridFound": true,
+    "resultsGridFound": true,
+    "wrongAnswerGridFound": true,
+    "protectedComponentRecommended": true
+  },
+  "screenshotsGenerated": {
+    "home-start": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/home-start.png",
+    "today-b1-sprint-real-current": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/today-b1-sprint-real-current.png",
+    "diagnostic-sprint-real-current": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/diagnostic-sprint-real-current.png",
+    "connector-sprint-real-current": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/connector-sprint-real-current.png",
+    "wortschatz-real-current": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/wortschatz-real-current.png",
+    "redemittel-real-current": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/redemittel-real-current.png",
+    "cases-articles-real-current": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/cases-articles-real-current.png",
+    "word-order-real-current": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/word-order-real-current.png",
+    "repair-transformation-real-current": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/repair-transformation-real-current.png",
+    "choice-from-qa-connectors": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/choice-from-qa-connectors.png",
+    "cloze-from-qa-today": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/cloze-from-qa-today.png",
+    "correction-from-qa-repair": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/correction-from-qa-repair.png",
+    "satzbau-from-qa-word-order": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/satzbau-from-qa-word-order.png",
+    "cases-repair-from-qa-cases-articles": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/cases-repair-from-qa-cases-articles.png",
+    "production-from-qa-redemittel": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/production-from-qa-redemittel.png",
+    "case-trainer-setup": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/case-trainer-setup.png",
+    "case-trainer-table-active": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/case-trainer-table-active.png",
+    "article-grid-full-reveal": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/article-grid-full-reveal.png",
+    "article-grid-wrong-answer": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/article-grid-wrong-answer.png",
+    "comparison": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/comparison.html",
+    "contactSheet": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/comparison-contact-sheet.png"
+  },
+  "testsRun": {
+    "browserCapture": true,
+    "staticInventory": true,
+    "runtimeChanged": false,
+    "contentSemanticsChanged": false
+  },
+  "testsNotRun": [],
+  "acceptancePassed": true,
+  "recommendedNextPatch": "v0.85.3.5 - Shared Practice Frame Convergence Pass",
+  "generatedAt": "2026-06-22T19:09:00.746Z",
+  "appVersion": "v0.85.3.3b - Duplicate Teach Me Button Hotfix",
+  "exportVersion": "v0.85.3.3b-duplicate-teach-me-hotfix",
+  "filesInspected": [
+    "index.html",
+    "content/b1-cases-articles.js",
+    "content/b1-connectors.js",
+    "content/b1-display-schema.js",
+    "content/b1-m01-variant-families.js",
+    "content/b1-m02-appointments-callbacks.js",
+    "content/b1-m03-job-search-offices.js",
+    "content/b1-m04-applications.js",
+    "content/b1-m05-first-day-contract-basics.js",
+    "content/b1-m06-sick-leave.js",
+    "content/b1-m07-meetings-leave-requests.js",
+    "content/b1-m08-orders-delivery.js",
+    "content/b1-m09-complaints-customer-service.js",
+    "content/b1-m10-technical-problems.js",
+    "content/b1-m11-colleague-feedback-conflict.js",
+    "content/b1-m12-forms-admin-certificates.js",
+    "content/b1-m13-learning-exam-language.js",
+    "content/b1-m14-connectors-sentence-functions.js",
+    "content/b1-m15-time-place-movement.js",
+    "content/b1-m16-money-payment-contracts.js",
+    "content/b1-m17-home-family-daily-life-support.js",
+    "content/b1-m18-b1-b2-bridge-preview.js",
+    "content/b1-prepositions.js",
+    "content/b1-redemittel.js",
+    "content/b1-word-order.js",
+    "content/b1-wortschatz.js",
+    "data/article-items.tsv",
+    "docs/qa/v0.85.3.3b_duplicate_teach_me_hotfix.md",
+    "docs/qa/v0.85.3.3b_duplicate_teach_me_hotfix_results.json",
+    "AGENTS.md",
+    "README.md",
+    "CHANGELOG-FULL-OZMOSIS.txt",
+    "docs/OZMOSIS_SOURCE_BRIEF_CURRENT.md",
+    "docs/OZMOSIS_DEVELOPMENT_ROADMAP_CURRENT.md",
+    "docs/OZMOSIS_FEATURE_REGISTER_CURRENT.md"
+  ],
+  "staticInventory": {
+    "renderFunctions": [
+      {
+        "name": "renderB1Question",
+        "found": true,
+        "occurrences": 1
+      },
+      {
+        "name": "renderB1Feedback",
+        "found": true,
+        "occurrences": 1
+      },
+      {
+        "name": "renderConnectorChoices",
+        "found": true,
+        "occurrences": 1
+      },
+      {
+        "name": "renderProductionControls",
+        "found": true,
+        "occurrences": 1
+      },
+      {
+        "name": "renderB1DisplayHintButton",
+        "found": true,
+        "occurrences": 1
+      },
+      {
+        "name": "checkB1Answer",
+        "found": true,
+        "occurrences": 1
+      },
+      {
+        "name": "startB1Round",
+        "found": true,
+        "occurrences": 1
+      },
+      {
+        "name": "startB1DiagnosticSprint",
+        "found": true,
+        "occurrences": 1
+      },
+      {
+        "name": "startConnectorSprint",
+        "found": true,
+        "occurrences": 1
+      },
+      {
+        "name": "startCasesArticlesRound",
+        "found": true,
+        "occurrences": 1
+      },
+      {
+        "name": "startPrepositionsRound",
+        "found": true,
+        "occurrences": 1
+      },
+      {
+        "name": "startWordOrderRound",
+        "found": true,
+        "occurrences": 1
+      },
+      {
+        "name": "startRepairTransformationRound",
+        "found": true,
+        "occurrences": 1
+      },
+      {
+        "name": "startWortschatzRound",
+        "found": true,
+        "occurrences": 1
+      },
+      {
+        "name": "startRedemittelRound",
+        "found": true,
+        "occurrences": 1
+      },
+      {
+        "name": "showLearningMapScreen",
+        "found": true,
+        "occurrences": 1
+      },
+      {
+        "name": "renderQuestion",
+        "found": true,
+        "occurrences": 1
+      },
+      {
+        "name": "checkAnswer",
+        "found": true,
+        "occurrences": 1
+      },
+      {
+        "name": "renderMiniTable",
+        "found": true,
+        "occurrences": 1
+      },
+      {
+        "name": "showResults",
+        "found": true,
+        "occurrences": 1
+      },
+      {
+        "name": "renderHud",
+        "found": true,
+        "occurrences": 1
+      }
+    ],
+    "domPresence": [
+      {
+        "id": "modeTitle",
+        "found": true
+      },
+      {
+        "id": "promptValue",
+        "found": true
+      },
+      {
+        "id": "englishGloss",
+        "found": true
+      },
+      {
+        "id": "translationToggle",
+        "found": true
+      },
+      {
+        "id": "diagnosticInfo",
+        "found": true
+      },
+      {
+        "id": "answerArea",
+        "found": true
+      },
+      {
+        "id": "connectorChoiceGrid",
+        "found": true
+      },
+      {
+        "id": "answerInput",
+        "found": true
+      },
+      {
+        "id": "actionGrid",
+        "found": true
+      },
+      {
+        "id": "noArticleBtn",
+        "found": true
+      },
+      {
+        "id": "checkBtn",
+        "found": true
+      },
+      {
+        "id": "hintBtn",
+        "found": true
+      },
+      {
+        "id": "correctionBlock",
+        "found": true
+      },
+      {
+        "id": "feedback",
+        "found": true
+      },
+      {
+        "id": "b1ConfidenceRow",
+        "found": true
+      },
+      {
+        "id": "nextBtn",
+        "found": true
+      },
+      {
+        "id": "diagnosticExitBtn",
+        "found": true
+      },
+      {
+        "id": "supportPlaceholder",
+        "found": true
+      },
+      {
+        "id": "practiceSurface",
+        "found": true
+      },
+      {
+        "id": "miniTableWrap",
+        "found": true
+      },
+      {
+        "id": "resultPanel",
+        "found": true
+      },
+      {
+        "id": "progressBar",
+        "found": true
+      },
+      {
+        "id": "targetLabel",
+        "found": true
+      }
+    ],
+    "cssClasses": [
+      {
+        "className": "b1Mode",
+        "found": true
+      },
+      {
+        "className": "b1TypedCloze",
+        "found": true
+      },
+      {
+        "className": "b1LongAnswer",
+        "found": true
+      },
+      {
+        "className": "challengeCard",
+        "found": true
+      },
+      {
+        "className": "answerArea",
+        "found": true
+      },
+      {
+        "className": "connectorChoiceGrid",
+        "found": true
+      },
+      {
+        "className": "clozePrompt",
+        "found": true
+      },
+      {
+        "className": "clozeAnswerText",
+        "found": true
+      },
+      {
+        "className": "productionGrid",
+        "found": true
+      },
+      {
+        "className": "productionReveal",
+        "found": true
+      },
+      {
+        "className": "correctionBlock",
+        "found": true
+      },
+      {
+        "className": "feedback",
+        "found": true
+      },
+      {
+        "className": "b1ConfidenceRow",
+        "found": true
+      },
+      {
+        "className": "miniTable",
+        "found": true
+      },
+      {
+        "className": "miniTableWrap",
+        "found": true
+      },
+      {
+        "className": "bottomHud",
+        "found": true
+      },
+      {
+        "className": "resultsArea",
+        "found": true
+      }
+    ],
+    "b1Frame": "B1 routes render through renderB1Question(), renderB1Feedback(), renderConnectorChoices(), renderProductionControls(), and shared #answerArea / #supportColumn slots.",
+    "caseTrainerFrame": "Case Trainer renders through renderQuestion(), checkAnswer(), renderMiniTable(), showResults(), and renderHud() using the same visible DOM IDs but separate legacy state/current variables.",
+    "articleGridClasses": [
+      "miniTable",
+      "target",
+      "hitCorrect",
+      "hitMissed"
+    ],
+    "routeEntrypoints": [
+      "window.ozmosisStartB1Round",
+      "window.ozmosisStartDiagnostic",
+      "window.ozmosisStartConnector",
+      "window.ozmosisStartCasesArticles",
+      "window.ozmosisStartRedemittel",
+      "window.ozmosisStartWortschatz",
+      "window.ozmosisStartWordOrder",
+      "window.ozmosisStartPrepositions"
+    ]
+  },
+  "browserCaptures": [
+    {
+      "route": "Home",
+      "launchSource": "real route",
+      "expectedSurface": "home",
+      "detectedSurface": "home",
+      "bodyClass": "homeMode",
+      "bodyMode": "definite",
+      "b1Surface": "",
+      "b1State": "",
+      "activeScreen": "",
+      "runtimeMode": "",
+      "runtimeTitle": "",
+      "itemId": "",
+      "itemType": "",
+      "taskDepth": "",
+      "selectors": {
+        "practiceShell": {
+          "selector": "main",
+          "exists": true,
+          "visible": true,
+          "className": "",
+          "rect": {
+            "x": 10,
+            "y": 0,
+            "width": 410,
+            "height": 2085
+          },
+          "text": "Ozmosis ☰ Ozmosis Recommended Task Recommended Task B1.1 Practice Practical Admin and Appointments > ? First visit? Test yourself to let us know your level Mini-Test Skip B1 Practi"
+        },
+        "challengeCard": {
+          "selector": ".challengeCard",
+          "exists": true,
+          "visible": false,
+          "className": "challengeCard",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "EXTRA PRACTICE Bestimmter Artikel Dativ Plural"
+        },
+        "taskLabel": {
+          "selector": "#modeTitle",
+          "exists": true,
+          "visible": false,
+          "className": "modeTitle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Bestimmter Artikel"
+        },
+        "germanStimulus": {
+          "selector": "#promptValue",
+          "exists": true,
+          "visible": false,
+          "className": "promptWord",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Dativ Plural"
+        },
+        "cueSupport": {
+          "selector": "#englishGloss",
+          "exists": true,
+          "visible": false,
+          "className": "englishGloss",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "translationToggle": {
+          "selector": "#translationToggle",
+          "exists": true,
+          "visible": false,
+          "className": "translationToggle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "answerArea": {
+          "selector": "#answerArea",
+          "exists": true,
+          "visible": false,
+          "className": "answerArea",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Kein Artikel Prüfen Show table Why limited evidence? I GUESSED I WAS UNSURE I KNEW IT Select answer confidence to continue. Weiter Exit diagnostic"
+        },
+        "choiceGrid": {
+          "selector": "#connectorChoiceGrid",
+          "exists": true,
+          "visible": false,
+          "className": "connectorChoiceGrid",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "inlineInput": null,
+        "answerInput": {
+          "selector": "#answerInput",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "hintSlot": {
+          "selector": "#hintBtn",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Show table"
+        },
+        "feedback": {
+          "selector": "#feedback",
+          "exists": true,
+          "visible": false,
+          "className": "feedback",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "correctionBlock": {
+          "selector": "#correctionBlock",
+          "exists": true,
+          "visible": false,
+          "className": "correctionBlock",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "confidence": {
+          "selector": "#b1ConfidenceRow",
+          "exists": true,
+          "visible": false,
+          "className": "b1ConfidenceRow",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "I GUESSED I WAS UNSURE I KNEW IT"
+        },
+        "continueButton": {
+          "selector": "#nextBtn",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Weiter"
+        },
+        "hud": {
+          "selector": ".bottomHud",
+          "exists": true,
+          "visible": false,
+          "className": "bottomHud",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "0 / 20 Punkte0 Richtig0 Fehler0 FORTSCHRITT0 / 20"
+        },
+        "articleGrid": null,
+        "resultPanel": {
+          "selector": "#resultPanel",
+          "exists": true,
+          "visible": false,
+          "className": "resultPanel",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        }
+      },
+      "screenshot": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/home-start.png"
+    },
+    {
+      "route": "Today B1 Sprint",
+      "launchSource": "real route start",
+      "expectedSurface": "adaptive_current",
+      "detectedSurface": "inline_cloze",
+      "bodyClass": "b1Mode b1TypedCloze mobileClozeFocus",
+      "bodyMode": "definite",
+      "b1Surface": "cloze",
+      "b1State": "default",
+      "activeScreen": "",
+      "runtimeMode": "mixed",
+      "runtimeTitle": "Today's B1 Sprint",
+      "itemId": "b1_redemittel_006",
+      "itemType": "redemittel_cloze",
+      "taskDepth": "",
+      "selectors": {
+        "practiceShell": {
+          "selector": "main",
+          "exists": true,
+          "visible": true,
+          "className": "",
+          "rect": {
+            "x": 10,
+            "y": 12,
+            "width": 410,
+            "height": 572
+          },
+          "text": "Ozmosis ☰ Ozmosis Recommended Task Recommended Task B1.1 Practice Practical Admin and Appointments > ? First visit? Test yourself to let us know your level Mini-Test Skip B1 Practi"
+        },
+        "challengeCard": {
+          "selector": ".challengeCard",
+          "exists": true,
+          "visible": true,
+          "className": "challengeCard",
+          "rect": {
+            "x": 25,
+            "y": 96,
+            "width": 380,
+            "height": 115
+          },
+          "text": "EXTRA PRACTICE Today's B1 Sprint Ergänze den Satz.Sehr geehrter Schneider, Dear Mr Schneider,"
+        },
+        "taskLabel": {
+          "selector": "#modeTitle",
+          "exists": true,
+          "visible": false,
+          "className": "modeTitle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Today's B1 Sprint"
+        },
+        "germanStimulus": {
+          "selector": "#promptValue",
+          "exists": true,
+          "visible": true,
+          "className": "promptWord clozePrompt",
+          "rect": {
+            "x": 26,
+            "y": 110,
+            "width": 378,
+            "height": 62
+          },
+          "text": "Ergänze den Satz.Sehr geehrter Schneider,"
+        },
+        "cueSupport": {
+          "selector": "#englishGloss",
+          "exists": true,
+          "visible": true,
+          "className": "englishGloss",
+          "rect": {
+            "x": 94,
+            "y": 181,
+            "width": 241,
+            "height": 16
+          },
+          "text": "Dear Mr Schneider,"
+        },
+        "translationToggle": {
+          "selector": "#translationToggle",
+          "exists": true,
+          "visible": false,
+          "className": "translationToggle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "answerArea": {
+          "selector": "#answerArea",
+          "exists": true,
+          "visible": true,
+          "className": "answerArea",
+          "rect": {
+            "x": 25,
+            "y": 221,
+            "width": 380,
+            "height": 113
+          },
+          "text": "Teach me Prüfen Show table Why limited evidence? I GUESSED I WAS UNSURE I KNEW IT Select answer confidence to continue. Weiter Exit diagnostic"
+        },
+        "choiceGrid": {
+          "selector": "#connectorChoiceGrid",
+          "exists": true,
+          "visible": false,
+          "className": "connectorChoiceGrid",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "inlineInput": {
+          "selector": "#b1InlineInput",
+          "exists": true,
+          "visible": true,
+          "className": "inlineClozeInput",
+          "rect": {
+            "x": 241,
+            "y": 110,
+            "width": 120,
+            "height": 34
+          },
+          "text": ""
+        },
+        "answerInput": {
+          "selector": "#answerInput",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "hintSlot": {
+          "selector": "#hintBtn",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Show table"
+        },
+        "feedback": {
+          "selector": "#feedback",
+          "exists": true,
+          "visible": true,
+          "className": "feedback",
+          "rect": {
+            "x": 26,
+            "y": 300,
+            "width": 378,
+            "height": 34
+          },
+          "text": ""
+        },
+        "correctionBlock": {
+          "selector": "#correctionBlock",
+          "exists": true,
+          "visible": false,
+          "className": "correctionBlock",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "confidence": {
+          "selector": "#b1ConfidenceRow",
+          "exists": true,
+          "visible": false,
+          "className": "b1ConfidenceRow",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "I GUESSED I WAS UNSURE I KNEW IT"
+        },
+        "continueButton": {
+          "selector": "#nextBtn",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Weiter"
+        },
+        "hud": {
+          "selector": ".bottomHud",
+          "exists": true,
+          "visible": true,
+          "className": "bottomHud",
+          "rect": {
+            "x": 0,
+            "y": 836,
+            "width": 430,
+            "height": 88
+          },
+          "text": "0 / 12 Punkte0 Richtig0 Fehler0 FORTSCHRITT0 / 12"
+        },
+        "articleGrid": null,
+        "resultPanel": {
+          "selector": "#resultPanel",
+          "exists": true,
+          "visible": false,
+          "className": "resultPanel",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        }
+      },
+      "screenshot": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/today-b1-sprint-real-current.png"
+    },
+    {
+      "route": "Diagnostic Sprint",
+      "launchSource": "real route start",
+      "expectedSurface": "diagnostic_current",
+      "detectedSurface": "production_card",
+      "bodyClass": "b1Mode",
+      "bodyMode": "definite",
+      "b1Surface": "production",
+      "b1State": "default",
+      "activeScreen": "",
+      "runtimeMode": "b1_diagnostic",
+      "runtimeTitle": "B1 Diagnostic Sprint",
+      "itemId": "b1_vocab_lebenslauf_005",
+      "itemType": "production_card",
+      "taskDepth": "",
+      "selectors": {
+        "practiceShell": {
+          "selector": "main",
+          "exists": true,
+          "visible": true,
+          "className": "",
+          "rect": {
+            "x": 10,
+            "y": 12,
+            "width": 410,
+            "height": 932
+          },
+          "text": "Ozmosis ☰ Ozmosis Recommended Task Recommended Task B1.1 Practice Practical Admin and Appointments > ? First visit? Test yourself to let us know your level Mini-Test Skip B1 Practi"
+        },
+        "challengeCard": {
+          "selector": ".challengeCard",
+          "exists": true,
+          "visible": true,
+          "className": "challengeCard",
+          "rect": {
+            "x": 25,
+            "y": 119,
+            "width": 380,
+            "height": 81
+          },
+          "text": "EXTRA PRACTICE B1 Diagnostic Sprint Schreibe einen Satz: Dein Lebenslauf ist im Anhang."
+        },
+        "taskLabel": {
+          "selector": "#modeTitle",
+          "exists": true,
+          "visible": false,
+          "className": "modeTitle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "B1 Diagnostic Sprint"
+        },
+        "germanStimulus": {
+          "selector": "#promptValue",
+          "exists": true,
+          "visible": true,
+          "className": "promptWord clozePrompt",
+          "rect": {
+            "x": 29,
+            "y": 119,
+            "width": 372,
+            "height": 53
+          },
+          "text": "Schreibe einen Satz: Dein Lebenslauf ist im Anhang."
+        },
+        "cueSupport": {
+          "selector": "#englishGloss",
+          "exists": true,
+          "visible": true,
+          "className": "englishGloss",
+          "rect": {
+            "x": 94,
+            "y": 181,
+            "width": 241,
+            "height": 15
+          },
+          "text": ""
+        },
+        "translationToggle": {
+          "selector": "#translationToggle",
+          "exists": true,
+          "visible": false,
+          "className": "translationToggle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "answerArea": {
+          "selector": "#answerArea",
+          "exists": true,
+          "visible": true,
+          "className": "answerArea",
+          "rect": {
+            "x": 25,
+            "y": 210,
+            "width": 380,
+            "height": 351
+          },
+          "text": "Write or say your answer, then self-mark. No auto-grading.Useful phrasesMein Lebenslauf ist im Anhang.Im Anhang finden Sie ...meine UnterlagenSelf-checkMentions LebenslaufMentions "
+        },
+        "choiceGrid": {
+          "selector": "#connectorChoiceGrid",
+          "exists": true,
+          "visible": true,
+          "className": "connectorChoiceGrid productionGrid visible",
+          "rect": {
+            "x": 26,
+            "y": 220,
+            "width": 378,
+            "height": 299
+          },
+          "text": "Write or say your answer, then self-mark. No auto-grading.Useful phrasesMein Lebenslauf ist im Anhang.Im Anhang finden Sie ...meine UnterlagenSelf-checkMentions LebenslaufMentions "
+        },
+        "inlineInput": null,
+        "answerInput": {
+          "selector": "#answerInput",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "hintSlot": {
+          "selector": "#hintBtn",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Show table"
+        },
+        "feedback": {
+          "selector": "#feedback",
+          "exists": true,
+          "visible": true,
+          "className": "feedback",
+          "rect": {
+            "x": 26,
+            "y": 527,
+            "width": 378,
+            "height": 34
+          },
+          "text": ""
+        },
+        "correctionBlock": {
+          "selector": "#correctionBlock",
+          "exists": true,
+          "visible": false,
+          "className": "correctionBlock",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "confidence": {
+          "selector": "#b1ConfidenceRow",
+          "exists": true,
+          "visible": false,
+          "className": "b1ConfidenceRow",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "I GUESSED I WAS UNSURE I KNEW IT"
+        },
+        "continueButton": {
+          "selector": "#nextBtn",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Weiter"
+        },
+        "hud": {
+          "selector": ".bottomHud",
+          "exists": true,
+          "visible": true,
+          "className": "bottomHud",
+          "rect": {
+            "x": 0,
+            "y": 836,
+            "width": 430,
+            "height": 88
+          },
+          "text": "0 / 18 Punkte0 Richtig0 Fehler0 FORTSCHRITT0 / 18"
+        },
+        "articleGrid": null,
+        "resultPanel": {
+          "selector": "#resultPanel",
+          "exists": true,
+          "visible": false,
+          "className": "resultPanel",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        }
+      },
+      "screenshot": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/diagnostic-sprint-real-current.png"
+    },
+    {
+      "route": "Connector Sprint",
+      "launchSource": "real route start",
+      "expectedSurface": "choice_or_cloze",
+      "detectedSurface": "choice",
+      "bodyClass": "b1Mode",
+      "bodyMode": "definite",
+      "b1Surface": "choice",
+      "b1State": "default",
+      "activeScreen": "",
+      "runtimeMode": "connector_sprint",
+      "runtimeTitle": "Connector Sprint",
+      "itemId": "b1_connector_003",
+      "itemType": "connector_choice",
+      "taskDepth": "",
+      "selectors": {
+        "practiceShell": {
+          "selector": "main",
+          "exists": true,
+          "visible": true,
+          "className": "",
+          "rect": {
+            "x": 10,
+            "y": 12,
+            "width": 410,
+            "height": 932
+          },
+          "text": "Ozmosis ☰ Ozmosis Recommended Task Recommended Task B1.1 Practice Practical Admin and Appointments > ? First visit? Test yourself to let us know your level Mini-Test Skip B1 Practi"
+        },
+        "challengeCard": {
+          "selector": ".challengeCard",
+          "exists": true,
+          "visible": true,
+          "className": "challengeCard",
+          "rect": {
+            "x": 25,
+            "y": 119,
+            "width": 380,
+            "height": 136
+          },
+          "text": "EXTRA PRACTICE Connector Sprint Wähle die passende Form.Wir fragen beim Lieferanten nach, ___ die Bestellung fehlt."
+        },
+        "taskLabel": {
+          "selector": "#modeTitle",
+          "exists": true,
+          "visible": false,
+          "className": "modeTitle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Connector Sprint"
+        },
+        "germanStimulus": {
+          "selector": "#promptValue",
+          "exists": true,
+          "visible": true,
+          "className": "promptWord clozePrompt",
+          "rect": {
+            "x": 41,
+            "y": 119,
+            "width": 347,
+            "height": 108
+          },
+          "text": "Wähle die passende Form.Wir fragen beim Lieferanten nach, ___ die Bestellung fehlt."
+        },
+        "cueSupport": {
+          "selector": "#englishGloss",
+          "exists": true,
+          "visible": true,
+          "className": "englishGloss",
+          "rect": {
+            "x": 94,
+            "y": 236,
+            "width": 241,
+            "height": 15
+          },
+          "text": ""
+        },
+        "translationToggle": {
+          "selector": "#translationToggle",
+          "exists": true,
+          "visible": false,
+          "className": "translationToggle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "answerArea": {
+          "selector": "#answerArea",
+          "exists": true,
+          "visible": true,
+          "className": "answerArea",
+          "rect": {
+            "x": 25,
+            "y": 265,
+            "width": 380,
+            "height": 174
+          },
+          "text": "deshalbdennweil Kein Artikel Prüfen Show table Why limited evidence? I GUESSED I WAS UNSURE I KNEW IT Select answer confidence to continue. Weiter Exit diagnostic"
+        },
+        "choiceGrid": {
+          "selector": "#connectorChoiceGrid",
+          "exists": true,
+          "visible": true,
+          "className": "connectorChoiceGrid visible",
+          "rect": {
+            "x": 26,
+            "y": 275,
+            "width": 378,
+            "height": 130
+          },
+          "text": "deshalbdennweil"
+        },
+        "inlineInput": null,
+        "answerInput": {
+          "selector": "#answerInput",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "hintSlot": {
+          "selector": "#hintBtn",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Show table"
+        },
+        "feedback": {
+          "selector": "#feedback",
+          "exists": true,
+          "visible": true,
+          "className": "feedback",
+          "rect": {
+            "x": 26,
+            "y": 405,
+            "width": 378,
+            "height": 34
+          },
+          "text": ""
+        },
+        "correctionBlock": {
+          "selector": "#correctionBlock",
+          "exists": true,
+          "visible": false,
+          "className": "correctionBlock",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "confidence": {
+          "selector": "#b1ConfidenceRow",
+          "exists": true,
+          "visible": false,
+          "className": "b1ConfidenceRow",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "I GUESSED I WAS UNSURE I KNEW IT"
+        },
+        "continueButton": {
+          "selector": "#nextBtn",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Weiter"
+        },
+        "hud": {
+          "selector": ".bottomHud",
+          "exists": true,
+          "visible": true,
+          "className": "bottomHud",
+          "rect": {
+            "x": 0,
+            "y": 836,
+            "width": 430,
+            "height": 88
+          },
+          "text": "0 / 10 Punkte0 Richtig0 Fehler0 FORTSCHRITT0 / 10"
+        },
+        "articleGrid": null,
+        "resultPanel": {
+          "selector": "#resultPanel",
+          "exists": true,
+          "visible": false,
+          "className": "resultPanel",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        }
+      },
+      "screenshot": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/connector-sprint-real-current.png"
+    },
+    {
+      "route": "Wortschatz",
+      "launchSource": "real route start",
+      "expectedSurface": "choice_or_cloze",
+      "detectedSurface": "inline_cloze",
+      "bodyClass": "b1Mode b1TypedCloze mobileClozeFocus",
+      "bodyMode": "definite",
+      "b1Surface": "cloze",
+      "b1State": "default",
+      "activeScreen": "",
+      "runtimeMode": "wortschatz",
+      "runtimeTitle": "B1 Wortschatz",
+      "itemId": "b1_vocab_unterlagen_001",
+      "itemType": "vocab_cloze",
+      "taskDepth": "",
+      "selectors": {
+        "practiceShell": {
+          "selector": "main",
+          "exists": true,
+          "visible": true,
+          "className": "",
+          "rect": {
+            "x": 10,
+            "y": 12,
+            "width": 410,
+            "height": 588
+          },
+          "text": "Ozmosis ☰ Ozmosis Recommended Task Recommended Task B1.1 Practice Practical Admin and Appointments > ? First visit? Test yourself to let us know your level Mini-Test Skip B1 Practi"
+        },
+        "challengeCard": {
+          "selector": ".challengeCard",
+          "exists": true,
+          "visible": true,
+          "className": "challengeCard",
+          "rect": {
+            "x": 25,
+            "y": 96,
+            "width": 380,
+            "height": 131
+          },
+          "text": "EXTRA PRACTICE B1 Wortschatz Ergänze den Satz.Bitte schicken Sie mir die bis Freitag. Please send me the documents by Friday."
+        },
+        "taskLabel": {
+          "selector": "#modeTitle",
+          "exists": true,
+          "visible": false,
+          "className": "modeTitle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "B1 Wortschatz"
+        },
+        "germanStimulus": {
+          "selector": "#promptValue",
+          "exists": true,
+          "visible": true,
+          "className": "promptWord clozePrompt",
+          "rect": {
+            "x": 26,
+            "y": 110,
+            "width": 378,
+            "height": 62
+          },
+          "text": "Ergänze den Satz.Bitte schicken Sie mir die bis Freitag."
+        },
+        "cueSupport": {
+          "selector": "#englishGloss",
+          "exists": true,
+          "visible": true,
+          "className": "englishGloss",
+          "rect": {
+            "x": 94,
+            "y": 181,
+            "width": 241,
+            "height": 32
+          },
+          "text": "Please send me the documents by Friday."
+        },
+        "translationToggle": {
+          "selector": "#translationToggle",
+          "exists": true,
+          "visible": false,
+          "className": "translationToggle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "answerArea": {
+          "selector": "#answerArea",
+          "exists": true,
+          "visible": true,
+          "className": "answerArea",
+          "rect": {
+            "x": 25,
+            "y": 237,
+            "width": 380,
+            "height": 113
+          },
+          "text": "Teach me Prüfen Show table Why limited evidence? I GUESSED I WAS UNSURE I KNEW IT Select answer confidence to continue. Weiter Exit diagnostic"
+        },
+        "choiceGrid": {
+          "selector": "#connectorChoiceGrid",
+          "exists": true,
+          "visible": false,
+          "className": "connectorChoiceGrid",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "inlineInput": {
+          "selector": "#b1InlineInput",
+          "exists": true,
+          "visible": true,
+          "className": "inlineClozeInput",
+          "rect": {
+            "x": 53,
+            "y": 136,
+            "width": 164,
+            "height": 34
+          },
+          "text": ""
+        },
+        "answerInput": {
+          "selector": "#answerInput",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "hintSlot": {
+          "selector": "#hintBtn",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Show table"
+        },
+        "feedback": {
+          "selector": "#feedback",
+          "exists": true,
+          "visible": true,
+          "className": "feedback",
+          "rect": {
+            "x": 26,
+            "y": 316,
+            "width": 378,
+            "height": 34
+          },
+          "text": ""
+        },
+        "correctionBlock": {
+          "selector": "#correctionBlock",
+          "exists": true,
+          "visible": false,
+          "className": "correctionBlock",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "confidence": {
+          "selector": "#b1ConfidenceRow",
+          "exists": true,
+          "visible": false,
+          "className": "b1ConfidenceRow",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "I GUESSED I WAS UNSURE I KNEW IT"
+        },
+        "continueButton": {
+          "selector": "#nextBtn",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Weiter"
+        },
+        "hud": {
+          "selector": ".bottomHud",
+          "exists": true,
+          "visible": true,
+          "className": "bottomHud",
+          "rect": {
+            "x": 0,
+            "y": 836,
+            "width": 430,
+            "height": 88
+          },
+          "text": "0 / 10 Punkte0 Richtig0 Fehler0 FORTSCHRITT0 / 10"
+        },
+        "articleGrid": null,
+        "resultPanel": {
+          "selector": "#resultPanel",
+          "exists": true,
+          "visible": false,
+          "className": "resultPanel",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        }
+      },
+      "screenshot": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/wortschatz-real-current.png"
+    },
+    {
+      "route": "Redemittel",
+      "launchSource": "real route start",
+      "expectedSurface": "cloze_or_production",
+      "detectedSurface": "inline_cloze",
+      "bodyClass": "b1Mode b1TypedCloze",
+      "bodyMode": "definite",
+      "b1Surface": "cloze",
+      "b1State": "default",
+      "activeScreen": "",
+      "runtimeMode": "redemittel",
+      "runtimeTitle": "Mixed Redemittel",
+      "itemId": "b1_redemittel_054",
+      "itemType": "redemittel_cloze",
+      "taskDepth": "",
+      "selectors": {
+        "practiceShell": {
+          "selector": "main",
+          "exists": true,
+          "visible": true,
+          "className": "",
+          "rect": {
+            "x": 10,
+            "y": 12,
+            "width": 410,
+            "height": 820
+          },
+          "text": "Ozmosis ☰ Ozmosis Recommended Task Recommended Task B1.1 Practice Practical Admin and Appointments > ? First visit? Test yourself to let us know your level Mini-Test Skip B1 Practi"
+        },
+        "challengeCard": {
+          "selector": ".challengeCard",
+          "exists": true,
+          "visible": true,
+          "className": "challengeCard",
+          "rect": {
+            "x": 25,
+            "y": 96,
+            "width": 380,
+            "height": 133
+          },
+          "text": "EXTRA PRACTICE Mixed Redemittel Ergänze den Satz.Ich habe Erfahrung Kundenkontakt. I have experience with customer contact."
+        },
+        "taskLabel": {
+          "selector": "#modeTitle",
+          "exists": true,
+          "visible": false,
+          "className": "modeTitle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Mixed Redemittel"
+        },
+        "germanStimulus": {
+          "selector": "#promptValue",
+          "exists": true,
+          "visible": true,
+          "className": "promptWord clozePrompt",
+          "rect": {
+            "x": 26,
+            "y": 110,
+            "width": 378,
+            "height": 64
+          },
+          "text": "Ergänze den Satz.Ich habe Erfahrung Kundenkontakt."
+        },
+        "cueSupport": {
+          "selector": "#englishGloss",
+          "exists": true,
+          "visible": true,
+          "className": "englishGloss",
+          "rect": {
+            "x": 94,
+            "y": 183,
+            "width": 241,
+            "height": 32
+          },
+          "text": "I have experience with customer contact."
+        },
+        "translationToggle": {
+          "selector": "#translationToggle",
+          "exists": true,
+          "visible": false,
+          "className": "translationToggle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "answerArea": {
+          "selector": "#answerArea",
+          "exists": true,
+          "visible": true,
+          "className": "answerArea",
+          "rect": {
+            "x": 25,
+            "y": 239,
+            "width": 380,
+            "height": 113
+          },
+          "text": "Teach me Prüfen Show table Why limited evidence? I GUESSED I WAS UNSURE I KNEW IT Select answer confidence to continue. Weiter Exit diagnostic"
+        },
+        "choiceGrid": {
+          "selector": "#connectorChoiceGrid",
+          "exists": true,
+          "visible": false,
+          "className": "connectorChoiceGrid",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "inlineInput": {
+          "selector": "#b1InlineInput",
+          "exists": true,
+          "visible": true,
+          "className": "inlineClozeInput",
+          "rect": {
+            "x": 281,
+            "y": 110,
+            "width": 120,
+            "height": 34
+          },
+          "text": ""
+        },
+        "answerInput": {
+          "selector": "#answerInput",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "hintSlot": {
+          "selector": "#hintBtn",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Show table"
+        },
+        "feedback": {
+          "selector": "#feedback",
+          "exists": true,
+          "visible": true,
+          "className": "feedback",
+          "rect": {
+            "x": 26,
+            "y": 318,
+            "width": 378,
+            "height": 34
+          },
+          "text": ""
+        },
+        "correctionBlock": {
+          "selector": "#correctionBlock",
+          "exists": true,
+          "visible": false,
+          "className": "correctionBlock",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "confidence": {
+          "selector": "#b1ConfidenceRow",
+          "exists": true,
+          "visible": false,
+          "className": "b1ConfidenceRow",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "I GUESSED I WAS UNSURE I KNEW IT"
+        },
+        "continueButton": {
+          "selector": "#nextBtn",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Weiter"
+        },
+        "hud": {
+          "selector": ".bottomHud",
+          "exists": true,
+          "visible": true,
+          "className": "bottomHud",
+          "rect": {
+            "x": 0,
+            "y": 836,
+            "width": 430,
+            "height": 88
+          },
+          "text": "0 / 10 Punkte0 Richtig0 Fehler0 FORTSCHRITT0 / 10"
+        },
+        "articleGrid": null,
+        "resultPanel": {
+          "selector": "#resultPanel",
+          "exists": true,
+          "visible": false,
+          "className": "resultPanel",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        }
+      },
+      "screenshot": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/redemittel-real-current.png"
+    },
+    {
+      "route": "Cases and Articles",
+      "launchSource": "real route start",
+      "expectedSurface": "case_article_b1_item",
+      "detectedSurface": "choice",
+      "bodyClass": "b1Mode",
+      "bodyMode": "definite",
+      "b1Surface": "choice",
+      "b1State": "default",
+      "activeScreen": "",
+      "runtimeMode": "cases_articles",
+      "runtimeTitle": "Cases & Articles",
+      "itemId": "b1_cases_articles_acc_direct_001",
+      "itemType": "multiple_choice",
+      "taskDepth": "recognition",
+      "selectors": {
+        "practiceShell": {
+          "selector": "main",
+          "exists": true,
+          "visible": true,
+          "className": "",
+          "rect": {
+            "x": 10,
+            "y": 12,
+            "width": 410,
+            "height": 932
+          },
+          "text": "Ozmosis ☰ Ozmosis Recommended Task Recommended Task B1.1 Practice Practical Admin and Appointments > ? First visit? Test yourself to let us know your level Mini-Test Skip B1 Practi"
+        },
+        "challengeCard": {
+          "selector": ".challengeCard",
+          "exists": true,
+          "visible": true,
+          "className": "challengeCard",
+          "rect": {
+            "x": 25,
+            "y": 119,
+            "width": 380,
+            "height": 110
+          },
+          "text": "EXTRA PRACTICE Cases & Articles Welche Form passt zur Bedeutung?Welche Form passt nach brauchen? I need an appointment."
+        },
+        "taskLabel": {
+          "selector": "#modeTitle",
+          "exists": true,
+          "visible": false,
+          "className": "modeTitle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Cases & Articles"
+        },
+        "germanStimulus": {
+          "selector": "#promptValue",
+          "exists": true,
+          "visible": true,
+          "className": "promptWord clozePrompt",
+          "rect": {
+            "x": 41,
+            "y": 119,
+            "width": 347,
+            "height": 81
+          },
+          "text": "Welche Form passt zur Bedeutung?Welche Form passt nach brauchen?"
+        },
+        "cueSupport": {
+          "selector": "#englishGloss",
+          "exists": true,
+          "visible": true,
+          "className": "englishGloss",
+          "rect": {
+            "x": 94,
+            "y": 209,
+            "width": 241,
+            "height": 16
+          },
+          "text": "I need an appointment."
+        },
+        "translationToggle": {
+          "selector": "#translationToggle",
+          "exists": true,
+          "visible": false,
+          "className": "translationToggle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "answerArea": {
+          "selector": "#answerArea",
+          "exists": true,
+          "visible": true,
+          "className": "answerArea",
+          "rect": {
+            "x": 25,
+            "y": 239,
+            "width": 380,
+            "height": 174
+          },
+          "text": "Ich brauche einen Termin.Ich brauche einem Termin.Ich brauche ein Termin. Kein Artikel Prüfen Show table Why limited evidence? I GUESSED I WAS UNSURE I KNEW IT Select answer confid"
+        },
+        "choiceGrid": {
+          "selector": "#connectorChoiceGrid",
+          "exists": true,
+          "visible": true,
+          "className": "connectorChoiceGrid visible",
+          "rect": {
+            "x": 26,
+            "y": 249,
+            "width": 378,
+            "height": 130
+          },
+          "text": "Ich brauche einen Termin.Ich brauche einem Termin.Ich brauche ein Termin."
+        },
+        "inlineInput": null,
+        "answerInput": {
+          "selector": "#answerInput",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "hintSlot": {
+          "selector": "#hintBtn",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Show table"
+        },
+        "feedback": {
+          "selector": "#feedback",
+          "exists": true,
+          "visible": true,
+          "className": "feedback",
+          "rect": {
+            "x": 26,
+            "y": 379,
+            "width": 378,
+            "height": 34
+          },
+          "text": ""
+        },
+        "correctionBlock": {
+          "selector": "#correctionBlock",
+          "exists": true,
+          "visible": false,
+          "className": "correctionBlock",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "confidence": {
+          "selector": "#b1ConfidenceRow",
+          "exists": true,
+          "visible": false,
+          "className": "b1ConfidenceRow",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "I GUESSED I WAS UNSURE I KNEW IT"
+        },
+        "continueButton": {
+          "selector": "#nextBtn",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Weiter"
+        },
+        "hud": {
+          "selector": ".bottomHud",
+          "exists": true,
+          "visible": true,
+          "className": "bottomHud",
+          "rect": {
+            "x": 0,
+            "y": 836,
+            "width": 430,
+            "height": 88
+          },
+          "text": "0 / 10 Punkte0 Richtig0 Fehler0 FORTSCHRITT0 / 10"
+        },
+        "articleGrid": null,
+        "resultPanel": {
+          "selector": "#resultPanel",
+          "exists": true,
+          "visible": false,
+          "className": "resultPanel",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        }
+      },
+      "screenshot": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/cases-articles-real-current.png"
+    },
+    {
+      "route": "Word Order",
+      "launchSource": "real route start",
+      "expectedSurface": "choice_or_satzbau",
+      "detectedSurface": "choice",
+      "bodyClass": "b1Mode",
+      "bodyMode": "definite",
+      "b1Surface": "choice",
+      "b1State": "default",
+      "activeScreen": "",
+      "runtimeMode": "word_order",
+      "runtimeTitle": "Word Order",
+      "itemId": "b1_word_order_question_order_004",
+      "itemType": "multiple_choice",
+      "taskDepth": "contrast",
+      "selectors": {
+        "practiceShell": {
+          "selector": "main",
+          "exists": true,
+          "visible": true,
+          "className": "",
+          "rect": {
+            "x": 10,
+            "y": 12,
+            "width": 410,
+            "height": 932
+          },
+          "text": "Ozmosis ☰ Ozmosis Recommended Task Recommended Task B1.1 Practice Practical Admin and Appointments > ? First visit? Test yourself to let us know your level Mini-Test Skip B1 Practi"
+        },
+        "challengeCard": {
+          "selector": ".challengeCard",
+          "exists": true,
+          "visible": true,
+          "className": "challengeCard",
+          "rect": {
+            "x": 25,
+            "y": 119,
+            "width": 380,
+            "height": 110
+          },
+          "text": "EXTRA PRACTICE Word Order Welche Form passt zur Bedeutung?Welche Ja/Nein-Frage ist richtig? Do you have time tomorrow?"
+        },
+        "taskLabel": {
+          "selector": "#modeTitle",
+          "exists": true,
+          "visible": false,
+          "className": "modeTitle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Word Order"
+        },
+        "germanStimulus": {
+          "selector": "#promptValue",
+          "exists": true,
+          "visible": true,
+          "className": "promptWord clozePrompt",
+          "rect": {
+            "x": 41,
+            "y": 119,
+            "width": 347,
+            "height": 81
+          },
+          "text": "Welche Form passt zur Bedeutung?Welche Ja/Nein-Frage ist richtig?"
+        },
+        "cueSupport": {
+          "selector": "#englishGloss",
+          "exists": true,
+          "visible": true,
+          "className": "englishGloss",
+          "rect": {
+            "x": 94,
+            "y": 209,
+            "width": 241,
+            "height": 16
+          },
+          "text": "Do you have time tomorrow?"
+        },
+        "translationToggle": {
+          "selector": "#translationToggle",
+          "exists": true,
+          "visible": false,
+          "className": "translationToggle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "answerArea": {
+          "selector": "#answerArea",
+          "exists": true,
+          "visible": true,
+          "className": "answerArea",
+          "rect": {
+            "x": 25,
+            "y": 239,
+            "width": 380,
+            "height": 174
+          },
+          "text": "Morgen Sie haben Zeit?Sie haben morgen Zeit?Haben Sie morgen Zeit? Kein Artikel Prüfen Show table Why limited evidence? I GUESSED I WAS UNSURE I KNEW IT Select answer confidence to"
+        },
+        "choiceGrid": {
+          "selector": "#connectorChoiceGrid",
+          "exists": true,
+          "visible": true,
+          "className": "connectorChoiceGrid visible",
+          "rect": {
+            "x": 26,
+            "y": 249,
+            "width": 378,
+            "height": 130
+          },
+          "text": "Morgen Sie haben Zeit?Sie haben morgen Zeit?Haben Sie morgen Zeit?"
+        },
+        "inlineInput": null,
+        "answerInput": {
+          "selector": "#answerInput",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "hintSlot": {
+          "selector": "#hintBtn",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Show table"
+        },
+        "feedback": {
+          "selector": "#feedback",
+          "exists": true,
+          "visible": true,
+          "className": "feedback",
+          "rect": {
+            "x": 26,
+            "y": 379,
+            "width": 378,
+            "height": 34
+          },
+          "text": ""
+        },
+        "correctionBlock": {
+          "selector": "#correctionBlock",
+          "exists": true,
+          "visible": false,
+          "className": "correctionBlock",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "confidence": {
+          "selector": "#b1ConfidenceRow",
+          "exists": true,
+          "visible": false,
+          "className": "b1ConfidenceRow",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "I GUESSED I WAS UNSURE I KNEW IT"
+        },
+        "continueButton": {
+          "selector": "#nextBtn",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Weiter"
+        },
+        "hud": {
+          "selector": ".bottomHud",
+          "exists": true,
+          "visible": true,
+          "className": "bottomHud",
+          "rect": {
+            "x": 0,
+            "y": 836,
+            "width": 430,
+            "height": 88
+          },
+          "text": "0 / 10 Punkte0 Richtig0 Fehler0 FORTSCHRITT0 / 10"
+        },
+        "articleGrid": null,
+        "resultPanel": {
+          "selector": "#resultPanel",
+          "exists": true,
+          "visible": false,
+          "className": "resultPanel",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        }
+      },
+      "screenshot": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/word-order-real-current.png"
+    },
+    {
+      "route": "Repair and Transformation",
+      "launchSource": "real route start",
+      "expectedSurface": "correction_repair",
+      "detectedSurface": "correction_repair",
+      "bodyClass": "b1Mode b1LongAnswer",
+      "bodyMode": "definite",
+      "b1Surface": "correction",
+      "b1State": "default",
+      "activeScreen": "",
+      "runtimeMode": "repair_transformation",
+      "runtimeTitle": "Repair & Transformation",
+      "itemId": "b1_word_order_main_clause_v2_time_003",
+      "itemType": "error_repair",
+      "taskDepth": "repair",
+      "selectors": {
+        "practiceShell": {
+          "selector": "main",
+          "exists": true,
+          "visible": true,
+          "className": "",
+          "rect": {
+            "x": 10,
+            "y": 12,
+            "width": 410,
+            "height": 932
+          },
+          "text": "Ozmosis ☰ Ozmosis Recommended Task Recommended Task B1.1 Practice Practical Admin and Appointments > ? First visit? Test yourself to let us know your level Mini-Test Skip B1 Practi"
+        },
+        "challengeCard": {
+          "selector": ".challengeCard",
+          "exists": true,
+          "visible": true,
+          "className": "challengeCard",
+          "rect": {
+            "x": 25,
+            "y": 119,
+            "width": 380,
+            "height": 72
+          },
+          "text": "EXTRA PRACTICE Repair & Transformation Korrigiere den ganzen Satz:Morgen ich rufe die Praxis an."
+        },
+        "taskLabel": {
+          "selector": "#modeTitle",
+          "exists": true,
+          "visible": false,
+          "className": "modeTitle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Repair & Transformation"
+        },
+        "germanStimulus": {
+          "selector": "#promptValue",
+          "exists": true,
+          "visible": true,
+          "className": "promptWord clozePrompt",
+          "rect": {
+            "x": 65,
+            "y": 119,
+            "width": 300,
+            "height": 44
+          },
+          "text": "Korrigiere den ganzen Satz:Morgen ich rufe die Praxis an."
+        },
+        "cueSupport": {
+          "selector": "#englishGloss",
+          "exists": true,
+          "visible": true,
+          "className": "englishGloss",
+          "rect": {
+            "x": 94,
+            "y": 172,
+            "width": 241,
+            "height": 15
+          },
+          "text": ""
+        },
+        "translationToggle": {
+          "selector": "#translationToggle",
+          "exists": true,
+          "visible": false,
+          "className": "translationToggle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "answerArea": {
+          "selector": "#answerArea",
+          "exists": true,
+          "visible": true,
+          "className": "answerArea",
+          "rect": {
+            "x": 25,
+            "y": 201,
+            "width": 380,
+            "height": 161
+          },
+          "text": "Kein Artikel Prüfen Show table Why limited evidence? I GUESSED I WAS UNSURE I KNEW IT Select answer confidence to continue. Weiter Exit diagnostic"
+        },
+        "choiceGrid": {
+          "selector": "#connectorChoiceGrid",
+          "exists": true,
+          "visible": false,
+          "className": "connectorChoiceGrid",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "inlineInput": null,
+        "answerInput": {
+          "selector": "#answerInput",
+          "exists": true,
+          "visible": true,
+          "className": "",
+          "rect": {
+            "x": 26,
+            "y": 201,
+            "width": 378,
+            "height": 48
+          },
+          "text": ""
+        },
+        "hintSlot": {
+          "selector": "#hintBtn",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Show table"
+        },
+        "feedback": {
+          "selector": "#feedback",
+          "exists": true,
+          "visible": true,
+          "className": "feedback",
+          "rect": {
+            "x": 26,
+            "y": 328,
+            "width": 378,
+            "height": 34
+          },
+          "text": ""
+        },
+        "correctionBlock": {
+          "selector": "#correctionBlock",
+          "exists": true,
+          "visible": false,
+          "className": "correctionBlock",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "confidence": {
+          "selector": "#b1ConfidenceRow",
+          "exists": true,
+          "visible": false,
+          "className": "b1ConfidenceRow",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "I GUESSED I WAS UNSURE I KNEW IT"
+        },
+        "continueButton": {
+          "selector": "#nextBtn",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Weiter"
+        },
+        "hud": {
+          "selector": ".bottomHud",
+          "exists": true,
+          "visible": true,
+          "className": "bottomHud",
+          "rect": {
+            "x": 0,
+            "y": 836,
+            "width": 430,
+            "height": 88
+          },
+          "text": "0 / 10 Punkte0 Richtig0 Fehler0 FORTSCHRITT0 / 10"
+        },
+        "articleGrid": null,
+        "resultPanel": {
+          "selector": "#resultPanel",
+          "exists": true,
+          "visible": false,
+          "className": "resultPanel",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        }
+      },
+      "screenshot": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/repair-transformation-real-current.png"
+    },
+    {
+      "route": "Dev Tools / QA staging",
+      "launchSource": "QA fixture: connector choice",
+      "expectedSurface": "choice",
+      "detectedSurface": "choice",
+      "bodyClass": "b1Mode",
+      "bodyMode": "definite",
+      "b1Surface": "choice",
+      "b1State": "default",
+      "activeScreen": "",
+      "runtimeMode": "qa_repair",
+      "runtimeTitle": "QA repair",
+      "itemId": "v080149_cat02_contrast_cat02_cs_013",
+      "itemType": "multiple_choice",
+      "taskDepth": "contrast",
+      "selectors": {
+        "practiceShell": {
+          "selector": "main",
+          "exists": true,
+          "visible": true,
+          "className": "",
+          "rect": {
+            "x": 10,
+            "y": 12,
+            "width": 410,
+            "height": 932
+          },
+          "text": "Ozmosis ☰ Ozmosis Recommended Task Recommended Task B1.1 Practice Practical Admin and Appointments > ? First visit? Test yourself to let us know your level Mini-Test Skip B1 Practi"
+        },
+        "challengeCard": {
+          "selector": ".challengeCard",
+          "exists": true,
+          "visible": true,
+          "className": "challengeCard",
+          "rect": {
+            "x": 25,
+            "y": 119,
+            "width": 380,
+            "height": 58
+          },
+          "text": "EXTRA PRACTICE QA repair Welche Form passt zur Bedeutung? Show something to someone."
+        },
+        "taskLabel": {
+          "selector": "#modeTitle",
+          "exists": true,
+          "visible": false,
+          "className": "modeTitle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "QA repair"
+        },
+        "germanStimulus": {
+          "selector": "#promptValue",
+          "exists": true,
+          "visible": true,
+          "className": "promptWord clozePrompt",
+          "rect": {
+            "x": 41,
+            "y": 119,
+            "width": 347,
+            "height": 29
+          },
+          "text": "Welche Form passt zur Bedeutung?"
+        },
+        "cueSupport": {
+          "selector": "#englishGloss",
+          "exists": true,
+          "visible": true,
+          "className": "englishGloss",
+          "rect": {
+            "x": 94,
+            "y": 157,
+            "width": 241,
+            "height": 16
+          },
+          "text": "Show something to someone."
+        },
+        "translationToggle": {
+          "selector": "#translationToggle",
+          "exists": true,
+          "visible": false,
+          "className": "translationToggle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "answerArea": {
+          "selector": "#answerArea",
+          "exists": true,
+          "visible": true,
+          "className": "answerArea",
+          "rect": {
+            "x": 25,
+            "y": 187,
+            "width": 380,
+            "height": 308
+          },
+          "text": "suchenerklärenfindenzeigen Kein Artikel Prüfen Teach me Why limited evidence? I GUESSED I WAS UNSURE I KNEW IT Select answer confidence to continue. Weiter Exit diagnostic"
+        },
+        "choiceGrid": {
+          "selector": "#connectorChoiceGrid",
+          "exists": true,
+          "visible": true,
+          "className": "connectorChoiceGrid visible",
+          "rect": {
+            "x": 26,
+            "y": 197,
+            "width": 378,
+            "height": 174
+          },
+          "text": "suchenerklärenfindenzeigen"
+        },
+        "inlineInput": null,
+        "answerInput": {
+          "selector": "#answerInput",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "hintSlot": {
+          "selector": "#hintBtn",
+          "exists": true,
+          "visible": true,
+          "className": "",
+          "rect": {
+            "x": 233,
+            "y": 407,
+            "width": 172,
+            "height": 54
+          },
+          "text": "Teach me"
+        },
+        "feedback": {
+          "selector": "#feedback",
+          "exists": true,
+          "visible": true,
+          "className": "feedback",
+          "rect": {
+            "x": 26,
+            "y": 461,
+            "width": 378,
+            "height": 34
+          },
+          "text": ""
+        },
+        "correctionBlock": {
+          "selector": "#correctionBlock",
+          "exists": true,
+          "visible": false,
+          "className": "correctionBlock",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "confidence": {
+          "selector": "#b1ConfidenceRow",
+          "exists": true,
+          "visible": false,
+          "className": "b1ConfidenceRow",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "I GUESSED I WAS UNSURE I KNEW IT"
+        },
+        "continueButton": {
+          "selector": "#nextBtn",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Weiter"
+        },
+        "hud": {
+          "selector": ".bottomHud",
+          "exists": true,
+          "visible": true,
+          "className": "bottomHud",
+          "rect": {
+            "x": 0,
+            "y": 836,
+            "width": 430,
+            "height": 88
+          },
+          "text": "0 / 10 Punkte0 Richtig0 Fehler0 FORTSCHRITT0 / 10"
+        },
+        "articleGrid": null,
+        "resultPanel": {
+          "selector": "#resultPanel",
+          "exists": true,
+          "visible": false,
+          "className": "resultPanel",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        }
+      },
+      "screenshot": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/choice-from-qa-connectors.png"
+    },
+    {
+      "route": "Dev Tools / QA staging",
+      "launchSource": "QA fixture: B1 cloze",
+      "expectedSurface": "inline_cloze",
+      "detectedSurface": "inline_cloze",
+      "bodyClass": "b1Mode b1TypedCloze mobileClozeFocus",
+      "bodyMode": "definite",
+      "b1Surface": "cloze",
+      "b1State": "default",
+      "activeScreen": "",
+      "runtimeMode": "qa_repair",
+      "runtimeTitle": "QA repair",
+      "itemId": "v080149_cat02_practice_family_cat02_pf_005",
+      "itemType": "redemittel_cloze",
+      "taskDepth": "cloze",
+      "selectors": {
+        "practiceShell": {
+          "selector": "main",
+          "exists": true,
+          "visible": true,
+          "className": "",
+          "rect": {
+            "x": 10,
+            "y": 12,
+            "width": 410,
+            "height": 572
+          },
+          "text": "Ozmosis ☰ Ozmosis Recommended Task Recommended Task B1.1 Practice Practical Admin and Appointments > ? First visit? Test yourself to let us know your level Mini-Test Skip B1 Practi"
+        },
+        "challengeCard": {
+          "selector": ".challengeCard",
+          "exists": true,
+          "visible": true,
+          "className": "challengeCard",
+          "rect": {
+            "x": 25,
+            "y": 96,
+            "width": 380,
+            "height": 115
+          },
+          "text": "EXTRA PRACTICE QA repair Ergänze den Satz.Ich lerne Deutsch auf . Sie nennen Ihr Sprachniveau."
+        },
+        "taskLabel": {
+          "selector": "#modeTitle",
+          "exists": true,
+          "visible": false,
+          "className": "modeTitle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "QA repair"
+        },
+        "germanStimulus": {
+          "selector": "#promptValue",
+          "exists": true,
+          "visible": true,
+          "className": "promptWord clozePrompt",
+          "rect": {
+            "x": 26,
+            "y": 110,
+            "width": 378,
+            "height": 62
+          },
+          "text": "Ergänze den Satz.Ich lerne Deutsch auf ."
+        },
+        "cueSupport": {
+          "selector": "#englishGloss",
+          "exists": true,
+          "visible": true,
+          "className": "englishGloss",
+          "rect": {
+            "x": 94,
+            "y": 181,
+            "width": 241,
+            "height": 16
+          },
+          "text": "Sie nennen Ihr Sprachniveau."
+        },
+        "translationToggle": {
+          "selector": "#translationToggle",
+          "exists": true,
+          "visible": false,
+          "className": "translationToggle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "answerArea": {
+          "selector": "#answerArea",
+          "exists": true,
+          "visible": true,
+          "className": "answerArea",
+          "rect": {
+            "x": 25,
+            "y": 221,
+            "width": 380,
+            "height": 113
+          },
+          "text": "Teach me Prüfen Show table Why limited evidence? I GUESSED I WAS UNSURE I KNEW IT Select answer confidence to continue. Weiter Exit diagnostic"
+        },
+        "choiceGrid": {
+          "selector": "#connectorChoiceGrid",
+          "exists": true,
+          "visible": false,
+          "className": "connectorChoiceGrid",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "inlineInput": {
+          "selector": "#b1InlineInput",
+          "exists": true,
+          "visible": true,
+          "className": "inlineClozeInput",
+          "rect": {
+            "x": 132,
+            "y": 136,
+            "width": 153,
+            "height": 34
+          },
+          "text": ""
+        },
+        "answerInput": {
+          "selector": "#answerInput",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "hintSlot": {
+          "selector": "#hintBtn",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Show table"
+        },
+        "feedback": {
+          "selector": "#feedback",
+          "exists": true,
+          "visible": true,
+          "className": "feedback",
+          "rect": {
+            "x": 26,
+            "y": 300,
+            "width": 378,
+            "height": 34
+          },
+          "text": ""
+        },
+        "correctionBlock": {
+          "selector": "#correctionBlock",
+          "exists": true,
+          "visible": false,
+          "className": "correctionBlock",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "confidence": {
+          "selector": "#b1ConfidenceRow",
+          "exists": true,
+          "visible": false,
+          "className": "b1ConfidenceRow",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "I GUESSED I WAS UNSURE I KNEW IT"
+        },
+        "continueButton": {
+          "selector": "#nextBtn",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Weiter"
+        },
+        "hud": {
+          "selector": ".bottomHud",
+          "exists": true,
+          "visible": true,
+          "className": "bottomHud",
+          "rect": {
+            "x": 0,
+            "y": 836,
+            "width": 430,
+            "height": 88
+          },
+          "text": "0 / 10 Punkte0 Richtig0 Fehler0 FORTSCHRITT0 / 10"
+        },
+        "articleGrid": null,
+        "resultPanel": {
+          "selector": "#resultPanel",
+          "exists": true,
+          "visible": false,
+          "className": "resultPanel",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        }
+      },
+      "screenshot": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/cloze-from-qa-today.png"
+    },
+    {
+      "route": "Dev Tools / QA staging",
+      "launchSource": "QA fixture: connector repair",
+      "expectedSurface": "correction_repair",
+      "detectedSurface": "correction_repair",
+      "bodyClass": "b1Mode b1LongAnswer",
+      "bodyMode": "definite",
+      "b1Surface": "correction",
+      "b1State": "typing",
+      "activeScreen": "",
+      "runtimeMode": "qa_repair",
+      "runtimeTitle": "QA repair",
+      "itemId": "b1_connector_v085_variable_weil_001",
+      "itemType": "variable_error_repair",
+      "taskDepth": "repair",
+      "selectors": {
+        "practiceShell": {
+          "selector": "main",
+          "exists": true,
+          "visible": true,
+          "className": "",
+          "rect": {
+            "x": 10,
+            "y": 12,
+            "width": 410,
+            "height": 932
+          },
+          "text": "Ozmosis ☰ Ozmosis Recommended Task Recommended Task B1.1 Practice Practical Admin and Appointments > ? First visit? Test yourself to let us know your level Mini-Test Skip B1 Practi"
+        },
+        "challengeCard": {
+          "selector": ".challengeCard",
+          "exists": true,
+          "visible": true,
+          "className": "challengeCard",
+          "rect": {
+            "x": 25,
+            "y": 119,
+            "width": 380,
+            "height": 72
+          },
+          "text": "EXTRA PRACTICE QA repair Bearbeite die Aufgabe.Korrigiere den Satz."
+        },
+        "taskLabel": {
+          "selector": "#modeTitle",
+          "exists": true,
+          "visible": false,
+          "className": "modeTitle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "QA repair"
+        },
+        "germanStimulus": {
+          "selector": "#promptValue",
+          "exists": true,
+          "visible": true,
+          "className": "promptWord clozePrompt",
+          "rect": {
+            "x": 65,
+            "y": 119,
+            "width": 300,
+            "height": 44
+          },
+          "text": "Bearbeite die Aufgabe.Korrigiere den Satz."
+        },
+        "cueSupport": {
+          "selector": "#englishGloss",
+          "exists": true,
+          "visible": true,
+          "className": "englishGloss",
+          "rect": {
+            "x": 94,
+            "y": 172,
+            "width": 241,
+            "height": 15
+          },
+          "text": ""
+        },
+        "translationToggle": {
+          "selector": "#translationToggle",
+          "exists": true,
+          "visible": false,
+          "className": "translationToggle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "answerArea": {
+          "selector": "#answerArea",
+          "exists": true,
+          "visible": true,
+          "className": "answerArea",
+          "rect": {
+            "x": 25,
+            "y": 201,
+            "width": 380,
+            "height": 161
+          },
+          "text": "Kein Artikel Prüfen Show table Why limited evidence? I GUESSED I WAS UNSURE I KNEW IT Select answer confidence to continue. Weiter Exit diagnostic"
+        },
+        "choiceGrid": {
+          "selector": "#connectorChoiceGrid",
+          "exists": true,
+          "visible": false,
+          "className": "connectorChoiceGrid",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "inlineInput": null,
+        "answerInput": {
+          "selector": "#answerInput",
+          "exists": true,
+          "visible": true,
+          "className": "",
+          "rect": {
+            "x": 26,
+            "y": 201,
+            "width": 378,
+            "height": 48
+          },
+          "text": ""
+        },
+        "hintSlot": {
+          "selector": "#hintBtn",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Show table"
+        },
+        "feedback": {
+          "selector": "#feedback",
+          "exists": true,
+          "visible": true,
+          "className": "feedback",
+          "rect": {
+            "x": 26,
+            "y": 328,
+            "width": 378,
+            "height": 34
+          },
+          "text": ""
+        },
+        "correctionBlock": {
+          "selector": "#correctionBlock",
+          "exists": true,
+          "visible": false,
+          "className": "correctionBlock",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "confidence": {
+          "selector": "#b1ConfidenceRow",
+          "exists": true,
+          "visible": false,
+          "className": "b1ConfidenceRow",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "I GUESSED I WAS UNSURE I KNEW IT"
+        },
+        "continueButton": {
+          "selector": "#nextBtn",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Weiter"
+        },
+        "hud": {
+          "selector": ".bottomHud",
+          "exists": true,
+          "visible": true,
+          "className": "bottomHud",
+          "rect": {
+            "x": 0,
+            "y": 836,
+            "width": 430,
+            "height": 88
+          },
+          "text": "0 / 10 Punkte0 Richtig0 Fehler0 FORTSCHRITT0 / 10"
+        },
+        "articleGrid": null,
+        "resultPanel": {
+          "selector": "#resultPanel",
+          "exists": true,
+          "visible": false,
+          "className": "resultPanel",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        }
+      },
+      "screenshot": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/correction-from-qa-repair.png"
+    },
+    {
+      "route": "Dev Tools / QA staging",
+      "launchSource": "QA fixture: word order build",
+      "expectedSurface": "satzbau_word_order",
+      "detectedSurface": "satzbau_word_order",
+      "bodyClass": "b1Mode b1TypedCloze mobileClozeFocus",
+      "bodyMode": "definite",
+      "b1Surface": "cloze",
+      "b1State": "default",
+      "activeScreen": "",
+      "runtimeMode": "qa_repair",
+      "runtimeTitle": "QA repair",
+      "itemId": "b1_word_order_main_clause_v2_time_002",
+      "itemType": "word_order_cloze",
+      "taskDepth": "sentence_building",
+      "selectors": {
+        "practiceShell": {
+          "selector": "main",
+          "exists": true,
+          "visible": true,
+          "className": "",
+          "rect": {
+            "x": 10,
+            "y": 12,
+            "width": 410,
+            "height": 624
+          },
+          "text": "Ozmosis ☰ Ozmosis Recommended Task Recommended Task B1.1 Practice Practical Admin and Appointments > ? First visit? Test yourself to let us know your level Mini-Test Skip B1 Practi"
+        },
+        "challengeCard": {
+          "selector": ".challengeCard",
+          "exists": true,
+          "visible": true,
+          "className": "challengeCard",
+          "rect": {
+            "x": 25,
+            "y": 96,
+            "width": 380,
+            "height": 167
+          },
+          "text": "EXTRA PRACTICE QA repair Ergänze den Satz.Bringe die Wörter in eine natürliche Reihenfolge: Morgen · rufe · ich · die Praxis · an Morgen · rufe · ich · die Praxis · an"
+        },
+        "taskLabel": {
+          "selector": "#modeTitle",
+          "exists": true,
+          "visible": false,
+          "className": "modeTitle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "QA repair"
+        },
+        "germanStimulus": {
+          "selector": "#promptValue",
+          "exists": true,
+          "visible": true,
+          "className": "promptWord clozePrompt",
+          "rect": {
+            "x": 26,
+            "y": 110,
+            "width": 378,
+            "height": 114
+          },
+          "text": "Ergänze den Satz.Bringe die Wörter in eine natürliche Reihenfolge: Morgen · rufe · ich · die Praxis · an"
+        },
+        "cueSupport": {
+          "selector": "#englishGloss",
+          "exists": true,
+          "visible": true,
+          "className": "englishGloss",
+          "rect": {
+            "x": 94,
+            "y": 233,
+            "width": 241,
+            "height": 16
+          },
+          "text": "Morgen · rufe · ich · die Praxis · an"
+        },
+        "translationToggle": {
+          "selector": "#translationToggle",
+          "exists": true,
+          "visible": false,
+          "className": "translationToggle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "answerArea": {
+          "selector": "#answerArea",
+          "exists": true,
+          "visible": true,
+          "className": "answerArea",
+          "rect": {
+            "x": 25,
+            "y": 273,
+            "width": 380,
+            "height": 113
+          },
+          "text": "Teach me Prüfen Show table Why limited evidence? I GUESSED I WAS UNSURE I KNEW IT Select answer confidence to continue. Weiter Exit diagnostic"
+        },
+        "choiceGrid": {
+          "selector": "#connectorChoiceGrid",
+          "exists": true,
+          "visible": false,
+          "className": "connectorChoiceGrid",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "inlineInput": {
+          "selector": "#b1InlineInput",
+          "exists": true,
+          "visible": true,
+          "className": "inlineClozeInput",
+          "rect": {
+            "x": 86,
+            "y": 188,
+            "width": 258,
+            "height": 34
+          },
+          "text": ""
+        },
+        "answerInput": {
+          "selector": "#answerInput",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "hintSlot": {
+          "selector": "#hintBtn",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Show table"
+        },
+        "feedback": {
+          "selector": "#feedback",
+          "exists": true,
+          "visible": true,
+          "className": "feedback",
+          "rect": {
+            "x": 26,
+            "y": 352,
+            "width": 378,
+            "height": 34
+          },
+          "text": ""
+        },
+        "correctionBlock": {
+          "selector": "#correctionBlock",
+          "exists": true,
+          "visible": false,
+          "className": "correctionBlock",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "confidence": {
+          "selector": "#b1ConfidenceRow",
+          "exists": true,
+          "visible": false,
+          "className": "b1ConfidenceRow",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "I GUESSED I WAS UNSURE I KNEW IT"
+        },
+        "continueButton": {
+          "selector": "#nextBtn",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Weiter"
+        },
+        "hud": {
+          "selector": ".bottomHud",
+          "exists": true,
+          "visible": true,
+          "className": "bottomHud",
+          "rect": {
+            "x": 0,
+            "y": 836,
+            "width": 430,
+            "height": 88
+          },
+          "text": "0 / 10 Punkte0 Richtig0 Fehler0 FORTSCHRITT0 / 10"
+        },
+        "articleGrid": null,
+        "resultPanel": {
+          "selector": "#resultPanel",
+          "exists": true,
+          "visible": false,
+          "className": "resultPanel",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        }
+      },
+      "screenshot": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/satzbau-from-qa-word-order.png"
+    },
+    {
+      "route": "Dev Tools / QA staging",
+      "launchSource": "QA fixture: cases/articles repair",
+      "expectedSurface": "correction_repair",
+      "detectedSurface": "correction_repair",
+      "bodyClass": "b1Mode b1LongAnswer",
+      "bodyMode": "definite",
+      "b1Surface": "correction",
+      "b1State": "typing",
+      "activeScreen": "",
+      "runtimeMode": "qa_repair",
+      "runtimeTitle": "QA repair",
+      "itemId": "b1_cases_articles_v0841_variable_001",
+      "itemType": "variable_error_repair",
+      "taskDepth": "repair",
+      "selectors": {
+        "practiceShell": {
+          "selector": "main",
+          "exists": true,
+          "visible": true,
+          "className": "",
+          "rect": {
+            "x": 10,
+            "y": 12,
+            "width": 410,
+            "height": 932
+          },
+          "text": "Ozmosis ☰ Ozmosis Recommended Task Recommended Task B1.1 Practice Practical Admin and Appointments > ? First visit? Test yourself to let us know your level Mini-Test Skip B1 Practi"
+        },
+        "challengeCard": {
+          "selector": ".challengeCard",
+          "exists": true,
+          "visible": true,
+          "className": "challengeCard",
+          "rect": {
+            "x": 25,
+            "y": 119,
+            "width": 380,
+            "height": 72
+          },
+          "text": "EXTRA PRACTICE QA repair Bearbeite die Aufgabe.Korrigiere den Satz."
+        },
+        "taskLabel": {
+          "selector": "#modeTitle",
+          "exists": true,
+          "visible": false,
+          "className": "modeTitle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "QA repair"
+        },
+        "germanStimulus": {
+          "selector": "#promptValue",
+          "exists": true,
+          "visible": true,
+          "className": "promptWord clozePrompt",
+          "rect": {
+            "x": 65,
+            "y": 119,
+            "width": 300,
+            "height": 44
+          },
+          "text": "Bearbeite die Aufgabe.Korrigiere den Satz."
+        },
+        "cueSupport": {
+          "selector": "#englishGloss",
+          "exists": true,
+          "visible": true,
+          "className": "englishGloss",
+          "rect": {
+            "x": 94,
+            "y": 172,
+            "width": 241,
+            "height": 15
+          },
+          "text": ""
+        },
+        "translationToggle": {
+          "selector": "#translationToggle",
+          "exists": true,
+          "visible": false,
+          "className": "translationToggle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "answerArea": {
+          "selector": "#answerArea",
+          "exists": true,
+          "visible": true,
+          "className": "answerArea",
+          "rect": {
+            "x": 25,
+            "y": 201,
+            "width": 380,
+            "height": 161
+          },
+          "text": "Kein Artikel Prüfen Show table Why limited evidence? I GUESSED I WAS UNSURE I KNEW IT Select answer confidence to continue. Weiter Exit diagnostic"
+        },
+        "choiceGrid": {
+          "selector": "#connectorChoiceGrid",
+          "exists": true,
+          "visible": false,
+          "className": "connectorChoiceGrid",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "inlineInput": null,
+        "answerInput": {
+          "selector": "#answerInput",
+          "exists": true,
+          "visible": true,
+          "className": "",
+          "rect": {
+            "x": 26,
+            "y": 201,
+            "width": 378,
+            "height": 48
+          },
+          "text": ""
+        },
+        "hintSlot": {
+          "selector": "#hintBtn",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Show table"
+        },
+        "feedback": {
+          "selector": "#feedback",
+          "exists": true,
+          "visible": true,
+          "className": "feedback",
+          "rect": {
+            "x": 26,
+            "y": 328,
+            "width": 378,
+            "height": 34
+          },
+          "text": ""
+        },
+        "correctionBlock": {
+          "selector": "#correctionBlock",
+          "exists": true,
+          "visible": false,
+          "className": "correctionBlock",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "confidence": {
+          "selector": "#b1ConfidenceRow",
+          "exists": true,
+          "visible": false,
+          "className": "b1ConfidenceRow",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "I GUESSED I WAS UNSURE I KNEW IT"
+        },
+        "continueButton": {
+          "selector": "#nextBtn",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Weiter"
+        },
+        "hud": {
+          "selector": ".bottomHud",
+          "exists": true,
+          "visible": true,
+          "className": "bottomHud",
+          "rect": {
+            "x": 0,
+            "y": 836,
+            "width": 430,
+            "height": 88
+          },
+          "text": "0 / 10 Punkte0 Richtig0 Fehler0 FORTSCHRITT0 / 10"
+        },
+        "articleGrid": null,
+        "resultPanel": {
+          "selector": "#resultPanel",
+          "exists": true,
+          "visible": false,
+          "className": "resultPanel",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        }
+      },
+      "screenshot": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/cases-repair-from-qa-cases-articles.png"
+    },
+    {
+      "route": "Dev Tools / QA staging",
+      "launchSource": "QA fixture: production card",
+      "expectedSurface": "production_card",
+      "detectedSurface": "production_card",
+      "bodyClass": "b1Mode",
+      "bodyMode": "definite",
+      "b1Surface": "production",
+      "b1State": "default",
+      "activeScreen": "",
+      "runtimeMode": "qa_repair",
+      "runtimeTitle": "QA repair",
+      "itemId": "b1_redemittel_084",
+      "itemType": "production_card",
+      "taskDepth": "",
+      "selectors": {
+        "practiceShell": {
+          "selector": "main",
+          "exists": true,
+          "visible": true,
+          "className": "",
+          "rect": {
+            "x": 10,
+            "y": 12,
+            "width": 410,
+            "height": 932
+          },
+          "text": "Ozmosis ☰ Ozmosis Recommended Task Recommended Task B1.1 Practice Practical Admin and Appointments > ? First visit? Test yourself to let us know your level Mini-Test Skip B1 Practi"
+        },
+        "challengeCard": {
+          "selector": ".challengeCard",
+          "exists": true,
+          "visible": true,
+          "className": "challengeCard",
+          "rect": {
+            "x": 25,
+            "y": 119,
+            "width": 380,
+            "height": 107
+          },
+          "text": "EXTRA PRACTICE QA repair Schreiben/Sprechen: Bitten Sie darum, einen Termin zu verschieben."
+        },
+        "taskLabel": {
+          "selector": "#modeTitle",
+          "exists": true,
+          "visible": false,
+          "className": "modeTitle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "QA repair"
+        },
+        "germanStimulus": {
+          "selector": "#promptValue",
+          "exists": true,
+          "visible": true,
+          "className": "promptWord clozePrompt",
+          "rect": {
+            "x": 29,
+            "y": 119,
+            "width": 372,
+            "height": 79
+          },
+          "text": "Schreiben/Sprechen: Bitten Sie darum, einen Termin zu verschieben."
+        },
+        "cueSupport": {
+          "selector": "#englishGloss",
+          "exists": true,
+          "visible": true,
+          "className": "englishGloss",
+          "rect": {
+            "x": 94,
+            "y": 207,
+            "width": 241,
+            "height": 15
+          },
+          "text": ""
+        },
+        "translationToggle": {
+          "selector": "#translationToggle",
+          "exists": true,
+          "visible": false,
+          "className": "translationToggle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "answerArea": {
+          "selector": "#answerArea",
+          "exists": true,
+          "visible": true,
+          "className": "answerArea",
+          "rect": {
+            "x": 25,
+            "y": 236,
+            "width": 380,
+            "height": 351
+          },
+          "text": "Write or say your answer, then self-mark. No auto-grading.Useful phrasesDer Termin passt mir leider nicht.Könnten wir den Termin bitte verschieben?Hätten Sie vielleicht einen ander"
+        },
+        "choiceGrid": {
+          "selector": "#connectorChoiceGrid",
+          "exists": true,
+          "visible": true,
+          "className": "connectorChoiceGrid productionGrid visible",
+          "rect": {
+            "x": 26,
+            "y": 246,
+            "width": 378,
+            "height": 299
+          },
+          "text": "Write or say your answer, then self-mark. No auto-grading.Useful phrasesDer Termin passt mir leider nicht.Könnten wir den Termin bitte verschieben?Hätten Sie vielleicht einen ander"
+        },
+        "inlineInput": null,
+        "answerInput": {
+          "selector": "#answerInput",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "hintSlot": {
+          "selector": "#hintBtn",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Show table"
+        },
+        "feedback": {
+          "selector": "#feedback",
+          "exists": true,
+          "visible": true,
+          "className": "feedback",
+          "rect": {
+            "x": 26,
+            "y": 553,
+            "width": 378,
+            "height": 34
+          },
+          "text": ""
+        },
+        "correctionBlock": {
+          "selector": "#correctionBlock",
+          "exists": true,
+          "visible": false,
+          "className": "correctionBlock",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "confidence": {
+          "selector": "#b1ConfidenceRow",
+          "exists": true,
+          "visible": false,
+          "className": "b1ConfidenceRow",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "I GUESSED I WAS UNSURE I KNEW IT"
+        },
+        "continueButton": {
+          "selector": "#nextBtn",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Weiter"
+        },
+        "hud": {
+          "selector": ".bottomHud",
+          "exists": true,
+          "visible": true,
+          "className": "bottomHud",
+          "rect": {
+            "x": 0,
+            "y": 836,
+            "width": 430,
+            "height": 88
+          },
+          "text": "0 / 10 Punkte0 Richtig0 Fehler0 FORTSCHRITT0 / 10"
+        },
+        "articleGrid": null,
+        "resultPanel": {
+          "selector": "#resultPanel",
+          "exists": true,
+          "visible": false,
+          "className": "resultPanel",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        }
+      },
+      "screenshot": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/production-from-qa-redemittel.png"
+    },
+    {
+      "route": "Case Trainer",
+      "launchSource": "real setup route",
+      "expectedSurface": "setup",
+      "detectedSurface": "case_trainer_setup",
+      "bodyClass": "setupMode",
+      "bodyMode": "definite",
+      "b1Surface": "production",
+      "b1State": "default",
+      "activeScreen": "",
+      "runtimeMode": "qa_repair",
+      "runtimeTitle": "QA repair",
+      "itemId": "b1_redemittel_084",
+      "itemType": "production_card",
+      "taskDepth": "",
+      "selectors": {
+        "practiceShell": {
+          "selector": "main",
+          "exists": true,
+          "visible": true,
+          "className": "",
+          "rect": {
+            "x": 10,
+            "y": 0,
+            "width": 410,
+            "height": 932
+          },
+          "text": "Ozmosis ☰ Ozmosis Recommended Task Recommended Task B1.1 Practice Practical Admin and Appointments > ? First visit? Test yourself to let us know your level Mini-Test Skip B1 Practi"
+        },
+        "challengeCard": {
+          "selector": ".challengeCard",
+          "exists": true,
+          "visible": false,
+          "className": "challengeCard",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "EXTRA PRACTICE QA repair Schreiben/Sprechen: Bitten Sie darum, einen Termin zu verschieben."
+        },
+        "taskLabel": {
+          "selector": "#modeTitle",
+          "exists": true,
+          "visible": false,
+          "className": "modeTitle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "QA repair"
+        },
+        "germanStimulus": {
+          "selector": "#promptValue",
+          "exists": true,
+          "visible": false,
+          "className": "promptWord clozePrompt",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Schreiben/Sprechen: Bitten Sie darum, einen Termin zu verschieben."
+        },
+        "cueSupport": {
+          "selector": "#englishGloss",
+          "exists": true,
+          "visible": false,
+          "className": "englishGloss",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "translationToggle": {
+          "selector": "#translationToggle",
+          "exists": true,
+          "visible": false,
+          "className": "translationToggle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "answerArea": {
+          "selector": "#answerArea",
+          "exists": true,
+          "visible": false,
+          "className": "answerArea",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Write or say your answer, then self-mark. No auto-grading.Useful phrasesDer Termin passt mir leider nicht.Könnten wir den Termin bitte verschieben?Hätten Sie vielleicht einen ander"
+        },
+        "choiceGrid": {
+          "selector": "#connectorChoiceGrid",
+          "exists": true,
+          "visible": false,
+          "className": "connectorChoiceGrid productionGrid visible",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Write or say your answer, then self-mark. No auto-grading.Useful phrasesDer Termin passt mir leider nicht.Könnten wir den Termin bitte verschieben?Hätten Sie vielleicht einen ander"
+        },
+        "inlineInput": null,
+        "answerInput": {
+          "selector": "#answerInput",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "hintSlot": {
+          "selector": "#hintBtn",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Show table"
+        },
+        "feedback": {
+          "selector": "#feedback",
+          "exists": true,
+          "visible": false,
+          "className": "feedback",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "correctionBlock": {
+          "selector": "#correctionBlock",
+          "exists": true,
+          "visible": false,
+          "className": "correctionBlock",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "confidence": {
+          "selector": "#b1ConfidenceRow",
+          "exists": true,
+          "visible": false,
+          "className": "b1ConfidenceRow",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "I GUESSED I WAS UNSURE I KNEW IT"
+        },
+        "continueButton": {
+          "selector": "#nextBtn",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Weiter"
+        },
+        "hud": {
+          "selector": ".bottomHud",
+          "exists": true,
+          "visible": false,
+          "className": "bottomHud",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "0 / 20 Punkte0 Richtig0 Fehler0 FORTSCHRITT0 / 20"
+        },
+        "articleGrid": null,
+        "resultPanel": {
+          "selector": "#resultPanel",
+          "exists": true,
+          "visible": false,
+          "className": "resultPanel",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        }
+      },
+      "screenshot": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/case-trainer-setup.png"
+    },
+    {
+      "route": "Case Trainer",
+      "launchSource": "real route table mode",
+      "expectedSurface": "case_trainer_typed_answer",
+      "detectedSurface": "case_trainer_typed_answer",
+      "bodyClass": "",
+      "bodyMode": "indefinite",
+      "b1Surface": "production",
+      "b1State": "default",
+      "activeScreen": "",
+      "runtimeMode": "qa_repair",
+      "runtimeTitle": "QA repair",
+      "itemId": "table|indefinite|Akkusativ|Neutrum",
+      "itemType": "indefinite",
+      "taskDepth": "",
+      "selectors": {
+        "practiceShell": {
+          "selector": "main",
+          "exists": true,
+          "visible": true,
+          "className": "",
+          "rect": {
+            "x": 10,
+            "y": 12,
+            "width": 410,
+            "height": 822
+          },
+          "text": "Ozmosis ☰ Ozmosis Recommended Task Recommended Task B1.1 Practice Practical Admin and Appointments > ? First visit? Test yourself to let us know your level Mini-Test Skip B1 Practi"
+        },
+        "challengeCard": {
+          "selector": ".challengeCard",
+          "exists": true,
+          "visible": true,
+          "className": "challengeCard",
+          "rect": {
+            "x": 26,
+            "y": 90,
+            "width": 378,
+            "height": 139
+          },
+          "text": "EXTRA PRACTICE EIN Akkusativ Neutrum"
+        },
+        "taskLabel": {
+          "selector": "#modeTitle",
+          "exists": true,
+          "visible": true,
+          "className": "modeTitle",
+          "rect": {
+            "x": 45,
+            "y": 109,
+            "width": 340,
+            "height": 27
+          },
+          "text": "EIN"
+        },
+        "germanStimulus": {
+          "selector": "#promptValue",
+          "exists": true,
+          "visible": true,
+          "className": "promptWord",
+          "rect": {
+            "x": 127,
+            "y": 153,
+            "width": 177,
+            "height": 23
+          },
+          "text": "Akkusativ Neutrum"
+        },
+        "cueSupport": {
+          "selector": "#englishGloss",
+          "exists": true,
+          "visible": true,
+          "className": "englishGloss",
+          "rect": {
+            "x": 45,
+            "y": 193,
+            "width": 340,
+            "height": 17
+          },
+          "text": ""
+        },
+        "translationToggle": {
+          "selector": "#translationToggle",
+          "exists": true,
+          "visible": false,
+          "className": "translationToggle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "answerArea": {
+          "selector": "#answerArea",
+          "exists": true,
+          "visible": true,
+          "className": "answerArea",
+          "rect": {
+            "x": 26,
+            "y": 238,
+            "width": 378,
+            "height": 234
+          },
+          "text": "Kein Artikel Prüfen Show table Why limited evidence? I GUESSED I WAS UNSURE I KNEW IT Select answer confidence to continue. Weiter Exit diagnostic"
+        },
+        "choiceGrid": {
+          "selector": "#connectorChoiceGrid",
+          "exists": true,
+          "visible": false,
+          "className": "connectorChoiceGrid",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "inlineInput": null,
+        "answerInput": {
+          "selector": "#answerInput",
+          "exists": true,
+          "visible": true,
+          "className": "",
+          "rect": {
+            "x": 26,
+            "y": 238,
+            "width": 378,
+            "height": 80
+          },
+          "text": ""
+        },
+        "hintSlot": {
+          "selector": "#hintBtn",
+          "exists": true,
+          "visible": true,
+          "className": "",
+          "rect": {
+            "x": 26,
+            "y": 387,
+            "width": 378,
+            "height": 42
+          },
+          "text": "Show table"
+        },
+        "feedback": {
+          "selector": "#feedback",
+          "exists": true,
+          "visible": false,
+          "className": "feedback",
+          "rect": {
+            "x": 215,
+            "y": 439,
+            "width": 0,
+            "height": 34
+          },
+          "text": ""
+        },
+        "correctionBlock": {
+          "selector": "#correctionBlock",
+          "exists": true,
+          "visible": false,
+          "className": "correctionBlock",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "confidence": {
+          "selector": "#b1ConfidenceRow",
+          "exists": true,
+          "visible": false,
+          "className": "b1ConfidenceRow",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "I GUESSED I WAS UNSURE I KNEW IT"
+        },
+        "continueButton": {
+          "selector": "#nextBtn",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Weiter"
+        },
+        "hud": {
+          "selector": ".bottomHud",
+          "exists": true,
+          "visible": true,
+          "className": "bottomHud",
+          "rect": {
+            "x": 0,
+            "y": 843,
+            "width": 430,
+            "height": 81
+          },
+          "text": "0 / 10 Punkte0 Richtig0 Fehler0 FORTSCHRITT0 / 10"
+        },
+        "articleGrid": null,
+        "resultPanel": {
+          "selector": "#resultPanel",
+          "exists": true,
+          "visible": false,
+          "className": "resultPanel",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        }
+      },
+      "screenshot": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/case-trainer-table-active.png"
+    },
+    {
+      "route": "Case Trainer",
+      "launchSource": "real route hint",
+      "expectedSurface": "article_grid",
+      "detectedSurface": "article_grid",
+      "bodyClass": "",
+      "bodyMode": "indefinite",
+      "b1Surface": "production",
+      "b1State": "default",
+      "activeScreen": "",
+      "runtimeMode": "qa_repair",
+      "runtimeTitle": "QA repair",
+      "itemId": "table|indefinite|Akkusativ|Neutrum",
+      "itemType": "indefinite",
+      "taskDepth": "",
+      "selectors": {
+        "practiceShell": {
+          "selector": "main",
+          "exists": true,
+          "visible": true,
+          "className": "",
+          "rect": {
+            "x": 10,
+            "y": 12,
+            "width": 410,
+            "height": 822
+          },
+          "text": "Ozmosis ☰ Ozmosis Recommended Task Recommended Task B1.1 Practice Practical Admin and Appointments > ? First visit? Test yourself to let us know your level Mini-Test Skip B1 Practi"
+        },
+        "challengeCard": {
+          "selector": ".challengeCard",
+          "exists": true,
+          "visible": true,
+          "className": "challengeCard",
+          "rect": {
+            "x": 26,
+            "y": 90,
+            "width": 378,
+            "height": 139
+          },
+          "text": "EXTRA PRACTICE EIN Akkusativ Neutrum"
+        },
+        "taskLabel": {
+          "selector": "#modeTitle",
+          "exists": true,
+          "visible": true,
+          "className": "modeTitle",
+          "rect": {
+            "x": 45,
+            "y": 109,
+            "width": 340,
+            "height": 27
+          },
+          "text": "EIN"
+        },
+        "germanStimulus": {
+          "selector": "#promptValue",
+          "exists": true,
+          "visible": true,
+          "className": "promptWord",
+          "rect": {
+            "x": 127,
+            "y": 153,
+            "width": 177,
+            "height": 23
+          },
+          "text": "Akkusativ Neutrum"
+        },
+        "cueSupport": {
+          "selector": "#englishGloss",
+          "exists": true,
+          "visible": true,
+          "className": "englishGloss",
+          "rect": {
+            "x": 45,
+            "y": 193,
+            "width": 340,
+            "height": 17
+          },
+          "text": ""
+        },
+        "translationToggle": {
+          "selector": "#translationToggle",
+          "exists": true,
+          "visible": false,
+          "className": "translationToggle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "answerArea": {
+          "selector": "#answerArea",
+          "exists": true,
+          "visible": true,
+          "className": "answerArea",
+          "rect": {
+            "x": 26,
+            "y": 238,
+            "width": 378,
+            "height": 234
+          },
+          "text": "Kein Artikel Prüfen Show table Article table shown. Why limited evidence? I GUESSED I WAS UNSURE I KNEW IT Select answer confidence to continue. Weiter Exit diagnostic"
+        },
+        "choiceGrid": {
+          "selector": "#connectorChoiceGrid",
+          "exists": true,
+          "visible": false,
+          "className": "connectorChoiceGrid",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "inlineInput": null,
+        "answerInput": {
+          "selector": "#answerInput",
+          "exists": true,
+          "visible": true,
+          "className": "",
+          "rect": {
+            "x": 26,
+            "y": 238,
+            "width": 378,
+            "height": 80
+          },
+          "text": ""
+        },
+        "hintSlot": {
+          "selector": "#hintBtn",
+          "exists": true,
+          "visible": true,
+          "className": "",
+          "rect": {
+            "x": 26,
+            "y": 387,
+            "width": 378,
+            "height": 42
+          },
+          "text": "Show table"
+        },
+        "feedback": {
+          "selector": "#feedback",
+          "exists": true,
+          "visible": true,
+          "className": "feedback warn",
+          "rect": {
+            "x": 130,
+            "y": 439,
+            "width": 169,
+            "height": 34
+          },
+          "text": "Article table shown."
+        },
+        "correctionBlock": {
+          "selector": "#correctionBlock",
+          "exists": true,
+          "visible": false,
+          "className": "correctionBlock",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "confidence": {
+          "selector": "#b1ConfidenceRow",
+          "exists": true,
+          "visible": false,
+          "className": "b1ConfidenceRow",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "I GUESSED I WAS UNSURE I KNEW IT"
+        },
+        "continueButton": {
+          "selector": "#nextBtn",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Weiter"
+        },
+        "hud": {
+          "selector": ".bottomHud",
+          "exists": true,
+          "visible": true,
+          "className": "bottomHud",
+          "rect": {
+            "x": 0,
+            "y": 843,
+            "width": 430,
+            "height": 81
+          },
+          "text": "0 / 10 Punkte0 Richtig0 Fehler0 FORTSCHRITT0 / 10"
+        },
+        "articleGrid": {
+          "selector": "#miniTableWrap .miniTable",
+          "exists": true,
+          "visible": true,
+          "className": "miniTable visible",
+          "rect": {
+            "x": 26,
+            "y": 483,
+            "width": 378,
+            "height": 145
+          },
+          "text": "MNFPl.Nom.eineineinekein ArtikelAkk.einen???einekein ArtikelDat.einemeinemeinerkein Artikel"
+        },
+        "resultPanel": {
+          "selector": "#resultPanel",
+          "exists": true,
+          "visible": false,
+          "className": "resultPanel",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        }
+      },
+      "screenshot": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/article-grid-full-reveal.png"
+    },
+    {
+      "route": "Case Trainer",
+      "launchSource": "real route wrong answer",
+      "expectedSurface": "article_grid",
+      "detectedSurface": "article_grid",
+      "bodyClass": "",
+      "bodyMode": "indefinite",
+      "b1Surface": "production",
+      "b1State": "default",
+      "activeScreen": "",
+      "runtimeMode": "qa_repair",
+      "runtimeTitle": "QA repair",
+      "itemId": "table|indefinite|Akkusativ|Neutrum",
+      "itemType": "indefinite",
+      "taskDepth": "",
+      "selectors": {
+        "practiceShell": {
+          "selector": "main",
+          "exists": true,
+          "visible": true,
+          "className": "",
+          "rect": {
+            "x": 10,
+            "y": 12,
+            "width": 410,
+            "height": 822
+          },
+          "text": "Ozmosis ☰ Ozmosis Recommended Task Recommended Task B1.1 Practice Practical Admin and Appointments > ? First visit? Test yourself to let us know your level Mini-Test Skip B1 Practi"
+        },
+        "challengeCard": {
+          "selector": ".challengeCard",
+          "exists": true,
+          "visible": true,
+          "className": "challengeCard",
+          "rect": {
+            "x": 26,
+            "y": 90,
+            "width": 378,
+            "height": 139
+          },
+          "text": "EXTRA PRACTICE EIN Akkusativ Neutrum"
+        },
+        "taskLabel": {
+          "selector": "#modeTitle",
+          "exists": true,
+          "visible": true,
+          "className": "modeTitle",
+          "rect": {
+            "x": 45,
+            "y": 109,
+            "width": 340,
+            "height": 27
+          },
+          "text": "EIN"
+        },
+        "germanStimulus": {
+          "selector": "#promptValue",
+          "exists": true,
+          "visible": true,
+          "className": "promptWord",
+          "rect": {
+            "x": 127,
+            "y": 153,
+            "width": 177,
+            "height": 23
+          },
+          "text": "Akkusativ Neutrum"
+        },
+        "cueSupport": {
+          "selector": "#englishGloss",
+          "exists": true,
+          "visible": true,
+          "className": "englishGloss",
+          "rect": {
+            "x": 45,
+            "y": 193,
+            "width": 340,
+            "height": 17
+          },
+          "text": ""
+        },
+        "translationToggle": {
+          "selector": "#translationToggle",
+          "exists": true,
+          "visible": false,
+          "className": "translationToggle",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "answerArea": {
+          "selector": "#answerArea",
+          "exists": true,
+          "visible": true,
+          "className": "answerArea answered",
+          "rect": {
+            "x": 26,
+            "y": 238,
+            "width": 378,
+            "height": 205
+          },
+          "text": "Kein Artikel Prüfen Show table Akkusativ Neutrum = einNeutrum stays the same in Nom./Akk. Why limited evidence? I GUESSED I WAS UNSURE I KNEW IT Select answer confidence to continu"
+        },
+        "choiceGrid": {
+          "selector": "#connectorChoiceGrid",
+          "exists": true,
+          "visible": false,
+          "className": "connectorChoiceGrid",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "inlineInput": null,
+        "answerInput": {
+          "selector": "#answerInput",
+          "exists": true,
+          "visible": true,
+          "className": "missed",
+          "rect": {
+            "x": 26,
+            "y": 238,
+            "width": 378,
+            "height": 80
+          },
+          "text": ""
+        },
+        "hintSlot": {
+          "selector": "#hintBtn",
+          "exists": true,
+          "visible": false,
+          "className": "",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "Show table"
+        },
+        "feedback": {
+          "selector": "#feedback",
+          "exists": true,
+          "visible": false,
+          "className": "feedback",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        },
+        "correctionBlock": {
+          "selector": "#correctionBlock",
+          "exists": true,
+          "visible": true,
+          "className": "correctionBlock visible",
+          "rect": {
+            "x": 26,
+            "y": 324,
+            "width": 378,
+            "height": 67
+          },
+          "text": "Akkusativ Neutrum = einNeutrum stays the same in Nom./Akk."
+        },
+        "confidence": {
+          "selector": "#b1ConfidenceRow",
+          "exists": true,
+          "visible": false,
+          "className": "b1ConfidenceRow",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": "I GUESSED I WAS UNSURE I KNEW IT"
+        },
+        "continueButton": {
+          "selector": "#nextBtn",
+          "exists": true,
+          "visible": true,
+          "className": "visible",
+          "rect": {
+            "x": 26,
+            "y": 396,
+            "width": 378,
+            "height": 48
+          },
+          "text": "Weiter"
+        },
+        "hud": {
+          "selector": ".bottomHud",
+          "exists": true,
+          "visible": true,
+          "className": "bottomHud",
+          "rect": {
+            "x": 0,
+            "y": 843,
+            "width": 430,
+            "height": 81
+          },
+          "text": "1 / 10 Punkte0 Richtig0 Fehler1 FORTSCHRITT1 / 10"
+        },
+        "articleGrid": {
+          "selector": "#miniTableWrap .miniTable",
+          "exists": true,
+          "visible": true,
+          "className": "miniTable visible",
+          "rect": {
+            "x": 26,
+            "y": 454,
+            "width": 378,
+            "height": 145
+          },
+          "text": "MNFPl.Nom.eineineinekein ArtikelAkk.eineneineinekein ArtikelDat.einemeinemeinerkein Artikel"
+        },
+        "resultPanel": {
+          "selector": "#resultPanel",
+          "exists": true,
+          "visible": false,
+          "className": "resultPanel",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "text": ""
+        }
+      },
+      "screenshot": "docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/article-grid-wrong-answer.png"
+    }
+  ],
+  "consoleErrors": [],
+  "runtimeExceptions": [],
+  "errors": []
+}

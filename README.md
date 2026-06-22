@@ -9,7 +9,31 @@ Future README updates should be made in this file. Do not create new `README-v*.
 
 ## Current App
 
-# Ozmosis v0.85.3.3b duplicate Teach Me hotfix baseline
+# Ozmosis v0.85.3.4 shared practice frame inventory
+
+Ozmosis is a static, local-first German learning app. The deployed app remains `index.html`.
+
+v0.85.3.4 is a QA/planning patch. It audits whether all practice and test surfaces use one shared frame before any feedback-rhythm redesign starts.
+
+- Runtime app version remains: `v0.85.3.3b - Duplicate Teach Me Button Hotfix`
+- Runtime export version remains: `v0.85.3.3b-duplicate-teach-me-hotfix`
+- Current gate result: `SHARED_FRAME_INVENTORY_ACCEPTED`
+- Core finding: B1 practice is mostly unified, but Case Trainer/article-grid typed-answer and result surfaces still use separate legacy render ownership.
+
+## Current v0.85.3.4 docs
+
+- Changelog: `CHANGELOG-FULL-OZMOSIS.txt`
+- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.4.md`
+- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.4.md`
+- Shared frame contract: `docs/OZMOSIS_SHARED_PRACTICE_FRAME_CONTRACT_v0.85.3.4.md`
+- Current QA gate: `docs/qa/v0.85.3.4_shared_practice_frame_inventory.md`
+- Current gate result JSON: `docs/qa/v0.85.3.4_shared_practice_frame_inventory_results.json`
+- Screenshot comparison: `docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/comparison.html`
+- Package policy: `docs/OZMOSIS_QA_ARTEFACT_AND_PACKAGE_POLICY.md`
+
+Next planned patch: `v0.85.3.5 - Shared Practice Frame Convergence Pass`.
+
+## Previous v0.85.3.3b duplicate Teach Me hotfix baseline
 
 Ozmosis is a static, local-first German learning app. The deployed app remains `index.html`.
 
@@ -18,18 +42,6 @@ v0.85.3.3b fixes the B1 inline cloze duplicate Teach Me action found after the r
 - App version: `v0.85.3.3b - Duplicate Teach Me Button Hotfix`
 - Export version: `v0.85.3.3b-duplicate-teach-me-hotfix`
 - Current gate result: `DUPLICATE_TEACH_ME_FIXED`
-
-## Current v0.85.3.3b docs
-
-- Changelog: `CHANGELOG-FULL-OZMOSIS.txt`
-- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.3b.md`
-- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.3b.md`
-- Current QA gate: `docs/qa/v0.85.3.3b_duplicate_teach_me_hotfix.md`
-- Current gate result JSON: `docs/qa/v0.85.3.3b_duplicate_teach_me_hotfix_results.json`
-- Screenshot comparison: `docs/qa/screenshots/v0.85.3.3b-duplicate-teach-me-hotfix/comparison.html`
-- Package policy: `docs/OZMOSIS_QA_ARTEFACT_AND_PACKAGE_POLICY.md`
-
-Next planned patch: `v0.85.3.4 - Feedback Rhythm Pass`.
 
 ## Previous v0.85.3.3 cloze experience baseline
 
@@ -84,7 +96,7 @@ v0.85.3.3 proves the active-practice cloze surface with representative B1 senten
 - Previous v0.85.3.1 proof gate: `docs/qa/v0.85.3.1_strict_ui_proof_gate.md`
 - Review queue: `docs/qa/v0.85.1_prompt_cue_review_queue.csv`
 
-Next planned patch: `v0.85.3.4 - Feedback Rhythm Pass`.
+Historical next planned patch at that point: `v0.85.3.4 - Feedback Rhythm Pass`. Current planning supersedes this with `v0.85.3.5 - Shared Practice Frame Convergence Pass`.
 
 ## Historical README Archive
 

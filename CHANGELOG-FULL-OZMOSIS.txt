@@ -39,13 +39,29 @@ Current state is based only on current repo files.
 - Current export version in `index.html`: `v0.85.3.3b-duplicate-teach-me-hotfix`
 - Current README: `README.md`
 - Current changelog: `CHANGELOG-FULL-OZMOSIS.txt`
-- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.3b.md`
-- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.3b.md`
-- Current QA report: `docs/qa/v0.85.3.3b_duplicate_teach_me_hotfix.md`
-- Current strict UI gate result: `DUPLICATE_TEACH_ME_FIXED`
-- Next required patch documented in current files: `v0.85.3.4 - Feedback Rhythm Pass`
+- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.4.md`
+- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.4.md`
+- Current QA report: `docs/qa/v0.85.3.4_shared_practice_frame_inventory.md`
+- Current strict UI gate result: `SHARED_FRAME_INVENTORY_ACCEPTED`
+- Next required patch documented in current files: `v0.85.3.5 - Shared Practice Frame Convergence Pass`
 
 No live deployment status is claimed here.
+
+## v0.85.3.4 - Shared Practice Frame and Surface Inventory
+
+- Audited the current practice/test page architecture before starting feedback rhythm work.
+- Confirmed runtime remains `v0.85.3.3b - Duplicate Teach Me Button Hotfix` with export version `v0.85.3.3b-duplicate-teach-me-hotfix` because this patch changed QA/planning artefacts only.
+- Created `docs/OZMOSIS_SHARED_PRACTICE_FRAME_CONTRACT_v0.85.3.4.md`.
+- Added `scripts/ozmosis-practice-frame-inventory.cjs` for static render-function/DOM/CSS inventory and Edge/CDP browser surface capture.
+- Generated screenshot/contact-sheet evidence under `docs/qa/screenshots/v0.85.3.4-shared-practice-frame-inventory/`.
+- Inventoried Home, Today B1 Sprint, Diagnostic Sprint, Connector Sprint, Cases and Articles, Prepositions, Word Order, Repair and Transformation, Wortschatz, Redemittel, Case Trainer, Learning Map, and Dev Tools / QA staging.
+- Listed current answer surfaces: choice, inline cloze, full typed answer, correction/repair, Satzbau/word order, production card, article grid/case table, feedback, confidence/continue, and HUD.
+- Found that B1 practice is mostly unified through `renderB1Question()` and shared DOM slots.
+- Found that Case Trainer/article-grid typed-answer and result surfaces still use separate legacy render ownership through `renderQuestion()`, `checkAnswer()`, `renderMiniTable(mode)`, and `showResults()`.
+- Explicitly protected the article grid as a learning component and planned full, compact highlighted, and optional reveal grid forms.
+- Confirmed no scoring, evidence semantics, answer keys, content banks, localStorage keys, export/import format, article-grid data, case/article correctness, item selection, feedback rhythm, or production-card semantics changed.
+- Set the next planned patch to `v0.85.3.5 - Shared Practice Frame Convergence Pass`.
+- Blocked Feedback Rhythm Pass until shared-frame convergence is handled or explicitly deferred.
 
 ## v0.85.3.3b - Duplicate Teach Me Button Hotfix
 

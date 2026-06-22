@@ -162,9 +162,9 @@ Deferred features must not be forgotten or implemented early:
 
 Current runtime baseline: `v0.85.3.3b - Duplicate Teach Me Button Hotfix`.
 
-Current acceptance status: v0.85.3.3b fixed the duplicate B1 inline cloze Teach Me controls. The newer smaller secondary `Teach me` reveal button is the surviving control, the older `#noArticleBtn.teachBtn` B1 cloze duplicate is suppressed when the reveal hint is available, and normal content banks remain unchanged.
+Current acceptance status: v0.85.3.4 completed a QA/planning inventory of shared practice-frame surfaces. It found that B1 practice is mostly unified through `renderB1Question()` and shared DOM slots, but Case Trainer/article-grid typed-answer and result surfaces still use separate legacy render ownership. Runtime remains v0.85.3.3b because no app behaviour changed.
 
-Next required patch: `v0.85.3.4 - Feedback Rhythm Pass`.
+Next required patch: `v0.85.3.5 - Shared Practice Frame Convergence Pass`.
 
 Current planning handoff:
 
@@ -183,6 +183,8 @@ Current planning handoff:
 - Cloze Experience and Representative Fixture Pass has been implemented and accepted as v0.85.3.3.
 - Package Size, Old ZIP Audit, and No-PowerShell Cleanup Pass has been completed as v0.85.3.3a without changing runtime behaviour.
 - Duplicate Teach Me Button Hotfix has been implemented and accepted as v0.85.3.3b.
-- Feedback Rhythm Pass is next as v0.85.3.4.
-- Completion Gate Harness v0.85.4 is blocked until v0.85.3.4 is handled or explicitly deferred.
+- Shared Practice Frame and Surface Inventory has been completed as v0.85.3.4 without changing runtime behaviour.
+- Shared Practice Frame Convergence Pass is next as v0.85.3.5.
+- Feedback Rhythm Pass is blocked until shared-frame convergence is handled or explicitly deferred.
+- Completion Gate Harness v0.85.4 is blocked until shared-frame convergence and feedback rhythm are handled or explicitly deferred.
 - Production Completion Pass remains blocked until v0.85.11 reports `READY_FOR_V0.86`.

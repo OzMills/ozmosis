@@ -4,9 +4,9 @@
 
 Current runtime baseline: `v0.85.3.3b - Duplicate Teach Me Button Hotfix`.
 
-Current acceptance status: v0.85.3.3b fixed the duplicate B1 inline cloze Teach Me controls. The newer smaller secondary `Teach me` reveal button is the surviving control, the older `#noArticleBtn.teachBtn` B1 cloze duplicate is suppressed when the reveal hint is available, and normal content banks remain unchanged.
+Current acceptance status: v0.85.3.4 completed a QA/planning inventory of shared practice-frame surfaces. It found that B1 practice is mostly unified through `renderB1Question()` and shared DOM slots, but Case Trainer/article-grid typed-answer and result surfaces still use separate legacy render ownership. Runtime remains v0.85.3.3b because no app behaviour changed.
 
-Next required patch: `v0.85.3.4 - Feedback Rhythm Pass`.
+Next required patch: `v0.85.3.5 - Shared Practice Frame Convergence Pass`.
 
 ## 2. Completed Foundation
 
@@ -48,7 +48,9 @@ This summary is not a replacement for `CHANGELOG-FULL-OZMOSIS.txt`.
 - `v0.85.3.3` - Cloze Experience and Representative Fixture Pass
 - `v0.85.3.3a` - Package Size, Old ZIP Audit, and No-PowerShell Cleanup Pass
 - `v0.85.3.3b` - Duplicate Teach Me Button Hotfix
-- `v0.85.3.4` - Feedback Rhythm Pass
+- `v0.85.3.4` - Shared Practice Frame and Surface Inventory
+- `v0.85.3.5` - Shared Practice Frame Convergence Pass
+- `v0.85.3.6` - Feedback Rhythm Pass
 - `v0.85.4` - Completion Gate Harness
 - `v0.85.5` - Runtime Display Contract Lock
 - `v0.85.6` - Source Cleanup Batch 1: Internal Labels and Meaning Cues
@@ -109,8 +111,10 @@ Stop if the hub fails.
 - Cloze Experience and Representative Fixture Pass is implemented and accepted as v0.85.3.3.
 - Package Size, Old ZIP Audit, and No-PowerShell Cleanup Pass is complete as v0.85.3.3a.
 - Duplicate Teach Me Button Hotfix is implemented and accepted as v0.85.3.3b.
-- Feedback Rhythm Pass is the next allowed implementation patch as v0.85.3.4.
-- Completion Gate Harness is blocked until v0.85.3.4 is handled or explicitly deferred.
+- Shared Practice Frame and Surface Inventory is complete as v0.85.3.4.
+- Shared Practice Frame Convergence Pass is the next allowed implementation patch as v0.85.3.5.
+- Feedback Rhythm Pass is blocked until shared-frame convergence is handled or explicitly deferred.
+- Completion Gate Harness is blocked until shared-frame convergence and feedback rhythm are handled or explicitly deferred.
 - Production Completion Pass is blocked until v0.85.11 reports `READY_FOR_V0.86`.
 - Weakness repair must wait until Skill Matrix and task-depth evidence are stable.
 - Durability/spaced review must wait until enough reviewable B1 coverage exists.
