@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ozmosis v0.85.3.2 Strict Layout Geometry Comparison</title>
+<style>
+body{margin:0;padding:24px;background:#05070d;color:#dff7ff;font-family:Arial,sans-serif}
+h1{margin:0 0 8px;font-size:24px}
+p{margin:0 0 18px;color:#b8cfdf}
+.pair{margin:0 0 28px;padding:16px;border:1px solid #274056;border-radius:14px;background:#08101c}
+.pair h2{margin:0 0 12px;color:#7de3ff;font-size:18px}
+.compare{display:grid;grid-template-columns:repeat(2,minmax(0,430px));gap:18px;align-items:start}
+figure{margin:0}
+figcaption{margin:0 0 8px;color:#a8c7d8;font-size:13px}
+img{width:100%;max-width:430px;border:1px solid #1f3850;border-radius:10px;background:#05070d}
+pre{white-space:pre-wrap;margin:12px 0 0;padding:12px;border-radius:10px;background:#050913;color:#cfeaf7;font-size:12px}
+@media(max-width:920px){.compare{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<h1>Ozmosis v0.85.3.2 Strict Layout Geometry Comparison</h1>
+<p>Reference images are ScreenConcept PNGs; actual images are captured from the live static app. Geometry gate summary:</p>
+<pre>PASS - large centred OZMOSIS title absent
+PASS - pre-answer star/status strip absent above task
+PASS - task starts in ScreenConcept vertical zone
+PASS - choice buttons use ScreenConcept dimensions
+PASS - Teach Me/hint is secondary size and position
+PASS - HUD does not overlap choice controls
+PASS - hint panel compact and below choices
+PASS - cloze task starts high
+PASS - cloze input slim inline
+PASS - cloze Teach Me secondary
+PASS - typing state preserves slim cloze
+PASS - correction input reachable and not choice-styled
+PASS - feedback block compact
+PASS - confidence row reachable
+PASS - HUD does not overlap feedback or confidence
+PASS - no horizontal overflow
+PASS - no console errors
+PASS - no runtime exceptions
+PASS - choiceButtonFirst.x target 26 +/- 8
+PASS - choiceButtonFirst.y target 197 +/- 10
+PASS - choiceButtonFirst.width target 378 +/- 8
+PASS - choiceButtonFirst.height target 45 +/- 8
+PASS - teachMeButton.x target 231 +/- 14
+PASS - teachMeButton.y target 363 +/- 18
+PASS - teachMeButton.width target 172 +/- 10
+PASS - teachMeButton.height target 54 +/- 8
+PASS - clozePrompt.y target 112 +/- 16
+PASS - clozeInput.x target 130 +/- 16
+PASS - clozeInput.y target 110 +/- 14
+PASS - clozeInput.width target 258 +/- 18
+PASS - clozeInput.height target 34 +/- 8
+PASS - clozeTypingInput.y target 110 +/- 14
+PASS - correctionInput.width target 378 +/- 8
+PASS - feedbackPanel.width target 378 +/- 14
+PASS - confidenceRow.width target 378 +/- 14
+PASS - pre-answer star/status strip absent
+PASS - large centred title absent
+PASS - body horizontal overflow absent</pre>
+<section class="pair"><h2>ChoiceDefault</h2><div class="compare"><figure><figcaption>ScreenConcept reference</figcaption><img src="../../../../_development-files/ScreenConcepts/ChoiceDefault.png" alt="ChoiceDefault reference"></figure><figure><figcaption>Actual v0.85.3.2 app</figcaption><img src="actual/ChoiceDefault.png" alt="ChoiceDefault actual"></figure></div><pre>{
+  &quot;prompt&quot;: {
+    &quot;x&quot;: 41,
+    &quot;y&quot;: 119,
+    &quot;width&quot;: 347,
+    &quot;height&quot;: 29,
+    &quot;text&quot;: &quot;Welche Form passt zur Bedeutung?&quot;
+  },
+  &quot;cue&quot;: {
+    &quot;x&quot;: 94,
+    &quot;y&quot;: 157,
+    &quot;width&quot;: 241,
+    &quot;height&quot;: 16,
+    &quot;text&quot;: &quot;Show something to someone.&quot;
+  },
+  &quot;state&quot;: &quot;default&quot;,
+  &quot;starHidden&quot;: true
+}</pre></section>
+<section class="pair"><h2>ChoiceTeachMeHint</h2><div class="compare"><figure><figcaption>ScreenConcept reference</figcaption><img src="../../../../_development-files/ScreenConcepts/ChoiceTeachMeHint.png" alt="ChoiceTeachMeHint reference"></figure><figure><figcaption>Actual v0.85.3.2 app</figcaption><img src="actual/ChoiceTeachMeHint.png" alt="ChoiceTeachMeHint actual"></figure></div><pre>{
+  &quot;prompt&quot;: {
+    &quot;x&quot;: 41,
+    &quot;y&quot;: 119,
+    &quot;width&quot;: 347,
+    &quot;height&quot;: 29,
+    &quot;text&quot;: &quot;Welche Form passt zur Bedeutung?&quot;
+  },
+  &quot;cue&quot;: {
+    &quot;x&quot;: 94,
+    &quot;y&quot;: 157,
+    &quot;width&quot;: 241,
+    &quot;height&quot;: 16,
+    &quot;text&quot;: &quot;Show something to someone.&quot;
+  },
+  &quot;state&quot;: &quot;hint&quot;,
+  &quot;starHidden&quot;: true
+}</pre></section>
+<section class="pair"><h2>ChoiceFail</h2><div class="compare"><figure><figcaption>ScreenConcept reference</figcaption><img src="../../../../_development-files/ScreenConcepts/ChoiceFail.png" alt="ChoiceFail reference"></figure><figure><figcaption>Actual v0.85.3.2 app</figcaption><img src="actual/ChoiceFail.png" alt="ChoiceFail actual"></figure></div><pre>{
+  &quot;prompt&quot;: {
+    &quot;x&quot;: 41,
+    &quot;y&quot;: 119,
+    &quot;width&quot;: 347,
+    &quot;height&quot;: 29,
+    &quot;text&quot;: &quot;Welche Form passt zur Bedeutung?&quot;
+  },
+  &quot;cue&quot;: {
+    &quot;x&quot;: 94,
+    &quot;y&quot;: 157,
+    &quot;width&quot;: 241,
+    &quot;height&quot;: 16,
+    &quot;text&quot;: &quot;Show something to someone.&quot;
+  },
+  &quot;state&quot;: &quot;fail&quot;,
+  &quot;starHidden&quot;: true
+}</pre></section>
+<section class="pair"><h2>ChoiceSuccess</h2><div class="compare"><figure><figcaption>ScreenConcept reference</figcaption><img src="../../../../_development-files/ScreenConcepts/ChoiceSuccess.png" alt="ChoiceSuccess reference"></figure><figure><figcaption>Actual v0.85.3.2 app</figcaption><img src="actual/ChoiceSuccess.png" alt="ChoiceSuccess actual"></figure></div><pre>{
+  &quot;prompt&quot;: {
+    &quot;x&quot;: 41,
+    &quot;y&quot;: 119,
+    &quot;width&quot;: 347,
+    &quot;height&quot;: 29,
+    &quot;text&quot;: &quot;Welche Form passt zur Bedeutung?&quot;
+  },
+  &quot;cue&quot;: {
+    &quot;x&quot;: 94,
+    &quot;y&quot;: 157,
+    &quot;width&quot;: 241,
+    &quot;height&quot;: 16,
+    &quot;text&quot;: &quot;Show something to someone.&quot;
+  },
+  &quot;state&quot;: &quot;success&quot;,
+  &quot;starHidden&quot;: true
+}</pre></section>
+<section class="pair"><h2>ClozeDefault</h2><div class="compare"><figure><figcaption>ScreenConcept reference</figcaption><img src="../../../../_development-files/ScreenConcepts/ClozeDefault.png" alt="ClozeDefault reference"></figure><figure><figcaption>Actual v0.85.3.2 app</figcaption><img src="actual/ClozeDefault.png" alt="ClozeDefault actual"></figure></div><pre>{
+  &quot;prompt&quot;: {
+    &quot;x&quot;: 26,
+    &quot;y&quot;: 110,
+    &quot;width&quot;: 378,
+    &quot;height&quot;: 58,
+    &quot;text&quot;: &quot;Niveau .&quot;
+  },
+  &quot;cue&quot;: {
+    &quot;x&quot;: 94,
+    &quot;y&quot;: 177,
+    &quot;width&quot;: 241,
+    &quot;height&quot;: 16,
+    &quot;text&quot;: &quot;Sie nennen Ihr Sprachniveau.&quot;
+  },
+  &quot;state&quot;: &quot;default&quot;,
+  &quot;starHidden&quot;: true
+}</pre></section>
+<section class="pair"><h2>ClozeTyping</h2><div class="compare"><figure><figcaption>ScreenConcept reference</figcaption><img src="../../../../_development-files/ScreenConcepts/ClozeTyping.png" alt="ClozeTyping reference"></figure><figure><figcaption>Actual v0.85.3.2 app</figcaption><img src="actual/ClozeTyping.png" alt="ClozeTyping actual"></figure></div><pre>{
+  &quot;prompt&quot;: {
+    &quot;x&quot;: 26,
+    &quot;y&quot;: 110,
+    &quot;width&quot;: 378,
+    &quot;height&quot;: 58,
+    &quot;text&quot;: &quot;Niveau .&quot;
+  },
+  &quot;cue&quot;: {
+    &quot;x&quot;: 94,
+    &quot;y&quot;: 177,
+    &quot;width&quot;: 241,
+    &quot;height&quot;: 16,
+    &quot;text&quot;: &quot;Sie nennen Ihr Sprachniveau.&quot;
+  },
+  &quot;state&quot;: &quot;typing&quot;,
+  &quot;starHidden&quot;: true
+}</pre></section>
+<section class="pair"><h2>ClozeFail</h2><div class="compare"><figure><figcaption>ScreenConcept reference</figcaption><img src="../../../../_development-files/ScreenConcepts/ClozeFail.png" alt="ClozeFail reference"></figure><figure><figcaption>Actual v0.85.3.2 app</figcaption><img src="actual/ClozeFail.png" alt="ClozeFail actual"></figure></div><pre>{
+  &quot;prompt&quot;: {
+    &quot;x&quot;: 26,
+    &quot;y&quot;: 110,
+    &quot;width&quot;: 378,
+    &quot;height&quot;: 58,
+    &quot;text&quot;: &quot;Niveau B1.&quot;
+  },
+  &quot;cue&quot;: {
+    &quot;x&quot;: 94,
+    &quot;y&quot;: 177,
+    &quot;width&quot;: 241,
+    &quot;height&quot;: 16,
+    &quot;text&quot;: &quot;You name your language level.&quot;
+  },
+  &quot;state&quot;: &quot;fail&quot;,
+  &quot;starHidden&quot;: true
+}</pre></section>
+<section class="pair"><h2>ClozeSuccess</h2><div class="compare"><figure><figcaption>ScreenConcept reference</figcaption><img src="../../../../_development-files/ScreenConcepts/ClozeSuccess.png" alt="ClozeSuccess reference"></figure><figure><figcaption>Actual v0.85.3.2 app</figcaption><img src="actual/ClozeSuccess.png" alt="ClozeSuccess actual"></figure></div><pre>{
+  &quot;prompt&quot;: {
+    &quot;x&quot;: 26,
+    &quot;y&quot;: 110,
+    &quot;width&quot;: 378,
+    &quot;height&quot;: 58,
+    &quot;text&quot;: &quot;Niveau B1.&quot;
+  },
+  &quot;cue&quot;: {
+    &quot;x&quot;: 94,
+    &quot;y&quot;: 177,
+    &quot;width&quot;: 241,
+    &quot;height&quot;: 16,
+    &quot;text&quot;: &quot;You name your language level.&quot;
+  },
+  &quot;state&quot;: &quot;success&quot;,
+  &quot;starHidden&quot;: true
+}</pre></section>
+<section class="pair"><h2>CorrectionDefaultFilled</h2><div class="compare"><figure><figcaption>ScreenConcept reference</figcaption><img src="../../../../_development-files/ScreenConcepts/CorrectionDefaultFilled.png" alt="CorrectionDefaultFilled reference"></figure><figure><figcaption>Actual v0.85.3.2 app</figcaption><img src="actual/CorrectionDefaultFilled.png" alt="CorrectionDefaultFilled actual"></figure></div><pre>{
+  &quot;prompt&quot;: {
+    &quot;x&quot;: 65,
+    &quot;y&quot;: 119,
+    &quot;width&quot;: 300,
+    &quot;height&quot;: 44,
+    &quot;text&quot;: &quot;Bearbeite die Aufgabe.Korrigiere den Satz.&quot;
+  },
+  &quot;cue&quot;: {
+    &quot;x&quot;: 94,
+    &quot;y&quot;: 172,
+    &quot;width&quot;: 241,
+    &quot;height&quot;: 15,
+    &quot;text&quot;: &quot;&quot;
+  },
+  &quot;state&quot;: &quot;typing&quot;,
+  &quot;starHidden&quot;: true
+}</pre></section>
+<section class="pair"><h2>CorrectionFail</h2><div class="compare"><figure><figcaption>ScreenConcept reference</figcaption><img src="../../../../_development-files/ScreenConcepts/CorrectionFail.png" alt="CorrectionFail reference"></figure><figure><figcaption>Actual v0.85.3.2 app</figcaption><img src="actual/CorrectionFail.png" alt="CorrectionFail actual"></figure></div><pre>{
+  &quot;prompt&quot;: {
+    &quot;x&quot;: 65,
+    &quot;y&quot;: 119,
+    &quot;width&quot;: 300,
+    &quot;height&quot;: 44,
+    &quot;text&quot;: &quot;Bearbeite die Aufgabe.Korrigiere den Satz.&quot;
+  },
+  &quot;cue&quot;: {
+    &quot;x&quot;: 94,
+    &quot;y&quot;: 172,
+    &quot;width&quot;: 241,
+    &quot;height&quot;: 16,
+    &quot;text&quot;: &quot;I am staying at home because I am ill.&quot;
+  },
+  &quot;state&quot;: &quot;fail&quot;,
+  &quot;starHidden&quot;: true
+}</pre></section>
+<section class="pair"><h2>CorrectionSuccess</h2><div class="compare"><figure><figcaption>ScreenConcept reference</figcaption><img src="../../../../_development-files/ScreenConcepts/CorrectionSuccess.png" alt="CorrectionSuccess reference"></figure><figure><figcaption>Actual v0.85.3.2 app</figcaption><img src="actual/CorrectionSuccess.png" alt="CorrectionSuccess actual"></figure></div><pre>{
+  &quot;prompt&quot;: {
+    &quot;x&quot;: 65,
+    &quot;y&quot;: 119,
+    &quot;width&quot;: 300,
+    &quot;height&quot;: 44,
+    &quot;text&quot;: &quot;Bearbeite die Aufgabe.Korrigiere den Satz.&quot;
+  },
+  &quot;cue&quot;: {
+    &quot;x&quot;: 94,
+    &quot;y&quot;: 172,
+    &quot;width&quot;: 241,
+    &quot;height&quot;: 16,
+    &quot;text&quot;: &quot;I am staying at home because I am ill.&quot;
+  },
+  &quot;state&quot;: &quot;success&quot;,
+  &quot;starHidden&quot;: true
+}</pre></section>
+</body>
+</html>

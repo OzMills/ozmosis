@@ -1,0 +1,113 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Ozmosis v0.85.3.1 Strict UI Proof Comparison</title>
+<style>
+body{margin:0;padding:24px;background:#05070d;color:#dff7ff;font-family:Arial,sans-serif}
+h1{margin:0 0 8px;font-size:24px}
+p{max-width:980px;color:#9fb5c2}
+.verdict{border:1px solid #2a8da0;background:#07131d;border-radius:12px;padding:14px;margin:14px 0 24px;max-width:980px}
+.fail{color:#ff8f9b}
+.pass{color:#7dffbb}
+.pair{margin:0 0 28px}
+.compare{display:grid;grid-template-columns:repeat(2,minmax(0,430px));gap:18px;align-items:start}
+figure{margin:0;border:1px solid #1c3947;border-radius:14px;padding:10px;background:#09101a}
+figcaption{font-size:13px;color:#9fb5c2;margin-bottom:8px}
+img{width:100%;height:auto;display:block;border-radius:8px}
+li{margin:6px 0}
+@media (max-width:920px){.compare{grid-template-columns:minmax(0,430px)}}
+</style>
+<body>
+<h1>Ozmosis v0.85.3.1 Strict UI Proof Comparison</h1>
+<p>Reference images are the supplied ScreenConcept PNGs at 430x932. Actual images are fresh captures of the current v0.85.3 runtime.</p>
+<div class="verdict">
+  <strong class="fail">UI_NOT_ACCEPTED_NEEDS_V0.85.3.2</strong>
+  <p>Next patch: v0.85.3.2 - Header / Task Hierarchy / Star-Strip Removal Pass</p>
+  <ul><li><strong>ChoiceDefault / width</strong>: Choice buttons match ScreenConcept width. Actual 360, target 378 ± 8.</li>
+<li><strong>ChoiceDefault / y</strong>: Teach me sits at ScreenConcept vertical position. Actual 436.5, target 363 ± 18.</li>
+<li><strong>ClozeDefault / y</strong>: Cloze prompt starts high like ScreenConcept. Actual 133, target 112 ± 16.</li>
+<li><strong>ClozeDefault / y</strong>: Cloze input is high and integrated into sentence. Actual 188.5, target 110 ± 14.</li>
+<li><strong>ClozeDefault / width</strong>: Cloze input width matches reference blank. Actual 163.4, target 258 ± 18.</li>
+<li><strong>ClozeTyping / y</strong>: Focused cloze input keeps reference vertical position. Actual 188.5, target 110 ± 14.</li>
+<li><strong>ClozeTyping / width</strong>: Focused cloze input keeps reference width. Actual 163.4, target 258 ± 18.</li>
+<li><strong>CorrectionDefaultFilled / width</strong>: Correction textarea keeps reference width. Actual 360, target 378 ± 8.</li>
+<li><strong>ChoiceFail / width</strong>: Post-answer feedback panel keeps reference card width. Actual 360, target 378 ± 14.</li>
+<li><strong>ChoiceFail / width</strong>: Confidence row keeps reference width. Actual 360, target 378 ± 14.</li></ul>
+</div>
+<section class="pair">
+  <h2>ChoiceDefault</h2>
+  <div class="compare">
+    <figure><figcaption>ScreenConcept reference</figcaption><img src="../../../../_development-files/ScreenConcepts/ChoiceDefault.png" alt="ChoiceDefault ScreenConcept reference"></figure>
+    <figure><figcaption>Actual v0.85.3 runtime capture</figcaption><img src="actual/ChoiceDefault.png" alt="ChoiceDefault actual runtime capture"></figure>
+  </div>
+</section>
+<section class="pair">
+  <h2>ChoiceTeachMeHint</h2>
+  <div class="compare">
+    <figure><figcaption>ScreenConcept reference</figcaption><img src="../../../../_development-files/ScreenConcepts/ChoiceTeachMeHint.png" alt="ChoiceTeachMeHint ScreenConcept reference"></figure>
+    <figure><figcaption>Actual v0.85.3 runtime capture</figcaption><img src="actual/ChoiceTeachMeHint.png" alt="ChoiceTeachMeHint actual runtime capture"></figure>
+  </div>
+</section>
+<section class="pair">
+  <h2>ChoiceFail</h2>
+  <div class="compare">
+    <figure><figcaption>ScreenConcept reference</figcaption><img src="../../../../_development-files/ScreenConcepts/ChoiceFail.png" alt="ChoiceFail ScreenConcept reference"></figure>
+    <figure><figcaption>Actual v0.85.3 runtime capture</figcaption><img src="actual/ChoiceFail.png" alt="ChoiceFail actual runtime capture"></figure>
+  </div>
+</section>
+<section class="pair">
+  <h2>ChoiceSuccess</h2>
+  <div class="compare">
+    <figure><figcaption>ScreenConcept reference</figcaption><img src="../../../../_development-files/ScreenConcepts/ChoiceSuccess.png" alt="ChoiceSuccess ScreenConcept reference"></figure>
+    <figure><figcaption>Actual v0.85.3 runtime capture</figcaption><img src="actual/ChoiceSuccess.png" alt="ChoiceSuccess actual runtime capture"></figure>
+  </div>
+</section>
+<section class="pair">
+  <h2>ClozeDefault</h2>
+  <div class="compare">
+    <figure><figcaption>ScreenConcept reference</figcaption><img src="../../../../_development-files/ScreenConcepts/ClozeDefault.png" alt="ClozeDefault ScreenConcept reference"></figure>
+    <figure><figcaption>Actual v0.85.3 runtime capture</figcaption><img src="actual/ClozeDefault.png" alt="ClozeDefault actual runtime capture"></figure>
+  </div>
+</section>
+<section class="pair">
+  <h2>ClozeTyping</h2>
+  <div class="compare">
+    <figure><figcaption>ScreenConcept reference</figcaption><img src="../../../../_development-files/ScreenConcepts/ClozeTyping.png" alt="ClozeTyping ScreenConcept reference"></figure>
+    <figure><figcaption>Actual v0.85.3 runtime capture</figcaption><img src="actual/ClozeTyping.png" alt="ClozeTyping actual runtime capture"></figure>
+  </div>
+</section>
+<section class="pair">
+  <h2>ClozeFail</h2>
+  <div class="compare">
+    <figure><figcaption>ScreenConcept reference</figcaption><img src="../../../../_development-files/ScreenConcepts/ClozeFail.png" alt="ClozeFail ScreenConcept reference"></figure>
+    <figure><figcaption>Actual v0.85.3 runtime capture</figcaption><img src="actual/ClozeFail.png" alt="ClozeFail actual runtime capture"></figure>
+  </div>
+</section>
+<section class="pair">
+  <h2>ClozeSuccess</h2>
+  <div class="compare">
+    <figure><figcaption>ScreenConcept reference</figcaption><img src="../../../../_development-files/ScreenConcepts/ClozeSuccess.png" alt="ClozeSuccess ScreenConcept reference"></figure>
+    <figure><figcaption>Actual v0.85.3 runtime capture</figcaption><img src="actual/ClozeSuccess.png" alt="ClozeSuccess actual runtime capture"></figure>
+  </div>
+</section>
+<section class="pair">
+  <h2>CorrectionDefaultFilled</h2>
+  <div class="compare">
+    <figure><figcaption>ScreenConcept reference</figcaption><img src="../../../../_development-files/ScreenConcepts/CorrectionDefaultFilled.png" alt="CorrectionDefaultFilled ScreenConcept reference"></figure>
+    <figure><figcaption>Actual v0.85.3 runtime capture</figcaption><img src="actual/CorrectionDefaultFilled.png" alt="CorrectionDefaultFilled actual runtime capture"></figure>
+  </div>
+</section>
+<section class="pair">
+  <h2>CorrectionFail</h2>
+  <div class="compare">
+    <figure><figcaption>ScreenConcept reference</figcaption><img src="../../../../_development-files/ScreenConcepts/CorrectionFail.png" alt="CorrectionFail ScreenConcept reference"></figure>
+    <figure><figcaption>Actual v0.85.3 runtime capture</figcaption><img src="actual/CorrectionFail.png" alt="CorrectionFail actual runtime capture"></figure>
+  </div>
+</section>
+<section class="pair">
+  <h2>CorrectionSuccess</h2>
+  <div class="compare">
+    <figure><figcaption>ScreenConcept reference</figcaption><img src="../../../../_development-files/ScreenConcepts/CorrectionSuccess.png" alt="CorrectionSuccess ScreenConcept reference"></figure>
+    <figure><figcaption>Actual v0.85.3 runtime capture</figcaption><img src="actual/CorrectionSuccess.png" alt="CorrectionSuccess actual runtime capture"></figure>
+  </div>
+</section>
+</body>

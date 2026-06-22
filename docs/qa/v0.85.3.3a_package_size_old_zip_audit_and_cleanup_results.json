@@ -1,0 +1,728 @@
+{
+  "patch": "v0.85.3.3a",
+  "title": "Package Size, Old ZIP Audit, and No-PowerShell Cleanup Pass",
+  "startingVersionVerified": true,
+  "runtimeFilesChanged": [],
+  "sizeBefore": {
+    "root": "C:\\Users\\rossm\\Documents\\German Learning\\ozmosis-repo",
+    "generatedAt": "2026-06-22T14:38:52.275Z",
+    "workspaceTotalBytes": 828027438,
+    "workspaceTotalHuman": "789.67 MB",
+    "fileCount": 14878,
+    "developmentFilesBytes": 661971824,
+    "developmentFilesHuman": "631.31 MB",
+    "developmentFilesFileCount": 14690,
+    "screenshotsBytes": 17045980,
+    "screenshotsHuman": "16.26 MB",
+    "browserProfileFolderCount": 43,
+    "browserProfileBytes": 649850756,
+    "browserProfileHuman": "619.75 MB",
+    "zipCount": 2,
+    "zipFiles": [
+      {
+        "path": "ozmosis-v0_85_3_3.zip",
+        "bytes": 118318853,
+        "human": "112.84 MB"
+      },
+      {
+        "path": "_development-files/ScreenConcepts.zip",
+        "bytes": 2503748,
+        "human": "2.39 MB"
+      }
+    ],
+    "largestFiles": [
+      {
+        "path": "ozmosis-v0_85_3_3.zip",
+        "bytes": 118318853,
+        "human": "112.84 MB"
+      },
+      {
+        "path": "_development-files/v08532-capture-edge-profile-1782073572844/Edge Entity Extraction/2026.3.5.5/onnx.product.desktop.en/3.1.0/asset",
+        "bytes": 8346672,
+        "human": "7.96 MB"
+      },
+      {
+        "path": "_development-files/v0853-capture-edge-profile-1782062121315/Edge Entity Extraction/2026.3.5.5/onnx.product.desktop.en/3.1.0/asset",
+        "bytes": 8346672,
+        "human": "7.96 MB"
+      },
+      {
+        "path": "_development-files/v0853-capture-edge-profile-1782061862563/Edge Entity Extraction/2026.3.5.5/onnx.product.desktop.en/3.1.0/asset",
+        "bytes": 8346672,
+        "human": "7.96 MB"
+      },
+      {
+        "path": "_development-files/v0853-capture-edge-profile-1781952036363/Edge Entity Extraction/2026.3.5.5/onnx.product.desktop.en/3.1.0/asset",
+        "bytes": 8346672,
+        "human": "7.96 MB"
+      },
+      {
+        "path": "_development-files/v08533-geometry-edge-profile-1782079284388/Default/Cache/Cache_Data/data_3",
+        "bytes": 4202496,
+        "human": "4.01 MB"
+      },
+      {
+        "path": "_development-files/v08533-geometry-edge-profile-1782078716656/Default/Cache/Cache_Data/data_3",
+        "bytes": 4202496,
+        "human": "4.01 MB"
+      },
+      {
+        "path": "_development-files/v08533-geometry-edge-profile-1782078443542/Default/Cache/Cache_Data/data_3",
+        "bytes": 4202496,
+        "human": "4.01 MB"
+      },
+      {
+        "path": "_development-files/v08533-geometry-edge-profile-1782077918411/Default/Cache/Cache_Data/data_3",
+        "bytes": 4202496,
+        "human": "4.01 MB"
+      },
+      {
+        "path": "_development-files/v08533-geometry-edge-profile-1782077822448/Default/Cache/Cache_Data/data_3",
+        "bytes": 4202496,
+        "human": "4.01 MB"
+      },
+      {
+        "path": "_development-files/v08533-geometry-edge-profile-1782077715043/Default/Cache/Cache_Data/data_3",
+        "bytes": 4202496,
+        "human": "4.01 MB"
+      },
+      {
+        "path": "_development-files/v08533-capture-edge-profile-1782079521025/Default/Cache/Cache_Data/data_3",
+        "bytes": 4202496,
+        "human": "4.01 MB"
+      },
+      {
+        "path": "_development-files/v08533-capture-edge-profile-1782079360110/Default/Cache/Cache_Data/data_3",
+        "bytes": 4202496,
+        "human": "4.01 MB"
+      },
+      {
+        "path": "_development-files/v08533-capture-edge-profile-1782078793718/Default/Cache/Cache_Data/data_3",
+        "bytes": 4202496,
+        "human": "4.01 MB"
+      },
+      {
+        "path": "_development-files/v08533-capture-edge-profile-1782078517160/Default/Cache/Cache_Data/data_3",
+        "bytes": 4202496,
+        "human": "4.01 MB"
+      },
+      {
+        "path": "_development-files/v08533-capture-edge-profile-1782078234731/Default/Cache/Cache_Data/data_3",
+        "bytes": 4202496,
+        "human": "4.01 MB"
+      },
+      {
+        "path": "_development-files/v08533-capture-edge-profile-1782078008974/Default/Cache/Cache_Data/data_3",
+        "bytes": 4202496,
+        "human": "4.01 MB"
+      },
+      {
+        "path": "_development-files/v08532-geometry-edge-profile-1782074196544/Default/Cache/Cache_Data/data_3",
+        "bytes": 4202496,
+        "human": "4.01 MB"
+      },
+      {
+        "path": "_development-files/v08532-geometry-edge-profile-1782073532365/Default/Cache/Cache_Data/data_3",
+        "bytes": 4202496,
+        "human": "4.01 MB"
+      },
+      {
+        "path": "_development-files/v08532-geometry-edge-profile-1782073485440/Default/Cache/Cache_Data/data_3",
+        "bytes": 4202496,
+        "human": "4.01 MB"
+      },
+      {
+        "path": "_development-files/v08532-geometry-edge-profile-1782073433080/Default/Cache/Cache_Data/data_3",
+        "bytes": 4202496,
+        "human": "4.01 MB"
+      },
+      {
+        "path": "_development-files/v08532-capture-edge-profile-1782074235282/Default/Cache/Cache_Data/data_3",
+        "bytes": 4202496,
+        "human": "4.01 MB"
+      },
+      {
+        "path": "_development-files/v08532-capture-edge-profile-1782073572844/Default/Cache/Cache_Data/data_3",
+        "bytes": 4202496,
+        "human": "4.01 MB"
+      },
+      {
+        "path": "_development-files/v0853-geometry-edge-profile-1782072845193/Default/Cache/Cache_Data/data_3",
+        "bytes": 4202496,
+        "human": "4.01 MB"
+      },
+      {
+        "path": "_development-files/v0853-geometry-edge-profile-1782072752154/Default/Cache/Cache_Data/data_3",
+        "bytes": 4202496,
+        "human": "4.01 MB"
+      },
+      {
+        "path": "_development-files/v0853-geometry-edge-profile-1782062068833/Default/Cache/Cache_Data/data_3",
+        "bytes": 4202496,
+        "human": "4.01 MB"
+      },
+      {
+        "path": "_development-files/v0853-geometry-edge-profile-1782061809436/Default/Cache/Cache_Data/data_3",
+        "bytes": 4202496,
+        "human": "4.01 MB"
+      },
+      {
+        "path": "_development-files/v0853-geometry-edge-profile-1781951906091/Default/Cache/Cache_Data/data_3",
+        "bytes": 4202496,
+        "human": "4.01 MB"
+      },
+      {
+        "path": "_development-files/v0853-geometry-edge-profile-1781951529544/Default/Cache/Cache_Data/data_3",
+        "bytes": 4202496,
+        "human": "4.01 MB"
+      },
+      {
+        "path": "_development-files/v0853-geometry-edge-profile-1781951409411/Default/Cache/Cache_Data/data_3",
+        "bytes": 4202496,
+        "human": "4.01 MB"
+      }
+    ],
+    "largestDirectories": [
+      {
+        "path": ".",
+        "bytes": 828027438,
+        "human": "789.67 MB"
+      },
+      {
+        "path": "_development-files",
+        "bytes": 661971824,
+        "human": "631.31 MB"
+      },
+      {
+        "path": "_development-files/v0853-capture-edge-profile-1782061862563",
+        "bytes": 30755749,
+        "human": "29.33 MB"
+      },
+      {
+        "path": "_development-files/v0853-capture-edge-profile-1782062121315",
+        "bytes": 30753385,
+        "human": "29.33 MB"
+      },
+      {
+        "path": "_development-files/v08532-capture-edge-profile-1782073572844",
+        "bytes": 30736130,
+        "human": "29.31 MB"
+      },
+      {
+        "path": "content",
+        "bytes": 28632832,
+        "human": "27.31 MB"
+      },
+      {
+        "path": "_development-files/v0853-capture-edge-profile-1781952036363",
+        "bytes": 28540164,
+        "human": "27.22 MB"
+      },
+      {
+        "path": "_development-files/v08532-capture-edge-profile-1782074235282",
+        "bytes": 19927994,
+        "human": "19.00 MB"
+      },
+      {
+        "path": "docs",
+        "bytes": 17685192,
+        "human": "16.87 MB"
+      },
+      {
+        "path": "docs/qa",
+        "bytes": 17554816,
+        "human": "16.74 MB"
+      },
+      {
+        "path": "docs/qa/screenshots",
+        "bytes": 17045980,
+        "human": "16.26 MB"
+      },
+      {
+        "path": "_development-files/v08533-capture-edge-profile-1782078517160",
+        "bytes": 16874514,
+        "human": "16.09 MB"
+      },
+      {
+        "path": "_development-files/v08533-capture-edge-profile-1782078234731",
+        "bytes": 15724687,
+        "human": "15.00 MB"
+      },
+      {
+        "path": "_development-files/v0853-capture-edge-profile-1781952036363/Default",
+        "bytes": 15420591,
+        "human": "14.71 MB"
+      },
+      {
+        "path": "_development-files/v08533-capture-edge-profile-1782078008974",
+        "bytes": 15099202,
+        "human": "14.40 MB"
+      },
+      {
+        "path": "_development-files/v08533-geometry-edge-profile-1782077822448",
+        "bytes": 14859200,
+        "human": "14.17 MB"
+      },
+      {
+        "path": "_development-files/v0853-geometry-edge-profile-1781951409411",
+        "bytes": 14707077,
+        "human": "14.03 MB"
+      },
+      {
+        "path": "_development-files/v08532-geometry-edge-profile-1782073532365",
+        "bytes": 14614028,
+        "human": "13.94 MB"
+      },
+      {
+        "path": "_development-files/v08533-geometry-edge-profile-1782078443542",
+        "bytes": 14438309,
+        "human": "13.77 MB"
+      },
+      {
+        "path": "_development-files/v08533-geometry-edge-profile-1782078716656",
+        "bytes": 14323090,
+        "human": "13.66 MB"
+      }
+    ],
+    "packageBudgetEstimate": {
+      "cleanSourceBytes": 47731215,
+      "cleanSourceHuman": "45.52 MB",
+      "cleanSourceWithScreenConceptsBytes": 51296393,
+      "cleanSourceWithScreenConceptsHuman": "48.92 MB",
+      "targetWithQaProofBytes": 31457280,
+      "targetWithoutQaProofBytes": 10485760,
+      "unpackedSourceTargetBytes": 104857600,
+      "browserProfilesInPackage": 0
+    }
+  },
+  "sizeAfter": {
+    "root": "C:\\Users\\rossm\\Documents\\German Learning\\ozmosis-repo",
+    "generatedAt": "2026-06-22T14:47:41.593Z",
+    "workspaceTotalBytes": 189299599,
+    "workspaceTotalHuman": "180.53 MB",
+    "fileCount": 352,
+    "developmentFilesBytes": 12121068,
+    "developmentFilesHuman": "11.56 MB",
+    "developmentFilesFileCount": 147,
+    "screenshotsBytes": 17045980,
+    "screenshotsHuman": "16.26 MB",
+    "browserProfileFolderCount": 0,
+    "browserProfileBytes": 0,
+    "browserProfileHuman": "0 B",
+    "zipCount": 2,
+    "zipFiles": [
+      {
+        "path": "ozmosis-v0_85_3_3.zip",
+        "bytes": 118318853,
+        "human": "112.84 MB"
+      },
+      {
+        "path": "_development-files/ScreenConcepts.zip",
+        "bytes": 2503748,
+        "human": "2.39 MB"
+      }
+    ],
+    "largestFiles": [
+      {
+        "path": "ozmosis-v0_85_3_3.zip",
+        "bytes": 118318853,
+        "human": "112.84 MB"
+      },
+      {
+        "path": "docs/qa/v0.85.3.3a_old_zip_delete_manifest.csv",
+        "bytes": 5452333,
+        "human": "5.20 MB"
+      },
+      {
+        "path": "docs/qa/v0.85.3.3a_old_zip_delete_manifest_repo.csv",
+        "bytes": 5395049,
+        "human": "5.15 MB"
+      },
+      {
+        "path": "docs/qa/screenshots/v0.85.3.1-strict-ui-proof/comparison-contact-sheet.png",
+        "bytes": 3395095,
+        "human": "3.24 MB"
+      },
+      {
+        "path": "docs/qa/screenshots/v0.85.3-practice-ui-completion/comparison-contact-sheet.png",
+        "bytes": 3395095,
+        "human": "3.24 MB"
+      },
+      {
+        "path": "docs/qa/screenshots/v0.85.3.2-strict-layout-geometry/comparison-contact-sheet.png",
+        "bytes": 3358424,
+        "human": "3.20 MB"
+      },
+      {
+        "path": "_development-files/ScreenConcepts.zip",
+        "bytes": 2503748,
+        "human": "2.39 MB"
+      },
+      {
+        "path": "content/b1-m15-time-place-movement.js",
+        "bytes": 2236622,
+        "human": "2.13 MB"
+      },
+      {
+        "path": "content/b1-m17-home-family-daily-life-support.js",
+        "bytes": 1989228,
+        "human": "1.90 MB"
+      },
+      {
+        "path": "content/b1-m16-money-payment-contracts.js",
+        "bytes": 1883341,
+        "human": "1.80 MB"
+      },
+      {
+        "path": "content/b1-m14-connectors-sentence-functions.js",
+        "bytes": 1873241,
+        "human": "1.79 MB"
+      },
+      {
+        "path": "content/b1-m12-forms-admin-certificates.js",
+        "bytes": 1805207,
+        "human": "1.72 MB"
+      },
+      {
+        "path": "content/b1-m10-technical-problems.js",
+        "bytes": 1665531,
+        "human": "1.59 MB"
+      },
+      {
+        "path": "content/b1-m13-learning-exam-language.js",
+        "bytes": 1643953,
+        "human": "1.57 MB"
+      },
+      {
+        "path": "content/b1-m09-complaints-customer-service.js",
+        "bytes": 1620862,
+        "human": "1.55 MB"
+      },
+      {
+        "path": "content/b1-m18-b1-b2-bridge-preview.js",
+        "bytes": 1617718,
+        "human": "1.54 MB"
+      },
+      {
+        "path": "content/b1-m05-first-day-contract-basics.js",
+        "bytes": 1469446,
+        "human": "1.40 MB"
+      },
+      {
+        "path": "content/b1-m11-colleague-feedback-conflict.js",
+        "bytes": 1448185,
+        "human": "1.38 MB"
+      },
+      {
+        "path": "_development-files/v0801411_row_classification_audit.csv",
+        "bytes": 1445976,
+        "human": "1.38 MB"
+      },
+      {
+        "path": "content/b1-m06-sick-leave.js",
+        "bytes": 1441050,
+        "human": "1.37 MB"
+      },
+      {
+        "path": "content/b1-m08-orders-delivery.js",
+        "bytes": 1430924,
+        "human": "1.36 MB"
+      },
+      {
+        "path": "content/b1-m04-applications.js",
+        "bytes": 1377127,
+        "human": "1.31 MB"
+      },
+      {
+        "path": "content/b1-m07-meetings-leave-requests.js",
+        "bytes": 1375110,
+        "human": "1.31 MB"
+      },
+      {
+        "path": "index.html",
+        "bytes": 1224463,
+        "human": "1.17 MB"
+      },
+      {
+        "path": "content/b1-m03-job-search-offices.js",
+        "bytes": 1167382,
+        "human": "1.11 MB"
+      },
+      {
+        "path": "content/b1-m01-variant-families.js",
+        "bytes": 1056699,
+        "human": "1.01 MB"
+      },
+      {
+        "path": "content/b1-m02-appointments-callbacks.js",
+        "bytes": 960075,
+        "human": "937.57 KB"
+      },
+      {
+        "path": "_development-files/v0801412_learner_facing_artefact_audit.csv",
+        "bytes": 931059,
+        "human": "909.24 KB"
+      },
+      {
+        "path": "_development-files/v0851_prompt_cue_browser_smoke_result.json",
+        "bytes": 669680,
+        "human": "653.98 KB"
+      },
+      {
+        "path": "docs/qa/screenshots/v0.85.3.3-cloze-experience/comparison-contact-sheet.png",
+        "bytes": 408553,
+        "human": "398.98 KB"
+      }
+    ],
+    "largestDirectories": [
+      {
+        "path": ".",
+        "bytes": 189299599,
+        "human": "180.53 MB"
+      },
+      {
+        "path": "docs",
+        "bytes": 28795672,
+        "human": "27.46 MB"
+      },
+      {
+        "path": "docs/qa",
+        "bytes": 28665296,
+        "human": "27.34 MB"
+      },
+      {
+        "path": "content",
+        "bytes": 28632832,
+        "human": "27.31 MB"
+      },
+      {
+        "path": "docs/qa/screenshots",
+        "bytes": 17045980,
+        "human": "16.26 MB"
+      },
+      {
+        "path": "_development-files",
+        "bytes": 12121068,
+        "human": "11.56 MB"
+      },
+      {
+        "path": "docs/qa/screenshots/v0.85.3.2-strict-layout-geometry",
+        "bytes": 4964841,
+        "human": "4.73 MB"
+      },
+      {
+        "path": "docs/qa/screenshots/v0.85.3.1-strict-ui-proof",
+        "bytes": 4776113,
+        "human": "4.55 MB"
+      },
+      {
+        "path": "docs/qa/screenshots/v0.85.3-practice-ui-completion",
+        "bytes": 4548280,
+        "human": "4.34 MB"
+      },
+      {
+        "path": "_development-files/ScreenConcepts",
+        "bytes": 3565178,
+        "human": "3.40 MB"
+      },
+      {
+        "path": "docs/qa/screenshots/v0.85.3.2-strict-layout-geometry/actual",
+        "bytes": 1530580,
+        "human": "1.46 MB"
+      },
+      {
+        "path": "docs/qa/screenshots/v0.85.3.3-cloze-experience",
+        "bytes": 1502667,
+        "human": "1.43 MB"
+      },
+      {
+        "path": "docs/qa/screenshots/v0.85.3.1-strict-ui-proof/actual",
+        "bytes": 1352485,
+        "human": "1.29 MB"
+      },
+      {
+        "path": "docs/qa/screenshots/v0.85.2-practice-screen-template-alignment",
+        "bytes": 1254079,
+        "human": "1.20 MB"
+      },
+      {
+        "path": "docs/qa/screenshots/v0.85.2-practice-screen-template-alignment/actual",
+        "bytes": 1228112,
+        "human": "1.17 MB"
+      },
+      {
+        "path": "docs/qa/screenshots/v0.85.3-practice-ui-completion/actual",
+        "bytes": 1090221,
+        "human": "1.04 MB"
+      },
+      {
+        "path": "docs/qa/screenshots/v0.85.3.3-cloze-experience/actual",
+        "bytes": 1002029,
+        "human": "978.54 KB"
+      },
+      {
+        "path": "scripts",
+        "bytes": 41751,
+        "human": "40.77 KB"
+      },
+      {
+        "path": "docs/design docs",
+        "bytes": 25735,
+        "human": "25.13 KB"
+      },
+      {
+        "path": "docs/strategy",
+        "bytes": 8161,
+        "human": "7.97 KB"
+      }
+    ],
+    "packageBudgetEstimate": {
+      "cleanSourceBytes": 58854132,
+      "cleanSourceHuman": "56.13 MB",
+      "cleanSourceWithScreenConceptsBytes": 62419310,
+      "cleanSourceWithScreenConceptsHuman": "59.53 MB",
+      "targetWithQaProofBytes": 31457280,
+      "targetWithoutQaProofBytes": 10485760,
+      "unpackedSourceTargetBytes": 104857600,
+      "browserProfilesInPackage": 0
+    }
+  },
+  "browserProfilesBefore": {
+    "count": 43,
+    "bytes": 649850756
+  },
+  "browserProfilesAfter": {
+    "count": 0,
+    "bytes": 0
+  },
+  "zipFilesFound": [
+    {
+      "zipFile": "C:\\Users\\rossm\\Documents\\German Learning\\ozmosis-repo\\ozmosis-v0_85_3_3.zip",
+      "entryCount": 22402,
+      "compressedBytes": 110427121,
+      "uncompressedBytes": 709674660,
+      "flaggedEntryCount": 22055,
+      "recommendation": "delete_whole_zip_if_superseded"
+    },
+    {
+      "zipFile": "C:\\Users\\rossm\\Documents\\German Learning\\German Learning Folder.zip",
+      "entryCount": 1160,
+      "compressedBytes": 159178096,
+      "uncompressedBytes": 187417502,
+      "flaggedEntryCount": 218,
+      "recommendation": "delete_whole_zip_if_superseded"
+    },
+    {
+      "zipFile": "C:\\Users\\rossm\\Documents\\German Learning\\ozmosis_actual_fullpage_screens_core_v0_3.zip",
+      "entryCount": 61,
+      "compressedBytes": 15947947,
+      "uncompressedBytes": 16245200,
+      "flaggedEntryCount": 0,
+      "recommendation": "keep"
+    },
+    {
+      "zipFile": "C:\\Users\\rossm\\Documents\\German Learning\\OZMOSIS_TASKS_B1_CAT01-18_FULL_TASK_QUALITY_REWRITE_v0_2_FINAL_RECONCILED.zip",
+      "entryCount": 20,
+      "compressedBytes": 2795438,
+      "uncompressedBytes": 3240511,
+      "flaggedEntryCount": 20,
+      "recommendation": "rebuild_cleanly"
+    }
+  ],
+  "oldZipManifestCreated": true,
+  "deletedPaths": [
+    "_development-files/v0851-edge-profile-1781907055829",
+    "_development-files/v0851-edge-profile-1781907098922",
+    "_development-files/v0851-edge-profile-1781907173995",
+    "_development-files/v0851-edge-profile-1781907260586",
+    "_development-files/v0851-edge-profile-1781907485491",
+    "_development-files/v0851-edge-profile-1781907642737",
+    "_development-files/v0851-edge-profile-1781907692469",
+    "_development-files/v0851-edge-profile-1781907782091",
+    "_development-files/v0851-edge-profile-1781907894826",
+    "_development-files/v0851-edge-profile-1781907966633",
+    "_development-files/v0851-edge-profile-1781908340366",
+    "_development-files/v0853-capture-edge-profile-1781951950625",
+    "_development-files/v0853-capture-edge-profile-1781951991092",
+    "_development-files/v0853-capture-edge-profile-1781952036363",
+    "_development-files/v0853-capture-edge-profile-1782061862563",
+    "_development-files/v0853-capture-edge-profile-1782062121315",
+    "_development-files/v0853-geometry-edge-profile-1781951294229",
+    "_development-files/v0853-geometry-edge-profile-1781951409411",
+    "_development-files/v0853-geometry-edge-profile-1781951529544",
+    "_development-files/v0853-geometry-edge-profile-1781951906091",
+    "_development-files/v0853-geometry-edge-profile-1782061809436",
+    "_development-files/v0853-geometry-edge-profile-1782062068833",
+    "_development-files/v0853-geometry-edge-profile-1782072752154",
+    "_development-files/v0853-geometry-edge-profile-1782072845193",
+    "_development-files/v08532-capture-edge-profile-1782073572844",
+    "_development-files/v08532-capture-edge-profile-1782074235282",
+    "_development-files/v08533-capture-edge-profile-1782078008974",
+    "_development-files/v08533-capture-edge-profile-1782078234731",
+    "_development-files/v08533-capture-edge-profile-1782078517160",
+    "_development-files/v08533-capture-edge-profile-1782078793718",
+    "_development-files/v08533-capture-edge-profile-1782079360110",
+    "_development-files/v08533-capture-edge-profile-1782079474287",
+    "_development-files/v08533-capture-edge-profile-1782079521025",
+    "_development-files/v08532-geometry-edge-profile-1782073433080",
+    "_development-files/v08532-geometry-edge-profile-1782073485440",
+    "_development-files/v08532-geometry-edge-profile-1782073532365",
+    "_development-files/v08532-geometry-edge-profile-1782074196544",
+    "_development-files/v08533-geometry-edge-profile-1782077715043",
+    "_development-files/v08533-geometry-edge-profile-1782077822448",
+    "_development-files/v08533-geometry-edge-profile-1782077918411",
+    "_development-files/v08533-geometry-edge-profile-1782078443542",
+    "_development-files/v08533-geometry-edge-profile-1782078716656",
+    "_development-files/v08533-geometry-edge-profile-1782079284388"
+  ],
+  "preservedPaths": [
+    "index.html",
+    "content/",
+    "data/",
+    "docs/",
+    "docs/qa/screenshots/",
+    "_development-files/ScreenConcepts/",
+    "_development-files/*.cjs"
+  ],
+  "uncertainPreservedPaths": [
+    "old ZIP files were audited but not deleted",
+    "_development-files/ScreenConcepts.zip preserved",
+    "docs-codex-templates_DO_NOT_UPLOAD_TO_GITHUB preserved as out-of-scope documentation material"
+  ],
+  "gitignoreUpdated": true,
+  "qaArtefactPolicyCreated": true,
+  "folderWarningCreated": true,
+  "sizeAuditScriptCreated": true,
+  "cleanupScriptCreated": true,
+  "zipAuditScriptCreated": true,
+  "cleanSourcePacklistCreated": true,
+  "browserHarnessesUseTempProfiles": true,
+  "packageBudget": {
+    "cleanSourceZipTargetMb": 30,
+    "cleanSourceWithQaProofBytes": 18254411,
+    "cleanSourceWithQaProofPath": "C:/Users/rossm/Documents/German Learning/ozmosis-codex-artifacts/v0_85_3_3a_package_hygiene/ozmosis-v0_85_3_3a-clean-source-with-qa-proof.zip",
+    "browserProfilesInPackage": 0,
+    "unpackedSourceExcludingBrowserProfilesAndZipsBytes": 68476998,
+    "passed": true
+  },
+  "testsRun": {
+    "nodeScriptSyntax": true,
+    "sizeAuditBefore": true,
+    "cleanupDryRun": true,
+    "cleanupApply": true,
+    "sizeAuditAfter": true,
+    "packlist": true,
+    "zipAuditRepoRoot": true,
+    "zipAuditParent": true,
+    "cleanZipBudgetEstimate": true,
+    "cleanupFinalDryRun": true,
+    "staticAppGate": true,
+    "nodeZipAuditFallback": true
+  },
+  "testsNotRun": [
+    "Python ZIP audit was not run because python is not installed; Node fallback was used.",
+    "Live deployment was not checked; this patch changes packaging hygiene only."
+  ],
+  "acceptancePassed": true,
+  "nextPatch": "v0.85.3.3b - Duplicate Teach Me Button Hotfix"
+}

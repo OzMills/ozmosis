@@ -1,0 +1,363 @@
+﻿{
+  "mode": "apply",
+  "candidateCount": 43,
+  "candidateBytes": 649850756,
+  "candidates": [
+    {
+      "path": "_development-files/v0851-edge-profile-1781907055829",
+      "type": "directory",
+      "bytes": 11996771,
+      "files": 253,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v0851-edge-profile-1781907098922",
+      "type": "directory",
+      "bytes": 13661323,
+      "files": 281,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v0851-edge-profile-1781907173995",
+      "type": "directory",
+      "bytes": 13467253,
+      "files": 270,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v0851-edge-profile-1781907260586",
+      "type": "directory",
+      "bytes": 13142582,
+      "files": 261,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v0851-edge-profile-1781907485491",
+      "type": "directory",
+      "bytes": 13140775,
+      "files": 253,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v0851-edge-profile-1781907642737",
+      "type": "directory",
+      "bytes": 11394923,
+      "files": 252,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v0851-edge-profile-1781907692469",
+      "type": "directory",
+      "bytes": 12434769,
+      "files": 253,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v0851-edge-profile-1781907782091",
+      "type": "directory",
+      "bytes": 11384260,
+      "files": 259,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v0851-edge-profile-1781907894826",
+      "type": "directory",
+      "bytes": 14209410,
+      "files": 253,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v0851-edge-profile-1781907966633",
+      "type": "directory",
+      "bytes": 13469267,
+      "files": 270,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v0851-edge-profile-1781908340366",
+      "type": "directory",
+      "bytes": 14118856,
+      "files": 296,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v0853-capture-edge-profile-1781951950625",
+      "type": "directory",
+      "bytes": 13467281,
+      "files": 260,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v0853-capture-edge-profile-1781951991092",
+      "type": "directory",
+      "bytes": 13633007,
+      "files": 267,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v0853-capture-edge-profile-1781952036363",
+      "type": "directory",
+      "bytes": 28540164,
+      "files": 796,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v0853-capture-edge-profile-1782061862563",
+      "type": "directory",
+      "bytes": 30755749,
+      "files": 799,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v0853-capture-edge-profile-1782062121315",
+      "type": "directory",
+      "bytes": 30753385,
+      "files": 799,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v0853-geometry-edge-profile-1781951294229",
+      "type": "directory",
+      "bytes": 13650346,
+      "files": 274,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v0853-geometry-edge-profile-1781951409411",
+      "type": "directory",
+      "bytes": 14707077,
+      "files": 278,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v0853-geometry-edge-profile-1781951529544",
+      "type": "directory",
+      "bytes": 13811495,
+      "files": 287,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v0853-geometry-edge-profile-1781951906091",
+      "type": "directory",
+      "bytes": 13939527,
+      "files": 291,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v0853-geometry-edge-profile-1782061809436",
+      "type": "directory",
+      "bytes": 13822046,
+      "files": 290,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v0853-geometry-edge-profile-1782062068833",
+      "type": "directory",
+      "bytes": 13689999,
+      "files": 286,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v0853-geometry-edge-profile-1782072752154",
+      "type": "directory",
+      "bytes": 13757653,
+      "files": 287,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v0853-geometry-edge-profile-1782072845193",
+      "type": "directory",
+      "bytes": 13989086,
+      "files": 292,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v08532-capture-edge-profile-1782073572844",
+      "type": "directory",
+      "bytes": 30736130,
+      "files": 794,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v08532-capture-edge-profile-1782074235282",
+      "type": "directory",
+      "bytes": 19927994,
+      "files": 680,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v08533-capture-edge-profile-1782078008974",
+      "type": "directory",
+      "bytes": 15099202,
+      "files": 294,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v08533-capture-edge-profile-1782078234731",
+      "type": "directory",
+      "bytes": 15724687,
+      "files": 656,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v08533-capture-edge-profile-1782078517160",
+      "type": "directory",
+      "bytes": 16874514,
+      "files": 309,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v08533-capture-edge-profile-1782078793718",
+      "type": "directory",
+      "bytes": 14144311,
+      "files": 294,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v08533-capture-edge-profile-1782079360110",
+      "type": "directory",
+      "bytes": 11728355,
+      "files": 251,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v08533-capture-edge-profile-1782079474287",
+      "type": "directory",
+      "bytes": 86,
+      "files": 1,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v08533-capture-edge-profile-1782079521025",
+      "type": "directory",
+      "bytes": 14133068,
+      "files": 295,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v08532-geometry-edge-profile-1782073433080",
+      "type": "directory",
+      "bytes": 13652510,
+      "files": 280,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v08532-geometry-edge-profile-1782073485440",
+      "type": "directory",
+      "bytes": 13651609,
+      "files": 280,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v08532-geometry-edge-profile-1782073532365",
+      "type": "directory",
+      "bytes": 14614028,
+      "files": 302,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v08532-geometry-edge-profile-1782074196544",
+      "type": "directory",
+      "bytes": 13662034,
+      "files": 282,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v08533-geometry-edge-profile-1782077715043",
+      "type": "directory",
+      "bytes": 13652516,
+      "files": 278,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v08533-geometry-edge-profile-1782077822448",
+      "type": "directory",
+      "bytes": 14859200,
+      "files": 285,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v08533-geometry-edge-profile-1782077918411",
+      "type": "directory",
+      "bytes": 14046978,
+      "files": 291,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v08533-geometry-edge-profile-1782078443542",
+      "type": "directory",
+      "bytes": 14438309,
+      "files": 298,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v08533-geometry-edge-profile-1782078716656",
+      "type": "directory",
+      "bytes": 14323090,
+      "files": 287,
+      "reason": "browser profile folder"
+    },
+    {
+      "path": "_development-files/v08533-geometry-edge-profile-1782079284388",
+      "type": "directory",
+      "bytes": 13645131,
+      "files": 279,
+      "reason": "browser profile folder"
+    }
+  ],
+  "deleted": [
+    "_development-files/v0851-edge-profile-1781907055829",
+    "_development-files/v0851-edge-profile-1781907098922",
+    "_development-files/v0851-edge-profile-1781907173995",
+    "_development-files/v0851-edge-profile-1781907260586",
+    "_development-files/v0851-edge-profile-1781907485491",
+    "_development-files/v0851-edge-profile-1781907642737",
+    "_development-files/v0851-edge-profile-1781907692469",
+    "_development-files/v0851-edge-profile-1781907782091",
+    "_development-files/v0851-edge-profile-1781907894826",
+    "_development-files/v0851-edge-profile-1781907966633",
+    "_development-files/v0851-edge-profile-1781908340366",
+    "_development-files/v0853-capture-edge-profile-1781951950625",
+    "_development-files/v0853-capture-edge-profile-1781951991092",
+    "_development-files/v0853-capture-edge-profile-1781952036363",
+    "_development-files/v0853-capture-edge-profile-1782061862563",
+    "_development-files/v0853-capture-edge-profile-1782062121315",
+    "_development-files/v0853-geometry-edge-profile-1781951294229",
+    "_development-files/v0853-geometry-edge-profile-1781951409411",
+    "_development-files/v0853-geometry-edge-profile-1781951529544",
+    "_development-files/v0853-geometry-edge-profile-1781951906091",
+    "_development-files/v0853-geometry-edge-profile-1782061809436",
+    "_development-files/v0853-geometry-edge-profile-1782062068833",
+    "_development-files/v0853-geometry-edge-profile-1782072752154",
+    "_development-files/v0853-geometry-edge-profile-1782072845193",
+    "_development-files/v08532-capture-edge-profile-1782073572844",
+    "_development-files/v08532-capture-edge-profile-1782074235282",
+    "_development-files/v08533-capture-edge-profile-1782078008974",
+    "_development-files/v08533-capture-edge-profile-1782078234731",
+    "_development-files/v08533-capture-edge-profile-1782078517160",
+    "_development-files/v08533-capture-edge-profile-1782078793718",
+    "_development-files/v08533-capture-edge-profile-1782079360110",
+    "_development-files/v08533-capture-edge-profile-1782079474287",
+    "_development-files/v08533-capture-edge-profile-1782079521025",
+    "_development-files/v08532-geometry-edge-profile-1782073433080",
+    "_development-files/v08532-geometry-edge-profile-1782073485440",
+    "_development-files/v08532-geometry-edge-profile-1782073532365",
+    "_development-files/v08532-geometry-edge-profile-1782074196544",
+    "_development-files/v08533-geometry-edge-profile-1782077715043",
+    "_development-files/v08533-geometry-edge-profile-1782077822448",
+    "_development-files/v08533-geometry-edge-profile-1782077918411",
+    "_development-files/v08533-geometry-edge-profile-1782078443542",
+    "_development-files/v08533-geometry-edge-profile-1782078716656",
+    "_development-files/v08533-geometry-edge-profile-1782079284388"
+  ],
+  "failed": [],
+  "preserved": [
+    "index.html",
+    "content/",
+    "data/",
+    "docs/",
+    "docs/qa/screenshots/",
+    "_development-files/ScreenConcepts/",
+    "_development-files/*.cjs"
+  ]
+}

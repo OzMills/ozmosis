@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ozmosis v0.85.3.3 Cloze Experience Comparison</title>
+<style>
+body{margin:0;padding:24px;background:#05070d;color:#dff7ff;font-family:Arial,sans-serif}
+h1{margin:0 0 8px;font-size:24px}
+p{margin:0 0 18px;color:#b8cfdf}
+.pair{margin:0 0 28px;padding:16px;border:1px solid #274056;border-radius:14px;background:#08101c}
+.pair h2{margin:0 0 12px;color:#7de3ff;font-size:18px}
+.compare{display:grid;grid-template-columns:repeat(2,minmax(0,430px));gap:18px;align-items:start}
+figure{margin:0}
+figcaption{margin:0 0 8px;color:#a8c7d8;font-size:13px}
+img{width:100%;max-width:430px;border:1px solid #1f3850;border-radius:10px;background:#05070d}
+pre{white-space:pre-wrap;margin:12px 0 0;padding:12px;border-radius:10px;background:#050913;color:#cfeaf7;font-size:12px}
+@media(max-width:920px){.compare{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<h1>Ozmosis v0.85.3.3 Cloze Experience Comparison</h1>
+<p>Reference images are ScreenConcept PNGs. Actual images are QA-only representative cloze fixtures captured from the live static app. Geometry gate summary:</p>
+<pre>PASS - version is accepted starting or final v0.85.3.3 state
+PASS - short inline cloze input is inside sentence
+PASS - short inline cloze starts in target zone
+PASS - short inline Teach Me reachable
+PASS - typing state preserves inline cloze
+PASS - fail state feedback visible and HUD-clear
+PASS - success state feedback visible and HUD-clear
+PASS - cue cloze inline input accepted
+PASS - cue visible below sentence and secondary
+PASS - cue does not push sentence too low
+PASS - cue typing state remains inline and cue remains secondary
+PASS - long cloze wraps without detaching input
+PASS - long cloze punctuation preserved
+PASS - long typing state remains readable and HUD-clear
+PASS - choice non-regression width
+PASS - choice pre-answer star absent
+PASS - choice fail feedback/confidence non-regression
+PASS - correction non-regression width
+PASS - ClozeDefaultShortInline: large centred title absent
+PASS - ClozeDefaultShortInline: pre-answer star/status absent
+PASS - ClozeDefaultShortInline: no horizontal overflow
+PASS - ClozeTypingShortInline: large centred title absent
+PASS - ClozeTypingShortInline: pre-answer star/status absent
+PASS - ClozeTypingShortInline: no horizontal overflow
+PASS - ClozeFailShortInline: large centred title absent
+PASS - ClozeFailShortInline: no horizontal overflow
+PASS - ClozeSuccessShortInline: large centred title absent
+PASS - ClozeSuccessShortInline: no horizontal overflow
+PASS - ClozeDefaultWithCue: large centred title absent
+PASS - ClozeDefaultWithCue: pre-answer star/status absent
+PASS - ClozeDefaultWithCue: no horizontal overflow
+PASS - ClozeTypingWithCue: large centred title absent
+PASS - ClozeTypingWithCue: pre-answer star/status absent
+PASS - ClozeTypingWithCue: no horizontal overflow
+PASS - ClozeLongWrapDefault: large centred title absent
+PASS - ClozeLongWrapDefault: pre-answer star/status absent
+PASS - ClozeLongWrapDefault: no horizontal overflow
+PASS - ClozeLongWrapTyping: large centred title absent
+PASS - ClozeLongWrapTyping: pre-answer star/status absent
+PASS - ClozeLongWrapTyping: no horizontal overflow
+PASS - ChoiceDefault: large centred title absent
+PASS - ChoiceDefault: pre-answer star/status absent
+PASS - ChoiceDefault: no horizontal overflow
+PASS - ChoiceFail: large centred title absent
+PASS - ChoiceFail: no horizontal overflow
+PASS - CorrectionDefaultFilled: large centred title absent
+PASS - CorrectionDefaultFilled: pre-answer star/status absent
+PASS - CorrectionDefaultFilled: no horizontal overflow
+PASS - no console errors
+PASS - no runtime exceptions</pre>
+<section class="pair"><h2>ClozeDefaultShortInline</h2><div class="compare"><figure><figcaption>ScreenConcept reference: ClozeDefault</figcaption><img src="../../../../_development-files/ScreenConcepts/ClozeDefault.png" alt="ClozeDefault reference"></figure><figure><figcaption>Actual v0.85.3.3 fixture</figcaption><img src="actual/ClozeDefaultShortInline.png" alt="ClozeDefaultShortInline actual"></figure></div><pre>{
+  &quot;prompt&quot;: {
+    &quot;x&quot;: 26,
+    &quot;y&quot;: 110,
+    &quot;width&quot;: 378,
+    &quot;height&quot;: 62,
+    &quot;bottom&quot;: 172,
+    &quot;text&quot;: &quot;Ergänze den Satz.Welche soll ich mitbringen?&quot;
+  },
+  &quot;cue&quot;: {
+    &quot;x&quot;: 94,
+    &quot;y&quot;: 181,
+    &quot;width&quot;: 241,
+    &quot;height&quot;: 15,
+    &quot;bottom&quot;: 196,
+    &quot;text&quot;: &quot;&quot;
+  },
+  &quot;input&quot;: {
+    &quot;x&quot;: 121,
+    &quot;y&quot;: 110,
+    &quot;width&quot;: 164,
+    &quot;height&quot;: 34,
+    &quot;bottom&quot;: 144,
+    &quot;text&quot;: &quot;&quot;
+  },
+  &quot;state&quot;: &quot;default&quot;,
+  &quot;inputInsidePrompt&quot;: true,
+  &quot;starHidden&quot;: true
+}</pre></section>
+<section class="pair"><h2>ClozeTypingShortInline</h2><div class="compare"><figure><figcaption>ScreenConcept reference: ClozeTyping</figcaption><img src="../../../../_development-files/ScreenConcepts/ClozeTyping.png" alt="ClozeTyping reference"></figure><figure><figcaption>Actual v0.85.3.3 fixture</figcaption><img src="actual/ClozeTypingShortInline.png" alt="ClozeTypingShortInline actual"></figure></div><pre>{
+  &quot;prompt&quot;: {
+    &quot;x&quot;: 26,
+    &quot;y&quot;: 110,
+    &quot;width&quot;: 378,
+    &quot;height&quot;: 64,
+    &quot;bottom&quot;: 174,
+    &quot;text&quot;: &quot;Ergänze den Satz.Welche soll ich mitbringen?&quot;
+  },
+  &quot;cue&quot;: {
+    &quot;x&quot;: 94,
+    &quot;y&quot;: 183,
+    &quot;width&quot;: 241,
+    &quot;height&quot;: 15,
+    &quot;bottom&quot;: 198,
+    &quot;text&quot;: &quot;&quot;
+  },
+  &quot;input&quot;: {
+    &quot;x&quot;: 146,
+    &quot;y&quot;: 110,
+    &quot;width&quot;: 164,
+    &quot;height&quot;: 34,
+    &quot;bottom&quot;: 144,
+    &quot;text&quot;: &quot;&quot;
+  },
+  &quot;state&quot;: &quot;typing&quot;,
+  &quot;inputInsidePrompt&quot;: true,
+  &quot;starHidden&quot;: true
+}</pre></section>
+<section class="pair"><h2>ClozeFailShortInline</h2><div class="compare"><figure><figcaption>ScreenConcept reference: ClozeFail</figcaption><img src="../../../../_development-files/ScreenConcepts/ClozeFail.png" alt="ClozeFail reference"></figure><figure><figcaption>Actual v0.85.3.3 fixture</figcaption><img src="actual/ClozeFailShortInline.png" alt="ClozeFailShortInline actual"></figure></div><pre>{
+  &quot;prompt&quot;: {
+    &quot;x&quot;: 26,
+    &quot;y&quot;: 110,
+    &quot;width&quot;: 378,
+    &quot;height&quot;: 70,
+    &quot;bottom&quot;: 180,
+    &quot;text&quot;: &quot;Ergänze den Satz.Welche Unterlagen soll ich mitbringen?&quot;
+  },
+  &quot;cue&quot;: {
+    &quot;x&quot;: 94,
+    &quot;y&quot;: 189,
+    &quot;width&quot;: 241,
+    &quot;height&quot;: 16,
+    &quot;bottom&quot;: 205,
+    &quot;text&quot;: &quot;Which documents should I bring?&quot;
+  },
+  &quot;input&quot;: null,
+  &quot;state&quot;: &quot;fail&quot;,
+  &quot;inputInsidePrompt&quot;: false,
+  &quot;starHidden&quot;: true
+}</pre></section>
+<section class="pair"><h2>ClozeSuccessShortInline</h2><div class="compare"><figure><figcaption>ScreenConcept reference: ClozeSuccess</figcaption><img src="../../../../_development-files/ScreenConcepts/ClozeSuccess.png" alt="ClozeSuccess reference"></figure><figure><figcaption>Actual v0.85.3.3 fixture</figcaption><img src="actual/ClozeSuccessShortInline.png" alt="ClozeSuccessShortInline actual"></figure></div><pre>{
+  &quot;prompt&quot;: {
+    &quot;x&quot;: 26,
+    &quot;y&quot;: 110,
+    &quot;width&quot;: 378,
+    &quot;height&quot;: 70,
+    &quot;bottom&quot;: 180,
+    &quot;text&quot;: &quot;Ergänze den Satz.Welche Unterlagen soll ich mitbringen?&quot;
+  },
+  &quot;cue&quot;: {
+    &quot;x&quot;: 94,
+    &quot;y&quot;: 189,
+    &quot;width&quot;: 241,
+    &quot;height&quot;: 16,
+    &quot;bottom&quot;: 205,
+    &quot;text&quot;: &quot;Which documents should I bring?&quot;
+  },
+  &quot;input&quot;: null,
+  &quot;state&quot;: &quot;success&quot;,
+  &quot;inputInsidePrompt&quot;: false,
+  &quot;starHidden&quot;: true
+}</pre></section>
+<section class="pair"><h2>ClozeDefaultWithCue</h2><div class="compare"><figure><figcaption>ScreenConcept reference: ClozeDefault</figcaption><img src="../../../../_development-files/ScreenConcepts/ClozeDefault.png" alt="ClozeDefault reference"></figure><figure><figcaption>Actual v0.85.3.3 fixture</figcaption><img src="actual/ClozeDefaultWithCue.png" alt="ClozeDefaultWithCue actual"></figure></div><pre>{
+  &quot;prompt&quot;: {
+    &quot;x&quot;: 26,
+    &quot;y&quot;: 110,
+    &quot;width&quot;: 378,
+    &quot;height&quot;: 62,
+    &quot;bottom&quot;: 172,
+    &quot;text&quot;: &quot;Ergänze den Satz.Ich lerne Deutsch auf .&quot;
+  },
+  &quot;cue&quot;: {
+    &quot;x&quot;: 94,
+    &quot;y&quot;: 181,
+    &quot;width&quot;: 241,
+    &quot;height&quot;: 16,
+    &quot;bottom&quot;: 197,
+    &quot;text&quot;: &quot;Sie nennen Ihr Sprachniveau.&quot;
+  },
+  &quot;input&quot;: {
+    &quot;x&quot;: 146,
+    &quot;y&quot;: 136,
+    &quot;width&quot;: 126,
+    &quot;height&quot;: 34,
+    &quot;bottom&quot;: 170,
+    &quot;text&quot;: &quot;&quot;
+  },
+  &quot;state&quot;: &quot;default&quot;,
+  &quot;inputInsidePrompt&quot;: true,
+  &quot;starHidden&quot;: true
+}</pre></section>
+<section class="pair"><h2>ClozeTypingWithCue</h2><div class="compare"><figure><figcaption>ScreenConcept reference: ClozeTyping</figcaption><img src="../../../../_development-files/ScreenConcepts/ClozeTyping.png" alt="ClozeTyping reference"></figure><figure><figcaption>Actual v0.85.3.3 fixture</figcaption><img src="actual/ClozeTypingWithCue.png" alt="ClozeTypingWithCue actual"></figure></div><pre>{
+  &quot;prompt&quot;: {
+    &quot;x&quot;: 26,
+    &quot;y&quot;: 110,
+    &quot;width&quot;: 378,
+    &quot;height&quot;: 64,
+    &quot;bottom&quot;: 174,
+    &quot;text&quot;: &quot;Ergänze den Satz.Ich lerne Deutsch auf .&quot;
+  },
+  &quot;cue&quot;: {
+    &quot;x&quot;: 94,
+    &quot;y&quot;: 183,
+    &quot;width&quot;: 241,
+    &quot;height&quot;: 16,
+    &quot;bottom&quot;: 199,
+    &quot;text&quot;: &quot;Sie nennen Ihr Sprachniveau.&quot;
+  },
+  &quot;input&quot;: {
+    &quot;x&quot;: 145,
+    &quot;y&quot;: 138,
+    &quot;width&quot;: 126,
+    &quot;height&quot;: 34,
+    &quot;bottom&quot;: 172,
+    &quot;text&quot;: &quot;&quot;
+  },
+  &quot;state&quot;: &quot;typing&quot;,
+  &quot;inputInsidePrompt&quot;: true,
+  &quot;starHidden&quot;: true
+}</pre></section>
+<section class="pair"><h2>ClozeLongWrapDefault</h2><div class="compare"><figure><figcaption>ScreenConcept reference: ClozeDefault</figcaption><img src="../../../../_development-files/ScreenConcepts/ClozeDefault.png" alt="ClozeDefault reference"></figure><figure><figcaption>Actual v0.85.3.3 fixture</figcaption><img src="actual/ClozeLongWrapDefault.png" alt="ClozeLongWrapDefault actual"></figure></div><pre>{
+  &quot;prompt&quot;: {
+    &quot;x&quot;: 26,
+    &quot;y&quot;: 110,
+    &quot;width&quot;: 378,
+    &quot;height&quot;: 92,
+    &quot;bottom&quot;: 202,
+    &quot;text&quot;: &quot;Ergänze den Satz.Ich möchte den Termin auf verschieben.&quot;
+  },
+  &quot;cue&quot;: {
+    &quot;x&quot;: 94,
+    &quot;y&quot;: 211,
+    &quot;width&quot;: 241,
+    &quot;height&quot;: 15,
+    &quot;bottom&quot;: 226,
+    &quot;text&quot;: &quot;&quot;
+  },
+  &quot;input&quot;: {
+    &quot;x&quot;: 106,
+    &quot;y&quot;: 138,
+    &quot;width&quot;: 218,
+    &quot;height&quot;: 34,
+    &quot;bottom&quot;: 172,
+    &quot;text&quot;: &quot;&quot;
+  },
+  &quot;state&quot;: &quot;default&quot;,
+  &quot;inputInsidePrompt&quot;: true,
+  &quot;starHidden&quot;: true
+}</pre></section>
+<section class="pair"><h2>ClozeLongWrapTyping</h2><div class="compare"><figure><figcaption>ScreenConcept reference: ClozeTyping</figcaption><img src="../../../../_development-files/ScreenConcepts/ClozeTyping.png" alt="ClozeTyping reference"></figure><figure><figcaption>Actual v0.85.3.3 fixture</figcaption><img src="actual/ClozeLongWrapTyping.png" alt="ClozeLongWrapTyping actual"></figure></div><pre>{
+  &quot;prompt&quot;: {
+    &quot;x&quot;: 26,
+    &quot;y&quot;: 110,
+    &quot;width&quot;: 378,
+    &quot;height&quot;: 92,
+    &quot;bottom&quot;: 202,
+    &quot;text&quot;: &quot;Ergänze den Satz.Ich möchte den Termin auf verschieben.&quot;
+  },
+  &quot;cue&quot;: {
+    &quot;x&quot;: 94,
+    &quot;y&quot;: 211,
+    &quot;width&quot;: 241,
+    &quot;height&quot;: 15,
+    &quot;bottom&quot;: 226,
+    &quot;text&quot;: &quot;&quot;
+  },
+  &quot;input&quot;: {
+    &quot;x&quot;: 106,
+    &quot;y&quot;: 138,
+    &quot;width&quot;: 218,
+    &quot;height&quot;: 34,
+    &quot;bottom&quot;: 172,
+    &quot;text&quot;: &quot;&quot;
+  },
+  &quot;state&quot;: &quot;typing&quot;,
+  &quot;inputInsidePrompt&quot;: true,
+  &quot;starHidden&quot;: true
+}</pre></section>
+<section class="pair"><h2>ChoiceDefault</h2><div class="compare"><figure><figcaption>ScreenConcept reference: ChoiceDefault</figcaption><img src="../../../../_development-files/ScreenConcepts/ChoiceDefault.png" alt="ChoiceDefault reference"></figure><figure><figcaption>Actual v0.85.3.3 fixture</figcaption><img src="actual/ChoiceDefault.png" alt="ChoiceDefault actual"></figure></div><pre>{
+  &quot;prompt&quot;: {
+    &quot;x&quot;: 41,
+    &quot;y&quot;: 119,
+    &quot;width&quot;: 347,
+    &quot;height&quot;: 29,
+    &quot;bottom&quot;: 148,
+    &quot;text&quot;: &quot;Welche Form passt zur Bedeutung?&quot;
+  },
+  &quot;cue&quot;: {
+    &quot;x&quot;: 94,
+    &quot;y&quot;: 157,
+    &quot;width&quot;: 241,
+    &quot;height&quot;: 16,
+    &quot;bottom&quot;: 173,
+    &quot;text&quot;: &quot;Show something to someone.&quot;
+  },
+  &quot;input&quot;: null,
+  &quot;state&quot;: &quot;default&quot;,
+  &quot;inputInsidePrompt&quot;: false,
+  &quot;starHidden&quot;: true
+}</pre></section>
+<section class="pair"><h2>ChoiceFail</h2><div class="compare"><figure><figcaption>ScreenConcept reference: ChoiceFail</figcaption><img src="../../../../_development-files/ScreenConcepts/ChoiceFail.png" alt="ChoiceFail reference"></figure><figure><figcaption>Actual v0.85.3.3 fixture</figcaption><img src="actual/ChoiceFail.png" alt="ChoiceFail actual"></figure></div><pre>{
+  &quot;prompt&quot;: {
+    &quot;x&quot;: 41,
+    &quot;y&quot;: 119,
+    &quot;width&quot;: 347,
+    &quot;height&quot;: 29,
+    &quot;bottom&quot;: 148,
+    &quot;text&quot;: &quot;Welche Form passt zur Bedeutung?&quot;
+  },
+  &quot;cue&quot;: {
+    &quot;x&quot;: 94,
+    &quot;y&quot;: 157,
+    &quot;width&quot;: 241,
+    &quot;height&quot;: 16,
+    &quot;bottom&quot;: 173,
+    &quot;text&quot;: &quot;Show something to someone.&quot;
+  },
+  &quot;input&quot;: null,
+  &quot;state&quot;: &quot;fail&quot;,
+  &quot;inputInsidePrompt&quot;: false,
+  &quot;starHidden&quot;: true
+}</pre></section>
+<section class="pair"><h2>CorrectionDefaultFilled</h2><div class="compare"><figure><figcaption>ScreenConcept reference: CorrectionDefaultFilled</figcaption><img src="../../../../_development-files/ScreenConcepts/CorrectionDefaultFilled.png" alt="CorrectionDefaultFilled reference"></figure><figure><figcaption>Actual v0.85.3.3 fixture</figcaption><img src="actual/CorrectionDefaultFilled.png" alt="CorrectionDefaultFilled actual"></figure></div><pre>{
+  &quot;prompt&quot;: {
+    &quot;x&quot;: 65,
+    &quot;y&quot;: 119,
+    &quot;width&quot;: 300,
+    &quot;height&quot;: 44,
+    &quot;bottom&quot;: 163,
+    &quot;text&quot;: &quot;Bearbeite die Aufgabe.Korrigiere den Satz.&quot;
+  },
+  &quot;cue&quot;: {
+    &quot;x&quot;: 94,
+    &quot;y&quot;: 172,
+    &quot;width&quot;: 241,
+    &quot;height&quot;: 15,
+    &quot;bottom&quot;: 187,
+    &quot;text&quot;: &quot;&quot;
+  },
+  &quot;input&quot;: null,
+  &quot;state&quot;: &quot;typing&quot;,
+  &quot;inputInsidePrompt&quot;: false,
+  &quot;starHidden&quot;: true
+}</pre></section>
+</body>
+</html>

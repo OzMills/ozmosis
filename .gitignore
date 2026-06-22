@@ -6,6 +6,20 @@ _development-files/
 _development-files/*cdp-profile*/
 _development-files/*browser-profile*/
 _development-files/*profile*/
+_development-files/*edge-profile*/
+_development-files/*chrome-profile*/
+_development-files/**/Cache/
+_development-files/**/Code Cache/
+_development-files/**/GPUCache/
+_development-files/**/Service Worker/
+_development-files/**/Edge Entity Extraction/
+_development-files/**/*.ldb
+_development-files/**/*.log
+_development-files/**/*.db
+_development-files/**/*.db-wal
+_development-files/**/*.db-shm
+!docs/qa/screenshots/
+!docs/qa/screenshots/**
 Kasuskonsole Versions/
 repo-all-files.txt
 dirlist.txt

@@ -1,0 +1,25 @@
+{
+  "method": "ScreenConcept SVG and PNG references are retained as the strict visual family. v0.85.3.3 uses representative QA-only cloze fixtures because the v0.85.3.2 proof fixture was too artificial to prove real sentence integration.",
+  "canvas": {
+    "width": 430,
+    "height": 932
+  },
+  "clozeReference": {
+    "exampleShape": "Welche [input] soll ich mitbringen?",
+    "input": {
+      "x": 130,
+      "y": 110,
+      "width": 258,
+      "height": 34,
+      "radius": 7
+    },
+    "sentenceZone": {
+      "x": 26,
+      "y": 110,
+      "width": 378,
+      "height": 58
+    }
+  },
+  "cueDecision": "Cue is shown as a small secondary line below the cloze sentence in the existing support/cue slot. This preserves the ScreenConcept sentence zone and prevents under-context cues from pushing the sentence too low.",
+  "acceptedV08532Baseline": "docs/qa/v0.85.3.2_strict_layout_geometry_results.json"
+}

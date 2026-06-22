@@ -1,0 +1,17 @@
+﻿{
+  "ok": true,
+  "zipDir": "C:\\Users\\rossm\\Documents\\German Learning\\ozmosis-repo",
+  "zipCount": 1,
+  "csv": "docs/qa/v0.85.3.3a_old_zip_delete_manifest_repo.csv",
+  "markdown": "docs/qa/v0.85.3.3a_old_zip_delete_manifest_repo.md",
+  "results": [
+    {
+      "zipFile": "C:\\Users\\rossm\\Documents\\German Learning\\ozmosis-repo\\ozmosis-v0_85_3_3.zip",
+      "entryCount": 22402,
+      "compressedBytes": 110427121,
+      "uncompressedBytes": 709674660,
+      "flaggedEntryCount": 22055,
+      "recommendation": "delete_whole_zip_if_superseded"
+    }
+  ]
+}

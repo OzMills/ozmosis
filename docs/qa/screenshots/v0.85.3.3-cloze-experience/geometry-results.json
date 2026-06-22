@@ -1,0 +1,1762 @@
+{
+  "ok": true,
+  "patch": "v0.85.3.3",
+  "title": "Cloze Experience and Representative Fixture Pass",
+  "generatedAt": "2026-06-21T22:01:24.389Z",
+  "viewport": {
+    "width": 430,
+    "height": 932
+  },
+  "appVersion": "v0.85.3.3 - Cloze Experience and Representative Fixture Pass",
+  "exportVersion": "v0.85.3.3-cloze-experience-fixtures",
+  "fixtures": [
+    "shortInline",
+    "withCue",
+    "longWrap"
+  ],
+  "measurements": {
+    "ClozeDefaultShortInline": {
+      "label": "ClozeDefaultShortInline",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "bodyOverflow": false,
+      "surface": "cloze",
+      "state": "default",
+      "promptHtml": "<span class=\"taskInstruction\">Ergänze den Satz.</span><br><span dir=\"ltr\">Welche <input id=\"b1InlineInput\" class=\"inlineClozeInput\" type=\"text\" autocomplete=\"off\" autocapitalize=\"off\" autocorrect=\"off\" spellcheck=\"false\" aria-label=\"Answer blank\" style=\"--clozeWidth:164px\" placeholder=\"\"> soll ich mitbringen?</span>",
+      "promptText": "Ergänze den Satz.Welche soll ich mitbringen?",
+      "punctuationPreserved": true,
+      "clozeInputIsPromptChild": true,
+      "clozeSentence": {
+        "x": 26,
+        "y": 110,
+        "width": 378,
+        "height": 61.6,
+        "bottom": 171.6,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "22.36px",
+        "lineHeight": "26.1612px",
+        "radius": "0px",
+        "direction": "ltr",
+        "text": "Ergänze den Satz.Welche soll ich mitbringen?"
+      },
+      "clozeInput": {
+        "x": 120.7,
+        "y": 110,
+        "width": 164,
+        "height": 34,
+        "bottom": 144,
+        "display": "inline-block",
+        "visibility": "visible",
+        "fontSize": "18.06px",
+        "lineHeight": "18.963px",
+        "radius": "7px",
+        "direction": "ltr",
+        "text": "",
+        "baselineOffset": 0
+      },
+      "cueBlock": {
+        "x": 94.3,
+        "y": 180.6,
+        "width": 241.5,
+        "height": 15.1,
+        "bottom": 195.7,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "13.12px",
+        "lineHeight": "16.0064px",
+        "radius": "0px",
+        "direction": "ltr",
+        "text": ""
+      },
+      "teachMeButton": {
+        "x": 232,
+        "y": 236.7,
+        "width": 172,
+        "height": 54,
+        "bottom": 290.7,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "13.76px",
+        "lineHeight": "normal",
+        "radius": "12px",
+        "direction": "ltr",
+        "text": "Teach me"
+      },
+      "feedbackPanel": null,
+      "confidenceRow": null,
+      "hud": {
+        "x": 0,
+        "y": 836,
+        "width": 430,
+        "height": 88,
+        "bottom": 924,
+        "display": "grid",
+        "visibility": "visible",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "radius": "20px 20px 0px 0px",
+        "direction": "ltr",
+        "text": "0 / 20 Punkte0 Richtig0 Fehler0 FORTSCHRITT0 / 20"
+      },
+      "choiceButtons": [],
+      "answerInput": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0,
+        "display": "none",
+        "visibility": "visible",
+        "fontSize": "14.835px",
+        "lineHeight": "17.5053px",
+        "radius": "12px",
+        "direction": "ltr",
+        "text": ""
+      },
+      "largeCentredTitle": {
+        "visible": false,
+        "detail": {
+          "x": 80,
+          "y": 50,
+          "width": 92.2,
+          "height": 21.8,
+          "bottom": 71.8,
+          "display": "block",
+          "visibility": "visible",
+          "fontSize": "21.76px",
+          "lineHeight": "21.76px",
+          "radius": "0px",
+          "direction": "ltr",
+          "text": "Ozmosis"
+        }
+      },
+      "preAnswerStarStatus": {
+        "visible": false,
+        "detail": {
+          "hidden": true,
+          "display": "none",
+          "height": 0,
+          "text": ""
+        }
+      },
+      "body": {
+        "horizontalOverflow": false
+      }
+    },
+    "ClozeTypingShortInline": {
+      "label": "ClozeTypingShortInline",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "bodyOverflow": false,
+      "surface": "cloze",
+      "state": "typing",
+      "promptHtml": "<span class=\"taskInstruction\">Ergänze den Satz.</span><br><span dir=\"ltr\">Welche <input id=\"b1InlineInput\" class=\"inlineClozeInput\" type=\"text\" autocomplete=\"off\" autocapitalize=\"off\" autocorrect=\"off\" spellcheck=\"false\" aria-label=\"Answer blank\" style=\"--clozeWidth:164px\" placeholder=\"\"> soll ich mitbringen?</span>",
+      "promptText": "Ergänze den Satz.Welche soll ich mitbringen?",
+      "punctuationPreserved": true,
+      "clozeInputIsPromptChild": true,
+      "clozeSentence": {
+        "x": 26,
+        "y": 110,
+        "width": 378,
+        "height": 61.6,
+        "bottom": 171.6,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "22.36px",
+        "lineHeight": "26.1612px",
+        "radius": "0px",
+        "direction": "ltr",
+        "text": "Ergänze den Satz.Welche soll ich mitbringen?"
+      },
+      "clozeInput": {
+        "x": 120.7,
+        "y": 110,
+        "width": 164,
+        "height": 34,
+        "bottom": 144,
+        "display": "inline-block",
+        "visibility": "visible",
+        "fontSize": "18.06px",
+        "lineHeight": "18.963px",
+        "radius": "7px",
+        "direction": "ltr",
+        "text": "",
+        "baselineOffset": 0
+      },
+      "cueBlock": {
+        "x": 94.3,
+        "y": 180.6,
+        "width": 241.5,
+        "height": 15.1,
+        "bottom": 195.7,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "13.12px",
+        "lineHeight": "16.0064px",
+        "radius": "0px",
+        "direction": "ltr",
+        "text": ""
+      },
+      "teachMeButton": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0,
+        "display": "none",
+        "visibility": "visible",
+        "fontSize": "13.76px",
+        "lineHeight": "normal",
+        "radius": "12px",
+        "direction": "ltr",
+        "text": "Teach me"
+      },
+      "feedbackPanel": null,
+      "confidenceRow": null,
+      "hud": {
+        "x": 0,
+        "y": 836,
+        "width": 430,
+        "height": 88,
+        "bottom": 924,
+        "display": "grid",
+        "visibility": "visible",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "radius": "20px 20px 0px 0px",
+        "direction": "ltr",
+        "text": "0 / 20 Punkte0 Richtig0 Fehler0 FORTSCHRITT0 / 20"
+      },
+      "choiceButtons": [],
+      "answerInput": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0,
+        "display": "none",
+        "visibility": "visible",
+        "fontSize": "14.835px",
+        "lineHeight": "17.5053px",
+        "radius": "12px",
+        "direction": "ltr",
+        "text": ""
+      },
+      "largeCentredTitle": {
+        "visible": false,
+        "detail": {
+          "x": 80,
+          "y": 50,
+          "width": 92.2,
+          "height": 21.8,
+          "bottom": 71.8,
+          "display": "block",
+          "visibility": "visible",
+          "fontSize": "21.76px",
+          "lineHeight": "21.76px",
+          "radius": "0px",
+          "direction": "ltr",
+          "text": "Ozmosis"
+        }
+      },
+      "preAnswerStarStatus": {
+        "visible": false,
+        "detail": {
+          "hidden": true,
+          "display": "none",
+          "height": 0,
+          "text": ""
+        }
+      },
+      "body": {
+        "horizontalOverflow": false
+      }
+    },
+    "ClozeFailShortInline": {
+      "label": "ClozeFailShortInline",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "bodyOverflow": false,
+      "surface": "cloze",
+      "state": "fail",
+      "promptHtml": "<span class=\"taskInstruction\">Ergänze den Satz.</span><br><span dir=\"ltr\">Welche <span class=\"clozeAnswerText missed\">Unterlagen</span> soll ich mitbringen?</span>",
+      "promptText": "Ergänze den Satz.Welche Unterlagen soll ich mitbringen?",
+      "punctuationPreserved": true,
+      "clozeInputIsPromptChild": false,
+      "clozeSentence": {
+        "x": 26,
+        "y": 110,
+        "width": 378,
+        "height": 70.2,
+        "bottom": 180.2,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "24.08px",
+        "lineHeight": "28.1736px",
+        "radius": "0px",
+        "direction": "ltr",
+        "text": "Ergänze den Satz.Welche Unterlagen soll ich mitbringen?"
+      },
+      "clozeInput": null,
+      "cueBlock": {
+        "x": 94.3,
+        "y": 189.2,
+        "width": 241.5,
+        "height": 16,
+        "bottom": 205.2,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "13.12px",
+        "lineHeight": "16.0064px",
+        "radius": "0px",
+        "direction": "ltr",
+        "text": "Which documents should I bring?"
+      },
+      "teachMeButton": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0,
+        "display": "none",
+        "visibility": "visible",
+        "fontSize": "13.76px",
+        "lineHeight": "normal",
+        "radius": "12px",
+        "direction": "ltr",
+        "text": "Teach me"
+      },
+      "feedbackPanel": {
+        "x": 26,
+        "y": 241.2,
+        "width": 378,
+        "height": 105.3,
+        "bottom": 346.5,
+        "display": "grid",
+        "visibility": "visible",
+        "fontSize": "11.84px",
+        "lineHeight": "13.9712px",
+        "radius": "12px",
+        "direction": "ltr",
+        "text": "Not quiteUse Unterlagen for the documents you need to bring.No new star. This will return for practice."
+      },
+      "confidenceRow": {
+        "x": 26,
+        "y": 364.5,
+        "width": 378,
+        "height": 44,
+        "bottom": 408.5,
+        "display": "grid",
+        "visibility": "visible",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "radius": "0px",
+        "direction": "ltr",
+        "text": "I GUESSED I WAS UNSURE I KNEW IT"
+      },
+      "hud": {
+        "x": 0,
+        "y": 836,
+        "width": 430,
+        "height": 88,
+        "bottom": 924,
+        "display": "grid",
+        "visibility": "visible",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "radius": "20px 20px 0px 0px",
+        "direction": "ltr",
+        "text": "1 / 1 Punkte0 Richtig0 Fehler1 FORTSCHRITT1 / 1"
+      },
+      "choiceButtons": [],
+      "answerInput": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0,
+        "display": "none",
+        "visibility": "visible",
+        "fontSize": "14.835px",
+        "lineHeight": "17.5053px",
+        "radius": "12px",
+        "direction": "ltr",
+        "text": ""
+      },
+      "largeCentredTitle": {
+        "visible": false,
+        "detail": {
+          "x": 80,
+          "y": 50,
+          "width": 92.2,
+          "height": 21.8,
+          "bottom": 71.8,
+          "display": "block",
+          "visibility": "visible",
+          "fontSize": "21.76px",
+          "lineHeight": "21.76px",
+          "radius": "0px",
+          "direction": "ltr",
+          "text": "Ozmosis"
+        }
+      },
+      "preAnswerStarStatus": {
+        "visible": false,
+        "detail": {
+          "hidden": false,
+          "display": "none",
+          "height": 0,
+          "text": "☆☆☆☆☆Not yet correct"
+        }
+      },
+      "body": {
+        "horizontalOverflow": false
+      }
+    },
+    "ClozeSuccessShortInline": {
+      "label": "ClozeSuccessShortInline",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "bodyOverflow": false,
+      "surface": "cloze",
+      "state": "success",
+      "promptHtml": "<span class=\"taskInstruction\">Ergänze den Satz.</span><br><span dir=\"ltr\">Welche <span class=\"clozeAnswerText correct\">Unterlagen</span> soll ich mitbringen?</span>",
+      "promptText": "Ergänze den Satz.Welche Unterlagen soll ich mitbringen?",
+      "punctuationPreserved": true,
+      "clozeInputIsPromptChild": false,
+      "clozeSentence": {
+        "x": 26,
+        "y": 110,
+        "width": 378,
+        "height": 70.2,
+        "bottom": 180.2,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "24.08px",
+        "lineHeight": "28.1736px",
+        "radius": "0px",
+        "direction": "ltr",
+        "text": "Ergänze den Satz.Welche Unterlagen soll ich mitbringen?"
+      },
+      "clozeInput": null,
+      "cueBlock": {
+        "x": 94.3,
+        "y": 189.2,
+        "width": 241.5,
+        "height": 16,
+        "bottom": 205.2,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "13.12px",
+        "lineHeight": "16.0064px",
+        "radius": "0px",
+        "direction": "ltr",
+        "text": "Which documents should I bring?"
+      },
+      "teachMeButton": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0,
+        "display": "none",
+        "visibility": "visible",
+        "fontSize": "13.76px",
+        "lineHeight": "normal",
+        "radius": "12px",
+        "direction": "ltr",
+        "text": "Teach me"
+      },
+      "feedbackPanel": {
+        "x": 26,
+        "y": 241.2,
+        "width": 378,
+        "height": 109.5,
+        "bottom": 350.6,
+        "display": "grid",
+        "visibility": "visible",
+        "fontSize": "11.84px",
+        "lineHeight": "13.9712px",
+        "radius": "12px",
+        "direction": "ltr",
+        "text": "CorrectUse Unterlagen for the documents you need to bring.★☆☆☆☆Now got right once."
+      },
+      "confidenceRow": {
+        "x": 26,
+        "y": 368.6,
+        "width": 378,
+        "height": 44,
+        "bottom": 412.6,
+        "display": "grid",
+        "visibility": "visible",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "radius": "0px",
+        "direction": "ltr",
+        "text": "I GUESSED I WAS UNSURE I KNEW IT"
+      },
+      "hud": {
+        "x": 0,
+        "y": 836,
+        "width": 430,
+        "height": 88,
+        "bottom": 924,
+        "display": "grid",
+        "visibility": "visible",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "radius": "20px 20px 0px 0px",
+        "direction": "ltr",
+        "text": "1 / 1 Punkte100 Richtig1 Fehler0 FORTSCHRITT1 / 1"
+      },
+      "choiceButtons": [],
+      "answerInput": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0,
+        "display": "none",
+        "visibility": "visible",
+        "fontSize": "14.835px",
+        "lineHeight": "17.5053px",
+        "radius": "12px",
+        "direction": "ltr",
+        "text": ""
+      },
+      "largeCentredTitle": {
+        "visible": false,
+        "detail": {
+          "x": 80,
+          "y": 50,
+          "width": 92.2,
+          "height": 21.8,
+          "bottom": 71.8,
+          "display": "block",
+          "visibility": "visible",
+          "fontSize": "21.76px",
+          "lineHeight": "21.76px",
+          "radius": "0px",
+          "direction": "ltr",
+          "text": "Ozmosis"
+        }
+      },
+      "preAnswerStarStatus": {
+        "visible": false,
+        "detail": {
+          "hidden": false,
+          "display": "none",
+          "height": 0,
+          "text": "★☆☆☆☆Got right once"
+        }
+      },
+      "body": {
+        "horizontalOverflow": false
+      }
+    },
+    "ClozeDefaultWithCue": {
+      "label": "ClozeDefaultWithCue",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "bodyOverflow": false,
+      "surface": "cloze",
+      "state": "default",
+      "promptHtml": "<span class=\"taskInstruction\">Ergänze den Satz.</span><br><span dir=\"ltr\">Ich lerne Deutsch auf <input id=\"b1InlineInput\" class=\"inlineClozeInput\" type=\"text\" autocomplete=\"off\" autocapitalize=\"off\" autocorrect=\"off\" spellcheck=\"false\" aria-label=\"Answer blank\" style=\"--clozeWidth:126px\" placeholder=\"\">.</span>",
+      "promptText": "Ergänze den Satz.Ich lerne Deutsch auf .",
+      "punctuationPreserved": true,
+      "clozeInputIsPromptChild": true,
+      "clozeSentence": {
+        "x": 26,
+        "y": 110,
+        "width": 378,
+        "height": 61.6,
+        "bottom": 171.6,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "22.36px",
+        "lineHeight": "26.1612px",
+        "radius": "0px",
+        "direction": "ltr",
+        "text": "Ergänze den Satz.Ich lerne Deutsch auf ."
+      },
+      "clozeInput": {
+        "x": 145.8,
+        "y": 136.2,
+        "width": 126,
+        "height": 34,
+        "bottom": 170.2,
+        "display": "inline-block",
+        "visibility": "visible",
+        "fontSize": "18.06px",
+        "lineHeight": "18.963px",
+        "radius": "7px",
+        "direction": "ltr",
+        "text": "",
+        "baselineOffset": 26.2
+      },
+      "cueBlock": {
+        "x": 94.3,
+        "y": 180.6,
+        "width": 241.5,
+        "height": 16,
+        "bottom": 196.6,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "13.12px",
+        "lineHeight": "16.0064px",
+        "radius": "0px",
+        "direction": "ltr",
+        "text": "Sie nennen Ihr Sprachniveau."
+      },
+      "teachMeButton": {
+        "x": 232,
+        "y": 237.6,
+        "width": 172,
+        "height": 54,
+        "bottom": 291.6,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "13.76px",
+        "lineHeight": "normal",
+        "radius": "12px",
+        "direction": "ltr",
+        "text": "Teach me"
+      },
+      "feedbackPanel": null,
+      "confidenceRow": null,
+      "hud": {
+        "x": 0,
+        "y": 836,
+        "width": 430,
+        "height": 88,
+        "bottom": 924,
+        "display": "grid",
+        "visibility": "visible",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "radius": "20px 20px 0px 0px",
+        "direction": "ltr",
+        "text": "1 / 1 Punkte100 Richtig1 Fehler0 FORTSCHRITT1 / 1"
+      },
+      "choiceButtons": [],
+      "answerInput": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0,
+        "display": "none",
+        "visibility": "visible",
+        "fontSize": "14.835px",
+        "lineHeight": "17.5053px",
+        "radius": "12px",
+        "direction": "ltr",
+        "text": ""
+      },
+      "largeCentredTitle": {
+        "visible": false,
+        "detail": {
+          "x": 80,
+          "y": 50,
+          "width": 92.2,
+          "height": 21.8,
+          "bottom": 71.8,
+          "display": "block",
+          "visibility": "visible",
+          "fontSize": "21.76px",
+          "lineHeight": "21.76px",
+          "radius": "0px",
+          "direction": "ltr",
+          "text": "Ozmosis"
+        }
+      },
+      "preAnswerStarStatus": {
+        "visible": false,
+        "detail": {
+          "hidden": true,
+          "display": "none",
+          "height": 0,
+          "text": ""
+        }
+      },
+      "body": {
+        "horizontalOverflow": false
+      }
+    },
+    "ClozeTypingWithCue": {
+      "label": "ClozeTypingWithCue",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "bodyOverflow": false,
+      "surface": "cloze",
+      "state": "typing",
+      "promptHtml": "<span class=\"taskInstruction\">Ergänze den Satz.</span><br><span dir=\"ltr\">Ich lerne Deutsch auf <input id=\"b1InlineInput\" class=\"inlineClozeInput\" type=\"text\" autocomplete=\"off\" autocapitalize=\"off\" autocorrect=\"off\" spellcheck=\"false\" aria-label=\"Answer blank\" style=\"--clozeWidth:126px\" placeholder=\"\">.</span>",
+      "promptText": "Ergänze den Satz.Ich lerne Deutsch auf .",
+      "punctuationPreserved": true,
+      "clozeInputIsPromptChild": true,
+      "clozeSentence": {
+        "x": 26,
+        "y": 110,
+        "width": 378,
+        "height": 61.6,
+        "bottom": 171.6,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "22.36px",
+        "lineHeight": "26.1612px",
+        "radius": "0px",
+        "direction": "ltr",
+        "text": "Ergänze den Satz.Ich lerne Deutsch auf ."
+      },
+      "clozeInput": {
+        "x": 145.8,
+        "y": 136.2,
+        "width": 126,
+        "height": 34,
+        "bottom": 170.2,
+        "display": "inline-block",
+        "visibility": "visible",
+        "fontSize": "18.06px",
+        "lineHeight": "18.963px",
+        "radius": "7px",
+        "direction": "ltr",
+        "text": "",
+        "baselineOffset": 26.2
+      },
+      "cueBlock": {
+        "x": 94.3,
+        "y": 180.6,
+        "width": 241.5,
+        "height": 16,
+        "bottom": 196.6,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "13.12px",
+        "lineHeight": "16.0064px",
+        "radius": "0px",
+        "direction": "ltr",
+        "text": "Sie nennen Ihr Sprachniveau."
+      },
+      "teachMeButton": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0,
+        "display": "none",
+        "visibility": "visible",
+        "fontSize": "13.76px",
+        "lineHeight": "normal",
+        "radius": "12px",
+        "direction": "ltr",
+        "text": "Teach me"
+      },
+      "feedbackPanel": null,
+      "confidenceRow": null,
+      "hud": {
+        "x": 0,
+        "y": 836,
+        "width": 430,
+        "height": 88,
+        "bottom": 924,
+        "display": "grid",
+        "visibility": "visible",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "radius": "20px 20px 0px 0px",
+        "direction": "ltr",
+        "text": "1 / 1 Punkte100 Richtig1 Fehler0 FORTSCHRITT1 / 1"
+      },
+      "choiceButtons": [],
+      "answerInput": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0,
+        "display": "none",
+        "visibility": "visible",
+        "fontSize": "14.835px",
+        "lineHeight": "17.5053px",
+        "radius": "12px",
+        "direction": "ltr",
+        "text": ""
+      },
+      "largeCentredTitle": {
+        "visible": false,
+        "detail": {
+          "x": 80,
+          "y": 50,
+          "width": 92.2,
+          "height": 21.8,
+          "bottom": 71.8,
+          "display": "block",
+          "visibility": "visible",
+          "fontSize": "21.76px",
+          "lineHeight": "21.76px",
+          "radius": "0px",
+          "direction": "ltr",
+          "text": "Ozmosis"
+        }
+      },
+      "preAnswerStarStatus": {
+        "visible": false,
+        "detail": {
+          "hidden": true,
+          "display": "none",
+          "height": 0,
+          "text": ""
+        }
+      },
+      "body": {
+        "horizontalOverflow": false
+      }
+    },
+    "ClozeLongWrapDefault": {
+      "label": "ClozeLongWrapDefault",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "bodyOverflow": false,
+      "surface": "cloze",
+      "state": "default",
+      "promptHtml": "<span class=\"taskInstruction\">Ergänze den Satz.</span><br><span dir=\"ltr\">Ich möchte den Termin auf <input id=\"b1InlineInput\" class=\"inlineClozeInput\" type=\"text\" autocomplete=\"off\" autocapitalize=\"off\" autocorrect=\"off\" spellcheck=\"false\" aria-label=\"Answer blank\" style=\"--clozeWidth:218px\" placeholder=\"\"> verschieben.</span>",
+      "promptText": "Ergänze den Satz.Ich möchte den Termin auf verschieben.",
+      "punctuationPreserved": true,
+      "clozeInputIsPromptChild": true,
+      "clozeSentence": {
+        "x": 26,
+        "y": 110,
+        "width": 378,
+        "height": 91.8,
+        "bottom": 201.8,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "24.08px",
+        "lineHeight": "28.1736px",
+        "radius": "0px",
+        "direction": "ltr",
+        "text": "Ergänze den Satz.Ich möchte den Termin auf verschieben."
+      },
+      "clozeInput": {
+        "x": 106,
+        "y": 138.2,
+        "width": 218,
+        "height": 34,
+        "bottom": 172.2,
+        "display": "inline-block",
+        "visibility": "visible",
+        "fontSize": "18.06px",
+        "lineHeight": "18.963px",
+        "radius": "7px",
+        "direction": "ltr",
+        "text": "",
+        "baselineOffset": 28.2
+      },
+      "cueBlock": {
+        "x": 94.3,
+        "y": 210.8,
+        "width": 241.5,
+        "height": 15.1,
+        "bottom": 225.8,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "13.12px",
+        "lineHeight": "16.0064px",
+        "radius": "0px",
+        "direction": "ltr",
+        "text": ""
+      },
+      "teachMeButton": {
+        "x": 232,
+        "y": 266.8,
+        "width": 172,
+        "height": 54,
+        "bottom": 320.8,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "13.76px",
+        "lineHeight": "normal",
+        "radius": "12px",
+        "direction": "ltr",
+        "text": "Teach me"
+      },
+      "feedbackPanel": null,
+      "confidenceRow": null,
+      "hud": {
+        "x": 0,
+        "y": 836,
+        "width": 430,
+        "height": 88,
+        "bottom": 924,
+        "display": "grid",
+        "visibility": "visible",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "radius": "20px 20px 0px 0px",
+        "direction": "ltr",
+        "text": "1 / 1 Punkte100 Richtig1 Fehler0 FORTSCHRITT1 / 1"
+      },
+      "choiceButtons": [],
+      "answerInput": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0,
+        "display": "none",
+        "visibility": "visible",
+        "fontSize": "14.835px",
+        "lineHeight": "17.5053px",
+        "radius": "12px",
+        "direction": "ltr",
+        "text": ""
+      },
+      "largeCentredTitle": {
+        "visible": false,
+        "detail": {
+          "x": 80,
+          "y": 50,
+          "width": 92.2,
+          "height": 21.8,
+          "bottom": 71.8,
+          "display": "block",
+          "visibility": "visible",
+          "fontSize": "21.76px",
+          "lineHeight": "21.76px",
+          "radius": "0px",
+          "direction": "ltr",
+          "text": "Ozmosis"
+        }
+      },
+      "preAnswerStarStatus": {
+        "visible": false,
+        "detail": {
+          "hidden": true,
+          "display": "none",
+          "height": 0,
+          "text": ""
+        }
+      },
+      "body": {
+        "horizontalOverflow": false
+      }
+    },
+    "ClozeLongWrapTyping": {
+      "label": "ClozeLongWrapTyping",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "bodyOverflow": false,
+      "surface": "cloze",
+      "state": "typing",
+      "promptHtml": "<span class=\"taskInstruction\">Ergänze den Satz.</span><br><span dir=\"ltr\">Ich möchte den Termin auf <input id=\"b1InlineInput\" class=\"inlineClozeInput\" type=\"text\" autocomplete=\"off\" autocapitalize=\"off\" autocorrect=\"off\" spellcheck=\"false\" aria-label=\"Answer blank\" style=\"--clozeWidth:218px\" placeholder=\"\"> verschieben.</span>",
+      "promptText": "Ergänze den Satz.Ich möchte den Termin auf verschieben.",
+      "punctuationPreserved": true,
+      "clozeInputIsPromptChild": true,
+      "clozeSentence": {
+        "x": 26,
+        "y": 110,
+        "width": 378,
+        "height": 91.8,
+        "bottom": 201.8,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "24.08px",
+        "lineHeight": "28.1736px",
+        "radius": "0px",
+        "direction": "ltr",
+        "text": "Ergänze den Satz.Ich möchte den Termin auf verschieben."
+      },
+      "clozeInput": {
+        "x": 106,
+        "y": 138.2,
+        "width": 218,
+        "height": 34,
+        "bottom": 172.2,
+        "display": "inline-block",
+        "visibility": "visible",
+        "fontSize": "18.06px",
+        "lineHeight": "18.963px",
+        "radius": "7px",
+        "direction": "ltr",
+        "text": "",
+        "baselineOffset": 28.2
+      },
+      "cueBlock": {
+        "x": 94.3,
+        "y": 210.8,
+        "width": 241.5,
+        "height": 15.1,
+        "bottom": 225.8,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "13.12px",
+        "lineHeight": "16.0064px",
+        "radius": "0px",
+        "direction": "ltr",
+        "text": ""
+      },
+      "teachMeButton": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0,
+        "display": "none",
+        "visibility": "visible",
+        "fontSize": "13.76px",
+        "lineHeight": "normal",
+        "radius": "12px",
+        "direction": "ltr",
+        "text": "Teach me"
+      },
+      "feedbackPanel": null,
+      "confidenceRow": null,
+      "hud": {
+        "x": 0,
+        "y": 836,
+        "width": 430,
+        "height": 88,
+        "bottom": 924,
+        "display": "grid",
+        "visibility": "visible",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "radius": "20px 20px 0px 0px",
+        "direction": "ltr",
+        "text": "1 / 1 Punkte100 Richtig1 Fehler0 FORTSCHRITT1 / 1"
+      },
+      "choiceButtons": [],
+      "answerInput": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0,
+        "display": "none",
+        "visibility": "visible",
+        "fontSize": "14.835px",
+        "lineHeight": "17.5053px",
+        "radius": "12px",
+        "direction": "ltr",
+        "text": ""
+      },
+      "largeCentredTitle": {
+        "visible": false,
+        "detail": {
+          "x": 80,
+          "y": 50,
+          "width": 92.2,
+          "height": 21.8,
+          "bottom": 71.8,
+          "display": "block",
+          "visibility": "visible",
+          "fontSize": "21.76px",
+          "lineHeight": "21.76px",
+          "radius": "0px",
+          "direction": "ltr",
+          "text": "Ozmosis"
+        }
+      },
+      "preAnswerStarStatus": {
+        "visible": false,
+        "detail": {
+          "hidden": true,
+          "display": "none",
+          "height": 0,
+          "text": ""
+        }
+      },
+      "body": {
+        "horizontalOverflow": false
+      }
+    },
+    "ChoiceDefault": {
+      "label": "ChoiceDefault",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "bodyOverflow": false,
+      "surface": "choice",
+      "state": "default",
+      "promptHtml": "<span class=\"taskInstruction\">Welche Form passt zur Bedeutung?</span>",
+      "promptText": "Welche Form passt zur Bedeutung?",
+      "punctuationPreserved": true,
+      "clozeInputIsPromptChild": false,
+      "clozeSentence": {
+        "x": 41.3,
+        "y": 119,
+        "width": 347.5,
+        "height": 28.5,
+        "bottom": 147.5,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "22.575px",
+        "lineHeight": "26.4128px",
+        "radius": "0px",
+        "direction": "ltr",
+        "text": "Welche Form passt zur Bedeutung?"
+      },
+      "clozeInput": null,
+      "cueBlock": {
+        "x": 94.3,
+        "y": 156.5,
+        "width": 241.5,
+        "height": 16,
+        "bottom": 172.5,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "13.12px",
+        "lineHeight": "16.0064px",
+        "radius": "0px",
+        "direction": "ltr",
+        "text": "Show something to someone."
+      },
+      "teachMeButton": null,
+      "feedbackPanel": null,
+      "confidenceRow": null,
+      "hud": {
+        "x": 0,
+        "y": 836,
+        "width": 430,
+        "height": 88,
+        "bottom": 924,
+        "display": "grid",
+        "visibility": "visible",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "radius": "20px 20px 0px 0px",
+        "direction": "ltr",
+        "text": "1 / 1 Punkte100 Richtig1 Fehler0 FORTSCHRITT1 / 1"
+      },
+      "choiceButtons": [
+        {
+          "x": 26,
+          "y": 196.5,
+          "width": 378,
+          "height": 42,
+          "bottom": 238.5,
+          "display": "block",
+          "fontSize": "16.32px",
+          "radius": "12px",
+          "text": "finden"
+        },
+        {
+          "x": 26,
+          "y": 240.5,
+          "width": 378,
+          "height": 42,
+          "bottom": 282.5,
+          "display": "block",
+          "fontSize": "16.32px",
+          "radius": "12px",
+          "text": "erklären"
+        },
+        {
+          "x": 26,
+          "y": 284.5,
+          "width": 378,
+          "height": 42,
+          "bottom": 326.5,
+          "display": "block",
+          "fontSize": "16.32px",
+          "radius": "12px",
+          "text": "zeigen"
+        }
+      ],
+      "answerInput": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0,
+        "display": "none",
+        "visibility": "visible",
+        "fontSize": "14.835px",
+        "lineHeight": "17.5053px",
+        "radius": "12px",
+        "direction": "ltr",
+        "text": ""
+      },
+      "largeCentredTitle": {
+        "visible": false,
+        "detail": {
+          "x": 80,
+          "y": 50,
+          "width": 92.2,
+          "height": 21.8,
+          "bottom": 71.8,
+          "display": "block",
+          "visibility": "visible",
+          "fontSize": "21.76px",
+          "lineHeight": "21.76px",
+          "radius": "0px",
+          "direction": "ltr",
+          "text": "Ozmosis"
+        }
+      },
+      "preAnswerStarStatus": {
+        "visible": false,
+        "detail": {
+          "hidden": true,
+          "display": "none",
+          "height": 0,
+          "text": ""
+        }
+      },
+      "body": {
+        "horizontalOverflow": false
+      }
+    },
+    "ChoiceFail": {
+      "label": "ChoiceFail",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "bodyOverflow": false,
+      "surface": "choice",
+      "state": "fail",
+      "promptHtml": "<span class=\"taskInstruction\">Welche Form passt zur Bedeutung?</span>",
+      "promptText": "Welche Form passt zur Bedeutung?",
+      "punctuationPreserved": true,
+      "clozeInputIsPromptChild": false,
+      "clozeSentence": {
+        "x": 41.3,
+        "y": 119,
+        "width": 347.5,
+        "height": 28.5,
+        "bottom": 147.5,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "22.575px",
+        "lineHeight": "26.4128px",
+        "radius": "0px",
+        "direction": "ltr",
+        "text": "Welche Form passt zur Bedeutung?"
+      },
+      "clozeInput": null,
+      "cueBlock": {
+        "x": 94.3,
+        "y": 156.5,
+        "width": 241.5,
+        "height": 16,
+        "bottom": 172.5,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "13.12px",
+        "lineHeight": "16.0064px",
+        "radius": "0px",
+        "direction": "ltr",
+        "text": "Show something to someone."
+      },
+      "teachMeButton": null,
+      "feedbackPanel": {
+        "x": 26,
+        "y": 338.5,
+        "width": 378,
+        "height": 152.7,
+        "bottom": 491.2,
+        "display": "grid",
+        "visibility": "visible",
+        "fontSize": "11.84px",
+        "lineHeight": "13.9712px",
+        "radius": "12px",
+        "direction": "ltr",
+        "text": "Not quiteCorrect answer: zeigenShow something to someone. Check the nearby contrast, not just a related word.No new star. This will return for practice."
+      },
+      "confidenceRow": {
+        "x": 26,
+        "y": 501.2,
+        "width": 378,
+        "height": 44,
+        "bottom": 545.2,
+        "display": "grid",
+        "visibility": "visible",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "radius": "0px",
+        "direction": "ltr",
+        "text": "I GUESSED I WAS UNSURE I KNEW IT"
+      },
+      "hud": {
+        "x": 0,
+        "y": 836,
+        "width": 430,
+        "height": 88,
+        "bottom": 924,
+        "display": "grid",
+        "visibility": "visible",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "radius": "20px 20px 0px 0px",
+        "direction": "ltr",
+        "text": "1 / 1 Punkte0 Richtig0 Fehler1 FORTSCHRITT1 / 1"
+      },
+      "choiceButtons": [
+        {
+          "x": 26,
+          "y": 196.5,
+          "width": 378,
+          "height": 42,
+          "bottom": 238.5,
+          "display": "block",
+          "fontSize": "16.32px",
+          "radius": "12px",
+          "text": "finden"
+        },
+        {
+          "x": 26,
+          "y": 240.5,
+          "width": 378,
+          "height": 42,
+          "bottom": 282.5,
+          "display": "block",
+          "fontSize": "16.32px",
+          "radius": "12px",
+          "text": "erklären"
+        },
+        {
+          "x": 26,
+          "y": 284.5,
+          "width": 378,
+          "height": 42,
+          "bottom": 326.5,
+          "display": "block",
+          "fontSize": "16.32px",
+          "radius": "12px",
+          "text": "zeigen"
+        }
+      ],
+      "answerInput": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0,
+        "display": "none",
+        "visibility": "visible",
+        "fontSize": "14.835px",
+        "lineHeight": "17.5053px",
+        "radius": "12px",
+        "direction": "ltr",
+        "text": ""
+      },
+      "largeCentredTitle": {
+        "visible": false,
+        "detail": {
+          "x": 80,
+          "y": 50,
+          "width": 92.2,
+          "height": 21.8,
+          "bottom": 71.8,
+          "display": "block",
+          "visibility": "visible",
+          "fontSize": "21.76px",
+          "lineHeight": "21.76px",
+          "radius": "0px",
+          "direction": "ltr",
+          "text": "Ozmosis"
+        }
+      },
+      "preAnswerStarStatus": {
+        "visible": false,
+        "detail": {
+          "hidden": false,
+          "display": "none",
+          "height": 0,
+          "text": "☆☆☆☆☆Not yet correct"
+        }
+      },
+      "body": {
+        "horizontalOverflow": false
+      }
+    },
+    "CorrectionDefaultFilled": {
+      "label": "CorrectionDefaultFilled",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "bodyOverflow": false,
+      "surface": "correction",
+      "state": "typing",
+      "promptHtml": "<span class=\"taskInstruction\">Bearbeite die Aufgabe.</span><br><span dir=\"ltr\">Korrigiere den Satz.</span>",
+      "promptText": "Bearbeite die Aufgabe.Korrigiere den Satz.",
+      "punctuationPreserved": true,
+      "clozeInputIsPromptChild": false,
+      "clozeSentence": {
+        "x": 64.8,
+        "y": 119,
+        "width": 300.3,
+        "height": 44,
+        "bottom": 163,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "17.63px",
+        "lineHeight": "20.6271px",
+        "radius": "0px",
+        "direction": "ltr",
+        "text": "Bearbeite die Aufgabe.Korrigiere den Satz."
+      },
+      "clozeInput": null,
+      "cueBlock": {
+        "x": 94.3,
+        "y": 172,
+        "width": 241.5,
+        "height": 15.1,
+        "bottom": 187.1,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "13.12px",
+        "lineHeight": "16.0064px",
+        "radius": "0px",
+        "direction": "ltr",
+        "text": ""
+      },
+      "teachMeButton": null,
+      "feedbackPanel": null,
+      "confidenceRow": null,
+      "hud": {
+        "x": 0,
+        "y": 836,
+        "width": 430,
+        "height": 88,
+        "bottom": 924,
+        "display": "grid",
+        "visibility": "visible",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "radius": "20px 20px 0px 0px",
+        "direction": "ltr",
+        "text": "1 / 1 Punkte0 Richtig0 Fehler1 FORTSCHRITT1 / 1"
+      },
+      "choiceButtons": [],
+      "answerInput": {
+        "x": 26,
+        "y": 201.1,
+        "width": 378,
+        "height": 48,
+        "bottom": 249.1,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "12.48px",
+        "lineHeight": "15.2256px",
+        "radius": "12px",
+        "direction": "ltr",
+        "text": ""
+      },
+      "largeCentredTitle": {
+        "visible": false,
+        "detail": {
+          "x": 80,
+          "y": 50,
+          "width": 92.2,
+          "height": 21.8,
+          "bottom": 71.8,
+          "display": "block",
+          "visibility": "visible",
+          "fontSize": "21.76px",
+          "lineHeight": "21.76px",
+          "radius": "0px",
+          "direction": "ltr",
+          "text": "Ozmosis"
+        }
+      },
+      "preAnswerStarStatus": {
+        "visible": false,
+        "detail": {
+          "hidden": true,
+          "display": "none",
+          "height": 0,
+          "text": ""
+        }
+      },
+      "body": {
+        "horizontalOverflow": false
+      }
+    }
+  },
+  "geometryChecks": {
+    "shortInlineClozeAccepted": true,
+    "withCueClozeAccepted": true,
+    "longWrapClozeAccepted": true,
+    "typingStateAccepted": true,
+    "failStateAccepted": true,
+    "successStateAccepted": true,
+    "choiceRegression": false,
+    "correctionRegression": false
+  },
+  "checks": [
+    {
+      "name": "version is accepted starting or final v0.85.3.3 state",
+      "pass": true,
+      "detail": "v0.85.3.3 - Cloze Experience and Representative Fixture Pass"
+    },
+    {
+      "name": "short inline cloze input is inside sentence",
+      "pass": true,
+      "detail": "{\"x\":120.7,\"y\":110,\"width\":164,\"height\":34,\"bottom\":144,\"display\":\"inline-block\",\"visibility\":\"visible\",\"fontSize\":\"18.06px\",\"lineHeight\":\"18.963px\",\"radius\":\"7px\",\"direction\":\"ltr\",\"text\":\"\",\"baselineOffset\":0}"
+    },
+    {
+      "name": "short inline cloze starts in target zone",
+      "pass": true,
+      "detail": "{\"x\":26,\"y\":110,\"width\":378,\"height\":61.6,\"bottom\":171.6,\"display\":\"block\",\"visibility\":\"visible\",\"fontSize\":\"22.36px\",\"lineHeight\":\"26.1612px\",\"radius\":\"0px\",\"direction\":\"ltr\",\"text\":\"Ergänze den Satz.Welche soll ich mitbringen?\"}"
+    },
+    {
+      "name": "short inline Teach Me reachable",
+      "pass": true,
+      "detail": "{\"x\":232,\"y\":236.7,\"width\":172,\"height\":54,\"bottom\":290.7,\"display\":\"block\",\"visibility\":\"visible\",\"fontSize\":\"13.76px\",\"lineHeight\":\"normal\",\"radius\":\"12px\",\"direction\":\"ltr\",\"text\":\"Teach me\"}"
+    },
+    {
+      "name": "typing state preserves inline cloze",
+      "pass": true,
+      "detail": "{\"x\":120.7,\"y\":110,\"width\":164,\"height\":34,\"bottom\":144,\"display\":\"inline-block\",\"visibility\":\"visible\",\"fontSize\":\"18.06px\",\"lineHeight\":\"18.963px\",\"radius\":\"7px\",\"direction\":\"ltr\",\"text\":\"\",\"baselineOffset\":0}"
+    },
+    {
+      "name": "fail state feedback visible and HUD-clear",
+      "pass": true,
+      "detail": "{\"feedback\":{\"x\":26,\"y\":241.2,\"width\":378,\"height\":105.3,\"bottom\":346.5,\"display\":\"grid\",\"visibility\":\"visible\",\"fontSize\":\"11.84px\",\"lineHeight\":\"13.9712px\",\"radius\":\"12px\",\"direction\":\"ltr\",\"text\":\"Not quiteUse Unterlagen for the documents you need to bring.No new star. This will return for practice.\"},\"confidence\":{\"x\":26,\"y\":364.5,\"width\":378,\"height\":44,\"bottom\":408.5,\"display\":\"grid\",\"visibility\":\"visible\",\"fontSize\":\"16px\",\"lineHeight\":\"normal\",\"radius\":\"0px\",\"direction\":\"ltr\",\"text\":\"I GUESSED I WAS UNSURE I KNEW IT\"},\"hud\":{\"x\":0,\"y\":836,\"width\":430,\"height\":88,\"bottom\":924,\"display\":\"grid\",\"visibility\":\"visible\",\"fontSize\":\"16px\",\"lineHeight\":\"normal\",\"radius\":\"20px 20px 0px 0px\",\"direction\":\"ltr\",\"text\":\"1 / 1 Punkte0 Richtig0 Fehler1 FORTSCHRITT1 / 1\"}}"
+    },
+    {
+      "name": "success state feedback visible and HUD-clear",
+      "pass": true,
+      "detail": "{\"feedback\":{\"x\":26,\"y\":241.2,\"width\":378,\"height\":109.5,\"bottom\":350.6,\"display\":\"grid\",\"visibility\":\"visible\",\"fontSize\":\"11.84px\",\"lineHeight\":\"13.9712px\",\"radius\":\"12px\",\"direction\":\"ltr\",\"text\":\"CorrectUse Unterlagen for the documents you need to bring.★☆☆☆☆Now got right once.\"},\"confidence\":{\"x\":26,\"y\":368.6,\"width\":378,\"height\":44,\"bottom\":412.6,\"display\":\"grid\",\"visibility\":\"visible\",\"fontSize\":\"16px\",\"lineHeight\":\"normal\",\"radius\":\"0px\",\"direction\":\"ltr\",\"text\":\"I GUESSED I WAS UNSURE I KNEW IT\"},\"hud\":{\"x\":0,\"y\":836,\"width\":430,\"height\":88,\"bottom\":924,\"display\":\"grid\",\"visibility\":\"visible\",\"fontSize\":\"16px\",\"lineHeight\":\"normal\",\"radius\":\"20px 20px 0px 0px\",\"direction\":\"ltr\",\"text\":\"1 / 1 Punkte100 Richtig1 Fehler0 FORTSCHRITT1 / 1\"}}"
+    },
+    {
+      "name": "cue cloze inline input accepted",
+      "pass": true,
+      "detail": "{\"x\":145.8,\"y\":136.2,\"width\":126,\"height\":34,\"bottom\":170.2,\"display\":\"inline-block\",\"visibility\":\"visible\",\"fontSize\":\"18.06px\",\"lineHeight\":\"18.963px\",\"radius\":\"7px\",\"direction\":\"ltr\",\"text\":\"\",\"baselineOffset\":26.2}"
+    },
+    {
+      "name": "cue visible below sentence and secondary",
+      "pass": true,
+      "detail": "{\"x\":94.3,\"y\":180.6,\"width\":241.5,\"height\":16,\"bottom\":196.6,\"display\":\"block\",\"visibility\":\"visible\",\"fontSize\":\"13.12px\",\"lineHeight\":\"16.0064px\",\"radius\":\"0px\",\"direction\":\"ltr\",\"text\":\"Sie nennen Ihr Sprachniveau.\"}"
+    },
+    {
+      "name": "cue does not push sentence too low",
+      "pass": true,
+      "detail": "{\"x\":26,\"y\":110,\"width\":378,\"height\":61.6,\"bottom\":171.6,\"display\":\"block\",\"visibility\":\"visible\",\"fontSize\":\"22.36px\",\"lineHeight\":\"26.1612px\",\"radius\":\"0px\",\"direction\":\"ltr\",\"text\":\"Ergänze den Satz.Ich lerne Deutsch auf .\"}"
+    },
+    {
+      "name": "cue typing state remains inline and cue remains secondary",
+      "pass": true,
+      "detail": "{\"input\":{\"x\":145.8,\"y\":136.2,\"width\":126,\"height\":34,\"bottom\":170.2,\"display\":\"inline-block\",\"visibility\":\"visible\",\"fontSize\":\"18.06px\",\"lineHeight\":\"18.963px\",\"radius\":\"7px\",\"direction\":\"ltr\",\"text\":\"\",\"baselineOffset\":26.2},\"cue\":{\"x\":94.3,\"y\":180.6,\"width\":241.5,\"height\":16,\"bottom\":196.6,\"display\":\"block\",\"visibility\":\"visible\",\"fontSize\":\"13.12px\",\"lineHeight\":\"16.0064px\",\"radius\":\"0px\",\"direction\":\"ltr\",\"text\":\"Sie nennen Ihr Sprachniveau.\"}}"
+    },
+    {
+      "name": "long cloze wraps without detaching input",
+      "pass": true,
+      "detail": "{\"sentence\":{\"x\":26,\"y\":110,\"width\":378,\"height\":91.8,\"bottom\":201.8,\"display\":\"block\",\"visibility\":\"visible\",\"fontSize\":\"24.08px\",\"lineHeight\":\"28.1736px\",\"radius\":\"0px\",\"direction\":\"ltr\",\"text\":\"Ergänze den Satz.Ich möchte den Termin auf verschieben.\"},\"input\":{\"x\":106,\"y\":138.2,\"width\":218,\"height\":34,\"bottom\":172.2,\"display\":\"inline-block\",\"visibility\":\"visible\",\"fontSize\":\"18.06px\",\"lineHeight\":\"18.963px\",\"radius\":\"7px\",\"direction\":\"ltr\",\"text\":\"\",\"baselineOffset\":28.2}}"
+    },
+    {
+      "name": "long cloze punctuation preserved",
+      "pass": true,
+      "detail": "Ergänze den Satz.Ich möchte den Termin auf verschieben."
+    },
+    {
+      "name": "long typing state remains readable and HUD-clear",
+      "pass": true,
+      "detail": "{\"sentence\":{\"x\":26,\"y\":110,\"width\":378,\"height\":91.8,\"bottom\":201.8,\"display\":\"block\",\"visibility\":\"visible\",\"fontSize\":\"24.08px\",\"lineHeight\":\"28.1736px\",\"radius\":\"0px\",\"direction\":\"ltr\",\"text\":\"Ergänze den Satz.Ich möchte den Termin auf verschieben.\"},\"input\":{\"x\":106,\"y\":138.2,\"width\":218,\"height\":34,\"bottom\":172.2,\"display\":\"inline-block\",\"visibility\":\"visible\",\"fontSize\":\"18.06px\",\"lineHeight\":\"18.963px\",\"radius\":\"7px\",\"direction\":\"ltr\",\"text\":\"\",\"baselineOffset\":28.2},\"hud\":{\"x\":0,\"y\":836,\"width\":430,\"height\":88,\"bottom\":924,\"display\":\"grid\",\"visibility\":\"visible\",\"fontSize\":\"16px\",\"lineHeight\":\"normal\",\"radius\":\"20px 20px 0px 0px\",\"direction\":\"ltr\",\"text\":\"1 / 1 Punkte100 Richtig1 Fehler0 FORTSCHRITT1 / 1\"}}"
+    },
+    {
+      "name": "choice non-regression width",
+      "pass": true,
+      "detail": "{\"x\":26,\"y\":196.5,\"width\":378,\"height\":42,\"bottom\":238.5,\"display\":\"block\",\"fontSize\":\"16.32px\",\"radius\":\"12px\",\"text\":\"finden\"}"
+    },
+    {
+      "name": "choice pre-answer star absent",
+      "pass": true,
+      "detail": "{\"visible\":false,\"detail\":{\"hidden\":true,\"display\":\"none\",\"height\":0,\"text\":\"\"}}"
+    },
+    {
+      "name": "choice fail feedback/confidence non-regression",
+      "pass": true,
+      "detail": "{\"feedback\":{\"x\":26,\"y\":338.5,\"width\":378,\"height\":152.7,\"bottom\":491.2,\"display\":\"grid\",\"visibility\":\"visible\",\"fontSize\":\"11.84px\",\"lineHeight\":\"13.9712px\",\"radius\":\"12px\",\"direction\":\"ltr\",\"text\":\"Not quiteCorrect answer: zeigenShow something to someone. Check the nearby contrast, not just a related word.No new star. This will return for practice.\"},\"confidence\":{\"x\":26,\"y\":501.2,\"width\":378,\"height\":44,\"bottom\":545.2,\"display\":\"grid\",\"visibility\":\"visible\",\"fontSize\":\"16px\",\"lineHeight\":\"normal\",\"radius\":\"0px\",\"direction\":\"ltr\",\"text\":\"I GUESSED I WAS UNSURE I KNEW IT\"}}"
+    },
+    {
+      "name": "correction non-regression width",
+      "pass": true,
+      "detail": "{\"x\":26,\"y\":201.1,\"width\":378,\"height\":48,\"bottom\":249.1,\"display\":\"block\",\"visibility\":\"visible\",\"fontSize\":\"12.48px\",\"lineHeight\":\"15.2256px\",\"radius\":\"12px\",\"direction\":\"ltr\",\"text\":\"\"}"
+    },
+    {
+      "name": "ClozeDefaultShortInline: large centred title absent",
+      "pass": true,
+      "detail": "{\"visible\":false,\"detail\":{\"x\":80,\"y\":50,\"width\":92.2,\"height\":21.8,\"bottom\":71.8,\"display\":\"block\",\"visibility\":\"visible\",\"fontSize\":\"21.76px\",\"lineHeight\":\"21.76px\",\"radius\":\"0px\",\"direction\":\"ltr\",\"text\":\"Ozmosis\"}}"
+    },
+    {
+      "name": "ClozeDefaultShortInline: pre-answer star/status absent",
+      "pass": true,
+      "detail": "{\"visible\":false,\"detail\":{\"hidden\":true,\"display\":\"none\",\"height\":0,\"text\":\"\"}}"
+    },
+    {
+      "name": "ClozeDefaultShortInline: no horizontal overflow",
+      "pass": true,
+      "detail": "{\"horizontalOverflow\":false}"
+    },
+    {
+      "name": "ClozeTypingShortInline: large centred title absent",
+      "pass": true,
+      "detail": "{\"visible\":false,\"detail\":{\"x\":80,\"y\":50,\"width\":92.2,\"height\":21.8,\"bottom\":71.8,\"display\":\"block\",\"visibility\":\"visible\",\"fontSize\":\"21.76px\",\"lineHeight\":\"21.76px\",\"radius\":\"0px\",\"direction\":\"ltr\",\"text\":\"Ozmosis\"}}"
+    },
+    {
+      "name": "ClozeTypingShortInline: pre-answer star/status absent",
+      "pass": true,
+      "detail": "{\"visible\":false,\"detail\":{\"hidden\":true,\"display\":\"none\",\"height\":0,\"text\":\"\"}}"
+    },
+    {
+      "name": "ClozeTypingShortInline: no horizontal overflow",
+      "pass": true,
+      "detail": "{\"horizontalOverflow\":false}"
+    },
+    {
+      "name": "ClozeFailShortInline: large centred title absent",
+      "pass": true,
+      "detail": "{\"visible\":false,\"detail\":{\"x\":80,\"y\":50,\"width\":92.2,\"height\":21.8,\"bottom\":71.8,\"display\":\"block\",\"visibility\":\"visible\",\"fontSize\":\"21.76px\",\"lineHeight\":\"21.76px\",\"radius\":\"0px\",\"direction\":\"ltr\",\"text\":\"Ozmosis\"}}"
+    },
+    {
+      "name": "ClozeFailShortInline: no horizontal overflow",
+      "pass": true,
+      "detail": "{\"horizontalOverflow\":false}"
+    },
+    {
+      "name": "ClozeSuccessShortInline: large centred title absent",
+      "pass": true,
+      "detail": "{\"visible\":false,\"detail\":{\"x\":80,\"y\":50,\"width\":92.2,\"height\":21.8,\"bottom\":71.8,\"display\":\"block\",\"visibility\":\"visible\",\"fontSize\":\"21.76px\",\"lineHeight\":\"21.76px\",\"radius\":\"0px\",\"direction\":\"ltr\",\"text\":\"Ozmosis\"}}"
+    },
+    {
+      "name": "ClozeSuccessShortInline: no horizontal overflow",
+      "pass": true,
+      "detail": "{\"horizontalOverflow\":false}"
+    },
+    {
+      "name": "ClozeDefaultWithCue: large centred title absent",
+      "pass": true,
+      "detail": "{\"visible\":false,\"detail\":{\"x\":80,\"y\":50,\"width\":92.2,\"height\":21.8,\"bottom\":71.8,\"display\":\"block\",\"visibility\":\"visible\",\"fontSize\":\"21.76px\",\"lineHeight\":\"21.76px\",\"radius\":\"0px\",\"direction\":\"ltr\",\"text\":\"Ozmosis\"}}"
+    },
+    {
+      "name": "ClozeDefaultWithCue: pre-answer star/status absent",
+      "pass": true,
+      "detail": "{\"visible\":false,\"detail\":{\"hidden\":true,\"display\":\"none\",\"height\":0,\"text\":\"\"}}"
+    },
+    {
+      "name": "ClozeDefaultWithCue: no horizontal overflow",
+      "pass": true,
+      "detail": "{\"horizontalOverflow\":false}"
+    },
+    {
+      "name": "ClozeTypingWithCue: large centred title absent",
+      "pass": true,
+      "detail": "{\"visible\":false,\"detail\":{\"x\":80,\"y\":50,\"width\":92.2,\"height\":21.8,\"bottom\":71.8,\"display\":\"block\",\"visibility\":\"visible\",\"fontSize\":\"21.76px\",\"lineHeight\":\"21.76px\",\"radius\":\"0px\",\"direction\":\"ltr\",\"text\":\"Ozmosis\"}}"
+    },
+    {
+      "name": "ClozeTypingWithCue: pre-answer star/status absent",
+      "pass": true,
+      "detail": "{\"visible\":false,\"detail\":{\"hidden\":true,\"display\":\"none\",\"height\":0,\"text\":\"\"}}"
+    },
+    {
+      "name": "ClozeTypingWithCue: no horizontal overflow",
+      "pass": true,
+      "detail": "{\"horizontalOverflow\":false}"
+    },
+    {
+      "name": "ClozeLongWrapDefault: large centred title absent",
+      "pass": true,
+      "detail": "{\"visible\":false,\"detail\":{\"x\":80,\"y\":50,\"width\":92.2,\"height\":21.8,\"bottom\":71.8,\"display\":\"block\",\"visibility\":\"visible\",\"fontSize\":\"21.76px\",\"lineHeight\":\"21.76px\",\"radius\":\"0px\",\"direction\":\"ltr\",\"text\":\"Ozmosis\"}}"
+    },
+    {
+      "name": "ClozeLongWrapDefault: pre-answer star/status absent",
+      "pass": true,
+      "detail": "{\"visible\":false,\"detail\":{\"hidden\":true,\"display\":\"none\",\"height\":0,\"text\":\"\"}}"
+    },
+    {
+      "name": "ClozeLongWrapDefault: no horizontal overflow",
+      "pass": true,
+      "detail": "{\"horizontalOverflow\":false}"
+    },
+    {
+      "name": "ClozeLongWrapTyping: large centred title absent",
+      "pass": true,
+      "detail": "{\"visible\":false,\"detail\":{\"x\":80,\"y\":50,\"width\":92.2,\"height\":21.8,\"bottom\":71.8,\"display\":\"block\",\"visibility\":\"visible\",\"fontSize\":\"21.76px\",\"lineHeight\":\"21.76px\",\"radius\":\"0px\",\"direction\":\"ltr\",\"text\":\"Ozmosis\"}}"
+    },
+    {
+      "name": "ClozeLongWrapTyping: pre-answer star/status absent",
+      "pass": true,
+      "detail": "{\"visible\":false,\"detail\":{\"hidden\":true,\"display\":\"none\",\"height\":0,\"text\":\"\"}}"
+    },
+    {
+      "name": "ClozeLongWrapTyping: no horizontal overflow",
+      "pass": true,
+      "detail": "{\"horizontalOverflow\":false}"
+    },
+    {
+      "name": "ChoiceDefault: large centred title absent",
+      "pass": true,
+      "detail": "{\"visible\":false,\"detail\":{\"x\":80,\"y\":50,\"width\":92.2,\"height\":21.8,\"bottom\":71.8,\"display\":\"block\",\"visibility\":\"visible\",\"fontSize\":\"21.76px\",\"lineHeight\":\"21.76px\",\"radius\":\"0px\",\"direction\":\"ltr\",\"text\":\"Ozmosis\"}}"
+    },
+    {
+      "name": "ChoiceDefault: pre-answer star/status absent",
+      "pass": true,
+      "detail": "{\"visible\":false,\"detail\":{\"hidden\":true,\"display\":\"none\",\"height\":0,\"text\":\"\"}}"
+    },
+    {
+      "name": "ChoiceDefault: no horizontal overflow",
+      "pass": true,
+      "detail": "{\"horizontalOverflow\":false}"
+    },
+    {
+      "name": "ChoiceFail: large centred title absent",
+      "pass": true,
+      "detail": "{\"visible\":false,\"detail\":{\"x\":80,\"y\":50,\"width\":92.2,\"height\":21.8,\"bottom\":71.8,\"display\":\"block\",\"visibility\":\"visible\",\"fontSize\":\"21.76px\",\"lineHeight\":\"21.76px\",\"radius\":\"0px\",\"direction\":\"ltr\",\"text\":\"Ozmosis\"}}"
+    },
+    {
+      "name": "ChoiceFail: no horizontal overflow",
+      "pass": true,
+      "detail": "{\"horizontalOverflow\":false}"
+    },
+    {
+      "name": "CorrectionDefaultFilled: large centred title absent",
+      "pass": true,
+      "detail": "{\"visible\":false,\"detail\":{\"x\":80,\"y\":50,\"width\":92.2,\"height\":21.8,\"bottom\":71.8,\"display\":\"block\",\"visibility\":\"visible\",\"fontSize\":\"21.76px\",\"lineHeight\":\"21.76px\",\"radius\":\"0px\",\"direction\":\"ltr\",\"text\":\"Ozmosis\"}}"
+    },
+    {
+      "name": "CorrectionDefaultFilled: pre-answer star/status absent",
+      "pass": true,
+      "detail": "{\"visible\":false,\"detail\":{\"hidden\":true,\"display\":\"none\",\"height\":0,\"text\":\"\"}}"
+    },
+    {
+      "name": "CorrectionDefaultFilled: no horizontal overflow",
+      "pass": true,
+      "detail": "{\"horizontalOverflow\":false}"
+    },
+    {
+      "name": "no console errors",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no runtime exceptions",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "consoleErrors": [],
+  "runtimeExceptions": [],
+  "errors": []
+}

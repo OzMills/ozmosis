@@ -1,0 +1,30 @@
+{
+  "ok": true,
+  "patch": "v0.85.3.1",
+  "title": "Strict UI Proof and Screenshot Recovery Gate",
+  "generatedAt": "2026-06-21T17:15:21.109Z",
+  "sourceCaptureScript": "_development-files/v0853_practice_ui_capture.cjs",
+  "outputRoot": "docs/qa/screenshots/v0.85.3.1-strict-ui-proof",
+  "screenshots": [
+    "docs/qa/screenshots/v0.85.3.1-strict-ui-proof/actual/ChoiceDefault.png",
+    "docs/qa/screenshots/v0.85.3.1-strict-ui-proof/actual/ChoiceTeachMeHint.png",
+    "docs/qa/screenshots/v0.85.3.1-strict-ui-proof/actual/ChoiceFail.png",
+    "docs/qa/screenshots/v0.85.3.1-strict-ui-proof/actual/ChoiceSuccess.png",
+    "docs/qa/screenshots/v0.85.3.1-strict-ui-proof/actual/ClozeDefault.png",
+    "docs/qa/screenshots/v0.85.3.1-strict-ui-proof/actual/ClozeTyping.png",
+    "docs/qa/screenshots/v0.85.3.1-strict-ui-proof/actual/ClozeFail.png",
+    "docs/qa/screenshots/v0.85.3.1-strict-ui-proof/actual/ClozeSuccess.png",
+    "docs/qa/screenshots/v0.85.3.1-strict-ui-proof/actual/CorrectionDefaultFilled.png",
+    "docs/qa/screenshots/v0.85.3.1-strict-ui-proof/actual/CorrectionFail.png",
+    "docs/qa/screenshots/v0.85.3.1-strict-ui-proof/actual/CorrectionSuccess.png"
+  ],
+  "comparisonHtml": "docs/qa/screenshots/v0.85.3.1-strict-ui-proof/comparison.html",
+  "comparisonContactSheet": "docs/qa/screenshots/v0.85.3.1-strict-ui-proof/comparison-contact-sheet.png",
+  "screenConceptMeasurements": "docs/qa/screenshots/v0.85.3.1-strict-ui-proof/screenconcept-measurements.json",
+  "geometryResults": "docs/qa/screenshots/v0.85.3.1-strict-ui-proof/geometry-results.json",
+  "errors": [],
+  "sourceScriptExitCode": 0,
+  "sourceScriptStdout": "{\n  \"ok\": true,\n  \"screenshots\": 11,\n  \"comparison\": \"docs\\\\qa\\\\screenshots\\\\v0.85.3-practice-ui-completion\\\\comparison.html\",\n  \"measurements\": \"docs\\\\qa\\\\screenshots\\\\v0.85.3-practice-ui-completion\\\\screenconcept_measurements.json\",\n  \"contactSheet\": \"docs\\\\qa\\\\screenshots\\\\v0.85.3-practice-ui-completion\\\\comparison-contact-sheet.png\",\n  \"result\": \"docs\\\\qa\\\\screenshots\\\\v0.85.3-practice-ui-completion\\\\v0853_practice_ui_capture_result.json\",\n  \"errors\": []\n}\n",
+  "sourceScriptStderr": "",
+  "captureMethod": "Fresh v0.85.3 browser capture via v0853_practice_ui_capture.cjs, copied into the v0.85.3.1 strict proof folder with strict comparison HTML."
+}

@@ -1,0 +1,773 @@
+{
+  "ok": true,
+  "generatedAt": "2026-06-19T23:40:41.517Z",
+  "appVersion": "v0.85.2 - Practice Screen Template Alignment Pass",
+  "exportVersion": "v0.85.2-practice-screen-template-alignment",
+  "screenshots": [
+    {
+      "name": "ChoiceDefault",
+      "file": "docs\\qa\\screenshots\\v0.85.2-practice-screen-template-alignment\\actual\\ChoiceDefault.png",
+      "check": {
+        "name": "ChoiceDefault",
+        "bodyWidth": 430,
+        "viewportWidth": 430,
+        "bodyOverflow": false,
+        "surface": "choice",
+        "state": "default",
+        "promptText": "Welche Form passt zur Bedeutung?",
+        "glossText": "Show something to someone.",
+        "cuePrefixVisible": false,
+        "answerSurface": "choice",
+        "activeTag": "BUTTON",
+        "activeId": "",
+        "firstRunVisible": false,
+        "mainRect": {
+          "x": 10,
+          "y": 12,
+          "width": 410,
+          "height": 932,
+          "top": 12,
+          "right": 420,
+          "bottom": 944,
+          "left": 10
+        }
+      }
+    },
+    {
+      "name": "ChoiceTeachMeHint",
+      "file": "docs\\qa\\screenshots\\v0.85.2-practice-screen-template-alignment\\actual\\ChoiceTeachMeHint.png",
+      "check": {
+        "name": "ChoiceTeachMeHint",
+        "bodyWidth": 430,
+        "viewportWidth": 430,
+        "bodyOverflow": false,
+        "surface": "choice",
+        "state": "hint",
+        "promptText": "Welche Form passt zur Bedeutung?",
+        "glossText": "Show something to someone.",
+        "cuePrefixVisible": false,
+        "answerSurface": "choice",
+        "activeTag": "BUTTON",
+        "activeId": "",
+        "firstRunVisible": false,
+        "mainRect": {
+          "x": 10,
+          "y": 12,
+          "width": 410,
+          "height": 932,
+          "top": 12,
+          "right": 420,
+          "bottom": 944,
+          "left": 10
+        }
+      }
+    },
+    {
+      "name": "ChoiceFail",
+      "file": "docs\\qa\\screenshots\\v0.85.2-practice-screen-template-alignment\\actual\\ChoiceFail.png",
+      "check": {
+        "name": "ChoiceFail",
+        "bodyWidth": 430,
+        "viewportWidth": 430,
+        "bodyOverflow": false,
+        "surface": "choice",
+        "state": "fail",
+        "promptText": "Welche Form passt zur Bedeutung?",
+        "glossText": "Show something to someone.",
+        "cuePrefixVisible": false,
+        "answerSurface": "choice",
+        "activeTag": "BUTTON",
+        "activeId": "",
+        "firstRunVisible": false,
+        "mainRect": {
+          "x": 10,
+          "y": 12,
+          "width": 410,
+          "height": 1071.484375,
+          "top": 12,
+          "right": 420,
+          "bottom": 1083.484375,
+          "left": 10
+        }
+      }
+    },
+    {
+      "name": "ChoiceSuccess",
+      "file": "docs\\qa\\screenshots\\v0.85.2-practice-screen-template-alignment\\actual\\ChoiceSuccess.png",
+      "check": {
+        "name": "ChoiceSuccess",
+        "bodyWidth": 430,
+        "viewportWidth": 430,
+        "bodyOverflow": false,
+        "surface": "choice",
+        "state": "success",
+        "promptText": "Welche Form passt zur Bedeutung?",
+        "glossText": "Show something to someone.",
+        "cuePrefixVisible": false,
+        "answerSurface": "choice",
+        "activeTag": "BUTTON",
+        "activeId": "",
+        "firstRunVisible": false,
+        "mainRect": {
+          "x": 10,
+          "y": 12,
+          "width": 410,
+          "height": 1028.96875,
+          "top": 12,
+          "right": 420,
+          "bottom": 1040.96875,
+          "left": 10
+        }
+      }
+    },
+    {
+      "name": "ClozeDefault",
+      "file": "docs\\qa\\screenshots\\v0.85.2-practice-screen-template-alignment\\actual\\ClozeDefault.png",
+      "check": {
+        "name": "ClozeDefault",
+        "bodyWidth": 430,
+        "viewportWidth": 430,
+        "bodyOverflow": false,
+        "surface": "cloze",
+        "state": "default",
+        "promptText": "Ergänze den Satz.Ich lerne Deutsch auf .",
+        "glossText": "Sie nennen Ihr Sprachniveau.",
+        "cuePrefixVisible": false,
+        "answerSurface": "cloze",
+        "activeTag": "INPUT",
+        "activeId": "b1InlineInput",
+        "firstRunVisible": false,
+        "mainRect": {
+          "x": 10,
+          "y": 12,
+          "width": 410,
+          "height": 753.84375,
+          "top": 12,
+          "right": 420,
+          "bottom": 765.84375,
+          "left": 10
+        }
+      }
+    },
+    {
+      "name": "ClozeTyping",
+      "file": "docs\\qa\\screenshots\\v0.85.2-practice-screen-template-alignment\\actual\\ClozeTyping.png",
+      "check": {
+        "name": "ClozeTyping",
+        "bodyWidth": 430,
+        "viewportWidth": 430,
+        "bodyOverflow": false,
+        "surface": "cloze",
+        "state": "typing",
+        "promptText": "Ergänze den Satz.Ich lerne Deutsch auf .",
+        "glossText": "Sie nennen Ihr Sprachniveau.",
+        "cuePrefixVisible": false,
+        "answerSurface": "cloze",
+        "activeTag": "INPUT",
+        "activeId": "b1InlineInput",
+        "firstRunVisible": false,
+        "mainRect": {
+          "x": 10,
+          "y": 12,
+          "width": 410,
+          "height": 820,
+          "top": 12,
+          "right": 420,
+          "bottom": 832,
+          "left": 10
+        }
+      }
+    },
+    {
+      "name": "ClozeFail",
+      "file": "docs\\qa\\screenshots\\v0.85.2-practice-screen-template-alignment\\actual\\ClozeFail.png",
+      "check": {
+        "name": "ClozeFail",
+        "bodyWidth": 430,
+        "viewportWidth": 430,
+        "bodyOverflow": false,
+        "surface": "cloze",
+        "state": "fail",
+        "promptText": "Ergänze den Satz.Ich lerne Deutsch auf B1-Niveau.",
+        "glossText": "Sie nennen Ihr Sprachniveau.",
+        "cuePrefixVisible": false,
+        "answerSurface": "cloze",
+        "activeTag": "BUTTON",
+        "activeId": "",
+        "firstRunVisible": false,
+        "mainRect": {
+          "x": 10,
+          "y": 12,
+          "width": 410,
+          "height": 820,
+          "top": 12,
+          "right": 420,
+          "bottom": 832,
+          "left": 10
+        }
+      }
+    },
+    {
+      "name": "ClozeSuccess",
+      "file": "docs\\qa\\screenshots\\v0.85.2-practice-screen-template-alignment\\actual\\ClozeSuccess.png",
+      "check": {
+        "name": "ClozeSuccess",
+        "bodyWidth": 430,
+        "viewportWidth": 430,
+        "bodyOverflow": false,
+        "surface": "cloze",
+        "state": "success",
+        "promptText": "Ergänze den Satz.Ich lerne Deutsch auf B1-Niveau.",
+        "glossText": "Sie nennen Ihr Sprachniveau.",
+        "cuePrefixVisible": false,
+        "answerSurface": "cloze",
+        "activeTag": "BUTTON",
+        "activeId": "",
+        "firstRunVisible": false,
+        "mainRect": {
+          "x": 10,
+          "y": 12,
+          "width": 410,
+          "height": 820,
+          "top": 12,
+          "right": 420,
+          "bottom": 832,
+          "left": 10
+        }
+      }
+    },
+    {
+      "name": "CorrectionDefaultFilled",
+      "file": "docs\\qa\\screenshots\\v0.85.2-practice-screen-template-alignment\\actual\\CorrectionDefaultFilled.png",
+      "check": {
+        "name": "CorrectionDefaultFilled",
+        "bodyWidth": 430,
+        "viewportWidth": 430,
+        "bodyOverflow": false,
+        "surface": "correction",
+        "state": "typing",
+        "promptText": "Bearbeite die Aufgabe.Korrigiere den Satz.",
+        "glossText": "",
+        "cuePrefixVisible": false,
+        "answerSurface": "correction",
+        "activeTag": "INPUT",
+        "activeId": "answerInput",
+        "firstRunVisible": false,
+        "mainRect": {
+          "x": 10,
+          "y": 12,
+          "width": 410,
+          "height": 932,
+          "top": 12,
+          "right": 420,
+          "bottom": 944,
+          "left": 10
+        }
+      }
+    },
+    {
+      "name": "CorrectionFail",
+      "file": "docs\\qa\\screenshots\\v0.85.2-practice-screen-template-alignment\\actual\\CorrectionFail.png",
+      "check": {
+        "name": "CorrectionFail",
+        "bodyWidth": 430,
+        "viewportWidth": 430,
+        "bodyOverflow": false,
+        "surface": "correction",
+        "state": "fail",
+        "promptText": "Bearbeite die Aufgabe.Korrigiere den Satz.",
+        "glossText": "I am staying at home because I am ill.",
+        "cuePrefixVisible": false,
+        "answerSurface": "correction",
+        "activeTag": "BUTTON",
+        "activeId": "",
+        "firstRunVisible": false,
+        "mainRect": {
+          "x": 10,
+          "y": 12,
+          "width": 410,
+          "height": 932.03125,
+          "top": 12,
+          "right": 420,
+          "bottom": 944.03125,
+          "left": 10
+        }
+      }
+    },
+    {
+      "name": "CorrectionSuccess",
+      "file": "docs\\qa\\screenshots\\v0.85.2-practice-screen-template-alignment\\actual\\CorrectionSuccess.png",
+      "check": {
+        "name": "CorrectionSuccess",
+        "bodyWidth": 430,
+        "viewportWidth": 430,
+        "bodyOverflow": false,
+        "surface": "correction",
+        "state": "success",
+        "promptText": "Bearbeite die Aufgabe.Korrigiere den Satz.",
+        "glossText": "I am staying at home because I am ill.",
+        "cuePrefixVisible": false,
+        "answerSurface": "correction",
+        "activeTag": "BUTTON",
+        "activeId": "",
+        "firstRunVisible": false,
+        "mainRect": {
+          "x": 10,
+          "y": 12,
+          "width": 410,
+          "height": 932,
+          "top": 12,
+          "right": 420,
+          "bottom": 944,
+          "left": 10
+        }
+      }
+    }
+  ],
+  "layoutChecks": [
+    {
+      "name": "ChoiceDefault",
+      "bodyWidth": 430,
+      "viewportWidth": 430,
+      "bodyOverflow": false,
+      "surface": "choice",
+      "state": "default",
+      "promptText": "Welche Form passt zur Bedeutung?",
+      "glossText": "Show something to someone.",
+      "cuePrefixVisible": false,
+      "answerSurface": "choice",
+      "activeTag": "BUTTON",
+      "activeId": "",
+      "firstRunVisible": false,
+      "mainRect": {
+        "x": 10,
+        "y": 12,
+        "width": 410,
+        "height": 932,
+        "top": 12,
+        "right": 420,
+        "bottom": 944,
+        "left": 10
+      }
+    },
+    {
+      "name": "ChoiceTeachMeHint",
+      "bodyWidth": 430,
+      "viewportWidth": 430,
+      "bodyOverflow": false,
+      "surface": "choice",
+      "state": "hint",
+      "promptText": "Welche Form passt zur Bedeutung?",
+      "glossText": "Show something to someone.",
+      "cuePrefixVisible": false,
+      "answerSurface": "choice",
+      "activeTag": "BUTTON",
+      "activeId": "",
+      "firstRunVisible": false,
+      "mainRect": {
+        "x": 10,
+        "y": 12,
+        "width": 410,
+        "height": 932,
+        "top": 12,
+        "right": 420,
+        "bottom": 944,
+        "left": 10
+      }
+    },
+    {
+      "name": "ChoiceFail",
+      "bodyWidth": 430,
+      "viewportWidth": 430,
+      "bodyOverflow": false,
+      "surface": "choice",
+      "state": "fail",
+      "promptText": "Welche Form passt zur Bedeutung?",
+      "glossText": "Show something to someone.",
+      "cuePrefixVisible": false,
+      "answerSurface": "choice",
+      "activeTag": "BUTTON",
+      "activeId": "",
+      "firstRunVisible": false,
+      "mainRect": {
+        "x": 10,
+        "y": 12,
+        "width": 410,
+        "height": 1071.484375,
+        "top": 12,
+        "right": 420,
+        "bottom": 1083.484375,
+        "left": 10
+      }
+    },
+    {
+      "name": "ChoiceSuccess",
+      "bodyWidth": 430,
+      "viewportWidth": 430,
+      "bodyOverflow": false,
+      "surface": "choice",
+      "state": "success",
+      "promptText": "Welche Form passt zur Bedeutung?",
+      "glossText": "Show something to someone.",
+      "cuePrefixVisible": false,
+      "answerSurface": "choice",
+      "activeTag": "BUTTON",
+      "activeId": "",
+      "firstRunVisible": false,
+      "mainRect": {
+        "x": 10,
+        "y": 12,
+        "width": 410,
+        "height": 1028.96875,
+        "top": 12,
+        "right": 420,
+        "bottom": 1040.96875,
+        "left": 10
+      }
+    },
+    {
+      "name": "ClozeDefault",
+      "bodyWidth": 430,
+      "viewportWidth": 430,
+      "bodyOverflow": false,
+      "surface": "cloze",
+      "state": "default",
+      "promptText": "Ergänze den Satz.Ich lerne Deutsch auf .",
+      "glossText": "Sie nennen Ihr Sprachniveau.",
+      "cuePrefixVisible": false,
+      "answerSurface": "cloze",
+      "activeTag": "INPUT",
+      "activeId": "b1InlineInput",
+      "firstRunVisible": false,
+      "mainRect": {
+        "x": 10,
+        "y": 12,
+        "width": 410,
+        "height": 753.84375,
+        "top": 12,
+        "right": 420,
+        "bottom": 765.84375,
+        "left": 10
+      }
+    },
+    {
+      "name": "ClozeTyping",
+      "bodyWidth": 430,
+      "viewportWidth": 430,
+      "bodyOverflow": false,
+      "surface": "cloze",
+      "state": "typing",
+      "promptText": "Ergänze den Satz.Ich lerne Deutsch auf .",
+      "glossText": "Sie nennen Ihr Sprachniveau.",
+      "cuePrefixVisible": false,
+      "answerSurface": "cloze",
+      "activeTag": "INPUT",
+      "activeId": "b1InlineInput",
+      "firstRunVisible": false,
+      "mainRect": {
+        "x": 10,
+        "y": 12,
+        "width": 410,
+        "height": 820,
+        "top": 12,
+        "right": 420,
+        "bottom": 832,
+        "left": 10
+      }
+    },
+    {
+      "name": "ClozeFail",
+      "bodyWidth": 430,
+      "viewportWidth": 430,
+      "bodyOverflow": false,
+      "surface": "cloze",
+      "state": "fail",
+      "promptText": "Ergänze den Satz.Ich lerne Deutsch auf B1-Niveau.",
+      "glossText": "Sie nennen Ihr Sprachniveau.",
+      "cuePrefixVisible": false,
+      "answerSurface": "cloze",
+      "activeTag": "BUTTON",
+      "activeId": "",
+      "firstRunVisible": false,
+      "mainRect": {
+        "x": 10,
+        "y": 12,
+        "width": 410,
+        "height": 820,
+        "top": 12,
+        "right": 420,
+        "bottom": 832,
+        "left": 10
+      }
+    },
+    {
+      "name": "ClozeSuccess",
+      "bodyWidth": 430,
+      "viewportWidth": 430,
+      "bodyOverflow": false,
+      "surface": "cloze",
+      "state": "success",
+      "promptText": "Ergänze den Satz.Ich lerne Deutsch auf B1-Niveau.",
+      "glossText": "Sie nennen Ihr Sprachniveau.",
+      "cuePrefixVisible": false,
+      "answerSurface": "cloze",
+      "activeTag": "BUTTON",
+      "activeId": "",
+      "firstRunVisible": false,
+      "mainRect": {
+        "x": 10,
+        "y": 12,
+        "width": 410,
+        "height": 820,
+        "top": 12,
+        "right": 420,
+        "bottom": 832,
+        "left": 10
+      }
+    },
+    {
+      "name": "CorrectionDefaultFilled",
+      "bodyWidth": 430,
+      "viewportWidth": 430,
+      "bodyOverflow": false,
+      "surface": "correction",
+      "state": "typing",
+      "promptText": "Bearbeite die Aufgabe.Korrigiere den Satz.",
+      "glossText": "",
+      "cuePrefixVisible": false,
+      "answerSurface": "correction",
+      "activeTag": "INPUT",
+      "activeId": "answerInput",
+      "firstRunVisible": false,
+      "mainRect": {
+        "x": 10,
+        "y": 12,
+        "width": 410,
+        "height": 932,
+        "top": 12,
+        "right": 420,
+        "bottom": 944,
+        "left": 10
+      }
+    },
+    {
+      "name": "CorrectionFail",
+      "bodyWidth": 430,
+      "viewportWidth": 430,
+      "bodyOverflow": false,
+      "surface": "correction",
+      "state": "fail",
+      "promptText": "Bearbeite die Aufgabe.Korrigiere den Satz.",
+      "glossText": "I am staying at home because I am ill.",
+      "cuePrefixVisible": false,
+      "answerSurface": "correction",
+      "activeTag": "BUTTON",
+      "activeId": "",
+      "firstRunVisible": false,
+      "mainRect": {
+        "x": 10,
+        "y": 12,
+        "width": 410,
+        "height": 932.03125,
+        "top": 12,
+        "right": 420,
+        "bottom": 944.03125,
+        "left": 10
+      }
+    },
+    {
+      "name": "CorrectionSuccess",
+      "bodyWidth": 430,
+      "viewportWidth": 430,
+      "bodyOverflow": false,
+      "surface": "correction",
+      "state": "success",
+      "promptText": "Bearbeite die Aufgabe.Korrigiere den Satz.",
+      "glossText": "I am staying at home because I am ill.",
+      "cuePrefixVisible": false,
+      "answerSurface": "correction",
+      "activeTag": "BUTTON",
+      "activeId": "",
+      "firstRunVisible": false,
+      "mainRect": {
+        "x": 10,
+        "y": 12,
+        "width": 410,
+        "height": 932,
+        "top": 12,
+        "right": 420,
+        "bottom": 944,
+        "left": 10
+      }
+    }
+  ],
+  "responsive": [
+    {
+      "width": 320,
+      "height": 568,
+      "bodyOverflow": false,
+      "surface": "choice",
+      "state": "default",
+      "firstChoiceVisible": true,
+      "menuVisible": true,
+      "mainWidth": 300
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "bodyOverflow": false,
+      "surface": "choice",
+      "state": "default",
+      "firstChoiceVisible": true,
+      "menuVisible": true,
+      "mainWidth": 370
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "bodyOverflow": false,
+      "surface": "choice",
+      "state": "default",
+      "firstChoiceVisible": true,
+      "menuVisible": true,
+      "mainWidth": 410
+    },
+    {
+      "width": 1365,
+      "height": 599,
+      "bodyOverflow": false,
+      "surface": "choice",
+      "state": "default",
+      "firstChoiceVisible": true,
+      "menuVisible": true,
+      "mainWidth": 430
+    }
+  ],
+  "routeSmoke": [
+    {
+      "name": "Home",
+      "bodyClasses": "homeMode",
+      "bodyOverflow": false,
+      "visiblePrompt": "Welche Form passt zur Bedeutung?",
+      "homeVisible": true,
+      "settingsVisible": false,
+      "learningMapVisible": false,
+      "devVisible": false
+    },
+    {
+      "name": "Today B1 Sprint",
+      "bodyClasses": "b1Mode b1TypedCloze mobileClozeFocus",
+      "bodyOverflow": false,
+      "visiblePrompt": "Ergänze den Satz.Ich schicke Ihnen meine  per E-Mail.",
+      "homeVisible": false,
+      "settingsVisible": false,
+      "learningMapVisible": false,
+      "devVisible": false
+    },
+    {
+      "name": "Diagnostic Sprint",
+      "bodyClasses": "b1Mode b1TypedCloze",
+      "bodyOverflow": false,
+      "visiblePrompt": "Ergänze den Satz.Ich schicke Ihnen meine  per E-Mail.",
+      "homeVisible": false,
+      "settingsVisible": false,
+      "learningMapVisible": false,
+      "devVisible": false
+    },
+    {
+      "name": "Grammar hub",
+      "bodyClasses": "homeMode",
+      "bodyOverflow": false,
+      "visiblePrompt": "Ergänze den Satz.Ich schicke Ihnen meine  per E-Mail.",
+      "homeVisible": false,
+      "settingsVisible": false,
+      "learningMapVisible": false,
+      "devVisible": false
+    },
+    {
+      "name": "Connector Sprint",
+      "bodyClasses": "b1Mode",
+      "bodyOverflow": false,
+      "visiblePrompt": "Wähle die passende Form.Welcher Konnektor passt?",
+      "homeVisible": false,
+      "settingsVisible": false,
+      "learningMapVisible": false,
+      "devVisible": false
+    },
+    {
+      "name": "Wortschatz",
+      "bodyClasses": "b1Mode",
+      "bodyOverflow": false,
+      "visiblePrompt": "Wähle die passende Form.Sie möchten ein Rezept in der Apotheke nutzen. Welche Formulierung passt?",
+      "homeVisible": false,
+      "settingsVisible": false,
+      "learningMapVisible": false,
+      "devVisible": false
+    },
+    {
+      "name": "Redemittel",
+      "bodyClasses": "b1Mode b1TypedCloze mobileClozeFocus",
+      "bodyOverflow": false,
+      "visiblePrompt": "Ergänze den Satz.Der Termin passt mir leider .",
+      "homeVisible": false,
+      "settingsVisible": false,
+      "learningMapVisible": false,
+      "devVisible": false
+    },
+    {
+      "name": "Case Trainer",
+      "bodyClasses": "setupMode",
+      "bodyOverflow": false,
+      "visiblePrompt": "Ergänze den Satz.Der Termin passt mir leider .",
+      "homeVisible": false,
+      "settingsVisible": false,
+      "learningMapVisible": false,
+      "devVisible": false
+    },
+    {
+      "name": "Learning Map",
+      "bodyClasses": "homeMode",
+      "bodyOverflow": false,
+      "visiblePrompt": "Ergänze den Satz.Der Termin passt mir leider .",
+      "homeVisible": false,
+      "settingsVisible": false,
+      "learningMapVisible": true,
+      "devVisible": false
+    },
+    {
+      "name": "Settings",
+      "bodyClasses": "homeMode",
+      "bodyOverflow": false,
+      "visiblePrompt": "Ergänze den Satz.Der Termin passt mir leider .",
+      "homeVisible": false,
+      "settingsVisible": true,
+      "learningMapVisible": false,
+      "devVisible": false
+    },
+    {
+      "name": "Dev Tools",
+      "bodyClasses": "homeMode",
+      "bodyOverflow": false,
+      "visiblePrompt": "Ergänze den Satz.Der Termin passt mir leider .",
+      "homeVisible": false,
+      "settingsVisible": false,
+      "learningMapVisible": false,
+      "devVisible": true
+    }
+  ],
+  "arabicLtr": {
+    "promptDir": "ltr",
+    "glossDir": "ltr",
+    "inputDir": "ltr",
+    "ok": true,
+    "promptText": "Ergänze den Satz.Ich lerne Deutsch auf .",
+    "glossText": "Sie nennen Ihr Sprachniveau."
+  },
+  "saveUi": {
+    "exportVisible": true,
+    "importVisible": true
+  },
+  "consoleErrors": [],
+  "runtimeExceptions": [],
+  "errors": []
+}

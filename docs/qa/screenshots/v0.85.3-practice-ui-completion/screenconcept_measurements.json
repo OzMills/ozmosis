@@ -1,0 +1,135 @@
+{
+  "method": "ScreenConcept SVG viewBox/canvas and path geometry inspected as the canonical 430x932 reference; PNGs cross-checked visually because text is converted to outlines in the SVG files.",
+  "tolerance": {
+    "positionPx": "8-16 depending element",
+    "sizePx": "8-18 depending live content",
+    "fontPx": "2-4",
+    "note": "Live content may have four choice options while the supplied ChoiceDefault reference has three; dimensions and hierarchy are the acceptance target."
+  },
+  "canvas": {
+    "width": 430,
+    "height": 932
+  },
+  "appShell": {
+    "x": 9,
+    "y": 11,
+    "width": 412,
+    "height": 921,
+    "radius": 24
+  },
+  "topHeader": {
+    "x": 9,
+    "y": 11,
+    "width": 412,
+    "height": 84
+  },
+  "backControl": {
+    "x": 27,
+    "y": 31,
+    "width": 44,
+    "height": 44,
+    "radius": 12,
+    "glyphBox": {
+      "x": 43,
+      "y": 45,
+      "width": 14,
+      "height": 16
+    }
+  },
+  "wordmark": {
+    "x": 80,
+    "y": 43,
+    "width": 106,
+    "height": 24,
+    "fontSize": 22,
+    "fontWeight": 800
+  },
+  "menuControl": {
+    "x": 366,
+    "y": 31,
+    "width": 44,
+    "height": 44,
+    "radius": 12,
+    "note": "Visible in cloze/correction references; retained for all active practice states."
+  },
+  "mainPrompt": {
+    "x": 38,
+    "y": 112,
+    "width": 354,
+    "height": 58,
+    "fontSize": 21,
+    "lineHeight": 24
+  },
+  "cueSupport": {
+    "x": 53,
+    "y": 167,
+    "width": 324,
+    "height": 18,
+    "fontSize": 14,
+    "lineHeight": 18
+  },
+  "choiceButton": {
+    "x": 26,
+    "y": 197,
+    "width": 378,
+    "height": 45,
+    "radius": 12,
+    "gap": 8,
+    "fontSize": 16
+  },
+  "clozeInput": {
+    "x": 130,
+    "y": 110,
+    "width": 258,
+    "height": 34,
+    "radius": 7,
+    "fontSize": 20
+  },
+  "teachMeButton": {
+    "x": 231,
+    "y": 363,
+    "width": 172,
+    "height": 54,
+    "radius": 12,
+    "fontSize": 16
+  },
+  "hintPanel": {
+    "x": 26,
+    "y": 389,
+    "width": 378,
+    "height": 63,
+    "radius": 12,
+    "fontSize": 13
+  },
+  "feedbackPanel": {
+    "x": 26,
+    "y": 372,
+    "width": 378,
+    "height": 64,
+    "radius": 12,
+    "fontSize": 13
+  },
+  "confidenceRow": {
+    "x": 26,
+    "y": 521,
+    "width": 378,
+    "height": 45,
+    "gap": 7
+  },
+  "hudFooter": {
+    "x": 0,
+    "y": 844,
+    "width": 430,
+    "height": 88
+  },
+  "progressFill": {
+    "x": 0,
+    "y": 844,
+    "width": 42,
+    "height": 13
+  },
+  "safeAreaBottomSpacing": {
+    "y": 924,
+    "height": 8
+  }
+}

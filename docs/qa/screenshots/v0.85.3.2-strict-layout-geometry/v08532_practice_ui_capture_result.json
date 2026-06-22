@@ -1,0 +1,846 @@
+{
+  "ok": true,
+  "generatedAt": "2026-06-21T20:37:15.282Z",
+  "appVersion": "v0.85.3.2 - Strict Layout Geometry Fix Pass",
+  "exportVersion": "v0.85.3.2-strict-layout-geometry",
+  "screenshots": [
+    {
+      "name": "ChoiceDefault",
+      "file": "docs\\qa\\screenshots\\v0.85.3.2-strict-layout-geometry\\actual\\ChoiceDefault.png",
+      "check": {
+        "name": "ChoiceDefault",
+        "bodyOverflow": false,
+        "viewport": {
+          "width": 430,
+          "height": 932
+        },
+        "surface": "choice",
+        "state": "default",
+        "prompt": {
+          "x": 41,
+          "y": 119,
+          "width": 347,
+          "height": 29,
+          "text": "Welche Form passt zur Bedeutung?"
+        },
+        "cue": {
+          "x": 94,
+          "y": 157,
+          "width": 241,
+          "height": 16,
+          "text": "Show something to someone."
+        },
+        "wordmark": {
+          "x": 80,
+          "y": 50,
+          "width": 92,
+          "height": 22,
+          "text": "Ozmosis"
+        },
+        "starHidden": true,
+        "cuePrefixVisible": false,
+        "firstRunVisible": false,
+        "hud": {
+          "x": 0,
+          "y": 836,
+          "width": 430,
+          "height": 88,
+          "text": "0 / 20 Punkte0 Richtig0 Fehler0 FORTSCHRITT0 / 20"
+        },
+        "confidence": null,
+        "activeElement": {
+          "id": "",
+          "tag": "BUTTON"
+        }
+      }
+    },
+    {
+      "name": "ChoiceTeachMeHint",
+      "file": "docs\\qa\\screenshots\\v0.85.3.2-strict-layout-geometry\\actual\\ChoiceTeachMeHint.png",
+      "check": {
+        "name": "ChoiceTeachMeHint",
+        "bodyOverflow": false,
+        "viewport": {
+          "width": 430,
+          "height": 932
+        },
+        "surface": "choice",
+        "state": "hint",
+        "prompt": {
+          "x": 41,
+          "y": 119,
+          "width": 347,
+          "height": 29,
+          "text": "Welche Form passt zur Bedeutung?"
+        },
+        "cue": {
+          "x": 94,
+          "y": 157,
+          "width": 241,
+          "height": 16,
+          "text": "Show something to someone."
+        },
+        "wordmark": {
+          "x": 80,
+          "y": 50,
+          "width": 92,
+          "height": 22,
+          "text": "Ozmosis"
+        },
+        "starHidden": true,
+        "cuePrefixVisible": false,
+        "firstRunVisible": false,
+        "hud": {
+          "x": 0,
+          "y": 836,
+          "width": 430,
+          "height": 88,
+          "text": "0 / 20 Punkte0 Richtig0 Fehler0 FORTSCHRITT0 / 20"
+        },
+        "confidence": null,
+        "activeElement": {
+          "id": "",
+          "tag": "BUTTON"
+        }
+      }
+    },
+    {
+      "name": "ChoiceFail",
+      "file": "docs\\qa\\screenshots\\v0.85.3.2-strict-layout-geometry\\actual\\ChoiceFail.png",
+      "check": {
+        "name": "ChoiceFail",
+        "bodyOverflow": false,
+        "viewport": {
+          "width": 430,
+          "height": 932
+        },
+        "surface": "choice",
+        "state": "fail",
+        "prompt": {
+          "x": 41,
+          "y": 119,
+          "width": 347,
+          "height": 29,
+          "text": "Welche Form passt zur Bedeutung?"
+        },
+        "cue": {
+          "x": 94,
+          "y": 157,
+          "width": 241,
+          "height": 16,
+          "text": "Show something to someone."
+        },
+        "wordmark": {
+          "x": 80,
+          "y": 50,
+          "width": 92,
+          "height": 22,
+          "text": "Ozmosis"
+        },
+        "starHidden": true,
+        "cuePrefixVisible": false,
+        "firstRunVisible": false,
+        "hud": {
+          "x": 0,
+          "y": 836,
+          "width": 430,
+          "height": 88,
+          "text": "1 / 1 Punkte0 Richtig0 Fehler1 FORTSCHRITT1 / 1"
+        },
+        "confidence": {
+          "x": 26,
+          "y": 501,
+          "width": 378,
+          "height": 44,
+          "text": "I GUESSED I WAS UNSURE I KNEW IT"
+        },
+        "activeElement": {
+          "id": "",
+          "tag": "BUTTON"
+        }
+      }
+    },
+    {
+      "name": "ChoiceSuccess",
+      "file": "docs\\qa\\screenshots\\v0.85.3.2-strict-layout-geometry\\actual\\ChoiceSuccess.png",
+      "check": {
+        "name": "ChoiceSuccess",
+        "bodyOverflow": false,
+        "viewport": {
+          "width": 430,
+          "height": 932
+        },
+        "surface": "choice",
+        "state": "success",
+        "prompt": {
+          "x": 41,
+          "y": 119,
+          "width": 347,
+          "height": 29,
+          "text": "Welche Form passt zur Bedeutung?"
+        },
+        "cue": {
+          "x": 94,
+          "y": 157,
+          "width": 241,
+          "height": 16,
+          "text": "Show something to someone."
+        },
+        "wordmark": {
+          "x": 80,
+          "y": 50,
+          "width": 92,
+          "height": 22,
+          "text": "Ozmosis"
+        },
+        "starHidden": true,
+        "cuePrefixVisible": false,
+        "firstRunVisible": false,
+        "hud": {
+          "x": 0,
+          "y": 836,
+          "width": 430,
+          "height": 88,
+          "text": "1 / 1 Punkte100 Richtig1 Fehler0 FORTSCHRITT1 / 1"
+        },
+        "confidence": {
+          "x": 26,
+          "y": 468,
+          "width": 378,
+          "height": 44,
+          "text": "I GUESSED I WAS UNSURE I KNEW IT"
+        },
+        "activeElement": {
+          "id": "",
+          "tag": "BUTTON"
+        }
+      }
+    },
+    {
+      "name": "ClozeDefault",
+      "file": "docs\\qa\\screenshots\\v0.85.3.2-strict-layout-geometry\\actual\\ClozeDefault.png",
+      "check": {
+        "name": "ClozeDefault",
+        "bodyOverflow": false,
+        "viewport": {
+          "width": 430,
+          "height": 932
+        },
+        "surface": "cloze",
+        "state": "default",
+        "prompt": {
+          "x": 26,
+          "y": 110,
+          "width": 378,
+          "height": 58,
+          "text": "Niveau ."
+        },
+        "cue": {
+          "x": 94,
+          "y": 177,
+          "width": 241,
+          "height": 16,
+          "text": "Sie nennen Ihr Sprachniveau."
+        },
+        "wordmark": {
+          "x": 80,
+          "y": 50,
+          "width": 92,
+          "height": 22,
+          "text": "Ozmosis"
+        },
+        "starHidden": true,
+        "cuePrefixVisible": false,
+        "firstRunVisible": false,
+        "hud": {
+          "x": 0,
+          "y": 836,
+          "width": 430,
+          "height": 88,
+          "text": "1 / 1 Punkte100 Richtig1 Fehler0 FORTSCHRITT1 / 1"
+        },
+        "confidence": null,
+        "activeElement": {
+          "id": "b1InlineInput",
+          "tag": "INPUT"
+        }
+      }
+    },
+    {
+      "name": "ClozeTyping",
+      "file": "docs\\qa\\screenshots\\v0.85.3.2-strict-layout-geometry\\actual\\ClozeTyping.png",
+      "check": {
+        "name": "ClozeTyping",
+        "bodyOverflow": false,
+        "viewport": {
+          "width": 430,
+          "height": 932
+        },
+        "surface": "cloze",
+        "state": "typing",
+        "prompt": {
+          "x": 26,
+          "y": 110,
+          "width": 378,
+          "height": 58,
+          "text": "Niveau ."
+        },
+        "cue": {
+          "x": 94,
+          "y": 177,
+          "width": 241,
+          "height": 16,
+          "text": "Sie nennen Ihr Sprachniveau."
+        },
+        "wordmark": {
+          "x": 80,
+          "y": 50,
+          "width": 92,
+          "height": 22,
+          "text": "Ozmosis"
+        },
+        "starHidden": true,
+        "cuePrefixVisible": false,
+        "firstRunVisible": false,
+        "hud": {
+          "x": 0,
+          "y": 836,
+          "width": 430,
+          "height": 88,
+          "text": "1 / 1 Punkte100 Richtig1 Fehler0 FORTSCHRITT1 / 1"
+        },
+        "confidence": null,
+        "activeElement": {
+          "id": "b1InlineInput",
+          "tag": "INPUT"
+        }
+      }
+    },
+    {
+      "name": "ClozeFail",
+      "file": "docs\\qa\\screenshots\\v0.85.3.2-strict-layout-geometry\\actual\\ClozeFail.png",
+      "check": {
+        "name": "ClozeFail",
+        "bodyOverflow": false,
+        "viewport": {
+          "width": 430,
+          "height": 932
+        },
+        "surface": "cloze",
+        "state": "fail",
+        "prompt": {
+          "x": 26,
+          "y": 110,
+          "width": 378,
+          "height": 58,
+          "text": "Niveau B1."
+        },
+        "cue": {
+          "x": 94,
+          "y": 177,
+          "width": 241,
+          "height": 16,
+          "text": "You name your language level."
+        },
+        "wordmark": {
+          "x": 80,
+          "y": 50,
+          "width": 92,
+          "height": 22,
+          "text": "Ozmosis"
+        },
+        "starHidden": true,
+        "cuePrefixVisible": false,
+        "firstRunVisible": false,
+        "hud": {
+          "x": 0,
+          "y": 836,
+          "width": 430,
+          "height": 88,
+          "text": "1 / 1 Punkte0 Richtig0 Fehler1 FORTSCHRITT1 / 1"
+        },
+        "confidence": {
+          "x": 26,
+          "y": 382,
+          "width": 378,
+          "height": 44,
+          "text": "I GUESSED I WAS UNSURE I KNEW IT"
+        },
+        "activeElement": {
+          "id": "",
+          "tag": "BUTTON"
+        }
+      }
+    },
+    {
+      "name": "ClozeSuccess",
+      "file": "docs\\qa\\screenshots\\v0.85.3.2-strict-layout-geometry\\actual\\ClozeSuccess.png",
+      "check": {
+        "name": "ClozeSuccess",
+        "bodyOverflow": false,
+        "viewport": {
+          "width": 430,
+          "height": 932
+        },
+        "surface": "cloze",
+        "state": "success",
+        "prompt": {
+          "x": 26,
+          "y": 110,
+          "width": 378,
+          "height": 58,
+          "text": "Niveau B1."
+        },
+        "cue": {
+          "x": 94,
+          "y": 177,
+          "width": 241,
+          "height": 16,
+          "text": "You name your language level."
+        },
+        "wordmark": {
+          "x": 80,
+          "y": 50,
+          "width": 92,
+          "height": 22,
+          "text": "Ozmosis"
+        },
+        "starHidden": true,
+        "cuePrefixVisible": false,
+        "firstRunVisible": false,
+        "hud": {
+          "x": 0,
+          "y": 836,
+          "width": 430,
+          "height": 88,
+          "text": "1 / 1 Punkte100 Richtig1 Fehler0 FORTSCHRITT1 / 1"
+        },
+        "confidence": {
+          "x": 26,
+          "y": 356,
+          "width": 378,
+          "height": 44,
+          "text": "I GUESSED I WAS UNSURE I KNEW IT"
+        },
+        "activeElement": {
+          "id": "",
+          "tag": "BUTTON"
+        }
+      }
+    },
+    {
+      "name": "CorrectionDefaultFilled",
+      "file": "docs\\qa\\screenshots\\v0.85.3.2-strict-layout-geometry\\actual\\CorrectionDefaultFilled.png",
+      "check": {
+        "name": "CorrectionDefaultFilled",
+        "bodyOverflow": false,
+        "viewport": {
+          "width": 430,
+          "height": 932
+        },
+        "surface": "correction",
+        "state": "typing",
+        "prompt": {
+          "x": 65,
+          "y": 119,
+          "width": 300,
+          "height": 44,
+          "text": "Bearbeite die Aufgabe.Korrigiere den Satz."
+        },
+        "cue": {
+          "x": 94,
+          "y": 172,
+          "width": 241,
+          "height": 15,
+          "text": ""
+        },
+        "wordmark": {
+          "x": 80,
+          "y": 50,
+          "width": 92,
+          "height": 22,
+          "text": "Ozmosis"
+        },
+        "starHidden": true,
+        "cuePrefixVisible": false,
+        "firstRunVisible": false,
+        "hud": {
+          "x": 0,
+          "y": 836,
+          "width": 430,
+          "height": 88,
+          "text": "1 / 1 Punkte100 Richtig1 Fehler0 FORTSCHRITT1 / 1"
+        },
+        "confidence": null,
+        "activeElement": {
+          "id": "answerInput",
+          "tag": "INPUT"
+        }
+      }
+    },
+    {
+      "name": "CorrectionFail",
+      "file": "docs\\qa\\screenshots\\v0.85.3.2-strict-layout-geometry\\actual\\CorrectionFail.png",
+      "check": {
+        "name": "CorrectionFail",
+        "bodyOverflow": false,
+        "viewport": {
+          "width": 430,
+          "height": 932
+        },
+        "surface": "correction",
+        "state": "fail",
+        "prompt": {
+          "x": 65,
+          "y": 119,
+          "width": 300,
+          "height": 44,
+          "text": "Bearbeite die Aufgabe.Korrigiere den Satz."
+        },
+        "cue": {
+          "x": 94,
+          "y": 172,
+          "width": 241,
+          "height": 16,
+          "text": "I am staying at home because I am ill."
+        },
+        "wordmark": {
+          "x": 80,
+          "y": 50,
+          "width": 92,
+          "height": 22,
+          "text": "Ozmosis"
+        },
+        "starHidden": true,
+        "cuePrefixVisible": false,
+        "firstRunVisible": false,
+        "hud": {
+          "x": 0,
+          "y": 836,
+          "width": 430,
+          "height": 88,
+          "text": "1 / 1 Punkte0 Richtig0 Fehler1 FORTSCHRITT1 / 1"
+        },
+        "confidence": {
+          "x": 26,
+          "y": 496,
+          "width": 378,
+          "height": 44,
+          "text": "I GUESSED I WAS UNSURE I KNEW IT"
+        },
+        "activeElement": {
+          "id": "",
+          "tag": "BUTTON"
+        }
+      }
+    },
+    {
+      "name": "CorrectionSuccess",
+      "file": "docs\\qa\\screenshots\\v0.85.3.2-strict-layout-geometry\\actual\\CorrectionSuccess.png",
+      "check": {
+        "name": "CorrectionSuccess",
+        "bodyOverflow": false,
+        "viewport": {
+          "width": 430,
+          "height": 932
+        },
+        "surface": "correction",
+        "state": "success",
+        "prompt": {
+          "x": 65,
+          "y": 119,
+          "width": 300,
+          "height": 44,
+          "text": "Bearbeite die Aufgabe.Korrigiere den Satz."
+        },
+        "cue": {
+          "x": 94,
+          "y": 172,
+          "width": 241,
+          "height": 16,
+          "text": "I am staying at home because I am ill."
+        },
+        "wordmark": {
+          "x": 80,
+          "y": 50,
+          "width": 92,
+          "height": 22,
+          "text": "Ozmosis"
+        },
+        "starHidden": true,
+        "cuePrefixVisible": false,
+        "firstRunVisible": false,
+        "hud": {
+          "x": 0,
+          "y": 836,
+          "width": 430,
+          "height": 88,
+          "text": "1 / 1 Punkte100 Richtig1 Fehler0 FORTSCHRITT1 / 1"
+        },
+        "confidence": {
+          "x": 26,
+          "y": 442,
+          "width": 378,
+          "height": 44,
+          "text": "I GUESSED I WAS UNSURE I KNEW IT"
+        },
+        "activeElement": {
+          "id": "",
+          "tag": "BUTTON"
+        }
+      }
+    },
+    {
+      "name": "ChoiceWidthCheck",
+      "file": "docs\\qa\\screenshots\\v0.85.3.2-strict-layout-geometry\\actual\\ChoiceWidthCheck.png",
+      "check": {
+        "aliasOf": "ChoiceDefault.png"
+      }
+    },
+    {
+      "name": "TeachMePositionCheck",
+      "file": "docs\\qa\\screenshots\\v0.85.3.2-strict-layout-geometry\\actual\\TeachMePositionCheck.png",
+      "check": {
+        "aliasOf": "ChoiceDefault.png"
+      }
+    },
+    {
+      "name": "ClozeInputGeometryCheck",
+      "file": "docs\\qa\\screenshots\\v0.85.3.2-strict-layout-geometry\\actual\\ClozeInputGeometryCheck.png",
+      "check": {
+        "aliasOf": "ClozeDefault.png"
+      }
+    },
+    {
+      "name": "CorrectionWidthCheck",
+      "file": "docs\\qa\\screenshots\\v0.85.3.2-strict-layout-geometry\\actual\\CorrectionWidthCheck.png",
+      "check": {
+        "aliasOf": "CorrectionDefaultFilled.png"
+      }
+    },
+    {
+      "name": "FeedbackConfidenceWidthCheck",
+      "file": "docs\\qa\\screenshots\\v0.85.3.2-strict-layout-geometry\\actual\\FeedbackConfidenceWidthCheck.png",
+      "check": {
+        "aliasOf": "ChoiceFail.png"
+      }
+    },
+    {
+      "name": "PreAnswerNoStarStatusCheck",
+      "file": "docs\\qa\\screenshots\\v0.85.3.2-strict-layout-geometry\\actual\\PreAnswerNoStarStatusCheck.png",
+      "check": {
+        "aliasOf": "ChoiceDefault.png"
+      }
+    }
+  ],
+  "responsive": [
+    {
+      "width": 320,
+      "height": 568,
+      "bodyOverflow": false,
+      "promptTop": 97,
+      "inputVisible": true,
+      "teachVisible": true,
+      "menuVisible": true,
+      "hudTop": 472
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "bodyOverflow": false,
+      "promptTop": 110,
+      "inputVisible": true,
+      "teachVisible": true,
+      "menuVisible": true,
+      "hudTop": 748
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "bodyOverflow": false,
+      "promptTop": 110,
+      "inputVisible": true,
+      "teachVisible": true,
+      "menuVisible": true,
+      "hudTop": 836
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "bodyOverflow": false,
+      "promptTop": 102,
+      "inputVisible": true,
+      "teachVisible": true,
+      "menuVisible": true,
+      "hudTop": 928
+    },
+    {
+      "width": 1365,
+      "height": 599,
+      "bodyOverflow": false,
+      "promptTop": 95,
+      "inputVisible": true,
+      "teachVisible": true,
+      "menuVisible": true,
+      "hudTop": 503
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "bodyOverflow": false,
+      "promptTop": 102,
+      "inputVisible": true,
+      "teachVisible": true,
+      "menuVisible": true,
+      "hudTop": 804
+    }
+  ],
+  "routeSmoke": [
+    {
+      "name": "Home",
+      "bodyClasses": "homeMode",
+      "bodyOverflow": false,
+      "b1Mode": false,
+      "settingsVisible": false,
+      "learningMapVisible": false,
+      "devVisible": false,
+      "testerVisible": false
+    },
+    {
+      "name": "Today B1 Sprint",
+      "bodyClasses": "b1Mode b1TypedCloze mobileClozeFocus",
+      "bodyOverflow": false,
+      "b1Mode": true,
+      "settingsVisible": false,
+      "learningMapVisible": false,
+      "devVisible": false,
+      "testerVisible": false
+    },
+    {
+      "name": "Diagnostic Sprint",
+      "bodyClasses": "b1Mode b1TypedCloze mobileClozeFocus",
+      "bodyOverflow": false,
+      "b1Mode": true,
+      "settingsVisible": false,
+      "learningMapVisible": false,
+      "devVisible": false,
+      "testerVisible": false
+    },
+    {
+      "name": "Grammar / Repair & Transformation",
+      "bodyClasses": "b1Mode b1LongAnswer",
+      "bodyOverflow": false,
+      "b1Mode": true,
+      "settingsVisible": false,
+      "learningMapVisible": false,
+      "devVisible": false,
+      "testerVisible": false
+    },
+    {
+      "name": "Connectors",
+      "bodyClasses": "b1Mode",
+      "bodyOverflow": false,
+      "b1Mode": true,
+      "settingsVisible": false,
+      "learningMapVisible": false,
+      "devVisible": false,
+      "testerVisible": false
+    },
+    {
+      "name": "Wortschatz",
+      "bodyClasses": "b1Mode b1TypedCloze mobileClozeFocus",
+      "bodyOverflow": false,
+      "b1Mode": true,
+      "settingsVisible": false,
+      "learningMapVisible": false,
+      "devVisible": false,
+      "testerVisible": false
+    },
+    {
+      "name": "Redemittel",
+      "bodyClasses": "b1Mode b1TypedCloze mobileClozeFocus",
+      "bodyOverflow": false,
+      "b1Mode": true,
+      "settingsVisible": false,
+      "learningMapVisible": false,
+      "devVisible": false,
+      "testerVisible": false
+    },
+    {
+      "name": "Case Trainer",
+      "bodyClasses": "setupMode",
+      "bodyOverflow": false,
+      "b1Mode": false,
+      "settingsVisible": false,
+      "learningMapVisible": false,
+      "devVisible": false,
+      "testerVisible": false
+    },
+    {
+      "name": "Learning Map",
+      "bodyClasses": "homeMode",
+      "bodyOverflow": false,
+      "b1Mode": false,
+      "settingsVisible": false,
+      "learningMapVisible": true,
+      "devVisible": false,
+      "testerVisible": false
+    },
+    {
+      "name": "Options",
+      "bodyClasses": "homeMode",
+      "bodyOverflow": false,
+      "b1Mode": false,
+      "settingsVisible": true,
+      "learningMapVisible": false,
+      "devVisible": false,
+      "testerVisible": false
+    },
+    {
+      "name": "Dev Tools",
+      "bodyClasses": "homeMode",
+      "bodyOverflow": false,
+      "b1Mode": false,
+      "settingsVisible": false,
+      "learningMapVisible": false,
+      "devVisible": true,
+      "testerVisible": false
+    },
+    {
+      "name": "Tester Notes / Known Bugs",
+      "bodyClasses": "homeMode",
+      "bodyOverflow": false,
+      "b1Mode": false,
+      "settingsVisible": false,
+      "learningMapVisible": false,
+      "devVisible": false,
+      "testerVisible": true
+    }
+  ],
+  "arabicLtr": {
+    "promptDir": "ltr",
+    "glossDir": "ltr",
+    "inputDir": "ltr",
+    "teachDir": "ltr",
+    "ok": true
+  },
+  "exportImport": {
+    "exportVersion": "v0.85.3.2-strict-layout-geometry",
+    "payloadVersion": "v0.85.3.2-strict-layout-geometry",
+    "validationOk": true,
+    "applied": true,
+    "malformedRejected": true,
+    "exportSaveVisible": true,
+    "importSaveVisible": true
+  },
+  "keyboardFocus": {
+    "inputFocused": true,
+    "checkVisible": true,
+    "checkFocused": true
+  },
+  "comparison": "docs\\qa\\screenshots\\v0.85.3.2-strict-layout-geometry\\comparison.html",
+  "contactSheet": "docs\\qa\\screenshots\\v0.85.3.2-strict-layout-geometry\\comparison-contact-sheet.png",
+  "consoleErrors": [],
+  "runtimeExceptions": [],
+  "errors": []
+}

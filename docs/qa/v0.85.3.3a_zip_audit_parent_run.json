@@ -1,0 +1,33 @@
+﻿{
+  "ok": true,
+  "zipDir": "C:\\Users\\rossm\\Documents\\German Learning",
+  "zipCount": 3,
+  "csv": "docs/qa/v0.85.3.3a_old_zip_delete_manifest_parent.csv",
+  "markdown": "docs/qa/v0.85.3.3a_old_zip_delete_manifest_parent.md",
+  "results": [
+    {
+      "zipFile": "C:\\Users\\rossm\\Documents\\German Learning\\German Learning Folder.zip",
+      "entryCount": 1160,
+      "compressedBytes": 159178096,
+      "uncompressedBytes": 187417502,
+      "flaggedEntryCount": 218,
+      "recommendation": "delete_whole_zip_if_superseded"
+    },
+    {
+      "zipFile": "C:\\Users\\rossm\\Documents\\German Learning\\ozmosis_actual_fullpage_screens_core_v0_3.zip",
+      "entryCount": 61,
+      "compressedBytes": 15947947,
+      "uncompressedBytes": 16245200,
+      "flaggedEntryCount": 0,
+      "recommendation": "keep"
+    },
+    {
+      "zipFile": "C:\\Users\\rossm\\Documents\\German Learning\\OZMOSIS_TASKS_B1_CAT01-18_FULL_TASK_QUALITY_REWRITE_v0_2_FINAL_RECONCILED.zip",
+      "entryCount": 20,
+      "compressedBytes": 2795438,
+      "uncompressedBytes": 3240511,
+      "flaggedEntryCount": 20,
+      "recommendation": "rebuild_cleanly"
+    }
+  ]
+}

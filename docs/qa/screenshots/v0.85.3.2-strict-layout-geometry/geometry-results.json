@@ -1,0 +1,1340 @@
+{
+  "ok": true,
+  "generatedAt": "2026-06-21T20:36:36.545Z",
+  "viewport": {
+    "width": 430,
+    "height": 932
+  },
+  "appVersion": "v0.85.3.2 - Strict Layout Geometry Fix Pass",
+  "exportVersion": "v0.85.3.2-strict-layout-geometry",
+  "measurements": {
+    "ChoiceDefault": {
+      "label": "ChoiceDefault",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "bodyOverflow": false,
+      "surface": "choice",
+      "state": "default",
+      "main": {
+        "x": 10,
+        "y": 12,
+        "width": 410,
+        "height": 932,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "radius": "0px",
+        "text": "Ozmosis ☰ Ozmosis Recommended Task Recommended Task B1.1 Practice Practical Admin and Appointments > ? First visit? Test"
+      },
+      "header": {
+        "x": 10,
+        "y": 23,
+        "width": 410,
+        "height": 84,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "radius": "0px",
+        "text": "Ozmosis ☰"
+      },
+      "backButton": {
+        "x": 27,
+        "y": 31,
+        "width": 44,
+        "height": 44,
+        "display": "grid",
+        "visibility": "visible",
+        "fontSize": "27.2px",
+        "lineHeight": "27.2px",
+        "radius": "12px",
+        "text": "<"
+      },
+      "wordmark": {
+        "x": 80,
+        "y": 50,
+        "width": 92.2,
+        "height": 21.8,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "21.76px",
+        "lineHeight": "21.76px",
+        "radius": "0px",
+        "text": "Ozmosis"
+      },
+      "menuButton": {
+        "x": 348,
+        "y": 43,
+        "width": 44,
+        "height": 44,
+        "display": "inline-block",
+        "visibility": "visible",
+        "fontSize": "21.44px",
+        "lineHeight": "21.44px",
+        "radius": "12px",
+        "text": "☰"
+      },
+      "prompt": {
+        "x": 41.3,
+        "y": 119,
+        "width": 347.5,
+        "height": 28.5,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "22.575px",
+        "lineHeight": "26.4128px",
+        "radius": "0px",
+        "text": "Welche Form passt zur Bedeutung?"
+      },
+      "cue": {
+        "x": 94.3,
+        "y": 156.5,
+        "width": 241.5,
+        "height": 16,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "13.12px",
+        "lineHeight": "16.0064px",
+        "radius": "0px",
+        "text": "Show something to someone."
+      },
+      "choiceButtons": [
+        {
+          "x": 26,
+          "y": 196.5,
+          "width": 378,
+          "height": 42,
+          "display": "block",
+          "fontSize": "16.32px",
+          "radius": "12px",
+          "text": "erklären"
+        },
+        {
+          "x": 26,
+          "y": 240.5,
+          "width": 378,
+          "height": 42,
+          "display": "block",
+          "fontSize": "16.32px",
+          "radius": "12px",
+          "text": "finden"
+        },
+        {
+          "x": 26,
+          "y": 284.5,
+          "width": 378,
+          "height": 42,
+          "display": "block",
+          "fontSize": "16.32px",
+          "radius": "12px",
+          "text": "zeigen"
+        }
+      ],
+      "clozeInput": null,
+      "answerInput": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "display": "none",
+        "visibility": "visible",
+        "fontSize": "14.835px",
+        "lineHeight": "17.5053px",
+        "radius": "12px",
+        "text": ""
+      },
+      "teachMe": null,
+      "hintButton": {
+        "x": 233,
+        "y": 362.5,
+        "width": 172,
+        "height": 54,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "13.76px",
+        "lineHeight": "normal",
+        "radius": "12px",
+        "text": "Teach me"
+      },
+      "hintPanel": null,
+      "feedbackPanel": null,
+      "confidenceRow": null,
+      "hud": {
+        "x": 0,
+        "y": 836,
+        "width": 430,
+        "height": 88,
+        "display": "grid",
+        "visibility": "visible",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "radius": "20px 20px 0px 0px",
+        "text": "0 / 20 Punkte0 Richtig0 Fehler0 FORTSCHRITT0 / 20"
+      },
+      "starStatus": {
+        "hidden": true,
+        "display": "none",
+        "height": 0,
+        "text": ""
+      }
+    },
+    "ChoiceTeachMeHint": {
+      "label": "ChoiceTeachMeHint",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "bodyOverflow": false,
+      "surface": "choice",
+      "state": "hint",
+      "main": {
+        "x": 10,
+        "y": 12,
+        "width": 410,
+        "height": 932,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "radius": "0px",
+        "text": "Ozmosis ☰ Ozmosis Recommended Task Recommended Task B1.1 Practice Practical Admin and Appointments > ? First visit? Test"
+      },
+      "header": {
+        "x": 10,
+        "y": 23,
+        "width": 410,
+        "height": 84,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "radius": "0px",
+        "text": "Ozmosis ☰"
+      },
+      "backButton": {
+        "x": 27,
+        "y": 31,
+        "width": 44,
+        "height": 44,
+        "display": "grid",
+        "visibility": "visible",
+        "fontSize": "27.2px",
+        "lineHeight": "27.2px",
+        "radius": "12px",
+        "text": "<"
+      },
+      "wordmark": {
+        "x": 80,
+        "y": 50,
+        "width": 92.2,
+        "height": 21.8,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "21.76px",
+        "lineHeight": "21.76px",
+        "radius": "0px",
+        "text": "Ozmosis"
+      },
+      "menuButton": {
+        "x": 348,
+        "y": 43,
+        "width": 44,
+        "height": 44,
+        "display": "inline-block",
+        "visibility": "visible",
+        "fontSize": "21.44px",
+        "lineHeight": "21.44px",
+        "radius": "12px",
+        "text": "☰"
+      },
+      "prompt": {
+        "x": 41.3,
+        "y": 119,
+        "width": 347.5,
+        "height": 28.5,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "22.575px",
+        "lineHeight": "26.4128px",
+        "radius": "0px",
+        "text": "Welche Form passt zur Bedeutung?"
+      },
+      "cue": {
+        "x": 94.3,
+        "y": 156.5,
+        "width": 241.5,
+        "height": 16,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "13.12px",
+        "lineHeight": "16.0064px",
+        "radius": "0px",
+        "text": "Show something to someone."
+      },
+      "choiceButtons": [
+        {
+          "x": 26,
+          "y": 196.5,
+          "width": 378,
+          "height": 42,
+          "display": "block",
+          "fontSize": "16.32px",
+          "radius": "12px",
+          "text": "erklären"
+        },
+        {
+          "x": 26,
+          "y": 240.5,
+          "width": 378,
+          "height": 42,
+          "display": "block",
+          "fontSize": "16.32px",
+          "radius": "12px",
+          "text": "finden"
+        },
+        {
+          "x": 26,
+          "y": 284.5,
+          "width": 378,
+          "height": 42,
+          "display": "block",
+          "fontSize": "16.32px",
+          "radius": "12px",
+          "text": "zeigen"
+        }
+      ],
+      "clozeInput": null,
+      "answerInput": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "display": "none",
+        "visibility": "visible",
+        "fontSize": "14.835px",
+        "lineHeight": "17.5053px",
+        "radius": "12px",
+        "text": ""
+      },
+      "teachMe": null,
+      "hintButton": {
+        "x": 233,
+        "y": 362.5,
+        "width": 172,
+        "height": 54,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "13.76px",
+        "lineHeight": "normal",
+        "radius": "12px",
+        "text": "Teach me"
+      },
+      "hintPanel": {
+        "x": 26,
+        "y": 429.5,
+        "width": 378,
+        "height": 55,
+        "display": "grid",
+        "visibility": "visible",
+        "fontSize": "12.9px",
+        "lineHeight": "16.512px",
+        "radius": "12px",
+        "text": "Use the meaning first, then choose the natural German sentence."
+      },
+      "feedbackPanel": null,
+      "confidenceRow": null,
+      "hud": {
+        "x": 0,
+        "y": 836,
+        "width": 430,
+        "height": 88,
+        "display": "grid",
+        "visibility": "visible",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "radius": "20px 20px 0px 0px",
+        "text": "0 / 20 Punkte0 Richtig0 Fehler0 FORTSCHRITT0 / 20"
+      },
+      "starStatus": {
+        "hidden": true,
+        "display": "none",
+        "height": 0,
+        "text": ""
+      }
+    },
+    "ClozeDefault": {
+      "label": "ClozeDefault",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "bodyOverflow": false,
+      "surface": "cloze",
+      "state": "default",
+      "main": {
+        "x": 10,
+        "y": 12,
+        "width": 410,
+        "height": 568,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "radius": "0px",
+        "text": "Ozmosis ☰ Ozmosis Recommended Task Recommended Task B1.1 Practice Practical Admin and Appointments > ? First visit? Test"
+      },
+      "header": {
+        "x": 10,
+        "y": 23,
+        "width": 410,
+        "height": 84,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "radius": "0px",
+        "text": "Ozmosis ☰"
+      },
+      "backButton": {
+        "x": 27,
+        "y": 31,
+        "width": 44,
+        "height": 44,
+        "display": "grid",
+        "visibility": "visible",
+        "fontSize": "27.2px",
+        "lineHeight": "27.2px",
+        "radius": "12px",
+        "text": "<"
+      },
+      "wordmark": {
+        "x": 80,
+        "y": 50,
+        "width": 92.2,
+        "height": 21.8,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "21.76px",
+        "lineHeight": "21.76px",
+        "radius": "0px",
+        "text": "Ozmosis"
+      },
+      "menuButton": {
+        "x": 348,
+        "y": 43,
+        "width": 44,
+        "height": 44,
+        "display": "inline-block",
+        "visibility": "visible",
+        "fontSize": "21.44px",
+        "lineHeight": "21.44px",
+        "radius": "12px",
+        "text": "☰"
+      },
+      "prompt": {
+        "x": 26,
+        "y": 110,
+        "width": 378,
+        "height": 58,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "22.36px",
+        "lineHeight": "26.1612px",
+        "radius": "0px",
+        "text": "Niveau ."
+      },
+      "cue": {
+        "x": 94.3,
+        "y": 177,
+        "width": 241.5,
+        "height": 16,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "13.12px",
+        "lineHeight": "16.0064px",
+        "radius": "0px",
+        "text": "Sie nennen Ihr Sprachniveau."
+      },
+      "choiceButtons": [],
+      "clozeInput": {
+        "x": 122.9,
+        "y": 110,
+        "width": 258,
+        "height": 34,
+        "display": "inline-block",
+        "visibility": "visible",
+        "fontSize": "18.06px",
+        "lineHeight": "18.963px",
+        "radius": "7px",
+        "text": ""
+      },
+      "answerInput": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "display": "none",
+        "visibility": "visible",
+        "fontSize": "14.835px",
+        "lineHeight": "17.5053px",
+        "radius": "12px",
+        "text": ""
+      },
+      "teachMe": {
+        "x": 232,
+        "y": 234,
+        "width": 172,
+        "height": 54,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "13.76px",
+        "lineHeight": "normal",
+        "radius": "12px",
+        "text": "Teach me"
+      },
+      "hintButton": null,
+      "hintPanel": null,
+      "feedbackPanel": null,
+      "confidenceRow": null,
+      "hud": {
+        "x": 0,
+        "y": 836,
+        "width": 430,
+        "height": 88,
+        "display": "grid",
+        "visibility": "visible",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "radius": "20px 20px 0px 0px",
+        "text": "0 / 20 Punkte0 Richtig0 Fehler0 FORTSCHRITT0 / 20"
+      },
+      "starStatus": {
+        "hidden": true,
+        "display": "none",
+        "height": 0,
+        "text": ""
+      }
+    },
+    "ClozeTyping": {
+      "label": "ClozeTyping",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "bodyOverflow": false,
+      "surface": "cloze",
+      "state": "typing",
+      "main": {
+        "x": 10,
+        "y": 12,
+        "width": 410,
+        "height": 560,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "radius": "0px",
+        "text": "Ozmosis ☰ Ozmosis Recommended Task Recommended Task B1.1 Practice Practical Admin and Appointments > ? First visit? Test"
+      },
+      "header": {
+        "x": 10,
+        "y": 23,
+        "width": 410,
+        "height": 84,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "radius": "0px",
+        "text": "Ozmosis ☰"
+      },
+      "backButton": {
+        "x": 27,
+        "y": 31,
+        "width": 44,
+        "height": 44,
+        "display": "grid",
+        "visibility": "visible",
+        "fontSize": "27.2px",
+        "lineHeight": "27.2px",
+        "radius": "12px",
+        "text": "<"
+      },
+      "wordmark": {
+        "x": 80,
+        "y": 50,
+        "width": 92.2,
+        "height": 21.8,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "21.76px",
+        "lineHeight": "21.76px",
+        "radius": "0px",
+        "text": "Ozmosis"
+      },
+      "menuButton": {
+        "x": 348,
+        "y": 43,
+        "width": 44,
+        "height": 44,
+        "display": "inline-block",
+        "visibility": "visible",
+        "fontSize": "21.44px",
+        "lineHeight": "21.44px",
+        "radius": "12px",
+        "text": "☰"
+      },
+      "prompt": {
+        "x": 26,
+        "y": 110,
+        "width": 378,
+        "height": 58,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "22.36px",
+        "lineHeight": "26.1612px",
+        "radius": "0px",
+        "text": "Niveau ."
+      },
+      "cue": {
+        "x": 94.3,
+        "y": 177,
+        "width": 241.5,
+        "height": 16,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "13.12px",
+        "lineHeight": "16.0064px",
+        "radius": "0px",
+        "text": "Sie nennen Ihr Sprachniveau."
+      },
+      "choiceButtons": [],
+      "clozeInput": {
+        "x": 122.9,
+        "y": 110,
+        "width": 258,
+        "height": 34,
+        "display": "inline-block",
+        "visibility": "visible",
+        "fontSize": "18.06px",
+        "lineHeight": "18.963px",
+        "radius": "7px",
+        "text": ""
+      },
+      "answerInput": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "display": "none",
+        "visibility": "visible",
+        "fontSize": "14.835px",
+        "lineHeight": "17.5053px",
+        "radius": "12px",
+        "text": ""
+      },
+      "teachMe": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "display": "none",
+        "visibility": "visible",
+        "fontSize": "13.76px",
+        "lineHeight": "normal",
+        "radius": "12px",
+        "text": "Teach me"
+      },
+      "hintButton": null,
+      "hintPanel": null,
+      "feedbackPanel": null,
+      "confidenceRow": null,
+      "hud": {
+        "x": 0,
+        "y": 836,
+        "width": 430,
+        "height": 88,
+        "display": "grid",
+        "visibility": "visible",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "radius": "20px 20px 0px 0px",
+        "text": "0 / 20 Punkte0 Richtig0 Fehler0 FORTSCHRITT0 / 20"
+      },
+      "starStatus": {
+        "hidden": true,
+        "display": "none",
+        "height": 0,
+        "text": ""
+      }
+    },
+    "CorrectionDefaultFilled": {
+      "label": "CorrectionDefaultFilled",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "bodyOverflow": false,
+      "surface": "correction",
+      "state": "typing",
+      "main": {
+        "x": 10,
+        "y": 12,
+        "width": 410,
+        "height": 932,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "radius": "0px",
+        "text": "Ozmosis ☰ Ozmosis Recommended Task Recommended Task B1.1 Practice Practical Admin and Appointments > ? First visit? Test"
+      },
+      "header": {
+        "x": 10,
+        "y": 23,
+        "width": 410,
+        "height": 84,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "radius": "0px",
+        "text": "Ozmosis ☰"
+      },
+      "backButton": {
+        "x": 27,
+        "y": 31,
+        "width": 44,
+        "height": 44,
+        "display": "grid",
+        "visibility": "visible",
+        "fontSize": "27.2px",
+        "lineHeight": "27.2px",
+        "radius": "12px",
+        "text": "<"
+      },
+      "wordmark": {
+        "x": 80,
+        "y": 50,
+        "width": 92.2,
+        "height": 21.8,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "21.76px",
+        "lineHeight": "21.76px",
+        "radius": "0px",
+        "text": "Ozmosis"
+      },
+      "menuButton": {
+        "x": 348,
+        "y": 43,
+        "width": 44,
+        "height": 44,
+        "display": "inline-block",
+        "visibility": "visible",
+        "fontSize": "21.44px",
+        "lineHeight": "21.44px",
+        "radius": "12px",
+        "text": "☰"
+      },
+      "prompt": {
+        "x": 64.8,
+        "y": 119,
+        "width": 300.3,
+        "height": 44,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "17.63px",
+        "lineHeight": "20.6271px",
+        "radius": "0px",
+        "text": "Bearbeite die Aufgabe.Korrigiere den Satz."
+      },
+      "cue": {
+        "x": 94.3,
+        "y": 172,
+        "width": 241.5,
+        "height": 15.1,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "13.12px",
+        "lineHeight": "16.0064px",
+        "radius": "0px",
+        "text": ""
+      },
+      "choiceButtons": [],
+      "clozeInput": null,
+      "answerInput": {
+        "x": 26,
+        "y": 201.1,
+        "width": 378,
+        "height": 48,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "12.48px",
+        "lineHeight": "15.2256px",
+        "radius": "12px",
+        "text": ""
+      },
+      "teachMe": null,
+      "hintButton": null,
+      "hintPanel": null,
+      "feedbackPanel": null,
+      "confidenceRow": null,
+      "hud": {
+        "x": 0,
+        "y": 836,
+        "width": 430,
+        "height": 88,
+        "display": "grid",
+        "visibility": "visible",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "radius": "20px 20px 0px 0px",
+        "text": "0 / 20 Punkte0 Richtig0 Fehler0 FORTSCHRITT0 / 20"
+      },
+      "starStatus": {
+        "hidden": true,
+        "display": "none",
+        "height": 0,
+        "text": ""
+      }
+    },
+    "ChoiceFail": {
+      "label": "ChoiceFail",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "bodyOverflow": false,
+      "surface": "choice",
+      "state": "fail",
+      "main": {
+        "x": 10,
+        "y": 12,
+        "width": 410,
+        "height": 932,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "radius": "0px",
+        "text": "Ozmosis ☰ Ozmosis Recommended Task Recommended Task B1.1 Practice Practical Admin and Appointments > ? First visit? Test"
+      },
+      "header": {
+        "x": 10,
+        "y": 23,
+        "width": 410,
+        "height": 84,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "radius": "0px",
+        "text": "Ozmosis ☰"
+      },
+      "backButton": {
+        "x": 27,
+        "y": 31,
+        "width": 44,
+        "height": 44,
+        "display": "grid",
+        "visibility": "visible",
+        "fontSize": "27.2px",
+        "lineHeight": "27.2px",
+        "radius": "12px",
+        "text": "<"
+      },
+      "wordmark": {
+        "x": 80,
+        "y": 50,
+        "width": 92.2,
+        "height": 21.8,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "21.76px",
+        "lineHeight": "21.76px",
+        "radius": "0px",
+        "text": "Ozmosis"
+      },
+      "menuButton": {
+        "x": 348,
+        "y": 43,
+        "width": 44,
+        "height": 44,
+        "display": "inline-block",
+        "visibility": "visible",
+        "fontSize": "21.44px",
+        "lineHeight": "21.44px",
+        "radius": "12px",
+        "text": "☰"
+      },
+      "prompt": {
+        "x": 41.3,
+        "y": 119,
+        "width": 347.5,
+        "height": 28.5,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "22.575px",
+        "lineHeight": "26.4128px",
+        "radius": "0px",
+        "text": "Welche Form passt zur Bedeutung?"
+      },
+      "cue": {
+        "x": 94.3,
+        "y": 156.5,
+        "width": 241.5,
+        "height": 16,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "13.12px",
+        "lineHeight": "16.0064px",
+        "radius": "0px",
+        "text": "Show something to someone."
+      },
+      "choiceButtons": [
+        {
+          "x": 26,
+          "y": 196.5,
+          "width": 378,
+          "height": 42,
+          "display": "block",
+          "fontSize": "16.32px",
+          "radius": "12px",
+          "text": "erklären"
+        },
+        {
+          "x": 26,
+          "y": 240.5,
+          "width": 378,
+          "height": 42,
+          "display": "block",
+          "fontSize": "16.32px",
+          "radius": "12px",
+          "text": "zeigen"
+        },
+        {
+          "x": 26,
+          "y": 284.5,
+          "width": 378,
+          "height": 42,
+          "display": "block",
+          "fontSize": "16.32px",
+          "radius": "12px",
+          "text": "finden"
+        }
+      ],
+      "clozeInput": null,
+      "answerInput": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "display": "none",
+        "visibility": "visible",
+        "fontSize": "14.835px",
+        "lineHeight": "17.5053px",
+        "radius": "12px",
+        "text": ""
+      },
+      "teachMe": null,
+      "hintButton": null,
+      "hintPanel": null,
+      "feedbackPanel": {
+        "x": 26,
+        "y": 338.5,
+        "width": 378,
+        "height": 152.7,
+        "display": "grid",
+        "visibility": "visible",
+        "fontSize": "11.84px",
+        "lineHeight": "13.9712px",
+        "radius": "12px",
+        "text": "Not quiteCorrect answer: zeigenShow something to someone. Check the nearby contrast, not just a related word.No new star"
+      },
+      "confidenceRow": {
+        "x": 26,
+        "y": 501.2,
+        "width": 378,
+        "height": 44,
+        "display": "grid",
+        "visibility": "visible",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "radius": "0px",
+        "text": "I GUESSED I WAS UNSURE I KNEW IT"
+      },
+      "hud": {
+        "x": 0,
+        "y": 836,
+        "width": 430,
+        "height": 88,
+        "display": "grid",
+        "visibility": "visible",
+        "fontSize": "16px",
+        "lineHeight": "normal",
+        "radius": "20px 20px 0px 0px",
+        "text": "1 / 1 Punkte0 Richtig0 Fehler1 FORTSCHRITT1 / 1"
+      },
+      "starStatus": {
+        "hidden": false,
+        "display": "none",
+        "height": 0,
+        "text": "☆☆☆☆☆Not yet correct"
+      }
+    }
+  },
+  "checks": [
+    {
+      "name": "large centred OZMOSIS title absent",
+      "pass": true,
+      "detail": "{\"x\":80,\"y\":50,\"width\":92.2,\"height\":21.8,\"display\":\"block\",\"visibility\":\"visible\",\"fontSize\":\"21.76px\",\"lineHeight\":\"21.76px\",\"radius\":\"0px\",\"text\":\"Ozmosis\"}"
+    },
+    {
+      "name": "pre-answer star/status strip absent above task",
+      "pass": true,
+      "detail": "{\"hidden\":true,\"display\":\"none\",\"height\":0,\"text\":\"\"}"
+    },
+    {
+      "name": "task starts in ScreenConcept vertical zone",
+      "pass": true,
+      "detail": "{\"x\":41.3,\"y\":119,\"width\":347.5,\"height\":28.5,\"display\":\"block\",\"visibility\":\"visible\",\"fontSize\":\"22.575px\",\"lineHeight\":\"26.4128px\",\"radius\":\"0px\",\"text\":\"Welche Form passt zur Bedeutung?\"}"
+    },
+    {
+      "name": "choice buttons use ScreenConcept dimensions",
+      "pass": true,
+      "detail": "{\"x\":26,\"y\":196.5,\"width\":378,\"height\":42,\"display\":\"block\",\"fontSize\":\"16.32px\",\"radius\":\"12px\",\"text\":\"erklären\"}"
+    },
+    {
+      "name": "Teach Me/hint is secondary size and position",
+      "pass": true,
+      "detail": "{\"x\":233,\"y\":362.5,\"width\":172,\"height\":54,\"display\":\"block\",\"visibility\":\"visible\",\"fontSize\":\"13.76px\",\"lineHeight\":\"normal\",\"radius\":\"12px\",\"text\":\"Teach me\"}"
+    },
+    {
+      "name": "HUD does not overlap choice controls",
+      "pass": true,
+      "detail": "{\"hud\":{\"x\":0,\"y\":836,\"width\":430,\"height\":88,\"display\":\"grid\",\"visibility\":\"visible\",\"fontSize\":\"16px\",\"lineHeight\":\"normal\",\"radius\":\"20px 20px 0px 0px\",\"text\":\"0 / 20 Punkte0 Richtig0 Fehler0 FORTSCHRITT0 / 20\"},\"hint\":{\"x\":233,\"y\":362.5,\"width\":172,\"height\":54,\"display\":\"block\",\"visibility\":\"visible\",\"fontSize\":\"13.76px\",\"lineHeight\":\"normal\",\"radius\":\"12px\",\"text\":\"Teach me\"}}"
+    },
+    {
+      "name": "hint panel compact and below choices",
+      "pass": true,
+      "detail": "{\"x\":26,\"y\":429.5,\"width\":378,\"height\":55,\"display\":\"grid\",\"visibility\":\"visible\",\"fontSize\":\"12.9px\",\"lineHeight\":\"16.512px\",\"radius\":\"12px\",\"text\":\"Use the meaning first, then choose the natural German sentence.\"}"
+    },
+    {
+      "name": "cloze task starts high",
+      "pass": true,
+      "detail": "{\"x\":26,\"y\":110,\"width\":378,\"height\":58,\"display\":\"block\",\"visibility\":\"visible\",\"fontSize\":\"22.36px\",\"lineHeight\":\"26.1612px\",\"radius\":\"0px\",\"text\":\"Niveau .\"}"
+    },
+    {
+      "name": "cloze input slim inline",
+      "pass": true,
+      "detail": "{\"x\":122.9,\"y\":110,\"width\":258,\"height\":34,\"display\":\"inline-block\",\"visibility\":\"visible\",\"fontSize\":\"18.06px\",\"lineHeight\":\"18.963px\",\"radius\":\"7px\",\"text\":\"\"}"
+    },
+    {
+      "name": "cloze Teach Me secondary",
+      "pass": true,
+      "detail": "{\"x\":232,\"y\":234,\"width\":172,\"height\":54,\"display\":\"block\",\"visibility\":\"visible\",\"fontSize\":\"13.76px\",\"lineHeight\":\"normal\",\"radius\":\"12px\",\"text\":\"Teach me\"}"
+    },
+    {
+      "name": "typing state preserves slim cloze",
+      "pass": true,
+      "detail": "{\"x\":122.9,\"y\":110,\"width\":258,\"height\":34,\"display\":\"inline-block\",\"visibility\":\"visible\",\"fontSize\":\"18.06px\",\"lineHeight\":\"18.963px\",\"radius\":\"7px\",\"text\":\"\"}"
+    },
+    {
+      "name": "correction input reachable and not choice-styled",
+      "pass": true,
+      "detail": "{\"prompt\":{\"x\":64.8,\"y\":119,\"width\":300.3,\"height\":44,\"display\":\"block\",\"visibility\":\"visible\",\"fontSize\":\"17.63px\",\"lineHeight\":\"20.6271px\",\"radius\":\"0px\",\"text\":\"Bearbeite die Aufgabe.Korrigiere den Satz.\"},\"answer\":{\"x\":26,\"y\":201.1,\"width\":378,\"height\":48,\"display\":\"block\",\"visibility\":\"visible\",\"fontSize\":\"12.48px\",\"lineHeight\":\"15.2256px\",\"radius\":\"12px\",\"text\":\"\"}}"
+    },
+    {
+      "name": "feedback block compact",
+      "pass": true,
+      "detail": "{\"x\":26,\"y\":338.5,\"width\":378,\"height\":152.7,\"display\":\"grid\",\"visibility\":\"visible\",\"fontSize\":\"11.84px\",\"lineHeight\":\"13.9712px\",\"radius\":\"12px\",\"text\":\"Not quiteCorrect answer: zeigenShow something to someone. Check the nearby contrast, not just a related word.No new star\"}"
+    },
+    {
+      "name": "confidence row reachable",
+      "pass": true,
+      "detail": "{\"confidence\":{\"x\":26,\"y\":501.2,\"width\":378,\"height\":44,\"display\":\"grid\",\"visibility\":\"visible\",\"fontSize\":\"16px\",\"lineHeight\":\"normal\",\"radius\":\"0px\",\"text\":\"I GUESSED I WAS UNSURE I KNEW IT\"},\"hud\":{\"x\":0,\"y\":836,\"width\":430,\"height\":88,\"display\":\"grid\",\"visibility\":\"visible\",\"fontSize\":\"16px\",\"lineHeight\":\"normal\",\"radius\":\"20px 20px 0px 0px\",\"text\":\"1 / 1 Punkte0 Richtig0 Fehler1 FORTSCHRITT1 / 1\"}}"
+    },
+    {
+      "name": "HUD does not overlap feedback or confidence",
+      "pass": true,
+      "detail": "{\"hud\":{\"x\":0,\"y\":836,\"width\":430,\"height\":88,\"display\":\"grid\",\"visibility\":\"visible\",\"fontSize\":\"16px\",\"lineHeight\":\"normal\",\"radius\":\"20px 20px 0px 0px\",\"text\":\"1 / 1 Punkte0 Richtig0 Fehler1 FORTSCHRITT1 / 1\"},\"feedback\":{\"x\":26,\"y\":338.5,\"width\":378,\"height\":152.7,\"display\":\"grid\",\"visibility\":\"visible\",\"fontSize\":\"11.84px\",\"lineHeight\":\"13.9712px\",\"radius\":\"12px\",\"text\":\"Not quiteCorrect answer: zeigenShow something to someone. Check the nearby contrast, not just a related word.No new star\"},\"confidence\":{\"x\":26,\"y\":501.2,\"width\":378,\"height\":44,\"display\":\"grid\",\"visibility\":\"visible\",\"fontSize\":\"16px\",\"lineHeight\":\"normal\",\"radius\":\"0px\",\"text\":\"I GUESSED I WAS UNSURE I KNEW IT\"}}"
+    },
+    {
+      "name": "no horizontal overflow",
+      "pass": true,
+      "detail": "{\"choice\":false,\"cloze\":false,\"fail\":false}"
+    },
+    {
+      "name": "no console errors",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no runtime exceptions",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "choiceButtonFirst.x target 26 +/- 8",
+      "pass": true,
+      "strict": true,
+      "detail": "{\"x\":26,\"y\":196.5,\"width\":378,\"height\":42,\"display\":\"block\",\"fontSize\":\"16.32px\",\"radius\":\"12px\",\"text\":\"erklären\"}"
+    },
+    {
+      "name": "choiceButtonFirst.y target 197 +/- 10",
+      "pass": true,
+      "strict": true,
+      "detail": "{\"x\":26,\"y\":196.5,\"width\":378,\"height\":42,\"display\":\"block\",\"fontSize\":\"16.32px\",\"radius\":\"12px\",\"text\":\"erklären\"}"
+    },
+    {
+      "name": "choiceButtonFirst.width target 378 +/- 8",
+      "pass": true,
+      "strict": true,
+      "detail": "{\"x\":26,\"y\":196.5,\"width\":378,\"height\":42,\"display\":\"block\",\"fontSize\":\"16.32px\",\"radius\":\"12px\",\"text\":\"erklären\"}"
+    },
+    {
+      "name": "choiceButtonFirst.height target 45 +/- 8",
+      "pass": true,
+      "strict": true,
+      "detail": "{\"x\":26,\"y\":196.5,\"width\":378,\"height\":42,\"display\":\"block\",\"fontSize\":\"16.32px\",\"radius\":\"12px\",\"text\":\"erklären\"}"
+    },
+    {
+      "name": "teachMeButton.x target 231 +/- 14",
+      "pass": true,
+      "strict": true,
+      "detail": "{\"x\":233,\"y\":362.5,\"width\":172,\"height\":54,\"display\":\"block\",\"visibility\":\"visible\",\"fontSize\":\"13.76px\",\"lineHeight\":\"normal\",\"radius\":\"12px\",\"text\":\"Teach me\"}"
+    },
+    {
+      "name": "teachMeButton.y target 363 +/- 18",
+      "pass": true,
+      "strict": true,
+      "detail": "{\"x\":233,\"y\":362.5,\"width\":172,\"height\":54,\"display\":\"block\",\"visibility\":\"visible\",\"fontSize\":\"13.76px\",\"lineHeight\":\"normal\",\"radius\":\"12px\",\"text\":\"Teach me\"}"
+    },
+    {
+      "name": "teachMeButton.width target 172 +/- 10",
+      "pass": true,
+      "strict": true,
+      "detail": "{\"x\":233,\"y\":362.5,\"width\":172,\"height\":54,\"display\":\"block\",\"visibility\":\"visible\",\"fontSize\":\"13.76px\",\"lineHeight\":\"normal\",\"radius\":\"12px\",\"text\":\"Teach me\"}"
+    },
+    {
+      "name": "teachMeButton.height target 54 +/- 8",
+      "pass": true,
+      "strict": true,
+      "detail": "{\"x\":233,\"y\":362.5,\"width\":172,\"height\":54,\"display\":\"block\",\"visibility\":\"visible\",\"fontSize\":\"13.76px\",\"lineHeight\":\"normal\",\"radius\":\"12px\",\"text\":\"Teach me\"}"
+    },
+    {
+      "name": "clozePrompt.y target 112 +/- 16",
+      "pass": true,
+      "strict": true,
+      "detail": "{\"x\":26,\"y\":110,\"width\":378,\"height\":58,\"display\":\"block\",\"visibility\":\"visible\",\"fontSize\":\"22.36px\",\"lineHeight\":\"26.1612px\",\"radius\":\"0px\",\"text\":\"Niveau .\"}"
+    },
+    {
+      "name": "clozeInput.x target 130 +/- 16",
+      "pass": true,
+      "strict": true,
+      "detail": "{\"x\":122.9,\"y\":110,\"width\":258,\"height\":34,\"display\":\"inline-block\",\"visibility\":\"visible\",\"fontSize\":\"18.06px\",\"lineHeight\":\"18.963px\",\"radius\":\"7px\",\"text\":\"\"}"
+    },
+    {
+      "name": "clozeInput.y target 110 +/- 14",
+      "pass": true,
+      "strict": true,
+      "detail": "{\"x\":122.9,\"y\":110,\"width\":258,\"height\":34,\"display\":\"inline-block\",\"visibility\":\"visible\",\"fontSize\":\"18.06px\",\"lineHeight\":\"18.963px\",\"radius\":\"7px\",\"text\":\"\"}"
+    },
+    {
+      "name": "clozeInput.width target 258 +/- 18",
+      "pass": true,
+      "strict": true,
+      "detail": "{\"x\":122.9,\"y\":110,\"width\":258,\"height\":34,\"display\":\"inline-block\",\"visibility\":\"visible\",\"fontSize\":\"18.06px\",\"lineHeight\":\"18.963px\",\"radius\":\"7px\",\"text\":\"\"}"
+    },
+    {
+      "name": "clozeInput.height target 34 +/- 8",
+      "pass": true,
+      "strict": true,
+      "detail": "{\"x\":122.9,\"y\":110,\"width\":258,\"height\":34,\"display\":\"inline-block\",\"visibility\":\"visible\",\"fontSize\":\"18.06px\",\"lineHeight\":\"18.963px\",\"radius\":\"7px\",\"text\":\"\"}"
+    },
+    {
+      "name": "clozeTypingInput.y target 110 +/- 14",
+      "pass": true,
+      "strict": true,
+      "detail": "{\"x\":122.9,\"y\":110,\"width\":258,\"height\":34,\"display\":\"inline-block\",\"visibility\":\"visible\",\"fontSize\":\"18.06px\",\"lineHeight\":\"18.963px\",\"radius\":\"7px\",\"text\":\"\"}"
+    },
+    {
+      "name": "correctionInput.width target 378 +/- 8",
+      "pass": true,
+      "strict": true,
+      "detail": "{\"x\":26,\"y\":201.1,\"width\":378,\"height\":48,\"display\":\"block\",\"visibility\":\"visible\",\"fontSize\":\"12.48px\",\"lineHeight\":\"15.2256px\",\"radius\":\"12px\",\"text\":\"\"}"
+    },
+    {
+      "name": "feedbackPanel.width target 378 +/- 14",
+      "pass": true,
+      "strict": true,
+      "detail": "{\"x\":26,\"y\":338.5,\"width\":378,\"height\":152.7,\"display\":\"grid\",\"visibility\":\"visible\",\"fontSize\":\"11.84px\",\"lineHeight\":\"13.9712px\",\"radius\":\"12px\",\"text\":\"Not quiteCorrect answer: zeigenShow something to someone. Check the nearby contrast, not just a related word.No new star\"}"
+    },
+    {
+      "name": "confidenceRow.width target 378 +/- 14",
+      "pass": true,
+      "strict": true,
+      "detail": "{\"x\":26,\"y\":501.2,\"width\":378,\"height\":44,\"display\":\"grid\",\"visibility\":\"visible\",\"fontSize\":\"16px\",\"lineHeight\":\"normal\",\"radius\":\"0px\",\"text\":\"I GUESSED I WAS UNSURE I KNEW IT\"}"
+    },
+    {
+      "name": "pre-answer star/status strip absent",
+      "pass": true,
+      "strict": true,
+      "detail": "{\"visible\":false,\"detail\":{\"hidden\":true,\"display\":\"none\",\"height\":0,\"text\":\"\"}}"
+    },
+    {
+      "name": "large centred title absent",
+      "pass": true,
+      "strict": true,
+      "detail": "{\"visible\":false,\"detail\":{\"x\":80,\"y\":50,\"width\":92.2,\"height\":21.8,\"display\":\"block\",\"visibility\":\"visible\",\"fontSize\":\"21.76px\",\"lineHeight\":\"21.76px\",\"radius\":\"0px\",\"text\":\"Ozmosis\"}}"
+    },
+    {
+      "name": "body horizontal overflow absent",
+      "pass": true,
+      "strict": true,
+      "detail": "{\"horizontalOverflow\":false}"
+    }
+  ],
+  "consoleErrors": [],
+  "runtimeExceptions": [],
+  "errors": [],
+  "strictGeometry": {
+    "choiceButtonFirst": {
+      "x": 26,
+      "y": 196.5,
+      "width": 378,
+      "height": 42,
+      "display": "block",
+      "fontSize": "16.32px",
+      "radius": "12px",
+      "text": "erklären"
+    },
+    "teachMeButton": {
+      "x": 233,
+      "y": 362.5,
+      "width": 172,
+      "height": 54,
+      "display": "block",
+      "visibility": "visible",
+      "fontSize": "13.76px",
+      "lineHeight": "normal",
+      "radius": "12px",
+      "text": "Teach me"
+    },
+    "clozePrompt": {
+      "x": 26,
+      "y": 110,
+      "width": 378,
+      "height": 58,
+      "display": "block",
+      "visibility": "visible",
+      "fontSize": "22.36px",
+      "lineHeight": "26.1612px",
+      "radius": "0px",
+      "text": "Niveau ."
+    },
+    "clozeInput": {
+      "x": 122.9,
+      "y": 110,
+      "width": 258,
+      "height": 34,
+      "display": "inline-block",
+      "visibility": "visible",
+      "fontSize": "18.06px",
+      "lineHeight": "18.963px",
+      "radius": "7px",
+      "text": ""
+    },
+    "clozeTypingInput": {
+      "x": 122.9,
+      "y": 110,
+      "width": 258,
+      "height": 34,
+      "display": "inline-block",
+      "visibility": "visible",
+      "fontSize": "18.06px",
+      "lineHeight": "18.963px",
+      "radius": "7px",
+      "text": ""
+    },
+    "correctionInput": {
+      "x": 26,
+      "y": 201.1,
+      "width": 378,
+      "height": 48,
+      "display": "block",
+      "visibility": "visible",
+      "fontSize": "12.48px",
+      "lineHeight": "15.2256px",
+      "radius": "12px",
+      "text": ""
+    },
+    "feedbackPanel": {
+      "x": 26,
+      "y": 338.5,
+      "width": 378,
+      "height": 152.7,
+      "display": "grid",
+      "visibility": "visible",
+      "fontSize": "11.84px",
+      "lineHeight": "13.9712px",
+      "radius": "12px",
+      "text": "Not quiteCorrect answer: zeigenShow something to someone. Check the nearby contrast, not just a related word.No new star"
+    },
+    "confidenceRow": {
+      "x": 26,
+      "y": 501.2,
+      "width": 378,
+      "height": 44,
+      "display": "grid",
+      "visibility": "visible",
+      "fontSize": "16px",
+      "lineHeight": "normal",
+      "radius": "0px",
+      "text": "I GUESSED I WAS UNSURE I KNEW IT"
+    },
+    "hud": {
+      "x": 0,
+      "y": 836,
+      "width": 430,
+      "height": 88,
+      "display": "grid",
+      "visibility": "visible",
+      "fontSize": "16px",
+      "lineHeight": "normal",
+      "radius": "20px 20px 0px 0px",
+      "text": "0 / 20 Punkte0 Richtig0 Fehler0 FORTSCHRITT0 / 20"
+    },
+    "preAnswerStarStatus": {
+      "visible": false,
+      "detail": {
+        "hidden": true,
+        "display": "none",
+        "height": 0,
+        "text": ""
+      }
+    },
+    "largeCentredTitle": {
+      "visible": false,
+      "detail": {
+        "x": 80,
+        "y": 50,
+        "width": 92.2,
+        "height": 21.8,
+        "display": "block",
+        "visibility": "visible",
+        "fontSize": "21.76px",
+        "lineHeight": "21.76px",
+        "radius": "0px",
+        "text": "Ozmosis"
+      }
+    },
+    "body": {
+      "horizontalOverflow": false
+    }
+  }
+}
