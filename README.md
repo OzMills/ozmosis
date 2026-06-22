@@ -9,7 +9,29 @@ Future README updates should be made in this file. Do not create new `README-v*.
 
 ## Current App
 
-# Ozmosis v0.85.3.3 cloze experience baseline
+# Ozmosis v0.85.3.3b duplicate Teach Me hotfix baseline
+
+Ozmosis is a static, local-first German learning app. The deployed app remains `index.html`.
+
+v0.85.3.3b fixes the B1 inline cloze duplicate Teach Me action found after the representative cloze fixture pass. Cloze screens now keep the newer smaller secondary `Teach me` reveal button and suppress the older `#noArticleBtn` Teach Me action when the new reveal is available.
+
+- App version: `v0.85.3.3b - Duplicate Teach Me Button Hotfix`
+- Export version: `v0.85.3.3b-duplicate-teach-me-hotfix`
+- Current gate result: `DUPLICATE_TEACH_ME_FIXED`
+
+## Current v0.85.3.3b docs
+
+- Changelog: `CHANGELOG-FULL-OZMOSIS.txt`
+- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.3b.md`
+- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.3b.md`
+- Current QA gate: `docs/qa/v0.85.3.3b_duplicate_teach_me_hotfix.md`
+- Current gate result JSON: `docs/qa/v0.85.3.3b_duplicate_teach_me_hotfix_results.json`
+- Screenshot comparison: `docs/qa/screenshots/v0.85.3.3b-duplicate-teach-me-hotfix/comparison.html`
+- Package policy: `docs/OZMOSIS_QA_ARTEFACT_AND_PACKAGE_POLICY.md`
+
+Next planned patch: `v0.85.3.4 - Feedback Rhythm Pass`.
+
+## Previous v0.85.3.3 cloze experience baseline
 
 Ozmosis is a static, local-first German learning app. The deployed app remains `index.html`.
 

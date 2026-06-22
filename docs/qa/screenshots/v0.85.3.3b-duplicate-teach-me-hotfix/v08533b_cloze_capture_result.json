@@ -1,0 +1,758 @@
+{
+  "ok": true,
+  "generatedAt": "2026-06-22T15:58:42.446Z",
+  "appVersion": "v0.85.3.3b - Duplicate Teach Me Button Hotfix",
+  "exportVersion": "v0.85.3.3b-duplicate-teach-me-hotfix",
+  "qaFixturesUsed": [
+    {
+      "key": "shortInline",
+      "label": "Short inline noun/article-style cloze",
+      "prompt_de": "Welche ___ soll ich mitbringen?",
+      "answer": "Unterlagen"
+    },
+    {
+      "key": "withCue",
+      "label": "Short phrase cloze with cue",
+      "prompt_de": "Ich lerne Deutsch auf ___.",
+      "answer": "B1-Niveau"
+    },
+    {
+      "key": "longWrap",
+      "label": "Longer B1 sentence that may wrap",
+      "prompt_de": "Ich möchte den Termin auf ___ verschieben.",
+      "answer": "nächsten Montag"
+    }
+  ],
+  "screenshots": [
+    {
+      "name": "ClozeDefaultShortInline",
+      "file": "docs\\qa\\screenshots\\v0.85.3.3b-duplicate-teach-me-hotfix\\actual\\ClozeDefaultShortInline.png",
+      "check": {
+        "name": "ClozeDefaultShortInline",
+        "prompt": {
+          "x": 26,
+          "y": 110,
+          "width": 378,
+          "height": 62,
+          "bottom": 172,
+          "text": "Ergänze den Satz.Welche soll ich mitbringen?"
+        },
+        "cue": {
+          "x": 94,
+          "y": 181,
+          "width": 241,
+          "height": 15,
+          "bottom": 196,
+          "text": ""
+        },
+        "input": {
+          "x": 121,
+          "y": 110,
+          "width": 164,
+          "height": 34,
+          "bottom": 144,
+          "text": ""
+        },
+        "feedback": null,
+        "confidence": null,
+        "hud": {
+          "x": 0,
+          "y": 836,
+          "width": 430,
+          "height": 88,
+          "bottom": 924,
+          "text": "0 / 20 Punkte0 Richtig0 Fehler0 FORTSCHRITT0 / 20"
+        },
+        "state": "default",
+        "surface": "cloze",
+        "bodyOverflow": false,
+        "inputInsidePrompt": true,
+        "visibleTeachMeCount": 1,
+        "teachLikeControls": [
+          {
+            "id": "hintBtn",
+            "className": "",
+            "text": "Teach me",
+            "disabled": false
+          }
+        ],
+        "starHidden": true,
+        "largeTitleVisible": false,
+        "hudClear": true
+      }
+    },
+    {
+      "name": "ClozeTypingShortInline",
+      "file": "docs\\qa\\screenshots\\v0.85.3.3b-duplicate-teach-me-hotfix\\actual\\ClozeTypingShortInline.png",
+      "check": {
+        "name": "ClozeTypingShortInline",
+        "prompt": {
+          "x": 26,
+          "y": 110,
+          "width": 378,
+          "height": 64,
+          "bottom": 174,
+          "text": "Ergänze den Satz.Welche soll ich mitbringen?"
+        },
+        "cue": {
+          "x": 94,
+          "y": 183,
+          "width": 241,
+          "height": 15,
+          "bottom": 198,
+          "text": ""
+        },
+        "input": {
+          "x": 146,
+          "y": 110,
+          "width": 164,
+          "height": 34,
+          "bottom": 144,
+          "text": ""
+        },
+        "feedback": null,
+        "confidence": null,
+        "hud": {
+          "x": 0,
+          "y": 836,
+          "width": 430,
+          "height": 88,
+          "bottom": 924,
+          "text": "0 / 20 Punkte0 Richtig0 Fehler0 FORTSCHRITT0 / 20"
+        },
+        "state": "typing",
+        "surface": "cloze",
+        "bodyOverflow": false,
+        "inputInsidePrompt": true,
+        "visibleTeachMeCount": 1,
+        "teachLikeControls": [
+          {
+            "id": "hintBtn",
+            "className": "",
+            "text": "Teach me",
+            "disabled": false
+          }
+        ],
+        "starHidden": true,
+        "largeTitleVisible": false,
+        "hudClear": true
+      }
+    },
+    {
+      "name": "ClozeFailShortInline",
+      "file": "docs\\qa\\screenshots\\v0.85.3.3b-duplicate-teach-me-hotfix\\actual\\ClozeFailShortInline.png",
+      "check": {
+        "name": "ClozeFailShortInline",
+        "prompt": {
+          "x": 26,
+          "y": 110,
+          "width": 378,
+          "height": 70,
+          "bottom": 180,
+          "text": "Ergänze den Satz.Welche Unterlagen soll ich mitbringen?"
+        },
+        "cue": {
+          "x": 94,
+          "y": 189,
+          "width": 241,
+          "height": 16,
+          "bottom": 205,
+          "text": "Which documents should I bring?"
+        },
+        "input": null,
+        "feedback": {
+          "x": 26,
+          "y": 241,
+          "width": 378,
+          "height": 105,
+          "bottom": 346,
+          "text": "Not quiteUse Unterlagen for the documents you need to bring.No new star. This will return for practice."
+        },
+        "confidence": {
+          "x": 26,
+          "y": 364,
+          "width": 378,
+          "height": 44,
+          "bottom": 408,
+          "text": "I GUESSED I WAS UNSURE I KNEW IT"
+        },
+        "hud": {
+          "x": 0,
+          "y": 836,
+          "width": 430,
+          "height": 88,
+          "bottom": 924,
+          "text": "1 / 1 Punkte0 Richtig0 Fehler1 FORTSCHRITT1 / 1"
+        },
+        "state": "fail",
+        "surface": "cloze",
+        "bodyOverflow": false,
+        "inputInsidePrompt": false,
+        "visibleTeachMeCount": 0,
+        "teachLikeControls": [],
+        "starHidden": true,
+        "largeTitleVisible": false,
+        "hudClear": true
+      }
+    },
+    {
+      "name": "ClozeSuccessShortInline",
+      "file": "docs\\qa\\screenshots\\v0.85.3.3b-duplicate-teach-me-hotfix\\actual\\ClozeSuccessShortInline.png",
+      "check": {
+        "name": "ClozeSuccessShortInline",
+        "prompt": {
+          "x": 26,
+          "y": 110,
+          "width": 378,
+          "height": 70,
+          "bottom": 180,
+          "text": "Ergänze den Satz.Welche Unterlagen soll ich mitbringen?"
+        },
+        "cue": {
+          "x": 94,
+          "y": 189,
+          "width": 241,
+          "height": 16,
+          "bottom": 205,
+          "text": "Which documents should I bring?"
+        },
+        "input": null,
+        "feedback": {
+          "x": 26,
+          "y": 241,
+          "width": 378,
+          "height": 109,
+          "bottom": 351,
+          "text": "CorrectUse Unterlagen for the documents you need to bring.★☆☆☆☆Now got right once."
+        },
+        "confidence": {
+          "x": 26,
+          "y": 369,
+          "width": 378,
+          "height": 44,
+          "bottom": 413,
+          "text": "I GUESSED I WAS UNSURE I KNEW IT"
+        },
+        "hud": {
+          "x": 0,
+          "y": 836,
+          "width": 430,
+          "height": 88,
+          "bottom": 924,
+          "text": "1 / 1 Punkte100 Richtig1 Fehler0 FORTSCHRITT1 / 1"
+        },
+        "state": "success",
+        "surface": "cloze",
+        "bodyOverflow": false,
+        "inputInsidePrompt": false,
+        "visibleTeachMeCount": 0,
+        "teachLikeControls": [],
+        "starHidden": true,
+        "largeTitleVisible": false,
+        "hudClear": true
+      }
+    },
+    {
+      "name": "ClozeDefaultWithCue",
+      "file": "docs\\qa\\screenshots\\v0.85.3.3b-duplicate-teach-me-hotfix\\actual\\ClozeDefaultWithCue.png",
+      "check": {
+        "name": "ClozeDefaultWithCue",
+        "prompt": {
+          "x": 26,
+          "y": 110,
+          "width": 378,
+          "height": 62,
+          "bottom": 172,
+          "text": "Ergänze den Satz.Ich lerne Deutsch auf ."
+        },
+        "cue": {
+          "x": 94,
+          "y": 181,
+          "width": 241,
+          "height": 16,
+          "bottom": 197,
+          "text": "Sie nennen Ihr Sprachniveau."
+        },
+        "input": {
+          "x": 146,
+          "y": 136,
+          "width": 126,
+          "height": 34,
+          "bottom": 170,
+          "text": ""
+        },
+        "feedback": null,
+        "confidence": null,
+        "hud": {
+          "x": 0,
+          "y": 836,
+          "width": 430,
+          "height": 88,
+          "bottom": 924,
+          "text": "1 / 1 Punkte100 Richtig1 Fehler0 FORTSCHRITT1 / 1"
+        },
+        "state": "default",
+        "surface": "cloze",
+        "bodyOverflow": false,
+        "inputInsidePrompt": true,
+        "visibleTeachMeCount": 1,
+        "teachLikeControls": [
+          {
+            "id": "hintBtn",
+            "className": "",
+            "text": "Teach me",
+            "disabled": false
+          }
+        ],
+        "starHidden": true,
+        "largeTitleVisible": false,
+        "hudClear": true
+      }
+    },
+    {
+      "name": "ClozeTypingWithCue",
+      "file": "docs\\qa\\screenshots\\v0.85.3.3b-duplicate-teach-me-hotfix\\actual\\ClozeTypingWithCue.png",
+      "check": {
+        "name": "ClozeTypingWithCue",
+        "prompt": {
+          "x": 26,
+          "y": 110,
+          "width": 378,
+          "height": 64,
+          "bottom": 174,
+          "text": "Ergänze den Satz.Ich lerne Deutsch auf ."
+        },
+        "cue": {
+          "x": 94,
+          "y": 183,
+          "width": 241,
+          "height": 16,
+          "bottom": 199,
+          "text": "Sie nennen Ihr Sprachniveau."
+        },
+        "input": {
+          "x": 145,
+          "y": 138,
+          "width": 126,
+          "height": 34,
+          "bottom": 172,
+          "text": ""
+        },
+        "feedback": null,
+        "confidence": null,
+        "hud": {
+          "x": 0,
+          "y": 836,
+          "width": 430,
+          "height": 88,
+          "bottom": 924,
+          "text": "1 / 1 Punkte100 Richtig1 Fehler0 FORTSCHRITT1 / 1"
+        },
+        "state": "typing",
+        "surface": "cloze",
+        "bodyOverflow": false,
+        "inputInsidePrompt": true,
+        "visibleTeachMeCount": 1,
+        "teachLikeControls": [
+          {
+            "id": "hintBtn",
+            "className": "",
+            "text": "Teach me",
+            "disabled": false
+          }
+        ],
+        "starHidden": true,
+        "largeTitleVisible": false,
+        "hudClear": true
+      }
+    },
+    {
+      "name": "ClozeLongWrapDefault",
+      "file": "docs\\qa\\screenshots\\v0.85.3.3b-duplicate-teach-me-hotfix\\actual\\ClozeLongWrapDefault.png",
+      "check": {
+        "name": "ClozeLongWrapDefault",
+        "prompt": {
+          "x": 26,
+          "y": 110,
+          "width": 378,
+          "height": 92,
+          "bottom": 202,
+          "text": "Ergänze den Satz.Ich möchte den Termin auf verschieben."
+        },
+        "cue": {
+          "x": 94,
+          "y": 211,
+          "width": 241,
+          "height": 15,
+          "bottom": 226,
+          "text": ""
+        },
+        "input": {
+          "x": 106,
+          "y": 138,
+          "width": 218,
+          "height": 34,
+          "bottom": 172,
+          "text": ""
+        },
+        "feedback": null,
+        "confidence": null,
+        "hud": {
+          "x": 0,
+          "y": 836,
+          "width": 430,
+          "height": 88,
+          "bottom": 924,
+          "text": "1 / 1 Punkte100 Richtig1 Fehler0 FORTSCHRITT1 / 1"
+        },
+        "state": "default",
+        "surface": "cloze",
+        "bodyOverflow": false,
+        "inputInsidePrompt": true,
+        "visibleTeachMeCount": 1,
+        "teachLikeControls": [
+          {
+            "id": "hintBtn",
+            "className": "",
+            "text": "Teach me",
+            "disabled": false
+          }
+        ],
+        "starHidden": true,
+        "largeTitleVisible": false,
+        "hudClear": true
+      }
+    },
+    {
+      "name": "ClozeLongWrapTyping",
+      "file": "docs\\qa\\screenshots\\v0.85.3.3b-duplicate-teach-me-hotfix\\actual\\ClozeLongWrapTyping.png",
+      "check": {
+        "name": "ClozeLongWrapTyping",
+        "prompt": {
+          "x": 26,
+          "y": 110,
+          "width": 378,
+          "height": 92,
+          "bottom": 202,
+          "text": "Ergänze den Satz.Ich möchte den Termin auf verschieben."
+        },
+        "cue": {
+          "x": 94,
+          "y": 211,
+          "width": 241,
+          "height": 15,
+          "bottom": 226,
+          "text": ""
+        },
+        "input": {
+          "x": 106,
+          "y": 138,
+          "width": 218,
+          "height": 34,
+          "bottom": 172,
+          "text": ""
+        },
+        "feedback": null,
+        "confidence": null,
+        "hud": {
+          "x": 0,
+          "y": 836,
+          "width": 430,
+          "height": 88,
+          "bottom": 924,
+          "text": "1 / 1 Punkte100 Richtig1 Fehler0 FORTSCHRITT1 / 1"
+        },
+        "state": "typing",
+        "surface": "cloze",
+        "bodyOverflow": false,
+        "inputInsidePrompt": true,
+        "visibleTeachMeCount": 1,
+        "teachLikeControls": [
+          {
+            "id": "hintBtn",
+            "className": "",
+            "text": "Teach me",
+            "disabled": false
+          }
+        ],
+        "starHidden": true,
+        "largeTitleVisible": false,
+        "hudClear": true
+      }
+    },
+    {
+      "name": "ChoiceDefault",
+      "file": "docs\\qa\\screenshots\\v0.85.3.3b-duplicate-teach-me-hotfix\\actual\\ChoiceDefault.png",
+      "check": {
+        "name": "ChoiceDefault",
+        "prompt": {
+          "x": 41,
+          "y": 119,
+          "width": 347,
+          "height": 29,
+          "bottom": 148,
+          "text": "Welche Form passt zur Bedeutung?"
+        },
+        "cue": {
+          "x": 94,
+          "y": 157,
+          "width": 241,
+          "height": 16,
+          "bottom": 173,
+          "text": "Show something to someone."
+        },
+        "input": null,
+        "feedback": null,
+        "confidence": null,
+        "hud": {
+          "x": 0,
+          "y": 836,
+          "width": 430,
+          "height": 88,
+          "bottom": 924,
+          "text": "1 / 1 Punkte100 Richtig1 Fehler0 FORTSCHRITT1 / 1"
+        },
+        "state": "default",
+        "surface": "choice",
+        "bodyOverflow": false,
+        "inputInsidePrompt": false,
+        "visibleTeachMeCount": 1,
+        "teachLikeControls": [
+          {
+            "id": "hintBtn",
+            "className": "",
+            "text": "Teach me",
+            "disabled": false
+          }
+        ],
+        "starHidden": true,
+        "largeTitleVisible": false,
+        "hudClear": true
+      }
+    },
+    {
+      "name": "ChoiceFail",
+      "file": "docs\\qa\\screenshots\\v0.85.3.3b-duplicate-teach-me-hotfix\\actual\\ChoiceFail.png",
+      "check": {
+        "name": "ChoiceFail",
+        "prompt": {
+          "x": 41,
+          "y": 119,
+          "width": 347,
+          "height": 29,
+          "bottom": 148,
+          "text": "Welche Form passt zur Bedeutung?"
+        },
+        "cue": {
+          "x": 94,
+          "y": 157,
+          "width": 241,
+          "height": 16,
+          "bottom": 173,
+          "text": "Show something to someone."
+        },
+        "input": null,
+        "feedback": {
+          "x": 26,
+          "y": 339,
+          "width": 378,
+          "height": 153,
+          "bottom": 491,
+          "text": "Not quiteCorrect answer: zeigenShow something to someone. Check the nearby contrast, not just a related word.No new star"
+        },
+        "confidence": {
+          "x": 26,
+          "y": 501,
+          "width": 378,
+          "height": 44,
+          "bottom": 545,
+          "text": "I GUESSED I WAS UNSURE I KNEW IT"
+        },
+        "hud": {
+          "x": 0,
+          "y": 836,
+          "width": 430,
+          "height": 88,
+          "bottom": 924,
+          "text": "1 / 1 Punkte0 Richtig0 Fehler1 FORTSCHRITT1 / 1"
+        },
+        "state": "fail",
+        "surface": "choice",
+        "bodyOverflow": false,
+        "inputInsidePrompt": false,
+        "visibleTeachMeCount": 0,
+        "teachLikeControls": [],
+        "starHidden": true,
+        "largeTitleVisible": false,
+        "hudClear": true
+      }
+    },
+    {
+      "name": "CorrectionDefaultFilled",
+      "file": "docs\\qa\\screenshots\\v0.85.3.3b-duplicate-teach-me-hotfix\\actual\\CorrectionDefaultFilled.png",
+      "check": {
+        "name": "CorrectionDefaultFilled",
+        "prompt": {
+          "x": 65,
+          "y": 119,
+          "width": 300,
+          "height": 44,
+          "bottom": 163,
+          "text": "Bearbeite die Aufgabe.Korrigiere den Satz."
+        },
+        "cue": {
+          "x": 94,
+          "y": 172,
+          "width": 241,
+          "height": 15,
+          "bottom": 187,
+          "text": ""
+        },
+        "input": null,
+        "feedback": null,
+        "confidence": null,
+        "hud": {
+          "x": 0,
+          "y": 836,
+          "width": 430,
+          "height": 88,
+          "bottom": 924,
+          "text": "1 / 1 Punkte0 Richtig0 Fehler1 FORTSCHRITT1 / 1"
+        },
+        "state": "typing",
+        "surface": "correction",
+        "bodyOverflow": false,
+        "inputInsidePrompt": false,
+        "visibleTeachMeCount": 0,
+        "teachLikeControls": [],
+        "starHidden": true,
+        "largeTitleVisible": false,
+        "hudClear": true
+      }
+    }
+  ],
+  "visibleTeachMeCounts": {
+    "ClozeDefaultShortInline": 1,
+    "ClozeTypingShortInline": 1,
+    "ClozeFailShortInline": 0,
+    "ClozeSuccessShortInline": 0,
+    "ClozeDefaultWithCue": 1,
+    "ClozeTypingWithCue": 1,
+    "ClozeLongWrapDefault": 1,
+    "ClozeLongWrapTyping": 1,
+    "ChoiceDefault": 1,
+    "ChoiceFail": 0,
+    "CorrectionDefaultFilled": 0
+  },
+  "responsive": [
+    {
+      "width": 320,
+      "height": 568,
+      "bodyOverflow": false,
+      "promptTop": 97,
+      "promptHeight": 58,
+      "inputVisible": true,
+      "inputWidth": 126,
+      "cueSecondary": true,
+      "visibleTeachMeCount": 1,
+      "teachVisible": true,
+      "hudTop": 472
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "bodyOverflow": false,
+      "promptTop": 110,
+      "promptHeight": 61,
+      "inputVisible": true,
+      "inputWidth": 126,
+      "cueSecondary": true,
+      "visibleTeachMeCount": 1,
+      "teachVisible": true,
+      "hudTop": 748
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "bodyOverflow": false,
+      "promptTop": 110,
+      "promptHeight": 92,
+      "inputVisible": true,
+      "inputWidth": 218,
+      "cueSecondary": true,
+      "visibleTeachMeCount": 1,
+      "teachVisible": true,
+      "hudTop": 836
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "bodyOverflow": false,
+      "promptTop": 102,
+      "promptHeight": 92,
+      "inputVisible": true,
+      "inputWidth": 218,
+      "cueSecondary": true,
+      "visibleTeachMeCount": 1,
+      "teachVisible": true,
+      "hudTop": 928
+    },
+    {
+      "width": 1365,
+      "height": 599,
+      "bodyOverflow": false,
+      "promptTop": 95,
+      "promptHeight": 58,
+      "inputVisible": true,
+      "inputWidth": 218,
+      "cueSecondary": true,
+      "visibleTeachMeCount": 1,
+      "teachVisible": true,
+      "hudTop": 503
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "bodyOverflow": false,
+      "promptTop": 102,
+      "promptHeight": 92,
+      "inputVisible": true,
+      "inputWidth": 218,
+      "cueSecondary": true,
+      "visibleTeachMeCount": 1,
+      "teachVisible": true,
+      "hudTop": 804
+    }
+  ],
+  "routeSmoke": [],
+  "arabicLtr": {
+    "promptDir": "ltr",
+    "glossDir": "ltr",
+    "inputDir": "ltr",
+    "promptText": "Ergänze den Satz.Ich lerne Deutsch auf .",
+    "cueText": "Sie nennen Ihr Sprachniveau.",
+    "feedbackDir": "ltr",
+    "feedbackText": "Not quiteContrast wenn fits future or repeated situations; als points to one past time or event.No new star. This will r",
+    "ok": true
+  },
+  "exportImport": {
+    "exportVersion": "v0.85.3.3b-duplicate-teach-me-hotfix",
+    "payloadVersion": "v0.85.3.3b-duplicate-teach-me-hotfix",
+    "expectedVersion": "v0.85.3.3b-duplicate-teach-me-hotfix",
+    "validationOk": true,
+    "applied": true,
+    "malformedRejected": true,
+    "exportSaveVisible": true,
+    "importSaveVisible": true
+  },
+  "keyboardFocus": {
+    "inputFocused": true,
+    "checkVisible": true,
+    "checkFocused": true
+  },
+  "comparison": "docs\\qa\\screenshots\\v0.85.3.3b-duplicate-teach-me-hotfix\\comparison.html",
+  "contactSheet": "docs\\qa\\screenshots\\v0.85.3.3b-duplicate-teach-me-hotfix\\comparison-contact-sheet.png",
+  "consoleErrors": [],
+  "runtimeExceptions": [],
+  "errors": []
+}

@@ -1,0 +1,82 @@
+{
+  "patch": "v0.85.3.3b",
+  "title": "Duplicate Teach Me Button Hotfix",
+  "startingVersionVerified": true,
+  "runtimeFilesChanged": [
+    "index.html"
+  ],
+  "docsChanged": [
+    "README.md",
+    "CHANGELOG-FULL-OZMOSIS.txt",
+    "AGENTS.md",
+    "docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.3b.md",
+    "docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.3b.md",
+    "docs/OZMOSIS_SOURCE_BRIEF_CURRENT.md",
+    "docs/OZMOSIS_DEVELOPMENT_ROADMAP_CURRENT.md",
+    "docs/OZMOSIS_FEATURE_REGISTER_CURRENT.md",
+    "docs/qa/v0.85.3.3b_duplicate_teach_me_hotfix.md",
+    "docs/qa/v0.85.3.3b_duplicate_teach_me_hotfix_results.json",
+    "docs/qa/screenshots/v0.85.3.3b-duplicate-teach-me-hotfix/"
+  ],
+  "duplicateBugVerifiedBefore": true,
+  "duplicateBugFixedAfter": true,
+  "visibleTeachMeCounts": {
+    "ClozeDefaultShortInline": 1,
+    "ClozeDefaultWithCue": 1,
+    "ClozeLongWrapDefault": 1,
+    "ClozeTypingShortInline": 1,
+    "ClozeFailShortInline": 0,
+    "ClozeSuccessShortInline": 0,
+    "ChoiceDefault": 1,
+    "CorrectionDefaultFilled": 0
+  },
+  "survivingControl": "newer display-model #hintBtn secondary Teach me reveal button",
+  "suppressedControl": "older B1 inline-cloze #noArticleBtn.teachBtn duplicate when a revealable display hint is available",
+  "normalContentChanged": false,
+  "scoringChanged": false,
+  "storageChanged": false,
+  "exportImportChanged": false,
+  "screenshotsGenerated": {
+    "path": "docs/qa/screenshots/v0.85.3.3b-duplicate-teach-me-hotfix/actual/",
+    "count": 11,
+    "states": [
+      "ClozeDefaultShortInline",
+      "ClozeTypingShortInline",
+      "ClozeFailShortInline",
+      "ClozeSuccessShortInline",
+      "ClozeDefaultWithCue",
+      "ClozeTypingWithCue",
+      "ClozeLongWrapDefault",
+      "ClozeLongWrapTyping",
+      "ChoiceDefault",
+      "ChoiceFail",
+      "CorrectionDefaultFilled"
+    ],
+    "comparison": "docs/qa/screenshots/v0.85.3.3b-duplicate-teach-me-hotfix/comparison.html",
+    "contactSheet": "docs/qa/screenshots/v0.85.3.3b-duplicate-teach-me-hotfix/comparison-contact-sheet.png"
+  },
+  "artefactDurability": {
+    "docsQaScreenshotsAllowed": true,
+    "browserProfilesPresent": false,
+    "packageHygienePassed": true
+  },
+  "planningPointersUpdated": true,
+  "testsRun": {
+    "staticGate": true,
+    "scriptSyntax": true,
+    "browserDuplicateCheck": true,
+    "screenshotCapture": true,
+    "responsiveSmoke": true,
+    "exportImportSmoke": true,
+    "arabicLtrSmoke": true,
+    "keyboardFocusSmoke": true,
+    "packageHygieneSmoke": true
+  },
+  "testsNotRun": [
+    "Live deployment was not checked.",
+    "Manual physical phone testing was not run."
+  ],
+  "acceptancePassed": true,
+  "finalDecision": "DUPLICATE_TEACH_ME_FIXED",
+  "nextPatch": "v0.85.3.4 - Feedback Rhythm Pass"
+}

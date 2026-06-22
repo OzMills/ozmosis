@@ -1,0 +1,292 @@
+﻿{
+  "root": "C:\\Users\\rossm\\Documents\\German Learning\\ozmosis-repo",
+  "generatedAt": "2026-06-22T16:02:31.741Z",
+  "workspaceTotalBytes": 94187346,
+  "workspaceTotalHuman": "89.82 MB",
+  "fileCount": 374,
+  "developmentFilesBytes": 12121260,
+  "developmentFilesHuman": "11.56 MB",
+  "developmentFilesFileCount": 147,
+  "screenshotsBytes": 21462114,
+  "screenshotsHuman": "20.47 MB",
+  "browserProfileFolderCount": 0,
+  "browserProfileBytes": 0,
+  "browserProfileHuman": "0 B",
+  "zipCount": 2,
+  "zipFiles": [
+    {
+      "path": "ozmosis-v0_85_3_3.zip",
+      "bytes": 18739329,
+      "human": "17.87 MB"
+    },
+    {
+      "path": "_development-files/ScreenConcepts.zip",
+      "bytes": 2503748,
+      "human": "2.39 MB"
+    }
+  ],
+  "largestFiles": [
+    {
+      "path": "ozmosis-v0_85_3_3.zip",
+      "bytes": 18739329,
+      "human": "17.87 MB"
+    },
+    {
+      "path": "docs/qa/v0.85.3.3a_old_zip_delete_manifest.csv",
+      "bytes": 5452333,
+      "human": "5.20 MB"
+    },
+    {
+      "path": "docs/qa/v0.85.3.3a_old_zip_delete_manifest_repo.csv",
+      "bytes": 5395049,
+      "human": "5.15 MB"
+    },
+    {
+      "path": "docs/qa/screenshots/v0.85.3.1-strict-ui-proof/comparison-contact-sheet.png",
+      "bytes": 3395095,
+      "human": "3.24 MB"
+    },
+    {
+      "path": "docs/qa/screenshots/v0.85.3-practice-ui-completion/comparison-contact-sheet.png",
+      "bytes": 3395095,
+      "human": "3.24 MB"
+    },
+    {
+      "path": "docs/qa/screenshots/v0.85.3.3b-duplicate-teach-me-hotfix/comparison-contact-sheet.png",
+      "bytes": 3384605,
+      "human": "3.23 MB"
+    },
+    {
+      "path": "docs/qa/screenshots/v0.85.3.2-strict-layout-geometry/comparison-contact-sheet.png",
+      "bytes": 3358424,
+      "human": "3.20 MB"
+    },
+    {
+      "path": "_development-files/ScreenConcepts.zip",
+      "bytes": 2503748,
+      "human": "2.39 MB"
+    },
+    {
+      "path": "content/b1-m15-time-place-movement.js",
+      "bytes": 2236622,
+      "human": "2.13 MB"
+    },
+    {
+      "path": "content/b1-m17-home-family-daily-life-support.js",
+      "bytes": 1989228,
+      "human": "1.90 MB"
+    },
+    {
+      "path": "content/b1-m16-money-payment-contracts.js",
+      "bytes": 1883341,
+      "human": "1.80 MB"
+    },
+    {
+      "path": "content/b1-m14-connectors-sentence-functions.js",
+      "bytes": 1873241,
+      "human": "1.79 MB"
+    },
+    {
+      "path": "content/b1-m12-forms-admin-certificates.js",
+      "bytes": 1805207,
+      "human": "1.72 MB"
+    },
+    {
+      "path": "content/b1-m10-technical-problems.js",
+      "bytes": 1665531,
+      "human": "1.59 MB"
+    },
+    {
+      "path": "content/b1-m13-learning-exam-language.js",
+      "bytes": 1643953,
+      "human": "1.57 MB"
+    },
+    {
+      "path": "content/b1-m09-complaints-customer-service.js",
+      "bytes": 1620862,
+      "human": "1.55 MB"
+    },
+    {
+      "path": "content/b1-m18-b1-b2-bridge-preview.js",
+      "bytes": 1617718,
+      "human": "1.54 MB"
+    },
+    {
+      "path": "content/b1-m05-first-day-contract-basics.js",
+      "bytes": 1469446,
+      "human": "1.40 MB"
+    },
+    {
+      "path": "content/b1-m11-colleague-feedback-conflict.js",
+      "bytes": 1448185,
+      "human": "1.38 MB"
+    },
+    {
+      "path": "_development-files/v0801411_row_classification_audit.csv",
+      "bytes": 1445976,
+      "human": "1.38 MB"
+    },
+    {
+      "path": "content/b1-m06-sick-leave.js",
+      "bytes": 1441050,
+      "human": "1.37 MB"
+    },
+    {
+      "path": "content/b1-m08-orders-delivery.js",
+      "bytes": 1430924,
+      "human": "1.36 MB"
+    },
+    {
+      "path": "content/b1-m04-applications.js",
+      "bytes": 1377127,
+      "human": "1.31 MB"
+    },
+    {
+      "path": "content/b1-m07-meetings-leave-requests.js",
+      "bytes": 1375110,
+      "human": "1.31 MB"
+    },
+    {
+      "path": "index.html",
+      "bytes": 1224829,
+      "human": "1.17 MB"
+    },
+    {
+      "path": "content/b1-m03-job-search-offices.js",
+      "bytes": 1167382,
+      "human": "1.11 MB"
+    },
+    {
+      "path": "content/b1-m01-variant-families.js",
+      "bytes": 1056699,
+      "human": "1.01 MB"
+    },
+    {
+      "path": "content/b1-m02-appointments-callbacks.js",
+      "bytes": 960075,
+      "human": "937.57 KB"
+    },
+    {
+      "path": "_development-files/v0801412_learner_facing_artefact_audit.csv",
+      "bytes": 931059,
+      "human": "909.24 KB"
+    },
+    {
+      "path": "_development-files/v0851_prompt_cue_browser_smoke_result.json",
+      "bytes": 669680,
+      "human": "653.98 KB"
+    }
+  ],
+  "largestDirectories": [
+    {
+      "path": ".",
+      "bytes": 94187346,
+      "human": "89.82 MB"
+    },
+    {
+      "path": "docs",
+      "bytes": 33223840,
+      "human": "31.68 MB"
+    },
+    {
+      "path": "docs/qa",
+      "bytes": 33089308,
+      "human": "31.56 MB"
+    },
+    {
+      "path": "content",
+      "bytes": 28632832,
+      "human": "27.31 MB"
+    },
+    {
+      "path": "docs/qa/screenshots",
+      "bytes": 21462114,
+      "human": "20.47 MB"
+    },
+    {
+      "path": "_development-files",
+      "bytes": 12121260,
+      "human": "11.56 MB"
+    },
+    {
+      "path": "docs/qa/screenshots/v0.85.3.2-strict-layout-geometry",
+      "bytes": 4964841,
+      "human": "4.73 MB"
+    },
+    {
+      "path": "docs/qa/screenshots/v0.85.3.1-strict-ui-proof",
+      "bytes": 4776113,
+      "human": "4.55 MB"
+    },
+    {
+      "path": "docs/qa/screenshots/v0.85.3-practice-ui-completion",
+      "bytes": 4548280,
+      "human": "4.34 MB"
+    },
+    {
+      "path": "docs/qa/screenshots/v0.85.3.3b-duplicate-teach-me-hotfix",
+      "bytes": 4416134,
+      "human": "4.21 MB"
+    },
+    {
+      "path": "_development-files/ScreenConcepts",
+      "bytes": 3565178,
+      "human": "3.40 MB"
+    },
+    {
+      "path": "docs/qa/screenshots/v0.85.3.2-strict-layout-geometry/actual",
+      "bytes": 1530580,
+      "human": "1.46 MB"
+    },
+    {
+      "path": "docs/qa/screenshots/v0.85.3.3-cloze-experience",
+      "bytes": 1502667,
+      "human": "1.43 MB"
+    },
+    {
+      "path": "docs/qa/screenshots/v0.85.3.1-strict-ui-proof/actual",
+      "bytes": 1352485,
+      "human": "1.29 MB"
+    },
+    {
+      "path": "docs/qa/screenshots/v0.85.2-practice-screen-template-alignment",
+      "bytes": 1254079,
+      "human": "1.20 MB"
+    },
+    {
+      "path": "docs/qa/screenshots/v0.85.2-practice-screen-template-alignment/actual",
+      "bytes": 1228112,
+      "human": "1.17 MB"
+    },
+    {
+      "path": "docs/qa/screenshots/v0.85.3-practice-ui-completion/actual",
+      "bytes": 1090221,
+      "human": "1.04 MB"
+    },
+    {
+      "path": "docs/qa/screenshots/v0.85.3.3-cloze-experience/actual",
+      "bytes": 1002029,
+      "human": "978.54 KB"
+    },
+    {
+      "path": "docs/qa/screenshots/v0.85.3.3b-duplicate-teach-me-hotfix/actual",
+      "bytes": 994974,
+      "human": "971.65 KB"
+    },
+    {
+      "path": "scripts",
+      "bytes": 77741,
+      "human": "75.92 KB"
+    }
+  ],
+  "packageBudgetEstimate": {
+    "cleanSourceBytes": 63321211,
+    "cleanSourceHuman": "60.39 MB",
+    "cleanSourceWithScreenConceptsBytes": 66886389,
+    "cleanSourceWithScreenConceptsHuman": "63.79 MB",
+    "targetWithQaProofBytes": 31457280,
+    "targetWithoutQaProofBytes": 10485760,
+    "unpackedSourceTargetBytes": 104857600,
+    "browserProfilesInPackage": 0
+  }
+}

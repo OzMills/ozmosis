@@ -2,9 +2,9 @@
 
 ## 1. Current Baseline
 
-Current runtime baseline: `v0.85.3.3 - Cloze Experience and Representative Fixture Pass`.
+Current runtime baseline: `v0.85.3.3b - Duplicate Teach Me Button Hotfix`.
 
-Current acceptance status: v0.85.3.3 accepted the cloze experience using representative QA-only B1 sentence fixtures. The old giant active-practice title remains gone, the pre-answer star/status strip remains absent, answer-aware inline cloze widths are active, cue placement is documented, and normal content banks remain unchanged.
+Current acceptance status: v0.85.3.3b fixed the duplicate B1 inline cloze Teach Me controls. The newer smaller secondary `Teach me` reveal button is the surviving control, the older `#noArticleBtn.teachBtn` B1 cloze duplicate is suppressed when the reveal hint is available, and normal content banks remain unchanged.
 
 Next required patch: `v0.85.3.4 - Feedback Rhythm Pass`.
 
@@ -46,6 +46,8 @@ This summary is not a replacement for `CHANGELOG-FULL-OZMOSIS.txt`.
 - `v0.85.3.1` - Strict UI Proof and Screenshot Recovery Gate
 - `v0.85.3.2` - Strict Layout Geometry Fix Pass
 - `v0.85.3.3` - Cloze Experience and Representative Fixture Pass
+- `v0.85.3.3a` - Package Size, Old ZIP Audit, and No-PowerShell Cleanup Pass
+- `v0.85.3.3b` - Duplicate Teach Me Button Hotfix
 - `v0.85.3.4` - Feedback Rhythm Pass
 - `v0.85.4` - Completion Gate Harness
 - `v0.85.5` - Runtime Display Contract Lock
@@ -105,6 +107,8 @@ Stop if the hub fails.
 - Practice UI Reality and Completion Pass reached runtime v0.85.3, and strict proof gate v0.85.3.1 did not accept it for the content ratchet.
 - Strict Layout Geometry Fix Pass is implemented and accepted as v0.85.3.2.
 - Cloze Experience and Representative Fixture Pass is implemented and accepted as v0.85.3.3.
+- Package Size, Old ZIP Audit, and No-PowerShell Cleanup Pass is complete as v0.85.3.3a.
+- Duplicate Teach Me Button Hotfix is implemented and accepted as v0.85.3.3b.
 - Feedback Rhythm Pass is the next allowed implementation patch as v0.85.3.4.
 - Completion Gate Harness is blocked until v0.85.3.4 is handled or explicitly deferred.
 - Production Completion Pass is blocked until v0.85.11 reports `READY_FOR_V0.86`.

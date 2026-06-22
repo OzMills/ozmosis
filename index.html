@@ -11105,8 +11105,8 @@ body.b1Mode .b1ConfidenceRow {
   var B1_PATH_UNLOCK_STORAGE_KEY = "ozmosis_b1_path_unlock_overrides_v1";
   var B1_REVIEW_EDIT_QUEUE_STORAGE_KEY = "ozmosis_b1_review_edit_queue_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.85.3.3 - Cloze Experience and Representative Fixture Pass";
-  var OZMOSIS_EXPORT_VERSION = "v0.85.3.3-cloze-experience-fixtures";
+  var OZMOSIS_APP_VERSION = "v0.85.3.3b - Duplicate Teach Me Button Hotfix";
+  var OZMOSIS_EXPORT_VERSION = "v0.85.3.3b-duplicate-teach-me-hotfix";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -25593,6 +25593,11 @@ body.b1Mode .b1ConfidenceRow {
     btn.textContent = hasHint ? "Teach me" : "Show table";
     btn.setAttribute("aria-expanded", "false");
   }
+  function b1CurrentDisplayHintIsRevealable() {
+    if (!b1Runtime.active || !b1Runtime.current) return false;
+    var display = b1DisplayModel(b1Runtime.current);
+    return !!(display && display.hintVisibility === "reveal" && (display.hint_de || display.hint_en));
+  }
   function showB1DisplayHint() {
     if (state !== "b1Checking" || !b1Runtime.active || !b1Runtime.current || hintUsed) return false;
     var display = b1DisplayModel(b1Runtime.current);
@@ -25768,10 +25773,11 @@ body.b1Mode .b1ConfidenceRow {
       return;
     }
     var hasTyped = !!b1CleanAnswer(inlineInput.value);
+    var hasDisplayHintButton = b1CurrentDisplayHintIsRevealable();
     actionGrid.classList.remove("teachAction", "singleAction");
     actionGrid.classList.add("rightAction");
-    teachBtn.style.display = hasTyped ? "none" : "";
-    teachBtn.disabled = hasTyped;
+    teachBtn.style.display = (hasTyped || hasDisplayHintButton) ? "none" : "";
+    teachBtn.disabled = hasTyped || hasDisplayHintButton;
     checkBtn.style.display = hasTyped ? "" : "none";
     checkBtn.disabled = !hasTyped;
   }

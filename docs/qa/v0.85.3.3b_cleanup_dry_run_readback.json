@@ -1,0 +1,17 @@
+﻿{
+  "mode": "dry-run",
+  "candidateCount": 0,
+  "candidateBytes": 0,
+  "candidates": [],
+  "deleted": [],
+  "failed": [],
+  "preserved": [
+    "index.html",
+    "content/",
+    "data/",
+    "docs/",
+    "docs/qa/screenshots/",
+    "_development-files/ScreenConcepts/",
+    "_development-files/*.cjs"
+  ]
+}
