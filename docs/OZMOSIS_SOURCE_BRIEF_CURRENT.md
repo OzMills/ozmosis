@@ -2,9 +2,9 @@
 
 ## Current Patch Status
 
-Current runtime baseline: `v0.85.5 - Runtime Display Contract Lock`.
+Current runtime baseline: `v0.85.5a - Satzbau Build-Line and Answer-Leak Repair`.
 
-Current gate result: `RUNTIME_DISPLAY_CONTRACT_LOCK_ACCEPTED`.
+Current gate result: `SATZBAU_BUILD_LINE_ANSWER_LEAK_ACCEPTED`.
 
 Next required patch: `v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues`.
 
@@ -168,9 +168,9 @@ Deferred features must not be forgotten or implemented early:
 
 ## 11. Current Baseline
 
-Current runtime baseline: `v0.85.5 - Runtime Display Contract Lock`.
+Current runtime baseline: `v0.85.5a - Satzbau Build-Line and Answer-Leak Repair`.
 
-Current acceptance status: v0.85.5 accepted the runtime display contract lock after v0.85.4a. Active normal-practice runtime counts are 0 rendered prompt/internal-label leaks, 0 meaning-choice hidden cue risks, 0 under-contextualised cloze-without-cue risks, and 0 review-only items entering normal practice. v0.85.4a Satzbau tap/randomisation and iOS-safe input-size fixes remain preserved.
+Current acceptance status: v0.85.5a accepted the Satzbau build-line and answer-leak repair after v0.85.5. Satzbau chunks now build in a visible non-input build line, manual typing is secondary, and the pre-answer correct order is not visible in gloss/support. The v0.85.5 runtime display contract and v0.85.4a Satzbau tap/randomisation and iOS-safe input-size fixes remain preserved.
 
 Next required patch: `v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues`.
 
@@ -199,5 +199,6 @@ Current planning handoff:
 - Completion Gate Harness has been implemented and accepted as v0.85.4.
 - Satzbau Interaction, Chunk Randomisation, and iOS Input Zoom Repair has been implemented and accepted as v0.85.4a.
 - Runtime Display Contract Lock has been implemented and accepted as v0.85.5.
+- Satzbau Build-Line and Answer-Leak Repair has been implemented and accepted as v0.85.5a.
 - Source Cleanup Batch 1: Internal Labels and Meaning Cues is next as v0.85.6.
 - Production Completion Pass remains blocked until v0.85.11 reports `READY_FOR_V0.86`.

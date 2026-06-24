@@ -18,6 +18,8 @@ const expectedStartAppVersion = "v0.85.4a - Satzbau Interaction, Chunk Randomisa
 const expectedStartExportVersion = "v0.85.4a-satzbau-touch-ios-zoom";
 const expectedFinalAppVersion = "v0.85.5 - Runtime Display Contract Lock";
 const expectedFinalExportVersion = "v0.85.5-runtime-display-contract-lock";
+const expectedSuccessorAppVersion = "v0.85.5a - Satzbau Build-Line and Answer-Leak Repair";
+const expectedSuccessorExportVersion = "v0.85.5a-satzbau-build-line-answer-leak";
 
 const fixtures = {
   meaningChoice:"b1_vocab_termin_003",
@@ -306,9 +308,13 @@ function extractVersions() {
   result.exportVersion = exp ? exp[1] : "";
   result.startingStateVerified = (
     (result.appVersion === expectedStartAppVersion && result.exportVersion === expectedStartExportVersion) ||
-    (result.appVersion === expectedFinalAppVersion && result.exportVersion === expectedFinalExportVersion)
+    (result.appVersion === expectedFinalAppVersion && result.exportVersion === expectedFinalExportVersion) ||
+    (result.appVersion === expectedSuccessorAppVersion && result.exportVersion === expectedSuccessorExportVersion)
   );
-  result.runtimeVersionUpdated = result.appVersion === expectedFinalAppVersion && result.exportVersion === expectedFinalExportVersion;
+  result.runtimeVersionUpdated = (
+    (result.appVersion === expectedFinalAppVersion && result.exportVersion === expectedFinalExportVersion) ||
+    (result.appVersion === expectedSuccessorAppVersion && result.exportVersion === expectedSuccessorExportVersion)
+  );
 }
 
 function loadBaselines() {
@@ -626,7 +632,7 @@ async function browserGate() {
     const correction = await collectStageSnapshot(cdp, fixtures.normalCorrection);
     const cases = await collectStageSnapshot(cdp, fixtures.casesRepair);
     const satzbauAfter = await collectStageSnapshot(cdp, fixtures.satzbau);
-    result.nonRegression.v0854aIosZoomRepairPreserved = [cloze.inlineInputFontSize || cloze.answerInputFontSize, correction.answerInputFontSize, cases.answerInputFontSize, satzbauAfter.answerInputFontSize].every(size => Number(size || 0) >= 16);
+    result.nonRegression.v0854aIosZoomRepairPreserved = [cloze.inlineInputFontSize || cloze.answerInputFontSize, correction.answerInputFontSize, cases.answerInputFontSize, satzbauAfter.inlineInputFontSize || satzbauAfter.answerInputFontSize].every(size => Number(size || 0) >= 16);
     result.nonRegression.sharedFramePreserved = Object.values(result.representativeScreens).every(screen => screen && screen.sharedFramePresent && !screen.bodyOverflow);
     const article = await evaluateJson(cdp, `
       var debug = window.ozmosisB1Debug();

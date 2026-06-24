@@ -9548,13 +9548,120 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauChunk {
 
 body.b1Mode[data-b1-surface="satzbau"] .satzbauAnswerRow {
   justify-content:center !important;
+  align-items:stretch !important;
+  gap:8px !important;
 }
 
-body.b1Mode[data-b1-surface="satzbau"] .inlineClozeInput,
+body.b1Mode[data-b1-surface="satzbau"] .satzbauBuildWrap {
+  display:flex !important;
+  flex:1 1 auto !important;
+  min-width:0 !important;
+  max-width:min(100%, 420px) !important;
+  flex-direction:column !important;
+  gap:5px !important;
+  text-align:left !important;
+}
+
+body.b1Mode[data-b1-surface="satzbau"] .satzbauBuildLabel {
+  color:rgba(194,227,239,.78) !important;
+  font-size:clamp(.72rem,2.8vw,.82rem) !important;
+  font-weight:850 !important;
+  text-transform:uppercase !important;
+  letter-spacing:.04em !important;
+}
+
+body.b1Mode[data-b1-surface="satzbau"] .satzbauBuildLine {
+  display:flex !important;
+  flex-wrap:wrap !important;
+  align-items:center !important;
+  min-height:48px !important;
+  width:100% !important;
+  box-sizing:border-box !important;
+  gap:6px !important;
+  padding:8px 10px !important;
+  border:1px solid rgba(126,224,255,.38) !important;
+  border-radius:12px !important;
+  background:linear-gradient(180deg, rgba(6,18,31,.92), rgba(3,8,17,.96)) !important;
+  color:#e8fbff !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06), 0 0 0 1px rgba(126,224,255,.08) !important;
+  direction:ltr !important;
+  unicode-bidi:isolate !important;
+}
+
+body.b1Mode[data-b1-surface="satzbau"] .satzbauBuildLine:focus-visible {
+  outline:3px solid rgba(126,224,255,.95) !important;
+  outline-offset:3px !important;
+}
+
+body.b1Mode[data-b1-surface="satzbau"] .satzbauBuildLine.empty {
+  justify-content:center !important;
+  color:rgba(177,194,212,.74) !important;
+  border-style:dashed !important;
+}
+
+body.b1Mode[data-b1-surface="satzbau"] .satzbauBuildLine.manual {
+  display:block !important;
+  font-size:max(16px,.96rem) !important;
+  font-weight:800 !important;
+  line-height:1.32 !important;
+}
+
+body.b1Mode[data-b1-surface="satzbau"] .satzbauBuildToken {
+  display:inline-flex !important;
+  min-height:30px !important;
+  align-items:center !important;
+  padding:5px 8px !important;
+  border:1px solid rgba(80,255,190,.42) !important;
+  border-radius:9px !important;
+  background:rgba(30,111,94,.35) !important;
+  color:#f3fff9 !important;
+  font-size:clamp(.82rem,3vw,.94rem) !important;
+  font-weight:850 !important;
+  line-height:1.1 !important;
+}
+
+body.b1Mode[data-b1-surface="satzbau"] .satzbauBuildPlaceholder {
+  font-size:clamp(.78rem,2.9vw,.9rem) !important;
+  font-weight:780 !important;
+}
+
+body.b1Mode[data-b1-surface="satzbau"] .satzbauManualFallback {
+  width:min(100%, 420px) !important;
+  margin:0 auto !important;
+  text-align:left !important;
+  color:rgba(194,227,239,.82) !important;
+  font-size:clamp(.78rem,2.9vw,.9rem) !important;
+}
+
+body.b1Mode[data-b1-surface="satzbau"] .satzbauManualFallback summary {
+  min-height:40px !important;
+  display:flex !important;
+  align-items:center !important;
+  width:max-content !important;
+  max-width:100% !important;
+  cursor:pointer !important;
+  color:rgba(126,224,255,.9) !important;
+  font-weight:850 !important;
+}
+
+body.b1Mode[data-b1-surface="satzbau"] .satzbauManualLabel {
+  display:block !important;
+  margin:0 0 5px !important;
+  color:rgba(177,194,212,.78) !important;
+  font-size:.76rem !important;
+  font-weight:800 !important;
+}
+
+body.b1Mode[data-b1-surface="satzbau"] .satzbauManualFallback .inlineClozeInput {
+  width:100% !important;
+  max-width:100% !important;
+  min-width:0 !important;
+}
+
 body.b1Mode[data-b1-surface="satzbau"] .clozeAnswerText {
-  width:min(100%, 360px) !important;
-  max-width:min(88vw, 360px) !important;
-  min-width:min(88vw, 240px) !important;
+  width:auto !important;
+  max-width:100% !important;
+  min-width:0 !important;
 }
 
 body.b1Mode .inlineClozeInput,
@@ -11476,8 +11583,8 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
   var B1_PATH_UNLOCK_STORAGE_KEY = "ozmosis_b1_path_unlock_overrides_v1";
   var B1_REVIEW_EDIT_QUEUE_STORAGE_KEY = "ozmosis_b1_review_edit_queue_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.85.5 - Runtime Display Contract Lock";
-  var OZMOSIS_EXPORT_VERSION = "v0.85.5-runtime-display-contract-lock";
+  var OZMOSIS_APP_VERSION = "v0.85.5a - Satzbau Build-Line and Answer-Leak Repair";
+  var OZMOSIS_EXPORT_VERSION = "v0.85.5a-satzbau-build-line-answer-leak";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -24367,7 +24474,7 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     if (b1DisplayChoiceLikelyUsesMeaningCue(item)) {
       if (!(model.cueVisibility === "before_answer" && b1DisplayClean(model.cueText) && !b1DisplayContractVisibleTextLooksInternal(model.cueText))) issues.push("meaning_choice_cue_missing");
     }
-    if (b1IsTypedCloze(item) && b1DisplayClozeNeedsCue(item)) {
+    if (b1IsTypedCloze(item) && !b1IsSatzbauItem(item) && b1DisplayClozeNeedsCue(item)) {
       if (!(model.cueVisibility === "before_answer" && b1DisplayClean(model.cueText) && !b1DisplayContractVisibleTextLooksInternal(model.cueText))) issues.push("cloze_context_cue_missing");
     }
     return issues.filter(function(issue, index, arr){ return issue && arr.indexOf(issue) === index; });
@@ -24415,7 +24522,12 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     var issues = [];
     if (internalLabel) issues.push("internal_label_sanitised");
     if (promptHasLeak) issues.push("prompt_internal_label_sanitised");
-    if (meaningChoice && (cue || support)) {
+    if (b1IsSatzbauItem(item)) {
+      cueText = "";
+      cueRole = "none";
+      cueVisibility = "hidden";
+      supportVisibility = "after_answer";
+    } else if (meaningChoice && (cue || support)) {
       cueText = cue || support;
       cueRole = "meaning";
       cueVisibility = "before_answer";
@@ -24647,6 +24759,46 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
       return "";
     }).filter(Boolean).join(" ");
   }
+  function b1SatzbauSelectedTokenTexts() {
+    var ids = Array.isArray(b1Runtime.currentSatzbauSelectedTokenIds) ? b1Runtime.currentSatzbauSelectedTokenIds : [];
+    var tokens = Array.isArray(b1Runtime.currentSatzbauTokenOrder) ? b1Runtime.currentSatzbauTokenOrder : [];
+    return ids.map(function(id){
+      for (var i = 0; i < tokens.length; i += 1) {
+        if (tokens[i].id === id) return tokens[i].text;
+      }
+      return "";
+    }).filter(Boolean);
+  }
+  function b1UpdateSatzbauBuildLine(value) {
+    var line = el("satzbauBuildLine");
+    if (!line) return;
+    var manualValue = b1DisplayClean(value);
+    var selectedTokens = b1SatzbauSelectedTokenTexts();
+    line.innerHTML = "";
+    line.classList.remove("empty", "manual");
+    if (selectedTokens.length) {
+      selectedTokens.forEach(function(text){
+        var token = document.createElement("span");
+        token.className = "satzbauBuildToken";
+        token.textContent = text;
+        line.appendChild(token);
+      });
+      line.setAttribute("aria-label", "Your sentence: " + selectedTokens.join(" "));
+      return;
+    }
+    if (manualValue) {
+      line.classList.add("manual");
+      line.textContent = manualValue;
+      line.setAttribute("aria-label", "Manual sentence: " + manualValue);
+      return;
+    }
+    var placeholder = document.createElement("span");
+    placeholder.className = "satzbauBuildPlaceholder";
+    placeholder.textContent = "Tap chunks to build your sentence.";
+    line.classList.add("empty");
+    line.appendChild(placeholder);
+    line.setAttribute("aria-label", "Your sentence is empty.");
+  }
   function b1SyncSatzbauChunkButtons() {
     var selected = Array.isArray(b1Runtime.currentSatzbauSelectedTokenIds) ? b1Runtime.currentSatzbauSelectedTokenIds : [];
     var selectedMap = {};
@@ -24657,8 +24809,10 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
       button.classList.toggle("selected", active);
       button.setAttribute("aria-pressed", active ? "true" : "false");
     });
+    var input = el("b1InlineInput");
     var clear = el("satzbauClearBtn");
-    if (clear) clear.disabled = !selected.length;
+    if (clear) clear.disabled = !selected.length && !(input && input.value);
+    b1UpdateSatzbauBuildLine(selected.length ? "" : (input && input.value || ""));
   }
   function b1SetSatzbauAnswerFromSelection() {
     var input = el("b1InlineInput");
@@ -24666,6 +24820,7 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     b1Runtime.satzbauProgrammaticInput = true;
     input.value = b1SatzbauSelectedAnswerText();
     b1Runtime.satzbauProgrammaticInput = false;
+    b1UpdateSatzbauBuildLine(input.value);
     updateB1TypedClozeActionState();
     b1UpdateVisualTemplateInputState();
     b1SyncSatzbauChunkButtons();
@@ -24683,14 +24838,15 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     if (state !== "b1Checking" || !b1Runtime.current || !b1IsSatzbauItem(b1Runtime.current)) return;
     b1Runtime.currentSatzbauSelectedTokenIds = [];
     b1SetSatzbauAnswerFromSelection();
-    var input = el("b1InlineInput");
-    if (input) input.focus();
+    var line = el("satzbauBuildLine");
+    if (line) line.focus();
   }
   function handleB1SatzbauManualInput(input) {
     if (!b1Runtime.current || !b1IsSatzbauItem(b1Runtime.current) || b1Runtime.satzbauProgrammaticInput) return;
     var selectedText = b1SatzbauSelectedAnswerText();
     if (b1DisplayClean(input && input.value) !== b1DisplayClean(selectedText)) {
       b1Runtime.currentSatzbauSelectedTokenIds = [];
+      b1UpdateSatzbauBuildLine(input && input.value);
       b1SyncSatzbauChunkButtons();
     }
   }
@@ -24722,9 +24878,14 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
       return '<button class="satzbauChunk" type="button" data-satzbau-token-id="' + escapeHtml(chunk.id) + '" data-satzbau-token-text="' + escapeHtml(chunk.text) + '" aria-pressed="false" aria-label="Word chunk: ' + escapeHtml(chunk.text) + '"' + disabled + '>' + escapeHtml(chunk.text) + '</button>';
     }).join("");
     var clearHtml = resultClass ? "" : '<button id="satzbauClearBtn" class="satzbauClearBtn" type="button" disabled>Clear</button>';
+    var buildLineHtml = resultClass
+      ? '<span class="satzbauBuildLine answered" id="satzbauBuildLine" dir="ltr"><span class="clozeAnswerText ' + resultClass + '">' + escapeHtml(item.answer || "") + '</span></span>'
+      : '<span class="satzbauBuildWrap"><span class="satzbauBuildLabel">Your sentence:</span><span class="satzbauBuildLine empty" id="satzbauBuildLine" tabindex="-1" role="status" aria-live="polite" aria-label="Your sentence is empty."><span class="satzbauBuildPlaceholder">Tap chunks to build your sentence.</span></span></span>';
+    var manualHtml = resultClass ? "" : '<details class="satzbauManualFallback" id="satzbauManualFallback"><summary>Type manually</summary><label class="satzbauManualLabel" for="b1InlineInput">Manual fallback</label>' + b1ClozeReplacement(item, resultClass) + '</details>';
     var bodyHtml = '<span class="satzbauSurface" dir="ltr">' +
       (chunkHtml ? '<span class="satzbauChunkRow" aria-label="Word chunks">' + chunkHtml + '</span>' : "") +
-      '<span class="satzbauAnswerRow">' + b1ClozeReplacement(item, resultClass) + clearHtml + '</span>' +
+      '<span class="satzbauAnswerRow">' + buildLineHtml + clearHtml + '</span>' +
+      manualHtml +
       '</span>';
     return b1DisplayLearnerPromptHtml(display, bodyHtml);
   }
@@ -26820,6 +26981,11 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     setTimeout(function(){
       var firstChoice = el("connectorChoiceGrid") && el("connectorChoiceGrid").querySelector("button");
       if (firstChoice) firstChoice.focus();
+      else if (inlineInput && b1IsSatzbauItem(item)) {
+        var firstChunk = document.querySelector(".satzbauChunk");
+        if (firstChunk) firstChunk.focus();
+        else if (el("satzbauBuildLine")) el("satzbauBuildLine").focus();
+      }
       else if (inlineInput) inlineInput.focus();
       else {
         input.focus();

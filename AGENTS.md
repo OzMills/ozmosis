@@ -6,11 +6,11 @@ Ozmosis is a static, dependency-free German learning app deployed through GitHub
 
 Ozmosis was formerly called Kasuskonsole. Historical notes may still use that name, but current user-facing and repo-facing language should use `Ozmosis`.
 
-Current working version: `v0.85.5 - Runtime Display Contract Lock`.
+Current working version: `v0.85.5a - Satzbau Build-Line and Answer-Leak Repair`.
 
-Current runtime baseline: `v0.85.5 - Runtime Display Contract Lock`.
+Current runtime baseline: `v0.85.5a - Satzbau Build-Line and Answer-Leak Repair`.
 
-Current gate result: `RUNTIME_DISPLAY_CONTRACT_LOCK_ACCEPTED`.
+Current gate result: `SATZBAU_BUILD_LINE_ANSWER_LEAK_ACCEPTED`.
 
 Next planned patch: `v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues`
 
@@ -20,11 +20,11 @@ Current README: `README.md`
 
 Current changelog: `CHANGELOG-FULL-OZMOSIS.txt`
 
-Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.5.md`
+Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.5a.md`
 
-Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.5.md`
+Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.5a.md`
 
-Current QA gate: `docs/qa/v0.85.5_runtime_display_contract_lock.md`
+Current QA gate: `docs/qa/v0.85.5a_satzbau_build_line_answer_leak.md`
 
 README/changelog convention: one canonical root `README.md` and one canonical `CHANGELOG-FULL-OZMOSIS.txt`. Do not create versioned README/changelog files moving forward unless the user explicitly asks for a standalone export.
 

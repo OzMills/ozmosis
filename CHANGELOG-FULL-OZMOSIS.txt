@@ -35,17 +35,33 @@ This is the only changelog moving forward. Do not create standalone `CHANGELOG-v
 
 Current state is based only on current repo files.
 
-- Current app version in `index.html`: `v0.85.5 - Runtime Display Contract Lock`
-- Current export version in `index.html`: `v0.85.5-runtime-display-contract-lock`
+- Current app version in `index.html`: `v0.85.5a - Satzbau Build-Line and Answer-Leak Repair`
+- Current export version in `index.html`: `v0.85.5a-satzbau-build-line-answer-leak`
 - Current README: `README.md`
 - Current changelog: `CHANGELOG-FULL-OZMOSIS.txt`
-- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.5.md`
-- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.5.md`
-- Current QA report: `docs/qa/v0.85.5_runtime_display_contract_lock.md`
-- Current gate result: `RUNTIME_DISPLAY_CONTRACT_LOCK_ACCEPTED`
+- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.5a.md`
+- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.5a.md`
+- Current QA report: `docs/qa/v0.85.5a_satzbau_build_line_answer_leak.md`
+- Current gate result: `SATZBAU_BUILD_LINE_ANSWER_LEAK_ACCEPTED`
 - Next required patch documented in current files: `v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues`
 
 Live GitHub Pages was checked by the v0.85.3.8 gate and was reachable, but still served `v0.85.3.7 - Correction and Satzbau Surface Pass` before deployment/cache update.
+
+## v0.85.5a - Satzbau Build-Line and Answer-Leak Repair
+
+- Added a visible non-input Satzbau build line so tapped chunks build the learner sentence in a clear sentence rail instead of using the manual text-entry field as the primary surface.
+- Kept manual typing as a secondary disclosure fallback labelled for manual entry.
+- Hid the Satzbau pre-answer cue/support path that exposed the correct answer order under the chunks.
+- Preserved existing answer checking, scoring, evidence semantics, confidence values, storage keys, export/import format, content banks, answer keys, article-grid behaviour, shared frame, and B1-only active scope.
+- Preserved v0.85.4a Satzbau tappable chunks, selected state, Clear/reset, attempt-stable randomisation, and 16px+ mobile text-entry sizing.
+- Preserved the v0.85.5 runtime display contract: 0 active normal-practice rendered prompt/internal-label leaks, 0 meaning-choice hidden cue risks, 0 under-contextualised cloze-without-cue risks, and 0 review-only items entering normal practice.
+- Added `scripts/ozmosis-satzbau-build-line-check.cjs`.
+- Updated `scripts/ozmosis-runtime-display-contract-check.cjs` so the existing runtime-contract gate accepts the v0.85.5a successor while preserving the v0.85.5 contract checks.
+- Added machine-readable results at `docs/qa/v0.85.5a_satzbau_build_line_answer_leak_results.json`.
+- Added QA documentation at `docs/qa/v0.85.5a_satzbau_build_line_answer_leak.md`.
+- Added screenshot and contact-sheet proof under `docs/qa/screenshots/v0.85.5a-satzbau-build-line-answer-leak/`.
+- Verified the required responsive/browser states through Edge/CDP: 430x932, 390x844, 320x568, 430x520, 320x360, and 1365x599.
+- Set the next planned patch to `v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues`.
 
 ## v0.85.5 - Runtime Display Contract Lock
 

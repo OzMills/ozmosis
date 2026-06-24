@@ -9,30 +9,36 @@ Future README updates should be made in this file. Do not create new `README-v*.
 
 ## Current App
 
-# Ozmosis v0.85.5 Runtime Display Contract Lock
+# Ozmosis v0.85.5a Satzbau Build-Line and Answer-Leak Repair
 
 Ozmosis is a static, local-first German learning app. The deployed app remains `index.html`.
 
-v0.85.5 locks the runtime display contract for active normal practice before source cleanup begins. It keeps the v0.85.4 static issue queues as source-cleanup evidence, but prevents learner-facing active practice from rendering internal labels, hidden meaning-choice cues, under-contextualised clozes without a cue, or review-only items.
+v0.85.5a is a narrow runtime hotfix after the accepted v0.85.5 Runtime Display Contract Lock.
 
-The runtime lock adds a display-contract audit helper and Edge/CDP gate. Active normal-practice counts are now 0 rendered prompt/internal-label leaks, 0 meaning-choice hidden cue risks, 0 under-contextualised cloze-without-cue risks, and 0 review-only items entering normal practice. The v0.85.4a Satzbau tap/randomisation and iOS-safe input-size fixes are preserved.
+It fixes two Satzbau issues found by manual review: tapped chunks now build the learner sentence in a visible non-input build line, and the pre-answer gloss/support path no longer exposes the correct answer order. Manual typing remains available only as a secondary fallback behind a disclosure.
 
-- Runtime app version: `v0.85.5 - Runtime Display Contract Lock`
-- Runtime export version: `v0.85.5-runtime-display-contract-lock`
-- Current gate result: `RUNTIME_DISPLAY_CONTRACT_LOCK_ACCEPTED`
-- Core result: Edge/CDP verified zero active runtime display-contract defects, 552 old static prompt/cue rows already handled by runtime guards, 3,535 unsafe source rows excluded for later cleanup, 4,087 non-blocking source-cleanup candidates carried forward, 2,990 review-only rows safely excluded, v0.85.4a Satzbau non-regression, iOS-safe input font sizes, article-grid preservation, shared-frame preservation, protected storage keys, and export/import functions.
+The patch preserves the v0.85.5 runtime display contract, v0.85.4a chunk tapping/randomisation and 16px mobile input safeguards, article-grid behaviour, shared frame, content banks, scoring, evidence, storage keys, and export/import format.
 
-## Current v0.85.5 docs
+- Runtime app version: `v0.85.5a - Satzbau Build-Line and Answer-Leak Repair`
+- Runtime export version: `v0.85.5a-satzbau-build-line-answer-leak`
+- Current gate result: `SATZBAU_BUILD_LINE_ANSWER_LEAK_ACCEPTED`
+- Core result: Edge/CDP verified visible non-input Satzbau build line, tap-to-build, selected state, clear/reset, secondary manual fallback, preserved answer checking, no pre-answer correct-answer leak, post-answer correct sentence visibility, v0.85.5 runtime display contract preservation, v0.85.4a Satzbau/iOS non-regression, article-grid preservation, protected storage keys, export/import functions, screenshots, and contact-sheet proof.
+
+## Current v0.85.5a docs
 
 - Changelog: `CHANGELOG-FULL-OZMOSIS.txt`
-- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.5.md`
-- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.5.md`
+- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.5a.md`
+- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.5a.md`
 - Shared frame contract: `docs/OZMOSIS_SHARED_PRACTICE_FRAME_CONTRACT_v0.85.3.4.md`
-- Current QA gate: `docs/qa/v0.85.5_runtime_display_contract_lock.md`
-- Current gate result JSON: `docs/qa/v0.85.5_runtime_display_contract_lock_results.json`
+- Current QA gate: `docs/qa/v0.85.5a_satzbau_build_line_answer_leak.md`
+- Current gate result JSON: `docs/qa/v0.85.5a_satzbau_build_line_answer_leak_results.json`
+- Current gate screenshots: `docs/qa/screenshots/v0.85.5a-satzbau-build-line-answer-leak/`
+- Current gate script: `scripts/ozmosis-satzbau-build-line-check.cjs`
+- Runtime contract gate script: `scripts/ozmosis-runtime-display-contract-check.cjs`
+- Previous v0.85.5 QA gate: `docs/qa/v0.85.5_runtime_display_contract_lock.md`
+- Previous v0.85.5 result JSON: `docs/qa/v0.85.5_runtime_display_contract_lock_results.json`
 - Runtime contract resolved issue CSV: `docs/qa/v0.85.5_runtime_display_contract_resolved_issues.csv`
 - Runtime contract remaining source cleanup CSV: `docs/qa/v0.85.5_runtime_display_contract_remaining_source_cleanup.csv`
-- Current gate script: `scripts/ozmosis-runtime-display-contract-check.cjs`
 - Previous v0.85.4a QA gate: `docs/qa/v0.85.4a_satzbau_touch_ios_zoom.md`
 - Previous v0.85.4a result JSON: `docs/qa/v0.85.4a_satzbau_touch_ios_zoom_results.json`
 - Previous completion gate: `docs/qa/v0.85.4_completion_gate_harness.md`
@@ -42,6 +48,17 @@ The runtime lock adds a display-contract audit helper and Edge/CDP gate. Active 
 - Package policy: `docs/OZMOSIS_QA_ARTEFACT_AND_PACKAGE_POLICY.md`
 
 Next planned patch: `v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues`.
+
+## Previous v0.85.5 Runtime Display Contract Lock
+
+v0.85.5 locked the runtime display contract for active normal practice before source cleanup begins. It keeps the v0.85.4 static issue queues as source-cleanup evidence, but prevents learner-facing active practice from rendering internal labels, hidden meaning-choice cues, under-contextualised clozes without a cue, or review-only items.
+
+The runtime lock adds a display-contract audit helper and Edge/CDP gate. Active normal-practice counts are now 0 rendered prompt/internal-label leaks, 0 meaning-choice hidden cue risks, 0 under-contextualised cloze-without-cue risks, and 0 review-only items entering normal practice. The v0.85.4a Satzbau tap/randomisation and iOS-safe input-size fixes are preserved.
+
+- Runtime app version: `v0.85.5 - Runtime Display Contract Lock`
+- Runtime export version: `v0.85.5-runtime-display-contract-lock`
+- Gate result: `RUNTIME_DISPLAY_CONTRACT_LOCK_ACCEPTED`
+- Core result: Edge/CDP verified zero active runtime display-contract defects, 552 old static prompt/cue rows already handled by runtime guards, 3,535 unsafe source rows excluded for later cleanup, 4,087 non-blocking source-cleanup candidates carried forward, 2,990 review-only rows safely excluded, v0.85.4a Satzbau non-regression, iOS-safe input font sizes, article-grid preservation, shared-frame preservation, protected storage keys, and export/import functions.
 
 ## Previous v0.85.4a Satzbau Interaction, Chunk Randomisation, and iOS Input Zoom Repair
 
