@@ -1,5 +1,13 @@
 # Ozmosis Strategic Source Brief Current
 
+## Current Patch Status
+
+Current runtime baseline: `v0.85.4a - Satzbau Interaction, Chunk Randomisation, and iOS Input Zoom Repair`.
+
+Current gate result: `SATZBAU_TOUCH_IOS_ZOOM_ACCEPTED`.
+
+Next required patch: `v0.85.5 - Runtime Display Contract Lock`.
+
 ## 1. Project Identity
 
 Ozmosis is a static German-learning web app and a B1-first learning instrument.
@@ -160,11 +168,11 @@ Deferred features must not be forgotten or implemented early:
 
 ## 11. Current Baseline
 
-Current runtime baseline: `v0.85.3.6a - Feedback Rhythm Repair and Proof Artefact Fix`.
+Current runtime baseline: `v0.85.4a - Satzbau Interaction, Chunk Randomisation, and iOS Input Zoom Repair`.
 
-Current acceptance status: v0.85.3.6a repaired the remaining feedback-rhythm proof issues after v0.85.3.6. Feedback proof screenshots now show real contact-sheet thumbnails, B1 cloze feedback is aligned with the staged item, and confidence reachability is measured in an answered B1 state.
+Current acceptance status: v0.85.4a repaired the user-reported Satzbau and iOS/Safari input issues after the accepted v0.85.4 completion gate. Satzbau chunks are tappable controls, chunk order is attempt-stable and randomised, manual typing remains preserved, and mobile/touch text-entry controls are verified at 16px or larger.
 
-Next required patch: `v0.85.3.7 - Correction and Satzbau Surface Pass`.
+Next required patch: `v0.85.5 - Runtime Display Contract Lock`.
 
 Current planning handoff:
 
@@ -186,6 +194,9 @@ Current planning handoff:
 - Shared Practice Frame and Surface Inventory has been completed as v0.85.3.4 without changing runtime behaviour.
 - Shared Practice Frame Convergence Pass has been implemented and accepted as v0.85.3.5.
 - Feedback Rhythm Pass has been implemented as v0.85.3.6 and repaired/accepted as v0.85.3.6a.
-- Correction and Satzbau Surface Pass is next as v0.85.3.7.
-- Completion Gate Harness v0.85.4 is blocked until correction/Satzbau surface work is handled or explicitly deferred.
+- Correction and Satzbau Surface Pass has been implemented and accepted as v0.85.3.7.
+- HUD, Keyboard, and Live Mobile Verification Gate has been implemented and accepted as v0.85.3.8.
+- Completion Gate Harness has been implemented and accepted as v0.85.4.
+- Satzbau Interaction, Chunk Randomisation, and iOS Input Zoom Repair has been implemented and accepted as v0.85.4a.
+- Runtime Display Contract Lock is next as v0.85.5.
 - Production Completion Pass remains blocked until v0.85.11 reports `READY_FOR_V0.86`.

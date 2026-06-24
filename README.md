@@ -9,29 +9,66 @@ Future README updates should be made in this file. Do not create new `README-v*.
 
 ## Current App
 
-# Ozmosis v0.85.3.7 correction and Satzbau surface pass
+# Ozmosis v0.85.4a Satzbau Interaction, Chunk Randomisation, and iOS Input Zoom Repair
 
 Ozmosis is a static, local-first German learning app. The deployed app remains `index.html`.
 
-v0.85.3.7 improves the correction/repair and Satzbau/word-order practice surfaces without changing content, scoring, evidence, storage, export/import, or the shared feedback rhythm. Correction/edit-text tasks now use a compact neon-styled textarea, while Satzbau tasks render existing word chunks as distinct chips with the same typed answer semantics as before.
+v0.85.4a is a narrow runtime hotfix after the accepted v0.85.4 completion gate. It fixes Satzbau/word-order chunk interaction, attempt-stable chunk randomisation, and mobile-safe input font sizing for iOS/Safari zoom risk.
+
+Satzbau chunks are now real buttons, tapping chunks builds the answer in tap order, selected chunks have visible state, Clear resets selected chunks and the answer, and manual typing remains available through the existing answer-checking path. Text-entry controls used by B1 cloze/Satzbau, correction textarea, and Case Trainer are verified at 16px or larger in mobile/touch layouts.
+
+- Runtime app version: `v0.85.4a - Satzbau Interaction, Chunk Randomisation, and iOS Input Zoom Repair`
+- Runtime export version: `v0.85.4a-satzbau-touch-ios-zoom`
+- Current gate result: `SATZBAU_TOUCH_IOS_ZOOM_ACCEPTED`
+- Core result: Edge/CDP verified tappable Satzbau chunks, tap-to-answer, selected state, clear/reset, manual typing, answer checking, attempt-stable randomised chunk order, B1 cloze/correction/choice non-regression, Case Trainer input font size, article-grid preservation, export/import, required screenshots, and contact-sheet image loading.
+
+## Current v0.85.4a docs
+
+- Changelog: `CHANGELOG-FULL-OZMOSIS.txt`
+- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.4a.md`
+- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.4a.md`
+- Shared frame contract: `docs/OZMOSIS_SHARED_PRACTICE_FRAME_CONTRACT_v0.85.3.4.md`
+- Current QA gate: `docs/qa/v0.85.4a_satzbau_touch_ios_zoom.md`
+- Current gate result JSON: `docs/qa/v0.85.4a_satzbau_touch_ios_zoom_results.json`
+- Screenshot comparison: `docs/qa/screenshots/v0.85.4a-satzbau-touch-ios-zoom/comparison.html`
+- Previous completion gate: `docs/qa/v0.85.4_completion_gate_harness.md`
+- Previous completion gate result JSON: `docs/qa/v0.85.4_completion_gate_harness_results.json`
+- Completion gate CSVs: `docs/qa/v0.85.4_completion_gate_prompt_cue_issues.csv`, `docs/qa/v0.85.4_completion_gate_cloze_cue_issues.csv`, `docs/qa/v0.85.4_completion_gate_feedback_issues.csv`, `docs/qa/v0.85.4_completion_gate_metadata_manifest_candidates.csv`, `docs/qa/v0.85.4_completion_gate_review_queue_status.csv`
+- Manual phone checklist: `docs/qa/v0.85.3.8_manual_phone_test_checklist.md`
+- Package policy: `docs/OZMOSIS_QA_ARTEFACT_AND_PACKAGE_POLICY.md`
+
+Next planned patch: `v0.85.5 - Runtime Display Contract Lock`.
+
+## Previous v0.85.4 Completion Gate Harness
+
+v0.85.4 added a reusable static completion gate harness before any source cleanup, prompt/cue rewriting, metadata migration, production completion, or v0.86 work begins.
+
+The harness measured runtime item inventory, prompt/cue leaks, under-contextualised clozes, meaning-choice cue risks, generic contrast feedback, review-only leakage, metadata manifest readiness, article-grid preservation, shared practice-frame coverage, export/import compatibility, protected storage keys, and v0.85.3.8 HUD/live/manual carryover status. It did not fix those issue categories.
+
+- Runtime app version: `v0.85.4 - Completion Gate Harness`
+- Runtime export version: `v0.85.4-completion-gate-harness`
+- Gate result: `COMPLETION_GATE_HARNESS_ACCEPTED`
+- Core result: the harness counted 7,194 runtime items, 4,204 normal-practice-eligible items, 2,990 review-only items, 226 rendered prompt internal-label leaks, 58 under-contextualised cloze risks, 32 generic active contrast-feedback lines, 0 review-only items entering normal practice, and 7,194 metadata manifest candidates for later cleanup.
+
+## Previous v0.85.3.8 HUD, keyboard, and live mobile verification gate
+
+v0.85.3.8 verifies and tightens fixed-HUD, mobile keyboard, short-height, responsive, live-deployment, screenshot, and manual-phone-readiness behaviour after the accepted v0.85.3.7 correction/Satzbau surface pass.
+
+The patch adds a scoped post-answer HUD-clearance repair for B1 practice, so feedback and confidence controls stay clear of the fixed HUD on small and keyboard-like viewports. It also compacts answered Satzbau short-height states by hiding pre-answer scaffolding once feedback is shown.
+
+- Runtime app version: `v0.85.3.8 - HUD, Keyboard, and Live Mobile Verification Gate`
+- Runtime export version: `v0.85.3.8-hud-keyboard-mobile-gate`
+- Gate result: `HUD_KEYBOARD_MOBILE_GATE_ACCEPTED`
+- Core result: choice, cloze, correction textarea, Satzbau, B1 cases/articles compact grid, Case Trainer article grid, Settings/Data export/import, required responsive viewports, keyboard-like reduced-height viewports, Arabic/LTR, live GitHub Pages version status, contact-sheet thumbnail loading, and export/import were checked through the v0.85.3.8 Edge/CDP gate.
+
+## Previous v0.85.3.7 correction and Satzbau surface pass
+
+v0.85.3.7 improved the correction/repair and Satzbau/word-order practice surfaces without changing content, scoring, evidence, storage, export/import, or the shared feedback rhythm. Correction/edit-text tasks now use a compact neon-styled textarea, while Satzbau tasks render existing word chunks as distinct chips with the same typed answer semantics as before.
 
 - Runtime app version: `v0.85.3.7 - Correction and Satzbau Surface Pass`
 - Runtime export version: `v0.85.3.7-correction-satzbau-surface`
-- Current gate result: `CORRECTION_SATZBAU_SURFACE_ACCEPTED`
+- Gate result: `CORRECTION_SATZBAU_SURFACE_ACCEPTED`
 - Core result: correction default/filled/long typing/fail/success, Satzbau default/typing/fail/success/wrap, choice and cloze non-regression, B1 cases/articles compact grid, Case Trainer article-grid feedback, responsive, Arabic/LTR, contact-sheet thumbnail loading, and export/import were checked through the v0.85.3.7 Edge/CDP gate.
-
-## Current v0.85.3.7 docs
-
-- Changelog: `CHANGELOG-FULL-OZMOSIS.txt`
-- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.7.md`
-- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.7.md`
-- Shared frame contract: `docs/OZMOSIS_SHARED_PRACTICE_FRAME_CONTRACT_v0.85.3.4.md`
-- Current QA gate: `docs/qa/v0.85.3.7_correction_satzbau_surface.md`
-- Current gate result JSON: `docs/qa/v0.85.3.7_correction_satzbau_surface_results.json`
-- Screenshot comparison: `docs/qa/screenshots/v0.85.3.7-correction-satzbau-surface/comparison.html`
-- Package policy: `docs/OZMOSIS_QA_ARTEFACT_AND_PACKAGE_POLICY.md`
-
-Next planned patch: `v0.85.3.8 - HUD, Keyboard, and Live Mobile Verification Gate`.
 
 ## Previous v0.85.3.6a feedback rhythm repair
 

@@ -1,0 +1,65 @@
+issueType,bankKey,itemId,status,routeKey,surface,prompt,answer,reason
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_termin_001,active,wortschatz,cloze,Ich möchte einen ___ vereinbaren.,Termin,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_termin_002,active,wortschatz,cloze,Leider muss ich den Termin ___.,absagen,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_bestaetigung_001,active,wortschatz,cloze,Könnten Sie mir bitte eine ___ per E-Mail schicken?,Bestätigung,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_bestaetigung_002,active,wortschatz,cloze,Ich möchte den Termin schriftlich ___.,bestätigen,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_unterlagen_001,active,wortschatz,cloze,Bitte schicken Sie mir die ___ bis Freitag.,Unterlagen,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_unterlagen_002,active,wortschatz,cloze,Ich habe die Unterlagen als PDF ___.,geschickt,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_formular_001,active,wortschatz,cloze,Bitte füllen Sie das ___ vollständig aus.,Formular,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_formular_002,active,wortschatz,cloze,Das Formular muss ich noch ___.,ausfüllen,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_beschwerde_001,active,wortschatz,cloze,Der Kunde ist unzufrieden und schreibt eine ___.,Beschwerde,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_beschwerde_002,active,wortschatz,cloze,Ich möchte eine Beschwerde ___.,einreichen,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_lieferung_001,active,wortschatz,cloze,Die ___ kommt leider erst morgen an.,Lieferung,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_lieferung_002,active,wortschatz,cloze,Die Lieferung wurde gestern ___.,verschickt,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_bestellung_001,active,wortschatz,cloze,Ich möchte meine ___ ändern.,Bestellung,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_bestellung_002,active,wortschatz,cloze,Ich habe die Bestellung online ___.,aufgegeben,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_rechnung_001,active,wortschatz,cloze,Bitte schicken Sie mir die ___ noch einmal.,Rechnung,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_rechnung_002,active,wortschatz,cloze,Ich habe die Rechnung schon ___.,bezahlt,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_geraet_001,active,wortschatz,cloze,Das ___ funktioniert nicht.,Gerät,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_geraet_002,active,wortschatz,cloze,Ich habe ein Problem mit dem ___.,Gerät,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_rueckmeldung_001,active,wortschatz,cloze,Vielen Dank für Ihre ___.,Rückmeldung,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_rueckmeldung_002,active,wortschatz,cloze,Ich warte noch auf Ihre ___.,Rückmeldung,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_krankheit_001,active,wortschatz,cloze,Ich bin heute ___ und kann nicht zum Kurs kommen.,krank,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_krankheit_002,active,wortschatz,cloze,Wegen meiner ___ kann ich heute nicht arbeiten.,Krankheit,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_krankmeldung_001,active,wortschatz,cloze,Ich schicke Ihnen die ___ per E-Mail.,Krankmeldung,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_krankmeldung_002,active,wortschatz,cloze,Ich muss mich heute leider ___.,krankmelden,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_arzttermin_001,active,wortschatz,cloze,Ich habe morgen einen ___ um 10 Uhr.,Arzttermin,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_arzttermin_002,active,wortschatz,cloze,Ich möchte einen Arzttermin ___.,vereinbaren,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_krankenkasse_001,active,wortschatz,cloze,Ich muss meine ___ anrufen.,Krankenkasse,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_krankenkasse_002,active,wortschatz,cloze,Die Unterlagen schicke ich an die ___.,Krankenkasse,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_versicherung_001,active,wortschatz,cloze,Ich habe eine Frage zu meiner ___.,Versicherung,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_versicherung_002,active,wortschatz,cloze,Ich bin bei dieser Krankenkasse ___.,versichert,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_gesundheitskarte_001,active,wortschatz,cloze,Bitte bringen Sie Ihre ___ zum Termin mit.,Gesundheitskarte,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_gesundheitskarte_002,active,wortschatz,cloze,Ich habe meine Gesundheitskarte leider ___.,vergessen,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_rezept_001,active,wortschatz,cloze,Der Arzt gibt mir ein ___ für das Medikament.,Rezept,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_rezept_002,active,wortschatz,cloze,Für dieses Medikament brauche ich ein ___.,Rezept,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_apotheke_001,active,wortschatz,cloze,Ich kaufe das Medikament in der ___.,Apotheke,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_apotheke_002,active,wortschatz,cloze,Ist das Medikament in der Apotheke ___?,vorrätig,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_untersuchung_001,active,wortschatz,cloze,Die ___ dauert ungefähr zwanzig Minuten.,Untersuchung,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_untersuchung_002,active,wortschatz,cloze,Die Ärztin möchte mich ___.,untersuchen,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_beschwerden_001,active,wortschatz,cloze,Welche ___ haben Sie?,Beschwerden,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_beschwerden_002,active,wortschatz,cloze,Ich habe seit drei Tagen ___.,Beschwerden,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_bewerbung_001,active,wortschatz,cloze,Ich schicke Ihnen meine ___ per E-Mail.,Bewerbung,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_bewerbung_002,active,wortschatz,cloze,Ich möchte mich um die Stelle ___.,bewerben,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_lebenslauf_001,active,wortschatz,cloze,Mein ___ ist im Anhang.,Lebenslauf,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_lebenslauf_002,active,wortschatz,cloze,Ich muss meinen Lebenslauf noch ___.,aktualisieren,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_stelle_001,active,wortschatz,cloze,Ich interessiere mich für die ___.,Stelle,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_stelle_002,active,wortschatz,cloze,Gibt es in Ihrer Firma eine freie ___?,Stelle,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_erfahrung_001,active,wortschatz,cloze,Ich habe viel ___ im Verkauf.,Erfahrung,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_erfahrung_002,active,wortschatz,cloze,Ich habe zwei Jahre ___ in diesem Bereich.,Berufserfahrung,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_aufgabe_001,active,wortschatz,cloze,Ich habe die ___ noch nicht verstanden.,Aufgabe,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_aufgabe_002,active,wortschatz,cloze,Ich muss diese Aufgabe bis morgen ___.,erledigen,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_besprechung_001,active,wortschatz,cloze,Die ___ beginnt um neun Uhr.,Besprechung,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_besprechung_002,active,wortschatz,cloze,Ich nehme morgen an einer Besprechung ___.,teil,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_anmeldung_001,active,wortschatz,cloze,Die ___ für den Kurs ist online möglich.,Anmeldung,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_anmeldung_002,active,wortschatz,cloze,Ich möchte mich für den Kurs ___.,anmelden,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_zugangsdaten_001,active,wortschatz,cloze,Ich habe meine ___ noch nicht bekommen.,Zugangsdaten,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_zugangsdaten_002,active,wortschatz,cloze,Ich kann mich nicht ___.,einloggen,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_fehlermeldung_001,active,wortschatz,cloze,Auf dem Bildschirm erscheint eine ___.,Fehlermeldung,Short cloze prompt has no visible cue field.
+under_contextualised_cloze_without_cue,wortschatz,b1_vocab_fehlermeldung_002,active,wortschatz,cloze,Ich bekomme immer wieder eine ___.,Fehlermeldung,Short cloze prompt has no visible cue field.
+review_only_cloze_cue_unsafe_or_missing,b1_m01,v080149_cat02_practice_family_cat02_pf_007,active,b1_m01,cloze,Ich bin für den Kurs ___.,angemeldet,Review-only cloze appears excluded for cue/context/prompt safety.
+review_only_cloze_cue_unsafe_or_missing,b1_m14,v080149_cat14_redemittel_cat14_r_035,active,b1_m14,cloze,Welche Form passt? documents,Zusätzlich schicke ich Ihnen eine Kopie.,Review-only cloze appears excluded for cue/context/prompt safety.
+review_only_cloze_cue_unsafe_or_missing,b1_m15,v080149_cat15_redemittel_cat15_r_016,active,b1_m15,cloze,Welche Form passt? building,Gehen Sie die Treppe hoch.,Review-only cloze appears excluded for cue/context/prompt safety.
+review_only_cloze_cue_unsafe_or_missing,b1_m15,v080149_cat15_redemittel_cat15_r_038,active,b1_m15,cloze,Welche Form passt? commute,Ich steige an der Haltestelle aus.,Review-only cloze appears excluded for cue/context/prompt safety.
+review_only_cloze_cue_unsafe_or_missing,b1_m15,v080149_cat15_redemittel_cat15_r_055,active,b1_m15,cloze,Welche Form passt? navigation,Muss ich über die Straße gehen?,Review-only cloze appears excluded for cue/context/prompt safety.
+review_only_cloze_cue_unsafe_or_missing,b1_m15,v080149_cat15_redemittel_cat15_r_057,active,b1_m15,cloze,Welche Form passt? navigation,Wegen der Baustelle gibt es eine Umleitung.,Review-only cloze appears excluded for cue/context/prompt safety.

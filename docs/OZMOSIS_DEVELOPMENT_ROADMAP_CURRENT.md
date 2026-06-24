@@ -2,11 +2,13 @@
 
 ## 1. Current Baseline
 
-Current runtime baseline: `v0.85.3.6a - Feedback Rhythm Repair and Proof Artefact Fix`.
+Current runtime baseline: `v0.85.4a - Satzbau Interaction, Chunk Randomisation, and iOS Input Zoom Repair`.
 
-Current acceptance status: v0.85.3.6a repaired the remaining feedback-rhythm proof issues from v0.85.3.6. The post-answer result/star area is visibly distinct, the cloze feedback mismatch is fixed, the contact sheet contains real screenshots, confidence reachability is measured on an answered B1 state, and the protected article-grid forms remain intact.
+Current acceptance status: v0.85.4a accepted the Satzbau touch/iOS zoom hotfix after v0.85.4. Satzbau chunks are tappable controls, tapped chunks build the answer in tap order, displayed chunk order is attempt-stable and randomised, manual typing remains preserved, and mobile/touch text-entry controls are verified at 16px or larger.
 
-Next required patch: `v0.85.3.7 - Correction and Satzbau Surface Pass`.
+Current gate result: `SATZBAU_TOUCH_IOS_ZOOM_ACCEPTED`.
+
+Next required patch: `v0.85.5 - Runtime Display Contract Lock`.
 
 ## 2. Completed Foundation
 
@@ -53,7 +55,9 @@ This summary is not a replacement for `CHANGELOG-FULL-OZMOSIS.txt`.
 - `v0.85.3.6` - Feedback Rhythm Pass
 - `v0.85.3.6a` - Feedback Rhythm Repair and Proof Artefact Fix
 - `v0.85.3.7` - Correction and Satzbau Surface Pass
+- `v0.85.3.8` - HUD, Keyboard, and Live Mobile Verification Gate
 - `v0.85.4` - Completion Gate Harness
+- `v0.85.4a` - Satzbau Interaction, Chunk Randomisation, and iOS Input Zoom Repair
 - `v0.85.5` - Runtime Display Contract Lock
 - `v0.85.6` - Source Cleanup Batch 1: Internal Labels and Meaning Cues
 - `v0.85.7` - Source Cleanup Batch 2: Under-Contextualised Clozes
@@ -117,9 +121,12 @@ Stop if the hub fails.
 - Shared Practice Frame Convergence Pass is implemented and accepted as v0.85.3.5.
 - Feedback Rhythm Pass is implemented and accepted as v0.85.3.6.
 - Feedback Rhythm Repair and Proof Artefact Fix is implemented and accepted as v0.85.3.6a.
-- Correction and Satzbau Surface Pass is the next allowed implementation patch as v0.85.3.7.
-- Completion Gate Harness is blocked until correction/Satzbau surface work is handled or explicitly deferred.
-- Production Completion Pass is blocked until v0.85.11 reports `READY_FOR_V0.86`.
+- Correction and Satzbau Surface Pass is implemented and accepted as v0.85.3.7.
+- HUD, Keyboard, and Live Mobile Verification Gate is implemented and accepted as v0.85.3.8.
+- Completion Gate Harness is implemented and accepted as v0.85.4.
+- Satzbau Interaction, Chunk Randomisation, and iOS Input Zoom Repair is implemented and accepted as v0.85.4a.
+- Runtime Display Contract Lock is the next allowed implementation patch as v0.85.5.
+- Production Completion Pass is blocked until the final v0.85.x readiness gate reports `READY_FOR_V0.86`.
 - Weakness repair must wait until Skill Matrix and task-depth evidence are stable.
 - Durability/spaced review must wait until enough reviewable B1 coverage exists.
 - External Review must wait until production cards and save/import are stable.

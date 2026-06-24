@@ -9896,6 +9896,10 @@ body.b1Mode .answerArea {
   gap:8px !important;
 }
 
+body.b1Mode .answerArea.answered {
+  padding-bottom:calc(var(--practice-hud-h) + 28px + env(safe-area-inset-bottom)) !important;
+}
+
 body.b1Mode .connectorChoiceGrid {
   max-width:378px !important;
   margin:17px auto 0 !important;
@@ -10373,6 +10377,19 @@ body.b1Mode .b1ConfidenceRow {
     --practice-choice-gap:3px;
   }
 
+  body.b1Mode[data-b1-surface="satzbau"][data-b1-state="fail"] .satzbauChunkRow,
+  body.b1Mode[data-b1-surface="satzbau"][data-b1-state="success"] .satzbauChunkRow,
+  body.b1Mode[data-b1-surface="satzbau"][data-b1-state="fail"] .englishGloss,
+  body.b1Mode[data-b1-surface="satzbau"][data-b1-state="success"] .englishGloss {
+    display:none !important;
+  }
+
+  body.b1Mode[data-b1-surface="satzbau"][data-b1-state="fail"] .correctionBlock.feedbackRhythmBlock.visible,
+  body.b1Mode[data-b1-surface="satzbau"][data-b1-state="success"] .correctionBlock.feedbackRhythmBlock.visible {
+    padding:10px 12px !important;
+    gap:6px !important;
+  }
+
   body.b1Mode.b1TypedCloze .content {
     padding-top:68px !important;
   }
@@ -10389,6 +10406,86 @@ body.b1Mode .b1ConfidenceRow {
     width:min(var(--clozeWidth, 168px), 84vw, 258px) !important;
     min-width:min(max(var(--clozeWidth, 112px), 88px), 84vw, 258px) !important;
     max-width:min(84vw, 258px) !important;
+  }
+}
+
+/* v0.85.4a: Satzbau touch controls and iOS text-entry zoom repair. */
+html {
+  -webkit-text-size-adjust:100%;
+}
+
+button,
+[role="button"] {
+  touch-action:manipulation;
+}
+
+body.b1Mode[data-b1-surface="satzbau"] .satzbauChunk {
+  appearance:none !important;
+  -webkit-appearance:none !important;
+  justify-content:center !important;
+  min-height:44px !important;
+  min-width:44px !important;
+  padding:8px 11px !important;
+  cursor:pointer !important;
+  touch-action:manipulation !important;
+}
+
+body.b1Mode[data-b1-surface="satzbau"] .satzbauChunk.selected,
+body.b1Mode[data-b1-surface="satzbau"] .satzbauChunk[aria-pressed="true"] {
+  border-color:rgba(80,255,190,.95) !important;
+  background:linear-gradient(180deg, rgba(39,141,114,.82), rgba(10,47,47,.92)) !important;
+  color:#f3fff9 !important;
+  box-shadow:0 0 0 2px rgba(80,255,190,.18), inset 0 1px 0 rgba(255,255,255,.12) !important;
+}
+
+body.b1Mode[data-b1-surface="satzbau"] .satzbauChunk:focus-visible,
+body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:focus-visible {
+  outline:3px solid rgba(126,224,255,.95) !important;
+  outline-offset:3px !important;
+}
+
+body.b1Mode[data-b1-surface="satzbau"] .satzbauChunk:active {
+  transform:translateY(1px);
+}
+
+body.b1Mode[data-b1-surface="satzbau"] .satzbauAnswerRow {
+  align-items:center !important;
+  gap:8px !important;
+}
+
+body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn {
+  min-width:64px !important;
+  min-height:44px !important;
+  padding:8px 10px !important;
+  border:1px solid rgba(126,224,255,.32) !important;
+  border-radius:10px !important;
+  background:rgba(7,15,28,.78) !important;
+  color:rgba(231,249,255,.9) !important;
+  font-size:max(16px, .82rem) !important;
+  font-weight:850 !important;
+  letter-spacing:.02em !important;
+  touch-action:manipulation !important;
+}
+
+body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
+  opacity:.44 !important;
+  cursor:not-allowed !important;
+}
+
+@media (max-width:760px), (pointer:coarse) {
+  input,
+  textarea,
+  select,
+  [contenteditable="true"],
+  #answerInput,
+  .inlineClozeInput,
+  body.b1Mode #answerInput,
+  body.b1Mode .inlineClozeInput,
+  body.b1Mode.b1TypedCloze .inlineClozeInput,
+  body.b1Mode[data-b1-surface="correction"] #answerInput,
+  body.b1Mode[data-b1-surface="correction"] textarea#answerInput,
+  body.b1Mode[data-b1-surface="satzbau"] .inlineClozeInput {
+    font-size:max(16px, 1rem) !important;
   }
 }
 
@@ -11379,8 +11476,8 @@ body.b1Mode .b1ConfidenceRow {
   var B1_PATH_UNLOCK_STORAGE_KEY = "ozmosis_b1_path_unlock_overrides_v1";
   var B1_REVIEW_EDIT_QUEUE_STORAGE_KEY = "ozmosis_b1_review_edit_queue_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.85.3.7 - Correction and Satzbau Surface Pass";
-  var OZMOSIS_EXPORT_VERSION = "v0.85.3.7-correction-satzbau-surface";
+  var OZMOSIS_APP_VERSION = "v0.85.4a - Satzbau Interaction, Chunk Randomisation, and iOS Input Zoom Repair";
+  var OZMOSIS_EXPORT_VERSION = "v0.85.4a-satzbau-touch-ios-zoom";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -11432,6 +11529,12 @@ body.b1Mode .b1ConfidenceRow {
     currentProductionModelShown:false,
     currentProductionUsefulPhrasesShown:false,
     currentProductionChecklistShown:false,
+    currentAttemptSeed:"",
+    currentSatzbauSourceKey:"",
+    currentSatzbauTokenOrder:[],
+    currentSatzbauSelectedTokenIds:[],
+    currentSatzbauUnshuffleable:false,
+    satzbauProgrammaticInput:false,
     dailySprint:false,
     dailyDateKey:"",
       targetedRepair:false,
@@ -17020,6 +17123,29 @@ body.b1Mode .b1ConfidenceRow {
     if (!node || !node.focus) return;
     try { node.focus({ preventScroll:true }); }
     catch (e) { node.focus(); }
+  }
+  function keepB1PostAnswerAboveHud() {
+    if (!document.body.classList.contains("b1Mode")) return;
+    var target = el("b1ConfidenceRow");
+    if (!target || target.hidden) target = document.querySelector(".b1PostAnswerResultArea") || el("correctionBlock");
+    if (!target || !target.getBoundingClientRect) return;
+    var hud = document.querySelector(".bottomHud");
+    var hudRect = hud && hud.getBoundingClientRect ? hud.getBoundingClientRect() : null;
+    var safeBottom = (hudRect && hudRect.height > 0 ? hudRect.top : window.innerHeight) - 12;
+    var rect = target.getBoundingClientRect();
+    if (rect.bottom <= safeBottom && rect.top >= 0) return;
+    var delta = rect.bottom - safeBottom;
+    if (rect.top < 0) delta = rect.top - 16;
+    var panel = document.querySelector("main");
+    if (panel && typeof panel.scrollTop === "number") panel.scrollTop += delta;
+    try { window.scrollBy({ top:delta, left:0, behavior:"auto" }); }
+    catch (e) { window.scrollBy(0, delta); }
+  }
+  function scheduleB1PostAnswerHudClearance() {
+    window.setTimeout(keepB1PostAnswerAboveHud, 40);
+    window.setTimeout(keepB1PostAnswerAboveHud, 180);
+    window.setTimeout(keepB1PostAnswerAboveHud, 360);
+    window.setTimeout(keepB1PostAnswerAboveHud, 620);
   }
   function scrollAppPanelToTop() {
     var panel = document.querySelector("main");
@@ -24346,16 +24472,144 @@ body.b1Mode .b1ConfidenceRow {
     if (colonIndex !== -1) return b1DisplayClean(prompt.slice(colonIndex + 1));
     return "";
   }
-  function b1SatzbauPromptHtml(item, resultClass, display, rawPrompt) {
+  function b1SatzbauTokenSourceKey(item, tokens) {
+    return [
+      item && (item.id || item.sourceId || item.variantFamilyId) || "satzbau",
+      tokens.map(function(token){ return token.id + ":" + token.text; }).join("|")
+    ].join("::");
+  }
+  function b1SatzbauTokens(item, rawPrompt) {
     var cue = b1SatzbauCueText(item, rawPrompt);
     var chunks = cue ? cue.split(/\s*[·•]\s*/).map(function(chunk){ return b1DisplayClean(chunk); }).filter(Boolean) : [];
     if (!chunks.length && cue) chunks = cue.split(/\s+/).map(function(chunk){ return b1DisplayClean(chunk); }).filter(Boolean);
+    return chunks.map(function(chunk, index){
+      return {
+        id:"satzbau-token-" + index,
+        text:chunk,
+        index:index
+      };
+    });
+  }
+  function b1SatzbauTokenIds(tokens) {
+    return tokens.map(function(token){ return token.id; }).join("|");
+  }
+  function b1SatzbauDisplayTokens(item, rawPrompt, resultClass) {
+    var tokens = b1SatzbauTokens(item, rawPrompt);
+    var sourceKey = b1SatzbauTokenSourceKey(item, tokens);
+    if (!tokens.length) return [];
+    if (item === b1Runtime.current && b1Runtime.currentSatzbauSourceKey === sourceKey && Array.isArray(b1Runtime.currentSatzbauTokenOrder) && b1Runtime.currentSatzbauTokenOrder.length === tokens.length) {
+      return b1Runtime.currentSatzbauTokenOrder.slice();
+    }
+    var ordered = tokens.slice();
+    var correctSignature = b1SatzbauTokenIds(ordered);
+    var seed = [
+      b1Runtime.currentAttemptSeed || b1Runtime.roundSeed || "satzbau",
+      item && (item.id || item.sourceId || item.variantFamilyId) || "item",
+      tokens.length
+    ].join("|");
+    if (tokens.length > 1) {
+      ordered = shuffleWithSeed(tokens, seed);
+      for (var i = 0; i < 4 && b1SatzbauTokenIds(ordered) === correctSignature; i += 1) {
+        ordered = shuffleWithSeed(tokens, seed + "|retry|" + i);
+      }
+      if (b1SatzbauTokenIds(ordered) === correctSignature) ordered = tokens.slice(1).concat(tokens[0]);
+    }
+    if (item === b1Runtime.current && !resultClass) {
+      b1Runtime.currentSatzbauSourceKey = sourceKey;
+      b1Runtime.currentSatzbauTokenOrder = ordered.slice();
+      b1Runtime.currentSatzbauSelectedTokenIds = [];
+      b1Runtime.currentSatzbauUnshuffleable = tokens.length <= 1;
+    }
+    return ordered;
+  }
+  function b1SatzbauSelectedAnswerText() {
+    var ids = Array.isArray(b1Runtime.currentSatzbauSelectedTokenIds) ? b1Runtime.currentSatzbauSelectedTokenIds : [];
+    var tokens = Array.isArray(b1Runtime.currentSatzbauTokenOrder) ? b1Runtime.currentSatzbauTokenOrder : [];
+    return ids.map(function(id){
+      for (var i = 0; i < tokens.length; i += 1) {
+        if (tokens[i].id === id) return tokens[i].text;
+      }
+      return "";
+    }).filter(Boolean).join(" ");
+  }
+  function b1SyncSatzbauChunkButtons() {
+    var selected = Array.isArray(b1Runtime.currentSatzbauSelectedTokenIds) ? b1Runtime.currentSatzbauSelectedTokenIds : [];
+    var selectedMap = {};
+    selected.forEach(function(id){ selectedMap[id] = true; });
+    var buttons = document.querySelectorAll(".satzbauChunk[data-satzbau-token-id]");
+    buttons.forEach(function(button){
+      var active = !!selectedMap[button.getAttribute("data-satzbau-token-id")];
+      button.classList.toggle("selected", active);
+      button.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+    var clear = el("satzbauClearBtn");
+    if (clear) clear.disabled = !selected.length;
+  }
+  function b1SetSatzbauAnswerFromSelection() {
+    var input = el("b1InlineInput");
+    if (!input) return;
+    b1Runtime.satzbauProgrammaticInput = true;
+    input.value = b1SatzbauSelectedAnswerText();
+    b1Runtime.satzbauProgrammaticInput = false;
+    updateB1TypedClozeActionState();
+    b1UpdateVisualTemplateInputState();
+    b1SyncSatzbauChunkButtons();
+  }
+  function toggleB1SatzbauToken(tokenId) {
+    if (state !== "b1Checking" || !b1Runtime.current || !b1IsSatzbauItem(b1Runtime.current)) return;
+    var ids = Array.isArray(b1Runtime.currentSatzbauSelectedTokenIds) ? b1Runtime.currentSatzbauSelectedTokenIds.slice() : [];
+    var existing = ids.indexOf(tokenId);
+    if (existing !== -1) ids.splice(existing, 1);
+    else ids.push(tokenId);
+    b1Runtime.currentSatzbauSelectedTokenIds = ids;
+    b1SetSatzbauAnswerFromSelection();
+  }
+  function clearB1SatzbauSelection() {
+    if (state !== "b1Checking" || !b1Runtime.current || !b1IsSatzbauItem(b1Runtime.current)) return;
+    b1Runtime.currentSatzbauSelectedTokenIds = [];
+    b1SetSatzbauAnswerFromSelection();
+    var input = el("b1InlineInput");
+    if (input) input.focus();
+  }
+  function handleB1SatzbauManualInput(input) {
+    if (!b1Runtime.current || !b1IsSatzbauItem(b1Runtime.current) || b1Runtime.satzbauProgrammaticInput) return;
+    var selectedText = b1SatzbauSelectedAnswerText();
+    if (b1DisplayClean(input && input.value) !== b1DisplayClean(selectedText)) {
+      b1Runtime.currentSatzbauSelectedTokenIds = [];
+      b1SyncSatzbauChunkButtons();
+    }
+  }
+  function bindB1SatzbauControls(input) {
+    if (!b1Runtime.current || !b1IsSatzbauItem(b1Runtime.current)) return;
+    var buttons = document.querySelectorAll(".satzbauChunk[data-satzbau-token-id]");
+    buttons.forEach(function(button){
+      if (button._satzbauBound) return;
+      button._satzbauBound = true;
+      button.addEventListener("click", function(){
+        toggleB1SatzbauToken(button.getAttribute("data-satzbau-token-id"));
+      }, false);
+    });
+    var clear = el("satzbauClearBtn");
+    if (clear && !clear._satzbauClearBound) {
+      clear._satzbauClearBound = true;
+      clear.addEventListener("click", clearB1SatzbauSelection, false);
+    }
+    if (input && !input._satzbauManualBound) {
+      input._satzbauManualBound = true;
+      input.addEventListener("input", function(){ handleB1SatzbauManualInput(input); }, false);
+    }
+    b1SyncSatzbauChunkButtons();
+  }
+  function b1SatzbauPromptHtml(item, resultClass, display, rawPrompt) {
+    var chunks = b1SatzbauDisplayTokens(item, rawPrompt, resultClass);
     var chunkHtml = chunks.map(function(chunk){
-      return '<span class="satzbauChunk">' + escapeHtml(chunk) + '</span>';
+      var disabled = resultClass ? ' disabled aria-disabled="true"' : "";
+      return '<button class="satzbauChunk" type="button" data-satzbau-token-id="' + escapeHtml(chunk.id) + '" data-satzbau-token-text="' + escapeHtml(chunk.text) + '" aria-pressed="false" aria-label="Word chunk: ' + escapeHtml(chunk.text) + '"' + disabled + '>' + escapeHtml(chunk.text) + '</button>';
     }).join("");
+    var clearHtml = resultClass ? "" : '<button id="satzbauClearBtn" class="satzbauClearBtn" type="button" disabled>Clear</button>';
     var bodyHtml = '<span class="satzbauSurface" dir="ltr">' +
       (chunkHtml ? '<span class="satzbauChunkRow" aria-label="Word chunks">' + chunkHtml + '</span>' : "") +
-      '<span class="satzbauAnswerRow">' + b1ClozeReplacement(item, resultClass) + '</span>' +
+      '<span class="satzbauAnswerRow">' + b1ClozeReplacement(item, resultClass) + clearHtml + '</span>' +
       '</span>';
     return b1DisplayLearnerPromptHtml(display, bodyHtml);
   }
@@ -26424,6 +26678,7 @@ body.b1Mode .b1ConfidenceRow {
       }, false);
       inlineInput.addEventListener("input", updateB1TypedClozeActionState, false);
       b1BindVisualTemplateInput(inlineInput);
+      if (b1IsSatzbauItem(item)) bindB1SatzbauControls(inlineInput);
     }
     if ((b1IsRepairPracticeItem(item) || isTransformation) && !usesChoices && !inlineInput && !repairEditPrefill) input.placeholder = isTransformation ? "Satz umformen" : "Korrektur eingeben";
     if (usesChoices || isProduction || inlineInput) input.style.display = "none";
@@ -26675,6 +26930,7 @@ body.b1Mode .b1ConfidenceRow {
     renderHud();
     var firstConfidence = b1AutoGradedConfidenceRequiredPending() && el("b1ConfidenceRow") ? el("b1ConfidenceRow").querySelector("button") : null;
     focusWithoutScroll(firstConfidence || el("nextBtn"));
+    scheduleB1PostAnswerHudClearance();
   }
   function nextB1Question() {
     if (!b1Runtime.active) return;
@@ -26702,6 +26958,11 @@ body.b1Mode .b1ConfidenceRow {
     }
     var queuedItem = b1Runtime.queue.shift();
     var variantSeed = [b1Runtime.roundSeed || "round", queuedItem && queuedItem.id || "item", b1AnsweredCount(), b1Runtime.queue.length].join("|");
+    b1Runtime.currentAttemptSeed = variantSeed;
+    b1Runtime.currentSatzbauSourceKey = "";
+    b1Runtime.currentSatzbauTokenOrder = [];
+    b1Runtime.currentSatzbauSelectedTokenIds = [];
+    b1Runtime.currentSatzbauUnshuffleable = false;
     b1Runtime.current = b1ResolveVariableErrorRepairItem(b1ResolveVariantFamilyItem(queuedItem, { seed:variantSeed }), { seed:variantSeed });
     b1Runtime.currentAssisted = false;
     b1Runtime.currentExtraPractice = !!(b1Runtime.current && b1Runtime.current._extraPractice);

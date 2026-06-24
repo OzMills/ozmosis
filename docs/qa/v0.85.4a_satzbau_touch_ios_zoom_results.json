@@ -1,0 +1,162 @@
+{
+  "patch": "v0.85.4a",
+  "title": "Satzbau Interaction, Chunk Randomisation, and iOS Input Zoom Repair",
+  "startingStateVerified": true,
+  "runtimeVersionUpdated": true,
+  "filesChanged": [
+    "index.html",
+    "AGENTS.md",
+    "README.md",
+    "CHANGELOG-FULL-OZMOSIS.txt",
+    "docs/OZMOSIS_SOURCE_BRIEF_CURRENT.md",
+    "docs/OZMOSIS_DEVELOPMENT_ROADMAP_CURRENT.md",
+    "docs/OZMOSIS_FEATURE_REGISTER_CURRENT.md",
+    "docs/OZMOSIS_SOURCE_BRIEF_v0.85.4a.md",
+    "docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.4a.md",
+    "docs/qa/v0.85.4a_satzbau_touch_ios_zoom.md",
+    "docs/qa/v0.85.4a_satzbau_touch_ios_zoom_results.json",
+    "docs/qa/screenshots/v0.85.4a-satzbau-touch-ios-zoom/",
+    "scripts/ozmosis-satzbau-touch-ios-zoom-check.cjs"
+  ],
+  "satzbauInteraction": {
+    "chunksFocusable": true,
+    "chunksTappable": true,
+    "tapBuildsAnswer": true,
+    "selectedStateVisible": true,
+    "removeOrClearAvailable": true,
+    "manualTypingPreserved": true,
+    "answerCheckingPreserved": true
+  },
+  "satzbauRandomisation": {
+    "chunksRandomised": true,
+    "stableWithinAttempt": true,
+    "notCorrectOrder": true,
+    "correctAnswerUnchanged": true,
+    "unshuffleableItemsDocumented": true
+  },
+  "iosZoomRepair": {
+    "practiceInputsFontSizeAtLeast16": true,
+    "clozeInputFontSizeAtLeast16": true,
+    "correctionTextareaFontSizeAtLeast16": true,
+    "satzbauInputFontSizeAtLeast16": true,
+    "caseTrainerInputFontSizeAtLeast16": true,
+    "userZoomNotDisabledGlobally": true
+  },
+  "nonRegression": {
+    "feedbackRhythmPreserved": true,
+    "articleGridPreserved": true,
+    "exportImportPreserved": true,
+    "storagePreserved": true,
+    "scoringPreserved": true,
+    "evidencePreserved": true
+  },
+  "screenshotsGenerated": {
+    "satzbau-randomised-default": "docs/qa/screenshots/v0.85.4a-satzbau-touch-ios-zoom/satzbau-randomised-default.png",
+    "satzbau-after-one-token-tap": "docs/qa/screenshots/v0.85.4a-satzbau-touch-ios-zoom/satzbau-after-one-token-tap.png",
+    "satzbau-after-multiple-token-taps": "docs/qa/screenshots/v0.85.4a-satzbau-touch-ios-zoom/satzbau-after-multiple-token-taps.png",
+    "satzbau-after-token-removal-or-clear": "docs/qa/screenshots/v0.85.4a-satzbau-touch-ios-zoom/satzbau-after-token-removal-or-clear.png",
+    "satzbau-typing-manual": "docs/qa/screenshots/v0.85.4a-satzbau-touch-ios-zoom/satzbau-typing-manual.png",
+    "satzbau-success": "docs/qa/screenshots/v0.85.4a-satzbau-touch-ios-zoom/satzbau-success.png",
+    "satzbau-fail": "docs/qa/screenshots/v0.85.4a-satzbau-touch-ios-zoom/satzbau-fail.png",
+    "cloze-input-focus-zoom-check": "docs/qa/screenshots/v0.85.4a-satzbau-touch-ios-zoom/cloze-input-focus-zoom-check.png",
+    "cloze-non-regression": "docs/qa/screenshots/v0.85.4a-satzbau-touch-ios-zoom/cloze-non-regression.png",
+    "correction-textarea-focus-zoom-check": "docs/qa/screenshots/v0.85.4a-satzbau-touch-ios-zoom/correction-textarea-focus-zoom-check.png",
+    "correction-non-regression": "docs/qa/screenshots/v0.85.4a-satzbau-touch-ios-zoom/correction-non-regression.png",
+    "choice-non-regression": "docs/qa/screenshots/v0.85.4a-satzbau-touch-ios-zoom/choice-non-regression.png",
+    "case-trainer-input-focus-zoom-check": "docs/qa/screenshots/v0.85.4a-satzbau-touch-ios-zoom/case-trainer-input-focus-zoom-check.png",
+    "comparison": "docs/qa/screenshots/v0.85.4a-satzbau-touch-ios-zoom/comparison.html",
+    "comparison-contact-sheet": "docs/qa/screenshots/v0.85.4a-satzbau-touch-ios-zoom/comparison-contact-sheet.png"
+  },
+  "contactSheetVerified": true,
+  "testsRun": {
+    "staticChecks": {
+      "inlineScriptsParsed": 1,
+      "contentScriptsParsed": 25,
+      "protectedStorageKeys": true,
+      "userZoomNotDisabledGlobally": true,
+      "noPackageJson": true,
+      "noPackageLock": true,
+      "noTypeModule": true,
+      "noDynamicImport": true
+    },
+    "responsiveViewports": [
+      {
+        "width": 430,
+        "height": 932,
+        "bodyOverflow": false,
+        "satzbauInputFontSize": 16,
+        "chunkCount": 5
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "bodyOverflow": false,
+        "satzbauInputFontSize": 16,
+        "chunkCount": 5
+      },
+      {
+        "width": 320,
+        "height": 568,
+        "bodyOverflow": false,
+        "satzbauInputFontSize": 16,
+        "chunkCount": 5
+      },
+      {
+        "width": 430,
+        "height": 520,
+        "bodyOverflow": false,
+        "satzbauInputFontSize": 16,
+        "chunkCount": 5
+      },
+      {
+        "width": 320,
+        "height": 360,
+        "bodyOverflow": false,
+        "satzbauInputFontSize": 16,
+        "chunkCount": 5
+      },
+      {
+        "width": 1365,
+        "height": 599,
+        "bodyOverflow": false,
+        "satzbauInputFontSize": 18.56,
+        "chunkCount": 5
+      }
+    ],
+    "exportImport": {
+      "exportOk": true,
+      "validationOk": true,
+      "applyOk": true,
+      "malformedRejected": true,
+      "appVersion": "v0.85.4a - Satzbau Interaction, Chunk Randomisation, and iOS Input Zoom Repair",
+      "exportVersion": "v0.85.4a-satzbau-touch-ios-zoom"
+    },
+    "comparisonHtml": {
+      "imageRefs": 13,
+      "missingRefs": []
+    },
+    "contactSheetImages": {
+      "count": 13,
+      "loaded": 13,
+      "totalPixels": 5209880
+    },
+    "contactSheetFile": {
+      "bytes": 481902
+    },
+    "browserCapture": true
+  },
+  "testsNotRun": [
+    "Manual physical iPhone/Safari testing was not available; Edge/CDP verified computed mobile text-entry font sizes instead."
+  ],
+  "consoleErrors": [],
+  "runtimeExceptions": [],
+  "warnings": [
+    "Temporary Edge profile cleanup blocked by Windows file lock: C:\\Users\\rossm\\AppData\\Local\\Temp\\ozmosis-v0854a-satzbau-edge-profile-MRcRal"
+  ],
+  "acceptancePassed": true,
+  "finalDecision": "SATZBAU_TOUCH_IOS_ZOOM_ACCEPTED",
+  "nextPatch": "v0.85.5 - Runtime Display Contract Lock",
+  "appVersion": "v0.85.4a - Satzbau Interaction, Chunk Randomisation, and iOS Input Zoom Repair",
+  "exportVersion": "v0.85.4a-satzbau-touch-ios-zoom",
+  "generatedAt": "2026-06-24T15:00:04.103Z"
+}

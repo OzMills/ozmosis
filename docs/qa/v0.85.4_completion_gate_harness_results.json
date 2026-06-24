@@ -1,0 +1,201 @@
+{
+  "patch": "v0.85.4",
+  "title": "Completion Gate Harness",
+  "startingStateVerified": true,
+  "runtimeVersionUpdated": true,
+  "filesChanged": [
+    "index.html",
+    "README.md",
+    "CHANGELOG-FULL-OZMOSIS.txt",
+    "AGENTS.md",
+    "docs/OZMOSIS_SOURCE_BRIEF_CURRENT.md",
+    "docs/OZMOSIS_DEVELOPMENT_ROADMAP_CURRENT.md",
+    "docs/OZMOSIS_FEATURE_REGISTER_CURRENT.md",
+    "docs/OZMOSIS_SOURCE_BRIEF_v0.85.4.md",
+    "docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.4.md",
+    "docs/qa/v0.85.4_completion_gate_harness.md",
+    "docs/qa/v0.85.4_completion_gate_harness_results.json",
+    "docs/qa/v0.85.4_completion_gate_prompt_cue_issues.csv",
+    "docs/qa/v0.85.4_completion_gate_cloze_cue_issues.csv",
+    "docs/qa/v0.85.4_completion_gate_feedback_issues.csv",
+    "docs/qa/v0.85.4_completion_gate_metadata_manifest_candidates.csv",
+    "docs/qa/v0.85.4_completion_gate_review_queue_status.csv",
+    "scripts/ozmosis-completion-gate-harness.cjs"
+  ],
+  "runtimeChanged": false,
+  "contentChanged": false,
+  "scoringChanged": false,
+  "evidenceChanged": false,
+  "storageChanged": false,
+  "exportImportChanged": false,
+  "itemInventory": {
+    "totalItems": 7194,
+    "normalPracticeEligible": 4204,
+    "reviewOnly": 2990,
+    "retiredOrBlocked": 0,
+    "byRoute": {
+      "core": 24,
+      "connectors": 150,
+      "cases_articles": 37,
+      "prepositions": 94,
+      "word_order": 40,
+      "redemittel": 90,
+      "wortschatz": 150,
+      "b1_m01": 231,
+      "b1_m02": 219,
+      "b1_m03": 225,
+      "b1_m04": 283,
+      "b1_m05": 200,
+      "b1_m06": 90,
+      "b1_m07": 201,
+      "b1_m08": 274,
+      "b1_m09": 263,
+      "b1_m10": 272,
+      "b1_m11": 218,
+      "b1_m12": 108,
+      "b1_m13": 255,
+      "b1_m14": 275,
+      "b1_m15": 26,
+      "b1_m16": 138,
+      "b1_m17": 341
+    },
+    "byBank": {
+      "core": 24,
+      "connectors": 150,
+      "cases_articles": 37,
+      "prepositions": 94,
+      "word_order": 40,
+      "redemittel": 90,
+      "wortschatz": 150,
+      "b1_m01": 259,
+      "b1_m02": 236,
+      "b1_m03": 287,
+      "b1_m04": 334,
+      "b1_m05": 343,
+      "b1_m06": 335,
+      "b1_m07": 334,
+      "b1_m08": 356,
+      "b1_m09": 390,
+      "b1_m10": 409,
+      "b1_m11": 344,
+      "b1_m12": 412,
+      "b1_m13": 392,
+      "b1_m14": 437,
+      "b1_m15": 514,
+      "b1_m16": 421,
+      "b1_m17": 461,
+      "b1_m18": 345
+    },
+    "bySurface": {
+      "cloze": 904,
+      "satzbau": 536,
+      "contrast": 927,
+      "correction": 776,
+      "production": 691,
+      "choice": 370
+    }
+  },
+  "promptCueGate": {
+    "renderedPromptLeaks": 226,
+    "rawBacktickInternalLabels": 3429,
+    "rawVsInternalLabels": 338,
+    "meaningChoiceHiddenCueRisks": 30,
+    "underContextualisedClozeWithoutCue": 58
+  },
+  "clozeCueGate": {
+    "clozesExcludedReviewOnlyCueUnsafe": 6,
+    "clozeCueIssueRows": 64
+  },
+  "feedbackGate": {
+    "genericContrastFeedbackActive": 32,
+    "feedbackMismatchRisks": 452,
+    "productionAutoGradingRisks": 661,
+    "articleGridFeedbackPreserved": true
+  },
+  "reviewGate": {
+    "reviewOnlyEnteringNormalPractice": 0,
+    "reviewQueueRows": 2990,
+    "reviewQueueReasonsMissing": 0
+  },
+  "metadataGate": {
+    "manifestFilesPresent": [
+      "b1DisplaySchema"
+    ],
+    "manifestMigrationCandidates": 7194,
+    "repeatedModuleDefaultFields": 6930,
+    "sourceProvenanceFieldsPreserved": true,
+    "sourceProvenanceRows": 6780,
+    "casesArticlesCompactGridMetadataCoverage": {
+      "covered": 37,
+      "total": 37,
+      "missing": 0
+    },
+    "articleDataRows": 36,
+    "articleDataFilePresent": true
+  },
+  "uiGate": {
+    "sharedFrameMetadataCoverage": {
+      "setterPresent": true,
+      "b1HelperPresent": true,
+      "practiceFrameAttributePresent": true,
+      "answerSurfaceAttributePresent": true,
+      "feedbackSurfaceAttributePresent": true,
+      "surfacesMeasured": {
+        "cloze": 904,
+        "satzbau": 536,
+        "contrast": 927,
+        "correction": 776,
+        "production": 691,
+        "choice": 370
+      },
+      "surfacesWithoutKnownMapping": 0
+    },
+    "articleGridFull": true,
+    "articleGridCompact": true,
+    "articleGridReveal": true,
+    "caseTrainerGridPreserved": true,
+    "hudKeyboardGateAccepted": true,
+    "liveGithubPagesCurrent": false,
+    "liveGithubPagesStatus": {
+      "attempted": true,
+      "reachable": true,
+      "version": "v0.85.3.7 - Correction and Satzbau Surface Pass",
+      "matchesCurrent": false,
+      "notes": "Live GitHub Pages is reachable but does not yet match the final local runtime version."
+    },
+    "manualPhoneChecklistExists": true,
+    "manualPhoneTestRun": false,
+    "unsupportedRouteRenderDivergences": 0
+  },
+  "exportImportGate": {
+    "protectedStorageKeysPresent": true,
+    "exportFunctionPresent": true,
+    "importFunctionPresent": true,
+    "exportSaveLabelPresent": true,
+    "importSaveLabelPresent": true,
+    "recentOlderExportAcceptedIfTested": true
+  },
+  "testsRun": {
+    "indexHtmlParsed": true,
+    "contentScriptsParsed": 25,
+    "contentScriptsLoaded": 25,
+    "contentRegistryFlattened": true,
+    "embeddedCoreItemsExtracted": 24,
+    "articleItemsTsvInspected": true,
+    "previousHudKeyboardGateJsonRead": true,
+    "csvOutputsWritten": true,
+    "parseFailures": []
+  },
+  "testsNotRun": [
+    "Browser automation was not run by v0.85.4; this harness is a static/content measurement gate and carries forward the accepted v0.85.3.8 Edge/CDP status.",
+    "Manual physical-phone testing was not run in Codex; v0.85.3.8 manual checklist status is carried forward.",
+    "Live GitHub Pages was not retested by v0.85.4; v0.85.3.8 live status is carried forward."
+  ],
+  "acceptancePassed": true,
+  "finalDecision": "COMPLETION_GATE_HARNESS_ACCEPTED",
+  "nextPatch": "v0.85.5 - Runtime Display Contract Lock",
+  "appVersion": "v0.85.4 - Completion Gate Harness",
+  "exportVersion": "v0.85.4-completion-gate-harness",
+  "generatedAt": "2026-06-24T14:48:45.465Z",
+  "outputFilesReady": true
+}

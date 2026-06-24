@@ -35,17 +35,61 @@ This is the only changelog moving forward. Do not create standalone `CHANGELOG-v
 
 Current state is based only on current repo files.
 
-- Current app version in `index.html`: `v0.85.3.7 - Correction and Satzbau Surface Pass`
-- Current export version in `index.html`: `v0.85.3.7-correction-satzbau-surface`
+- Current app version in `index.html`: `v0.85.4a - Satzbau Interaction, Chunk Randomisation, and iOS Input Zoom Repair`
+- Current export version in `index.html`: `v0.85.4a-satzbau-touch-ios-zoom`
 - Current README: `README.md`
 - Current changelog: `CHANGELOG-FULL-OZMOSIS.txt`
-- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.3.7.md`
-- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.3.7.md`
-- Current QA report: `docs/qa/v0.85.3.7_correction_satzbau_surface.md`
-- Current strict UI gate result: `CORRECTION_SATZBAU_SURFACE_ACCEPTED`
-- Next required patch documented in current files: `v0.85.3.8 - HUD, Keyboard, and Live Mobile Verification Gate`
+- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.4a.md`
+- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.4a.md`
+- Current QA report: `docs/qa/v0.85.4a_satzbau_touch_ios_zoom.md`
+- Current gate result: `SATZBAU_TOUCH_IOS_ZOOM_ACCEPTED`
+- Next required patch documented in current files: `v0.85.5 - Runtime Display Contract Lock`
 
-No live deployment status is claimed here.
+Live GitHub Pages was checked by the v0.85.3.8 gate and was reachable, but still served `v0.85.3.7 - Correction and Satzbau Surface Pass` before deployment/cache update.
+
+## v0.85.4a - Satzbau Interaction, Chunk Randomisation, and iOS Input Zoom Repair
+
+- Fixed Satzbau/word-order chunks so they render as real buttons and can be clicked/tapped/keyboard-focused.
+- Tapping Satzbau chunks now builds the existing typed answer field in tap order, with visible selected state and a Clear action.
+- Preserved manual typing for Satzbau and preserved the existing answer-comparison path, scoring, evidence, storage, and feedback rhythm.
+- Added attempt-stable Satzbau chunk randomisation so the displayed chunks do not give away the correct answer order unless an item is unshuffleable.
+- Added mobile/touch input font-size safeguards so B1 cloze/Satzbau inputs, correction textareas, Case Trainer inputs, and other text-entry controls compute at 16px or larger.
+- Added `scripts/ozmosis-satzbau-touch-ios-zoom-check.cjs`.
+- Added machine-readable results at `docs/qa/v0.85.4a_satzbau_touch_ios_zoom_results.json`.
+- Added QA documentation at `docs/qa/v0.85.4a_satzbau_touch_ios_zoom.md`.
+- Added screenshot/contact-sheet evidence under `docs/qa/screenshots/v0.85.4a-satzbau-touch-ios-zoom/`.
+- Verified Satzbau tap-to-answer, selected state, clear/reset, manual typing, answer checking, randomised order stability, B1 cloze/correction/choice non-regression, Case Trainer input font size, article-grid preservation, export/import, required responsive viewports, screenshot capture, and contact-sheet loading through Edge/CDP.
+- Preserved content banks, answer keys, scoring semantics, evidence semantics, confidence values, star earning logic, localStorage keys, export/import format, article-grid behaviour, shared-frame behaviour, production-card semantics, B1-only scope, and GitHub Pages compatibility.
+- Set the next planned patch to `v0.85.5 - Runtime Display Contract Lock`.
+
+## v0.85.4 - Completion Gate Harness
+
+- Added `scripts/ozmosis-completion-gate-harness.cjs`.
+- Added a static, dependency-free completion gate harness before any source cleanup, prompt/cue rewriting, metadata migration, production completion, or v0.86 work.
+- Generated machine-readable results at `docs/qa/v0.85.4_completion_gate_harness_results.json`.
+- Generated CSV queues for prompt/cue issues, cloze cue issues, feedback issues, metadata manifest candidates, and review-queue status.
+- Counted 7,194 runtime items, 4,204 normal-practice-eligible items, 2,990 review-only items, and 0 retired/blocked items.
+- Counted 226 rendered prompt internal-label leaks, 3,429 raw backtick/internal-label patterns, 338 raw X-vs-Y internal-label patterns, 30 meaning-choice cue risks, and 58 under-contextualised cloze risks.
+- Counted 32 generic active contrast-feedback lines, 452 feedback mismatch risks, and 661 production auto-grading risk markers for later cleanup.
+- Confirmed 0 review-only items entering normal practice and 2,990 review queue rows with reasons present.
+- Confirmed article-grid preservation, full/compact/reveal article-grid adapter availability, Case Trainer grid preservation, shared practice-frame metadata hooks, protected storage-key strings, and export/import function labels.
+- Carried forward the v0.85.3.8 HUD/keyboard gate as accepted, live GitHub Pages as reachable but stale, and manual physical-phone testing as not run with checklist present.
+- Preserved runtime behaviour, content banks, answer keys, scoring, evidence semantics, star earning logic, localStorage keys, and export/import format.
+- Set the next planned patch to `v0.85.5 - Runtime Display Contract Lock`.
+
+## v0.85.3.8 - HUD, Keyboard, and Live Mobile Verification Gate
+
+- Implemented the verification-first HUD, keyboard, short-height, responsive, live-deployment, and manual-phone-readiness gate after v0.85.3.7.
+- Added `scripts/ozmosis-hud-keyboard-mobile-gate.cjs`.
+- Generated screenshot/contact-sheet evidence under `docs/qa/screenshots/v0.85.3.8-hud-keyboard-mobile-gate/`.
+- Verified choice default/fail, cloze typing/keyboard-like, correction typing/keyboard-like, Satzbau typing/keyboard-like, B1 cases/articles compact grid feedback, Case Trainer article-grid feedback, Settings/Data export/import, required responsive viewports, required keyboard-like reduced-height viewports, Arabic/LTR, and contact-sheet image loading through Edge/CDP.
+- Added a scoped post-answer HUD-clearance helper so B1 feedback and confidence controls stay clear of the fixed HUD on small and keyboard-like viewports.
+- Added short-height answered-state Satzbau compaction that hides pre-answer chips and English gloss after feedback appears, keeping the German answer, feedback, result, and confidence controls visible.
+- Verified current export/import, malformed import rejection, and recent older export compatibility.
+- Checked live GitHub Pages. It was reachable but still served v0.85.3.7 at the time of the local gate, so no live-current deployment claim is made.
+- Added the manual phone checklist at `docs/qa/v0.85.3.8_manual_phone_test_checklist.md`.
+- Preserved scoring, evidence semantics, confidence values, star earning logic, content banks, answer keys, localStorage keys, save/export/import format, item selection, article-grid semantics, and production-card semantics.
+- Set the next planned patch to `v0.85.4 - Completion Gate Harness`.
 
 ## v0.85.3.7 - Correction and Satzbau Surface Pass
 

@@ -148,7 +148,10 @@
     },
     "browserCapture": true
   },
-  "testsNotRun": [],
+  "testsNotRun": [
+    "Live GitHub Pages check was not run in v0.85.3.7; deferred to v0.85.3.8 HUD, Keyboard, and Live Mobile Verification Gate.",
+    "Manual phone test was not run in v0.85.3.7; a manual phone checklist is required in v0.85.3.8 if no real phone test can be run."
+  ],
   "warnings": [
     "Temporary Edge profile cleanup blocked by Windows file lock: C:\\Users\\rossm\\AppData\\Local\\Temp\\ozmosis-v08537-correction-satzbau-edge-profile-tkIZh5"
   ],
