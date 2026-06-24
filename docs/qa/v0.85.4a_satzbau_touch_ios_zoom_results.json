@@ -141,7 +141,7 @@
       "totalPixels": 5209880
     },
     "contactSheetFile": {
-      "bytes": 481902
+      "bytes": 480598
     },
     "browserCapture": true
   },
@@ -151,12 +151,12 @@
   "consoleErrors": [],
   "runtimeExceptions": [],
   "warnings": [
-    "Temporary Edge profile cleanup blocked by Windows file lock: C:\\Users\\rossm\\AppData\\Local\\Temp\\ozmosis-v0854a-satzbau-edge-profile-MRcRal"
+    "Temporary Edge profile cleanup blocked by Windows file lock: C:\\Users\\rossm\\AppData\\Local\\Temp\\ozmosis-v0854a-satzbau-edge-profile-2SuzU9"
   ],
   "acceptancePassed": true,
   "finalDecision": "SATZBAU_TOUCH_IOS_ZOOM_ACCEPTED",
   "nextPatch": "v0.85.5 - Runtime Display Contract Lock",
   "appVersion": "v0.85.4a - Satzbau Interaction, Chunk Randomisation, and iOS Input Zoom Repair",
   "exportVersion": "v0.85.4a-satzbau-touch-ios-zoom",
-  "generatedAt": "2026-06-24T15:00:04.103Z"
+  "generatedAt": "2026-06-24T18:23:08.360Z"
 }

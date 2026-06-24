@@ -35,17 +35,36 @@ This is the only changelog moving forward. Do not create standalone `CHANGELOG-v
 
 Current state is based only on current repo files.
 
-- Current app version in `index.html`: `v0.85.4a - Satzbau Interaction, Chunk Randomisation, and iOS Input Zoom Repair`
-- Current export version in `index.html`: `v0.85.4a-satzbau-touch-ios-zoom`
+- Current app version in `index.html`: `v0.85.5 - Runtime Display Contract Lock`
+- Current export version in `index.html`: `v0.85.5-runtime-display-contract-lock`
 - Current README: `README.md`
 - Current changelog: `CHANGELOG-FULL-OZMOSIS.txt`
-- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.4a.md`
-- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.4a.md`
-- Current QA report: `docs/qa/v0.85.4a_satzbau_touch_ios_zoom.md`
-- Current gate result: `SATZBAU_TOUCH_IOS_ZOOM_ACCEPTED`
-- Next required patch documented in current files: `v0.85.5 - Runtime Display Contract Lock`
+- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.5.md`
+- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.5.md`
+- Current QA report: `docs/qa/v0.85.5_runtime_display_contract_lock.md`
+- Current gate result: `RUNTIME_DISPLAY_CONTRACT_LOCK_ACCEPTED`
+- Next required patch documented in current files: `v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues`
 
 Live GitHub Pages was checked by the v0.85.3.8 gate and was reachable, but still served `v0.85.3.7 - Correction and Satzbau Surface Pass` before deployment/cache update.
+
+## v0.85.5 - Runtime Display Contract Lock
+
+- Added runtime display-contract guards before broad source cleanup.
+- Added `b1RuntimeDisplayContractAudit(...)` and exposed it through `window.ozmosisRuntimeDisplayContractAudit(...)` and the B1 debug snapshot.
+- Prevented active normal-practice items from rendering learner-facing internal labels, backtick metadata, raw internal X-vs-Y labels, unsafe cue states, or review-only items.
+- Required meaning-choice items to have a visible meaning cue before answer or stay out of active normal practice.
+- Required under-contextualised cloze items to have a visible cue before answer or stay out of active normal practice.
+- Kept hint-only support behind Teach me / reveal behaviour.
+- Added `scripts/ozmosis-runtime-display-contract-check.cjs`.
+- Generated machine-readable results at `docs/qa/v0.85.5_runtime_display_contract_lock_results.json`.
+- Generated runtime classification CSVs at `docs/qa/v0.85.5_runtime_display_contract_resolved_issues.csv` and `docs/qa/v0.85.5_runtime_display_contract_remaining_source_cleanup.csv`.
+- Added QA documentation at `docs/qa/v0.85.5_runtime_display_contract_lock.md`.
+- Confirmed v0.85.4 baseline counts from the accepted completion gate: 226 rendered prompt/internal-label leak risks, 30 meaning-choice hidden cue risks, 58 under-contextualised cloze-without-cue risks, and 0 review-only items entering normal practice.
+- Confirmed after-runtime-lock active normal-practice counts: 0 rendered prompt/internal-label leaks, 0 meaning-choice hidden cue risks, 0 under-contextualised cloze-without-cue risks, and 0 review-only items entering normal practice.
+- Classified 552 old static prompt/cue rows as already handled by runtime guards, 3,535 unsafe source rows as excluded for later cleanup, 4,087 total non-blocking source-cleanup candidates as carried forward, and 2,990 review-only rows as safely excluded.
+- Preserved v0.85.4a Satzbau tap-to-answer, selected state, clear/reset, manual typing, attempt-stable randomisation, and 16px+ mobile text-entry input sizing.
+- Preserved article-grid behaviour, shared practice-frame behaviour, export/import functions, protected storage keys, scoring semantics, evidence semantics, confidence values, star earning logic, content banks, answer keys, and B1-only active scope.
+- Set the next planned patch to `v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues`.
 
 ## v0.85.4a - Satzbau Interaction, Chunk Randomisation, and iOS Input Zoom Repair
 

@@ -2,13 +2,13 @@
 
 ## 1. Current Baseline
 
-Current runtime baseline: `v0.85.4a - Satzbau Interaction, Chunk Randomisation, and iOS Input Zoom Repair`.
+Current runtime baseline: `v0.85.5 - Runtime Display Contract Lock`.
 
-Current acceptance status: v0.85.4a accepted the Satzbau touch/iOS zoom hotfix after v0.85.4. Satzbau chunks are tappable controls, tapped chunks build the answer in tap order, displayed chunk order is attempt-stable and randomised, manual typing remains preserved, and mobile/touch text-entry controls are verified at 16px or larger.
+Current acceptance status: v0.85.5 accepted the runtime display contract lock after v0.85.4a. Active normal-practice runtime counts are 0 rendered prompt/internal-label leaks, 0 meaning-choice hidden cue risks, 0 under-contextualised cloze-without-cue risks, and 0 review-only items entering normal practice. The v0.85.4a Satzbau tap/randomisation and iOS-safe input-size fixes remain preserved.
 
-Current gate result: `SATZBAU_TOUCH_IOS_ZOOM_ACCEPTED`.
+Current gate result: `RUNTIME_DISPLAY_CONTRACT_LOCK_ACCEPTED`.
 
-Next required patch: `v0.85.5 - Runtime Display Contract Lock`.
+Next required patch: `v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues`.
 
 ## 2. Completed Foundation
 
@@ -125,7 +125,8 @@ Stop if the hub fails.
 - HUD, Keyboard, and Live Mobile Verification Gate is implemented and accepted as v0.85.3.8.
 - Completion Gate Harness is implemented and accepted as v0.85.4.
 - Satzbau Interaction, Chunk Randomisation, and iOS Input Zoom Repair is implemented and accepted as v0.85.4a.
-- Runtime Display Contract Lock is the next allowed implementation patch as v0.85.5.
+- Runtime Display Contract Lock is implemented and accepted as v0.85.5.
+- Source Cleanup Batch 1: Internal Labels and Meaning Cues is the next allowed implementation patch as v0.85.6.
 - Production Completion Pass is blocked until the final v0.85.x readiness gate reports `READY_FOR_V0.86`.
 - Weakness repair must wait until Skill Matrix and task-depth evidence are stable.
 - Durability/spaced review must wait until enough reviewable B1 coverage exists.

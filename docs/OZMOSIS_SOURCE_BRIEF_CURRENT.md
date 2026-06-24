@@ -2,11 +2,11 @@
 
 ## Current Patch Status
 
-Current runtime baseline: `v0.85.4a - Satzbau Interaction, Chunk Randomisation, and iOS Input Zoom Repair`.
+Current runtime baseline: `v0.85.5 - Runtime Display Contract Lock`.
 
-Current gate result: `SATZBAU_TOUCH_IOS_ZOOM_ACCEPTED`.
+Current gate result: `RUNTIME_DISPLAY_CONTRACT_LOCK_ACCEPTED`.
 
-Next required patch: `v0.85.5 - Runtime Display Contract Lock`.
+Next required patch: `v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues`.
 
 ## 1. Project Identity
 
@@ -168,11 +168,11 @@ Deferred features must not be forgotten or implemented early:
 
 ## 11. Current Baseline
 
-Current runtime baseline: `v0.85.4a - Satzbau Interaction, Chunk Randomisation, and iOS Input Zoom Repair`.
+Current runtime baseline: `v0.85.5 - Runtime Display Contract Lock`.
 
-Current acceptance status: v0.85.4a repaired the user-reported Satzbau and iOS/Safari input issues after the accepted v0.85.4 completion gate. Satzbau chunks are tappable controls, chunk order is attempt-stable and randomised, manual typing remains preserved, and mobile/touch text-entry controls are verified at 16px or larger.
+Current acceptance status: v0.85.5 accepted the runtime display contract lock after v0.85.4a. Active normal-practice runtime counts are 0 rendered prompt/internal-label leaks, 0 meaning-choice hidden cue risks, 0 under-contextualised cloze-without-cue risks, and 0 review-only items entering normal practice. v0.85.4a Satzbau tap/randomisation and iOS-safe input-size fixes remain preserved.
 
-Next required patch: `v0.85.5 - Runtime Display Contract Lock`.
+Next required patch: `v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues`.
 
 Current planning handoff:
 
@@ -198,5 +198,6 @@ Current planning handoff:
 - HUD, Keyboard, and Live Mobile Verification Gate has been implemented and accepted as v0.85.3.8.
 - Completion Gate Harness has been implemented and accepted as v0.85.4.
 - Satzbau Interaction, Chunk Randomisation, and iOS Input Zoom Repair has been implemented and accepted as v0.85.4a.
-- Runtime Display Contract Lock is next as v0.85.5.
+- Runtime Display Contract Lock has been implemented and accepted as v0.85.5.
+- Source Cleanup Batch 1: Internal Labels and Meaning Cues is next as v0.85.6.
 - Production Completion Pass remains blocked until v0.85.11 reports `READY_FOR_V0.86`.

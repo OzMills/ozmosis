@@ -11476,8 +11476,8 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
   var B1_PATH_UNLOCK_STORAGE_KEY = "ozmosis_b1_path_unlock_overrides_v1";
   var B1_REVIEW_EDIT_QUEUE_STORAGE_KEY = "ozmosis_b1_review_edit_queue_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.85.4a - Satzbau Interaction, Chunk Randomisation, and iOS Input Zoom Repair";
-  var OZMOSIS_EXPORT_VERSION = "v0.85.4a-satzbau-touch-ios-zoom";
+  var OZMOSIS_APP_VERSION = "v0.85.5 - Runtime Display Contract Lock";
+  var OZMOSIS_EXPORT_VERSION = "v0.85.5-runtime-display-contract-lock";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -22928,6 +22928,10 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
       meaningChoiceCueItems:0,
       choiceInternalLabelArtifacts:0,
       genericContrastFeedbackItems:0,
+      meaningChoiceHiddenCueRisks:0,
+      underContextualisedClozeWithoutCue:0,
+      reviewOnlyEnteringNormalPractice:0,
+      contractIssueCounts:{},
       renderedPromptLeakExamples:[],
       reviewQueue:includeReviewQueue ? [] : null,
       reviewQueueRowCount:0
@@ -22942,6 +22946,11 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
       if (/nearby contrast|related word/i.test(String(item.microRule || item.micro_rule || ""))) summary.genericContrastFeedbackItems += 1;
       var model = b1DisplayModel(item);
       if (model.displayStatus === "review") summary.displayReviewItems += 1;
+      (model.issues || []).forEach(function(issue){
+        if (/internal_label_visible|meaning_choice_cue_missing|cloze_context_cue_missing/.test(issue)) {
+          summary.contractIssueCounts[issue] = Number(summary.contractIssueCounts[issue] || 0) + 1;
+        }
+      });
       if (model.cueVisibility === "before_answer") summary.visibleCueBeforeAnswer += 1;
       if (model.hintVisibility === "reveal") summary.hintRevealItems += 1;
       if (model.cueRole === "meaning" && model.cueVisibility === "before_answer") summary.meaningChoiceCueItems += 1;
@@ -22949,10 +22958,13 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
       if (b1ItemIsNormalEligible(item)) {
         summary.normalEligibleItems += 1;
         var rendered = b1DisplayClean(b1PromptHtml(item).replace(/<[^>]+>/g, " "));
-        if (b1DisplayLooksInternalLabel(rendered)) {
+        if (b1DisplayContractVisibleTextLooksInternal(rendered)) {
           summary.renderedPromptLeaks += 1;
           if (summary.renderedPromptLeakExamples.length < 30) summary.renderedPromptLeakExamples.push({ itemId:item.id, renderedPrompt:rendered, sourcePrompt:item.prompt_de || "" });
         }
+        if (b1DisplayChoiceLikelyUsesMeaningCue(item) && !(model.cueVisibility === "before_answer" && model.cueText)) summary.meaningChoiceHiddenCueRisks += 1;
+        if (b1IsTypedCloze(item) && b1DisplayClozeNeedsCue(item) && !(model.cueVisibility === "before_answer" && model.cueText)) summary.underContextualisedClozeWithoutCue += 1;
+        if (b1ItemNeedsHumanReview(item) || b1ItemIsPreviewOrInactiveImport(item) || item.reviewOnly === true || item.normalPracticeEligible === false) summary.reviewOnlyEnteringNormalPractice += 1;
       } else if (model.displayStatus === "review" || b1ItemHasChoiceInternalLabelArtifact(item)) {
         summary.reviewQueueRowCount += 1;
         if (includeReviewQueue) summary.reviewQueue.push({
@@ -22973,6 +22985,60 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
       }
     });
     return summary;
+  }
+  function b1RuntimeDisplayContractAudit(options) {
+    options = options || {};
+    var includeRows = options.includeRows !== false;
+    var audit = b1DisplaySchemaAudit({ includeReviewQueue:includeRows });
+    var rows = [];
+    b1RegistryPracticeItems().forEach(function(item){
+      if (!item || !item.id) return;
+      var model = b1DisplayModel(item);
+      var reasons = b1NormalPracticeExclusionReasons(item);
+      var eligible = reasons.length === 0;
+      var contractIssues = b1DisplayContractIssues(item, model);
+      if (includeRows && (!eligible || contractIssues.length)) {
+        rows.push({
+          itemId:item.id,
+          bankKey:b1EvidenceBankKeyFor(item),
+          routeKey:model.moduleDefaultsRef || item.contentBankKey || item.moduleKey || "",
+          surface:b1VisualTemplateSurfaceForItem(item),
+          itemType:item.itemType || item.taskType || "",
+          normalPracticeEligible:eligible,
+          displayStatus:model.displayStatus,
+          cueVisibility:model.cueVisibility,
+          cueRole:model.cueRole,
+          cueText:model.cueText || "",
+          issues:(model.issues || []).join("|"),
+          exclusionReasons:reasons.join("|"),
+          sourcePrompt:item.prompt_de || "",
+          sourceCue:item.learnerCue || "",
+          recommendedAction:eligible ? "No action." : "Keep out of normal practice until source-safe cue/display cleanup."
+        });
+      }
+    });
+    return {
+      schemaVersion:"v0.85.5-runtime-display-contract-v1",
+      totalItems:audit.totalItems,
+      normalPracticeEligible:audit.normalEligibleItems,
+      displayReviewItems:audit.displayReviewItems,
+      afterRuntimeLock:{
+        renderedPromptLeaks:audit.renderedPromptLeaks,
+        meaningChoiceHiddenCueRisks:audit.meaningChoiceHiddenCueRisks,
+        underContextualisedClozeWithoutCue:audit.underContextualisedClozeWithoutCue,
+        reviewOnlyEnteringNormalPractice:audit.reviewOnlyEnteringNormalPractice
+      },
+      activeNormalPracticeContract:{
+        internalLabelsHidden:audit.renderedPromptLeaks === 0,
+        meaningCuesVisible:audit.meaningChoiceHiddenCueRisks === 0,
+        clozeCuesVisibleOrExcluded:audit.underContextualisedClozeWithoutCue === 0,
+        hintsRemainRevealOnly:true,
+        reviewOnlyExcluded:audit.reviewOnlyEnteringNormalPractice === 0
+      },
+      contractIssueCounts:audit.contractIssueCounts,
+      reviewQueueRowCount:audit.reviewQueueRowCount,
+      rows:includeRows ? rows : []
+    };
   }
   function b1ItemStarLevelForNormalPractice(item, progress) {
     if (!item || item.itemType === "production_card") return 0;
@@ -24265,6 +24331,47 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     if (cue) return false;
     return true;
   }
+  function b1DisplayContractVisibleTextLooksInternal(value) {
+    var text = b1DisplayClean(value);
+    if (!text) return false;
+    if (/`[^`]+`/.test(text)) return true;
+    if (/targetFamilyId|reviewGroup|familyTarget|moduleKey|contentBankKey|schema key|bank key|debug label|source\/audit|source text/i.test(text)) return true;
+    if (/\b[A-Za-z0-9]+_[A-Za-z0-9_]+\b/.test(text) && /(?:target|family|review|schema|bank|source|audit|route|module|task|variant)/i.test(text)) return true;
+    if (/\s+vs\s+/i.test(text) || /[_-]vs[_-]/i.test(text)) return true;
+    if (/^[A-Za-z][A-Za-z /-]{3,90}$/.test(text) && /[ /-]/.test(text) && /(?:course|work|office|people|room|entrance|exit|show|find|ask|bring|fill|register|finished|request|approve|cover|handover|callback|meaning|instruction)/i.test(text)) return true;
+    return false;
+  }
+  function b1DisplayContractVisibleStrings(item, model) {
+    var strings = [
+      model && model.instruction_de,
+      model && model.stimulus_de
+    ];
+    if (model && model.cueVisibility === "before_answer") strings.push(model.cueText, model.learnerCue_de, model.learnerCue_en);
+    if (item && item.itemType === "production_card") {
+      var segments = b1ProductionDisplaySegments(item);
+      strings.push(segments.instruction, segments.cue, segments.scenario);
+      (segments.usefulPhrases || []).forEach(function(line){ strings.push(line); });
+      (segments.checklist || []).forEach(function(line){ strings.push(line); });
+    }
+    if (b1UsesChoices(item)) {
+      b1RenderedChoices(item).forEach(function(choice){ strings.push(choice && choice.text); });
+    }
+    return strings.map(b1DisplayClean).filter(Boolean);
+  }
+  function b1DisplayContractIssues(item, model) {
+    var issues = [];
+    if (!item || !model) return ["missing_display_model"];
+    b1DisplayContractVisibleStrings(item, model).forEach(function(text){
+      if (b1DisplayContractVisibleTextLooksInternal(text) && issues.indexOf("internal_label_visible") === -1) issues.push("internal_label_visible");
+    });
+    if (b1DisplayChoiceLikelyUsesMeaningCue(item)) {
+      if (!(model.cueVisibility === "before_answer" && b1DisplayClean(model.cueText) && !b1DisplayContractVisibleTextLooksInternal(model.cueText))) issues.push("meaning_choice_cue_missing");
+    }
+    if (b1IsTypedCloze(item) && b1DisplayClozeNeedsCue(item)) {
+      if (!(model.cueVisibility === "before_answer" && b1DisplayClean(model.cueText) && !b1DisplayContractVisibleTextLooksInternal(model.cueText))) issues.push("cloze_context_cue_missing");
+    }
+    return issues.filter(function(issue, index, arr){ return issue && arr.indexOf(issue) === index; });
+  }
   function b1DisplayInstructionForItem(item, model) {
     if (item && item.instruction_de) return b1DisplayClean(item.instruction_de);
     if (item && item.itemType === "production_card") return b1ProductionDisplaySegments(item).instruction || "Produziere eine kurze B1-Antwort.";
@@ -24358,6 +24465,14 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
       moduleDefaultsRef:b1DisplayBankKeyForItem(item) || defaults.contentBankKey || "",
       issues:issues
     };
+    var contractIssues = b1DisplayContractIssues(item, model);
+    if (contractIssues.length) {
+      model.issues = model.issues.concat(contractIssues).filter(function(issue, index, arr){ return issue && arr.indexOf(issue) === index; });
+      model.displayStatus = "review";
+      model.normalPracticeEligible = false;
+      model.reviewQueueReason = model.issues.join(";");
+      model.contextRecoverable = model.contextRecoverable && contractIssues.indexOf("cloze_context_cue_missing") === -1 && contractIssues.indexOf("meaning_choice_cue_missing") === -1;
+    }
     item._displayModel = model;
     return model;
   }
@@ -28696,6 +28811,7 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
 window.ozmosisTesterReportSummary=testerReportSummary; window.ozmosisLearnerReadableProgressReport=buildLearnerReadableProgressReport; window.ozmosisBuildSavePayload=buildOzmosisSavePayload; window.ozmosisValidateSavePayload=validateOzmosisSavePayload; window.ozmosisApplyValidatedSave=applyValidatedOzmosisSave; window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }; window.kasusNoArticle=function(){checkAnswer("none");}; window.kasusProceed=function(){proceed();}; window.kasusHint=function(){showHint();}; window.kasusNewRound=function(){showStartScreen();}; window.kasusStartRound=function(){startConfiguredRound();}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusSessionLog=function(){return sessionLog.slice();}; window.kasusCurrent=function(){return current ? cloneQuestion(current) : cloneB1Item(b1Runtime.current || {});}; window.kasusLeitnerDebug=function(){ return { storageKey:LEITNER_STORAGE_KEY, runtime:leitnerRuntime, progress:safeGetLeitner() }; }; window.ozmosisChoiceShuffleDebug=function(item, count){ return b1ChoiceShuffleDebugSummary(item, count); }; window.ozmosisB1Debug=function(){ return { storageKey:B1_STORAGE_KEY, evidenceStorageKey:B1_EVIDENCE_STORAGE_KEY, progressStateLabelVersion:PROGRESS_STATE_LABEL_VERSION, taskDepthSchemaVersion:B1_TASK_DEPTH_SCHEMA_VERSION, taskDepthDefinitions:b1TaskDepthDefinitions(), supportLevelSchemaVersion:B1_SUPPORT_LEVEL_SCHEMA_VERSION, supportLevelDefinitions:b1SupportLevelDefinitions(), displaySchemaAudit:b1DisplaySchemaAudit({includeReviewQueue:false}), itemCount:B1_ITEMS.length, connectorCount:B1_CONNECTOR_ITEMS.length, casesArticlesCount:B1_CASE_ARTICLE_ITEMS.length, redemittelCount:B1_REDEMITTEL_ITEMS.length, wortschatzCount:B1_WORTSCHATZ_ITEMS.length, b1M02Count:B1_M02_ITEMS.length, b1M03Count:B1_M03_ITEMS.length, b1M04Count:B1_M04_ITEMS.length, b1M05Count:B1_M05_ITEMS.length, registry:b1RegistrySummary(), runtime:b1Runtime, progress:safeGetB1Progress(), evidence:b1EvidenceSummary(), supportLevelSummary:b1SupportLevelSummaryForRecords(safeGetB1Evidence().records), learningMap:b1LearningMapScaffold(), skillMatrix:b1SkillMatrixData(), skillMatrixSummary:debugSkillMatrixSummary(), recommendation:b1NextRecommendedPractice(), recommendationSummary:debugRecommendationSummary(), learnerReadableProgressReport:buildLearnerReadableProgressReport(), errorPatterns:b1ErrorPatternSignals(), errorPatternSummary:debugErrorPatternSummary(), errorTypeSummaries:b1ErrorTypeSummaries(), errorTypeSummary:debugErrorTypeSummary(), connectorDiagnostics:b1ConnectorDiagnosticCards(), connectorDiagnosticSummary:debugConnectorDiagnosticSummary(), diagnosticRepairQa:b1DiagnosticRepairQaSummary(), diagnosticRepairStability:b1DiagnosticRepairStabilitySummary(), durabilityReadiness:buildB1DurabilityReadinessSnapshot(), durabilityQa:buildB1DurabilityQaAudit(), reviewSystemStability:buildB1ReviewSystemStabilityAudit(), reviewEligibility:buildB1ReviewEligibility(), reviewCandidatePreview:buildB1ReviewCandidatePreview(), metadataReviewCoverage:buildB1MetadataReviewCoverageAudit(), b1CoverageAudit:buildB1CoverageAudit(), repairCandidates:b1WeaknessRepairCandidates(), repairCandidateSummary:debugWeaknessRepairSummary(), repairQueues:b1BuildWeaknessRepairQueue(), repairQueueSummary:b1RepairQueueDebugSummary(), diagnosticPlan:b1Runtime.diagnosticPlan, qaStageItemById:b1QaStageItemById, qaRepairPreview:b1QaRepairPreview, choiceShuffle:b1ChoiceShuffleDebugSummary(), debugSnapshot:buildDebugSnapshot }; }; window.ozmosisStartB1Round=function(mode){ startB1Round(mode || "mixed"); }; window.ozmosisStartDiagnostic=function(){ startB1DiagnosticSprint(); }; window.ozmosisStartConnector=function(family){ startConnectorSprint(family || "all"); }; window.ozmosisStartRepairTransformation=function(filter){ startRepairTransformationRound(filter || "mixed"); }; window.ozmosisStartCasesArticles=function(filter){ startCasesArticlesRound(filter || "mixed"); }; window.ozmosisStartRedemittel=function(filter){ startRedemittelRound(filter || "mixed"); }; window.ozmosisStartWortschatz=function(filter){ startWortschatzRound(filter || "mixed"); }; window.ozmosisStartB1M01=function(filter){ startB1M01Round(filter || "mixed"); }; window.ozmosisStartB1M02=function(filter){ startB1M02Round(filter || "mixed"); }; window.ozmosisStartB1M03=function(filter){ startB1M03Round(filter || "mixed"); }; window.ozmosisStartB1M04=function(filter){ startB1M04Round(filter || "mixed"); }; window.ozmosisStartB1M05=function(filter){ startB1M05Round(filter || "mixed"); }; window.ozmosisStartTargetedRepair=function(queueId){ startTargetedRepairPractice(queueId || ""); }; window.ozmosisStartReviewPractice=function(){ startB1ReviewPractice(); }; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusResetBest=function(){ highScore=0; bestStreakAll=0; savePersistent(); if (state === "results") showResults(); else renderHud(); }; window.kasusResetProfile=function(){ resetLearnerModel(); }; window.kasusToggleMenu=function(){ var panel=el("settingsPanel"); panel.classList.toggle("open"); document.body.classList.toggle("menuOpen", panel.classList.contains("open")); };
   window.ozmosisVersionInfo=function(){ return { appVersion:OZMOSIS_APP_VERSION, exportVersion:OZMOSIS_EXPORT_VERSION }; };
   window.ozmosisDisplaySchemaAudit=function(options){ return b1DisplaySchemaAudit(options || {includeReviewQueue:true}); };
+  window.ozmosisRuntimeDisplayContractAudit=function(options){ return b1RuntimeDisplayContractAudit(options || {includeRows:true}); };
   window.ozmosisStartPrepositions=function(filter){ startPrepositionsRound(filter || "mixed"); };
   window.ozmosisStartWordOrder=function(filter){ startWordOrderRound(filter || "mixed"); };
   var ozmosisB1DebugBase = window.ozmosisB1Debug;
@@ -28703,6 +28819,7 @@ window.ozmosisTesterReportSummary=testerReportSummary; window.ozmosisLearnerRead
     var summary = ozmosisB1DebugBase ? ozmosisB1DebugBase() : {};
     summary.appVersion = OZMOSIS_APP_VERSION;
     summary.exportVersion = OZMOSIS_EXPORT_VERSION;
+    summary.displayContractAudit = b1RuntimeDisplayContractAudit({includeRows:false});
     summary.b1M06Count = B1_M06_ITEMS.length;
     summary.b1M07Count = B1_M07_ITEMS.length;
     summary.b1M08Count = B1_M08_ITEMS.length;

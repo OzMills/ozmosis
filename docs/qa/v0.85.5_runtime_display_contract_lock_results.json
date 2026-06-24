@@ -1,0 +1,350 @@
+{
+  "patch": "v0.85.5",
+  "title": "Runtime Display Contract Lock",
+  "startingStateVerified": true,
+  "runtimeVersionUpdated": true,
+  "runtimeChanged": true,
+  "contentChanged": false,
+  "scoringChanged": false,
+  "evidenceChanged": false,
+  "storageChanged": false,
+  "exportImportChanged": false,
+  "v0854Baseline": {
+    "renderedPromptLeaks": 226,
+    "meaningChoiceHiddenCueRisks": 30,
+    "underContextualisedClozeWithoutCue": 58,
+    "reviewOnlyEnteringNormalPractice": 0
+  },
+  "afterRuntimeLock": {
+    "renderedPromptLeaks": 0,
+    "meaningChoiceHiddenCueRisks": 0,
+    "underContextualisedClozeWithoutCue": 0,
+    "reviewOnlyEnteringNormalPractice": 0
+  },
+  "classification": {
+    "realRuntimeDefects": 0,
+    "runtimeGuardAlreadyHandles": 552,
+    "staticFalsePositives": 0,
+    "needsSourceCleanupLater": 3535,
+    "reviewOnlySafe": 2990,
+    "sourceCleanupCandidateRows": 4087
+  },
+  "activeNormalPracticeContract": {
+    "internalLabelsHidden": true,
+    "meaningCuesVisible": true,
+    "clozeCuesVisibleOrExcluded": true,
+    "hintsRemainRevealOnly": true,
+    "reviewOnlyExcluded": true
+  },
+  "v0854aNonRegression": {
+    "satzbauChunksTappable": true,
+    "satzbauTapBuildsAnswer": true,
+    "satzbauRandomisationStable": true,
+    "satzbauNotCorrectOrder": true,
+    "iosSafeInputFontSizes": true
+  },
+  "articleGridPreserved": true,
+  "sharedFramePreserved": true,
+  "sourceOfTruth": {
+    "appFile": "index.html",
+    "baselineGate": "docs/qa/v0.85.4_completion_gate_harness_results.json",
+    "nonRegressionGate": "docs/qa/v0.85.4a_satzbau_touch_ios_zoom_results.json",
+    "runtimeContractFunction": "window.ozmosisRuntimeDisplayContractAudit"
+  },
+  "baselineV0854": {
+    "accepted": true,
+    "totalItems": 7194,
+    "normalPracticeEligible": 4204,
+    "reviewOnly": 2990,
+    "renderedPromptLeaks": 226,
+    "meaningChoiceHiddenCueRisks": 30,
+    "underContextualisedClozeWithoutCue": 58,
+    "reviewOnlyEnteringNormalPractice": 0
+  },
+  "nonRegressionV0854a": {
+    "accepted": true,
+    "satzbauInteraction": {
+      "chunksFocusable": true,
+      "chunksTappable": true,
+      "tapBuildsAnswer": true,
+      "selectedStateVisible": true,
+      "removeOrClearAvailable": true,
+      "manualTypingPreserved": true,
+      "answerCheckingPreserved": true
+    },
+    "satzbauRandomisation": {
+      "chunksRandomised": true,
+      "stableWithinAttempt": true,
+      "notCorrectOrder": true,
+      "correctAnswerUnchanged": true,
+      "unshuffleableItemsDocumented": true
+    },
+    "iosZoomRepair": {
+      "practiceInputsFontSizeAtLeast16": true,
+      "clozeInputFontSizeAtLeast16": true,
+      "correctionTextareaFontSizeAtLeast16": true,
+      "satzbauInputFontSizeAtLeast16": true,
+      "caseTrainerInputFontSizeAtLeast16": true,
+      "userZoomNotDisabledGlobally": true
+    },
+    "nonRegression": {
+      "feedbackRhythmPreserved": true,
+      "articleGridPreserved": true,
+      "exportImportPreserved": true,
+      "storagePreserved": true,
+      "scoringPreserved": true,
+      "evidencePreserved": true
+    }
+  },
+  "runtimeDisplayContract": {
+    "beforeCounts": {
+      "renderedPromptLeaks": 226,
+      "meaningChoiceHiddenCueRisks": 30,
+      "underContextualisedClozeWithoutCue": 58,
+      "reviewOnlyEnteringNormalPractice": 0
+    },
+    "afterRuntimeLock": {
+      "renderedPromptLeaks": 0,
+      "meaningChoiceHiddenCueRisks": 0,
+      "underContextualisedClozeWithoutCue": 0,
+      "reviewOnlyEnteringNormalPractice": 0
+    },
+    "activeNormalPracticeContract": {
+      "internalLabelsHidden": true,
+      "meaningCuesVisible": true,
+      "clozeCuesVisibleOrExcluded": true,
+      "hintsRemainRevealOnly": true,
+      "reviewOnlyExcluded": true
+    },
+    "contractIssueCounts": {
+      "internal_label_visible": 346,
+      "meaning_choice_cue_missing": 201,
+      "cloze_context_cue_missing": 773
+    },
+    "classifiedIssueCounts": {
+      "realRuntimeDefects": 0,
+      "runtimeGuardAlreadyHandles": 552,
+      "needsSourceCleanupLater": 3535,
+      "staticFalsePositive": 0,
+      "reviewOnlySafe": 2990,
+      "sourceCleanupCandidateRows": 4087
+    },
+    "resolvedIssuesCsv": "docs/qa/v0.85.5_runtime_display_contract_resolved_issues.csv",
+    "remainingSourceCleanupCsv": "docs/qa/v0.85.5_runtime_display_contract_remaining_source_cleanup.csv",
+    "reviewQueueRowCount": 1146,
+    "totalItems": 7194,
+    "normalPracticeEligible": 1281,
+    "displayReviewItems": 1122
+  },
+  "representativeScreens": {
+    "meaningChoice": {
+      "id": "b1_vocab_termin_003",
+      "bodySurface": "choice",
+      "bodyState": "default",
+      "promptText": "WÄHLE DIE PASSENDE FORM.\nSie können morgen nicht. Welche Formulierung verschiebt den Termin?",
+      "glossText": "Which phrase fits if you want to change an appointment?",
+      "glossHidden": false,
+      "translationHidden": true,
+      "hintHidden": true,
+      "answerInputFontSize": 16,
+      "inlineInputFontSize": null,
+      "chunkCount": 0,
+      "chunkTexts": [],
+      "chunkFocusable": true,
+      "sharedFramePresent": true,
+      "bodyOverflow": false
+    },
+    "underContextCloze": {
+      "id": "b1_vocab_termin_001",
+      "bodySurface": "cloze",
+      "bodyState": "default",
+      "promptText": "Ich möchte einen  vereinbaren.",
+      "glossText": "I would like to arrange an appointment.",
+      "glossHidden": false,
+      "translationHidden": true,
+      "hintHidden": true,
+      "answerInputFontSize": 16,
+      "inlineInputFontSize": 16,
+      "chunkCount": 0,
+      "chunkTexts": [],
+      "chunkFocusable": true,
+      "sharedFramePresent": true,
+      "bodyOverflow": false
+    },
+    "normalChoice": {
+      "id": "v080149_cat02_contrast_cat02_cs_013",
+      "bodySurface": "choice",
+      "bodyState": "default",
+      "promptText": "WELCHE FORM PASST ZUR BEDEUTUNG?",
+      "glossText": "Show something to someone.",
+      "glossHidden": false,
+      "translationHidden": true,
+      "hintHidden": true,
+      "answerInputFontSize": 16,
+      "inlineInputFontSize": null,
+      "chunkCount": 0,
+      "chunkTexts": [],
+      "chunkFocusable": true,
+      "sharedFramePresent": true,
+      "bodyOverflow": false
+    },
+    "normalCloze": {
+      "id": "v080149_cat02_practice_family_cat02_pf_005",
+      "bodySurface": "cloze",
+      "bodyState": "default",
+      "promptText": "Ich lerne Deutsch auf .",
+      "glossText": "Sie nennen Ihr Sprachniveau.",
+      "glossHidden": false,
+      "translationHidden": true,
+      "hintHidden": true,
+      "answerInputFontSize": 16,
+      "inlineInputFontSize": 16,
+      "chunkCount": 0,
+      "chunkTexts": [],
+      "chunkFocusable": true,
+      "sharedFramePresent": true,
+      "bodyOverflow": false
+    },
+    "normalCorrection": {
+      "id": "b1_connector_v085_variable_weil_001",
+      "bodySurface": "correction",
+      "bodyState": "typing",
+      "promptText": "BEARBEITE DIE AUFGABE.\nKorrigiere den Satz.",
+      "glossText": "",
+      "glossHidden": false,
+      "translationHidden": true,
+      "hintHidden": true,
+      "answerInputFontSize": 16,
+      "inlineInputFontSize": null,
+      "chunkCount": 0,
+      "chunkTexts": [],
+      "chunkFocusable": true,
+      "sharedFramePresent": true,
+      "bodyOverflow": false
+    },
+    "satzbau": {
+      "id": "b1_word_order_main_clause_v2_time_002",
+      "bodySurface": "satzbau",
+      "bodyState": "default",
+      "promptText": "BILDE DEN SATZ.\nich\nan\nrufe\nMorgen\ndie Praxis\nClear",
+      "glossText": "Morgen · rufe · ich · die Praxis · an",
+      "glossHidden": false,
+      "translationHidden": true,
+      "hintHidden": true,
+      "answerInputFontSize": 16,
+      "inlineInputFontSize": 16,
+      "chunkCount": 5,
+      "chunkTexts": [
+        "ich",
+        "an",
+        "rufe",
+        "Morgen",
+        "die Praxis"
+      ],
+      "chunkFocusable": true,
+      "sharedFramePresent": true,
+      "bodyOverflow": false
+    },
+    "casesRepair": {
+      "id": "b1_cases_articles_v0841_variable_001",
+      "bodySurface": "correction",
+      "bodyState": "typing",
+      "promptText": "BEARBEITE DIE AUFGABE.\nKorrigiere den Satz.",
+      "glossText": "",
+      "glossHidden": false,
+      "translationHidden": true,
+      "hintHidden": true,
+      "answerInputFontSize": 16,
+      "inlineInputFontSize": null,
+      "chunkCount": 0,
+      "chunkTexts": [],
+      "chunkFocusable": true,
+      "sharedFramePresent": true,
+      "bodyOverflow": false
+    }
+  },
+  "nonRegression": {
+    "v0854aSatzbauInteractionPreserved": true,
+    "v0854aChunkRandomisationPreserved": true,
+    "v0854aIosZoomRepairPreserved": true,
+    "articleGridPreserved": true,
+    "sharedFramePreserved": true,
+    "exportImportPreserved": true,
+    "storageKeysPreserved": true,
+    "scoringChanged": false,
+    "evidenceChanged": false,
+    "contentChanged": false
+  },
+  "filesChanged": [
+    "index.html",
+    "AGENTS.md",
+    "README.md",
+    "CHANGELOG-FULL-OZMOSIS.txt",
+    "docs/OZMOSIS_SOURCE_BRIEF_CURRENT.md",
+    "docs/OZMOSIS_DEVELOPMENT_ROADMAP_CURRENT.md",
+    "docs/OZMOSIS_FEATURE_REGISTER_CURRENT.md",
+    "docs/OZMOSIS_SOURCE_BRIEF_v0.85.5.md",
+    "docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.5.md",
+    "docs/qa/v0.85.5_runtime_display_contract_lock.md",
+    "docs/qa/v0.85.5_runtime_display_contract_lock_results.json",
+    "docs/qa/v0.85.5_runtime_display_contract_resolved_issues.csv",
+    "docs/qa/v0.85.5_runtime_display_contract_remaining_source_cleanup.csv",
+    "scripts/ozmosis-runtime-display-contract-check.cjs"
+  ],
+  "testsRun": {
+    "staticChecks": {
+      "inlineScriptsParsed": 1,
+      "contentScriptsParsed": 25,
+      "protectedStorageKeys": true,
+      "exportImportStrings": true,
+      "noPackageJson": true,
+      "noPackageLock": true,
+      "noTypeModule": true,
+      "noDynamicImport": true
+    },
+    "browserGate": {
+      "localServer": "http://127.0.0.1:62070/index.html",
+      "edgeHeadless": true,
+      "contractAuditRows": 5913,
+      "representativeFixtures": {
+        "meaningChoice": "b1_vocab_termin_003",
+        "underContextCloze": "b1_vocab_termin_001",
+        "reviewOnly": "v080149_cat02_collocation_cat02_coll_005",
+        "normalChoice": "v080149_cat02_contrast_cat02_cs_013",
+        "normalCloze": "v080149_cat02_practice_family_cat02_pf_005",
+        "normalCorrection": "b1_connector_v085_variable_weil_001",
+        "satzbau": "b1_word_order_main_clause_v2_time_002",
+        "casesRepair": "b1_cases_articles_v0841_variable_001"
+      },
+      "satzbau": {
+        "chunksFocusable": true,
+        "chunksTappable": true,
+        "tapBuildsAnswer": true,
+        "selectedStateVisible": true,
+        "removeOrClearAvailable": true,
+        "manualTypingPreserved": true,
+        "answerCheckingPreserved": true,
+        "chunksRandomised": true,
+        "stableWithinAttempt": true,
+        "notCorrectOrder": true,
+        "correctAnswerUnchanged": true
+      },
+      "articleGrid": {
+        "articleGrid": true,
+        "feedback": "",
+        "confidenceVisible": true,
+        "nextVisible": true
+      }
+    }
+  },
+  "testsNotRun": [],
+  "consoleErrors": [],
+  "runtimeExceptions": [],
+  "warnings": [],
+  "acceptancePassed": true,
+  "finalDecision": "RUNTIME_DISPLAY_CONTRACT_LOCK_ACCEPTED",
+  "nextPatch": "v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues",
+  "appVersion": "v0.85.5 - Runtime Display Contract Lock",
+  "exportVersion": "v0.85.5-runtime-display-contract-lock",
+  "generatedAt": "2026-06-24T18:57:14.635Z"
+}

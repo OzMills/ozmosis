@@ -9,35 +9,50 @@ Future README updates should be made in this file. Do not create new `README-v*.
 
 ## Current App
 
-# Ozmosis v0.85.4a Satzbau Interaction, Chunk Randomisation, and iOS Input Zoom Repair
+# Ozmosis v0.85.5 Runtime Display Contract Lock
 
 Ozmosis is a static, local-first German learning app. The deployed app remains `index.html`.
 
-v0.85.4a is a narrow runtime hotfix after the accepted v0.85.4 completion gate. It fixes Satzbau/word-order chunk interaction, attempt-stable chunk randomisation, and mobile-safe input font sizing for iOS/Safari zoom risk.
+v0.85.5 locks the runtime display contract for active normal practice before source cleanup begins. It keeps the v0.85.4 static issue queues as source-cleanup evidence, but prevents learner-facing active practice from rendering internal labels, hidden meaning-choice cues, under-contextualised clozes without a cue, or review-only items.
 
-Satzbau chunks are now real buttons, tapping chunks builds the answer in tap order, selected chunks have visible state, Clear resets selected chunks and the answer, and manual typing remains available through the existing answer-checking path. Text-entry controls used by B1 cloze/Satzbau, correction textarea, and Case Trainer are verified at 16px or larger in mobile/touch layouts.
+The runtime lock adds a display-contract audit helper and Edge/CDP gate. Active normal-practice counts are now 0 rendered prompt/internal-label leaks, 0 meaning-choice hidden cue risks, 0 under-contextualised cloze-without-cue risks, and 0 review-only items entering normal practice. The v0.85.4a Satzbau tap/randomisation and iOS-safe input-size fixes are preserved.
 
-- Runtime app version: `v0.85.4a - Satzbau Interaction, Chunk Randomisation, and iOS Input Zoom Repair`
-- Runtime export version: `v0.85.4a-satzbau-touch-ios-zoom`
-- Current gate result: `SATZBAU_TOUCH_IOS_ZOOM_ACCEPTED`
-- Core result: Edge/CDP verified tappable Satzbau chunks, tap-to-answer, selected state, clear/reset, manual typing, answer checking, attempt-stable randomised chunk order, B1 cloze/correction/choice non-regression, Case Trainer input font size, article-grid preservation, export/import, required screenshots, and contact-sheet image loading.
+- Runtime app version: `v0.85.5 - Runtime Display Contract Lock`
+- Runtime export version: `v0.85.5-runtime-display-contract-lock`
+- Current gate result: `RUNTIME_DISPLAY_CONTRACT_LOCK_ACCEPTED`
+- Core result: Edge/CDP verified zero active runtime display-contract defects, 552 old static prompt/cue rows already handled by runtime guards, 3,535 unsafe source rows excluded for later cleanup, 4,087 non-blocking source-cleanup candidates carried forward, 2,990 review-only rows safely excluded, v0.85.4a Satzbau non-regression, iOS-safe input font sizes, article-grid preservation, shared-frame preservation, protected storage keys, and export/import functions.
 
-## Current v0.85.4a docs
+## Current v0.85.5 docs
 
 - Changelog: `CHANGELOG-FULL-OZMOSIS.txt`
-- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.4a.md`
-- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.4a.md`
+- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.5.md`
+- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.5.md`
 - Shared frame contract: `docs/OZMOSIS_SHARED_PRACTICE_FRAME_CONTRACT_v0.85.3.4.md`
-- Current QA gate: `docs/qa/v0.85.4a_satzbau_touch_ios_zoom.md`
-- Current gate result JSON: `docs/qa/v0.85.4a_satzbau_touch_ios_zoom_results.json`
-- Screenshot comparison: `docs/qa/screenshots/v0.85.4a-satzbau-touch-ios-zoom/comparison.html`
+- Current QA gate: `docs/qa/v0.85.5_runtime_display_contract_lock.md`
+- Current gate result JSON: `docs/qa/v0.85.5_runtime_display_contract_lock_results.json`
+- Runtime contract resolved issue CSV: `docs/qa/v0.85.5_runtime_display_contract_resolved_issues.csv`
+- Runtime contract remaining source cleanup CSV: `docs/qa/v0.85.5_runtime_display_contract_remaining_source_cleanup.csv`
+- Current gate script: `scripts/ozmosis-runtime-display-contract-check.cjs`
+- Previous v0.85.4a QA gate: `docs/qa/v0.85.4a_satzbau_touch_ios_zoom.md`
+- Previous v0.85.4a result JSON: `docs/qa/v0.85.4a_satzbau_touch_ios_zoom_results.json`
 - Previous completion gate: `docs/qa/v0.85.4_completion_gate_harness.md`
 - Previous completion gate result JSON: `docs/qa/v0.85.4_completion_gate_harness_results.json`
 - Completion gate CSVs: `docs/qa/v0.85.4_completion_gate_prompt_cue_issues.csv`, `docs/qa/v0.85.4_completion_gate_cloze_cue_issues.csv`, `docs/qa/v0.85.4_completion_gate_feedback_issues.csv`, `docs/qa/v0.85.4_completion_gate_metadata_manifest_candidates.csv`, `docs/qa/v0.85.4_completion_gate_review_queue_status.csv`
 - Manual phone checklist: `docs/qa/v0.85.3.8_manual_phone_test_checklist.md`
 - Package policy: `docs/OZMOSIS_QA_ARTEFACT_AND_PACKAGE_POLICY.md`
 
-Next planned patch: `v0.85.5 - Runtime Display Contract Lock`.
+Next planned patch: `v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues`.
+
+## Previous v0.85.4a Satzbau Interaction, Chunk Randomisation, and iOS Input Zoom Repair
+
+v0.85.4a was a narrow runtime hotfix after the accepted v0.85.4 completion gate. It fixed Satzbau/word-order chunk interaction, attempt-stable chunk randomisation, and mobile-safe input font sizing for iOS/Safari zoom risk.
+
+Satzbau chunks are real buttons, tapping chunks builds the answer in tap order, selected chunks have visible state, Clear resets selected chunks and the answer, and manual typing remains available through the existing answer-checking path. Text-entry controls used by B1 cloze/Satzbau, correction textarea, and Case Trainer are verified at 16px or larger in mobile/touch layouts.
+
+- Runtime app version: `v0.85.4a - Satzbau Interaction, Chunk Randomisation, and iOS Input Zoom Repair`
+- Runtime export version: `v0.85.4a-satzbau-touch-ios-zoom`
+- Gate result: `SATZBAU_TOUCH_IOS_ZOOM_ACCEPTED`
+- Core result: Edge/CDP verified tappable Satzbau chunks, tap-to-answer, selected state, clear/reset, manual typing, answer checking, attempt-stable randomised chunk order, B1 cloze/correction/choice non-regression, Case Trainer input font size, article-grid preservation, export/import, required screenshots, and contact-sheet image loading.
 
 ## Previous v0.85.4 Completion Gate Harness
 
