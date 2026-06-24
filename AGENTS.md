@@ -6,13 +6,13 @@ Ozmosis is a static, dependency-free German learning app deployed through GitHub
 
 Ozmosis was formerly called Kasuskonsole. Historical notes may still use that name, but current user-facing and repo-facing language should use `Ozmosis`.
 
-Current working version: `v0.85.5a - Satzbau Build-Line and Answer-Leak Repair`.
+Current working version: `v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues`.
 
-Current runtime baseline: `v0.85.5a - Satzbau Build-Line and Answer-Leak Repair`.
+Current runtime baseline: `v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues`.
 
-Current gate result: `SATZBAU_BUILD_LINE_ANSWER_LEAK_ACCEPTED`.
+Current gate result: `SOURCE_CLEANUP_BATCH1_ACCEPTED`.
 
-Next planned patch: `v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues`
+Next planned patch: `v0.85.7 - Source Cleanup Batch 2: Under-Contextualised Clozes`
 
 v0.86 status: blocked until final v0.85.x readiness gate reports `READY_FOR_V0.86`.
 
@@ -20,11 +20,11 @@ Current README: `README.md`
 
 Current changelog: `CHANGELOG-FULL-OZMOSIS.txt`
 
-Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.5a.md`
+Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.6.md`
 
-Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.5a.md`
+Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.6.md`
 
-Current QA gate: `docs/qa/v0.85.5a_satzbau_build_line_answer_leak.md`
+Current QA gate: `docs/qa/v0.85.6_source_cleanup_batch1_internal_labels_meaning_cues.md`
 
 README/changelog convention: one canonical root `README.md` and one canonical `CHANGELOG-FULL-OZMOSIS.txt`. Do not create versioned README/changelog files moving forward unless the user explicitly asks for a standalone export.
 

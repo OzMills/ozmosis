@@ -4569,8 +4569,8 @@
       "zeigen"
     ],
     "fullAnswer_de": "zeigen",
-    "prompt_de": "Welche Form passt zu `show vs find`?",
-    "learnerCue": "show vs find",
+    "prompt_de": "Welche Form passt zur Bedeutung?",
+    "learnerCue": "Show something to someone.",
     "support_en": "Show something to someone.",
     "microRule": "Show something to someone. Check the nearby contrast, not just a related word.",
     "contrastTargets": [

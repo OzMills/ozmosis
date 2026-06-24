@@ -20,6 +20,10 @@ const expectedFinalAppVersion = "v0.85.5 - Runtime Display Contract Lock";
 const expectedFinalExportVersion = "v0.85.5-runtime-display-contract-lock";
 const expectedSuccessorAppVersion = "v0.85.5a - Satzbau Build-Line and Answer-Leak Repair";
 const expectedSuccessorExportVersion = "v0.85.5a-satzbau-build-line-answer-leak";
+const expectedSecondSuccessorAppVersion = "v0.85.5b - Satzbau Proof Harness and First-Run Overlay Repair";
+const expectedSecondSuccessorExportVersion = "v0.85.5b-satzbau-proof-overlay-repair";
+const expectedThirdSuccessorAppVersion = "v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues";
+const expectedThirdSuccessorExportVersion = "v0.85.6-source-cleanup-internal-labels-meaning-cues";
 
 const fixtures = {
   meaningChoice:"b1_vocab_termin_003",
@@ -309,11 +313,15 @@ function extractVersions() {
   result.startingStateVerified = (
     (result.appVersion === expectedStartAppVersion && result.exportVersion === expectedStartExportVersion) ||
     (result.appVersion === expectedFinalAppVersion && result.exportVersion === expectedFinalExportVersion) ||
-    (result.appVersion === expectedSuccessorAppVersion && result.exportVersion === expectedSuccessorExportVersion)
+    (result.appVersion === expectedSuccessorAppVersion && result.exportVersion === expectedSuccessorExportVersion) ||
+    (result.appVersion === expectedSecondSuccessorAppVersion && result.exportVersion === expectedSecondSuccessorExportVersion) ||
+    (result.appVersion === expectedThirdSuccessorAppVersion && result.exportVersion === expectedThirdSuccessorExportVersion)
   );
   result.runtimeVersionUpdated = (
     (result.appVersion === expectedFinalAppVersion && result.exportVersion === expectedFinalExportVersion) ||
-    (result.appVersion === expectedSuccessorAppVersion && result.exportVersion === expectedSuccessorExportVersion)
+    (result.appVersion === expectedSuccessorAppVersion && result.exportVersion === expectedSuccessorExportVersion) ||
+    (result.appVersion === expectedSecondSuccessorAppVersion && result.exportVersion === expectedSecondSuccessorExportVersion) ||
+    (result.appVersion === expectedThirdSuccessorAppVersion && result.exportVersion === expectedThirdSuccessorExportVersion)
   );
 }
 

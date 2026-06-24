@@ -1,0 +1,285 @@
+{
+  "patch": "v0.85.5b",
+  "title": "Satzbau Proof Harness and First-Run Overlay Repair",
+  "startingStateVerified": true,
+  "runtimeVersionUpdated": true,
+  "filesChanged": [
+    "index.html",
+    "README.md",
+    "CHANGELOG-FULL-OZMOSIS.txt",
+    "AGENTS.md",
+    "docs/OZMOSIS_SOURCE_BRIEF_CURRENT.md",
+    "docs/OZMOSIS_DEVELOPMENT_ROADMAP_CURRENT.md",
+    "docs/OZMOSIS_FEATURE_REGISTER_CURRENT.md",
+    "docs/OZMOSIS_SOURCE_BRIEF_v0.85.5b.md",
+    "docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.5b.md",
+    "docs/qa/v0.85.5b_satzbau_proof_overlay_repair.md",
+    "docs/qa/v0.85.5b_satzbau_proof_overlay_repair_results.json",
+    "docs/qa/screenshots/v0.85.5b-satzbau-proof-overlay-repair/",
+    "scripts/ozmosis-satzbau-build-line-check.cjs",
+    "scripts/ozmosis-runtime-display-contract-check.cjs"
+  ],
+  "runtimeChanged": true,
+  "contentChanged": false,
+  "scoringChanged": false,
+  "evidenceChanged": false,
+  "storageChanged": false,
+  "exportImportChanged": false,
+  "v0855aProofProblemConfirmed": {
+    "oldScreenshotsInspected": true,
+    "oldScreenshotsShowLanguageGate": true,
+    "oldContactSheetInvalid": true
+  },
+  "firstRunGateHandling": {
+    "languageGateCompleted": true,
+    "method": "Real UI: selected English and clicked Start.",
+    "newStorageKeysAdded": false
+  },
+  "screenshotValidity": {
+    "languageGateAbsentInAllScreenshots": true,
+    "welcomeTextAbsentInAllScreenshots": true,
+    "targetStateVisibleInAllScreenshots": true,
+    "contactSheetVerified": true
+  },
+  "satzbauBuildLine": {
+    "visibleBuildLineExists": true,
+    "buildLineIsNotInput": true,
+    "tapBuildsBuildLine": true,
+    "selectedStateVisible": true,
+    "clearResetWorks": true,
+    "manualFallbackExists": true,
+    "manualFallbackSecondary": true,
+    "answerCheckingPreserved": true
+  },
+  "satzbauAnswerLeak": {
+    "preAnswerGlossHiddenOrSafe": true,
+    "preAnswerCorrectAnswerNotVisible": true,
+    "preAnswerLearnerCueOrderNotVisible": true,
+    "postAnswerCorrectAnswerVisible": true
+  },
+  "nonRegression": {
+    "runtimeDisplayContractPreserved": true,
+    "satzbauRandomisationPreserved": true,
+    "iosSafeInputFontSizesPreserved": true,
+    "articleGridPreserved": true,
+    "exportImportPreserved": true,
+    "storagePreserved": true,
+    "scoringPreserved": true,
+    "evidencePreserved": true
+  },
+  "screenshotsGenerated": {
+    "satzbau-default-no-answer-leak": "docs/qa/screenshots/v0.85.5b-satzbau-proof-overlay-repair/satzbau-default-no-answer-leak.png",
+    "satzbau-after-one-token-tap-build-line": "docs/qa/screenshots/v0.85.5b-satzbau-proof-overlay-repair/satzbau-after-one-token-tap-build-line.png",
+    "satzbau-after-multiple-token-taps-build-line": "docs/qa/screenshots/v0.85.5b-satzbau-proof-overlay-repair/satzbau-after-multiple-token-taps-build-line.png",
+    "satzbau-clear-reset": "docs/qa/screenshots/v0.85.5b-satzbau-proof-overlay-repair/satzbau-clear-reset.png",
+    "satzbau-manual-fallback-closed": "docs/qa/screenshots/v0.85.5b-satzbau-proof-overlay-repair/satzbau-manual-fallback-closed.png",
+    "satzbau-manual-fallback-open": "docs/qa/screenshots/v0.85.5b-satzbau-proof-overlay-repair/satzbau-manual-fallback-open.png",
+    "satzbau-fail-post-answer": "docs/qa/screenshots/v0.85.5b-satzbau-proof-overlay-repair/satzbau-fail-post-answer.png",
+    "satzbau-success-post-answer": "docs/qa/screenshots/v0.85.5b-satzbau-proof-overlay-repair/satzbau-success-post-answer.png",
+    "cloze-non-regression": "docs/qa/screenshots/v0.85.5b-satzbau-proof-overlay-repair/cloze-non-regression.png",
+    "correction-non-regression": "docs/qa/screenshots/v0.85.5b-satzbau-proof-overlay-repair/correction-non-regression.png",
+    "choice-non-regression": "docs/qa/screenshots/v0.85.5b-satzbau-proof-overlay-repair/choice-non-regression.png",
+    "runtime-display-contract-non-regression": "docs/qa/screenshots/v0.85.5b-satzbau-proof-overlay-repair/runtime-display-contract-non-regression.png",
+    "comparison": "docs/qa/screenshots/v0.85.5b-satzbau-proof-overlay-repair/comparison.html",
+    "comparison-contact-sheet": "docs/qa/screenshots/v0.85.5b-satzbau-proof-overlay-repair/comparison-contact-sheet.png"
+  },
+  "contactSheetVerified": true,
+  "testsRun": {
+    "staticChecks": {
+      "inlineScriptsParsed": 1,
+      "contentScriptsParsed": 25,
+      "displaySchemaParsed": true,
+      "protectedStorageKeys": true,
+      "noPackageJson": true,
+      "noPackageLock": true,
+      "noTypeModule": true,
+      "noDynamicImport": true,
+      "noRuntimeAiOrApiCalls": true
+    },
+    "v0855aProofInspection": {
+      "oldScreenshotFolder": "docs/qa/screenshots/v0.85.5a-satzbau-build-line-answer-leak",
+      "oldScreenshotsFound": 13,
+      "visualFinding": "v0.85.5a contact sheet/screenshots show the first-run language gate instead of target staged states."
+    },
+    "firstRunGate": {
+      "initiallyVisible": true,
+      "completed": true,
+      "method": "Real UI: selected English and clicked Start.",
+      "storageKeys": [
+        "ozmosis_b1_progress_summary_v1"
+      ]
+    },
+    "screenshotValidation": [
+      {
+        "name": "satzbau-default-no-answer-leak",
+        "languageGateAbsent": true,
+        "welcomeTextAbsent": true,
+        "targetStateVisible": true,
+        "details": "default Satzbau state with visible chunks, build line, clear control, closed manual fallback, and no answer leak"
+      },
+      {
+        "name": "satzbau-after-one-token-tap-build-line",
+        "languageGateAbsent": true,
+        "welcomeTextAbsent": true,
+        "targetStateVisible": true,
+        "details": "one tapped token visible in build line with selected chunk state"
+      },
+      {
+        "name": "satzbau-after-multiple-token-taps-build-line",
+        "languageGateAbsent": true,
+        "welcomeTextAbsent": true,
+        "targetStateVisible": true,
+        "details": "multiple tapped tokens visible in build line with selected chunk states"
+      },
+      {
+        "name": "satzbau-clear-reset",
+        "languageGateAbsent": true,
+        "welcomeTextAbsent": true,
+        "targetStateVisible": true,
+        "details": "empty build line and no selected chunks after clear"
+      },
+      {
+        "name": "satzbau-manual-fallback-closed",
+        "languageGateAbsent": true,
+        "welcomeTextAbsent": true,
+        "targetStateVisible": true,
+        "details": "manual fallback disclosure closed while build line remains primary"
+      },
+      {
+        "name": "satzbau-manual-fallback-open",
+        "languageGateAbsent": true,
+        "welcomeTextAbsent": true,
+        "targetStateVisible": true,
+        "details": "manual fallback input visible with build line still present"
+      },
+      {
+        "name": "satzbau-fail-post-answer",
+        "languageGateAbsent": true,
+        "welcomeTextAbsent": true,
+        "targetStateVisible": true,
+        "details": "fail feedback, learner attempt, and correct sentence visible after answer"
+      },
+      {
+        "name": "satzbau-success-post-answer",
+        "languageGateAbsent": true,
+        "welcomeTextAbsent": true,
+        "targetStateVisible": true,
+        "details": "success feedback and correct sentence visible after answer"
+      },
+      {
+        "name": "cloze-non-regression",
+        "languageGateAbsent": true,
+        "welcomeTextAbsent": true,
+        "targetStateVisible": true,
+        "details": "cloze item visible with inline input"
+      },
+      {
+        "name": "correction-non-regression",
+        "languageGateAbsent": true,
+        "welcomeTextAbsent": true,
+        "targetStateVisible": true,
+        "details": "correction item visible with answer input"
+      },
+      {
+        "name": "choice-non-regression",
+        "languageGateAbsent": true,
+        "welcomeTextAbsent": true,
+        "targetStateVisible": true,
+        "details": "choice item visible with choice controls"
+      },
+      {
+        "name": "runtime-display-contract-non-regression",
+        "languageGateAbsent": true,
+        "welcomeTextAbsent": true,
+        "targetStateVisible": true,
+        "details": "runtime display contract preserved on visible practice state"
+      }
+    ],
+    "failPostAnswerSnapshot": {
+      "state": "fail",
+      "feedbackVisible": true,
+      "feedbackText": " Not quite\nContrast Main-clause connectors keep the conjugated verb in position 2; subordinate connectors send it to the end.\nRESULT\nNo new star. This will return for practice.",
+      "bodyText": "Ozmosis\n☰\nBILDE DEN SATZ.\nich\nan\nrufe\nMorgen\ndie Praxis\nYOUR ATTEMPT:\nfalsche Reihenfolge\nCORRECT SENTENCE:\nMorgen rufe ich die Praxis an.\nTomorrow I will call the practice.\nNot quite\nContrast Main-clause connectors keep the conjugated verb in position 2; subordinate connectors send it to the end.\nRESULT\nNo new star. This will return for practice.\nI GUESSED\nI WAS UNSURE\nI KNEW IT\n\nSelect answer confidence to continue.\n\nPUNKTE\n0\nRICHTIG\n0\nFEHLER\n1\nFORTSCHRITT\n1 / 1\n<",
+      "correctAnswer": "Morgen rufe ich die Praxis an.",
+      "inlineValue": "",
+      "answerInputValue": "",
+      "confidenceControlCount": 3
+    },
+    "successPostAnswerSnapshot": {
+      "state": "success",
+      "feedbackVisible": true,
+      "feedbackText": " Correct\nIf a time phrase starts the sentence, the finite verb still comes second.\nRESULT\n☆\n☆\n☆\n☆\n☆\nStill 0/5. Star unchanged.",
+      "bodyText": "Ozmosis\n☰\nBILDE DEN SATZ.\nich\nan\nrufe\nMorgen\ndie Praxis\nYOUR ATTEMPT:\nMorgen rufe ich die Praxis an.\nCORRECT SENTENCE:\nMorgen rufe ich die Praxis an.\nTomorrow I will call the practice.\nCorrect\nIf a time phrase starts the sentence, the finite verb still comes second.\nRESULT\n☆\n☆\n☆\n☆\n☆\nStill 0/5. Star unchanged.\nI GUESSED\nI WAS UNSURE\nI KNEW IT\n\nSelect answer confidence to continue.\n\nPUNKTE\n100\nRICHTIG\n1\nFEHLER\n0\nFORTSCHRITT\n1 / 1\n<",
+      "correctAnswer": "Morgen rufe ich die Praxis an.",
+      "inlineValue": "",
+      "answerInputValue": "",
+      "confidenceControlCount": 3
+    },
+    "responsiveViewports": [
+      {
+        "width": 430,
+        "height": 932,
+        "bodyOverflow": false,
+        "buildLineExists": true,
+        "answerLeak": false
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "bodyOverflow": false,
+        "buildLineExists": true,
+        "answerLeak": false
+      },
+      {
+        "width": 320,
+        "height": 568,
+        "bodyOverflow": false,
+        "buildLineExists": true,
+        "answerLeak": false
+      },
+      {
+        "width": 430,
+        "height": 520,
+        "bodyOverflow": false,
+        "buildLineExists": true,
+        "answerLeak": false
+      },
+      {
+        "width": 320,
+        "height": 360,
+        "bodyOverflow": false,
+        "buildLineExists": true,
+        "answerLeak": false
+      },
+      {
+        "width": 1365,
+        "height": 599,
+        "bodyOverflow": false,
+        "buildLineExists": true,
+        "answerLeak": false
+      }
+    ],
+    "comparisonHtml": {
+      "imageRefs": 12,
+      "missingRefs": []
+    },
+    "contactSheetImages": {
+      "count": 12,
+      "loaded": 12,
+      "totalPixels": 4809120
+    },
+    "browserCapture": true
+  },
+  "testsNotRun": [],
+  "consoleErrors": [],
+  "ignoredConsoleNoise": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found) (http://127.0.0.1:57574/favicon.ico)"
+  ],
+  "runtimeExceptions": [],
+  "acceptancePassed": true,
+  "finalDecision": "SATZBAU_PROOF_OVERLAY_REPAIR_ACCEPTED",
+  "nextPatch": "v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues",
+  "appVersion": "v0.85.5b - Satzbau Proof Harness and First-Run Overlay Repair",
+  "exportVersion": "v0.85.5b-satzbau-proof-overlay-repair",
+  "generatedAt": "2026-06-24T21:39:03.328Z"
+}

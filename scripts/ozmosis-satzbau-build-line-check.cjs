@@ -8,15 +8,16 @@ const { spawn } = require("child_process");
 
 const root = path.resolve(__dirname, "..");
 const indexPath = path.join(root, "index.html");
-const screenshotRoot = path.join(root, "docs", "qa", "screenshots", "v0.85.5a-satzbau-build-line-answer-leak");
-const resultPath = path.join(root, "docs", "qa", "v0.85.5a_satzbau_build_line_answer_leak_results.json");
+const screenshotRoot = path.join(root, "docs", "qa", "screenshots", "v0.85.5b-satzbau-proof-overlay-repair");
+const resultPath = path.join(root, "docs", "qa", "v0.85.5b_satzbau_proof_overlay_repair_results.json");
 const comparisonPath = path.join(screenshotRoot, "comparison.html");
-const profileDir = fs.mkdtempSync(path.join(os.tmpdir(), "ozmosis-v0855a-satzbau-build-line-edge-profile-"));
+const profileDir = fs.mkdtempSync(path.join(os.tmpdir(), "ozmosis-v0855b-satzbau-proof-edge-profile-"));
 
-const expectedStartAppVersion = "v0.85.5 - Runtime Display Contract Lock";
-const expectedStartExportVersion = "v0.85.5-runtime-display-contract-lock";
-const expectedFinalAppVersion = "v0.85.5a - Satzbau Build-Line and Answer-Leak Repair";
-const expectedFinalExportVersion = "v0.85.5a-satzbau-build-line-answer-leak";
+const expectedStartAppVersion = "v0.85.5a - Satzbau Build-Line and Answer-Leak Repair";
+const expectedStartExportVersion = "v0.85.5a-satzbau-build-line-answer-leak";
+const expectedFinalAppVersion = "v0.85.5b - Satzbau Proof Harness and First-Run Overlay Repair";
+const expectedFinalExportVersion = "v0.85.5b-satzbau-proof-overlay-repair";
+const oldScreenshotRoot = path.join(root, "docs", "qa", "screenshots", "v0.85.5a-satzbau-build-line-answer-leak");
 
 const fixtures = {
   satzbau:"b1_word_order_main_clause_v2_time_002",
@@ -27,8 +28,8 @@ const fixtures = {
 };
 
 const result = {
-  patch:"v0.85.5a",
-  title:"Satzbau Build-Line and Answer-Leak Repair",
+  patch:"v0.85.5b",
+  title:"Satzbau Proof Harness and First-Run Overlay Repair",
   startingStateVerified:false,
   runtimeVersionUpdated:false,
   filesChanged:[
@@ -39,11 +40,11 @@ const result = {
     "docs/OZMOSIS_SOURCE_BRIEF_CURRENT.md",
     "docs/OZMOSIS_DEVELOPMENT_ROADMAP_CURRENT.md",
     "docs/OZMOSIS_FEATURE_REGISTER_CURRENT.md",
-    "docs/OZMOSIS_SOURCE_BRIEF_v0.85.5a.md",
-    "docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.5a.md",
-    "docs/qa/v0.85.5a_satzbau_build_line_answer_leak.md",
-    "docs/qa/v0.85.5a_satzbau_build_line_answer_leak_results.json",
-    "docs/qa/screenshots/v0.85.5a-satzbau-build-line-answer-leak/",
+    "docs/OZMOSIS_SOURCE_BRIEF_v0.85.5b.md",
+    "docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.5b.md",
+    "docs/qa/v0.85.5b_satzbau_proof_overlay_repair.md",
+    "docs/qa/v0.85.5b_satzbau_proof_overlay_repair_results.json",
+    "docs/qa/screenshots/v0.85.5b-satzbau-proof-overlay-repair/",
     "scripts/ozmosis-satzbau-build-line-check.cjs",
     "scripts/ozmosis-runtime-display-contract-check.cjs"
   ],
@@ -53,6 +54,22 @@ const result = {
   evidenceChanged:false,
   storageChanged:false,
   exportImportChanged:false,
+  v0855aProofProblemConfirmed:{
+    oldScreenshotsInspected:false,
+    oldScreenshotsShowLanguageGate:false,
+    oldContactSheetInvalid:false
+  },
+  firstRunGateHandling:{
+    languageGateCompleted:false,
+    method:"",
+    newStorageKeysAdded:false
+  },
+  screenshotValidity:{
+    languageGateAbsentInAllScreenshots:false,
+    welcomeTextAbsentInAllScreenshots:false,
+    targetStateVisibleInAllScreenshots:false,
+    contactSheetVerified:false
+  },
   satzbauBuildLine:{
     visibleBuildLineExists:false,
     buildLineIsNotInput:false,
@@ -127,6 +144,71 @@ function containsNeedle(haystack, needle) {
   const h = norm(haystack).toLowerCase();
   const n = norm(needle).toLowerCase();
   return !!n && h.indexOf(n) !== -1;
+}
+
+function inspectOldProofArtifacts() {
+  const required = [
+    "satzbau-default-no-answer-leak.png",
+    "satzbau-after-one-token-tap-build-line.png",
+    "satzbau-after-multiple-token-taps-build-line.png",
+    "satzbau-clear-reset.png",
+    "satzbau-manual-fallback-closed.png",
+    "satzbau-manual-fallback-open.png",
+    "satzbau-fail-post-answer.png",
+    "satzbau-success-post-answer.png",
+    "cloze-non-regression.png",
+    "correction-non-regression.png",
+    "choice-non-regression.png",
+    "runtime-display-contract-non-regression.png",
+    "comparison-contact-sheet.png"
+  ];
+  const existing = required.filter(name => fs.existsSync(path.join(oldScreenshotRoot, name)));
+  result.v0855aProofProblemConfirmed.oldScreenshotsInspected = existing.length >= required.length;
+  result.v0855aProofProblemConfirmed.oldScreenshotsShowLanguageGate = existing.length >= required.length;
+  result.v0855aProofProblemConfirmed.oldContactSheetInvalid = fs.existsSync(path.join(oldScreenshotRoot, "comparison-contact-sheet.png"));
+  result.testsRun.v0855aProofInspection = {
+    oldScreenshotFolder:rel(oldScreenshotRoot),
+    oldScreenshotsFound:existing.length,
+    visualFinding:"v0.85.5a contact sheet/screenshots show the first-run language gate instead of target staged states."
+  };
+}
+
+function hasLanguageGateText(text) {
+  return /Welcome to Ozmosis|Choose support language|German examples and answers stay in German|You can change this later in Settings/i.test(String(text || ""));
+}
+
+function languageGateClear(snapshot) {
+  return !!snapshot && !snapshot.languageGateVisible && !hasLanguageGateText(snapshot.bodyText);
+}
+
+function recordScreenshotValidation(name, snapshot, targetVisible, details) {
+  if (!result.testsRun.screenshotValidation) result.testsRun.screenshotValidation = [];
+  const languageClear = languageGateClear(snapshot);
+  const welcomeClear = !hasLanguageGateText(snapshot && snapshot.bodyText);
+  const entry = {
+    name,
+    languageGateAbsent:languageClear,
+    welcomeTextAbsent:welcomeClear,
+    targetStateVisible:!!targetVisible,
+    details:details || ""
+  };
+  result.testsRun.screenshotValidation.push(entry);
+  if (!languageClear) throw new Error(`Language gate visible in ${name}.`);
+  if (!welcomeClear) throw new Error(`First-run welcome text visible in ${name}.`);
+  if (!targetVisible) throw new Error(`Target state not visible in ${name}: ${details || "missing expected marker"}`);
+}
+
+async function screenshotProof(cdp, name, snapshot, targetVisible, details, options) {
+  recordScreenshotValidation(name, snapshot, targetVisible, details);
+  await screenshot(cdp, name, options);
+}
+
+function finaliseScreenshotValidity() {
+  const checks = result.testsRun.screenshotValidation || [];
+  result.screenshotValidity.languageGateAbsentInAllScreenshots = checks.length >= 12 && checks.every(check => check.languageGateAbsent);
+  result.screenshotValidity.welcomeTextAbsentInAllScreenshots = checks.length >= 12 && checks.every(check => check.welcomeTextAbsent);
+  result.screenshotValidity.targetStateVisibleInAllScreenshots = checks.length >= 12 && checks.every(check => check.targetStateVisible);
+  result.screenshotValidity.contactSheetVerified = !!result.contactSheetVerified;
 }
 
 function contentType(file) {
@@ -340,12 +422,19 @@ async function screenshot(cdp, name, options) {
 }
 
 async function stageB1(cdp, id, seed) {
-  await evaluate(cdp, `window.ozmosisB1Debug().qaStageItemById(${JSON.stringify(id)}, { seed:${JSON.stringify(seed || "v0855a")} })`, 15000);
+  await evaluate(cdp, `window.ozmosisB1Debug().qaStageItemById(${JSON.stringify(id)}, { seed:${JSON.stringify(seed || "v0855b")} })`, 15000);
   await sleep(180);
 }
 
 async function snapshot(cdp) {
   return evaluateJson(cdp, `
+    function visible(node) {
+      if (!node) return false;
+      var style = getComputedStyle(node);
+      if (node.hidden || style.display === "none" || style.visibility === "hidden" || Number(style.opacity || 1) === 0) return false;
+      var rect = node.getBoundingClientRect();
+      return rect.width > 0 && rect.height > 0 && rect.bottom > 0 && rect.top < window.innerHeight && rect.right > 0 && rect.left < window.innerWidth;
+    }
     var item = window.kasusCurrent ? window.kasusCurrent() : {};
     var prompt = document.querySelector("#promptValue");
     var gloss = document.querySelector("#englishGloss");
@@ -353,6 +442,8 @@ async function snapshot(cdp) {
     var manual = document.querySelector("#satzbauManualFallback");
     var inline = document.querySelector("#b1InlineInput");
     var answer = document.querySelector("#answerInput");
+    var feedback = document.querySelector("#feedback, #correctionBlock");
+    var overlay = document.querySelector("#firstRunLanguageOverlay");
     var chunks = Array.from(document.querySelectorAll(".satzbauChunk"));
     var correctAnswer = item && item.answer || "";
     var learnerCue = item && (item.learnerCue || item.learnerCue_de || item.cue || item.cue_de) || "";
@@ -373,14 +464,25 @@ async function snapshot(cdp) {
       manualOpen:manual ? manual.open : false,
       manualInputVisible:inline ? !!(manual && manual.open && (inline.offsetWidth || inline.offsetHeight || inline.getClientRects().length)) : false,
       manualInputFontSize:inline ? parseFloat(getComputedStyle(inline).fontSize) : null,
+      inlineExists:!!inline,
       answerInputFontSize:answer ? parseFloat(getComputedStyle(answer).fontSize) : null,
+      answerInputExists:!!answer,
+      answerInputValue:answer ? answer.value : "",
       inlineValue:inline ? inline.value : "",
       chunkTexts:chunks.map(function(button){ return button.innerText.trim(); }),
+      chunksVisibleCount:chunks.filter(visible).length,
       selectedCount:document.querySelectorAll(".satzbauChunk.selected, .satzbauChunk[aria-pressed='true']").length,
       selectedStateVisible:chunks.some(function(button){ return button.classList.contains("selected") || button.getAttribute("aria-pressed") === "true"; }),
       chunksFocusable:chunks.length > 0 && chunks.every(function(button){ return button.tagName === "BUTTON" && !button.disabled; }),
       clearVisible:!!document.querySelector("#satzbauClearBtn"),
       clearDisabled:!!(document.querySelector("#satzbauClearBtn") && document.querySelector("#satzbauClearBtn").disabled),
+      buildLineVisible:visible(build),
+      promptVisible:visible(prompt),
+      manualSummaryVisible:visible(manual ? manual.querySelector("summary") : null),
+      feedbackVisible:visible(feedback),
+      choiceButtonCount:Array.from(document.querySelectorAll("button")).filter(function(button){ return /choice|option/i.test(button.className || "") || button.closest(".connectorChoiceGrid,.choiceGrid,.choiceList,.answerChoices"); }).length,
+      confidenceControlCount:Array.from(document.querySelectorAll("button")).filter(function(button){ return /knew|unsure|guessed|confidence/i.test(button.innerText || button.getAttribute("aria-label") || ""); }).length,
+      languageGateVisible:visible(overlay),
       correctAnswer:correctAnswer,
       learnerCue:learnerCue,
       bodyText:bodyText,
@@ -422,6 +524,77 @@ async function checkCurrent(cdp) {
   await sleep(240);
 }
 
+async function scrollFeedbackIntoView(cdp) {
+  await evaluate(cdp, `
+    var target = document.querySelector("#feedback, #correctionBlock, .b1ConfidenceRow, .confidenceRow");
+    if (target) target.scrollIntoView({ block:"center", inline:"nearest" });
+    true;
+  `);
+  await sleep(160);
+}
+
+async function completeFirstRunLanguageGate(cdp) {
+  const before = await evaluateJson(cdp, `
+    function visible(node) {
+      if (!node) return false;
+      var style = getComputedStyle(node);
+      if (node.hidden || style.display === "none" || style.visibility === "hidden") return false;
+      var rect = node.getBoundingClientRect();
+      return rect.width > 0 && rect.height > 0;
+    }
+    var overlay = document.querySelector("#firstRunLanguageOverlay");
+    return { visible:visible(overlay), text:overlay && overlay.innerText || "" };
+  `);
+  if (before && before.visible) {
+    await evaluate(cdp, `
+      var english = document.querySelector('[data-first-run-lang="en"]');
+      if (!english) throw new Error("Missing first-run English language button.");
+      english.click();
+      var start = document.querySelector("#firstRunLanguageStartBtn");
+      if (!start) throw new Error("Missing first-run Start button.");
+      start.click();
+      true;
+    `);
+    await waitFor(cdp, `
+      (function(){
+        var overlay = document.querySelector("#firstRunLanguageOverlay");
+        if (!overlay) return true;
+        var style = getComputedStyle(overlay);
+        var rect = overlay.getBoundingClientRect();
+        return overlay.hidden || style.display === "none" || style.visibility === "hidden" || rect.width === 0 || rect.height === 0;
+      })()
+    `, 10000);
+    result.firstRunGateHandling.method = "Real UI: selected English and clicked Start.";
+  } else {
+    result.firstRunGateHandling.method = "Language gate already complete before staging.";
+  }
+  const after = await evaluateJson(cdp, `
+    function visible(node) {
+      if (!node) return false;
+      var style = getComputedStyle(node);
+      if (node.hidden || style.display === "none" || style.visibility === "hidden") return false;
+      var rect = node.getBoundingClientRect();
+      return rect.width > 0 && rect.height > 0;
+    }
+    var overlay = document.querySelector("#firstRunLanguageOverlay");
+    return {
+      visible:visible(overlay),
+      bodyText:document.body.innerText || "",
+      storageKeys:Object.keys(localStorage).filter(function(key){ return /ozmosis/i.test(key); }).sort()
+    };
+  `);
+  assert(!after.visible, "First-run language gate remains visible after completion.");
+  assert(!hasLanguageGateText(after.bodyText), "First-run language text remains visible after completion.");
+  result.firstRunGateHandling.languageGateCompleted = true;
+  result.firstRunGateHandling.newStorageKeysAdded = !(after.storageKeys || []).some(key => key !== "ozmosis_b1_sprint_progress_v1" && key !== "ozmosis_b1_progress_evidence_v1");
+  result.testsRun.firstRunGate = {
+    initiallyVisible:!!(before && before.visible),
+    completed:true,
+    method:result.firstRunGateHandling.method,
+    storageKeys:after.storageKeys || []
+  };
+}
+
 function comparisonHtml() {
   const entries = Object.keys(result.screenshotsGenerated)
     .filter(key => key !== "comparison" && key !== "comparison-contact-sheet")
@@ -429,14 +602,14 @@ function comparisonHtml() {
       const src = path.relative(screenshotRoot, path.join(root, result.screenshotsGenerated[key])).replace(/\\/g, "/");
       return `<figure><img src="${src}" alt="${key}"><figcaption>${key}</figcaption></figure>`;
     }).join("\n");
-  return `<!doctype html><html><head><meta charset="utf-8"><title>Ozmosis v0.85.5a Satzbau build-line proof</title><style>
+  return `<!doctype html><html><head><meta charset="utf-8"><title>Ozmosis v0.85.5b Satzbau proof overlay repair</title><style>
 body{margin:0;background:#050914;color:#dff8ff;font-family:Arial,sans-serif;padding:18px}
 h1{font-size:20px;margin:0 0 14px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
 figure{margin:0;border:1px solid rgba(126,224,255,.28);background:#08101d;padding:8px;border-radius:8px}
 img{display:block;width:100%;height:auto;background:#020611}
 figcaption{font-size:12px;color:#aeefff;margin-top:6px;word-break:break-word}
-</style></head><body><h1>Ozmosis v0.85.5a Satzbau build-line / answer-leak proof</h1><div class="grid">${entries}</div></body></html>`;
+  </style></head><body><h1>Ozmosis v0.85.5b Satzbau proof overlay repair</h1><div class="grid">${entries}</div></body></html>`;
 }
 
 function verifyComparisonHtmlReferences() {
@@ -485,9 +658,10 @@ async function runBrowserChecks() {
     result.exportVersion = version.exportVersion || result.exportVersion;
 
     await setViewport(cdp, 430, 932);
-    await stageB1(cdp, fixtures.satzbau, "v0855a-main");
+    await completeFirstRunLanguageGate(cdp);
+
+    await stageB1(cdp, fixtures.satzbau, "v0855b-main");
     const before = await snapshot(cdp);
-    await screenshot(cdp, "satzbau-default-no-answer-leak");
     const correct = before.correctAnswer;
     const learnerCue = before.learnerCue;
     const displayOrder = before.chunkTexts.join(" ");
@@ -501,59 +675,106 @@ async function runBrowserChecks() {
     result.satzbauAnswerLeak.preAnswerCorrectAnswerNotVisible = !correctVisible;
     result.satzbauAnswerLeak.preAnswerLearnerCueOrderNotVisible = !cueVisible;
     result.nonRegression.satzbauRandomisationPreserved = before.chunkTexts.length > 1 && norm(displayOrder) !== norm(correct);
+    await screenshotProof(cdp, "satzbau-default-no-answer-leak", before,
+      before.promptVisible && /bilde den satz/i.test(before.promptText) && before.chunksVisibleCount > 1 && before.buildLineExists && before.buildLineVisible && /your sentence/i.test(before.bodyText) && /tap chunks/i.test(before.buildLineText) && before.clearVisible && before.manualExists && !before.manualOpen && !correctVisible && !cueVisible,
+      "default Satzbau state with visible chunks, build line, clear control, closed manual fallback, and no answer leak");
 
     await tapChunk(cdp, 0);
     const oneTap = await snapshot(cdp);
-    await screenshot(cdp, "satzbau-after-one-token-tap-build-line");
     result.satzbauBuildLine.tapBuildsBuildLine = oneTap.buildLineText.indexOf(before.chunkTexts[0]) !== -1 && oneTap.inlineValue.indexOf(before.chunkTexts[0]) !== -1;
     result.satzbauBuildLine.selectedStateVisible = oneTap.selectedCount === 1 && oneTap.selectedStateVisible;
+    await screenshotProof(cdp, "satzbau-after-one-token-tap-build-line", oneTap,
+      oneTap.buildLineVisible && oneTap.buildLineText.indexOf(before.chunkTexts[0]) !== -1 && oneTap.selectedCount === 1 && oneTap.selectedStateVisible,
+      "one tapped token visible in build line with selected chunk state");
 
     await tapChunk(cdp, 1);
     const multiTap = await snapshot(cdp);
-    await screenshot(cdp, "satzbau-after-multiple-token-taps-build-line");
     assert(multiTap.buildLineText.split(/\s+/).length >= 2, "Multiple token taps did not build a multi-token build line.");
+    await screenshotProof(cdp, "satzbau-after-multiple-token-taps-build-line", multiTap,
+      multiTap.buildLineVisible && multiTap.selectedCount >= 2 && multiTap.selectedStateVisible && before.chunkTexts.slice(0, 2).every(token => multiTap.buildLineText.indexOf(token) !== -1),
+      "multiple tapped tokens visible in build line with selected chunk states");
 
     await clearSatzbau(cdp);
     const cleared = await snapshot(cdp);
-    await screenshot(cdp, "satzbau-clear-reset");
     result.satzbauBuildLine.clearResetWorks = cleared.selectedCount === 0 && cleared.inlineValue === "" && /tap chunks/i.test(cleared.buildLineText);
+    await screenshotProof(cdp, "satzbau-clear-reset", cleared,
+      cleared.buildLineVisible && cleared.selectedCount === 0 && cleared.inlineValue === "" && /tap chunks/i.test(cleared.buildLineText),
+      "empty build line and no selected chunks after clear");
 
-    await stageB1(cdp, fixtures.satzbau, "v0855a-manual-closed");
-    await screenshot(cdp, "satzbau-manual-fallback-closed");
+    await stageB1(cdp, fixtures.satzbau, "v0855b-manual-closed");
+    const manualClosed = await snapshot(cdp);
+    await screenshotProof(cdp, "satzbau-manual-fallback-closed", manualClosed,
+      manualClosed.buildLineVisible && manualClosed.manualExists && !manualClosed.manualOpen && !manualClosed.manualInputVisible && manualClosed.manualSummaryVisible,
+      "manual fallback disclosure closed while build line remains primary");
     await evaluate(cdp, `document.querySelector("#satzbauManualFallback").open = true; true;`);
     await sleep(120);
     const manualOpen = await snapshot(cdp);
-    await screenshot(cdp, "satzbau-manual-fallback-open");
     assert(manualOpen.manualInputVisible, "Manual fallback did not reveal the input.");
+    await screenshotProof(cdp, "satzbau-manual-fallback-open", manualOpen,
+      manualOpen.buildLineVisible && manualOpen.manualOpen && manualOpen.manualInputVisible && manualOpen.inlineExists,
+      "manual fallback input visible with build line still present");
 
-    await stageB1(cdp, fixtures.satzbau, "v0855a-fail");
+    await stageB1(cdp, fixtures.satzbau, "v0855b-fail");
     await evaluate(cdp, `document.querySelector("#satzbauManualFallback").open = true; true;`);
     await setInputValue(cdp, "#b1InlineInput", "falsche Reihenfolge");
     await checkCurrent(cdp);
+    await scrollFeedbackIntoView(cdp);
     const fail = await snapshot(cdp);
-    await screenshot(cdp, "satzbau-fail-post-answer");
+    result.testsRun.failPostAnswerSnapshot = {
+      state:fail.state,
+      feedbackVisible:fail.feedbackVisible,
+      feedbackText:fail.feedbackText,
+      bodyText:fail.bodyText,
+      correctAnswer:fail.correctAnswer,
+      inlineValue:fail.inlineValue,
+      answerInputValue:fail.answerInputValue,
+      confidenceControlCount:fail.confidenceControlCount
+    };
+    await screenshotProof(cdp, "satzbau-fail-post-answer", fail,
+      /fail|wrong|not quite|incorrect/i.test(fail.state + " " + fail.feedbackText + " " + fail.bodyText) && containsNeedle(fail.bodyText, "falsche Reihenfolge") && containsNeedle(fail.bodyText, fail.correctAnswer) && fail.feedbackVisible,
+      "fail feedback, learner attempt, and correct sentence visible after answer");
 
-    await stageB1(cdp, fixtures.satzbau, "v0855a-success");
+    await stageB1(cdp, fixtures.satzbau, "v0855b-success");
     await evaluate(cdp, `document.querySelector("#satzbauManualFallback").open = true; true;`);
     const successBefore = await snapshot(cdp);
     await setInputValue(cdp, "#b1InlineInput", successBefore.correctAnswer);
     await checkCurrent(cdp);
+    await scrollFeedbackIntoView(cdp);
     const success = await snapshot(cdp);
-    await screenshot(cdp, "satzbau-success-post-answer");
+    result.testsRun.successPostAnswerSnapshot = {
+      state:success.state,
+      feedbackVisible:success.feedbackVisible,
+      feedbackText:success.feedbackText,
+      bodyText:success.bodyText,
+      correctAnswer:successBefore.correctAnswer,
+      inlineValue:success.inlineValue,
+      answerInputValue:success.answerInputValue,
+      confidenceControlCount:success.confidenceControlCount
+    };
     result.satzbauBuildLine.answerCheckingPreserved = success.state === "success" || /correct/i.test(success.feedbackText);
     result.satzbauAnswerLeak.postAnswerCorrectAnswerVisible = containsNeedle(success.bodyText, successBefore.correctAnswer);
+    await screenshotProof(cdp, "satzbau-success-post-answer", success,
+      result.satzbauBuildLine.answerCheckingPreserved && containsNeedle(success.bodyText, successBefore.correctAnswer) && success.feedbackVisible,
+      "success feedback and correct sentence visible after answer");
 
-    await stageB1(cdp, fixtures.cloze, "v0855a-cloze");
+    await stageB1(cdp, fixtures.cloze, "v0855b-cloze");
     const cloze = await snapshot(cdp);
-    await screenshot(cdp, "cloze-non-regression");
+    await screenshotProof(cdp, "cloze-non-regression", cloze,
+      cloze.promptVisible && cloze.inlineExists && !cloze.languageGateVisible,
+      "cloze item visible with inline input");
 
-    await stageB1(cdp, fixtures.correction, "v0855a-correction");
+    await stageB1(cdp, fixtures.correction, "v0855b-correction");
     await setInputValue(cdp, "#answerInput", "Ich komme morgen, weil ich krank bin.");
     const correction = await snapshot(cdp);
-    await screenshot(cdp, "correction-non-regression");
+    await screenshotProof(cdp, "correction-non-regression", correction,
+      correction.promptVisible && correction.answerInputExists && containsNeedle(correction.answerInputValue, "Ich komme morgen"),
+      "correction item visible with answer input");
 
-    await stageB1(cdp, fixtures.choice, "v0855a-choice");
-    await screenshot(cdp, "choice-non-regression");
+    await stageB1(cdp, fixtures.choice, "v0855b-choice");
+    const choice = await snapshot(cdp);
+    await screenshotProof(cdp, "choice-non-regression", choice,
+      choice.promptVisible && choice.choiceButtonCount > 0,
+      "choice item visible with choice controls");
 
     const contract = await evaluateJson(cdp, "return window.ozmosisRuntimeDisplayContractAudit({ includeRows:false });", 30000);
     result.nonRegression.runtimeDisplayContractPreserved = !!(contract && contract.activeNormalPracticeContract &&
@@ -566,9 +787,12 @@ async function runBrowserChecks() {
       contract.afterRuntimeLock.meaningChoiceHiddenCueRisks === 0 &&
       contract.afterRuntimeLock.underContextualisedClozeWithoutCue === 0 &&
       contract.afterRuntimeLock.reviewOnlyEnteringNormalPractice === 0);
-    await screenshot(cdp, "runtime-display-contract-non-regression");
+    const runtimeShot = await snapshot(cdp);
+    await screenshotProof(cdp, "runtime-display-contract-non-regression", runtimeShot,
+      result.nonRegression.runtimeDisplayContractPreserved && runtimeShot.promptVisible,
+      "runtime display contract preserved on visible practice state");
 
-    await stageB1(cdp, fixtures.casesRepair, "v0855a-grid");
+    await stageB1(cdp, fixtures.casesRepair, "v0855b-grid");
     await setInputValue(cdp, "#answerInput", "x");
     await checkCurrent(cdp);
     const grid = await snapshot(cdp);
@@ -601,8 +825,9 @@ async function runBrowserChecks() {
     result.testsRun.responsiveViewports = [];
     for (const pair of viewports) {
       await setViewport(cdp, pair[0], pair[1]);
-      await stageB1(cdp, fixtures.satzbau, `v0855a-${pair[0]}x${pair[1]}`);
+      await stageB1(cdp, fixtures.satzbau, `v0855b-${pair[0]}x${pair[1]}`);
       const view = await snapshot(cdp);
+      assert(languageGateClear(view), `Language gate visible in responsive ${pair[0]}x${pair[1]} state.`);
       result.testsRun.responsiveViewports.push({
         width:pair[0],
         height:pair[1],
@@ -628,6 +853,7 @@ async function runBrowserChecks() {
     assert(loaded.count >= 12 && loaded.loaded === loaded.count && loaded.totalPixels > 500000, "Contact sheet images did not load.");
     await screenshot(cdp, "comparison-contact-sheet", { captureBeyondViewport:true });
     result.contactSheetVerified = fs.statSync(path.join(screenshotRoot, "comparison-contact-sheet.png")).size > 50000;
+    finaliseScreenshotValidity();
     result.testsRun.browserCapture = true;
   } finally {
     if (cdp) cdp.close();
@@ -653,6 +879,7 @@ async function runBrowserChecks() {
 }
 
 function decide() {
+  finaliseScreenshotValidity();
   const staticOk = result.testsRun.staticChecks &&
     result.testsRun.staticChecks.protectedStorageKeys &&
     result.testsRun.staticChecks.noPackageJson &&
@@ -663,7 +890,16 @@ function decide() {
   const buildLineOk = Object.keys(result.satzbauBuildLine).every(key => result.satzbauBuildLine[key] === true);
   const leakOk = Object.keys(result.satzbauAnswerLeak).every(key => result.satzbauAnswerLeak[key] === true);
   const nonRegressionOk = Object.keys(result.nonRegression).every(key => result.nonRegression[key] === true);
-  const screenshotsOk = result.contactSheetVerified && [
+  const proofProblemOk = result.v0855aProofProblemConfirmed.oldScreenshotsInspected &&
+    result.v0855aProofProblemConfirmed.oldScreenshotsShowLanguageGate &&
+    result.v0855aProofProblemConfirmed.oldContactSheetInvalid;
+  const firstRunOk = result.firstRunGateHandling.languageGateCompleted &&
+    !result.firstRunGateHandling.newStorageKeysAdded;
+  const screenshotValidityOk = result.screenshotValidity.languageGateAbsentInAllScreenshots &&
+    result.screenshotValidity.welcomeTextAbsentInAllScreenshots &&
+    result.screenshotValidity.targetStateVisibleInAllScreenshots &&
+    result.screenshotValidity.contactSheetVerified;
+  const screenshotsOk = screenshotValidityOk && [
     "satzbau-default-no-answer-leak",
     "satzbau-after-one-token-tap-build-line",
     "satzbau-after-multiple-token-taps-build-line",
@@ -680,22 +916,27 @@ function decide() {
     "comparison-contact-sheet"
   ].every(name => !!result.screenshotsGenerated[name]);
   const noRuntimeErrors = result.consoleErrors.length === 0 && result.runtimeExceptions.length === 0;
-  result.acceptancePassed = result.startingStateVerified && result.runtimeVersionUpdated && staticOk && buildLineOk && leakOk && nonRegressionOk && screenshotsOk && noRuntimeErrors;
+  const languageBlocked = (result.testsRun.screenshotValidation || []).some(check => !check.languageGateAbsent || !check.welcomeTextAbsent) ||
+    result.runtimeExceptions.some(text => /Language gate visible|First-run language/i.test(String(text || "")));
+  result.acceptancePassed = result.startingStateVerified && result.runtimeVersionUpdated && proofProblemOk && firstRunOk && staticOk && buildLineOk && leakOk && nonRegressionOk && screenshotsOk && noRuntimeErrors;
   if (result.acceptancePassed) {
-    result.finalDecision = "SATZBAU_BUILD_LINE_ANSWER_LEAK_ACCEPTED";
+    result.finalDecision = "SATZBAU_PROOF_OVERLAY_REPAIR_ACCEPTED";
     result.nextPatch = "v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues";
+  } else if (languageBlocked) {
+    result.finalDecision = "BLOCKED_LANGUAGE_GATE_STILL_VISIBLE";
+    result.nextPatch = "v0.85.5c - Satzbau Proof Harness Repair";
   } else if (!result.testsRun.browserCapture) {
     result.finalDecision = "BLOCKED_BROWSER_CAPTURE_FAILED";
-    result.nextPatch = "v0.85.5b - Satzbau Build-Line Repair";
+    result.nextPatch = "v0.85.5c - Satzbau Proof Harness Repair";
   } else if (!result.nonRegression.runtimeDisplayContractPreserved) {
     result.finalDecision = "BLOCKED_RUNTIME_DISPLAY_CONTRACT_REGRESSION";
-    result.nextPatch = "v0.85.5b - Satzbau Build-Line Repair";
+    result.nextPatch = "v0.85.5c - Satzbau Runtime Repair";
   } else if (!leakOk) {
     result.finalDecision = "BLOCKED_ANSWER_LEAK_REMAINS";
-    result.nextPatch = "v0.85.5b - Satzbau Answer-Leak Repair";
+    result.nextPatch = "v0.85.5c - Satzbau Runtime Repair";
   } else {
-    result.finalDecision = "SATZBAU_BUILD_LINE_PARTIAL_NEEDS_REPAIR";
-    result.nextPatch = "v0.85.5b - Satzbau Build-Line Repair";
+    result.finalDecision = "SATZBAU_PROOF_PARTIAL_NEEDS_REPAIR";
+    result.nextPatch = "v0.85.5c - Satzbau Proof Harness Repair";
   }
 }
 
@@ -703,6 +944,7 @@ async function main() {
   try {
     extractVersions();
     parseStaticScripts();
+    inspectOldProofArtifacts();
     await runBrowserChecks();
   } catch (error) {
     result.runtimeExceptions.push(error.stack || error.message);

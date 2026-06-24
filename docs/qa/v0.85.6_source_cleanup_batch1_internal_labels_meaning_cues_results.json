@@ -1,0 +1,142 @@
+{
+  "patch": "v0.85.6",
+  "title": "Source Cleanup Batch 1: Internal Labels and Meaning Cues",
+  "startingStateVerified": true,
+  "runtimeVersionUpdated": true,
+  "filesChanged": [
+    "index.html",
+    "content/b1-wortschatz.js",
+    "content/b1-m01-variant-families.js",
+    "README.md",
+    "CHANGELOG-FULL-OZMOSIS.txt",
+    "AGENTS.md",
+    "docs/OZMOSIS_SOURCE_BRIEF_CURRENT.md",
+    "docs/OZMOSIS_DEVELOPMENT_ROADMAP_CURRENT.md",
+    "docs/OZMOSIS_FEATURE_REGISTER_CURRENT.md",
+    "docs/OZMOSIS_SOURCE_BRIEF_v0.85.6.md",
+    "docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.6.md",
+    "docs/qa/v0.85.6_source_cleanup_batch1_internal_labels_meaning_cues.md",
+    "docs/qa/v0.85.6_source_cleanup_batch1_internal_labels_meaning_cues_results.json",
+    "docs/qa/v0.85.6_source_cleanup_batch1_changed_rows.csv",
+    "docs/qa/v0.85.6_source_cleanup_batch1_deferred_rows.csv",
+    "docs/qa/v0.85.6_source_cleanup_batch1_reconciliation.csv",
+    "docs/qa/screenshots/v0.85.6-source-cleanup-batch1/",
+    "scripts/ozmosis-source-cleanup-batch1-check.cjs"
+  ],
+  "runtimeChanged": true,
+  "contentChanged": true,
+  "contentRowsChanged": 31,
+  "scoringChanged": false,
+  "evidenceChanged": false,
+  "storageChanged": false,
+  "exportImportChanged": false,
+  "answerKeysChanged": false,
+  "acceptedAnswersChanged": false,
+  "itemIdsChanged": false,
+  "baseline": {
+    "v0855RuntimeDisplayContractAccepted": true,
+    "v0855bSatzbauProofAccepted": true,
+    "carriedForwardQaNotes": [
+      "v0.85.5b result JSON has testsNotRun: [], but the v0.85.5b QA report states completion harness, live GitHub Pages, and manual phone tests were not run."
+    ]
+  },
+  "selectedBatch": {
+    "targetRowsSelected": 33,
+    "targetRowsChanged": 33,
+    "targetRowsDeferred": 4118,
+    "issueClassesIncluded": [
+      "meaning_choice_hidden_or_missing_visible_cue",
+      "meaning_choice_source_cue_missing_but_runtime_guard_infers_safe_display",
+      "internal_label_in_learner_facing_field",
+      "raw_x_vs_y_internal_label",
+      "backtick_internal_metadata_in_prompt_or_cue"
+    ],
+    "issueClassesExcluded": [
+      "under_contextualised_cloze_without_visible_cue",
+      "generic_contrast_feedback",
+      "feedback_mismatch_risk",
+      "production_auto_grading_risk",
+      "metadata_manifest_candidate",
+      "review_queue_resolution",
+      "B1_to_B2_bridge_expansion"
+    ]
+  },
+  "beforeCounts": {
+    "internalLabelSourceRows": 226,
+    "rawXvsYInternalLabelRows": 338,
+    "backtickInternalMetadataRows": 3429,
+    "meaningChoiceCueRiskRows": 30
+  },
+  "afterCounts": {
+    "internalLabelSourceRows": 225,
+    "rawXvsYInternalLabelRows": 337,
+    "backtickInternalMetadataRows": 3428,
+    "meaningChoiceCueRiskRows": 0
+  },
+  "runtimeContract": {
+    "renderedPromptLeaks": 0,
+    "meaningChoiceHiddenCueRisks": 0,
+    "underContextualisedClozeWithoutCue": 0,
+    "reviewOnlyEnteringNormalPractice": 0
+  },
+  "nonRegression": {
+    "satzbauBuildLinePreserved": true,
+    "satzbauAnswerLeakStillFixed": true,
+    "iosInputZoomRepairPreserved": true,
+    "articleGridPreserved": true,
+    "sharedFramePreserved": true,
+    "exportImportPreserved": true
+  },
+  "screenshotsGenerated": {
+    "meaning-choice-visible-cue-before-answer": "docs/qa/screenshots/v0.85.6-source-cleanup-batch1/meaning-choice-visible-cue-before-answer.png",
+    "internal-label-cleaned-before-answer": "docs/qa/screenshots/v0.85.6-source-cleanup-batch1/internal-label-cleaned-before-answer.png",
+    "normal-cloze-non-regression": "docs/qa/screenshots/v0.85.6-source-cleanup-batch1/normal-cloze-non-regression.png",
+    "choice-non-regression": "docs/qa/screenshots/v0.85.6-source-cleanup-batch1/choice-non-regression.png",
+    "satzbau-build-line-non-regression": "docs/qa/screenshots/v0.85.6-source-cleanup-batch1/satzbau-build-line-non-regression.png",
+    "comparison": "docs/qa/screenshots/v0.85.6-source-cleanup-batch1/comparison.html",
+    "comparison-contact-sheet": "docs/qa/screenshots/v0.85.6-source-cleanup-batch1/comparison-contact-sheet.png"
+  },
+  "testsRun": {
+    "staticChecks": {
+      "inlineScriptsParsed": 1,
+      "contentScriptsParsed": 25,
+      "displaySchemaParsed": true,
+      "protectedStorageKeys": true,
+      "noPackageDependencyBuildFiles": true,
+      "noTypeModule": true,
+      "noDynamicImport": true,
+      "noRuntimeAiOrApiCalls": true
+    },
+    "issueQueues": {
+      "runtimeDisplayRemainingRows": 4087,
+      "promptCueRows": 4023,
+      "clozeCueRows": 64
+    },
+    "rowSelection": {
+      "selectedQueueRows": 33,
+      "selectedContentItems": 31,
+      "changedRowsCsv": "docs/qa/v0.85.6_source_cleanup_batch1_changed_rows.csv",
+      "deferredRowsCsv": "docs/qa/v0.85.6_source_cleanup_batch1_deferred_rows.csv",
+      "reconciliationCsv": "docs/qa/v0.85.6_source_cleanup_batch1_reconciliation.csv"
+    },
+    "browserCapture": {
+      "localServer": "http://127.0.0.1:64805/index.html",
+      "edgeHeadless": true,
+      "screenshots": 7
+    }
+  },
+  "testsNotRun": [
+    "node scripts/ozmosis-satzbau-build-line-check.cjs was not rerun as an acceptance artefact because it is version-locked to v0.85.5b and writes historical v0.85.5b proof outputs; this v0.85.6 gate runs fresh Satzbau non-regression checks instead.",
+    "node scripts/ozmosis-completion-gate-harness.cjs was not run because it remains version-locked to v0.85.4 and writes v0.85.4 artefacts.",
+    "Manual phone testing was not run.",
+    "Live GitHub Pages was not run."
+  ],
+  "consoleErrors": [],
+  "runtimeExceptions": [],
+  "acceptancePassed": true,
+  "finalDecision": "SOURCE_CLEANUP_BATCH1_ACCEPTED",
+  "nextPatch": "v0.85.7 - Source Cleanup Batch 2: Under-Contextualised Clozes",
+  "appVersion": "v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues",
+  "exportVersion": "v0.85.6-source-cleanup-internal-labels-meaning-cues",
+  "generatedAt": "2026-06-24T22:37:28.813Z"
+}

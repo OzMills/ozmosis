@@ -303,7 +303,7 @@
       "noDynamicImport": true
     },
     "browserGate": {
-      "localServer": "http://127.0.0.1:50492/index.html",
+      "localServer": "http://127.0.0.1:53457/index.html",
       "edgeHeadless": true,
       "contractAuditRows": 5913,
       "representativeFixtures": {
@@ -344,7 +344,7 @@
   "acceptancePassed": true,
   "finalDecision": "RUNTIME_DISPLAY_CONTRACT_LOCK_ACCEPTED",
   "nextPatch": "v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues",
-  "appVersion": "v0.85.5a - Satzbau Build-Line and Answer-Leak Repair",
-  "exportVersion": "v0.85.5a-satzbau-build-line-answer-leak",
-  "generatedAt": "2026-06-24T20:57:59.159Z"
+  "appVersion": "v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues",
+  "exportVersion": "v0.85.6-source-cleanup-internal-labels-meaning-cues",
+  "generatedAt": "2026-06-24T22:29:08.067Z"
 }

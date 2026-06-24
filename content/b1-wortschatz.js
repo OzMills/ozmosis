@@ -65,6 +65,7 @@
       "Könnten wir den Termin verschieben?"
     ],
     "translation_en": "Which phrase fits if you want to change an appointment?",
+    "learnerCue": "Which phrase fits if you want to change an appointment?",
     "choices": [
       "Könnten wir den Termin verschieben?",
       "Könnten wir den Termin absagen?",
@@ -211,6 +212,7 @@
       "Ich habe noch keine Bestätigung erhalten."
     ],
     "translation_en": "Which phrase fits if you have not received a reply yet?",
+    "learnerCue": "Which phrase fits if you have not received a reply yet?",
     "choices": [
       "Ich habe noch keine Bestätigung erhalten.",
       "Ich habe die Bestätigung schon erhalten.",
@@ -351,6 +353,7 @@
       "Mir fehlen noch die Unterlagen."
     ],
     "translation_en": "Which phrase fits if documents are still missing?",
+    "learnerCue": "Which phrase fits if documents are still missing?",
     "choices": [
       "Mir fehlen noch die Unterlagen.",
       "Ich habe alle Unterlagen dabei.",
@@ -494,6 +497,7 @@
       "Das Formular ist noch nicht vollständig."
     ],
     "translation_en": "Which phrase fits if information is missing?",
+    "learnerCue": "Which phrase fits if information is missing?",
     "choices": [
       "Das Formular ist noch nicht vollständig.",
       "Das Formular ist schon unterschrieben.",
@@ -633,6 +637,7 @@
       "Ich möchte mich über die Lieferung beschweren."
     ],
     "translation_en": "Which phrase is polite and suitable for a complaint?",
+    "learnerCue": "Which phrase is polite and suitable for a complaint?",
     "choices": [
       "Ich möchte mich über die Lieferung beschweren.",
       "Die Lieferung ist total schlecht.",
@@ -775,6 +780,7 @@
       "Die Lieferung ist noch nicht angekommen."
     ],
     "translation_en": "Which phrase fits if the delivery has not arrived yet?",
+    "learnerCue": "Which phrase fits if the delivery has not arrived yet?",
     "choices": [
       "Die Lieferung ist noch nicht angekommen.",
       "Die Bestellung ist schon bestätigt.",
@@ -915,6 +921,7 @@
       "Ich habe die falsche Bestellung erhalten."
     ],
     "translation_en": "Which phrase fits if you received something different?",
+    "learnerCue": "Which phrase fits if you received something different?",
     "choices": [
       "Ich habe die falsche Bestellung erhalten.",
       "Die Bestellung ist vollständig.",
@@ -1056,6 +1063,7 @@
       "Der Betrag auf der Rechnung stimmt nicht."
     ],
     "translation_en": "Which phrase fits if the price is wrong?",
+    "learnerCue": "Which phrase fits if the price is wrong?",
     "choices": [
       "Der Betrag auf der Rechnung stimmt nicht.",
       "Die Rechnung ist schon bezahlt.",
@@ -1194,6 +1202,7 @@
       "Das Gerät lässt sich nicht einschalten."
     ],
     "translation_en": "Which phrase fits if a device will not turn on?",
+    "learnerCue": "Which phrase fits if a device will not turn on?",
     "choices": [
       "Das Gerät lässt sich nicht einschalten.",
       "Das Gerät ist eingeschaltet.",
@@ -1335,6 +1344,7 @@
       "Ich freue mich auf Ihre Rückmeldung."
     ],
     "translation_en": "Which phrase fits well at the end of a polite email?",
+    "learnerCue": "Which phrase fits well at the end of a polite email?",
     "choices": [
       "Ich freue mich auf Ihre Rückmeldung.",
       "Ich warte auf Ihre Rechnung.",
@@ -1474,6 +1484,7 @@
       "Ich bin leider krank und kann heute nicht kommen."
     ],
     "translation_en": "Which phrase fits in a short message to the course?",
+    "learnerCue": "Which phrase fits in a short message to the course?",
     "choices": [
       "Ich bin leider krank und kann heute nicht kommen.",
       "Ich habe heute einen Termin und komme später.",
@@ -1613,6 +1624,7 @@
       "Ich gebe die Krankmeldung morgen ab."
     ],
     "translation_en": "Which phrase fits if the course needs a sickness notification?",
+    "learnerCue": "Which phrase fits if the course needs a sickness notification?",
     "choices": [
       "Ich gebe die Krankmeldung morgen ab.",
       "Ich melde mich morgen krank.",
@@ -1754,6 +1766,7 @@
       "Ich komme später, weil ich einen Arzttermin habe."
     ],
     "translation_en": "Which phrase fits if you are coming later because of a doctor's appointment?",
+    "learnerCue": "Which phrase fits if you are coming later because of a doctor's appointment?",
     "choices": [
       "Ich komme später, weil ich einen Arzttermin habe.",
       "Ich komme später, weil die Lieferung fehlt.",
@@ -1894,6 +1907,7 @@
       "Könnten Sie mir bitte die Informationen schicken?"
     ],
     "translation_en": "Which question fits if you need information from the health insurance provider?",
+    "learnerCue": "Which question fits if you need information from the health insurance provider?",
     "choices": [
       "Könnten Sie mir bitte die Informationen schicken?",
       "Übernimmt die Krankenkasse die Kosten?",
@@ -2035,6 +2049,7 @@
       "Übernimmt die Versicherung die Kosten?"
     ],
     "translation_en": "Which question fits if you want to know whether the insurance pays?",
+    "learnerCue": "Which question fits if you want to know whether the insurance pays?",
     "choices": [
       "Übernimmt die Versicherung die Kosten?",
       "Wann ist der Termin bei der Versicherung?",
@@ -2176,6 +2191,7 @@
       "Bitte zeigen Sie Ihre Gesundheitskarte vor."
     ],
     "translation_en": "Which phrase fits at the doctor's office?",
+    "learnerCue": "Which phrase fits at the doctor's office?",
     "choices": [
       "Bitte zeigen Sie Ihre Gesundheitskarte vor.",
       "Bitte füllen Sie das Formular aus.",
@@ -2315,6 +2331,7 @@
       "Ich möchte dieses Rezept einlösen."
     ],
     "translation_en": "Which phrase fits in the pharmacy?",
+    "learnerCue": "Which phrase fits in the pharmacy?",
     "choices": [
       "Ich möchte dieses Rezept einlösen.",
       "Ich brauche ein neues Rezept.",
@@ -2453,6 +2470,7 @@
       "Ich hole das Medikament in der Apotheke ab."
     ],
     "translation_en": "Which phrase fits if you collect medicine at the pharmacy?",
+    "learnerCue": "Which phrase fits if you collect medicine at the pharmacy?",
     "choices": [
       "Ich hole das Medikament in der Apotheke ab.",
       "Ich habe einen Termin beim Arzt.",
@@ -2591,6 +2609,7 @@
       "Ich komme zur Untersuchung."
     ],
     "translation_en": "Which phrase fits at the doctor's office?",
+    "learnerCue": "Which phrase fits at the doctor's office?",
     "choices": [
       "Ich komme zur Untersuchung.",
       "Ich komme zur Besprechung.",
@@ -2730,6 +2749,7 @@
       "Welche Beschwerden haben Sie?"
     ],
     "translation_en": "Which question does a doctor ask?",
+    "learnerCue": "Which question does a doctor ask?",
     "choices": [
       "Welche Beschwerden haben Sie?",
       "Welche Medikamente nehmen Sie?",
@@ -2869,6 +2889,7 @@
       "Im Anhang finden Sie meine Bewerbungsunterlagen."
     ],
     "translation_en": "Which phrase fits in an application email?",
+    "learnerCue": "Which phrase fits in an application email?",
     "choices": [
       "Im Anhang finden Sie meine Bewerbungsunterlagen.",
       "Im Anhang finden Sie meine Krankmeldung.",
@@ -3010,6 +3031,7 @@
       "Ich habe meinen Lebenslauf angehängt."
     ],
     "translation_en": "Which phrase fits if you are sending your CV with the email?",
+    "learnerCue": "Which phrase fits if you are sending your CV with the email?",
     "choices": [
       "Ich habe meinen Lebenslauf angehängt.",
       "Ich habe meinen Lebenslauf ausgefüllt.",
@@ -3148,6 +3170,7 @@
       "Ich bewerbe mich um die Stelle als Verkäufer."
     ],
     "translation_en": "Which phrase fits in a job application?",
+    "learnerCue": "Which phrase fits in a job application?",
     "choices": [
       "Ich bewerbe mich um die Stelle als Verkäufer.",
       "Ich interessiere mich für die Stelle als Verkäufer.",
@@ -3286,6 +3309,7 @@
       "Vielen Dank für die Einladung zum Vorstellungsgespräch."
     ],
     "translation_en": "Which phrase fits if you are replying to an invitation?",
+    "learnerCue": "Which phrase fits if you are replying to an invitation?",
     "choices": [
       "Vielen Dank für die Einladung zum Vorstellungsgespräch.",
       "Vielen Dank für Ihre Bewerbung.",
@@ -3427,6 +3451,7 @@
       "Ich habe Erfahrung im Umgang mit Kunden."
     ],
     "translation_en": "Which phrase fits in a job application?",
+    "learnerCue": "Which phrase fits in a job application?",
     "choices": [
       "Ich habe Erfahrung im Umgang mit Kunden.",
       "Ich habe ein Vorstellungsgespräch mit Kunden.",
@@ -3566,6 +3591,7 @@
       "Könnten Sie die Aufgabe bitte noch einmal erklären?"
     ],
     "translation_en": "Which question fits if you do not understand a task?",
+    "learnerCue": "Which question fits if you do not understand a task?",
     "choices": [
       "Könnten Sie die Aufgabe bitte noch einmal erklären?",
       "Könnten Sie die Aufgabe bitte bis morgen abgeben?",
@@ -3707,6 +3733,7 @@
       "Können wir die Besprechung auf morgen verschieben?"
     ],
     "translation_en": "Which phrase fits if a meeting should take place later?",
+    "learnerCue": "Which phrase fits if a meeting should take place later?",
     "choices": [
       "Können wir die Besprechung auf morgen verschieben?",
       "Können wir die Besprechung morgen beginnen?",
@@ -3848,6 +3875,7 @@
       "Könnten Sie mir meine Anmeldung bestätigen?"
     ],
     "translation_en": "Which phrase fits if you need confirmation of your registration?",
+    "learnerCue": "Which phrase fits if you need confirmation of your registration?",
     "choices": [
       "Könnten Sie mir meine Anmeldung bestätigen?",
       "Könnten Sie mir die Anmeldung schicken?",
@@ -3988,6 +4016,7 @@
       "Könnten Sie mir die Zugangsdaten bitte noch einmal schicken?"
     ],
     "translation_en": "Which phrase fits if you need your login details?",
+    "learnerCue": "Which phrase fits if you need your login details?",
     "choices": [
       "Könnten Sie mir die Zugangsdaten bitte noch einmal schicken?",
       "Könnten Sie mein Passwort bitte ändern?",
@@ -4128,6 +4157,7 @@
       "Ich bekomme eine Fehlermeldung, wenn ich mich einlogge."
     ],
     "translation_en": "Which phrase fits if you are describing a problem to support?",
+    "learnerCue": "Which phrase fits if you are describing a problem to support?",
     "choices": [
       "Ich bekomme eine Fehlermeldung, wenn ich mich einlogge.",
       "Ich kann mich nicht einloggen, aber es gibt keine Meldung.",

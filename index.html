@@ -9606,6 +9606,25 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauBuildLine.manual {
   line-height:1.32 !important;
 }
 
+body.b1Mode[data-b1-surface="satzbau"] .satzbauResultStack {
+  display:grid !important;
+  gap:8px !important;
+  width:min(100%, 420px) !important;
+  margin:0 auto !important;
+}
+
+body.b1Mode[data-b1-surface="satzbau"] .satzbauResultLine {
+  display:grid !important;
+  gap:5px !important;
+  min-width:0 !important;
+}
+
+body.b1Mode[data-b1-surface="satzbau"] .satzbauBuildLine.attempted {
+  border-style:dashed !important;
+  border-color:rgba(255,217,111,.46) !important;
+  color:#fff4cf !important;
+}
+
 body.b1Mode[data-b1-surface="satzbau"] .satzbauBuildToken {
   display:inline-flex !important;
   min-height:30px !important;
@@ -11583,8 +11602,8 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
   var B1_PATH_UNLOCK_STORAGE_KEY = "ozmosis_b1_path_unlock_overrides_v1";
   var B1_REVIEW_EDIT_QUEUE_STORAGE_KEY = "ozmosis_b1_review_edit_queue_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.85.5a - Satzbau Build-Line and Answer-Leak Repair";
-  var OZMOSIS_EXPORT_VERSION = "v0.85.5a-satzbau-build-line-answer-leak";
+  var OZMOSIS_APP_VERSION = "v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues";
+  var OZMOSIS_EXPORT_VERSION = "v0.85.6-source-cleanup-internal-labels-meaning-cues";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -12186,6 +12205,7 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
       variantFamilyId: "wortschatz_" + String(item.family || item.topic || item.id || "item"),
       variantRole: item.type || "",
       prompt_de: item.prompt_de || "",
+      learnerCue: item.learnerCue || item.learnerCue_de || item.learnerCue_en || "",
       answer: answer,
       acceptedAnswers: accepted,
       fullAnswer_de: b1WortschatzFullAnswer(item, answer),
@@ -24878,8 +24898,12 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
       return '<button class="satzbauChunk" type="button" data-satzbau-token-id="' + escapeHtml(chunk.id) + '" data-satzbau-token-text="' + escapeHtml(chunk.text) + '" aria-pressed="false" aria-label="Word chunk: ' + escapeHtml(chunk.text) + '"' + disabled + '>' + escapeHtml(chunk.text) + '</button>';
     }).join("");
     var clearHtml = resultClass ? "" : '<button id="satzbauClearBtn" class="satzbauClearBtn" type="button" disabled>Clear</button>';
+    var learnerAttempt = resultClass && item === b1Runtime.current ? b1SurfaceAnswer(b1Runtime.currentSatzbauLastAttempt || "") : "";
+    var learnerAttemptHtml = learnerAttempt
+      ? '<span class="satzbauResultLine"><span class="satzbauBuildLabel">Your attempt:</span><span class="satzbauBuildLine attempted" dir="ltr">' + escapeHtml(learnerAttempt) + '</span></span>'
+      : "";
     var buildLineHtml = resultClass
-      ? '<span class="satzbauBuildLine answered" id="satzbauBuildLine" dir="ltr"><span class="clozeAnswerText ' + resultClass + '">' + escapeHtml(item.answer || "") + '</span></span>'
+      ? '<span class="satzbauResultStack">' + learnerAttemptHtml + '<span class="satzbauResultLine"><span class="satzbauBuildLabel">Correct sentence:</span><span class="satzbauBuildLine answered" id="satzbauBuildLine" dir="ltr"><span class="clozeAnswerText ' + resultClass + '">' + escapeHtml(item.answer || "") + '</span></span></span></span>'
       : '<span class="satzbauBuildWrap"><span class="satzbauBuildLabel">Your sentence:</span><span class="satzbauBuildLine empty" id="satzbauBuildLine" tabindex="-1" role="status" aria-live="polite" aria-label="Your sentence is empty."><span class="satzbauBuildPlaceholder">Tap chunks to build your sentence.</span></span></span>';
     var manualHtml = resultClass ? "" : '<details class="satzbauManualFallback" id="satzbauManualFallback"><summary>Type manually</summary><label class="satzbauManualLabel" for="b1InlineInput">Manual fallback</label>' + b1ClozeReplacement(item, resultClass) + '</details>';
     var bodyHtml = '<span class="satzbauSurface" dir="ltr">' +
@@ -27137,6 +27161,7 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     var repairComparison = b1IsRepairPracticeItem(b1Runtime.current) ? compareRepairAnswer(b1Runtime.current, raw) : null;
     var isCorrect = repairComparison ? repairComparison.isCorrect : (usesChoices ? b1ChoiceMatchesCorrect(b1Runtime.current, selectedChoice || raw) : b1AnswerMatches(b1Runtime.current, raw));
     var assisted = !!b1Runtime.currentAssisted;
+    if (b1IsSatzbauItem(b1Runtime.current)) b1Runtime.currentSatzbauLastAttempt = b1SurfaceAnswer(raw);
     b1SetVisualTemplateState(b1VisualTemplateSurfaceForItem(b1Runtime.current), assisted ? "assisted" : (isCorrect ? "success" : "fail"));
     var starBefore = b1PathTaskStarSummary(b1Runtime.current);
     var evidenceRecord = appendB1EvidenceRecord(b1Runtime.current, assisted ? "assisted" : (isCorrect ? "correct" : "wrong"), {
@@ -27244,6 +27269,7 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     b1Runtime.currentSatzbauTokenOrder = [];
     b1Runtime.currentSatzbauSelectedTokenIds = [];
     b1Runtime.currentSatzbauUnshuffleable = false;
+    b1Runtime.currentSatzbauLastAttempt = "";
     b1Runtime.current = b1ResolveVariableErrorRepairItem(b1ResolveVariantFamilyItem(queuedItem, { seed:variantSeed }), { seed:variantSeed });
     b1Runtime.currentAssisted = false;
     b1Runtime.currentExtraPractice = !!(b1Runtime.current && b1Runtime.current._extraPractice);

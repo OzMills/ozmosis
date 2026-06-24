@@ -9,32 +9,37 @@ Future README updates should be made in this file. Do not create new `README-v*.
 
 ## Current App
 
-# Ozmosis v0.85.5a Satzbau Build-Line and Answer-Leak Repair
+# Ozmosis v0.85.6 Source Cleanup Batch 1: Internal Labels and Meaning Cues
 
 Ozmosis is a static, local-first German learning app. The deployed app remains `index.html`.
 
-v0.85.5a is a narrow runtime hotfix after the accepted v0.85.5 Runtime Display Contract Lock.
+v0.85.6 is the first controlled source-cleanup patch after the v0.85.5 runtime display contract lock and the v0.85.5b Satzbau proof repair.
 
-It fixes two Satzbau issues found by manual review: tapped chunks now build the learner sentence in a visible non-input build line, and the pre-answer gloss/support path no longer exposes the correct answer order. Manual typing remains available only as a secondary fallback behind a disclosure.
+It cleans high-confidence source-level prompt/cue issues that were already protected at runtime. The patch adds explicit source-level `learnerCue` values to 30 `wortschatz` meaning-choice rows and cleans one learner-facing internal-label row, `show vs find`, without changing item IDs, answers, accepted answers, choices, scoring, evidence, storage, export/import, article-grid behaviour, shared-frame behaviour, or Satzbau behaviour.
 
-The patch preserves the v0.85.5 runtime display contract, v0.85.4a chunk tapping/randomisation and 16px mobile input safeguards, article-grid behaviour, shared frame, content banks, scoring, evidence, storage keys, and export/import format.
+- Runtime app version: `v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues`
+- Runtime export version: `v0.85.6-source-cleanup-internal-labels-meaning-cues`
+- Current gate result: `SOURCE_CLEANUP_BATCH1_ACCEPTED`
+- Core result: 33 queue rows selected, 31 content items changed, 4,118 rows deferred, meaning-choice cue risk rows reduced from 30 to 0, active runtime display-contract defects remained 0, and answer-key/item-ID reconciliation passed.
 
-- Runtime app version: `v0.85.5a - Satzbau Build-Line and Answer-Leak Repair`
-- Runtime export version: `v0.85.5a-satzbau-build-line-answer-leak`
-- Current gate result: `SATZBAU_BUILD_LINE_ANSWER_LEAK_ACCEPTED`
-- Core result: Edge/CDP verified visible non-input Satzbau build line, tap-to-build, selected state, clear/reset, secondary manual fallback, preserved answer checking, no pre-answer correct-answer leak, post-answer correct sentence visibility, v0.85.5 runtime display contract preservation, v0.85.4a Satzbau/iOS non-regression, article-grid preservation, protected storage keys, export/import functions, screenshots, and contact-sheet proof.
-
-## Current v0.85.5a docs
+## Current v0.85.6 docs
 
 - Changelog: `CHANGELOG-FULL-OZMOSIS.txt`
-- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.5a.md`
-- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.5a.md`
+- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.6.md`
+- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.6.md`
 - Shared frame contract: `docs/OZMOSIS_SHARED_PRACTICE_FRAME_CONTRACT_v0.85.3.4.md`
-- Current QA gate: `docs/qa/v0.85.5a_satzbau_build_line_answer_leak.md`
-- Current gate result JSON: `docs/qa/v0.85.5a_satzbau_build_line_answer_leak_results.json`
-- Current gate screenshots: `docs/qa/screenshots/v0.85.5a-satzbau-build-line-answer-leak/`
-- Current gate script: `scripts/ozmosis-satzbau-build-line-check.cjs`
+- Current QA gate: `docs/qa/v0.85.6_source_cleanup_batch1_internal_labels_meaning_cues.md`
+- Current gate result JSON: `docs/qa/v0.85.6_source_cleanup_batch1_internal_labels_meaning_cues_results.json`
+- Current gate changed rows: `docs/qa/v0.85.6_source_cleanup_batch1_changed_rows.csv`
+- Current gate deferred rows: `docs/qa/v0.85.6_source_cleanup_batch1_deferred_rows.csv`
+- Current gate reconciliation: `docs/qa/v0.85.6_source_cleanup_batch1_reconciliation.csv`
+- Current gate screenshots: `docs/qa/screenshots/v0.85.6-source-cleanup-batch1/`
+- Current gate script: `scripts/ozmosis-source-cleanup-batch1-check.cjs`
 - Runtime contract gate script: `scripts/ozmosis-runtime-display-contract-check.cjs`
+- Previous v0.85.5b QA gate: `docs/qa/v0.85.5b_satzbau_proof_overlay_repair.md`
+- Previous v0.85.5b result JSON: `docs/qa/v0.85.5b_satzbau_proof_overlay_repair_results.json`
+- Previous v0.85.5a QA gate: `docs/qa/v0.85.5a_satzbau_build_line_answer_leak.md`
+- Previous v0.85.5a result JSON: `docs/qa/v0.85.5a_satzbau_build_line_answer_leak_results.json`
 - Previous v0.85.5 QA gate: `docs/qa/v0.85.5_runtime_display_contract_lock.md`
 - Previous v0.85.5 result JSON: `docs/qa/v0.85.5_runtime_display_contract_lock_results.json`
 - Runtime contract resolved issue CSV: `docs/qa/v0.85.5_runtime_display_contract_resolved_issues.csv`
@@ -47,7 +52,26 @@ The patch preserves the v0.85.5 runtime display contract, v0.85.4a chunk tapping
 - Manual phone checklist: `docs/qa/v0.85.3.8_manual_phone_test_checklist.md`
 - Package policy: `docs/OZMOSIS_QA_ARTEFACT_AND_PACKAGE_POLICY.md`
 
-Next planned patch: `v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues`.
+Next planned patch: `v0.85.7 - Source Cleanup Batch 2: Under-Contextualised Clozes`.
+
+## Previous v0.85.5b Satzbau Proof Harness and First-Run Overlay Repair
+
+v0.85.5b confirmed that the v0.85.5a screenshot artefacts were invalid because they showed the first-run language gate instead of the staged proof states. The repaired harness completes the first-run language gate through the real UI, validates that the gate is absent from every screenshot, and asserts that each screenshot visibly matches its target state.
+
+The repaired proof exposed one runtime display gap: the Satzbau post-answer state did not show the learner attempt. v0.85.5b added a narrow Satzbau-only post-answer attempt line while preserving answer checking, scoring, evidence, storage keys, export/import format, content banks, answer keys, article-grid behaviour, shared frame, and the v0.85.5 runtime display contract.
+
+- Runtime app version: `v0.85.5b - Satzbau Proof Harness and First-Run Overlay Repair`
+- Runtime export version: `v0.85.5b-satzbau-proof-overlay-repair`
+- Gate result: `SATZBAU_PROOF_OVERLAY_REPAIR_ACCEPTED`
+
+## Previous v0.85.5a Satzbau Build-Line and Answer-Leak Repair
+
+v0.85.5a fixed two Satzbau issues found by manual review: tapped chunks build the learner sentence in a visible non-input build line, and the pre-answer gloss/support path no longer exposes the correct answer order. Manual typing remains available only as a secondary fallback behind a disclosure.
+
+- Runtime app version: `v0.85.5a - Satzbau Build-Line and Answer-Leak Repair`
+- Runtime export version: `v0.85.5a-satzbau-build-line-answer-leak`
+- Gate result claimed: `SATZBAU_BUILD_LINE_ANSWER_LEAK_ACCEPTED`
+- Correction note: v0.85.5b later found the v0.85.5a screenshot artefacts invalid because they showed the first-run language gate rather than the staged proof states.
 
 ## Previous v0.85.5 Runtime Display Contract Lock
 

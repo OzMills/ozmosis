@@ -2,13 +2,13 @@
 
 ## 1. Current Baseline
 
-Current runtime baseline: `v0.85.5a - Satzbau Build-Line and Answer-Leak Repair`.
+Current runtime baseline: `v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues`.
 
-Current acceptance status: v0.85.5a accepted the Satzbau build-line and answer-leak repair after v0.85.5. Satzbau chunks now build in a visible non-input build line, manual typing is secondary, and the pre-answer correct order is not visible in gloss/support. The v0.85.5 runtime display contract and v0.85.4a Satzbau tap/randomisation and iOS-safe input-size fixes remain preserved.
+Current acceptance status: v0.85.6 accepted Source Cleanup Batch 1 after the v0.85.5 runtime display contract lock and v0.85.5b Satzbau proof repair. It selected 33 high-confidence queue rows, changed 31 content items, reduced meaning-choice source cue risks from 30 to 0, cleaned one learner-facing internal-label row, deferred 4,118 rows, and preserved answer keys, accepted answers, item IDs, choices, scoring, evidence, storage, export/import, article-grid behaviour, shared-frame behaviour, and Satzbau behaviour.
 
-Current gate result: `SATZBAU_BUILD_LINE_ANSWER_LEAK_ACCEPTED`.
+Current gate result: `SOURCE_CLEANUP_BATCH1_ACCEPTED`.
 
-Next required patch: `v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues`.
+Next required patch: `v0.85.7 - Source Cleanup Batch 2: Under-Contextualised Clozes`.
 
 ## 2. Completed Foundation
 
@@ -60,6 +60,7 @@ This summary is not a replacement for `CHANGELOG-FULL-OZMOSIS.txt`.
 - `v0.85.4a` - Satzbau Interaction, Chunk Randomisation, and iOS Input Zoom Repair
 - `v0.85.5` - Runtime Display Contract Lock
 - `v0.85.5a` - Satzbau Build-Line and Answer-Leak Repair
+- `v0.85.5b` - Satzbau Proof Harness and First-Run Overlay Repair
 - `v0.85.6` - Source Cleanup Batch 1: Internal Labels and Meaning Cues
 - `v0.85.7` - Source Cleanup Batch 2: Under-Contextualised Clozes
 - `v0.85.8` - Feedback Cleanup: Contrast Notes and Micro-rules
@@ -127,8 +128,10 @@ Stop if the hub fails.
 - Completion Gate Harness is implemented and accepted as v0.85.4.
 - Satzbau Interaction, Chunk Randomisation, and iOS Input Zoom Repair is implemented and accepted as v0.85.4a.
 - Runtime Display Contract Lock is implemented and accepted as v0.85.5.
-- Satzbau Build-Line and Answer-Leak Repair is implemented and accepted as v0.85.5a.
-- Source Cleanup Batch 1: Internal Labels and Meaning Cues is the next allowed implementation patch as v0.85.6.
+- Satzbau Build-Line and Answer-Leak Repair is implemented and accepted as v0.85.5a, but its screenshot artefacts were later superseded.
+- Satzbau Proof Harness and First-Run Overlay Repair is implemented and accepted as v0.85.5b.
+- Source Cleanup Batch 1: Internal Labels and Meaning Cues is implemented and accepted as v0.85.6.
+- Source Cleanup Batch 2: Under-Contextualised Clozes is the next allowed implementation patch as v0.85.7.
 - Production Completion Pass is blocked until the final v0.85.x readiness gate reports `READY_FOR_V0.86`.
 - Weakness repair must wait until Skill Matrix and task-depth evidence are stable.
 - Durability/spaced review must wait until enough reviewable B1 coverage exists.

@@ -35,17 +35,47 @@ This is the only changelog moving forward. Do not create standalone `CHANGELOG-v
 
 Current state is based only on current repo files.
 
-- Current app version in `index.html`: `v0.85.5a - Satzbau Build-Line and Answer-Leak Repair`
-- Current export version in `index.html`: `v0.85.5a-satzbau-build-line-answer-leak`
+- Current app version in `index.html`: `v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues`
+- Current export version in `index.html`: `v0.85.6-source-cleanup-internal-labels-meaning-cues`
 - Current README: `README.md`
 - Current changelog: `CHANGELOG-FULL-OZMOSIS.txt`
-- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.5a.md`
-- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.5a.md`
-- Current QA report: `docs/qa/v0.85.5a_satzbau_build_line_answer_leak.md`
-- Current gate result: `SATZBAU_BUILD_LINE_ANSWER_LEAK_ACCEPTED`
-- Next required patch documented in current files: `v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues`
+- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.6.md`
+- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.6.md`
+- Current QA report: `docs/qa/v0.85.6_source_cleanup_batch1_internal_labels_meaning_cues.md`
+- Current gate result: `SOURCE_CLEANUP_BATCH1_ACCEPTED`
+- Next required patch documented in current files: `v0.85.7 - Source Cleanup Batch 2: Under-Contextualised Clozes`
 
 Live GitHub Pages was checked by the v0.85.3.8 gate and was reachable, but still served `v0.85.3.7 - Correction and Satzbau Surface Pass` before deployment/cache update.
+
+## v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues
+
+- Began controlled source cleanup after the v0.85.5 runtime display contract lock and v0.85.5b Satzbau proof repair.
+- Selected 33 high-confidence queue rows from the v0.85.5 runtime display contract source-cleanup queue and relevant v0.85.4 prompt/cue queues.
+- Changed 31 actual content items: 30 `wortschatz` meaning-choice items and one imported internal-label contrast item.
+- Added explicit source-level `learnerCue` values to 30 `wortschatz` phrase-choice rows using their existing short `translation_en` support text.
+- Cleaned `v080149_cat02_contrast_cat02_cs_013` so the learner-facing prompt/cue no longer shows `show vs find`; internal audit metadata remains internal.
+- Reduced meaning-choice source cue risk rows from 30 to 0.
+- Reduced rendered internal-label rows from 226 to 225, raw X-vs-Y rows from 338 to 337, and backtick/internal metadata rows from 3,429 to 3,428.
+- Deferred 4,118 rows for later controlled cleanup, including broad imported internal-label rows and v0.85.7 cloze cue rows.
+- Added `scripts/ozmosis-source-cleanup-batch1-check.cjs`.
+- Added QA outputs at `docs/qa/v0.85.6_source_cleanup_batch1_internal_labels_meaning_cues.md`, `docs/qa/v0.85.6_source_cleanup_batch1_internal_labels_meaning_cues_results.json`, `docs/qa/v0.85.6_source_cleanup_batch1_changed_rows.csv`, `docs/qa/v0.85.6_source_cleanup_batch1_deferred_rows.csv`, and `docs/qa/v0.85.6_source_cleanup_batch1_reconciliation.csv`.
+- Added screenshot/contact-sheet proof under `docs/qa/screenshots/v0.85.6-source-cleanup-batch1/`.
+- Preserved item IDs, answer keys, accepted answers, choices, scoring, evidence semantics, confidence values, storage keys, export/import format, article-grid behaviour, shared-frame behaviour, Satzbau build-line behaviour, star logic, and B1-only active scope.
+- Kept active normal-practice runtime display-contract defects at 0 rendered prompt leaks, 0 meaning-choice hidden cue risks, 0 under-contextualised cloze-without-cue risks, and 0 review-only items entering normal practice.
+- Set the next planned patch to `v0.85.7 - Source Cleanup Batch 2: Under-Contextualised Clozes`.
+
+## v0.85.5b - Satzbau Proof Harness and First-Run Overlay Repair
+
+- Confirmed that the v0.85.5a screenshot proof artefacts were invalid because the contact sheet and staged screenshots showed the first-run language gate instead of the target states.
+- Repaired `scripts/ozmosis-satzbau-build-line-check.cjs` so it completes the first-run language gate through the real UI by selecting English and clicking Start.
+- Added screenshot validity assertions that fail if first-run language-gate text is visible or if the screenshot does not show the target state named in its filename.
+- Regenerated the Satzbau proof screenshots and contact sheet under `docs/qa/screenshots/v0.85.5b-satzbau-proof-overlay-repair/`.
+- Added `docs/qa/v0.85.5b_satzbau_proof_overlay_repair_results.json`.
+- Added `docs/qa/v0.85.5b_satzbau_proof_overlay_repair.md`.
+- Added a narrow Satzbau-only post-answer display repair so fail/success states show the learner attempt and the correct sentence.
+- Updated `scripts/ozmosis-runtime-display-contract-check.cjs` so the v0.85.5 runtime display contract gate accepts the v0.85.5b successor.
+- Preserved answer checking, scoring, evidence semantics, confidence values, storage keys, export/import format, content banks, answer keys, article-grid behaviour, shared frame, star logic, and B1-only active scope.
+- Set the next planned patch to `v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues`.
 
 ## v0.85.5a - Satzbau Build-Line and Answer-Leak Repair
 
