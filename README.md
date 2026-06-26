@@ -9,37 +9,42 @@ Future README updates should be made in this file. Do not create new `README-v*.
 
 ## Current App
 
-# Ozmosis v0.85.6a.2 v0.2 Reconciliation Apply Gate
+# Ozmosis v0.85.6a.3 Post-Apply Acceptance + Pool Integrity Gate
 
 Ozmosis is a static, local-first German learning app. The deployed app remains `index.html`.
 
-v0.85.6a.2 applies the corrected v0.85.6a.1 v0.2 reconciliation manifest so known-bad imported rows no longer enter normal practice.
+v0.85.6a.3 accepts the v0.85.6a.2 reconciliation apply gate after a runtime pool audit and a narrow normal-practice eligibility fix.
+
+- Runtime app version: `v0.85.6a.3`
+- Runtime export version: `v0.85.6a.3-post-apply-pool-integrity`
+- Current gate result: `POST_APPLY_ACCEPTED_POOL_FIX_APPLIED`
+- Core result: 188 route-pool rows checked, 0 route failures, six known problem rows checked, 0 known-row failures, browser export/import passed, responsive smoke passed, and Arabic/LTR smoke passed.
+- Runtime fix result: normal auto-graded practice now excludes production/self-marked rows, production-isolated rows, quarantined rows, review-only rows, inactive-evidence rows, and `normalAutoGradedPracticeEligible === false` rows. Explicit production-only access remains self-marked.
+
+## Current v0.85.6a.3 docs
+
+- Changelog: `CHANGELOG-FULL-OZMOSIS.txt`
+- Standalone v0.85.6a.3 changelog: `CHANGELOG-v0_85_6a_3.txt`
+- Standalone v0.85.6a.3 README: `README-v0_85_6a_3.md`
+- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.6a.3.md`
+- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.6a.3.md`
+- Current QA gate: `docs/qa/v0.85.6a.3_post_apply_acceptance_pool_integrity_gate.md`
+- Route-pool audit CSV: `docs/qa/v0.85.6a.3_route_pool_integrity_audit.csv`
+- Known problem row runtime CSV: `docs/qa/v0.85.6a.3_known_problem_rows_runtime_check.csv`
+- Static result JSON: `docs/qa/v0.85.6a.3_post_apply_acceptance_results.json`
+- Browser result JSON: `docs/qa/v0.85.6a.3_browser_acceptance_results.json`
+
+Next planned patch: `v0.85.7 - Source Cleanup Batch 2: Under-Contextualised Clozes`.
+
+## Previous v0.85.6a.2 v0.2 Reconciliation Apply Gate
+
+v0.85.6a.2 applied the corrected v0.85.6a.1 v0.2 reconciliation manifest so known-bad imported rows no longer enter normal practice.
 
 - Runtime app version: `v0.85.6a.2`
 - Runtime export version: `v0.85.6a.2-v02-reconciliation-apply-gate`
-- Current gate result: `V02_RECONCILIATION_APPLY_GATE_ACCEPTED`
+- Gate result: `V02_RECONCILIATION_APPLY_GATE_ACCEPTED`
 - Core result: 859 safe replacements applied, 4,459 rows quarantined from normal practice, 291 production rows isolated from normal auto-graded practice, 567 legacy seed rows kept, 944 exception-review rows left untouched, and the six known problem rows replaced or excluded.
-- Runtime fix result: Satzbau answer normalisation now accepts case/final-punctuation-only differences for chunk-built answers, and generic location/movement feedback is gated to explicit location/movement targets.
-
-## Current v0.85.6a.2 docs
-
-- Changelog: `CHANGELOG-FULL-OZMOSIS.txt`
-- Standalone v0.85.6a.2 changelog: `CHANGELOG-v0_85_6a_2.txt`
-- Standalone v0.85.6a.2 README: `README-v0_85_6a_2.md`
-- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.6a.2.md`
-- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.6a.2.md`
-- Current QA gate: `docs/qa/v0.85.6a.2_v02_reconciliation_apply_gate.md`
-- Apply result JSON: `docs/qa/v0.85.6a.2_apply_gate_results.json`
-- Static runtime gate result: `docs/qa/v0.85.6a.2_static_runtime_gate_results.json`
-- Core-safe active rows: `docs/qa/v0.85.6a.2_core_safe_active_rows.csv`
-- Replaced rows: `docs/qa/v0.85.6a.2_replaced_rows.csv`
-- Quarantined rows: `docs/qa/v0.85.6a.2_quarantined_rows.csv`
-- Production isolation rows: `docs/qa/v0.85.6a.2_production_isolation_rows.csv`
-- Legacy seed rows kept: `docs/qa/v0.85.6a.2_legacy_seed_rows_kept.csv`
-- Exceptions for review: `docs/qa/v0.85.6a.2_exceptions_for_review.csv`
-- Known problem rows after apply: `docs/qa/v0.85.6a.2_known_problem_rows_after_apply.csv`
-
-Next planned patch: `v0.85.7 - Source Cleanup Batch 2: Under-Contextualised Clozes`.
+- Runtime fix result: Satzbau answer normalisation accepts case/final-punctuation-only differences for chunk-built answers, and generic location/movement feedback is gated to explicit location/movement targets.
 
 ## Previous v0.85.6 Source Cleanup Batch 1: Internal Labels and Meaning Cues
 

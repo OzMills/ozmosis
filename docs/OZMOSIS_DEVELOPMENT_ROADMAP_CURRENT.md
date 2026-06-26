@@ -2,11 +2,11 @@
 
 ## 1. Current Baseline
 
-Current runtime baseline: `v0.85.6a.2`.
+Current runtime baseline: `v0.85.6a.3`.
 
-Current acceptance status: v0.85.6a.2 accepted the v0.2 reconciliation apply gate after the corrected v0.85.6a.1 dry run. It applied 859 safe replacements, quarantined 4,459 unsafe imported rows from normal practice, isolated 291 production rows from normal auto-graded practice, kept 567 legacy seed rows, left 944 exception-review rows untouched, fixed Satzbau answer-normalisation false negatives, and gated generic location/movement feedback.
+Current acceptance status: v0.85.6a.3 accepted the v0.85.6a.2 reconciliation apply gate after a post-apply runtime pool audit. It preserves the v0.85.6a.2 reconciliation counts, checks 188 route-pool rows, confirms the six known problem rows are replaced or excluded, and fixes normal auto-graded practice so production/self-marked rows cannot enter normal scoring paths.
 
-Current gate result: `V02_RECONCILIATION_APPLY_GATE_ACCEPTED`.
+Current gate result: `POST_APPLY_ACCEPTED_POOL_FIX_APPLIED`.
 
 Next required patch: `v0.85.7 - Source Cleanup Batch 2: Under-Contextualised Clozes`.
 
@@ -63,6 +63,7 @@ This summary is not a replacement for `CHANGELOG-FULL-OZMOSIS.txt`.
 - `v0.85.5b` - Satzbau Proof Harness and First-Run Overlay Repair
 - `v0.85.6` - Source Cleanup Batch 1: Internal Labels and Meaning Cues
 - `v0.85.6a.2` - v0.2 Reconciliation Apply Gate
+- `v0.85.6a.3` - Post-Apply Acceptance + Pool Integrity Gate
 - `v0.85.7` - Source Cleanup Batch 2: Under-Contextualised Clozes
 - `v0.85.8` - Feedback Cleanup: Contrast Notes and Micro-rules
 - `v0.85.9` - Metadata Manifest Migration

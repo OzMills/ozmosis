@@ -23,7 +23,7 @@ This is the only changelog moving forward. Do not create standalone `CHANGELOG-v
 ## Current Run Metadata
 
 - Update type: current-run append.
-- Update date: 2026-06-22.
+- Update date: 2026-06-26.
 - Branch from `.git/HEAD`: `main`.
 - Current HEAD from `.git/refs/heads/main`: `f37168656b89a21756ecffba9cc3c066a07c59a2`.
 - Normal `git` executable: unavailable in this environment.
@@ -35,17 +35,33 @@ This is the only changelog moving forward. Do not create standalone `CHANGELOG-v
 
 Current state is based only on current repo files.
 
-- Current app version in `index.html`: `v0.85.6a.2`
-- Current export version in `index.html`: `v0.85.6a.2-v02-reconciliation-apply-gate`
+- Current app version in `index.html`: `v0.85.6a.3`
+- Current export version in `index.html`: `v0.85.6a.3-post-apply-pool-integrity`
 - Current README: `README.md`
 - Current changelog: `CHANGELOG-FULL-OZMOSIS.txt`
-- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.6a.2.md`
-- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.6a.2.md`
-- Current QA report: `docs/qa/v0.85.6a.2_v02_reconciliation_apply_gate.md`
-- Current gate result: `V02_RECONCILIATION_APPLY_GATE_ACCEPTED`
+- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.6a.3.md`
+- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.6a.3.md`
+- Current QA report: `docs/qa/v0.85.6a.3_post_apply_acceptance_pool_integrity_gate.md`
+- Current gate result: `POST_APPLY_ACCEPTED_POOL_FIX_APPLIED`
 - Next required patch documented in current files: `v0.85.7 - Source Cleanup Batch 2: Under-Contextualised Clozes`
 
 Live GitHub Pages was checked by the v0.85.3.8 gate and was reachable, but still served `v0.85.3.7 - Correction and Satzbau Surface Pass` before deployment/cache update.
+
+## v0.85.6a.3 - Post-Apply Acceptance + Pool Integrity Gate
+
+- Verified the v0.85.6a.2 apply-report reflection against current CSV outputs and content markers.
+- Added a route-pool integrity audit covering 188 normal and production pool checks.
+- Fixed normal auto-graded pool selection so production cards, mark-practised rows, production-isolated rows, quarantined rows, review-only rows, inactive-evidence rows, and `normalAutoGradedPracticeEligible === false` rows cannot enter normal auto-graded practice.
+- Preserved explicit production-only routes so self-marked production practice remains accessible where intended.
+- Fixed variant-family runtime resolution so normal practice resolves only auto-graded variants, while production variants remain available only when production is explicitly requested.
+- Fixed stale Today B1 Sprint and imported-module selection paths so they use the same auto-graded eligibility guard.
+- Kept the Dev Tools menu button wired without double-binding the main Home menu button.
+- Verified the six known problem rows are either excluded/quarantined or replaced/eligible as expected.
+- Verified Satzbau normalisation still passes and wrong-target location feedback remains gated.
+- Verified browser export/import, malformed import rejection, route smoke, responsive smoke, and Arabic/LTR smoke through Edge/CDP.
+- Preserved scoring, evidence semantics, storage keys, export/import format, content IDs, content banks, quarantine rows, exception rows, Case Trainer, Settings, Dev Tools, Learning Map, and B1 active scope.
+- Added QA documentation at `docs/qa/v0.85.6a.3_post_apply_acceptance_pool_integrity_gate.md`.
+- Set the next planned patch to `v0.85.7 - Source Cleanup Batch 2: Under-Contextualised Clozes`.
 
 ## v0.85.6a.2 - v0.2 Reconciliation Apply Gate
 

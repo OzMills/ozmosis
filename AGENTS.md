@@ -6,11 +6,11 @@ Ozmosis is a static, dependency-free German learning app deployed through GitHub
 
 Ozmosis was formerly called Kasuskonsole. Historical notes may still use that name, but current user-facing and repo-facing language should use `Ozmosis`.
 
-Current working version: `v0.85.6a.2`.
+Current working version: `v0.85.6a.3`.
 
-Current runtime baseline: `v0.85.6a.2`.
+Current runtime baseline: `v0.85.6a.3`.
 
-Current gate result: `V02_RECONCILIATION_APPLY_GATE_ACCEPTED`.
+Current gate result: `POST_APPLY_ACCEPTED_POOL_FIX_APPLIED`.
 
 Next planned patch: `v0.85.7 - Source Cleanup Batch 2: Under-Contextualised Clozes`
 
@@ -20,11 +20,11 @@ Current README: `README.md`
 
 Current changelog: `CHANGELOG-FULL-OZMOSIS.txt`
 
-Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.6a.2.md`
+Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.6a.3.md`
 
-Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.6a.2.md`
+Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.6a.3.md`
 
-Current QA gate: `docs/qa/v0.85.6a.2_v02_reconciliation_apply_gate.md`
+Current QA gate: `docs/qa/v0.85.6a.3_post_apply_acceptance_pool_integrity_gate.md`
 
 README/changelog convention: one canonical root `README.md` and one canonical `CHANGELOG-FULL-OZMOSIS.txt`. Do not create versioned README/changelog files moving forward unless the user explicitly asks for a standalone export.
 

@@ -2,9 +2,9 @@
 
 ## Current Patch Status
 
-Current runtime baseline: `v0.85.6a.2`.
+Current runtime baseline: `v0.85.6a.3`.
 
-Current gate result: `V02_RECONCILIATION_APPLY_GATE_ACCEPTED`.
+Current gate result: `POST_APPLY_ACCEPTED_POOL_FIX_APPLIED`.
 
 Next required patch: `v0.85.7 - Source Cleanup Batch 2: Under-Contextualised Clozes`.
 

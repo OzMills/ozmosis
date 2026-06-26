@@ -11602,8 +11602,8 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
   var B1_PATH_UNLOCK_STORAGE_KEY = "ozmosis_b1_path_unlock_overrides_v1";
   var B1_REVIEW_EDIT_QUEUE_STORAGE_KEY = "ozmosis_b1_review_edit_queue_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.85.6a.2";
-  var OZMOSIS_EXPORT_VERSION = "v0.85.6a.2-v02-reconciliation-apply-gate";
+  var OZMOSIS_APP_VERSION = "v0.85.6a.3";
+  var OZMOSIS_EXPORT_VERSION = "v0.85.6a.3-post-apply-pool-integrity";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -17813,7 +17813,7 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     out.version = Number(daily.version || 1);
     out.originalIds = b1UniqueIds(daily.originalIds).filter(function(id){
       var item = b1ItemById(id);
-      return item && b1ItemIsPracticeSelectable(item, progress);
+      return item && b1ItemIsAutoGradedPracticeEligible(item) && b1ItemIsPracticeSelectable(item, progress);
     });
     out.completedIds = b1UniqueIds(daily.completedIds).filter(function(id){ return out.originalIds.indexOf(id) !== -1; });
     out.failedIds = b1UniqueIds(daily.failedIds).filter(function(id){ return out.originalIds.indexOf(id) !== -1 && out.completedIds.indexOf(id) === -1; });
@@ -17893,7 +17893,7 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     var seed = createRoundSeed("daily", homeDateKey());
     var buckets = { fresh:[], due:[], weak:[], old:[] };
     var progress = options.prefiltered ? null : b1PathProgressData();
-    var candidates = options.prefiltered ? (Array.isArray(pool) ? pool : []) : b1PracticeSelectableItems(pool, progress);
+    var candidates = options.prefiltered ? (Array.isArray(pool) ? pool : []) : b1AutoGradedPracticeSelectableItems(pool, progress);
     shuffleWithSeed(candidates, seed).forEach(function(item){
       var rec = b1ProgressRecordFor(store, item);
       var bucket = b1ItemProgressState(item, store, nowMs);
@@ -17942,7 +17942,7 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
   function b1RuntimeItemForId(id, store) {
     var item = b1ItemById(id);
     if (!item) return null;
-    if (!b1ItemIsPracticeSelectable(item)) return null;
+    if (!b1ItemIsAutoGradedPracticeEligible(item) || !b1ItemIsPracticeSelectable(item)) return null;
     var bucket = b1ItemProgressState(item, store || safeGetB1Progress(), Date.now());
     return b1MarkExtraPractice(item, bucket === "extra");
   }
@@ -22723,6 +22723,14 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
   function b1VariantFamilyPickVariant(item, options) {
     options = options || {};
     var variants = b1VariantFamilyVariants(item);
+    if (options.allowProduction === true) {
+      var productionVariants = variants.filter(function(variant){ return b1ItemIsProductionPracticeItem(variant); });
+      if (productionVariants.length) variants = productionVariants;
+    } else {
+      variants = variants.filter(function(variant){
+        return variant && !b1ItemIsProductionPracticeItem(variant) && variant.activeB1Evidence !== false && variant.reviewOnly !== true;
+      });
+    }
     if (!variants.length) return null;
     var requested = String(options.requestedVariantId || item._requestedVariantId || "");
     if (requested) {
@@ -23065,6 +23073,30 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
   function b1ItemIsNormalEligible(item) {
     return b1NormalPracticeExclusionReasons(item).length === 0;
   }
+  function b1ItemIsProductionPracticeItem(item) {
+    return !!(item && (
+      item.itemType === "production_card" ||
+      item.answerMode === "mark_practised" ||
+      item.normalAutoGradedPracticeEligible === false
+    ));
+  }
+  function b1VariantFamilyHasAutoGradedVariant(item) {
+    return b1VariantFamilyVariants(item).some(function(variant){
+      return variant && !b1ItemIsProductionPracticeItem(variant) && variant.activeB1Evidence !== false && variant.reviewOnly !== true;
+    });
+  }
+  function b1VariantFamilyHasProductionVariant(item) {
+    return b1VariantFamilyVariants(item).some(function(variant){
+      return b1ItemIsProductionPracticeItem(variant);
+    });
+  }
+  function b1ItemIsAutoGradedPracticeEligible(item) {
+    if (!b1ItemIsNormalEligible(item)) return false;
+    if (!item || item.reviewOnly === true || item.activeB1Evidence === false || item.normalPracticeEligible === false) return false;
+    if (b1ItemIsProductionPracticeItem(item)) return false;
+    if (item.itemType === "variant_family") return b1VariantFamilyHasAutoGradedVariant(item);
+    return true;
+  }
   function b1DisplaySchemaAudit(options) {
     options = options || {};
     var includeReviewQueue = options.includeReviewQueue !== false;
@@ -23243,6 +23275,13 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
       return b1ItemIsPracticeSelectableFast(item, progress, completedTargets);
     });
   }
+  function b1AutoGradedPracticeSelectableItems(items, progress, completedTargets) {
+    progress = progress || b1PathProgressData();
+    completedTargets = completedTargets || b1CompletedPathTargetSet(progress);
+    return (Array.isArray(items) ? items : []).filter(function(item){
+      return b1ItemIsAutoGradedPracticeEligible(item) && b1ItemIsPracticeSelectableFast(item, progress, completedTargets);
+    });
+  }
   function b1ItemIsReviewPracticeEligible(item, progress) {
     return b1ItemIsPracticeSelectable(item, progress) && item && item.itemType !== "production_card";
   }
@@ -23338,7 +23377,7 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
       if (bank.excludeProductionFromAutoGradedDaily) {
         items = items.filter(function(item){ return item && item.itemType !== "production_card"; });
       }
-      return out.concat(b1PracticeSelectableItems(items, progress, completedTargets));
+      return out.concat(b1AutoGradedPracticeSelectableItems(items, progress, completedTargets));
     }, []);
   }
   function b1ItemFamily(item) {
@@ -23459,7 +23498,10 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     var roundLength = Math.max(1, Number(options.roundLength || 10));
     var seed = options.seed || createRoundSeed(deckKey, filterKey);
     var selectionProgress = b1PathProgressData();
-    var eligible = b1PracticeSelectableItems(options.items || [], selectionProgress);
+    var allowProduction = options.allowProduction === true || filterKey === "production";
+    var eligible = allowProduction ?
+      b1PracticeSelectableItems(options.items || [], selectionProgress) :
+      b1AutoGradedPracticeSelectableItems(options.items || [], selectionProgress);
     var store = safeGetB1Progress();
     var nowMs = Date.now();
     var newItems = [], dueItems = [], extraItems = [];
@@ -23490,9 +23532,9 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     if (mode === "mixed") return b1RegistryDailyEligibleItems();
     var progress = b1PathProgressData();
     var completedTargets = b1CompletedPathTargetSet(progress);
-    var active = b1PracticeSelectableItems(b1RegistryItems("core"), progress, completedTargets);
-    var redemittel = b1PracticeSelectableItems(b1RegistryItems("redemittel"), progress, completedTargets).filter(function(item){ return item.itemType !== "production_card"; });
-    var wortschatz = b1PracticeSelectableItems(b1RegistryItems("wortschatz"), progress, completedTargets).filter(function(item){ return item.itemType !== "production_card"; });
+    var active = b1AutoGradedPracticeSelectableItems(b1RegistryItems("core"), progress, completedTargets);
+    var redemittel = b1AutoGradedPracticeSelectableItems(b1RegistryItems("redemittel"), progress, completedTargets);
+    var wortschatz = b1AutoGradedPracticeSelectableItems(b1RegistryItems("wortschatz"), progress, completedTargets);
     if (mode === "redemittel_cloze") return redemittel;
     if (mode === "vocab_cloze") return wortschatz;
     return active.filter(function(item){ return item.itemType === mode; });
@@ -23528,9 +23570,8 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     filter = filter || "mixed";
     var progress = b1PathProgressData();
     return b1RegistryItems("wortschatz").filter(function(item){
-      if (!b1ItemIsPracticeSelectable(item, progress)) return false;
-      if (filter === "production") return item.itemType === "production_card";
-      if (item.itemType === "production_card") return false;
+      if (filter === "production") return b1ItemIsPracticeSelectable(item, progress) && b1ItemIsProductionPracticeItem(item);
+      if (!b1ItemIsAutoGradedPracticeEligible(item) || !b1ItemIsPracticeSelectable(item, progress)) return false;
       return true;
     });
   }
@@ -23549,9 +23590,8 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     filter = filter || "mixed";
     var progress = b1PathProgressData();
     return b1RegistryItems("redemittel").filter(function(item){
-      if (!b1ItemIsPracticeSelectable(item, progress)) return false;
-      if (filter === "production") return item.itemType === "production_card";
-      if (item.itemType === "production_card") return false;
+      if (filter === "production") return b1ItemIsPracticeSelectable(item, progress) && b1ItemIsProductionPracticeItem(item);
+      if (!b1ItemIsAutoGradedPracticeEligible(item) || !b1ItemIsPracticeSelectable(item, progress)) return false;
       if (filter === "mixed") return true;
       return item.section === filter;
     });
@@ -23560,7 +23600,8 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     var allowed = ["connector_choice", "word_order_cloze", "error_repair", "production_card"];
     var progress = b1PathProgressData();
     return b1RegistryItems("connectors").filter(function(item){
-      if (!b1ItemIsPracticeSelectable(item, progress) || allowed.indexOf(item.itemType) === -1) return false;
+      if (family === "production") return b1ItemIsPracticeSelectable(item, progress) && b1ItemIsProductionPracticeItem(item);
+      if (!b1ItemIsAutoGradedPracticeEligible(item) || !b1ItemIsPracticeSelectable(item, progress) || allowed.indexOf(item.itemType) === -1) return false;
       if (family === "all") return true;
       if (family === "repair") return connectorFamilyFor(item) === "repair";
       return connectorFamilyFor(item) === family;
@@ -23577,10 +23618,11 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     return b1RegistryItems("b1_m01").filter(function(item){
       if (!b1ItemIsPracticeSelectable(item, progress)) return false;
       if (filter === "production") {
-        if (item.itemType === "production_card") return true;
-        if (item.itemType === "variant_family") return b1VariantFamilyVariants(item).some(function(variant){ return variant.itemType === "production_card"; });
+        if (b1ItemIsProductionPracticeItem(item)) return true;
+        if (item.itemType === "variant_family") return b1VariantFamilyHasProductionVariant(item);
         return false;
       }
+      if (!b1ItemIsAutoGradedPracticeEligible(item)) return false;
       if (filter === "repair") {
         if (item.itemType === "error_repair") return true;
         if (item.itemType === "variant_family") return b1VariantFamilyVariants(item).some(function(variant){ return variant.itemType === "error_repair"; });
@@ -23598,8 +23640,8 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     filter = filter || "mixed";
     var progress = b1PathProgressData();
     return b1RegistryItems("b1_m02").filter(function(item){
-      if (!b1ItemIsPracticeSelectable(item, progress)) return false;
-      if (filter === "production") return item.itemType === "production_card";
+      if (filter === "production") return b1ItemIsPracticeSelectable(item, progress) && b1ItemIsProductionPracticeItem(item);
+      if (!b1ItemIsAutoGradedPracticeEligible(item) || !b1ItemIsPracticeSelectable(item, progress)) return false;
       if (filter === "repair") return item.itemType === "error_repair";
       return true;
     });
@@ -23613,8 +23655,8 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     filter = filter || "mixed";
     var progress = b1PathProgressData();
     return b1RegistryItems("b1_m03").filter(function(item){
-      if (!b1ItemIsPracticeSelectable(item, progress)) return false;
-      if (filter === "production") return item.itemType === "production_card";
+      if (filter === "production") return b1ItemIsPracticeSelectable(item, progress) && b1ItemIsProductionPracticeItem(item);
+      if (!b1ItemIsAutoGradedPracticeEligible(item) || !b1ItemIsPracticeSelectable(item, progress)) return false;
       if (filter === "repair") return item.itemType === "error_repair";
       return true;
     });
@@ -23628,8 +23670,8 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     filter = filter || "mixed";
     var progress = b1PathProgressData();
     return b1RegistryItems("b1_m04").filter(function(item){
-      if (!b1ItemIsPracticeSelectable(item, progress)) return false;
-      if (filter === "production") return item.itemType === "production_card";
+      if (filter === "production") return b1ItemIsPracticeSelectable(item, progress) && b1ItemIsProductionPracticeItem(item);
+      if (!b1ItemIsAutoGradedPracticeEligible(item) || !b1ItemIsPracticeSelectable(item, progress)) return false;
       if (filter === "repair") return item.itemType === "error_repair";
       return true;
     });
@@ -23643,8 +23685,8 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     filter = filter || "mixed";
     var progress = b1PathProgressData();
     return b1RegistryItems("b1_m05").filter(function(item){
-      if (!b1ItemIsPracticeSelectable(item, progress)) return false;
-      if (filter === "production") return item.itemType === "production_card";
+      if (filter === "production") return b1ItemIsPracticeSelectable(item, progress) && b1ItemIsProductionPracticeItem(item);
+      if (!b1ItemIsAutoGradedPracticeEligible(item) || !b1ItemIsPracticeSelectable(item, progress)) return false;
       if (filter === "repair") return item.itemType === "error_repair";
       return true;
     });
@@ -23658,8 +23700,8 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     filter = filter || "mixed";
     var progress = b1PathProgressData();
     return b1RegistryItems("b1_m06").filter(function(item){
-      if (!b1ItemIsPracticeSelectable(item, progress)) return false;
-      if (filter === "production") return item.itemType === "production_card";
+      if (filter === "production") return b1ItemIsPracticeSelectable(item, progress) && b1ItemIsProductionPracticeItem(item);
+      if (!b1ItemIsAutoGradedPracticeEligible(item) || !b1ItemIsPracticeSelectable(item, progress)) return false;
       if (filter === "repair") return item.itemType === "error_repair";
       return true;
     });
@@ -23673,8 +23715,8 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     filter = filter || "mixed";
     var progress = b1PathProgressData();
     return b1RegistryItems("b1_m07").filter(function(item){
-      if (!b1ItemIsPracticeSelectable(item, progress)) return false;
-      if (filter === "production") return item.itemType === "production_card";
+      if (filter === "production") return b1ItemIsPracticeSelectable(item, progress) && b1ItemIsProductionPracticeItem(item);
+      if (!b1ItemIsAutoGradedPracticeEligible(item) || !b1ItemIsPracticeSelectable(item, progress)) return false;
       if (filter === "repair") return item.itemType === "error_repair";
       return true;
     });
@@ -23688,8 +23730,8 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     filter = filter || "mixed";
     var progress = b1PathProgressData();
     return b1RegistryItems("b1_m08").filter(function(item){
-      if (!b1ItemIsPracticeSelectable(item, progress)) return false;
-      if (filter === "production") return item.itemType === "production_card";
+      if (filter === "production") return b1ItemIsPracticeSelectable(item, progress) && b1ItemIsProductionPracticeItem(item);
+      if (!b1ItemIsAutoGradedPracticeEligible(item) || !b1ItemIsPracticeSelectable(item, progress)) return false;
       if (filter === "repair") return item.itemType === "error_repair";
       return true;
     });
@@ -23703,8 +23745,8 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     filter = filter || "mixed";
     var progress = b1PathProgressData();
     return b1RegistryItems("b1_m09").filter(function(item){
-      if (!b1ItemIsPracticeSelectable(item, progress)) return false;
-      if (filter === "production") return item.itemType === "production_card";
+      if (filter === "production") return b1ItemIsPracticeSelectable(item, progress) && b1ItemIsProductionPracticeItem(item);
+      if (!b1ItemIsAutoGradedPracticeEligible(item) || !b1ItemIsPracticeSelectable(item, progress)) return false;
       if (filter === "repair") return item.itemType === "error_repair";
       return true;
     });
@@ -23718,8 +23760,8 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     filter = filter || "mixed";
     var progress = b1PathProgressData();
     return b1RegistryItems("b1_m10").filter(function(item){
-      if (!b1ItemIsPracticeSelectable(item, progress)) return false;
-      if (filter === "production") return item.itemType === "production_card";
+      if (filter === "production") return b1ItemIsPracticeSelectable(item, progress) && b1ItemIsProductionPracticeItem(item);
+      if (!b1ItemIsAutoGradedPracticeEligible(item) || !b1ItemIsPracticeSelectable(item, progress)) return false;
       if (filter === "repair") return item.itemType === "error_repair";
       return true;
     });
@@ -23733,8 +23775,8 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     filter = filter || "mixed";
     var progress = b1PathProgressData();
     return b1RegistryItems("b1_m11").filter(function(item){
-      if (!b1ItemIsPracticeSelectable(item, progress)) return false;
-      if (filter === "production") return item.itemType === "production_card";
+      if (filter === "production") return b1ItemIsPracticeSelectable(item, progress) && b1ItemIsProductionPracticeItem(item);
+      if (!b1ItemIsAutoGradedPracticeEligible(item) || !b1ItemIsPracticeSelectable(item, progress)) return false;
       if (filter === "repair") return item.itemType === "error_repair";
       return true;
     });
@@ -23761,9 +23803,9 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     filter = filter || "mixed";
     var progress = b1PathProgressData();
     return b1RegistryItems(bankKey).filter(function(item){
-      if (!b1ItemIsPracticeSelectable(item, progress)) return false;
+      if (filter === "production") return b1ItemIsPracticeSelectable(item, progress) && b1ItemIsProductionPracticeItem(item);
+      if (!b1ItemIsAutoGradedPracticeEligible(item) || !b1ItemIsPracticeSelectable(item, progress)) return false;
       if (item.previewOnly || item.activeB1Evidence === false) return false;
-      if (filter === "production") return item.itemType === "production_card";
       if (filter === "repair") return b1IsRepairPracticeItem(item);
       if (filter === "transformation") return b1IsTransformationItem(item);
       return true;
@@ -23777,7 +23819,7 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
       showAppStatus("No unfinished practice items are available for this route.", "warn");
       return;
     }
-    var round = buildB1Round({ deckKey:bankKey, filterKey:filter, items:pool, roundLength:10 });
+    var round = buildB1Round({ deckKey:bankKey, filterKey:filter, items:pool, roundLength:10, allowProduction:filter === "production" });
     var queue = round.queue;
     b1Runtime.active = true;
     b1Runtime.mode = bankKey;
@@ -23828,7 +23870,7 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     B1_REPAIR_TRANSFORMATION_BANK_KEYS.forEach(function(bankKey){
       b1RegistryItems(bankKey).forEach(function(item){
         if (!item || !item.id) return;
-        if (!b1ItemIsPracticeSelectable(item, progress)) return;
+        if (!b1ItemIsAutoGradedPracticeEligible(item) || !b1ItemIsPracticeSelectable(item, progress)) return;
         if (item.previewOnly || item.activeB1Evidence === false || item.itemType === "production_card") return;
         if (filter === "repair" && !b1IsRepairPracticeItem(item)) return;
         if (filter === "transformation" && !b1IsTransformationItem(item)) return;
@@ -23892,7 +23934,7 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
   function startB1M17Round(filter) { startB1ImportedModuleRound("b1_m17", filter); }
   function buildConnectorQueue(family) {
     var pool = b1ConnectorPoolFor(family);
-    var production = pool.filter(function(item){ return item.itemType === "production_card"; });
+    var production = pool.filter(function(item){ return b1ItemIsProductionPracticeItem(item); });
     var choice = pool.filter(function(item){ return item.itemType === "connector_choice"; });
     var wordOrder = pool.filter(function(item){ return item.itemType === "word_order_cloze"; });
     var repair = pool.filter(function(item){ return item.itemType === "error_repair"; });
@@ -23902,7 +23944,8 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
       queue = queue.concat(buildB1Round({ deckKey:"connector", filterKey:"all-choice", items:choice, roundLength:6, seed:seed + "|choice" }).queue);
       queue = queue.concat(buildB1Round({ deckKey:"connector", filterKey:"all-word-order", items:wordOrder, roundLength:2, seed:seed + "|word" }).queue);
       queue = queue.concat(buildB1Round({ deckKey:"connector", filterKey:"all-repair", items:repair, roundLength:1, seed:seed + "|repair" }).queue);
-      if (production.length) queue.push(buildB1Round({ deckKey:"connector", filterKey:"all-production", items:production, roundLength:1, seed:seed + "|production" }).queue[0]);
+    } else if (family === "production") {
+      queue = buildB1Round({ deckKey:"connector", filterKey:family, items:production, roundLength:10, seed:seed, allowProduction:true }).queue;
     } else if (family === "repair") {
       queue = buildB1Round({ deckKey:"connector", filterKey:family, items:repair, roundLength:10, seed:seed }).queue;
     } else {
@@ -27313,7 +27356,7 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     b1Runtime.currentSatzbauSelectedTokenIds = [];
     b1Runtime.currentSatzbauUnshuffleable = false;
     b1Runtime.currentSatzbauLastAttempt = "";
-    b1Runtime.current = b1ResolveVariableErrorRepairItem(b1ResolveVariantFamilyItem(queuedItem, { seed:variantSeed }), { seed:variantSeed });
+    b1Runtime.current = b1ResolveVariableErrorRepairItem(b1ResolveVariantFamilyItem(queuedItem, { seed:variantSeed, allowProduction:b1Runtime.filterKey === "production" }), { seed:variantSeed });
     b1Runtime.currentAssisted = false;
     b1Runtime.currentExtraPractice = !!(b1Runtime.current && b1Runtime.current._extraPractice);
     b1Runtime.currentEvidenceRecordId = "";
@@ -29426,7 +29469,7 @@ window.ozmosisTesterReportSummary=testerReportSummary; window.ozmosisLearnerRead
     bind("genitiveHelpBtn","click",openGenitiveHelp);
     bind("startGenitiveHelpBtn","click",openGenitiveHelp);
     bind("genitiveHelpCloseBtn","click",closeGenitiveHelp);
-    if (el("genitiveHelpOverlay")) el("genitiveHelpOverlay").addEventListener("click",function(event){ if (event.target === el("genitiveHelpOverlay")) closeGenitiveHelp(); },false); bind("englishSupport","change",function(){ savePersistent(); if (b1Runtime.active) renderB1Translation(false); else if (current) renderQuestion(); }); bind("roundTarget","change",function(){ if (shouldApplyLiveSettings()) newRound(); else savePersistent(); }); bind("adaptiveMode","change",function(){ savePersistent(); if (shouldApplyLiveSettings()) newRound(); }); bind("menuHomeBtn","click",function(){ setMenu(false); showHomeScreen(); }); bind("menuSprintBtn","click",function(){ setMenu(false); startB1Round("mixed"); }); bind("menuRecommendedBtn","click",function(){ setMenu(false); openB1RecommendationRoute(homeRecommendedRouteKey || "today"); }); bind("menuGrammarBtn","click",function(){ setMenu(false); showGrammarHub(); }); bind("menuCasesArticlesBtn","click",function(){ setMenu(false); startCasesArticlesRound("mixed"); }); bind("menuRedemittelBtn","click",function(){ setMenu(false); showRedemittelHub(); }); bind("menuCaseTrainerBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("menuReviewPracticeBtn","click",function(){ setMenu(false); startB1ReviewPractice(); }); bind("restartBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("resetBestBtn","click",function(){window.kasusResetBest();}); bind("resetProfileBtn","click",function(){window.kasusResetProfile();}); bind("exportBtn","click",exportProgress); bind("importBtn","click",function(){ var input=el("importFile"); if (!input) { saveWorkflowFailure("file read error"); return; } input.value=""; input.click(); }); bind("copyLearnerReportBtn","click",copyLearnerReadableProgressReport); bind("downloadLearnerReportBtn","click",downloadLearnerReadableProgressReport); bind("importFile","change",function(event){ importProgress(event.target.files && event.target.files[0]); event.target.value=""; }); bind("devToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("devMenuBtn","click",function(event){ event.stopPropagation(); setMenu(!el("settingsPanel").classList.contains("open")); }); bind("devCloseBtn","click",function(){ setDevTools(false); }); bind("newGameCloseBtn","click",function(){ setDevTools(false); }); bind("leitnerCloseBtn","click",closeLeitnerPrototype); bind("openNewGameMockBtn","click",showNewGameMock); bind("openLeitnerPrototypeBtn","click",showLeitnerPrototype); bind("resetLeitnerPrototypeBtn","click",showLeitnerResetConfirm); bind("backToDevListBtn","click",showDevList); bind("leitnerResetCloseBtn","click",showDevList); bind("cancelLeitnerResetBtn","click",showDevList); bind("confirmLeitnerResetBtn","click",resetLeitnerPrototypeProgress); bind("leitnerRestartBtn","click",startLeitnerQueue); bind("leitnerCheckBtn","click",checkLeitnerAnswer); bind("leitnerNextBtn","click",nextLeitnerCard); bind("leitnerAnswerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (leitnerRuntime.answered) nextLeitnerCard(); else checkLeitnerAnswer(); }); bind("applyNewGameMockBtn","click",applyNewGameMock); bind("homeSprintBtn","click",function(){ startB1Round("mixed"); }); bind("homeDiagnosticBtn","click",startB1DiagnosticSprint); bind("homeLearningMapBtn","click",showLearningMapScreen); bind("learningMapBackBtn","click",showHomeScreen); bind("diagnosticExitBtn","click",exitB1Diagnostic); bind("homeGrammarBtn","click",showGrammarHub); bind("grammarBackBtn","click",showHomeScreen); bind("grammarSeedBtn","click",function(){ startB1Round("grammar_cloze"); }); bind("casesArticlesBtn","click",function(){ startCasesArticlesRound("mixed"); }); bind("connectorAllBtn","click",function(){ startConnectorSprint("all"); }); bind("connectorReasonBtn","click",function(){ startConnectorSprint("reason"); }); bind("connectorContrastBtn","click",function(){ startConnectorSprint("contrast"); }); bind("connectorPurposeBtn","click",function(){ startConnectorSprint("purpose"); }); bind("connectorTimeBtn","click",function(){ startConnectorSprint("time"); }); bind("repairTransformationBtn","click",function(){ startRepairTransformationRound("mixed"); }); bind("connectorRepairBtn","click",function(){ startConnectorSprint("repair"); }); bind("homeWortschatzBtn","click",function(){ startWortschatzRound("mixed"); }); bind("homeRedemittelBtn","click",function(){ startB1Round("redemittel_cloze"); }); bind("homeCaseTrainerBtn","click",showStartScreen); bind("caseTrainerBackBtn","click",showHomeScreen); bind("homeOptionsBtn","click",function(){ showSettingsScreen(); }); bind("homeDevToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("hubBackBtn","click",showHomeScreen); document.querySelectorAll(".homePlaceholderBtn").forEach(function(btn){ btn.addEventListener("click",function(){ showHubPlaceholder(btn.getAttribute("data-title") || btn.textContent.trim()); }); }); document.addEventListener("click",function(event){ var routeButton = event.target && event.target.closest ? event.target.closest(".b1PathRouteAction") : null; if (routeButton) { event.preventDefault(); openB1PathCategory(routeButton.getAttribute("data-category-id")); return; } }); bind("b1PathKeepPractisingBtn","click",function(){ var categoryId = b1PathPendingUnlockId; var progress = b1PathProgressData(); var categories = (progress.categories || []).filter(function(category){ return category.coreTargetCount > 0 && !category.preview; }); var category = b1PathCategoryById(progress, categoryId); var index = categories.findIndex(function(row){ return row.categoryId === categoryId; }); var practiceCategory = index > 0 ? categories[index - 1] : category; closeB1PathUnlockDialog(); openB1RecommendationRoute(practiceCategory && practiceCategory.routeKey || "today"); }); bind("b1PathUnlockAnywayBtn","click",function(){ var categoryId = b1PathPendingUnlockId; if (!categoryId) return; b1PathRecordUnlockOverride(categoryId); closeB1PathUnlockDialog(); openB1PathCategory(categoryId); }); if (el("b1PathUnlockOverlay")) el("b1PathUnlockOverlay").addEventListener("click",function(event){ if (event.target === el("b1PathUnlockOverlay")) closeB1PathUnlockDialog(); },false); var devOverlay=el("devOverlay"); if (devOverlay) devOverlay.addEventListener("click",function(event){ if (event.target === devOverlay && !devOverlay.classList.contains("leitnerFullscreen")) setDevTools(false); },false); document.addEventListener("keydown",function(event){ if ((event.key === "Escape" || event.key === "Esc") && el("b1PathUnlockOverlay") && !el("b1PathUnlockOverlay").hidden) { closeB1PathUnlockDialog(); return; } if ((event.key === "Escape" || event.key === "Esc") && el("genitiveHelpOverlay") && !el("genitiveHelpOverlay").hidden) { el("genitiveHelpOverlay").hidden = true; return; } if ((event.key === "Escape" || event.key === "Esc") && el("devOverlay") && !el("devOverlay").hidden) { setDevTools(false); return; } if ((event.key === "Escape" || event.key === "Esc") && b1Runtime.mode === "b1_diagnostic" && (state === "b1Checking" || state === "b1Next")) { exitB1Diagnostic(); return; } if ((event.key === "Escape" || event.key === "Esc") && (state === "placeholder" || state === "grammarHub" || state === "learningMap")) showHomeScreen(); }); bind("checkBtn","click",function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }); bind("noArticleBtn","click",function(){checkAnswer("none");}); bind("nextBtn","click",proceed); bind("hintBtn","click",showHint); bind("supportPlaceholder","click",showHint); bind("translationToggle","click",toggleB1Translation); bind("whyNoStarsBtn","click",explainExtraPracticeStars); bind("startRoundBtn","click",startConfiguredRound); document.querySelectorAll(".langBtn").forEach(function(btn){ btn.addEventListener("click",function(){ setSupportLanguage(btn.getAttribute("data-lang")); }); }); bind("answerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (state==="b1Checking") checkB1Answer(); else if (state==="checking") checkAnswer(); else proceed(); }); renderHud(); applyLanguage(); showHomeScreen(); }
+    if (el("genitiveHelpOverlay")) el("genitiveHelpOverlay").addEventListener("click",function(event){ if (event.target === el("genitiveHelpOverlay")) closeGenitiveHelp(); },false); bind("englishSupport","change",function(){ savePersistent(); if (b1Runtime.active) renderB1Translation(false); else if (current) renderQuestion(); }); bind("roundTarget","change",function(){ if (shouldApplyLiveSettings()) newRound(); else savePersistent(); }); bind("adaptiveMode","change",function(){ savePersistent(); if (shouldApplyLiveSettings()) newRound(); }); bind("menuHomeBtn","click",function(){ setMenu(false); showHomeScreen(); }); bind("menuSprintBtn","click",function(){ setMenu(false); startB1Round("mixed"); }); bind("menuRecommendedBtn","click",function(){ setMenu(false); openB1RecommendationRoute(homeRecommendedRouteKey || "today"); }); bind("menuGrammarBtn","click",function(){ setMenu(false); showGrammarHub(); }); bind("menuCasesArticlesBtn","click",function(){ setMenu(false); startCasesArticlesRound("mixed"); }); bind("menuRedemittelBtn","click",function(){ setMenu(false); showRedemittelHub(); }); bind("menuCaseTrainerBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("menuReviewPracticeBtn","click",function(){ setMenu(false); startB1ReviewPractice(); }); bind("restartBtn","click",function(){ setMenu(false); showStartScreen(); }); bind("resetBestBtn","click",function(){window.kasusResetBest();}); bind("resetProfileBtn","click",function(){window.kasusResetProfile();}); bind("exportBtn","click",exportProgress); bind("importBtn","click",function(){ var input=el("importFile"); if (!input) { saveWorkflowFailure("file read error"); return; } input.value=""; input.click(); }); bind("copyLearnerReportBtn","click",copyLearnerReadableProgressReport); bind("downloadLearnerReportBtn","click",downloadLearnerReadableProgressReport); bind("importFile","change",function(event){ importProgress(event.target.files && event.target.files[0]); event.target.value=""; }); bind("devToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); var toggleMenuFromButton=function(event){ event.stopPropagation(); setMenu(!el("settingsPanel").classList.contains("open")); }; bind("devMenuBtn","click",toggleMenuFromButton); bind("devCloseBtn","click",function(){ setDevTools(false); }); bind("newGameCloseBtn","click",function(){ setDevTools(false); }); bind("leitnerCloseBtn","click",closeLeitnerPrototype); bind("openNewGameMockBtn","click",showNewGameMock); bind("openLeitnerPrototypeBtn","click",showLeitnerPrototype); bind("resetLeitnerPrototypeBtn","click",showLeitnerResetConfirm); bind("backToDevListBtn", "click", showDevList); bind("leitnerResetCloseBtn","click",showDevList); bind("cancelLeitnerResetBtn","click",showDevList); bind("confirmLeitnerResetBtn","click",resetLeitnerPrototypeProgress); bind("leitnerRestartBtn","click",startLeitnerQueue); bind("leitnerCheckBtn","click",checkLeitnerAnswer); bind("leitnerNextBtn","click",nextLeitnerCard); bind("leitnerAnswerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (leitnerRuntime.answered) nextLeitnerCard(); else checkLeitnerAnswer(); }); bind("applyNewGameMockBtn","click",applyNewGameMock); bind("homeSprintBtn","click",function(){ startB1Round("mixed"); }); bind("homeDiagnosticBtn","click",startB1DiagnosticSprint); bind("homeLearningMapBtn","click",showLearningMapScreen); bind("learningMapBackBtn","click",showHomeScreen); bind("diagnosticExitBtn","click",exitB1Diagnostic); bind("homeGrammarBtn","click",showGrammarHub); bind("grammarBackBtn","click",showHomeScreen); bind("grammarSeedBtn","click",function(){ startB1Round("grammar_cloze"); }); bind("casesArticlesBtn","click",function(){ startCasesArticlesRound("mixed"); }); bind("connectorAllBtn","click",function(){ startConnectorSprint("all"); }); bind("connectorReasonBtn","click",function(){ startConnectorSprint("reason"); }); bind("connectorContrastBtn","click",function(){ startConnectorSprint("contrast"); }); bind("connectorPurposeBtn","click",function(){ startConnectorSprint("purpose"); }); bind("connectorTimeBtn","click",function(){ startConnectorSprint("time"); }); bind("repairTransformationBtn","click",function(){ startRepairTransformationRound("mixed"); }); bind("connectorRepairBtn","click",function(){ startConnectorSprint("repair"); }); bind("homeWortschatzBtn","click",function(){ startWortschatzRound("mixed"); }); bind("homeRedemittelBtn","click",function(){ startB1Round("redemittel_cloze"); }); bind("homeCaseTrainerBtn","click",showStartScreen); bind("caseTrainerBackBtn","click",showHomeScreen); bind("homeOptionsBtn","click",function(){ showSettingsScreen(); }); bind("homeDevToolsBtn","click",function(){ setMenu(false); setDevTools(true); }); bind("hubBackBtn","click",showHomeScreen); document.querySelectorAll(".homePlaceholderBtn").forEach(function(btn){ btn.addEventListener("click",function(){ showHubPlaceholder(btn.getAttribute("data-title") || btn.textContent.trim()); }); }); document.addEventListener("click",function(event){ var routeButton = event.target && event.target.closest ? event.target.closest(".b1PathRouteAction") : null; if (routeButton) { event.preventDefault(); openB1PathCategory(routeButton.getAttribute("data-category-id")); return; } }); bind("b1PathKeepPractisingBtn","click",function(){ var categoryId = b1PathPendingUnlockId; var progress = b1PathProgressData(); var categories = (progress.categories || []).filter(function(category){ return category.coreTargetCount > 0 && !category.preview; }); var category = b1PathCategoryById(progress, categoryId); var index = categories.findIndex(function(row){ return row.categoryId === categoryId; }); var practiceCategory = index > 0 ? categories[index - 1] : category; closeB1PathUnlockDialog(); openB1RecommendationRoute(practiceCategory && practiceCategory.routeKey || "today"); }); bind("b1PathUnlockAnywayBtn","click",function(){ var categoryId = b1PathPendingUnlockId; if (!categoryId) return; b1PathRecordUnlockOverride(categoryId); closeB1PathUnlockDialog(); openB1PathCategory(categoryId); }); if (el("b1PathUnlockOverlay")) el("b1PathUnlockOverlay").addEventListener("click",function(event){ if (event.target === el("b1PathUnlockOverlay")) closeB1PathUnlockDialog(); },false); var devOverlay=el("devOverlay"); if (devOverlay) devOverlay.addEventListener("click",function(event){ if (event.target === devOverlay && !devOverlay.classList.contains("leitnerFullscreen")) setDevTools(false); },false); document.addEventListener("keydown",function(event){ if ((event.key === "Escape" || event.key === "Esc") && el("b1PathUnlockOverlay") && !el("b1PathUnlockOverlay").hidden) { closeB1PathUnlockDialog(); return; } if ((event.key === "Escape" || event.key === "Esc") && el("genitiveHelpOverlay") && !el("genitiveHelpOverlay").hidden) { el("genitiveHelpOverlay").hidden = true; return; } if ((event.key === "Escape" || event.key === "Esc") && el("devOverlay") && !el("devOverlay").hidden) { setDevTools(false); return; } if ((event.key === "Escape" || event.key === "Esc") && b1Runtime.mode === "b1_diagnostic" && (state === "b1Checking" || state === "b1Next")) { exitB1Diagnostic(); return; } if ((event.key === "Escape" || event.key === "Esc") && (state === "placeholder" || state === "grammarHub" || state === "learningMap")) showHomeScreen(); }); bind("checkBtn","click",function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }); bind("noArticleBtn","click",function(){checkAnswer("none");}); bind("nextBtn","click",proceed); bind("hintBtn","click",showHint); bind("supportPlaceholder","click",showHint); bind("translationToggle","click",toggleB1Translation); bind("whyNoStarsBtn","click",explainExtraPracticeStars); bind("startRoundBtn","click",startConfiguredRound); document.querySelectorAll(".langBtn").forEach(function(btn){ btn.addEventListener("click",function(){ setSupportLanguage(btn.getAttribute("data-lang")); }); }); bind("answerInput","keydown",function(event){ var isEnter=event.key==="Enter" || event.key==="Return" || event.keyCode===13 || event.which===13; if (!isEnter) return; event.preventDefault(); if (state==="b1Checking") checkB1Answer(); else if (state==="checking") checkAnswer(); else proceed(); }); renderHud(); applyLanguage(); showHomeScreen(); }
   function initOzmosisApp() {
     init();
     bind("menuPrepositionsBtn","click",function(){ setMenu(false); startPrepositionsRound("mixed"); });
