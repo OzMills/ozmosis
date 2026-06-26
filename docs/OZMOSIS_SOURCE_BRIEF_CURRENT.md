@@ -2,13 +2,13 @@
 
 ## Current Patch Status
 
-Current runtime baseline: `v0.85.7`.
+Current runtime baseline: `v0.85.8`.
 
-Current gate result: `UNDER_CONTEXT_CLOZE_CLEANUP_ACCEPTED`.
+Current gate result: `FEEDBACK_CLEANUP_ACCEPTED`.
 
-Next required patch: `v0.85.8 - Feedback Cleanup: Contrast Notes and Micro-rules`.
+Next required patch: `v0.85.9 - Metadata Manifest Migration`.
 
-Current patch summary: v0.85.7 completed Source Cleanup Batch 2 by investigating 66 under-contextualised cloze candidates, applying 23 high-confidence active typed-cloze prompt repairs in `content/b1-wortschatz.js`, leaving 33 false positives unchanged, and deferring 10 rows. The patch preserved item IDs, answer keys, accepted answers, scoring, evidence, storage, export/import, production isolation, route-pool integrity, and the B1-only active scope.
+Current patch summary: v0.85.8 completed Feedback Cleanup by investigating 66 candidate feedback rows, applying 23 high-confidence active typed-cloze micro-rule repairs in `content/b1-wortschatz.js`, leaving 20 false positives unchanged, and deferring/reviewing 23 rows. The patch preserved prompts, stimuli, item IDs, answer keys, accepted answers, choices, scoring, evidence, storage, export/import, production isolation, route-pool integrity, the v0.85.7 cloze cue repairs, and the B1-only active scope.
 
 ## 1. Project Identity
 
@@ -170,11 +170,11 @@ Deferred features must not be forgotten or implemented early:
 
 ## 11. Current Baseline
 
-Current runtime baseline: `v0.85.7`.
+Current runtime baseline: `v0.85.8`.
 
-Current acceptance status: v0.85.7 accepted Source Cleanup Batch 2 after the v0.85.6a.3 pool-integrity baseline. It investigated 66 under-contextualised cloze candidates, applied 23 high-confidence active typed-cloze prompt/context repairs, left 33 false positives unchanged, deferred 10 rows, preserved the v0.85.6a.3 normal-practice pool guard, and preserved answer keys, accepted answers, item IDs, choices, scoring, evidence, storage, export/import, production isolation, route-pool integrity, and B1-only active scope.
+Current acceptance status: v0.85.8 accepted Feedback Cleanup after the v0.85.7 cloze cue cleanup. It investigated 66 feedback candidates, applied 23 high-confidence active typed-cloze micro-rule repairs, left 20 false positives unchanged, deferred/reviewed 23 rows, preserved the v0.85.6a.3 normal-practice pool guard, preserved the v0.85.7 cloze cue repairs, and preserved prompts, stimuli, answer keys, accepted answers, item IDs, choices, scoring, evidence, storage, export/import, production isolation, route-pool integrity, and B1-only active scope.
 
-Next required patch: `v0.85.8 - Feedback Cleanup: Contrast Notes and Micro-rules`.
+Next required patch: `v0.85.9 - Metadata Manifest Migration`.
 
 Current planning handoff:
 
@@ -205,5 +205,6 @@ Current planning handoff:
 - Satzbau Proof Harness and First-Run Overlay Repair has been implemented and accepted as v0.85.5b.
 - Source Cleanup Batch 1: Internal Labels and Meaning Cues has been implemented and accepted as v0.85.6.
 - Source Cleanup Batch 2: Under-Contextualised Clozes has been implemented and accepted as v0.85.7.
-- Feedback Cleanup: Contrast Notes and Micro-rules is next as v0.85.8.
+- Feedback Cleanup: Contrast Notes and Micro-rules has been implemented and accepted as v0.85.8.
+- Metadata Manifest Migration is next as v0.85.9.
 - Production Completion Pass remains blocked until v0.85.11 reports `READY_FOR_V0.86`.

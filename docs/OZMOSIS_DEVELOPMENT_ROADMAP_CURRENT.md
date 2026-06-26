@@ -2,13 +2,13 @@
 
 ## 1. Current Baseline
 
-Current runtime baseline: `v0.85.7`.
+Current runtime baseline: `v0.85.8`.
 
-Current acceptance status: v0.85.7 accepted Source Cleanup Batch 2 after the v0.85.6a.3 pool-integrity baseline. It investigated 66 under-contextualised cloze candidates, applied 23 high-confidence active typed-cloze prompt/context repairs, left 33 false positives unchanged, deferred 10 rows, checked 188 route-pool rows, confirmed the six known problem rows remain safe, and preserved production/self-marked row isolation from normal auto-graded scoring paths.
+Current acceptance status: v0.85.8 accepted Feedback Cleanup after the v0.85.7 cloze cue cleanup. It investigated 66 candidate feedback rows, applied 23 high-confidence active typed-cloze micro-rule repairs, left 20 false positives unchanged, deferred/reviewed 23 rows, checked 188 route-pool rows, confirmed the six known problem rows remain safe, preserved v0.85.7 cloze cue repairs, and preserved production/self-marked row isolation from normal auto-graded scoring paths.
 
-Current gate result: `UNDER_CONTEXT_CLOZE_CLEANUP_ACCEPTED`.
+Current gate result: `FEEDBACK_CLEANUP_ACCEPTED`.
 
-Next required patch: `v0.85.8 - Feedback Cleanup: Contrast Notes and Micro-rules`.
+Next required patch: `v0.85.9 - Metadata Manifest Migration`.
 
 ## 2. Completed Foundation
 
@@ -134,7 +134,8 @@ Stop if the hub fails.
 - Satzbau Proof Harness and First-Run Overlay Repair is implemented and accepted as v0.85.5b.
 - Source Cleanup Batch 1: Internal Labels and Meaning Cues is implemented and accepted as v0.85.6.
 - Source Cleanup Batch 2: Under-Contextualised Clozes is implemented and accepted as v0.85.7.
-- Feedback Cleanup: Contrast Notes and Micro-rules is the next allowed implementation patch as v0.85.8.
+- Feedback Cleanup: Contrast Notes and Micro-rules is implemented and accepted as v0.85.8.
+- Metadata Manifest Migration is the next allowed implementation patch as v0.85.9.
 - Production Completion Pass is blocked until the final v0.85.x readiness gate reports `READY_FOR_V0.86`.
 - Weakness repair must wait until Skill Matrix and task-depth evidence are stable.
 - Durability/spaced review must wait until enough reviewable B1 coverage exists.

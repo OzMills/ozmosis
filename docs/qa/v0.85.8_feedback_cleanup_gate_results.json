@@ -1,0 +1,19 @@
+{
+  "patch": "v0.85.8",
+  "title": "Feedback Cleanup: Contrast Notes and Micro-rules",
+  "candidateRows": 66,
+  "changedRows": 23,
+  "deferredRows": 23,
+  "classificationCounts": {
+    "FIX_SAFE": 23,
+    "QUARANTINE_OR_DEFER": 12,
+    "EXCEPTION_REVIEW": 11,
+    "NO_ACTION_FALSE_POSITIVE": 20
+  },
+  "answerKeysChanged": false,
+  "acceptedAnswersChanged": false,
+  "itemIdsChanged": false,
+  "choicesChanged": false,
+  "failedChangedRows": 0,
+  "failures": []
+}

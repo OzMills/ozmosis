@@ -35,17 +35,34 @@ This is the only changelog moving forward. Do not create standalone `CHANGELOG-v
 
 Current state is based only on current repo files.
 
-- Current app version in `index.html`: `v0.85.7`
-- Current export version in `index.html`: `v0.85.7-under-contextualised-cloze-cleanup`
+- Current app version in `index.html`: `v0.85.8`
+- Current export version in `index.html`: `v0.85.8-feedback-cleanup-contrast-microrules`
 - Current README: `README.md`
 - Current changelog: `CHANGELOG-FULL-OZMOSIS.txt`
-- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.7.md`
-- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.7.md`
-- Current QA report: `docs/qa/v0.85.7_under_contextualised_cloze_cleanup.md`
-- Current gate result: `UNDER_CONTEXT_CLOZE_CLEANUP_ACCEPTED`
-- Next required patch documented in current files: `v0.85.8 - Feedback Cleanup: Contrast Notes and Micro-rules`
+- Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_CURRENT.md`
+- Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_CURRENT.md`
+- Current QA report: `docs/qa/v0.85.8_feedback_cleanup_contrast_microrules.md`
+- Current gate result: `FEEDBACK_CLEANUP_ACCEPTED`
+- Next required patch documented in current files: `v0.85.9 - Metadata Manifest Migration`
 
 Live GitHub Pages was checked by the v0.85.3.8 gate and was reachable, but still served `v0.85.3.7 - Correction and Satzbau Surface Pass` before deployment/cache update.
+
+## v0.85.8 - Feedback Cleanup: Contrast Notes and Micro-rules
+
+- Performed a controlled feedback cleanup after the accepted v0.85.7 under-contextualised cloze cleanup.
+- Investigated 66 candidate feedback rows and classified 23 as safe fixes, 20 as false positives, 12 as quarantine/defer, and 11 as exception-review rows.
+- Applied 23 high-confidence active typed-cloze micro-rule repairs in `content/b1-wortschatz.js`.
+- Converted selected bare definition feedback into compact completed-phrase plus one useful micro-rule feedback.
+- Preserved the v0.85.7 `sourceCleanupBatch` marker and added a v0.85.8 `feedbackCleanupBatch` marker on the changed rows.
+- Preserved item IDs, answer keys, accepted answers, choices, prompts, stimuli, statuses, scoring, evidence semantics, localStorage keys, export/import format, route-pool integrity, production isolation, quarantine behaviour, and B1-only active scope.
+- Verified the v0.85.7 cloze cue repairs still pass after feedback cleanup.
+- Verified 188 route-pool rows with 0 route failures and six known problem rows with 0 known-row failures.
+- Verified the runtime display audit remained at 0 rendered prompt leaks, 0 hidden meaning-choice cue risks, 0 under-contextualised cloze-without-cue risks, and 0 review-only rows entering normal practice.
+- Verified Satzbau normalisation, wrong-target Wechselpräposition feedback gating, browser route smoke, responsive smoke, Arabic/LTR smoke, and export/import through the v0.85.8 gates.
+- Added QA documentation at `docs/qa/v0.85.8_feedback_cleanup_contrast_microrules.md`.
+- Added CSV/JSON evidence at `docs/qa/v0.85.8_feedback_cleanup_candidates.csv`, `docs/qa/v0.85.8_feedback_cleanup_decisions.csv`, `docs/qa/v0.85.8_feedback_cleanup_changed_rows.csv`, `docs/qa/v0.85.8_feedback_cleanup_deferred_rows.csv`, `docs/qa/v0.85.8_feedback_cleanup_gate_results.json`, `docs/qa/v0.85.8_feedback_cleanup_runtime_gate_results.json`, `docs/qa/v0.85.8_cloze_feedback_regression_results.json`, and `docs/qa/v0.85.8_browser_acceptance_results.json`.
+- Kept the canonical documentation convention: no `README-v0_85_8.md`, no `CHANGELOG-v0_85_8.txt`, and no versioned v0.85.8 source brief or roadmap.
+- Set the next planned patch to `v0.85.9 - Metadata Manifest Migration`.
 
 ## v0.85.7 - Source Cleanup Batch 2: Under-Contextualised Clozes
 

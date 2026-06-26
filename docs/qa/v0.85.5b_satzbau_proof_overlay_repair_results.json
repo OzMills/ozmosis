@@ -273,13 +273,13 @@
   "testsNotRun": [],
   "consoleErrors": [],
   "ignoredConsoleNoise": [
-    "Failed to load resource: the server responded with a status of 404 (Not Found) (http://127.0.0.1:61984/favicon.ico)"
+    "Failed to load resource: the server responded with a status of 404 (Not Found) (http://127.0.0.1:51483/favicon.ico)"
   ],
   "runtimeExceptions": [],
   "acceptancePassed": false,
   "finalDecision": "SATZBAU_PROOF_PARTIAL_NEEDS_REPAIR",
   "nextPatch": "v0.85.5c - Satzbau Proof Harness Repair",
-  "appVersion": "v0.85.6a.3",
-  "exportVersion": "v0.85.6a.3-post-apply-pool-integrity",
-  "generatedAt": "2026-06-26T21:46:18.340Z"
+  "appVersion": "v0.85.8",
+  "exportVersion": "v0.85.8-feedback-cleanup-contrast-microrules",
+  "generatedAt": "2026-06-26T22:34:03.793Z"
 }

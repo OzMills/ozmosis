@@ -9,33 +9,43 @@ Future README updates should be made in this file. Do not create new `README-v*.
 
 ## Current App
 
-# Ozmosis v0.85.7 Source Cleanup Batch 2: Under-Contextualised Clozes
+# Ozmosis v0.85.8 Feedback Cleanup: Contrast Notes and Micro-rules
 
 Ozmosis is a static, local-first German learning app. The deployed app remains `index.html`.
+
+v0.85.8 performs a controlled feedback cleanup after the accepted v0.85.7 cloze-cue batch. It repairs high-confidence post-answer micro-rules where the prompt and answer already made the task clear, but the feedback was still mostly a bare definition. It preserves prompts, stimuli, answers, accepted answers, choices, item IDs, scoring, evidence, storage, export/import, route-pool integrity, production isolation, and the B1-only active scope.
+
+- Runtime app version: `v0.85.8`
+- Runtime export version: `v0.85.8-feedback-cleanup-contrast-microrules`
+- Current gate result: `FEEDBACK_CLEANUP_ACCEPTED`
+- Core result: 66 candidate feedback rows investigated, 23 safe micro-rule repairs applied, 20 false positives left unchanged, 23 rows deferred/reviewed, 0 answer-key changes, 0 accepted-answer changes, 0 item-ID changes, 0 choice changes, 188 route-pool rows checked, 0 route failures, six known problem rows checked, 0 known-row failures, browser export/import passed, responsive smoke passed, and Arabic/LTR smoke passed.
+- Runtime preservation result: the v0.85.6a.3 normal-practice pool guard remains intact, production/self-marked rows remain isolated from normal auto-graded practice, and the active runtime display audit remains at 0 rendered prompt leaks, 0 hidden meaning-choice cue risks, 0 under-contextualised cloze-without-cue risks, and 0 review-only rows entering normal practice.
+
+## Current v0.85.8 docs
+
+- Changelog: `CHANGELOG-FULL-OZMOSIS.txt`
+- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_CURRENT.md`
+- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_CURRENT.md`
+- Current QA gate: `docs/qa/v0.85.8_feedback_cleanup_contrast_microrules.md`
+- Candidate CSV: `docs/qa/v0.85.8_feedback_cleanup_candidates.csv`
+- Decision CSV: `docs/qa/v0.85.8_feedback_cleanup_decisions.csv`
+- Changed-row CSV: `docs/qa/v0.85.8_feedback_cleanup_changed_rows.csv`
+- Deferred-row CSV: `docs/qa/v0.85.8_feedback_cleanup_deferred_rows.csv`
+- Feedback cleanup result JSON: `docs/qa/v0.85.8_feedback_cleanup_gate_results.json`
+- Runtime gate result JSON: `docs/qa/v0.85.8_feedback_cleanup_runtime_gate_results.json`
+- Cloze/feedback regression JSON: `docs/qa/v0.85.8_cloze_feedback_regression_results.json`
+- Browser result JSON: `docs/qa/v0.85.8_browser_acceptance_results.json`
+
+Next planned patch: `v0.85.9 - Metadata Manifest Migration`.
+
+## Previous v0.85.7 Source Cleanup Batch 2: Under-Contextualised Clozes
 
 v0.85.7 performs the second controlled source-cleanup batch after the v0.85.6a.3 pool-integrity baseline. It repairs high-confidence under-contextualised active typed-cloze prompts by adding short learner-safe German context cues while preserving the target blank, answers, accepted answers, item IDs, scoring, evidence, storage, export/import, route-pool integrity, and the B1-only active scope.
 
 - Runtime app version: `v0.85.7`
 - Runtime export version: `v0.85.7-under-contextualised-cloze-cleanup`
-- Current gate result: `UNDER_CONTEXT_CLOZE_CLEANUP_ACCEPTED`
+- Gate result: `UNDER_CONTEXT_CLOZE_CLEANUP_ACCEPTED`
 - Core result: 66 candidate rows investigated, 23 safe active typed-cloze prompt repairs applied, 33 false positives left unchanged, 10 rows deferred, 0 answer-key changes, 0 accepted-answer changes, 0 item-ID changes, 188 route-pool rows checked, 0 route failures, six known problem rows checked, 0 known-row failures, browser export/import passed, responsive smoke passed, and Arabic/LTR smoke passed.
-- Runtime preservation result: the v0.85.6a.3 normal-practice pool guard remains intact, production/self-marked rows remain isolated from normal auto-graded practice, and the active runtime display audit remains at 0 rendered prompt leaks, 0 hidden meaning-choice cue risks, 0 under-contextualised cloze-without-cue risks, and 0 review-only rows entering normal practice.
-
-## Current v0.85.7 docs
-
-- Changelog: `CHANGELOG-FULL-OZMOSIS.txt`
-- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.7.md`
-- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.7.md`
-- Current QA gate: `docs/qa/v0.85.7_under_contextualised_cloze_cleanup.md`
-- Candidate CSV: `docs/qa/v0.85.7_under_contextualised_cloze_candidates.csv`
-- Decision CSV: `docs/qa/v0.85.7_under_contextualised_cloze_decisions.csv`
-- Changed-row CSV: `docs/qa/v0.85.7_under_contextualised_cloze_changed_rows.csv`
-- Deferred-row CSV: `docs/qa/v0.85.7_under_contextualised_cloze_deferred_rows.csv`
-- Changed-row result JSON: `docs/qa/v0.85.7_under_contextualised_cloze_gate_results.json`
-- Runtime gate result JSON: `docs/qa/v0.85.7_under_contextualised_cloze_runtime_gate_results.json`
-- Browser result JSON: `docs/qa/v0.85.7_browser_acceptance_results.json`
-
-Next planned patch: `v0.85.8 - Feedback Cleanup: Contrast Notes and Micro-rules`.
 
 ## Previous v0.85.6a.3 Post-Apply Acceptance + Pool Integrity Gate
 

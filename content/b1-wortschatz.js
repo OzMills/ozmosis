@@ -164,7 +164,7 @@
     "translation_en": "Could you please send me a confirmation for the appointment by email?",
     "choices": [],
     "correct_choice": "",
-    "micro_rule": "die Bestätigung = confirmation.",
+    "micro_rule": "Completed: eine Bestätigung für den Termin. Bestätigung is the written confirmation of an appointment or booking.",
     "difficulty": "easy",
     "family": "bestaetigung",
     "tags": [
@@ -172,7 +172,8 @@
       "email",
       "polite_request"
     ],
-    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes",
+    "feedbackCleanupBatch": "v0.85.8-feedback-cleanup"
   },
   {
     "id": "b1_vocab_bestaetigung_002",
@@ -305,7 +306,7 @@
     "translation_en": "For the application: Please send me the documents by Friday.",
     "choices": [],
     "correct_choice": "",
-    "micro_rule": "die Unterlagen = documents/papers; usually plural.",
+    "micro_rule": "Completed: die Unterlagen. Unterlagen is normally plural for documents or papers you need to send.",
     "difficulty": "easy",
     "family": "unterlagen",
     "tags": [
@@ -313,7 +314,8 @@
       "plural",
       "office"
     ],
-    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes",
+    "feedbackCleanupBatch": "v0.85.8-feedback-cleanup"
   },
   {
     "id": "b1_vocab_unterlagen_002",
@@ -733,7 +735,7 @@
     "translation_en": "The delivery for my order unfortunately arrives tomorrow.",
     "choices": [],
     "correct_choice": "",
-    "micro_rule": "die Lieferung = delivery.",
+    "micro_rule": "Completed: Die Lieferung meiner Bestellung kommt morgen an. Lieferung is the delivery, not the order itself.",
     "difficulty": "easy",
     "family": "lieferung",
     "tags": [
@@ -741,7 +743,8 @@
       "order",
       "delay"
     ],
-    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes",
+    "feedbackCleanupBatch": "v0.85.8-feedback-cleanup"
   },
   {
     "id": "b1_vocab_lieferung_002",
@@ -877,14 +880,15 @@
     "translation_en": "I ordered online. I would like to change my order.",
     "choices": [],
     "correct_choice": "",
-    "micro_rule": "die Bestellung = order.",
+    "micro_rule": "Completed: meine Bestellung ändern. Bestellung means the order you placed.",
     "difficulty": "easy",
     "family": "bestellung",
     "tags": [
       "order",
       "customer_service"
     ],
-    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes",
+    "feedbackCleanupBatch": "v0.85.8-feedback-cleanup"
   },
   {
     "id": "b1_vocab_bestellung_002",
@@ -1019,7 +1023,7 @@
     "translation_en": "For the payment: Please send me the invoice again.",
     "choices": [],
     "correct_choice": "",
-    "micro_rule": "die Rechnung = invoice/bill.",
+    "micro_rule": "Completed: die Rechnung noch einmal schicken. Rechnung is the invoice or bill for payment.",
     "difficulty": "easy",
     "family": "rechnung",
     "tags": [
@@ -1027,7 +1031,8 @@
       "office",
       "email"
     ],
-    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes",
+    "feedbackCleanupBatch": "v0.85.8-feedback-cleanup"
   },
   {
     "id": "b1_vocab_rechnung_002",
@@ -1160,14 +1165,15 @@
     "translation_en": "The technical device does not work.",
     "choices": [],
     "correct_choice": "",
-    "micro_rule": "das Gerät = device.",
+    "micro_rule": "Completed: Das technische Gerät funktioniert nicht. Gerät is a device or piece of equipment.",
     "difficulty": "easy",
     "family": "geraet",
     "tags": [
       "technical_problem",
       "device"
     ],
-    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes",
+    "feedbackCleanupBatch": "v0.85.8-feedback-cleanup"
   },
   {
     "id": "b1_vocab_geraet_002",
@@ -1185,7 +1191,7 @@
     "translation_en": "I have a technical problem with the device.",
     "choices": [],
     "correct_choice": "",
-    "micro_rule": "mit + Dativ: mit dem Gerät.",
+    "micro_rule": "Completed: mit dem Gerät. mit takes dative, so dem Gerät.",
     "difficulty": "medium",
     "family": "geraet",
     "tags": [
@@ -1193,7 +1199,8 @@
       "dative",
       "device"
     ],
-    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes",
+    "feedbackCleanupBatch": "v0.85.8-feedback-cleanup"
   },
   {
     "id": "b1_vocab_geraet_003",
@@ -1583,7 +1590,7 @@
     "translation_en": "Because I am ill, I am sending you the sick note / sickness notification by email.",
     "choices": [],
     "correct_choice": "",
-    "micro_rule": "die Krankmeldung = sick note or sickness notification.",
+    "micro_rule": "Completed: die Krankmeldung per E-Mail schicken. Krankmeldung is the sickness notification or sick note.",
     "difficulty": "easy",
     "family": "krankmeldung",
     "tags": [
@@ -1591,7 +1598,8 @@
       "email",
       "work"
     ],
-    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes",
+    "feedbackCleanupBatch": "v0.85.8-feedback-cleanup"
   },
   {
     "id": "b1_vocab_krankmeldung_002",
@@ -1726,7 +1734,7 @@
     "translation_en": "I have a doctor's appointment tomorrow at 10 o'clock.",
     "choices": [],
     "correct_choice": "",
-    "micro_rule": "der Arzttermin = doctor’s appointment.",
+    "micro_rule": "Completed: einen Arzttermin beim Arzt. haben takes an accusative object: einen Arzttermin.",
     "difficulty": "easy",
     "family": "arzttermin",
     "tags": [
@@ -1734,7 +1742,8 @@
       "appointment",
       "absence"
     ],
-    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes",
+    "feedbackCleanupBatch": "v0.85.8-feedback-cleanup"
   },
   {
     "id": "b1_vocab_arzttermin_002",
@@ -1869,14 +1878,15 @@
     "translation_en": "Because of my insurance, I have to call my health insurance provider.",
     "choices": [],
     "correct_choice": "",
-    "micro_rule": "die Krankenkasse = health insurance provider.",
+    "micro_rule": "Completed: meine Krankenkasse anrufen. Krankenkasse is the health insurance provider.",
     "difficulty": "easy",
     "family": "krankenkasse",
     "tags": [
       "health_insurance",
       "phone_call"
     ],
-    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes",
+    "feedbackCleanupBatch": "v0.85.8-feedback-cleanup"
   },
   {
     "id": "b1_vocab_krankenkasse_002",
@@ -1894,7 +1904,7 @@
     "translation_en": "I am sending the insurance documents to the health insurance provider.",
     "choices": [],
     "correct_choice": "",
-    "micro_rule": "an die Krankenkasse = to the health insurance provider.",
+    "micro_rule": "Completed: an die Krankenkasse schicken. an + destination takes accusative here: die Krankenkasse.",
     "difficulty": "medium",
     "family": "krankenkasse",
     "tags": [
@@ -1902,7 +1912,8 @@
       "documents",
       "admin"
     ],
-    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes",
+    "feedbackCleanupBatch": "v0.85.8-feedback-cleanup"
   },
   {
     "id": "b1_vocab_krankenkasse_003",
@@ -2012,7 +2023,7 @@
     "translation_en": "I have a question about my insurance with the health insurance provider.",
     "choices": [],
     "correct_choice": "",
-    "micro_rule": "die Versicherung = insurance.",
+    "micro_rule": "Completed: eine Frage zu meiner Versicherung. Versicherung means insurance.",
     "difficulty": "easy",
     "family": "versicherung",
     "tags": [
@@ -2020,7 +2031,8 @@
       "question",
       "admin"
     ],
-    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes",
+    "feedbackCleanupBatch": "v0.85.8-feedback-cleanup"
   },
   {
     "id": "b1_vocab_versicherung_002",
@@ -2155,7 +2167,7 @@
     "translation_en": "Please bring your health insurance card to the doctor's appointment.",
     "choices": [],
     "correct_choice": "",
-    "micro_rule": "die Gesundheitskarte = health insurance card.",
+    "micro_rule": "Completed: die Gesundheitskarte zum Arzttermin mitbringen. Gesundheitskarte is the health insurance card.",
     "difficulty": "easy",
     "family": "gesundheitskarte",
     "tags": [
@@ -2163,7 +2175,8 @@
       "doctor",
       "appointment"
     ],
-    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes",
+    "feedbackCleanupBatch": "v0.85.8-feedback-cleanup"
   },
   {
     "id": "b1_vocab_gesundheitskarte_002",
@@ -2575,14 +2588,15 @@
     "translation_en": "At the doctor's office: The examination takes about twenty minutes.",
     "choices": [],
     "correct_choice": "",
-    "micro_rule": "die Untersuchung = examination/check-up.",
+    "micro_rule": "Completed: Die Untersuchung dauert zwanzig Minuten. Untersuchung is a medical examination or check-up.",
     "difficulty": "easy",
     "family": "untersuchung",
     "tags": [
       "doctor",
       "examination"
     ],
-    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes",
+    "feedbackCleanupBatch": "v0.85.8-feedback-cleanup"
   },
   {
     "id": "b1_vocab_untersuchung_002",
@@ -2715,7 +2729,7 @@
     "translation_en": "The doctor asks: What symptoms/problems do you have?",
     "choices": [],
     "correct_choice": "",
-    "micro_rule": "die Beschwerden can mean symptoms/complaints; at the doctor it often means symptoms.",
+    "micro_rule": "Completed: Welche Beschwerden haben Sie? At the doctor, Beschwerden usually means symptoms.",
     "difficulty": "easy",
     "family": "beschwerden",
     "tags": [
@@ -2723,7 +2737,8 @@
       "doctor",
       "plural"
     ],
-    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes",
+    "feedbackCleanupBatch": "v0.85.8-feedback-cleanup"
   },
   {
     "id": "b1_vocab_beschwerden_002",
@@ -2856,7 +2871,7 @@
     "translation_en": "For the position, I am sending you my application by email.",
     "choices": [],
     "correct_choice": "",
-    "micro_rule": "die Bewerbung = application.",
+    "micro_rule": "Completed: meine Bewerbung per E-Mail schicken. Bewerbung is the application for a job or position.",
     "difficulty": "easy",
     "family": "bewerbung",
     "tags": [
@@ -2864,7 +2879,8 @@
       "email",
       "work"
     ],
-    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes",
+    "feedbackCleanupBatch": "v0.85.8-feedback-cleanup"
   },
   {
     "id": "b1_vocab_bewerbung_002",
@@ -2999,7 +3015,7 @@
     "translation_en": "For my application: My CV is attached.",
     "choices": [],
     "correct_choice": "",
-    "micro_rule": "der Lebenslauf = CV / résumé.",
+    "micro_rule": "Completed: Mein Lebenslauf ist im Anhang. Lebenslauf is the CV attached to an application.",
     "difficulty": "easy",
     "family": "lebenslauf",
     "tags": [
@@ -3007,7 +3023,8 @@
       "application",
       "email"
     ],
-    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes",
+    "feedbackCleanupBatch": "v0.85.8-feedback-cleanup"
   },
   {
     "id": "b1_vocab_lebenslauf_002",
@@ -3140,14 +3157,15 @@
     "translation_en": "I am looking for work and am interested in the position.",
     "choices": [],
     "correct_choice": "",
-    "micro_rule": "die Stelle = job position.",
+    "micro_rule": "Completed: sich für die Stelle interessieren. Stelle means job position.",
     "difficulty": "easy",
     "family": "stelle",
     "tags": [
       "job",
       "application"
     ],
-    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes",
+    "feedbackCleanupBatch": "v0.85.8-feedback-cleanup"
   },
   {
     "id": "b1_vocab_stelle_002",
@@ -3280,14 +3298,15 @@
     "translation_en": "I have a job interview at the company tomorrow.",
     "choices": [],
     "correct_choice": "",
-    "micro_rule": "das Vorstellungsgespräch = job interview.",
+    "micro_rule": "Completed: ein Vorstellungsgespräch bei der Firma. Vorstellungsgespräch is a job interview.",
     "difficulty": "easy",
     "family": "vorstellungsgespraech",
     "tags": [
       "job_interview",
       "application"
     ],
-    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes",
+    "feedbackCleanupBatch": "v0.85.8-feedback-cleanup"
   },
   {
     "id": "b1_vocab_vorstellungsgespraech_002",
@@ -3562,7 +3581,7 @@
     "translation_en": "In the course, I have not understood the task yet.",
     "choices": [],
     "correct_choice": "",
-    "micro_rule": "die Aufgabe = task/exercise.",
+    "micro_rule": "Completed: die Aufgabe noch nicht verstanden. Aufgabe means the task or exercise.",
     "difficulty": "easy",
     "family": "aufgabe",
     "tags": [
@@ -3570,7 +3589,8 @@
       "course",
       "work"
     ],
-    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes",
+    "feedbackCleanupBatch": "v0.85.8-feedback-cleanup"
   },
   {
     "id": "b1_vocab_aufgabe_002",
@@ -3706,14 +3726,15 @@
     "translation_en": "The meeting with the team begins at nine o'clock.",
     "choices": [],
     "correct_choice": "",
-    "micro_rule": "die Besprechung = meeting/discussion at work.",
+    "micro_rule": "Completed: Die Besprechung beginnt um neun Uhr. Besprechung is a meeting or work discussion.",
     "difficulty": "easy",
     "family": "besprechung",
     "tags": [
       "meeting",
       "work"
     ],
-    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes",
+    "feedbackCleanupBatch": "v0.85.8-feedback-cleanup"
   },
   {
     "id": "b1_vocab_besprechung_002",
@@ -3988,7 +4009,7 @@
     "translation_en": "For the online course, I have not received my login details yet.",
     "choices": [],
     "correct_choice": "",
-    "micro_rule": "die Zugangsdaten = login/access details; plural.",
+    "micro_rule": "Completed: meine Zugangsdaten noch nicht bekommen. Zugangsdaten is plural login/access details.",
     "difficulty": "medium",
     "family": "zugangsdaten",
     "tags": [
@@ -3996,7 +4017,8 @@
       "technical_problem",
       "course"
     ],
-    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes",
+    "feedbackCleanupBatch": "v0.85.8-feedback-cleanup"
   },
   {
     "id": "b1_vocab_zugangsdaten_002",
@@ -4156,7 +4178,7 @@
     "translation_en": "When logging in, I keep getting an error message.",
     "choices": [],
     "correct_choice": "",
-    "micro_rule": "eine Fehlermeldung bekommen = to get an error message.",
+    "micro_rule": "Completed: eine Fehlermeldung bekommen. Fehlermeldung is the error message shown by the system.",
     "difficulty": "medium",
     "family": "fehlermeldung",
     "tags": [
@@ -4164,7 +4186,8 @@
       "error_message",
       "support"
     ],
-    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes",
+    "feedbackCleanupBatch": "v0.85.8-feedback-cleanup"
   },
   {
     "id": "b1_vocab_fehlermeldung_003",

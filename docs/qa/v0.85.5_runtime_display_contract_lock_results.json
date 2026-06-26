@@ -303,7 +303,7 @@
       "noDynamicImport": true
     },
     "browserGate": {
-      "localServer": "http://127.0.0.1:61982/index.html",
+      "localServer": "http://127.0.0.1:51481/index.html",
       "edgeHeadless": true,
       "contractAuditRows": 6103,
       "representativeFixtures": {
@@ -344,7 +344,7 @@
   "acceptancePassed": false,
   "finalDecision": "RUNTIME_DISPLAY_CONTRACT_PARTIAL_NEEDS_REPAIR",
   "nextPatch": "v0.85.5a - Runtime Display Contract Repair",
-  "appVersion": "v0.85.6a.3",
-  "exportVersion": "v0.85.6a.3-post-apply-pool-integrity",
-  "generatedAt": "2026-06-26T21:46:18.354Z"
+  "appVersion": "v0.85.8",
+  "exportVersion": "v0.85.8-feedback-cleanup-contrast-microrules",
+  "generatedAt": "2026-06-26T22:34:03.734Z"
 }
