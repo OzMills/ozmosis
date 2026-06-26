@@ -2581,7 +2581,7 @@
     ],
     "status": "active"
   },
-  {
+    {
     "id": "b1_redemittel_084",
     "source": "Ozmosis B1 Redemittel Survival Set v1",
     "chapter": 5,
@@ -2622,9 +2622,14 @@
       "Ask for a new appointment.",
       "Offer an alternative time if possible."
     ],
-    "modelAnswer_de": "Guten Tag, der Termin am Freitag passt mir leider nicht. Könnten wir den Termin bitte verschieben? Am Montag könnte ich."
+    "modelAnswer_de": "Guten Tag, der Termin am Freitag passt mir leider nicht. Könnten wir den Termin bitte verschieben? Am Montag könnte ich.",
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
   },
-  {
+    {
     "id": "b1_redemittel_085",
     "source": "Ozmosis B1 Redemittel Survival Set v1",
     "chapter": 5,
@@ -2665,9 +2670,14 @@
       "Add one clear sentence about the message or reply.",
       "End with an appropriate closing phrase."
     ],
-    "modelAnswer_de": "Sehr geehrte Frau Müller, vielen Dank für Ihre Nachricht. Ich freue mich auf Ihre Antwort. Mit freundlichen Grüßen"
+    "modelAnswer_de": "Sehr geehrte Frau Müller, vielen Dank für Ihre Nachricht. Ich freue mich auf Ihre Antwort. Mit freundlichen Grüßen",
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
   },
-  {
+    {
     "id": "b1_redemittel_086",
     "source": "Ozmosis B1 Redemittel Survival Set v1",
     "chapter": 5,
@@ -2708,9 +2718,14 @@
       "Give a return time if possible.",
       "Mention a sick note only if relevant."
     ],
-    "modelAnswer_de": "Guten Morgen, ich muss mich leider krank melden. Ich bin krank und kann heute nicht zur Arbeit kommen. Voraussichtlich komme ich morgen wieder."
+    "modelAnswer_de": "Guten Morgen, ich muss mich leider krank melden. Ich bin krank und kann heute nicht zur Arbeit kommen. Voraussichtlich komme ich morgen wieder.",
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
   },
-  {
+    {
     "id": "b1_redemittel_087",
     "source": "Ozmosis B1 Redemittel Survival Set v1",
     "chapter": 5,
@@ -2751,9 +2766,14 @@
       "Ask for checking or a solution.",
       "Mention order/delivery details if needed."
     ],
-    "modelAnswer_de": "Leider gibt es ein Problem mit der Lieferung. Die Lieferung ist noch nicht angekommen. Könnten Sie das bitte prüfen?"
+    "modelAnswer_de": "Leider gibt es ein Problem mit der Lieferung. Die Lieferung ist noch nicht angekommen. Könnten Sie das bitte prüfen?",
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
   },
-  {
+    {
     "id": "b1_redemittel_088",
     "source": "Ozmosis B1 Redemittel Survival Set v1",
     "chapter": 5,
@@ -2794,9 +2814,14 @@
       "Mention attachment only if appropriate.",
       "Use a polite final sentence."
     ],
-    "modelAnswer_de": "Hiermit bewerbe ich mich um die Stelle. Ich interessiere mich sehr für die Arbeit und würde mich über eine Einladung zum Gespräch freuen."
+    "modelAnswer_de": "Hiermit bewerbe ich mich um die Stelle. Ich interessiere mich sehr für die Arbeit und würde mich über eine Einladung zum Gespräch freuen.",
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
   },
-  {
+    {
     "id": "b1_redemittel_089",
     "source": "Ozmosis B1 Redemittel Survival Set v1",
     "chapter": 5,
@@ -2837,9 +2862,14 @@
       "Use Sie-form if formal.",
       "Keep the request short and clear."
     ],
-    "modelAnswer_de": "Könnten Sie mir bitte helfen? Ich habe ein Problem mit dem Formular und verstehe eine Frage nicht."
+    "modelAnswer_de": "Könnten Sie mir bitte helfen? Ich habe ein Problem mit dem Formular und verstehe eine Frage nicht.",
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
   },
-  {
+    {
     "id": "b1_redemittel_090",
     "source": "Ozmosis B1 Redemittel Survival Set v1",
     "chapter": 5,
@@ -2881,7 +2911,12 @@
       "Use Sie-form.",
       "Say what information you need."
     ],
-    "modelAnswer_de": "Ich möchte mich erkundigen, ob der Kurs noch frei ist. Könnten Sie mir bitte weitere Informationen schicken?"
+    "modelAnswer_de": "Ich möchte mich erkundigen, ob der Kurs noch frei ist. Könnten Sie mir bitte weitere Informationen schicken?",
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
   }
 ];
 }());

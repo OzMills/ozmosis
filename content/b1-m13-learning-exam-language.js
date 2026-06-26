@@ -1,7 +1,7 @@
 (function(){
   window.OZMOSIS_CONTENT = window.OZMOSIS_CONTENT || {};
   window.OZMOSIS_CONTENT.b1M13LearningExamLanguage = [
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_001",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -43,7 +43,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -120,9 +120,15 @@
         "text": "eine Prüfung tun",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_002",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -239,9 +245,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_003",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -283,7 +292,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -360,9 +369,15 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_004",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -404,7 +419,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -481,9 +496,15 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_005",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -525,7 +546,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -602,9 +623,15 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_006",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -646,7 +673,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -723,9 +750,15 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_007",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -767,7 +800,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -844,9 +877,15 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_008",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -963,9 +1002,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_009",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -1082,9 +1124,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_010",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -1201,9 +1246,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_011",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -1320,9 +1368,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_012",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -1439,9 +1490,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_013",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -1558,9 +1612,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_014",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -1677,9 +1734,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_015",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -1796,9 +1856,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_016",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -1915,9 +1978,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_017",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -2034,9 +2100,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_018",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -2153,9 +2222,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_019",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -2272,9 +2344,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_020",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -2391,9 +2466,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_021",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -2510,9 +2588,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_022",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -2629,9 +2710,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_023",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -2673,7 +2757,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -2750,9 +2834,15 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_024",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -2869,9 +2959,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_025",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -2988,9 +3081,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_026",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -3032,7 +3128,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -3109,9 +3205,15 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_027",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -3228,9 +3330,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_028",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -3347,9 +3452,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_029",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -3466,9 +3574,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_030",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -3585,9 +3696,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_031",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -3704,9 +3818,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_032",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -3823,9 +3940,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_033",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -3942,9 +4062,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_034",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -4061,9 +4184,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_035",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -4180,9 +4306,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_036",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -4299,9 +4428,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_037",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -4418,9 +4550,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_038",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -4537,9 +4672,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_039",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -4656,9 +4794,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_040",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -4775,9 +4916,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_041",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -4894,9 +5038,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_042",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -5013,9 +5160,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_043",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -5132,9 +5282,12 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_collocation_cat13_coll_044",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -5176,7 +5329,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -5253,9 +5406,15 @@
         "text": "eine Prüfung machen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_contrast_cat13_cs_001",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -5297,7 +5456,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -5378,9 +5537,15 @@
         "text": "die Übung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_contrast_cat13_cs_002",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -5422,7 +5587,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -5503,9 +5668,15 @@
         "text": "die Lösung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_contrast_cat13_cs_003",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -5547,7 +5718,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -5628,9 +5799,15 @@
         "text": "eine Antwort stellen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_contrast_cat13_cs_004",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -5672,7 +5849,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -5753,9 +5930,15 @@
         "text": "ein Beispiel schreiben",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_contrast_cat13_cs_005",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -5797,7 +5980,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -5878,9 +6061,15 @@
         "text": "den Fehler kontrollieren",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_contrast_cat13_cs_006",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -5922,7 +6111,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -6003,9 +6192,15 @@
         "text": "die Antwort verbessern",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_contrast_cat13_cs_007",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -6047,7 +6242,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -6128,9 +6323,15 @@
         "text": "die Antwort ergänzen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_contrast_cat13_cs_008",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -6172,7 +6373,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -6253,9 +6454,15 @@
         "text": "die Antwort abgeben",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_contrast_cat13_cs_009",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -6297,7 +6504,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -6378,9 +6585,15 @@
         "text": "Ich den Bogen abgebe.",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_contrast_cat13_cs_010",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -6422,7 +6635,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -6503,9 +6716,15 @@
         "text": "Ordnen die Begriffe Sie zu.",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_contrast_cat13_cs_011",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -6547,7 +6766,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -6628,9 +6847,15 @@
         "text": "Bewertung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_contrast_cat13_cs_012",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -6672,7 +6897,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -6753,9 +6978,15 @@
         "text": "die Erklärung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_contrast_cat13_cs_013",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -6797,7 +7028,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -6878,9 +7109,15 @@
         "text": "die Bewertung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_contrast_cat13_cs_014",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -6922,7 +7159,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -7003,9 +7240,15 @@
         "text": "der Antwortbogen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_contrast_cat13_cs_015",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -7047,7 +7290,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -7128,9 +7371,15 @@
         "text": "das Redemittel",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_contrast_cat13_cs_016",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -7172,7 +7421,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -7253,9 +7502,15 @@
         "text": "der Lesetext",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_contrast_cat13_cs_017",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -7297,7 +7552,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -7378,9 +7633,15 @@
         "text": "telefonisch",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_contrast_cat13_cs_018",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -7422,7 +7683,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -7503,9 +7764,15 @@
         "text": "Ich bereite die Prüfung vor mich.",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_contrast_cat13_cs_019",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -7547,7 +7814,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -7628,9 +7895,15 @@
         "text": "Ich warte zu dem Ergebnis.",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_contrast_cat13_cs_020",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -7672,7 +7945,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -7753,9 +8026,15 @@
         "text": "Achten Sie an die Endung.",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_contrast_cat13_cs_021",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -7797,7 +8076,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -7878,9 +8157,15 @@
         "text": "Was ist das?",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_contrast_cat13_cs_022",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -7922,7 +8207,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -8003,9 +8288,15 @@
         "text": "Machen Sie Feedback.",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_contrast_cat13_cs_023",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -8047,7 +8338,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -8128,9 +8419,15 @@
         "text": "Ich habe Prüfung bestanden.",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_contrast_cat13_cs_024",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -8172,7 +8469,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -8253,9 +8550,15 @@
         "text": "die Aufgabe begründen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_contrast_cat13_cs_025",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -8297,7 +8600,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -8378,9 +8681,15 @@
         "text": "das Wort zusammenfassen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_contrast_cat13_cs_026",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -8422,7 +8731,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -8503,9 +8812,15 @@
         "text": "Ich habe keine Ahnung gehabt.",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_001",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -8547,7 +8862,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -8600,9 +8915,15 @@
     "prompt_de": "Ich möchte eine Frage ___.",
     "learnerCue": "Ich möchte eine Frage ___.",
     "support_en": "",
-    "microRule": "Collocation: use `eine Frage stellen` for asking a question."
+    "microRule": "Collocation: use `eine Frage stellen` for asking a question.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_002",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -8644,7 +8965,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -8697,9 +9018,15 @@
     "prompt_de": "Könnten Sie die Aufgabe bitte ___?",
     "learnerCue": "Könnten Sie die Aufgabe bitte ___?",
     "support_en": "",
-    "microRule": "`erklären` means explain; use it when you need the rule or task made clearer."
+    "microRule": "`erklären` means explain; use it when you need the rule or task made clearer.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_003",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -8741,7 +9068,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -8794,9 +9121,15 @@
     "prompt_de": "Könnten Sie das bitte ___?",
     "learnerCue": "Könnten Sie das bitte ___?",
     "support_en": "",
-    "microRule": "`wiederholen` means repeat; use it when you did not hear or need more practice."
+    "microRule": "`wiederholen` means repeat; use it when you did not hear or need more practice.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_004",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -8838,7 +9171,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -8892,9 +9225,15 @@
     "prompt_de": "Könnten Sie bitte ein Beispiel ___?",
     "learnerCue": "Könnten Sie bitte ein Beispiel ___?",
     "support_en": "",
-    "microRule": "`ein Beispiel geben` means give an example."
+    "microRule": "`ein Beispiel geben` means give an example.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_005",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -8936,7 +9275,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -8990,9 +9329,15 @@
     "prompt_de": "Was ___ dieses Wort?",
     "learnerCue": "Was ___ dieses Wort?",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_006",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -9034,7 +9379,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -9087,9 +9432,15 @@
     "prompt_de": "Bringe die Wörter in eine natürliche Reihenfolge. ___",
     "learnerCue": "schreibt · man · wie · das",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_007",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -9131,7 +9482,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -9184,9 +9535,15 @@
     "prompt_de": "Wie spricht man das ___?",
     "learnerCue": "Wie spricht man das ___?",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_008",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -9228,7 +9585,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -9282,9 +9639,15 @@
     "prompt_de": "Können Sie meine Antwort bitte ___?",
     "learnerCue": "Können Sie meine Antwort bitte ___?",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_009",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -9326,7 +9689,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -9379,9 +9742,15 @@
     "prompt_de": "Könnten Sie mir bitte Rückmeldung ___?",
     "learnerCue": "Könnten Sie mir bitte Rückmeldung ___?",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_010",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -9423,7 +9792,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -9476,9 +9845,15 @@
     "prompt_de": "Ich möchte meine Aussprache ___.",
     "learnerCue": "Ich möchte meine Aussprache ___.",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_011",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -9520,7 +9895,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -9573,9 +9948,15 @@
     "prompt_de": "Ich muss den Lernstoff ___.",
     "learnerCue": "Ich muss den Lernstoff ___.",
     "support_en": "",
-    "microRule": "`wiederholen` means repeat; use it when you did not hear or need more practice."
+    "microRule": "`wiederholen` means repeat; use it when you did not hear or need more practice.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_012",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -9617,7 +9998,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -9672,9 +10053,15 @@
     "prompt_de": "Ich mache mir im Unterricht ___.",
     "learnerCue": "Ich mache mir im Unterricht ___.",
     "support_en": "",
-    "microRule": "German uses `Notizen machen` for taking notes."
+    "microRule": "German uses `Notizen machen` for taking notes.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_013",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -9716,7 +10103,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -9769,9 +10156,15 @@
     "prompt_de": "Ich bereite mich ___ die Prüfung vor.",
     "learnerCue": "Ich bereite mich ___ die Prüfung vor.",
     "support_en": "",
-    "microRule": "`sich auf etwas vorbereiten` takes `auf`: sich auf die Prüfung vorbereiten."
+    "microRule": "`sich auf etwas vorbereiten` takes `auf`: sich auf die Prüfung vorbereiten.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_014",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -9813,7 +10206,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -9868,9 +10261,15 @@
     "prompt_de": "Ich warte noch ___ das Ergebnis.",
     "learnerCue": "Ich warte noch ___ das Ergebnis.",
     "support_en": "",
-    "microRule": "`warten` uses `auf + accusative`."
+    "microRule": "`warten` uses `auf + accusative`.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_015",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -9912,7 +10311,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -9967,9 +10366,15 @@
     "prompt_de": "Ich habe die Prüfung ___.",
     "learnerCue": "Ich habe die Prüfung ___.",
     "support_en": "",
-    "microRule": "Use `eine Prüfung bestehen` for passing an exam."
+    "microRule": "Use `eine Prüfung bestehen` for passing an exam.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_016",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -10011,7 +10416,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -10067,9 +10472,15 @@
     "prompt_de": "Ich habe das Ergebnis noch nicht ___.",
     "learnerCue": "Ich habe das Ergebnis noch nicht ___.",
     "support_en": "",
-    "microRule": "Use `bekommen` or more formal `erhalten` for receiving a result."
+    "microRule": "Use `bekommen` or more formal `erhalten` for receiving a result.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_017",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -10111,7 +10522,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -10165,9 +10576,15 @@
     "prompt_de": "Bitte ___ Sie die Lücke.",
     "learnerCue": "Bitte ___ Sie die Lücke.",
     "support_en": "",
-    "microRule": "`Lücke` is the gap/blank in a task."
+    "microRule": "`Lücke` is the gap/blank in a task.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_018",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -10209,7 +10626,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -10264,9 +10681,15 @@
     "prompt_de": "Kreuzen Sie die richtige Antwort ___.",
     "learnerCue": "Kreuzen Sie die richtige Antwort ___.",
     "support_en": "",
-    "microRule": "Separable verb: `ankreuzen` → `kreuzen ... an`."
+    "microRule": "Separable verb: `ankreuzen` → `kreuzen ... an`.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_019",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -10308,7 +10731,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -10363,9 +10786,15 @@
     "prompt_de": "Ordnen Sie die Begriffe ___.",
     "learnerCue": "Ordnen Sie die Begriffe ___.",
     "support_en": "",
-    "microRule": "Separable verb: `zuordnen` → `ordnen ... zu`."
+    "microRule": "Separable verb: `zuordnen` → `ordnen ... zu`.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_020",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -10407,7 +10836,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -10460,9 +10889,15 @@
     "prompt_de": "Ich gebe den Antwortbogen ___.",
     "learnerCue": "Ich gebe den Antwortbogen ___.",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_021",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -10504,7 +10939,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -10557,9 +10992,15 @@
     "prompt_de": "Nennen Sie zwei ___.",
     "learnerCue": "Nennen Sie zwei ___.",
     "support_en": "",
-    "microRule": "`ein Beispiel geben` means give an example."
+    "microRule": "`ein Beispiel geben` means give an example.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_022",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -10601,7 +11042,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -10656,9 +11097,15 @@
     "prompt_de": "Fassen Sie den Text kurz ___.",
     "learnerCue": "Fassen Sie den Text kurz ___.",
     "support_en": "",
-    "microRule": "Separable verb: `zusammenfassen` → `fassen ... zusammen`."
+    "microRule": "Separable verb: `zusammenfassen` → `fassen ... zusammen`.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_023",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -10700,7 +11147,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -10756,9 +11203,15 @@
     "prompt_de": "Bitte begründen Sie Ihre ___.",
     "learnerCue": "Bitte begründen Sie Ihre ___.",
     "support_en": "",
-    "microRule": "Use `begründen` when you give reasons for an opinion or answer."
+    "microRule": "Use `begründen` when you give reasons for an opinion or answer.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_024",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -10800,7 +11253,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -10853,9 +11306,15 @@
     "prompt_de": "Beschreiben Sie das Bild ___.",
     "learnerCue": "Beschreiben Sie das Bild ___.",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_025",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -10897,7 +11356,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -10950,9 +11409,15 @@
     "prompt_de": "Ich war mir bei der Antwort nicht ___.",
     "learnerCue": "Ich war mir bei der Antwort nicht ___.",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_026",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -10994,7 +11459,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -11047,9 +11512,15 @@
     "prompt_de": "Ich mache oft Fehler bei der ___.",
     "learnerCue": "Ich mache oft Fehler bei der ___.",
     "support_en": "",
-    "microRule": "`Fehler` is a mistake/error; `Korrektur` is the correction."
+    "microRule": "`Fehler` is a mistake/error; `Korrektur` is the correction.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_027",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -11091,7 +11562,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -11144,9 +11615,15 @@
     "prompt_de": "Ich mache langsam ___.",
     "learnerCue": "Ich mache langsam ___.",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_028",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -11188,7 +11665,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -11242,9 +11719,15 @@
     "prompt_de": "Ich möchte meinen Wortschatz ___.",
     "learnerCue": "Ich möchte meinen Wortschatz ___.",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_029",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -11286,7 +11769,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -11339,9 +11822,15 @@
     "prompt_de": "Achten Sie auf die ___.",
     "learnerCue": "Achten Sie auf die ___.",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_030",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -11383,7 +11872,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -11436,9 +11925,15 @@
     "prompt_de": "Ich lerne neue Wörter mit ___.",
     "learnerCue": "Ich lerne neue Wörter mit ___.",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_031",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -11530,12 +12025,15 @@
       "Ich möchte eine Frage stellen."
     ],
     "fullAnswer_de": "Ich möchte eine Frage stellen.",
-    "prompt_de": "Ich möchte Frage stellen.",
-    "learnerCue": "Korrigiere den Satz.",
+    "prompt_de": "Korrigiere den Satz.",
+    "learnerCue": "Ich möchte Frage stellen.",
     "support_en": "",
-    "microRule": "Collocation: use `eine Frage stellen` for asking a question."
+    "microRule": "Collocation: use `eine Frage stellen` for asking a question.",
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_032",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -11627,12 +12125,15 @@
       "Könnten Sie die Aufgabe bitte erklären?"
     ],
     "fullAnswer_de": "Könnten Sie die Aufgabe bitte erklären?",
-    "prompt_de": "Könnten Sie Aufgabe bitte erklären?",
-    "learnerCue": "Korrigiere den Satz.",
+    "prompt_de": "Korrigiere den Satz.",
+    "learnerCue": "Könnten Sie Aufgabe bitte erklären?",
     "support_en": "",
-    "microRule": "`erklären` means explain; use it when you need the rule or task made clearer."
+    "microRule": "`erklären` means explain; use it when you need the rule or task made clearer.",
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_033",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -11724,12 +12225,15 @@
       "Können Sie das bitte wiederholen?"
     ],
     "fullAnswer_de": "Können Sie das bitte wiederholen?",
-    "prompt_de": "Können Sie wiederholen das bitte?",
-    "learnerCue": "Korrigiere den Satz.",
+    "prompt_de": "Korrigiere den Satz.",
+    "learnerCue": "Können Sie wiederholen das bitte?",
     "support_en": "",
-    "microRule": "`wiederholen` means repeat; use it when you did not hear or need more practice."
+    "microRule": "`wiederholen` means repeat; use it when you did not hear or need more practice.",
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_034",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -11821,12 +12325,15 @@
       "Könnten Sie ein Beispiel geben?"
     ],
     "fullAnswer_de": "Könnten Sie ein Beispiel geben?",
-    "prompt_de": "Könnten Sie ein Beispiel machen?",
-    "learnerCue": "Korrigiere den Satz.",
+    "prompt_de": "Korrigiere den Satz.",
+    "learnerCue": "Könnten Sie ein Beispiel machen?",
     "support_en": "",
-    "microRule": "`ein Beispiel geben` means give an example."
+    "microRule": "`ein Beispiel geben` means give an example.",
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_035",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -11918,12 +12425,15 @@
       "Wie schreibt man das?"
     ],
     "fullAnswer_de": "Wie schreibt man das?",
-    "prompt_de": "Wie man schreibt das?",
-    "learnerCue": "Korrigiere den Satz.",
+    "prompt_de": "Korrigiere den Satz.",
+    "learnerCue": "Wie man schreibt das?",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_036",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -12015,12 +12525,15 @@
       "Wie spricht man das aus?"
     ],
     "fullAnswer_de": "Wie spricht man das aus?",
-    "prompt_de": "Wie sprecht man das aus?",
-    "learnerCue": "Korrigiere den Satz.",
+    "prompt_de": "Korrigiere den Satz.",
+    "learnerCue": "Wie sprecht man das aus?",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_037",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -12112,12 +12625,15 @@
       "Ich möchte meine Aussprache verbessern."
     ],
     "fullAnswer_de": "Ich möchte meine Aussprache verbessern.",
-    "prompt_de": "Ich will meine Aussprache korrigieren.",
-    "learnerCue": "Korrigiere den Satz.",
+    "prompt_de": "Korrigiere den Satz.",
+    "learnerCue": "Ich will meine Aussprache korrigieren.",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_038",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -12209,12 +12725,15 @@
       "Ich mache mir Notizen."
     ],
     "fullAnswer_de": "Ich mache mir Notizen.",
-    "prompt_de": "Ich nehme Notizen.",
-    "learnerCue": "Korrigiere den Satz.",
+    "prompt_de": "Korrigiere den Satz.",
+    "learnerCue": "Ich nehme Notizen.",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_039",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -12306,12 +12825,15 @@
       "Ich bereite mich auf die Prüfung vor."
     ],
     "fullAnswer_de": "Ich bereite mich auf die Prüfung vor.",
-    "prompt_de": "Ich vorbereite mich auf die Prüfung.",
-    "learnerCue": "Korrigiere den Satz.",
+    "prompt_de": "Korrigiere den Satz.",
+    "learnerCue": "Ich vorbereite mich auf die Prüfung.",
     "support_en": "",
-    "microRule": "`sich auf etwas vorbereiten` takes `auf`: sich auf die Prüfung vorbereiten."
+    "microRule": "`sich auf etwas vorbereiten` takes `auf`: sich auf die Prüfung vorbereiten.",
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_040",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -12353,7 +12875,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -12408,9 +12930,15 @@
     "prompt_de": "Ich warte das Ergebnis.",
     "learnerCue": "Korrigiere den Satz.",
     "support_en": "",
-    "microRule": "Use `warten auf + accusative`."
+    "microRule": "Use `warten auf + accusative`.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_041",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -12452,7 +12980,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -12507,9 +13035,15 @@
     "prompt_de": "Ich bin die Prüfung bestanden.",
     "learnerCue": "Korrigiere den Satz.",
     "support_en": "",
-    "microRule": "Perfekt: `bestehen` usually takes `haben` here."
+    "microRule": "Perfekt: `bestehen` usually takes `haben` here.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_042",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -12601,12 +13135,15 @@
       "Ich gebe den Antwortbogen ab."
     ],
     "fullAnswer_de": "Ich gebe den Antwortbogen ab.",
-    "prompt_de": "Ich gebe ab den Antwortbogen.",
-    "learnerCue": "Korrigiere den Satz.",
+    "prompt_de": "Korrigiere den Satz.",
+    "learnerCue": "Ich gebe ab den Antwortbogen.",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_043",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -12698,12 +13235,15 @@
       "Ich mache Fortschritte."
     ],
     "fullAnswer_de": "Ich mache Fortschritte.",
-    "prompt_de": "Ich mache Fortschritt.",
-    "learnerCue": "Korrigiere den Satz.",
+    "prompt_de": "Korrigiere den Satz.",
+    "learnerCue": "Ich mache Fortschritt.",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_044",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -12795,12 +13335,15 @@
       "Achten Sie auf die Endung."
     ],
     "fullAnswer_de": "Achten Sie auf die Endung.",
-    "prompt_de": "Achten Sie die Endung.",
-    "learnerCue": "Korrigiere den Satz.",
+    "prompt_de": "Korrigiere den Satz.",
+    "learnerCue": "Achten Sie die Endung.",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_045",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -12892,12 +13435,15 @@
       "Ich übe das Sprechen."
     ],
     "fullAnswer_de": "Ich übe das Sprechen.",
-    "prompt_de": "Ich praktiziere das Sprechen.",
-    "learnerCue": "Korrigiere den Satz.",
+    "prompt_de": "Korrigiere den Satz.",
+    "learnerCue": "Ich praktiziere das Sprechen.",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_046",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -12989,12 +13535,15 @@
       "Ich lerne für die Prüfung."
     ],
     "fullAnswer_de": "Ich lerne für die Prüfung.",
-    "prompt_de": "Ich studiere für die Prüfung.",
-    "learnerCue": "Korrigiere den Satz.",
+    "prompt_de": "Korrigiere den Satz.",
+    "learnerCue": "Ich studiere für die Prüfung.",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_047",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -13036,7 +13585,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -13091,9 +13640,15 @@
     "prompt_de": "Summieren Sie den Text.",
     "learnerCue": "Korrigiere den Satz.",
     "support_en": "",
-    "microRule": "Use `zusammenfassen` for summarising a text."
+    "microRule": "Use `zusammenfassen` for summarising a text.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_048",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -13135,7 +13690,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -13190,9 +13745,15 @@
     "prompt_de": "Sagen Sie zwei Beispiele.",
     "learnerCue": "Korrigiere den Satz.",
     "support_en": "",
-    "microRule": "Task verb: `nennen` means give/name examples."
+    "microRule": "Task verb: `nennen` means give/name examples.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_049",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -13284,12 +13845,15 @@
       "Könnten Sie das bitte erklären?"
     ],
     "fullAnswer_de": "Könnten Sie das bitte erklären?",
-    "prompt_de": "Ich will eine Erklärung.",
-    "learnerCue": "Korrigiere den Satz.",
+    "prompt_de": "Korrigiere den Satz.",
+    "learnerCue": "Ich will eine Erklärung.",
     "support_en": "",
-    "microRule": "`erklären` means explain; use it when you need the rule or task made clearer."
+    "microRule": "`erklären` means explain; use it when you need the rule or task made clearer.",
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_050",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -13381,12 +13945,15 @@
       "Ich war mir bei der Antwort nicht sicher."
     ],
     "fullAnswer_de": "Ich war mir bei der Antwort nicht sicher.",
-    "prompt_de": "Ich war nicht sicher bei die Antwort.",
-    "learnerCue": "Korrigiere den Satz.",
+    "prompt_de": "Korrigiere den Satz.",
+    "learnerCue": "Ich war nicht sicher bei die Antwort.",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_051",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -13428,7 +13995,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -13505,9 +14072,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "Contrast: Prüfung is the exam event."
+    "microRule": "Contrast: Prüfung is the exam event.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_052",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -13549,7 +14122,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -13626,9 +14199,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "Contrast: Aufgabe is the whole task."
+    "microRule": "Contrast: Aufgabe is the whole task.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_053",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -13670,7 +14249,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -13747,9 +14326,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "Contrast: Standard collocation is `eine Frage stellen`."
+    "microRule": "Contrast: Standard collocation is `eine Frage stellen`.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_054",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -13791,7 +14376,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -13868,9 +14453,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "Contrast: `geben` is natural for offering an example."
+    "microRule": "Contrast: `geben` is natural for offering an example.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_055",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -13912,7 +14503,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -13989,9 +14580,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "Contrast: Mistakes are corrected."
+    "microRule": "Contrast: Mistakes are corrected.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_056",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -14033,7 +14630,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -14110,9 +14707,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "Contrast: The target is improvement of a skill."
+    "microRule": "Contrast: The target is improvement of a skill.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_057",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -14154,7 +14757,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -14231,9 +14834,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "Contrast: Use `ergänzen` for adding a missing part in a sentence."
+    "microRule": "Contrast: Use `ergänzen` for adding a missing part in a sentence.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_058",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -14275,7 +14884,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -14352,9 +14961,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "Contrast: `ankreuzen` means mark an option."
+    "microRule": "Contrast: `ankreuzen` means mark an option.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_059",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -14396,7 +15011,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -14473,9 +15088,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "Contrast: Finite part in position 2; prefix at the end."
+    "microRule": "Contrast: Finite part in position 2; prefix at the end.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_060",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -14517,7 +15138,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -14594,9 +15215,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "Contrast: Imperative separates `zu`."
+    "microRule": "Contrast: Imperative separates `zu`.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_061",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -14638,7 +15265,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -14715,9 +15342,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "Contrast: Rückmeldung is feedback/reply."
+    "microRule": "Contrast: Rückmeldung is feedback/reply.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_062",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -14759,7 +15392,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -14836,9 +15469,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "Contrast: Lösung is the solution/correct result."
+    "microRule": "Contrast: Lösung is the solution/correct result.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_063",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -14880,7 +15519,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -14957,9 +15596,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "Contrast: Wiederholung is revision/repetition."
+    "microRule": "Contrast: Wiederholung is revision/repetition.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_064",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -15001,7 +15646,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -15078,9 +15723,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "Contrast: Kursbuch is the main coursebook."
+    "microRule": "Contrast: Kursbuch is the main coursebook.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_065",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -15122,7 +15773,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -15199,9 +15850,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "Contrast: A Vokabel is an individual vocabulary item."
+    "microRule": "Contrast: A Vokabel is an individual vocabulary item.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_066",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -15243,7 +15900,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -15320,9 +15977,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "Contrast: Hörverstehen is the skill/section."
+    "microRule": "Contrast: Hörverstehen is the skill/section.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_067",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -15364,7 +16027,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -15441,9 +16104,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "Contrast: mündlich relates to spoken/oral tasks."
+    "microRule": "Contrast: mündlich relates to spoken/oral tasks.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_068",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -15485,7 +16154,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -15562,9 +16231,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "Contrast: The frame is `sich auf etwas vorbereiten`."
+    "microRule": "Contrast: The frame is `sich auf etwas vorbereiten`.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_069",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -15606,7 +16281,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -15683,9 +16358,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "Contrast: Use `warten auf + accusative`."
+    "microRule": "Contrast: Use `warten auf + accusative`.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_070",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -15727,7 +16408,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -15804,9 +16485,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "Contrast: Use `achten auf + accusative`."
+    "microRule": "Contrast: Use `achten auf + accusative`.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_071",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -15848,7 +16535,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -15925,9 +16612,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "Contrast: Könnten Sie bitte is polite."
+    "microRule": "Contrast: Könnten Sie bitte is polite.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_072",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -15969,7 +16662,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -16046,9 +16739,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "Contrast: Polite and natural feedback request."
+    "microRule": "Contrast: Polite and natural feedback request.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_073",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -16090,7 +16789,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -16167,9 +16866,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "Contrast: You pass an exam/test."
+    "microRule": "Contrast: You pass an exam/test.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_074",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -16211,7 +16916,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -16288,9 +16993,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "Contrast: You describe a picture/situation."
+    "microRule": "Contrast: You describe a picture/situation.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_075",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -16332,7 +17043,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -16409,9 +17120,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "Contrast: You summarise a text."
+    "microRule": "Contrast: You summarise a text.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_076",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -16453,7 +17170,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -16530,9 +17247,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "Contrast: Not sure means uncertainty."
+    "microRule": "Contrast: Not sure means uncertainty.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_077",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -16574,7 +17297,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -16627,9 +17350,15 @@
     "prompt_de": "Bringe die Wörter in eine natürliche Reihenfolge. ___",
     "learnerCue": "Könnten · Sie · die Aufgabe · bitte · erklären",
     "support_en": "",
-    "microRule": "`erklären` means explain; use it when you need the rule or task made clearer."
+    "microRule": "`erklären` means explain; use it when you need the rule or task made clearer.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_078",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -16671,7 +17400,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -16724,9 +17453,15 @@
     "prompt_de": "Bringe die Wörter in eine natürliche Reihenfolge. ___",
     "learnerCue": "Können · Sie · das · bitte · noch einmal · sagen",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_079",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -16768,7 +17503,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -16821,9 +17556,15 @@
     "prompt_de": "Bringe die Wörter in eine natürliche Reihenfolge. ___",
     "learnerCue": "Ich · bereite · mich · auf die Prüfung · vor",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_080",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -16865,7 +17606,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -16920,9 +17661,15 @@
     "prompt_de": "Bringe die Wörter in eine natürliche Reihenfolge. ___",
     "learnerCue": "Ich · warte · noch · auf das Ergebnis",
     "support_en": "",
-    "microRule": "Use `warten auf` for waiting for a result."
+    "microRule": "Use `warten auf` for waiting for a result.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_081",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -16964,7 +17711,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -17019,9 +17766,15 @@
     "prompt_de": "Bringe die Wörter in eine natürliche Reihenfolge. ___",
     "learnerCue": "Im Unterricht · mache · ich · mir · Notizen",
     "support_en": "",
-    "microRule": "Fronted phrase first: finite verb stays in position 2."
+    "microRule": "Fronted phrase first: finite verb stays in position 2.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_082",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -17063,7 +17816,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -17116,9 +17869,15 @@
     "prompt_de": "Bringe die Wörter in eine natürliche Reihenfolge. ___",
     "learnerCue": "Ich · bitte · um · Rückmeldung",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_083",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -17160,7 +17919,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -17213,9 +17972,15 @@
     "prompt_de": "Bringe die Wörter in eine natürliche Reihenfolge. ___",
     "learnerCue": "Ich · möchte · meine Aussprache · verbessern",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_084",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -17257,7 +18022,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -17312,9 +18077,15 @@
     "prompt_de": "Bringe die Wörter in eine natürliche Reihenfolge. ___",
     "learnerCue": "Ich · gebe · den Antwortbogen · ab",
     "support_en": "",
-    "microRule": "Separable verb: `ab` goes to the end."
+    "microRule": "Separable verb: `ab` goes to the end.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_085",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -17356,7 +18127,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -17409,9 +18180,15 @@
     "prompt_de": "Bringe die Wörter in eine natürliche Reihenfolge. ___",
     "learnerCue": "Ich · war · mir · nicht · sicher",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_086",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -17453,7 +18230,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -17506,9 +18283,15 @@
     "prompt_de": "Bringe die Wörter in eine natürliche Reihenfolge. ___",
     "learnerCue": "Achten · Sie · bitte · auf die Endung",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_087",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -17611,9 +18394,14 @@
       "Self-mark only if you practised it."
     ],
     "support_en": "",
-    "microRule": "Production is practice only: ask clearly for help or describe your learning need; do not treat this as exam advice."
+    "microRule": "Production is practice only: ask clearly for help or describe your learning need; do not treat this as exam advice.",
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_088",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -17716,9 +18504,14 @@
       "Self-mark only if you practised it."
     ],
     "support_en": "",
-    "microRule": "Production is practice only: ask clearly for help or describe your learning need; do not treat this as exam advice."
+    "microRule": "Production is practice only: ask clearly for help or describe your learning need; do not treat this as exam advice.",
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_089",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -17821,9 +18614,14 @@
       "Self-mark only if you practised it."
     ],
     "support_en": "",
-    "microRule": "Production is practice only: ask clearly for help or describe your learning need; do not treat this as exam advice."
+    "microRule": "Production is practice only: ask clearly for help or describe your learning need; do not treat this as exam advice.",
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_090",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -17926,9 +18724,14 @@
       "Self-mark only if you practised it."
     ],
     "support_en": "",
-    "microRule": "Production is practice only: ask clearly for help or describe your learning need; do not treat this as exam advice."
+    "microRule": "Production is practice only: ask clearly for help or describe your learning need; do not treat this as exam advice.",
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_091",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -18031,9 +18834,14 @@
       "Self-mark only if you practised it."
     ],
     "support_en": "",
-    "microRule": "Production is practice only: ask clearly for help or describe your learning need; do not treat this as exam advice."
+    "microRule": "Production is practice only: ask clearly for help or describe your learning need; do not treat this as exam advice.",
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_092",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -18138,9 +18946,14 @@
       "Self-mark only if you practised it."
     ],
     "support_en": "",
-    "microRule": "Self-check: Did you ask about the result without claiming a score?"
+    "microRule": "Self-check: Did you ask about the result without claiming a score?",
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_093",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -18243,9 +19056,14 @@
       "Self-mark only if you practised it."
     ],
     "support_en": "",
-    "microRule": "Production is practice only: ask clearly for help or describe your learning need; do not treat this as exam advice."
+    "microRule": "Production is practice only: ask clearly for help or describe your learning need; do not treat this as exam advice.",
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_094",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -18348,9 +19166,14 @@
       "Self-mark only if you practised it."
     ],
     "support_en": "",
-    "microRule": "Production is practice only: ask clearly for help or describe your learning need; do not treat this as exam advice."
+    "microRule": "Production is practice only: ask clearly for help or describe your learning need; do not treat this as exam advice.",
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_095",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -18453,9 +19276,14 @@
       "Self-mark only if you practised it."
     ],
     "support_en": "",
-    "microRule": "Production is practice only: ask clearly for help or describe your learning need; do not treat this as exam advice."
+    "microRule": "Production is practice only: ask clearly for help or describe your learning need; do not treat this as exam advice.",
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_096",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -18558,7 +19386,12 @@
       "Self-mark only if you practised it."
     ],
     "support_en": "",
-    "microRule": "Production is practice only: ask clearly for help or describe your learning need; do not treat this as exam advice."
+    "microRule": "Production is practice only: ask clearly for help or describe your learning need; do not treat this as exam advice.",
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
   },
   {
     "id": "v080149_cat13_practice_family_cat13_pf_097",
@@ -18911,7 +19744,7 @@
     "support_en": "",
     "microRule": "`Kursbuch` is the main coursebook."
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_100",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -18953,7 +19786,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -19030,7 +19863,13 @@
       }
     ],
     "support_en": "",
-    "microRule": "`Arbeitsbuch` is a workbook for exercises."
+    "microRule": "`Arbeitsbuch` is a workbook for exercises.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
   {
     "id": "v080149_cat13_practice_family_cat13_pf_101",
@@ -19266,7 +20105,7 @@
     "support_en": "",
     "microRule": "A `Karteikarte` is used for practising words."
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_103",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -19308,7 +20147,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -19385,9 +20224,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "The `Aufgabenstellung` is the wording of the task."
+    "microRule": "The `Aufgabenstellung` is the wording of the task.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_104",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -19429,7 +20274,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -19506,9 +20351,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "`Reihenfolge` means order or sequence."
+    "microRule": "`Reihenfolge` means order or sequence.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_105",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -19550,7 +20401,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -19603,9 +20454,15 @@
     "prompt_de": "Ich möchte die mündliche Prüfung ___.",
     "learnerCue": "Ich möchte die mündliche Prüfung ___.",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_106",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -19647,7 +20504,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -19700,9 +20557,15 @@
     "prompt_de": "Die schriftliche Prüfung ___ um neun Uhr.",
     "learnerCue": "Die schriftliche Prüfung ___ um neun Uhr.",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_107",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -19744,7 +20607,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -19797,9 +20660,15 @@
     "prompt_de": "Wir hören den Hörtext ___.",
     "learnerCue": "Wir hören den Hörtext ___.",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_108",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -19841,7 +20710,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -19894,9 +20763,15 @@
     "prompt_de": "Bitte lesen Sie den Lesetext ___.",
     "learnerCue": "Bitte lesen Sie den Lesetext ___.",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_109",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -19938,7 +20813,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -19991,9 +20866,15 @@
     "prompt_de": "Ich schreibe die Antwort ___.",
     "learnerCue": "Ich schreibe die Antwort ___.",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_110",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -20035,7 +20916,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -20088,9 +20969,15 @@
     "prompt_de": "Bitte füllen Sie die Tabelle ___.",
     "learnerCue": "Bitte füllen Sie die Tabelle ___.",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_111",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -20132,7 +21019,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -20187,9 +21074,15 @@
     "prompt_de": "Bitte verbinden Sie die passenden ___.",
     "learnerCue": "Bitte verbinden Sie die passenden ___.",
     "support_en": "",
-    "microRule": "`verbinden` means connect/match here."
+    "microRule": "`verbinden` means connect/match here.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_112",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -20231,7 +21124,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -20284,9 +21177,15 @@
     "prompt_de": "Kann ich den Satz bitte ___?",
     "learnerCue": "Kann ich den Satz bitte ___?",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_113",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -20328,7 +21227,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -20381,9 +21280,15 @@
     "prompt_de": "Ich möchte meine Meinung ___.",
     "learnerCue": "Ich möchte meine Meinung ___.",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_114",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -20425,7 +21330,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -20478,9 +21383,15 @@
     "prompt_de": "Nennen Sie einen ___.",
     "learnerCue": "Nennen Sie einen ___.",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_115",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -20522,7 +21433,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -20575,9 +21486,15 @@
     "prompt_de": "Nennen Sie einen ___.",
     "learnerCue": "Nennen Sie einen ___.",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_practice_family_cat13_pf_116",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -20619,7 +21536,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -20672,7 +21589,13 @@
     "prompt_de": "Ich erkenne den Unterschied noch ___.",
     "learnerCue": "Ich erkenne den Unterschied noch ___.",
     "support_en": "",
-    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims."
+    "microRule": "Keep learning/exam language factual: name the task, ask for clarification, and avoid exam-readiness claims.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
   {
     "id": "v080149_cat13_redemittel_cat13_r_001",
@@ -21754,7 +22677,7 @@
     "support_en": "How do you pronounce that?",
     "microRule": "Watch: unnatural phrase"
   },
-  {
+    {
     "id": "v080149_cat13_redemittel_cat13_r_010",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -21796,7 +22719,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -21874,9 +22797,15 @@
     ],
     "section": "ask_task_action",
     "support_en": "What exactly should I do?",
-    "microRule": "Watch: word-order issue"
+    "microRule": "Watch: word-order issue",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_redemittel_cat13_r_011",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -21918,7 +22847,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -21996,9 +22925,15 @@
     ],
     "section": "ask_task_action",
     "support_en": "Do I have to write full sentences?",
-    "microRule": "Watch: verb placement"
+    "microRule": "Watch: verb placement",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_redemittel_cat13_r_012",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -22040,7 +22975,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -22118,7 +23053,13 @@
     ],
     "section": "ask_task_action",
     "support_en": "Should I tick or write the answer?",
-    "microRule": "Watch: separable/missing an-"
+    "microRule": "Watch: separable/missing an-",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
   {
     "id": "v080149_cat13_redemittel_cat13_r_013",
@@ -22600,7 +23541,7 @@
     "support_en": "I would like to improve my pronunciation.",
     "microRule": "Watch: wrong collocation"
   },
-  {
+    {
     "id": "v080149_cat13_redemittel_cat13_r_017",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -22642,7 +23583,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -22720,9 +23661,15 @@
     ],
     "section": "ask_improvement",
     "support_en": "I need to revise the material.",
-    "microRule": "Watch: less precise"
+    "microRule": "Watch: less precise",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_redemittel_cat13_r_018",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -22827,7 +23774,12 @@
     ],
     "section": "learning_strategy",
     "support_en": "I study twenty minutes every day.",
-    "microRule": "Watch: seit/vor issue belongs CAT15"
+    "microRule": "Watch: seit/vor issue belongs CAT15",
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
   },
   {
     "id": "v080149_cat13_redemittel_cat13_r_019",
@@ -22949,7 +23901,7 @@
     "support_en": "I plan my time better.",
     "microRule": "Watch: missing reflexive/dative"
   },
-  {
+    {
     "id": "v080149_cat13_redemittel_cat13_r_020",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -22991,7 +23943,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -23069,7 +24021,13 @@
     ],
     "section": "learning_strategy",
     "support_en": "I take notes.",
-    "microRule": "Watch: English interference"
+    "microRule": "Watch: English interference",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
   {
     "id": "v080149_cat13_redemittel_cat13_r_021",
@@ -23191,7 +24149,7 @@
     "support_en": "I learn new words with flashcards.",
     "microRule": "Watch: unnatural order"
   },
-  {
+    {
     "id": "v080149_cat13_redemittel_cat13_r_022",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -23296,7 +24254,12 @@
     ],
     "section": "learning_strategy",
     "support_en": "I ask if I do not understand something.",
-    "microRule": "Watch: word order"
+    "microRule": "Watch: word order",
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
   },
   {
     "id": "v080149_cat13_redemittel_cat13_r_023",
@@ -23778,7 +24741,7 @@
     "support_en": "I am not well prepared yet.",
     "microRule": "Watch: wrong auxiliary/state"
   },
-  {
+    {
     "id": "v080149_cat13_redemittel_cat13_r_027",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -23883,7 +24846,12 @@
     ],
     "section": "exam_preparation",
     "support_en": "I would like to practise the oral exam.",
-    "microRule": "Watch: missing article"
+    "microRule": "Watch: missing article",
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
   },
   {
     "id": "v080149_cat13_redemittel_cat13_r_028",
@@ -24005,7 +24973,7 @@
     "support_en": "I need more practice in writing.",
     "microRule": "Watch: unnatural collocation"
   },
-  {
+    {
     "id": "v080149_cat13_redemittel_cat13_r_029",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -24047,7 +25015,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -24125,9 +25093,15 @@
     ],
     "section": "exam_preparation",
     "support_en": "I want to understand the speaking part better.",
-    "microRule": "Watch: less standard compound"
+    "microRule": "Watch: less standard compound",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_redemittel_cat13_r_030",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -24169,7 +25143,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -24247,7 +25221,13 @@
     ],
     "section": "exam_day",
     "support_en": "When does the exam begin?",
-    "microRule": "Watch: also valid; register contrast"
+    "microRule": "Watch: also valid; register contrast",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
   {
     "id": "v080149_cat13_redemittel_cat13_r_031",
@@ -24367,7 +25347,7 @@
     "support_en": "Where is the exam room?",
     "microRule": "Watch: wrong article"
   },
-  {
+    {
     "id": "v080149_cat13_redemittel_cat13_r_032",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -24409,7 +25389,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -24487,9 +25467,15 @@
     ],
     "section": "exam_day",
     "support_en": "May I use a dictionary?",
-    "microRule": "Watch: can vs may nuance"
+    "microRule": "Watch: can vs may nuance",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_redemittel_cat13_r_033",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -24532,7 +25518,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -24610,7 +25596,13 @@
     ],
     "section": "exam_day",
     "support_en": "I have my ID with me.",
-    "microRule": "Watch: article/case error"
+    "microRule": "Watch: article/case error",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
   {
     "id": "v080149_cat13_redemittel_cat13_r_034",
@@ -24730,7 +25722,7 @@
     "support_en": "I handed in the answer sheet.",
     "microRule": "Watch: word order"
   },
-  {
+    {
     "id": "v080149_cat13_redemittel_cat13_r_035",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -24772,7 +25764,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -24850,9 +25842,15 @@
     ],
     "section": "exam_result",
     "support_en": "I passed the exam.",
-    "microRule": "Watch: wrong auxiliary"
+    "microRule": "Watch: wrong auxiliary",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_redemittel_cat13_r_036",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -24894,7 +25892,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -24972,9 +25970,15 @@
     ],
     "section": "exam_result",
     "support_en": "I have not received the result yet.",
-    "microRule": "Watch: article/order"
+    "microRule": "Watch: article/order",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_redemittel_cat13_r_037",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -25016,7 +26020,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -25094,9 +26098,15 @@
     ],
     "section": "exam_result",
     "support_en": "I am still waiting for the result.",
-    "microRule": "Watch: missing preposition"
+    "microRule": "Watch: missing preposition",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_redemittel_cat13_r_038",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -25138,7 +26148,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -25216,7 +26226,13 @@
     ],
     "section": "exam_result",
     "support_en": "Can you please explain the result to me?",
-    "microRule": "Watch: wrong object pattern"
+    "microRule": "Watch: wrong object pattern",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
   {
     "id": "v080149_cat13_redemittel_cat13_r_039",
@@ -25456,7 +26472,7 @@
     "support_en": "Please read the task prompt first.",
     "microRule": "Watch: missing article"
   },
-  {
+    {
     "id": "v080149_cat13_redemittel_cat13_r_041",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -25498,7 +26514,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -25576,9 +26592,15 @@
     ],
     "section": "task_instruction",
     "support_en": "Complete the missing word.",
-    "microRule": "Watch: wrong verb"
+    "microRule": "Watch: wrong verb",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_redemittel_cat13_r_042",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -25620,7 +26642,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -25698,9 +26720,15 @@
     ],
     "section": "task_instruction",
     "support_en": "Tick/select the correct answer.",
-    "microRule": "Watch: separable verb position"
+    "microRule": "Watch: separable verb position",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_redemittel_cat13_r_043",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -25742,7 +26770,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -25820,9 +26848,15 @@
     ],
     "section": "task_instruction",
     "support_en": "Match the sentences.",
-    "microRule": "Watch: separable verb position"
+    "microRule": "Watch: separable verb position",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_redemittel_cat13_r_044",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -25864,7 +26898,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -25942,9 +26976,15 @@
     ],
     "section": "task_instruction",
     "support_en": "Put the words in the correct order.",
-    "microRule": "Watch: wrong collocation"
+    "microRule": "Watch: wrong collocation",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_redemittel_cat13_r_045",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -25986,7 +27026,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -26064,9 +27104,15 @@
     ],
     "section": "task_instruction",
     "support_en": "Name/give two examples.",
-    "microRule": "Watch: less natural for task instruction"
+    "microRule": "Watch: less natural for task instruction",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_redemittel_cat13_r_046",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -26108,7 +27154,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -26186,9 +27232,15 @@
     ],
     "section": "task_instruction",
     "support_en": "Describe the picture briefly.",
-    "microRule": "Watch: different action"
+    "microRule": "Watch: different action",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_redemittel_cat13_r_047",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -26230,7 +27282,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -26308,9 +27360,15 @@
     ],
     "section": "task_instruction",
     "support_en": "Give reasons for your opinion.",
-    "microRule": "Watch: different nuance"
+    "microRule": "Watch: different nuance",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_redemittel_cat13_r_048",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -26352,7 +27410,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -26430,9 +27488,15 @@
     ],
     "section": "task_instruction",
     "support_en": "Summarise the text briefly.",
-    "microRule": "Watch: false friend"
+    "microRule": "Watch: false friend",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_redemittel_cat13_r_049",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -26537,9 +27601,14 @@
     ],
     "section": "self_assessment",
     "support_en": "I can roughly understand the text.",
-    "microRule": "Watch: wrong adverb"
+    "microRule": "Watch: wrong adverb",
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
   },
-  {
+    {
     "id": "v080149_cat13_redemittel_cat13_r_050",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -26642,7 +27711,12 @@
     ],
     "section": "self_assessment",
     "support_en": "I still need help with sentence structure.",
-    "microRule": "Watch: preposition error"
+    "microRule": "Watch: preposition error",
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
   },
   {
     "id": "v080149_cat13_redemittel_cat13_r_051",
@@ -26762,7 +27836,7 @@
     "support_en": "I often make mistakes with word order.",
     "microRule": "Watch: preposition/article error"
   },
-  {
+    {
     "id": "v080149_cat13_redemittel_cat13_r_052",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -26867,9 +27941,14 @@
     ],
     "section": "self_assessment",
     "support_en": "I would like to learn more useful phrases.",
-    "microRule": "Watch: meaning/register mismatch"
+    "microRule": "Watch: meaning/register mismatch",
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
   },
-  {
+    {
     "id": "v080149_cat13_redemittel_cat13_r_053",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -26911,7 +27990,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -26989,7 +28068,13 @@
     ],
     "section": "self_assessment",
     "support_en": "I guessed on this task.",
-    "microRule": "Watch: wrong participle"
+    "microRule": "Watch: wrong participle",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
   {
     "id": "v080149_cat13_redemittel_cat13_r_054",
@@ -27227,7 +28312,7 @@
     "support_en": "Pay attention to the verb position.",
     "microRule": "Watch: missing preposition"
   },
-  {
+    {
     "id": "v080149_cat13_redemittel_cat13_r_056",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -27269,7 +28354,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -27347,9 +28432,15 @@
     ],
     "section": "teacher_feedback",
     "support_en": "The sentence structure is not quite right yet.",
-    "microRule": "Watch: too blunt"
+    "microRule": "Watch: too blunt",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_redemittel_cat13_r_057",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -27391,7 +28482,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -27469,7 +28560,13 @@
     ],
     "section": "teacher_feedback",
     "support_en": "The answer is understandable, but too short.",
-    "microRule": "Watch: vague feedback"
+    "microRule": "Watch: vague feedback",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
   {
     "id": "v080149_cat13_redemittel_cat13_r_058",
@@ -27591,7 +28688,7 @@
     "support_en": "Please give an example.",
     "microRule": "Watch: missing article"
   },
-  {
+    {
     "id": "v080149_cat13_redemittel_cat13_r_059",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -27633,7 +28730,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -27711,9 +28808,15 @@
     ],
     "section": "teacher_feedback",
     "support_en": "Please give reasons for your answer.",
-    "microRule": "Watch: less natural"
+    "microRule": "Watch: less natural",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_redemittel_cat13_r_060",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -27755,7 +28858,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -27833,9 +28936,15 @@
     ],
     "section": "teacher_feedback",
     "support_en": "You can revise the text again.",
-    "microRule": "Watch: false friend/word formation"
+    "microRule": "Watch: false friend/word formation",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_001",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -27877,7 +28986,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -27953,9 +29062,15 @@
         "text": "Aufgabe",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_002",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -27997,7 +29112,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -28075,9 +29190,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_003",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -28119,7 +29240,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -28197,9 +29318,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_004",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -28241,7 +29368,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -28317,9 +29444,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_005",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -28361,7 +29494,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -28439,9 +29572,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_006",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -28483,7 +29622,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -28559,9 +29698,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_007",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -28603,7 +29748,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -28681,9 +29826,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_008",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -28725,7 +29876,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -28803,9 +29954,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_009",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -28847,7 +30004,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -28925,9 +30082,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_010",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -28969,7 +30132,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -29045,9 +30208,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_011",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -29089,7 +30258,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -29165,9 +30334,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_012",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -29209,7 +30384,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -29287,9 +30462,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_013",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -29331,7 +30512,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -29409,9 +30590,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_014",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -29453,7 +30640,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -29531,9 +30718,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_015",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -29575,7 +30768,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -29653,9 +30846,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_016",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -29697,7 +30896,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -29775,9 +30974,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_017",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -29819,7 +31024,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -29897,9 +31102,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_018",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -29941,7 +31152,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -30017,9 +31228,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_019",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -30061,7 +31278,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -30139,9 +31356,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_020",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -30183,7 +31406,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -30261,9 +31484,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_021",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -30305,7 +31534,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -30381,9 +31610,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_022",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -30425,7 +31660,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -30501,9 +31736,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_023",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -30545,7 +31786,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -30621,9 +31862,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_024",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -30665,7 +31912,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -30743,9 +31990,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_025",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -30787,7 +32040,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -30865,9 +32118,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_026",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -30909,7 +32168,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -30987,9 +32246,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_027",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -31031,7 +32296,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -31109,9 +32374,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_028",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -31153,7 +32424,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -31229,9 +32500,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_029",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -31273,7 +32550,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -31349,9 +32626,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_030",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -31393,7 +32676,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -31469,9 +32752,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_031",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -31513,7 +32802,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -31589,9 +32878,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_032",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -31633,7 +32928,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -31709,9 +33004,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_033",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -31753,7 +33054,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -31831,9 +33132,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_034",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -31875,7 +33182,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -31951,9 +33258,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_035",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -31995,7 +33308,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -32071,9 +33384,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_036",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -32115,7 +33434,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -32191,9 +33510,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_037",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -32235,7 +33560,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -32311,9 +33636,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_038",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -32355,7 +33686,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -32431,9 +33762,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_039",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -32475,7 +33812,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -32551,9 +33888,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_040",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -32595,7 +33938,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -32671,9 +34014,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_041",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -32715,7 +34064,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -32791,9 +34140,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_042",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -32835,7 +34190,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -32911,9 +34266,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_043",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -32955,7 +34316,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -33031,9 +34392,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_044",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -33075,7 +34442,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -33151,9 +34518,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_045",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -33195,7 +34568,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -33271,9 +34644,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_046",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -33313,7 +34692,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -33389,9 +34768,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_047",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -33431,7 +34816,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -33507,9 +34892,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_048",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -33551,7 +34942,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -33627,9 +35018,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_049",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -33669,7 +35066,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -33745,9 +35142,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_050",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -33787,7 +35190,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -33863,9 +35266,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_051",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -33907,7 +35316,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -33985,9 +35394,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_052",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -34027,7 +35442,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -34103,9 +35518,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_053",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -34145,7 +35566,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -34221,9 +35642,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_054",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -34263,7 +35690,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -34339,9 +35766,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_055",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -34383,7 +35816,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -34461,9 +35894,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_056",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -34503,7 +35942,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -34579,9 +36018,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_057",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -34623,7 +36068,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -34701,9 +36146,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_058",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -34745,7 +36196,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -34823,9 +36274,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_059",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -34867,7 +36324,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -34943,9 +36400,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_060",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -34987,7 +36450,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -35063,9 +36526,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_061",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -35107,7 +36576,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -35183,9 +36652,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_062",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -35227,7 +36702,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -35303,9 +36778,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_063",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -35347,7 +36828,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -35425,9 +36906,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_064",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -35469,7 +36956,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -35545,9 +37032,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_065",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -35589,7 +37082,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -35665,9 +37158,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_066",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -35709,7 +37208,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -35785,7 +37284,13 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
   {
     "id": "v080149_cat13_wortschatz_cat13_w_067",
@@ -36025,7 +37530,7 @@
       }
     ]
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_069",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -36065,7 +37570,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -36141,9 +37646,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_070",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -36183,7 +37694,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -36259,9 +37770,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_071",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -36301,7 +37818,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -36377,9 +37894,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_072",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -36419,7 +37942,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -36495,9 +38018,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_073",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -36537,7 +38066,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -36613,9 +38142,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_074",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -36655,7 +38190,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -36731,9 +38266,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_075",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -36773,7 +38314,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -36849,9 +38390,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_076",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -36891,7 +38438,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -36967,9 +38514,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_077",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -37009,7 +38562,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -37085,9 +38638,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_078",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -37127,7 +38686,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -37203,9 +38762,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_079",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -37245,7 +38810,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -37321,9 +38886,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_080",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -37365,7 +38936,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -37443,9 +39014,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_081",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -37487,7 +39064,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -37565,9 +39142,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_082",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -37607,7 +39190,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -37683,9 +39266,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_083",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -37727,7 +39316,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -37803,9 +39392,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_084",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -37847,7 +39442,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -37923,9 +39518,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_085",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -37965,7 +39566,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -38041,9 +39642,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_086",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -38083,7 +39690,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -38159,9 +39766,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_087",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -38201,7 +39814,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -38277,9 +39890,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_088",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -38321,7 +39940,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -38399,9 +40018,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_089",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -38441,7 +40066,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -38517,9 +40142,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_090",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -38561,7 +40192,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -38637,9 +40268,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_091",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -38679,7 +40316,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -38755,9 +40392,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_092",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -38797,7 +40440,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -38873,9 +40516,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_093",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -38915,7 +40564,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -38991,9 +40640,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_094",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -39033,7 +40688,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -39109,9 +40764,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_095",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -39153,7 +40814,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -39229,9 +40890,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_096",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -39271,7 +40938,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -39347,9 +41014,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_097",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -39391,7 +41064,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -39467,9 +41140,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_098",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -39509,7 +41188,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -39585,9 +41264,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_099",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -39627,7 +41312,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -39703,9 +41388,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_100",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -39745,7 +41436,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -39821,9 +41512,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_101",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -39865,7 +41562,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -39943,9 +41640,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_102",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -39987,7 +41690,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -40065,9 +41768,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_103",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -40109,7 +41818,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -40187,9 +41896,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_104",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -40229,7 +41944,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -40305,9 +42020,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_105",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -40347,7 +42068,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -40423,9 +42144,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_106",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -40465,7 +42192,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -40541,9 +42268,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_107",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -40583,7 +42316,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -40659,9 +42392,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_108",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -40701,7 +42440,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -40777,9 +42516,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_109",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -40821,7 +42566,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -40897,9 +42642,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_110",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -40941,7 +42692,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -41017,9 +42768,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_111",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -41059,7 +42816,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -41135,9 +42892,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_112",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -41177,7 +42940,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -41253,9 +43016,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_113",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -41295,7 +43064,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -41371,9 +43140,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_114",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -41413,7 +43188,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -41489,9 +43264,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_115",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -41531,7 +43312,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -41607,9 +43388,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_116",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -41649,7 +43436,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -41725,9 +43512,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_117",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -41767,7 +43560,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -41843,9 +43636,15 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat13_wortschatz_cat13_w_118",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -41885,7 +43684,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -41961,7 +43760,13 @@
         "text": "die Prüfung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
   {
     "id": "v080149_cat13_wortschatz_cat13_w_119",

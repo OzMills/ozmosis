@@ -1,7 +1,7 @@
 (function(){
   window.OZMOSIS_CONTENT = window.OZMOSIS_CONTENT || {};
   window.OZMOSIS_CONTENT.b1M16MoneyPaymentContracts = [
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_001",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -122,9 +122,12 @@
         "text": "Betrag schicken",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_002",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -245,9 +248,12 @@
         "text": "Betrag kontrollieren lassen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_003",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -368,9 +374,12 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_004",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -491,9 +500,12 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_005",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -536,7 +548,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -617,9 +629,15 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_006",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -740,9 +758,12 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_007",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -785,7 +806,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -864,9 +885,15 @@
         "text": "Gebühr bezahlen often valid but less collocationally useful",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_008",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -987,9 +1014,12 @@
         "text": "Beitrag bezahlen for every context",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_009",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -1110,9 +1140,12 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_010",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -1155,7 +1188,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -1234,9 +1267,15 @@
         "text": "in Rückstand sein",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_011",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -1278,7 +1317,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -1357,9 +1396,15 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_012",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -1480,9 +1525,12 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_013",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -1524,7 +1572,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -1605,9 +1653,15 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_014",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -1649,7 +1703,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -1728,9 +1782,15 @@
         "text": "context legal",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_015",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -1772,7 +1832,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -1851,9 +1911,15 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_016",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -1895,7 +1961,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -1976,9 +2042,15 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_017",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -2020,7 +2092,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -2101,9 +2173,15 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_018",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -2224,9 +2302,12 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_019",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -2269,7 +2350,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -2348,9 +2429,15 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_020",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -2471,9 +2558,12 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_021",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -2594,9 +2684,12 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_022",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -2717,9 +2810,12 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_023",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -2762,7 +2858,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -2841,9 +2937,15 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_024",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -2886,7 +2988,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -2967,9 +3069,15 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_025",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -3090,9 +3198,12 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_026",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -3213,9 +3324,12 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_027",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -3336,9 +3450,12 @@
         "text": "in Vorkasse zahlen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_028",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -3380,7 +3497,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -3459,9 +3576,15 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_029",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -3503,7 +3626,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -3582,9 +3705,15 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_030",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -3627,7 +3756,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -3706,9 +3835,15 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_031",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -3829,9 +3964,12 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_032",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -3952,9 +4090,12 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_033",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -4075,9 +4216,12 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_034",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -4198,9 +4342,12 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_035",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -4321,9 +4468,12 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_036",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -4444,9 +4594,12 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_037",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -4489,7 +4642,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -4568,9 +4721,15 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_038",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -4612,7 +4771,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -4691,9 +4850,15 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_039",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -4735,7 +4900,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -4814,9 +4979,15 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_040",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -4859,7 +5030,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -4938,9 +5109,15 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_041",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -4982,7 +5159,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -5061,9 +5238,15 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_042",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -5105,7 +5288,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -5184,9 +5367,15 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_043",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -5228,7 +5417,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -5307,9 +5496,15 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_044",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -5351,7 +5546,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -5430,9 +5625,15 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_045",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -5474,7 +5675,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -5553,9 +5754,15 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_046",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -5597,7 +5804,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -5676,9 +5883,15 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_047",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -5721,7 +5934,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -5800,9 +6013,15 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_048",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -5844,7 +6063,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -5923,9 +6142,15 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_049",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -5967,7 +6192,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -6046,9 +6271,15 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_050",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -6090,7 +6321,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -6171,9 +6402,15 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_051",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -6215,7 +6452,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -6294,9 +6531,15 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_052",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -6417,9 +6660,12 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat16_collocation_cat16_coll_053",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -6540,9 +6786,12 @@
         "text": "den Betrag überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat16_contrast_cat16_cs_001",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -6584,7 +6833,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -6665,9 +6914,15 @@
         "text": "die Summe",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_contrast_cat16_cs_002",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -6709,7 +6964,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -6790,9 +7045,15 @@
         "text": "der Zahlungsnachweis",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_contrast_cat16_cs_003",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -6835,7 +7096,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -6916,9 +7177,15 @@
         "text": "bar zahlen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_contrast_cat16_cs_004",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -6960,7 +7227,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -7041,9 +7308,15 @@
         "text": "überfällig",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_contrast_cat16_cs_005",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -7085,7 +7358,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -7166,9 +7439,15 @@
         "text": "absagen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_contrast_cat16_cs_006",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -7210,7 +7489,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -7291,9 +7570,15 @@
         "text": "Termin",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_contrast_cat16_cs_007",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -7336,7 +7621,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -7417,9 +7702,15 @@
         "text": "der Rabatt",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_contrast_cat16_cs_008",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -7461,7 +7752,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -7542,9 +7833,15 @@
         "text": "Bestellnummer",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_contrast_cat16_cs_009",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -7586,7 +7883,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -7667,9 +7964,15 @@
         "text": "Anzahlung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_contrast_cat16_cs_010",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -7712,7 +8015,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -7793,9 +8096,15 @@
         "text": "Restbetrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_contrast_cat16_cs_011",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -7838,7 +8147,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -7919,9 +8228,15 @@
         "text": "Kontonummer",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_contrast_cat16_cs_012",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -7963,7 +8278,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -8044,9 +8359,15 @@
         "text": "regelmäßig",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_contrast_cat16_cs_013",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -8088,7 +8409,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -8169,9 +8490,15 @@
         "text": "überweisen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_contrast_cat16_cs_014",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -8213,7 +8540,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -8294,9 +8621,15 @@
         "text": "vereinbaren",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_contrast_cat16_cs_015",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -8338,7 +8671,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -8419,9 +8752,15 @@
         "text": "Rechnung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_contrast_cat16_cs_016",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -8463,7 +8802,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -8544,9 +8883,15 @@
         "text": "online",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_contrast_cat16_cs_017",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -8588,7 +8933,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -8669,9 +9014,15 @@
         "text": "kündigen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_contrast_cat16_cs_018",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -8713,7 +9064,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -8794,9 +9145,15 @@
         "text": "bezahlen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_contrast_cat16_cs_019",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -8838,7 +9195,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -8919,9 +9276,15 @@
         "text": "Beschwerde",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_contrast_cat16_cs_020",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -8963,7 +9326,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -9044,9 +9407,15 @@
         "text": "Kundennummer",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_contrast_cat16_cs_021",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -9090,7 +9459,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -9171,9 +9540,15 @@
         "text": "gebührenpflichtig",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_contrast_cat16_cs_022",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -9216,7 +9591,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -9297,9 +9672,15 @@
         "text": "Mindestlaufzeit",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_contrast_cat16_cs_023",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -9341,7 +9722,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -9422,9 +9803,15 @@
         "text": "per Rechnung zahlen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_contrast_cat16_cs_024",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -9466,7 +9853,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -9547,9 +9934,15 @@
         "text": "Wie teuer ist die Zahlung?",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_contrast_cat16_cs_025",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -9591,7 +9984,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -9672,9 +10065,15 @@
         "text": "die Rechnung leisten",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_contrast_cat16_cs_026",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -9717,7 +10116,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -9798,9 +10197,15 @@
         "text": "Die Zahlung ist bekommen.",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_contrast_cat16_cs_027",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -9843,7 +10248,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -9924,9 +10329,15 @@
         "text": "Ich will aus dem Vertrag raus.",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_contrast_cat16_cs_028",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -9969,7 +10380,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -10050,9 +10461,15 @@
         "text": "in Überweisung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_contrast_cat16_cs_029",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -10094,7 +10511,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -10175,9 +10592,15 @@
         "text": "durch Raten zahlen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_contrast_cat16_cs_030",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -10221,7 +10644,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_core",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -10302,9 +10725,15 @@
         "text": "Gebühren passieren",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_001",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -10346,7 +10775,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -10399,9 +10828,15 @@
     "prompt_de": "Ich möchte den Betrag ___.",
     "learnerCue": "Ich möchte den Betrag ___.",
     "support_en": "",
-    "microRule": "Collocation: use `den Betrag überweisen` for transferring the amount."
+    "microRule": "Collocation: use `den Betrag überweisen` for transferring the amount.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_002",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -10519,9 +10954,12 @@
       }
     ],
     "support_en": "",
-    "microRule": "`Betrag` is the amount of money, not the document or payment method."
+    "microRule": "`Betrag` is the amount of money, not the document or payment method.",
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_003",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -10563,7 +11001,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -10617,9 +11055,15 @@
     "prompt_de": "Ich muss die Rechnung heute ___.",
     "learnerCue": "Ich muss die Rechnung heute ___.",
     "support_en": "",
-    "microRule": "Collocation: use `eine Rechnung bezahlen` for paying an invoice."
+    "microRule": "Collocation: use `eine Rechnung bezahlen` for paying an invoice.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_004",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -10661,7 +11105,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -10714,9 +11158,15 @@
     "prompt_de": "Ich bezahle per ___.",
     "learnerCue": "Ich bezahle per ___.",
     "support_en": "",
-    "microRule": "Money/payment wording needs a clear target: amount, invoice, receipt, payment method or contract language."
+    "microRule": "Money/payment wording needs a clear target: amount, invoice, receipt, payment method or contract language.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_005",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -10834,9 +11284,12 @@
       }
     ],
     "support_en": "",
-    "microRule": "`mit Karte bezahlen` means pay by card."
+    "microRule": "`mit Karte bezahlen` means pay by card.",
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_006",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -10928,12 +11381,15 @@
       "Ich habe die Rechnung bereits bezahlt."
     ],
     "fullAnswer_de": "Ich habe die Rechnung bereits bezahlt.",
-    "prompt_de": "Ich habe Rechnung bereits bezahlt.",
-    "learnerCue": "Korrigiere den Satz.",
+    "prompt_de": "Korrigiere den Satz.",
+    "learnerCue": "Ich habe Rechnung bereits bezahlt.",
     "support_en": "",
-    "microRule": "`Rechnung` is the invoice/bill; it is not the same as a receipt."
+    "microRule": "`Rechnung` is the invoice/bill; it is not the same as a receipt.",
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_007",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -10975,7 +11431,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -11029,9 +11485,15 @@
     "prompt_de": "Kann ich bitte eine Quittung ___?",
     "learnerCue": "Kann ich bitte eine Quittung ___?",
     "support_en": "",
-    "microRule": "`Quittung` is the receipt/proof after payment."
+    "microRule": "`Quittung` is the receipt/proof after payment.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_008",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -11073,7 +11535,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -11126,9 +11588,15 @@
     "prompt_de": "Die ___ lautet 4821.",
     "learnerCue": "Die ___ lautet 4821.",
     "support_en": "",
-    "microRule": "`Rechnung` is the invoice/bill; it is not the same as a receipt."
+    "microRule": "`Rechnung` is the invoice/bill; it is not the same as a receipt.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_009",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -11246,9 +11714,12 @@
       }
     ],
     "support_en": "",
-    "microRule": "`Rechnung` is the invoice/bill; it is not the same as a receipt."
+    "microRule": "`Rechnung` is the invoice/bill; it is not the same as a receipt.",
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_010",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -11290,7 +11761,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -11343,9 +11814,15 @@
     "prompt_de": "Ist meine Zahlung ___?",
     "learnerCue": "Ist meine Zahlung ___?",
     "support_en": "",
-    "microRule": "`Zahlung` is the payment; keep legal/payment consequences out of auto-grading."
+    "microRule": "`Zahlung` is the payment; keep legal/payment consequences out of auto-grading.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_011",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -11437,12 +11914,15 @@
       "Ist meine Zahlung eingegangen?"
     ],
     "fullAnswer_de": "Ist meine Zahlung eingegangen?",
-    "prompt_de": "Ist meine Zahlung gekommen?",
-    "learnerCue": "Korrigiere den Satz.",
+    "prompt_de": "Korrigiere den Satz.",
+    "learnerCue": "Ist meine Zahlung gekommen?",
     "support_en": "",
-    "microRule": "`Zahlung` is the payment; keep legal/payment consequences out of auto-grading."
+    "microRule": "`Zahlung` is the payment; keep legal/payment consequences out of auto-grading.",
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_012",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -11484,7 +11964,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -11537,9 +12017,15 @@
     "prompt_de": "Bringe die Wörter in eine natürliche Reihenfolge. ___",
     "learnerCue": "meine Zahlung · ist · eingegangen",
     "support_en": "",
-    "microRule": "`Zahlung` is the payment; keep legal/payment consequences out of auto-grading."
+    "microRule": "`Zahlung` is the payment; keep legal/payment consequences out of auto-grading.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_013",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -11581,7 +12067,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -11636,9 +12122,15 @@
     "prompt_de": "Fällt dafür eine Gebühr ___?",
     "learnerCue": "Fällt dafür eine Gebühr ___?",
     "support_en": "",
-    "microRule": "Separable verb: `anfallen` → `eine Gebühr fällt an`."
+    "microRule": "Separable verb: `anfallen` → `eine Gebühr fällt an`.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_014",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -11681,7 +12173,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -11759,9 +12251,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "`kostenlos` means free of charge."
+    "microRule": "`kostenlos` means free of charge.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_015",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -11804,7 +12302,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -11859,9 +12357,15 @@
     "prompt_de": "Wann ist der Betrag ___?",
     "learnerCue": "Wann ist der Betrag ___?",
     "support_en": "",
-    "microRule": "`fällig` means due."
+    "microRule": "`fällig` means due.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_016",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -11979,9 +12483,12 @@
       }
     ],
     "support_en": "",
-    "microRule": "`Kosten` are costs; usually plural in this meaning."
+    "microRule": "`Kosten` are costs; usually plural in this meaning.",
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_017",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -12073,12 +12580,15 @@
       "Die Rechnung ist offen."
     ],
     "fullAnswer_de": "Die Rechnung ist offen.",
-    "prompt_de": "Die Rechnung ist geöffnet.",
-    "learnerCue": "Korrigiere den Satz.",
+    "prompt_de": "Korrigiere den Satz.",
+    "learnerCue": "Die Rechnung ist geöffnet.",
     "support_en": "",
-    "microRule": "`Rechnung` is the invoice/bill; it is not the same as a receipt."
+    "microRule": "`Rechnung` is the invoice/bill; it is not the same as a receipt.",
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_018",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -12120,7 +12630,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -12173,9 +12683,15 @@
     "prompt_de": "Ich zahle den Beitrag ___.",
     "learnerCue": "Ich zahle den Beitrag ___.",
     "support_en": "",
-    "microRule": "Money/payment wording needs a clear target: amount, invoice, receipt, payment method or contract language."
+    "microRule": "Money/payment wording needs a clear target: amount, invoice, receipt, payment method or contract language.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_019",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -12217,7 +12733,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -12270,9 +12786,15 @@
     "prompt_de": "Ich möchte ___ zahlen.",
     "learnerCue": "Ich möchte ___ zahlen.",
     "support_en": "",
-    "microRule": "Money/payment wording needs a clear target: amount, invoice, receipt, payment method or contract language."
+    "microRule": "Money/payment wording needs a clear target: amount, invoice, receipt, payment method or contract language.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_020",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -12390,9 +12912,12 @@
       }
     ],
     "support_en": "",
-    "microRule": "Money/payment wording needs a clear target: amount, invoice, receipt, payment method or contract language."
+    "microRule": "Money/payment wording needs a clear target: amount, invoice, receipt, payment method or contract language.",
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_021",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -12434,7 +12959,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -12487,9 +13012,15 @@
     "prompt_de": "Meine Rechnungsadresse hat sich ___.",
     "learnerCue": "Meine Rechnungsadresse hat sich ___.",
     "support_en": "",
-    "microRule": "`Rechnung` is the invoice/bill; it is not the same as a receipt."
+    "microRule": "`Rechnung` is the invoice/bill; it is not the same as a receipt.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_022",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -12607,9 +13138,12 @@
       }
     ],
     "support_en": "",
-    "microRule": "`Rechnung` is the invoice/bill; it is not the same as a receipt."
+    "microRule": "`Rechnung` is the invoice/bill; it is not the same as a receipt.",
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_023",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -12651,7 +13185,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -12704,9 +13238,15 @@
     "prompt_de": "Welchen Verwendungszweck soll ich ___?",
     "learnerCue": "Welchen Verwendungszweck soll ich ___?",
     "support_en": "",
-    "microRule": "Money/payment wording needs a clear target: amount, invoice, receipt, payment method or contract language."
+    "microRule": "Money/payment wording needs a clear target: amount, invoice, receipt, payment method or contract language.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_024",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -12748,7 +13288,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -12801,9 +13341,15 @@
     "prompt_de": "Kann ich einen Zahlungsnachweis ___?",
     "learnerCue": "Kann ich einen Zahlungsnachweis ___?",
     "support_en": "",
-    "microRule": "`Zahlung` is the payment; keep legal/payment consequences out of auto-grading."
+    "microRule": "`Zahlung` is the payment; keep legal/payment consequences out of auto-grading.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_025",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -12845,7 +13391,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -12923,9 +13469,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "A `Quittung` is a receipt/proof of payment."
+    "microRule": "A `Quittung` is a receipt/proof of payment.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_026",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -12967,7 +13519,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -13022,9 +13574,15 @@
     "prompt_de": "Ich bitte um Erstattung des ___.",
     "learnerCue": "Ich bitte um Erstattung des ___.",
     "support_en": "",
-    "microRule": "Fixed formal phrase: `Erstattung des Betrags`."
+    "microRule": "Fixed formal phrase: `Erstattung des Betrags`.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_027",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -13067,7 +13625,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -13122,9 +13680,15 @@
     "prompt_de": "Ich bitte um Zurückgeld.",
     "learnerCue": "Korrigiere den Satz.",
     "support_en": "",
-    "microRule": "Use the phrase `Erstattung des Betrags`; human review before import."
+    "microRule": "Use the phrase `Erstattung des Betrags`; human review before import.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_028",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -13166,7 +13730,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -13219,9 +13783,15 @@
     "prompt_de": "Der Betrag wurde doppelt ___.",
     "learnerCue": "Der Betrag wurde doppelt ___.",
     "support_en": "",
-    "microRule": "`Betrag` is the amount of money, not the document or payment method."
+    "microRule": "`Betrag` is the amount of money, not the document or payment method.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_029",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -13339,9 +13909,12 @@
       }
     ],
     "support_en": "",
-    "microRule": "Money/payment wording needs a clear target: amount, invoice, receipt, payment method or contract language."
+    "microRule": "Money/payment wording needs a clear target: amount, invoice, receipt, payment method or contract language.",
+    "v02ReconciliationBucket": "CORE_SAFE_V02_REPLACEMENT",
+    "v02ApplyGateStatus": "replaced_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_030",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -13383,7 +13956,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -13438,9 +14011,15 @@
     "prompt_de": "Ich möchte einen Vertrag ___.",
     "learnerCue": "Ich möchte einen Vertrag ___.",
     "support_en": "",
-    "microRule": "Collocation: `einen Vertrag abschließen`."
+    "microRule": "Collocation: `einen Vertrag abschließen`.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_031",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -13482,7 +14061,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -13537,9 +14116,15 @@
     "prompt_de": "Wo soll ich den Vertrag ___?",
     "learnerCue": "Wo soll ich den Vertrag ___?",
     "support_en": "",
-    "microRule": "Collocation: `den Vertrag unterschreiben`."
+    "microRule": "Collocation: `den Vertrag unterschreiben`.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_032",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -13581,7 +14166,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -13659,9 +14244,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "`kündigen` is the key verb for ending a contract; review before import."
+    "microRule": "`kündigen` is the key verb for ending a contract; review before import.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_033",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -13703,7 +14294,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -13758,9 +14349,15 @@
     "prompt_de": "Ich möchte den Vertrag absagen.",
     "learnerCue": "Korrigiere den Satz.",
     "support_en": "",
-    "microRule": "Appointments are `absagen`; contracts are usually `kündigen`."
+    "microRule": "Appointments are `absagen`; contracts are usually `kündigen`.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_034",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -13803,7 +14400,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -13858,9 +14455,15 @@
     "prompt_de": "Wie lang ist die ___?",
     "learnerCue": "Wie lang ist die ___?",
     "support_en": "",
-    "microRule": "`Kündigungsfrist` is notice period; human review before import."
+    "microRule": "`Kündigungsfrist` is notice period; human review before import.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_035",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -13902,7 +14505,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -13957,9 +14560,15 @@
     "prompt_de": "Bitte bestätigen Sie mir die Kündigung ___.",
     "learnerCue": "Bitte bestätigen Sie mir die Kündigung ___.",
     "support_en": "",
-    "microRule": "Use `schriftlich bestätigen` for written confirmation."
+    "microRule": "Use `schriftlich bestätigen` for written confirmation.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_036",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -14001,7 +14610,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -14079,9 +14688,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "Use `per E-Mail` as a channel."
+    "microRule": "Use `per E-Mail` as a channel.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_037",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -14123,7 +14738,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -14178,9 +14793,15 @@
     "prompt_de": "Verlängert sich der Vertrag ___?",
     "learnerCue": "Verlängert sich der Vertrag ___?",
     "support_en": "",
-    "microRule": "`automatisch verlängern` means renew automatically."
+    "microRule": "`automatisch verlängern` means renew automatically.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_038",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -14222,7 +14843,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -14300,9 +14921,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "`verlängern` means extend/renew."
+    "microRule": "`verlängern` means extend/renew.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_039",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -14344,7 +14971,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -14399,9 +15026,15 @@
     "prompt_de": "Ich möchte den Vertrag nicht lang machen.",
     "learnerCue": "Korrigiere den Satz.",
     "support_en": "",
-    "microRule": "Use the verb `verlängern`."
+    "microRule": "Use the verb `verlängern`.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_040",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -14443,7 +15076,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -14496,9 +15129,15 @@
     "prompt_de": "Ich möchte den Tarif ___.",
     "learnerCue": "Ich möchte den Tarif ___.",
     "support_en": "",
-    "microRule": "Money/payment wording needs a clear target: amount, invoice, receipt, payment method or contract language."
+    "microRule": "Money/payment wording needs a clear target: amount, invoice, receipt, payment method or contract language.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_041",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -14540,7 +15179,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -14618,9 +15257,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "`Tarif` is the plan/rate."
+    "microRule": "`Tarif` is the plan/rate.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_042",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -14663,7 +15308,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -14718,9 +15363,15 @@
     "prompt_de": "Ich möchte meine Bankverbindung ___.",
     "learnerCue": "Ich möchte meine Bankverbindung ___.",
     "support_en": "",
-    "microRule": "Collocation: `Bankverbindung ändern`; human review before import."
+    "microRule": "Collocation: `Bankverbindung ändern`; human review before import.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_043",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -14763,7 +15414,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -14818,9 +15469,15 @@
     "prompt_de": "Muss ich meine IBAN ___?",
     "learnerCue": "Muss ich meine IBAN ___?",
     "support_en": "",
-    "microRule": "Collocation: `IBAN angeben`; human review before import."
+    "microRule": "Collocation: `IBAN angeben`; human review before import.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_044",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -14863,7 +15520,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -14941,9 +15598,15 @@
       }
     ],
     "support_en": "",
-    "microRule": "Use `einen Dauerauftrag einrichten`."
+    "microRule": "Use `einen Dauerauftrag einrichten`.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_045",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -14985,7 +15648,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -15040,9 +15703,15 @@
     "prompt_de": "Kann ich per Lastschrift ___?",
     "learnerCue": "Kann ich per Lastschrift ___?",
     "support_en": "",
-    "microRule": "Payment method: `per Lastschrift zahlen`."
+    "microRule": "Payment method: `per Lastschrift zahlen`.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_046",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -15084,7 +15753,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -15139,9 +15808,15 @@
     "prompt_de": "Kann ich mit Lastschrift zahlen?",
     "learnerCue": "Korrigiere den Satz.",
     "support_en": "",
-    "microRule": "Use `per Lastschrift` as payment method; review before import."
+    "microRule": "Use `per Lastschrift` as payment method; review before import.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_047",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -15244,9 +15919,14 @@
       "Self-mark only if you practised it."
     ],
     "support_en": "",
-    "microRule": "Production is practice only: use one clear money/payment phrase and avoid private bank details."
+    "microRule": "Production is practice only: use one clear money/payment phrase and avoid private bank details.",
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_048",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -15349,9 +16029,14 @@
       "Self-mark only if you practised it."
     ],
     "support_en": "",
-    "microRule": "Production is practice only: use one clear money/payment phrase and avoid private bank details."
+    "microRule": "Production is practice only: use one clear money/payment phrase and avoid private bank details.",
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_049",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -15454,9 +16139,14 @@
       "Self-mark only if you practised it."
     ],
     "support_en": "",
-    "microRule": "Production is practice only: use one clear money/payment phrase and avoid private bank details."
+    "microRule": "Production is practice only: use one clear money/payment phrase and avoid private bank details.",
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_050",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -15559,9 +16249,14 @@
       "Self-mark only if you practised it."
     ],
     "support_en": "",
-    "microRule": "Production is practice only: use one clear money/payment phrase and avoid private bank details."
+    "microRule": "Production is practice only: use one clear money/payment phrase and avoid private bank details.",
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_051",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -15664,9 +16359,14 @@
       "Self-mark only if you practised it."
     ],
     "support_en": "",
-    "microRule": "Production is practice only: use one clear money/payment phrase and avoid private bank details."
+    "microRule": "Production is practice only: use one clear money/payment phrase and avoid private bank details.",
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_052",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -15769,9 +16469,14 @@
       "Self-mark only if you practised it."
     ],
     "support_en": "",
-    "microRule": "Production is practice only: use one clear money/payment phrase and avoid private bank details."
+    "microRule": "Production is practice only: use one clear money/payment phrase and avoid private bank details.",
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_053",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -15876,9 +16581,14 @@
       "Self-mark only if you practised it."
     ],
     "support_en": "",
-    "microRule": "Self-check: did you use `in Raten zahlen` or `Ratenzahlung`?"
+    "microRule": "Self-check: did you use `in Raten zahlen` or `Ratenzahlung`?",
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_054",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -15920,7 +16630,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -15973,9 +16683,15 @@
     "prompt_de": "den Betrag ___",
     "learnerCue": "den Betrag ___",
     "support_en": "",
-    "microRule": "Collocation: use `den Betrag überweisen` for transferring the amount."
+    "microRule": "Collocation: use `den Betrag überweisen` for transferring the amount.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_055",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -16017,7 +16733,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -16070,9 +16786,15 @@
     "prompt_de": "den Betrag ___",
     "learnerCue": "den Betrag ___",
     "support_en": "",
-    "microRule": "`Betrag` is the amount of money, not the document or payment method."
+    "microRule": "`Betrag` is the amount of money, not the document or payment method.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_056",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -16114,7 +16836,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -16167,9 +16889,15 @@
     "prompt_de": "den Gesamtbetrag ___",
     "learnerCue": "den Gesamtbetrag ___",
     "support_en": "",
-    "microRule": "`Betrag` is the amount of money, not the document or payment method."
+    "microRule": "`Betrag` is the amount of money, not the document or payment method.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_057",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -16211,7 +16939,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -16264,9 +16992,15 @@
     "prompt_de": "einen Teilbetrag ___",
     "learnerCue": "einen Teilbetrag ___",
     "support_en": "",
-    "microRule": "`Betrag` is the amount of money, not the document or payment method."
+    "microRule": "`Betrag` is the amount of money, not the document or payment method.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_058",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -16308,7 +17042,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -16361,9 +17095,15 @@
     "prompt_de": "den Restbetrag ___",
     "learnerCue": "den Restbetrag ___",
     "support_en": "",
-    "microRule": "Collocation: use `den Betrag überweisen` for transferring the amount."
+    "microRule": "Collocation: use `den Betrag überweisen` for transferring the amount.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_059",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -16405,7 +17145,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -16458,9 +17198,15 @@
     "prompt_de": "die Kosten ___",
     "learnerCue": "die Kosten ___",
     "support_en": "",
-    "microRule": "`Kosten` are costs; usually plural in this meaning."
+    "microRule": "`Kosten` are costs; usually plural in this meaning.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_060",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -16503,7 +17249,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -16558,9 +17304,15 @@
     "prompt_de": "eine Gebühr ___",
     "learnerCue": "eine Gebühr ___",
     "support_en": "",
-    "microRule": "Collocation: use `eine Gebühr zahlen` for this CAT16 money/payment/contract context."
+    "microRule": "Collocation: use `eine Gebühr zahlen` for this CAT16 money/payment/contract context.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_061",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -16602,7 +17354,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -16655,9 +17407,15 @@
     "prompt_de": "einen Beitrag ___",
     "learnerCue": "einen Beitrag ___",
     "support_en": "",
-    "microRule": "Money/payment wording needs a clear target: amount, invoice, receipt, payment method or contract language."
+    "microRule": "Money/payment wording needs a clear target: amount, invoice, receipt, payment method or contract language.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_062",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -16699,7 +17457,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -16752,9 +17510,15 @@
     "prompt_de": "den Rechnungsbetrag ___",
     "learnerCue": "den Rechnungsbetrag ___",
     "support_en": "",
-    "microRule": "Collocation: use `den Betrag überweisen` for transferring the amount."
+    "microRule": "Collocation: use `den Betrag überweisen` for transferring the amount.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_063",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -16797,7 +17561,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -16852,9 +17616,15 @@
     "prompt_de": "im Rückstand ___",
     "learnerCue": "im Rückstand ___",
     "support_en": "",
-    "microRule": "Collocation: use `im Rückstand sein` for this CAT16 money/payment/contract context."
+    "microRule": "Collocation: use `im Rückstand sein` for this CAT16 money/payment/contract context.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_064",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -16896,7 +17666,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -16949,9 +17719,15 @@
     "prompt_de": "Guthaben ___",
     "learnerCue": "Guthaben ___",
     "support_en": "",
-    "microRule": "Money/payment wording needs a clear target: amount, invoice, receipt, payment method or contract language."
+    "microRule": "Money/payment wording needs a clear target: amount, invoice, receipt, payment method or contract language.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_065",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -16993,7 +17769,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -17046,9 +17822,15 @@
     "prompt_de": "eine Anzahlung ___",
     "learnerCue": "eine Anzahlung ___",
     "support_en": "",
-    "microRule": "`Zahlung` is the payment; keep legal/payment consequences out of auto-grading."
+    "microRule": "`Zahlung` is the payment; keep legal/payment consequences out of auto-grading.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_066",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -17090,7 +17872,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -17145,9 +17927,15 @@
     "prompt_de": "eine Kaution ___",
     "learnerCue": "eine Kaution ___",
     "support_en": "",
-    "microRule": "Collocation: use `eine Kaution zahlen` for this CAT16 money/payment/contract context."
+    "microRule": "Collocation: use `eine Kaution zahlen` for this CAT16 money/payment/contract context.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_067",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -17189,7 +17977,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -17244,9 +18032,15 @@
     "prompt_de": "eine Rate ___",
     "learnerCue": "eine Rate ___",
     "support_en": "",
-    "microRule": "Collocation: use `eine Rate zahlen` for this CAT16 money/payment/contract context."
+    "microRule": "Collocation: use `eine Rate zahlen` for this CAT16 money/payment/contract context.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_068",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -17288,7 +18082,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -17343,9 +18137,15 @@
     "prompt_de": "einen Rabatt ___",
     "learnerCue": "einen Rabatt ___",
     "support_en": "",
-    "microRule": "Collocation: use `einen Rabatt bekommen` for this CAT16 money/payment/contract context."
+    "microRule": "Collocation: use `einen Rabatt bekommen` for this CAT16 money/payment/contract context.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_069",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -17387,7 +18187,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -17440,9 +18240,15 @@
     "prompt_de": "einen Gutschein ___",
     "learnerCue": "einen Gutschein ___",
     "support_en": "",
-    "microRule": "Money/payment wording needs a clear target: amount, invoice, receipt, payment method or contract language."
+    "microRule": "Money/payment wording needs a clear target: amount, invoice, receipt, payment method or contract language.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_070",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -17484,7 +18290,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -17537,9 +18343,15 @@
     "prompt_de": "einen Zuschlag ___",
     "learnerCue": "einen Zuschlag ___",
     "support_en": "",
-    "microRule": "Money/payment wording needs a clear target: amount, invoice, receipt, payment method or contract language."
+    "microRule": "Money/payment wording needs a clear target: amount, invoice, receipt, payment method or contract language.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_071",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -17582,7 +18394,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -17637,9 +18449,15 @@
     "prompt_de": "Mehrwertsteuer ___",
     "learnerCue": "Mehrwertsteuer ___",
     "support_en": "",
-    "microRule": "Collocation: use `Mehrwertsteuer enthalten` for this CAT16 money/payment/contract context."
+    "microRule": "Collocation: use `Mehrwertsteuer enthalten` for this CAT16 money/payment/contract context.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_072",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -17681,7 +18499,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -17734,9 +18552,15 @@
     "prompt_de": "eine Zahlung ___",
     "learnerCue": "eine Zahlung ___",
     "support_en": "",
-    "microRule": "`Zahlung` is the payment; keep legal/payment consequences out of auto-grading."
+    "microRule": "`Zahlung` is the payment; keep legal/payment consequences out of auto-grading.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_073",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -17778,7 +18602,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -17831,9 +18655,15 @@
     "prompt_de": "die Zahlung geht ___",
     "learnerCue": "die Zahlung geht ___",
     "support_en": "",
-    "microRule": "`Zahlung` is the payment; keep legal/payment consequences out of auto-grading."
+    "microRule": "`Zahlung` is the payment; keep legal/payment consequences out of auto-grading.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_074",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -17875,7 +18705,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -17928,9 +18758,15 @@
     "prompt_de": "eine Überweisung ___",
     "learnerCue": "eine Überweisung ___",
     "support_en": "",
-    "microRule": "Money/payment wording needs a clear target: amount, invoice, receipt, payment method or contract language."
+    "microRule": "Money/payment wording needs a clear target: amount, invoice, receipt, payment method or contract language.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_075",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -17973,7 +18809,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -18028,9 +18864,15 @@
     "prompt_de": "Lastschriftmandat ___",
     "learnerCue": "Lastschriftmandat ___",
     "support_en": "",
-    "microRule": "Collocation: use `Lastschriftmandat erteilen` for this CAT16 money/payment/contract context."
+    "microRule": "Collocation: use `Lastschriftmandat erteilen` for this CAT16 money/payment/contract context.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_076",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -18072,7 +18914,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -18125,9 +18967,15 @@
     "prompt_de": "einen Dauerauftrag ___",
     "learnerCue": "einen Dauerauftrag ___",
     "support_en": "",
-    "microRule": "Money/payment wording needs a clear target: amount, invoice, receipt, payment method or contract language."
+    "microRule": "Money/payment wording needs a clear target: amount, invoice, receipt, payment method or contract language.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_077",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -18169,7 +19017,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -18222,9 +19070,15 @@
     "prompt_de": "Barzahlung ___",
     "learnerCue": "Barzahlung ___",
     "support_en": "",
-    "microRule": "`bar bezahlen` means pay in cash."
+    "microRule": "`bar bezahlen` means pay in cash.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_078",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -18266,7 +19120,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -18319,9 +19173,15 @@
     "prompt_de": "mit Karte ___",
     "learnerCue": "mit Karte ___",
     "support_en": "",
-    "microRule": "`mit Karte bezahlen` means pay by card."
+    "microRule": "`mit Karte bezahlen` means pay by card.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_079",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -18363,7 +19223,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -18416,9 +19276,15 @@
     "prompt_de": "per Vorkasse ___",
     "learnerCue": "per Vorkasse ___",
     "support_en": "",
-    "microRule": "Money/payment wording needs a clear target: amount, invoice, receipt, payment method or contract language."
+    "microRule": "Money/payment wording needs a clear target: amount, invoice, receipt, payment method or contract language.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_080",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -18460,7 +19326,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -18515,9 +19381,15 @@
     "prompt_de": "Ratenzahlung ___",
     "learnerCue": "Ratenzahlung ___",
     "support_en": "",
-    "microRule": "Collocation: use `Ratenzahlung vereinbaren` for this CAT16 money/payment/contract context."
+    "microRule": "Collocation: use `Ratenzahlung vereinbaren` for this CAT16 money/payment/contract context.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_081",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -18559,7 +19431,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -18614,9 +19486,15 @@
     "prompt_de": "eine Abbuchung ___",
     "learnerCue": "eine Abbuchung ___",
     "support_en": "",
-    "microRule": "Collocation: use `eine Abbuchung prüfen` for this CAT16 money/payment/contract context."
+    "microRule": "Collocation: use `eine Abbuchung prüfen` for this CAT16 money/payment/contract context.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_082",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -18659,7 +19537,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -18714,9 +19592,15 @@
     "prompt_de": "Zahlungsfrist ___",
     "learnerCue": "Zahlungsfrist ___",
     "support_en": "",
-    "microRule": "Collocation: use `Zahlungsfrist beachten` for this CAT16 money/payment/contract context."
+    "microRule": "Collocation: use `Zahlungsfrist beachten` for this CAT16 money/payment/contract context.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_083",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -18758,7 +19642,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -18811,9 +19695,15 @@
     "prompt_de": "eine Rechnung ___",
     "learnerCue": "eine Rechnung ___",
     "support_en": "",
-    "microRule": "Collocation: use `eine Rechnung bezahlen` for paying an invoice."
+    "microRule": "Collocation: use `eine Rechnung bezahlen` for paying an invoice.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_084",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -18855,7 +19745,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -18908,9 +19798,15 @@
     "prompt_de": "eine Rechnung ___",
     "learnerCue": "eine Rechnung ___",
     "support_en": "",
-    "microRule": "`Rechnung` is the invoice/bill; it is not the same as a receipt."
+    "microRule": "`Rechnung` is the invoice/bill; it is not the same as a receipt.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_085",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -18952,7 +19848,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -19005,9 +19901,15 @@
     "prompt_de": "eine Quittung ___",
     "learnerCue": "eine Quittung ___",
     "support_en": "",
-    "microRule": "`Quittung` is the receipt/proof after payment."
+    "microRule": "`Quittung` is the receipt/proof after payment.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_086",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -19049,7 +19951,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -19102,9 +20004,15 @@
     "prompt_de": "einen Beleg ___",
     "learnerCue": "einen Beleg ___",
     "support_en": "",
-    "microRule": "Money/payment wording needs a clear target: amount, invoice, receipt, payment method or contract language."
+    "microRule": "Money/payment wording needs a clear target: amount, invoice, receipt, payment method or contract language.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_087",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -19146,7 +20054,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -19199,9 +20107,15 @@
     "prompt_de": "Rechnungsnummer ___",
     "learnerCue": "Rechnungsnummer ___",
     "support_en": "",
-    "microRule": "`Rechnung` is the invoice/bill; it is not the same as a receipt."
+    "microRule": "`Rechnung` is the invoice/bill; it is not the same as a receipt.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_088",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -19243,7 +20157,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -19296,9 +20210,15 @@
     "prompt_de": "Zahlungsnachweis ___",
     "learnerCue": "Zahlungsnachweis ___",
     "support_en": "",
-    "microRule": "`Zahlung` is the payment; keep legal/payment consequences out of auto-grading."
+    "microRule": "`Zahlung` is the payment; keep legal/payment consequences out of auto-grading.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_089",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -19341,7 +20261,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -19396,9 +20316,15 @@
     "prompt_de": "Kontoauszug ___",
     "learnerCue": "Kontoauszug ___",
     "support_en": "",
-    "microRule": "Collocation: use `Kontoauszug herunterladen` for this CAT16 money/payment/contract context."
+    "microRule": "Collocation: use `Kontoauszug herunterladen` for this CAT16 money/payment/contract context.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_090",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -19440,7 +20366,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -19495,9 +20421,15 @@
     "prompt_de": "eine Mahnung ___",
     "learnerCue": "eine Mahnung ___",
     "support_en": "",
-    "microRule": "Collocation: use `eine Mahnung erhalten` for this CAT16 money/payment/contract context."
+    "microRule": "Collocation: use `eine Mahnung erhalten` for this CAT16 money/payment/contract context.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_091",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -19539,7 +20471,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -19594,9 +20526,15 @@
     "prompt_de": "ein Konto ___",
     "learnerCue": "ein Konto ___",
     "support_en": "",
-    "microRule": "Collocation: use `ein Konto eröffnen` for this CAT16 money/payment/contract context."
+    "microRule": "Collocation: use `ein Konto eröffnen` for this CAT16 money/payment/contract context.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_092",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -19638,7 +20576,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -19693,9 +20631,15 @@
     "prompt_de": "Bankverbindung ___",
     "learnerCue": "Bankverbindung ___",
     "support_en": "",
-    "microRule": "Collocation: use `Bankverbindung angeben` for this CAT16 money/payment/contract context."
+    "microRule": "Collocation: use `Bankverbindung angeben` for this CAT16 money/payment/contract context.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_093",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -19737,7 +20681,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -19792,9 +20736,15 @@
     "prompt_de": "IBAN ___",
     "learnerCue": "IBAN ___",
     "support_en": "",
-    "microRule": "Collocation: use `IBAN angeben` for this CAT16 money/payment/contract context."
+    "microRule": "Collocation: use `IBAN angeben` for this CAT16 money/payment/contract context.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_094",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -19836,7 +20786,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -19891,9 +20841,15 @@
     "prompt_de": "einen Vertrag ___",
     "learnerCue": "einen Vertrag ___",
     "support_en": "",
-    "microRule": "Collocation: use `einen Vertrag abschließen` for this CAT16 money/payment/contract context."
+    "microRule": "Collocation: use `einen Vertrag abschließen` for this CAT16 money/payment/contract context.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_095",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -19935,7 +20891,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -19990,9 +20946,15 @@
     "prompt_de": "einen Vertrag ___",
     "learnerCue": "einen Vertrag ___",
     "support_en": "",
-    "microRule": "Collocation: use `einen Vertrag unterschreiben` for this CAT16 money/payment/contract context."
+    "microRule": "Collocation: use `einen Vertrag unterschreiben` for this CAT16 money/payment/contract context.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_096",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -20034,7 +20996,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -20089,9 +21051,15 @@
     "prompt_de": "einen Vertrag ___",
     "learnerCue": "einen Vertrag ___",
     "support_en": "",
-    "microRule": "Collocation: use `einen Vertrag kündigen` for this CAT16 money/payment/contract context."
+    "microRule": "Collocation: use `einen Vertrag kündigen` for this CAT16 money/payment/contract context.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_097",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -20133,7 +21101,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -20188,9 +21156,15 @@
     "prompt_de": "Kündigungsfrist ___",
     "learnerCue": "Kündigungsfrist ___",
     "support_en": "",
-    "microRule": "Collocation: use `Kündigungsfrist beachten` for this CAT16 money/payment/contract context."
+    "microRule": "Collocation: use `Kündigungsfrist beachten` for this CAT16 money/payment/contract context.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_098",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -20232,7 +21206,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -20287,9 +21261,15 @@
     "prompt_de": "Kündigungsbestätigung ___",
     "learnerCue": "Kündigungsbestätigung ___",
     "support_en": "",
-    "microRule": "Collocation: use `Kündigungsbestätigung erhalten` for this CAT16 money/payment/contract context."
+    "microRule": "Collocation: use `Kündigungsbestätigung erhalten` for this CAT16 money/payment/contract context.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_099",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -20332,7 +21312,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -20387,9 +21367,15 @@
     "prompt_de": "Vertragslaufzeit ___",
     "learnerCue": "Vertragslaufzeit ___",
     "support_en": "",
-    "microRule": "Collocation: use `Vertragslaufzeit endet` for this CAT16 money/payment/contract context."
+    "microRule": "Collocation: use `Vertragslaufzeit endet` for this CAT16 money/payment/contract context.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_100",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -20431,7 +21417,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -20486,9 +21472,15 @@
     "prompt_de": "Widerruf ___",
     "learnerCue": "Widerruf ___",
     "support_en": "",
-    "microRule": "Collocation: use `Widerruf schicken` for this CAT16 money/payment/contract context."
+    "microRule": "Collocation: use `Widerruf schicken` for this CAT16 money/payment/contract context.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_101",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -20530,7 +21522,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -20585,9 +21577,15 @@
     "prompt_de": "AGB ___",
     "learnerCue": "AGB ___",
     "support_en": "",
-    "microRule": "Collocation: use `AGB lesen` for this CAT16 money/payment/contract context."
+    "microRule": "Collocation: use `AGB lesen` for this CAT16 money/payment/contract context.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_102",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -20629,7 +21627,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -20682,9 +21680,15 @@
     "prompt_de": "Tarif ___",
     "learnerCue": "Tarif ___",
     "support_en": "",
-    "microRule": "Money/payment wording needs a clear target: amount, invoice, receipt, payment method or contract language."
+    "microRule": "Money/payment wording needs a clear target: amount, invoice, receipt, payment method or contract language.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_103",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -20726,7 +21730,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "needs_human_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -20781,9 +21785,15 @@
     "prompt_de": "Schriftform ___",
     "learnerCue": "Schriftform ___",
     "support_en": "",
-    "microRule": "Collocation: use `Schriftform einhalten` for this CAT16 money/payment/contract context."
+    "microRule": "Collocation: use `Schriftform einhalten` for this CAT16 money/payment/contract context.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_104",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -20825,7 +21835,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -20878,9 +21888,15 @@
     "prompt_de": "Bestätigung ___",
     "learnerCue": "Bestätigung ___",
     "support_en": "",
-    "microRule": "Money/payment wording needs a clear target: amount, invoice, receipt, payment method or contract language."
+    "microRule": "Money/payment wording needs a clear target: amount, invoice, receipt, payment method or contract language.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_practice_family_cat16_pf_105",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -20922,7 +21938,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -20975,9 +21991,15 @@
     "prompt_de": "Rückzahlung ___",
     "learnerCue": "Rückzahlung ___",
     "support_en": "",
-    "microRule": "`Zahlung` is the payment; keep legal/payment consequences out of auto-grading."
+    "microRule": "`Zahlung` is the payment; keep legal/payment consequences out of auto-grading.",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_001",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -21019,7 +22041,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -21103,9 +22125,15 @@
     ],
     "section": "ask_price",
     "support_en": "How much is the amount?",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_002",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -21147,7 +22175,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -21231,9 +22259,15 @@
     ],
     "section": "ask_price",
     "support_en": "What does that cost in total?",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_003",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -21276,7 +22310,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -21354,9 +22388,15 @@
     ],
     "section": "ask_fee",
     "support_en": "Is there a fee for that?",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_004",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -21399,7 +22439,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -21477,9 +22517,15 @@
     ],
     "section": "ask_fee",
     "support_en": "Which fees do I have to pay?",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_005",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -21521,7 +22567,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -21605,9 +22651,15 @@
     ],
     "section": "ask_due_date",
     "support_en": "By when do I have to pay the invoice?",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_006",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -21650,7 +22702,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -21728,9 +22780,15 @@
     ],
     "section": "ask_due_date",
     "support_en": "When is the amount due?",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_007",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -21773,7 +22831,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -21851,9 +22909,15 @@
     ],
     "section": "ask_due_date",
     "support_en": "Is there a payment deadline?",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_008",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -21895,7 +22959,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -21979,9 +23043,15 @@
     ],
     "section": "say_payment_method",
     "support_en": "I will pay by bank transfer.",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_009",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -22023,7 +23093,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -22107,9 +23177,15 @@
     ],
     "section": "say_payment_method",
     "support_en": "Can I also pay by card?",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_010",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -22151,7 +23227,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -22235,9 +23311,15 @@
     ],
     "section": "say_payment_method",
     "support_en": "Can I pay in cash?",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_011",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -22279,7 +23361,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -22357,9 +23439,15 @@
     ],
     "section": "say_payment_method",
     "support_en": "I would like to pay by direct debit.",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_012",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -22402,7 +23490,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -22486,9 +23574,15 @@
     ],
     "section": "say_payment_method",
     "support_en": "I would like to set up a standing order.",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_013",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -22530,7 +23624,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -22614,9 +23708,15 @@
     ],
     "section": "say_paid",
     "support_en": "I have already paid the invoice.",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_014",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -22658,7 +23758,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -22742,9 +23842,15 @@
     ],
     "section": "say_paid",
     "support_en": "I transferred the amount yesterday.",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_015",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -22786,7 +23892,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -22870,9 +23976,15 @@
     ],
     "section": "ask_receipt",
     "support_en": "Could you please give me a receipt?",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_016",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -22914,7 +24026,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -22998,9 +24110,15 @@
     ],
     "section": "ask_invoice",
     "support_en": "Could you please send me an invoice?",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_017",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -23042,7 +24160,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -23126,9 +24244,15 @@
     ],
     "section": "ask_invoice",
     "support_en": "I need an invoice for my records.",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_018",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -23170,7 +24294,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -23254,9 +24378,15 @@
     ],
     "section": "reference_number",
     "support_en": "The invoice number is 4821.",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_019",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -23298,7 +24428,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -23382,9 +24512,15 @@
     ],
     "section": "reference_number",
     "support_en": "My customer number is 2387.",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_020",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -23426,7 +24562,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -23504,9 +24640,15 @@
     ],
     "section": "ask_bank_details",
     "support_en": "Which bank details should I transfer to?",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_021",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -23549,7 +24691,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -23627,9 +24769,15 @@
     ],
     "section": "change_bank_details",
     "support_en": "I would like to change my bank details.",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_022",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -23671,7 +24819,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -23749,9 +24897,15 @@
     ],
     "section": "ask_direct_debit",
     "support_en": "Can I pay by direct debit?",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_023",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -23793,7 +24947,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -23871,9 +25025,15 @@
     ],
     "section": "ask_instalments",
     "support_en": "Can I pay the amount in instalments?",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_024",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -23915,7 +25075,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -23993,9 +25153,15 @@
     ],
     "section": "ask_instalments",
     "support_en": "Can we agree an instalment payment?",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_025",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -24037,7 +25203,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -24121,9 +25287,15 @@
     ],
     "section": "refund_request",
     "support_en": "I request a refund of the amount.",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_026",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -24165,7 +25337,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -24249,9 +25421,15 @@
     ],
     "section": "refund_request",
     "support_en": "Could you please pay the amount back to me?",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_027",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -24293,7 +25471,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -24377,9 +25555,15 @@
     ],
     "section": "report_debit",
     "support_en": "The amount was debited twice.",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_028",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -24421,7 +25605,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -24505,9 +25689,15 @@
     ],
     "section": "ask_status",
     "support_en": "Has my payment been received?",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_029",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -24549,7 +25739,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -24633,9 +25823,15 @@
     ],
     "section": "confirm_status",
     "support_en": "Your payment has been received.",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_030",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -24677,7 +25873,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -24755,9 +25951,15 @@
     ],
     "section": "reminder_received",
     "support_en": "I received a payment reminder.",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_031",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -24799,7 +26001,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -24877,9 +26079,15 @@
     ],
     "section": "warning_received",
     "support_en": "I received a formal payment reminder.",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_032",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -24922,7 +26130,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -25006,9 +26214,15 @@
     ],
     "section": "payment_open",
     "support_en": "The payment is still outstanding.",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_033",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -25050,7 +26264,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -25134,9 +26348,15 @@
     ],
     "section": "invoice_paid",
     "support_en": "The invoice has already been paid.",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_034",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -25178,7 +26398,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -25262,9 +26482,15 @@
     ],
     "section": "ask_free",
     "support_en": "Is the service free of charge?",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_035",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -25307,7 +26533,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -25391,9 +26617,15 @@
     ],
     "section": "state_fee",
     "support_en": "This service has a fee.",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_036",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -25435,7 +26667,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -25519,9 +26751,15 @@
     ],
     "section": "frequency",
     "support_en": "I pay the contribution monthly.",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_037",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -25563,7 +26801,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -25647,9 +26885,15 @@
     ],
     "section": "frequency",
     "support_en": "I would like to pay once.",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_038",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -25691,7 +26935,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -25769,9 +27013,15 @@
     ],
     "section": "contract_start",
     "support_en": "I would like to take out a contract.",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_039",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -25813,7 +27063,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -25891,9 +27141,15 @@
     ],
     "section": "contract_signature",
     "support_en": "Where should I sign the contract?",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_040",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -25935,7 +27191,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -26013,9 +27269,15 @@
     ],
     "section": "contract_cancel",
     "support_en": "I would like to cancel/terminate the contract.",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_041",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -26057,7 +27319,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -26135,9 +27397,15 @@
     ],
     "section": "contract_cancel",
     "support_en": "I hereby terminate the contract at the earliest possible date.",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_042",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -26179,7 +27447,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -26257,9 +27525,15 @@
     ],
     "section": "ask_notice_period",
     "support_en": "How long is the notice period?",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_043",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -26302,7 +27576,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -26380,9 +27654,15 @@
     ],
     "section": "ask_end",
     "support_en": "When does the contract term end?",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_044",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -26424,7 +27704,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -26502,9 +27782,15 @@
     ],
     "section": "ask_confirmation",
     "support_en": "Please confirm the cancellation to me in writing.",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_045",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -26546,7 +27832,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -26624,9 +27910,15 @@
     ],
     "section": "avoid_renewal",
     "support_en": "I do not want to renew the contract.",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_046",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -26668,7 +27960,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -26746,9 +28038,15 @@
     ],
     "section": "ask_auto_renewal",
     "support_en": "Does the contract renew automatically?",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_047",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -26790,7 +28088,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -26868,9 +28166,15 @@
     ],
     "section": "ask_form",
     "support_en": "Do I have to cancel in writing?",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_048",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -26912,7 +28216,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -26990,9 +28294,15 @@
     ],
     "section": "ask_email_cancel",
     "support_en": "Can I cancel by email?",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_049",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -27034,7 +28344,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -27112,9 +28422,15 @@
     ],
     "section": "membership_cancel",
     "support_en": "I would like to cancel my membership.",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_050",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -27156,7 +28472,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -27234,9 +28550,15 @@
     ],
     "section": "subscription_cancel",
     "support_en": "I would like to cancel my subscription.",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_051",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -27278,7 +28600,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -27362,9 +28684,15 @@
     ],
     "section": "tariff_change",
     "support_en": "I would like to switch to a cheaper tariff.",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_052",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -27406,7 +28734,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -27490,9 +28818,15 @@
     ],
     "section": "debit_date",
     "support_en": "When will the amount be debited?",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_053",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -27534,7 +28868,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -27618,9 +28952,15 @@
     ],
     "section": "submit_proof",
     "support_en": "Can I submit proof of payment?",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_054",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -27662,7 +29002,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -27746,9 +29086,15 @@
     ],
     "section": "ask_copy",
     "support_en": "Could you please send me a copy of the invoice?",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_055",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -27790,7 +29136,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -27874,9 +29220,15 @@
     ],
     "section": "wrong_amount",
     "support_en": "The charged/calculated amount is not correct.",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_056",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -27918,7 +29270,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -28002,9 +29354,15 @@
     ],
     "section": "ask_check",
     "support_en": "Could you please check the invoice?",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_057",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -28046,7 +29404,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -28130,9 +29488,15 @@
     ],
     "section": "written_confirmation",
     "support_en": "I request written confirmation.",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_058",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -28174,7 +29538,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -28258,9 +29622,15 @@
     ],
     "section": "ask_receipt_payment",
     "support_en": "Can I please get a receipt/document?",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_059",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -28302,7 +29672,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -28386,9 +29756,15 @@
     ],
     "section": "billing_address",
     "support_en": "My billing address has changed.",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_060",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -28430,7 +29806,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -28514,9 +29890,15 @@
     ],
     "section": "billing_address",
     "support_en": "Please use this billing address.",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_061",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -28558,7 +29940,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -28642,9 +30024,15 @@
     ],
     "section": "ask_reference",
     "support_en": "Which payment reference should I enter?",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_062",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -28686,7 +30074,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -28770,9 +30158,15 @@
     ],
     "section": "ask_receipt_copy",
     "support_en": "Please send me a payment confirmation.",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_063",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -28816,7 +30210,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -28894,9 +30288,15 @@
     ],
     "section": "dispute_fee",
     "support_en": "I do not understand this fee.",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_064",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -28939,7 +30339,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -29017,9 +30417,15 @@
     ],
     "section": "ask_fee_reason",
     "support_en": "What was this fee charged for?",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_065",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -29061,7 +30467,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -29145,9 +30551,15 @@
     ],
     "section": "ask_credit",
     "support_en": "Do I still have credit balance?",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_redemittel_cat16_r_066",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -29189,7 +30601,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -29273,9 +30685,15 @@
     ],
     "section": "ask_refund_credit",
     "support_en": "Can the credit balance be paid out?",
-    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates"
+    "microRule": "Watch: missing article; wrong verb collocation; treating legal/financial phrases as free templates",
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_001",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -29318,7 +30736,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -29400,9 +30818,15 @@
         "text": "Kosten",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_002",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -29445,7 +30869,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -29527,9 +30951,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_003",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -29572,7 +31002,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -29654,9 +31084,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_004",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -29699,7 +31135,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -29781,9 +31217,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_005",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -29826,7 +31268,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -29910,9 +31352,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_006",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -29955,7 +31403,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -30037,9 +31485,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_007",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -30082,7 +31536,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -30164,9 +31618,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_008",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -30209,7 +31669,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -30293,9 +31753,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_009",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -30338,7 +31804,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -30420,9 +31886,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_010",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -30465,7 +31937,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -30547,9 +32019,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_011",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -30593,7 +32071,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -30677,9 +32155,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_012",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -30721,7 +32205,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -30805,9 +32289,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_013",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -30851,7 +32341,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -30935,9 +32425,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_014",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -30979,7 +32475,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -31063,9 +32559,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_015",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -31108,7 +32610,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -31192,9 +32694,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_016",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -31237,7 +32745,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -31321,9 +32829,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_017",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -31365,7 +32879,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -31449,9 +32963,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_018",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -31493,7 +33013,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -31577,9 +33097,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_019",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -31621,7 +33147,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -31705,9 +33231,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_020",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -31749,7 +33281,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -31833,9 +33365,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_021",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -31878,7 +33416,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -31962,9 +33500,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_022",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -32007,7 +33551,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -32091,9 +33635,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_023",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -32136,7 +33686,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -32218,9 +33768,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_024",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -32262,7 +33818,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -32346,9 +33902,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_025",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -32390,7 +33952,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -32474,9 +34036,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_026",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -32519,7 +34087,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -32603,9 +34171,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_027",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -32648,7 +34222,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -32732,9 +34306,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_028",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -32777,7 +34357,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -32859,9 +34439,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_029",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -32904,7 +34490,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -32986,9 +34572,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_030",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -33032,7 +34624,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -33116,9 +34708,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_031",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -33161,7 +34759,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -33245,9 +34843,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_032",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -33290,7 +34894,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -33374,9 +34978,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_033",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -33419,7 +35029,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -33501,9 +35111,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_034",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -33546,7 +35162,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -33628,9 +35244,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_035",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -33673,7 +35295,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -33755,9 +35377,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_036",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -33799,7 +35427,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -33883,9 +35511,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_037",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -33927,7 +35561,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -34011,9 +35645,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_038",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -34055,7 +35695,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -34139,9 +35779,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_039",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -34183,7 +35829,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -34267,9 +35913,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_040",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -34312,7 +35964,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -34394,9 +36046,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_041",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -34438,7 +36096,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -34522,9 +36180,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_042",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -34567,7 +36231,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -34651,9 +36315,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_043",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -34696,7 +36366,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -34780,9 +36450,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_044",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -34825,7 +36501,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -34907,9 +36583,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_045",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -34952,7 +36634,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -35034,9 +36716,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_046",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -35079,7 +36767,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -35161,9 +36849,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_047",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -35205,7 +36899,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -35289,9 +36983,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_048",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -35333,7 +37033,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -35417,9 +37117,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_049",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -35461,7 +37167,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -35545,9 +37251,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_050",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -35590,7 +37302,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -35674,9 +37386,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_051",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -35719,7 +37437,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -35803,9 +37521,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_052",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -35847,7 +37571,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -35931,9 +37655,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_053",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -35975,7 +37705,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -36059,9 +37789,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_054",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -36103,7 +37839,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -36187,9 +37923,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_055",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -36232,7 +37974,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -36314,9 +38056,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_056",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -36359,7 +38107,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -36441,9 +38189,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_057",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -36486,7 +38240,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -36570,9 +38324,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_058",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -36614,7 +38374,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -36698,9 +38458,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_059",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -36742,7 +38508,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -36826,9 +38592,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_060",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -36870,7 +38642,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -36954,9 +38726,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_061",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -36998,7 +38776,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -37082,9 +38860,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_062",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -37127,7 +38911,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -37211,9 +38995,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_063",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -37255,7 +39045,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -37339,9 +39129,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_064",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -37384,7 +39180,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -37468,9 +39264,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_065",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -37512,7 +39314,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -37596,9 +39398,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_066",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -37640,7 +39448,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -37724,9 +39532,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_067",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -37768,7 +39582,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -37852,9 +39666,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_068",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -37897,7 +39717,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -37981,9 +39801,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_069",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -38026,7 +39852,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -38110,9 +39936,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_070",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -38154,7 +39986,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -38238,9 +40070,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_071",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -38282,7 +40120,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -38366,9 +40204,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_072",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -38410,7 +40254,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -38494,9 +40338,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_073",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -38538,7 +40388,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -38622,9 +40472,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_074",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -38666,7 +40522,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -38750,9 +40606,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_075",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -38795,7 +40657,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -38879,9 +40741,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_076",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -38924,7 +40792,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -39008,9 +40876,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_077",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -39053,7 +40927,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -39137,9 +41011,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_078",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -39181,7 +41061,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -39265,9 +41145,15 @@
         "text": "Stornierung",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_079",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -39309,7 +41195,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -39393,9 +41279,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_080",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -39437,7 +41329,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -39521,9 +41413,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_081",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -39565,7 +41463,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -39649,9 +41547,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_082",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -39694,7 +41598,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -39778,9 +41682,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_083",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -39822,7 +41732,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -39906,9 +41816,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_084",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -39951,7 +41867,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -40035,9 +41951,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_085",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -40080,7 +42002,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -40164,9 +42086,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_086",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -40208,7 +42136,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -40292,9 +42220,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_087",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -40336,7 +42270,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -40420,9 +42354,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_088",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -40464,7 +42404,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -40548,9 +42488,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_089",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -40592,7 +42538,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -40676,9 +42622,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_090",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -40720,7 +42672,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -40804,9 +42756,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_091",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -40848,7 +42806,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -40932,9 +42890,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_092",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -40976,7 +42940,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -41060,9 +43024,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_093",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -41104,7 +43074,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -41188,9 +43158,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_094",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -41232,7 +43208,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -41316,9 +43292,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_095",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -41361,7 +43343,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -41444,7 +43426,13 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
   {
     "id": "v080149_cat16_wortschatz_cat16_w_096",
@@ -41698,7 +43686,7 @@
       }
     ]
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_098",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -41740,7 +43728,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -41823,9 +43811,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_099",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -41868,7 +43862,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -41951,9 +43945,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_100",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -41996,7 +43996,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -42079,7 +44079,13 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
   {
     "id": "v080149_cat16_wortschatz_cat16_w_101",
@@ -44096,7 +46102,7 @@
       }
     ]
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_117",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -44139,7 +46145,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -44222,7 +46228,13 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
   {
     "id": "v080149_cat16_wortschatz_cat16_w_118",
@@ -44350,7 +46362,7 @@
       }
     ]
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_119",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -44392,7 +46404,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -44475,9 +46487,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_120",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -44519,7 +46537,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -44602,9 +46620,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_121",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -44646,7 +46670,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -44729,9 +46753,15 @@
         "text": "widerrufen",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_122",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -44773,7 +46803,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -44856,9 +46886,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_123",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -44900,7 +46936,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -44983,9 +47019,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_124",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -45027,7 +47069,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -45110,9 +47152,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_125",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -45154,7 +47202,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -45237,9 +47285,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_126",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -45281,7 +47335,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -45364,7 +47418,13 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
   {
     "id": "v080149_cat16_wortschatz_cat16_w_127",
@@ -45492,7 +47552,7 @@
       }
     ]
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_128",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -45534,7 +47594,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -45617,7 +47677,13 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
   {
     "id": "v080149_cat16_wortschatz_cat16_w_129",
@@ -45744,7 +47810,7 @@
       }
     ]
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_130",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -45787,7 +47853,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -45870,9 +47936,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_131",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -45914,7 +47986,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -45997,9 +48069,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_132",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -46042,7 +48120,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -46125,7 +48203,13 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
   {
     "id": "v080149_cat16_wortschatz_cat16_w_133",
@@ -46756,7 +48840,7 @@
       }
     ]
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_138",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -46799,7 +48883,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -46879,9 +48963,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_139",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -46923,7 +49013,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -47005,9 +49095,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_140",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -47050,7 +49146,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -47130,9 +49226,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_141",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -47175,7 +49277,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -47255,9 +49357,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_142",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -47300,7 +49408,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -47382,9 +49490,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_143",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -47427,7 +49541,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -47509,9 +49623,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_144",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -47554,7 +49674,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -47636,9 +49756,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_145",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -47681,7 +49807,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -47763,9 +49889,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_146",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -47808,7 +49940,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -47890,9 +50022,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_147",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -47935,7 +50073,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -48017,9 +50155,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_148",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -48062,7 +50206,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -48142,9 +50286,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_149",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -48187,7 +50337,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -48267,9 +50417,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_150",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -48311,7 +50467,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -48393,9 +50549,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_151",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -48437,7 +50599,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -48519,9 +50681,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_152",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -48563,7 +50731,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -48645,9 +50813,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_153",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -48689,7 +50863,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -48771,9 +50945,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_154",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -48815,7 +50995,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -48897,9 +51077,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_155",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -48941,7 +51127,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -49021,9 +51207,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_156",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -49065,7 +51257,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -49147,9 +51339,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_157",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -49192,7 +51390,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -49274,9 +51472,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_158",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -49319,7 +51523,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -49400,7 +51604,13 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
   {
     "id": "v080149_cat16_wortschatz_cat16_w_159",
@@ -49772,7 +51982,7 @@
       }
     ]
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_162",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -49815,7 +52025,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -49896,9 +52106,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_163",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -49942,7 +52158,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -50023,9 +52239,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_164",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -50068,7 +52290,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -50150,9 +52372,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_165",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -50195,7 +52423,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "review_flagged_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "support_only_pending_review",
     "planningEvidenceLabel": "Supported Practice Evidence",
     "supportPolicy": "after_answer",
@@ -50277,9 +52505,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "v0.2/comparison decision requires review, downgrade, defer or cut"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_166",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -50322,7 +52556,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -50402,9 +52636,15 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   },
-  {
+    {
     "id": "v080149_cat16_wortschatz_cat16_w_167",
     "source": "Ozmosis B1 CAT01-CAT18 v0_2 reconciled import",
     "contentImportVersion": "v0.80.14.9",
@@ -50447,7 +52687,7 @@
     "rendererImportStatus": "active_imported",
     "importStatus": "active_imported",
     "previewOnly": false,
-    "activeB1Evidence": true,
+    "activeB1Evidence": false,
     "evidenceType": "auto_supported",
     "planningEvidenceLabel": "Core Practice Evidence",
     "supportPolicy": "after_answer",
@@ -50527,7 +52767,13 @@
         "text": "der Betrag",
         "isCorrect": false
       }
-    ]
+    ],
+    "normalPracticeEligible": false,
+    "reviewOnly": true,
+    "v02ReconciliationBucket": "QUARANTINE",
+    "v02ApplyGateStatus": "quarantined_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "comparison file records visible learner-facing issue"
   }
 ];
   window.OZMOSIS_CONTENT.b1M16MoneyPaymentContractsNotices = [];

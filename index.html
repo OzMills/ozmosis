@@ -11602,8 +11602,8 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
   var B1_PATH_UNLOCK_STORAGE_KEY = "ozmosis_b1_path_unlock_overrides_v1";
   var B1_REVIEW_EDIT_QUEUE_STORAGE_KEY = "ozmosis_b1_review_edit_queue_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues";
-  var OZMOSIS_EXPORT_VERSION = "v0.85.6-source-cleanup-internal-labels-meaning-cues";
+  var OZMOSIS_APP_VERSION = "v0.85.6a.2";
+  var OZMOSIS_EXPORT_VERSION = "v0.85.6a.2-v02-reconciliation-apply-gate";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -19849,6 +19849,33 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     ].concat(item && Array.isArray(item.tags) ? item.tags : [])
       .concat(b1ContrastTargets(item)).join(" ").toLowerCase();
   }
+  function b1ItemExplicitlyTargetsLocationMovement(item) {
+    if (!item) return false;
+    var explicit = [
+      item.grammarFocus,
+      item.targetRule,
+      item.rule,
+      item.family,
+      item.variantFamilyId,
+      item.grammarDomain,
+      item.courseDomain,
+      item.section,
+      item.topic,
+      item.subtopic,
+      item.sourceType,
+      item.grammarCue,
+      item.repairCategory,
+      item.errorFocus
+    ].concat(Array.isArray(item.tags) ? item.tags : [])
+      .concat(Array.isArray(item.skillTags) ? item.skillTags : [])
+      .join(" ")
+      .toLowerCase();
+    if (/(wechselpr|two-way preposition|location_movement|local_preposition|dative_accusative_location|movement_vs_location)/.test(explicit)) return true;
+    var bankKey = "";
+    try { bankKey = b1EvidenceBankKeyFor(item); } catch (err) { bankKey = ""; }
+    var context = explicit + " " + String(item.microRule || item.explanation || "").toLowerCase();
+    return bankKey === "prepositions" && /(two-way|wechselpr|location|movement|direction|wohin|where\?|dative|accusative)/.test(context);
+  }
   function b1ContrastGroup(item, rawAnswer) {
     var text = b1ContrastText(item, rawAnswer);
     if (!text) return "";
@@ -19859,7 +19886,9 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     if (/(wenn|als)/.test(text)) return "wenn_als";
     if (/(bevor|nachdem)/.test(text)) return "bevor_nachdem";
     if (/(waehrend|w.hrend|solange)/.test(text)) return "waehrend_solange";
-    if (/(two-way|wechselpraeposition|wechselpr|where\?|wo\b|movement|direction|location)/.test(text)) return "location_movement";
+    if (/(two-way|wechselpraeposition|wechselpr|where\?|wo\b|movement|direction|location)/.test(text)) {
+      if (b1ItemExplicitlyTargetsLocationMovement(item)) return "location_movement";
+    }
     if (/(dative|dativ|accusative|akkusativ|\bcase\b)/.test(text)) return "dative_accusative";
     return "";
   }
@@ -23021,6 +23050,7 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     var reasons = [];
     if (!item || !item.id) return ["missing_item"];
     if (!b1ItemHasLearnerStatus(item)) reasons.push("not_active");
+    if (item.normalPracticeEligible === false) reasons.push("manifest_gate_excluded");
     if (item.itemType === "notice" || item.taskType === "notice" || item.evidenceType === "excluded") reasons.push("non_practice");
     var displayModel = b1DisplayModel(item);
     if (displayModel && displayModel.displayStatus === "review") reasons.push("display_schema_review");
@@ -24961,6 +24991,15 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     if (text.normalize) text = text.normalize("NFC");
     return b1CleanRepairSentence(text);
   }
+  function b1NormaliseSatzbauAnswer(value) {
+    var text = String(value || "");
+    if (text.normalize) text = text.normalize("NFC");
+    return b1CleanAnswer(text)
+      .replace(/\s+([,.;:!?])/g, "$1")
+      .replace(/[.!?]+$/g, "")
+      .trim()
+      .toLocaleLowerCase("de-DE");
+  }
   function b1RepairCaseFold(value) {
     return normaliseGermanRepairAnswer(value).toLocaleLowerCase("de-DE");
   }
@@ -24987,6 +25026,10 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     if (item && item.itemType === "error_repair") {
       var repairValue = normaliseGermanRepairAnswer(raw);
       return accepted.some(function(answer){ return repairValue === normaliseGermanRepairAnswer(answer); });
+    }
+    if (item && b1IsSatzbauItem(item)) {
+      var satzbauValue = b1NormaliseSatzbauAnswer(raw);
+      return accepted.some(function(answer){ return satzbauValue === b1NormaliseSatzbauAnswer(answer); });
     }
     if (item && item.caseSensitiveAnswer) {
       var exactValue = b1CleanAnswer(raw);
@@ -29004,6 +29047,8 @@ window.ozmosisTesterReportSummary=testerReportSummary; window.ozmosisLearnerRead
   window.ozmosisVersionInfo=function(){ return { appVersion:OZMOSIS_APP_VERSION, exportVersion:OZMOSIS_EXPORT_VERSION }; };
   window.ozmosisDisplaySchemaAudit=function(options){ return b1DisplaySchemaAudit(options || {includeReviewQueue:true}); };
   window.ozmosisRuntimeDisplayContractAudit=function(options){ return b1RuntimeDisplayContractAudit(options || {includeRows:true}); };
+  window.ozmosisQaB1AnswerMatches=function(item, rawAnswer){ return b1AnswerMatches(item || {}, rawAnswer); };
+  window.ozmosisQaB1ContrastFeedback=function(item, rawAnswer, isCorrect){ return b1ContrastFeedback(item || {}, rawAnswer, !!isCorrect); };
   window.ozmosisStartPrepositions=function(filter){ startPrepositionsRound(filter || "mixed"); };
   window.ozmosisStartWordOrder=function(filter){ startWordOrderRound(filter || "mixed"); };
   var ozmosisB1DebugBase = window.ozmosisB1Debug;

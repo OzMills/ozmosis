@@ -1,0 +1,15 @@
+# Ozmosis v0.85.6a.2 - v0.2 Reconciliation Apply Gate
+
+- Applied the corrected v0.85.6a.1 v0.2 reconciliation manifest from `docs/qa/v0.85.6a.1_v02_apply_manifest.csv`.
+- Treated `docs/qa/FILE_CONFLICT_REPORT_v0.85.6a.1_missing_v02_replacement_sources.md` as historical and superseded by the corrected dry-run outputs.
+- Applied 859 schema-safe `CORE_SAFE_V02_REPLACEMENT` rows.
+- Preserved 68 `CORE_SAFE_UNCHANGED` rows in normal practice.
+- Quarantined 4,459 `QUARANTINE` rows from normal practice without deleting them.
+- Isolated 291 `PRODUCTION_PRACTICE` rows from normal auto-graded practice.
+- Kept 567 `LEGACY_SEED_SAFE_CANDIDATE` rows active for now.
+- Left 944 `EXCEPTION_REVIEW` rows untouched and reported them for later review.
+- Confirmed the six known problem rows are either safely replaced or excluded from normal practice.
+- Fixed Satzbau answer normalisation so `wo ist der Kursraum` matches `Wo ist der Kursraum?` and `ich brauche bitte die Unterlagen` matches `Ich brauche bitte die Unterlagen.` for Satzbau tasks.
+- Gated generic location/movement feedback so an ordinary `Wo ist der Kursraum?` answer does not receive Wechselpraeposition/two-way-preposition feedback unless the item explicitly targets location/movement.
+- Preserved scoring, evidence semantics, storage keys, export/import compatibility, route set, Case Trainer, Settings, Dev Tools, Learning Map, Skill Matrix, German LTR display rules, and B1 active scope.
+- Added QA documentation at `docs/qa/v0.85.6a.2_v02_reconciliation_apply_gate.md`.

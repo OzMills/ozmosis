@@ -1,0 +1,85 @@
+{
+  "manifestRows": 7188,
+  "manifestBucketCounts": {
+    "LEGACY_SEED_SAFE_CANDIDATE": 567,
+    "PRODUCTION_PRACTICE": 291,
+    "CORE_SAFE_UNCHANGED": 68,
+    "QUARANTINE": 4459,
+    "CORE_SAFE_V02_REPLACEMENT": 859,
+    "EXCEPTION_REVIEW": 944
+  },
+  "appliedCounts": {
+    "coreSafeActive": 68,
+    "replaced": 859,
+    "quarantined": 4459,
+    "productionIsolated": 291,
+    "legacySeedKept": 567,
+    "exceptions": 944
+  },
+  "contentChangedFiles": [
+    "content/b1-connectors.js",
+    "content/b1-m01-variant-families.js",
+    "content/b1-m02-appointments-callbacks.js",
+    "content/b1-m03-job-search-offices.js",
+    "content/b1-m04-applications.js",
+    "content/b1-m05-first-day-contract-basics.js",
+    "content/b1-m06-sick-leave.js",
+    "content/b1-m07-meetings-leave-requests.js",
+    "content/b1-m08-orders-delivery.js",
+    "content/b1-m09-complaints-customer-service.js",
+    "content/b1-m10-technical-problems.js",
+    "content/b1-m11-colleague-feedback-conflict.js",
+    "content/b1-m12-forms-admin-certificates.js",
+    "content/b1-m13-learning-exam-language.js",
+    "content/b1-m14-connectors-sentence-functions.js",
+    "content/b1-m15-time-place-movement.js",
+    "content/b1-m16-money-payment-contracts.js",
+    "content/b1-m17-home-family-daily-life-support.js",
+    "content/b1-m18-b1-b2-bridge-preview.js",
+    "content/b1-redemittel.js"
+  ],
+  "knownProblemRows": [
+    {
+      "id": "v080149_cat01_contrast_cat01_cs_010",
+      "bucket": "QUARANTINE",
+      "status": "applied",
+      "fields": "normalPracticeEligible; activeB1Evidence; reviewOnly; v02ApplyGateStatus",
+      "reason": "comparison file records visible learner-facing issue"
+    },
+    {
+      "id": "v080149_cat01_practice_family_cat01_pf_052",
+      "bucket": "QUARANTINE",
+      "status": "applied",
+      "fields": "normalPracticeEligible; activeB1Evidence; reviewOnly; v02ApplyGateStatus",
+      "reason": "comparison file records visible learner-facing issue"
+    },
+    {
+      "id": "v080149_cat02_contrast_cat02_cs_015",
+      "bucket": "CORE_SAFE_V02_REPLACEMENT",
+      "status": "applied",
+      "fields": "prompt_de; learnerCue; microRule",
+      "reason": ""
+    },
+    {
+      "id": "v080149_cat02_practice_family_cat02_pf_059",
+      "bucket": "CORE_SAFE_V02_REPLACEMENT",
+      "status": "applied",
+      "fields": "prompt_de; learnerCue",
+      "reason": ""
+    },
+    {
+      "id": "v080149_cat02_practice_family_cat02_pf_072",
+      "bucket": "QUARANTINE",
+      "status": "applied",
+      "fields": "normalPracticeEligible; activeB1Evidence; reviewOnly; v02ApplyGateStatus",
+      "reason": "comparison file records visible learner-facing issue"
+    },
+    {
+      "id": "v080149_cat02_practice_family_cat02_pf_073",
+      "bucket": "QUARANTINE",
+      "status": "applied",
+      "fields": "normalPracticeEligible; activeB1Evidence; reviewOnly; v02ApplyGateStatus",
+      "reason": "comparison file records visible learner-facing issue"
+    }
+  ]
+}

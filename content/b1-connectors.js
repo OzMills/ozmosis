@@ -5297,278 +5297,303 @@
         "deshalb"
       ]
     },
-    {
-      "id": "b1_connector_116",
-      "source": "B1Work course notes + OZMOSIS B1 Connector Sprint v1",
-      "chapter": 3,
-      "courseDomain": "krankmeldung_versicherung",
-      "grammarDomain": "kausal_konnektoren",
-      "itemType": "production_card",
-      "cefr": "B1",
-      "difficulty": "sprint_core",
-      "variantFamilyId": "production_reason",
-      "variantRole": "production_seed",
-      "targetRule": "Production card: use the target connector actively in a short B1-relevant response.",
-      "contrastTargets": [],
-      "prompt_de": "Sprechen/Schreiben: Erklären Sie, warum Sie heute nicht zur Arbeit kommen können. Verwenden Sie einmal weil.",
-      "answer": "self_check",
-      "acceptedAnswers": [
-        "self_check"
-      ],
-      "fullAnswer_de": "Ich kann heute nicht zur Arbeit kommen, weil ich krank bin.",
-      "modelAnswer_de": "Guten Morgen, ich kann heute leider nicht zur Arbeit kommen, weil ich krank bin. Ich melde mich morgen wieder.",
-      "support_en": "Explain why you cannot come to work today. Use weil once.",
-      "microRule": "Production card: use the target connector actively in a short B1-relevant response.",
-      "tags": [
-        "reason",
-        "production",
-        "weil"
-      ],
-      "status": "active",
-      "qa": {
-        "status": "passed_internal",
-        "checks": {
-          "b1_relevance": true,
-          "natural_hochdeutsch": true,
-          "single_target": true,
-          "no_genitive_target": true,
-          "no_adjective_ending_target": true,
-          "course_context_relevant": true
-        },
-        "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
+      {
+    "id": "b1_connector_116",
+    "source": "B1Work course notes + OZMOSIS B1 Connector Sprint v1",
+    "chapter": 3,
+    "courseDomain": "krankmeldung_versicherung",
+    "grammarDomain": "kausal_konnektoren",
+    "itemType": "production_card",
+    "cefr": "B1",
+    "difficulty": "sprint_core",
+    "variantFamilyId": "production_reason",
+    "variantRole": "production_seed",
+    "targetRule": "Production card: use the target connector actively in a short B1-relevant response.",
+    "contrastTargets": [],
+    "prompt_de": "Sprechen/Schreiben: Erklären Sie, warum Sie heute nicht zur Arbeit kommen können. Verwenden Sie einmal weil.",
+    "answer": "self_check",
+    "acceptedAnswers": [
+      "self_check"
+    ],
+    "fullAnswer_de": "Ich kann heute nicht zur Arbeit kommen, weil ich krank bin.",
+    "modelAnswer_de": "Guten Morgen, ich kann heute leider nicht zur Arbeit kommen, weil ich krank bin. Ich melde mich morgen wieder.",
+    "support_en": "Explain why you cannot come to work today. Use weil once.",
+    "microRule": "Production card: use the target connector actively in a short B1-relevant response.",
+    "tags": [
+      "reason",
+      "production",
+      "weil"
+    ],
+    "status": "active",
+    "qa": {
+      "status": "passed_internal",
+      "checks": {
+        "b1_relevance": true,
+        "natural_hochdeutsch": true,
+        "single_target": true,
+        "no_genitive_target": true,
+        "no_adjective_ending_target": true,
+        "course_context_relevant": true
       },
-      "usefulPhrases": [
-        "Ich kann heute leider nicht zur Arbeit kommen.",
-        "Ich bin krank, weil ...",
-        "Ich habe einen Arzttermin, weil ...",
-        "Ich informiere Sie so früh wie möglich.",
-        "Ich melde mich morgen wieder."
-      ],
-      "productionChecklist": [
-        "Say clearly that you cannot come today.",
-        "Use one weil-clause.",
-        "Put the finite verb at the end of the weil-clause.",
-        "Give a simple reason and keep the tone polite."
-      ]
+      "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
     },
-    {
-      "id": "b1_connector_117",
-      "source": "B1Work course notes + OZMOSIS B1 Connector Sprint v1",
-      "chapter": 2,
-      "courseDomain": "bewerbung",
-      "grammarDomain": "konzessiv_konnektoren",
-      "itemType": "production_card",
-      "cefr": "B1",
-      "difficulty": "sprint_core",
-      "variantFamilyId": "production_contrast",
-      "variantRole": "production_seed",
-      "targetRule": "Production card: use the target connector actively in a short B1-relevant response.",
-      "contrastTargets": [],
-      "prompt_de": "Sprechen/Schreiben: Sagen Sie, dass Sie wenig Erfahrung haben, aber sich trotzdem bewerben. Verwenden Sie obwohl oder trotzdem.",
-      "answer": "self_check",
-      "acceptedAnswers": [
-        "self_check"
-      ],
-      "fullAnswer_de": "Obwohl ich noch wenig Erfahrung habe, bewerbe ich mich für die Stelle.",
-      "modelAnswer_de": "Obwohl ich noch wenig Erfahrung habe, bewerbe ich mich um die Stelle. Ich lerne schnell und interessiere mich sehr für die Arbeit.",
-      "support_en": "Say that you have little experience but are applying anyway. Use obwohl or trotzdem.",
-      "microRule": "Production card: use the target connector actively in a short B1-relevant response.",
-      "tags": [
-        "contrast",
-        "production",
-        "obwohl",
-        "trotzdem"
-      ],
-      "status": "active",
-      "qa": {
-        "status": "passed_internal",
-        "checks": {
-          "b1_relevance": true,
-          "natural_hochdeutsch": true,
-          "single_target": true,
-          "no_genitive_target": true,
-          "no_adjective_ending_target": true,
-          "course_context_relevant": true
-        },
-        "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
+    "usefulPhrases": [
+      "Ich kann heute leider nicht zur Arbeit kommen.",
+      "Ich bin krank, weil ...",
+      "Ich habe einen Arzttermin, weil ...",
+      "Ich informiere Sie so früh wie möglich.",
+      "Ich melde mich morgen wieder."
+    ],
+    "productionChecklist": [
+      "Say clearly that you cannot come today.",
+      "Use one weil-clause.",
+      "Put the finite verb at the end of the weil-clause.",
+      "Give a simple reason and keep the tone polite."
+    ],
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
+  },
+      {
+    "id": "b1_connector_117",
+    "source": "B1Work course notes + OZMOSIS B1 Connector Sprint v1",
+    "chapter": 2,
+    "courseDomain": "bewerbung",
+    "grammarDomain": "konzessiv_konnektoren",
+    "itemType": "production_card",
+    "cefr": "B1",
+    "difficulty": "sprint_core",
+    "variantFamilyId": "production_contrast",
+    "variantRole": "production_seed",
+    "targetRule": "Production card: use the target connector actively in a short B1-relevant response.",
+    "contrastTargets": [],
+    "prompt_de": "Sprechen/Schreiben: Sagen Sie, dass Sie wenig Erfahrung haben, aber sich trotzdem bewerben. Verwenden Sie obwohl oder trotzdem.",
+    "answer": "self_check",
+    "acceptedAnswers": [
+      "self_check"
+    ],
+    "fullAnswer_de": "Obwohl ich noch wenig Erfahrung habe, bewerbe ich mich für die Stelle.",
+    "modelAnswer_de": "Obwohl ich noch wenig Erfahrung habe, bewerbe ich mich um die Stelle. Ich lerne schnell und interessiere mich sehr für die Arbeit.",
+    "support_en": "Say that you have little experience but are applying anyway. Use obwohl or trotzdem.",
+    "microRule": "Production card: use the target connector actively in a short B1-relevant response.",
+    "tags": [
+      "contrast",
+      "production",
+      "obwohl",
+      "trotzdem"
+    ],
+    "status": "active",
+    "qa": {
+      "status": "passed_internal",
+      "checks": {
+        "b1_relevance": true,
+        "natural_hochdeutsch": true,
+        "single_target": true,
+        "no_genitive_target": true,
+        "no_adjective_ending_target": true,
+        "course_context_relevant": true
       },
-      "usefulPhrases": [
-        "Obwohl ich noch wenig Erfahrung habe, ...",
-        "Ich bewerbe mich trotzdem um die Stelle.",
-        "Ich interessiere mich sehr für die Stelle.",
-        "Ich lerne schnell.",
-        "Über eine Einladung würde ich mich freuen."
-      ],
-      "productionChecklist": [
-        "Use either obwohl with verb-final word order or trotzdem with verb-second word order.",
-        "Mention the application or the position.",
-        "Keep the sentence positive but realistic.",
-        "Do not use both connectors unless the sentence remains natural."
-      ]
+      "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
     },
-    {
-      "id": "b1_connector_118",
-      "source": "B1Work course notes + OZMOSIS B1 Connector Sprint v1",
-      "chapter": 1,
-      "courseDomain": "firma_buero",
-      "grammarDomain": "finalsaetze",
-      "itemType": "production_card",
-      "cefr": "B1",
-      "difficulty": "sprint_core",
-      "variantFamilyId": "production_purpose",
-      "variantRole": "production_seed",
-      "targetRule": "Production card: use the target connector actively in a short B1-relevant response.",
-      "contrastTargets": [],
-      "prompt_de": "Sprechen/Schreiben: Erklären Sie, warum Sie anrufen. Verwenden Sie um ... zu oder damit.",
-      "answer": "self_check",
-      "acceptedAnswers": [
-        "self_check"
-      ],
-      "fullAnswer_de": "Ich rufe an, um einen Termin zu vereinbaren.",
-      "modelAnswer_de": "Ich rufe an, um einen Termin zu vereinbaren. Könnten Sie mir bitte sagen, wann ein Termin frei ist?",
-      "support_en": "Explain why you are calling. Use um ... zu or damit.",
-      "microRule": "Production card: use the target connector actively in a short B1-relevant response.",
-      "tags": [
-        "purpose",
-        "production",
-        "um_zu",
-        "damit"
-      ],
-      "status": "active",
-      "qa": {
-        "status": "passed_internal",
-        "checks": {
-          "b1_relevance": true,
-          "natural_hochdeutsch": true,
-          "single_target": true,
-          "no_genitive_target": true,
-          "no_adjective_ending_target": true,
-          "course_context_relevant": true
-        },
-        "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
+    "usefulPhrases": [
+      "Obwohl ich noch wenig Erfahrung habe, ...",
+      "Ich bewerbe mich trotzdem um die Stelle.",
+      "Ich interessiere mich sehr für die Stelle.",
+      "Ich lerne schnell.",
+      "Über eine Einladung würde ich mich freuen."
+    ],
+    "productionChecklist": [
+      "Use either obwohl with verb-final word order or trotzdem with verb-second word order.",
+      "Mention the application or the position.",
+      "Keep the sentence positive but realistic.",
+      "Do not use both connectors unless the sentence remains natural."
+    ],
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
+  },
+      {
+    "id": "b1_connector_118",
+    "source": "B1Work course notes + OZMOSIS B1 Connector Sprint v1",
+    "chapter": 1,
+    "courseDomain": "firma_buero",
+    "grammarDomain": "finalsaetze",
+    "itemType": "production_card",
+    "cefr": "B1",
+    "difficulty": "sprint_core",
+    "variantFamilyId": "production_purpose",
+    "variantRole": "production_seed",
+    "targetRule": "Production card: use the target connector actively in a short B1-relevant response.",
+    "contrastTargets": [],
+    "prompt_de": "Sprechen/Schreiben: Erklären Sie, warum Sie anrufen. Verwenden Sie um ... zu oder damit.",
+    "answer": "self_check",
+    "acceptedAnswers": [
+      "self_check"
+    ],
+    "fullAnswer_de": "Ich rufe an, um einen Termin zu vereinbaren.",
+    "modelAnswer_de": "Ich rufe an, um einen Termin zu vereinbaren. Könnten Sie mir bitte sagen, wann ein Termin frei ist?",
+    "support_en": "Explain why you are calling. Use um ... zu or damit.",
+    "microRule": "Production card: use the target connector actively in a short B1-relevant response.",
+    "tags": [
+      "purpose",
+      "production",
+      "um_zu",
+      "damit"
+    ],
+    "status": "active",
+    "qa": {
+      "status": "passed_internal",
+      "checks": {
+        "b1_relevance": true,
+        "natural_hochdeutsch": true,
+        "single_target": true,
+        "no_genitive_target": true,
+        "no_adjective_ending_target": true,
+        "course_context_relevant": true
       },
-      "usefulPhrases": [
-        "Ich rufe an, um einen Termin zu vereinbaren.",
-        "Ich rufe an, damit wir einen Termin finden.",
-        "Ich brauche weitere Informationen.",
-        "Könnten Sie mir bitte helfen?",
-        "Ich möchte kurz etwas fragen."
-      ],
-      "productionChecklist": [
-        "Use um ... zu if the subject stays the same.",
-        "Use damit if there is a second subject.",
-        "State the purpose of the call clearly.",
-        "Keep the context practical: appointment, information, form, or course."
-      ]
+      "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
     },
-    {
-      "id": "b1_connector_119",
-      "source": "B1Work course notes + OZMOSIS B1 Connector Sprint v1",
-      "chapter": 4,
-      "courseDomain": "firma_buero",
-      "grammarDomain": "temporalsaetze",
-      "itemType": "production_card",
-      "cefr": "B1",
-      "difficulty": "sprint_core",
-      "variantFamilyId": "production_time",
-      "variantRole": "production_seed",
-      "targetRule": "Production card: use the target connector actively in a short B1-relevant response.",
-      "contrastTargets": [],
-      "prompt_de": "Sprechen/Schreiben: Beschreiben Sie kurz, was Sie machen, bevor Sie nach Hause gehen.",
-      "answer": "self_check",
-      "acceptedAnswers": [
-        "self_check"
-      ],
-      "fullAnswer_de": "Bevor ich nach Hause gehe, räume ich meinen Arbeitsplatz auf.",
-      "modelAnswer_de": "Bevor ich nach Hause gehe, schreibe ich die E-Mail fertig. Danach räume ich meinen Arbeitsplatz auf.",
-      "support_en": "Say briefly what you do before going home.",
-      "microRule": "Production card: use the target connector actively in a short B1-relevant response.",
-      "tags": [
-        "time",
-        "production",
-        "bevor"
-      ],
-      "status": "active",
-      "qa": {
-        "status": "passed_internal",
-        "checks": {
-          "b1_relevance": true,
-          "natural_hochdeutsch": true,
-          "single_target": true,
-          "no_genitive_target": true,
-          "no_adjective_ending_target": true,
-          "course_context_relevant": true
-        },
-        "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
+    "usefulPhrases": [
+      "Ich rufe an, um einen Termin zu vereinbaren.",
+      "Ich rufe an, damit wir einen Termin finden.",
+      "Ich brauche weitere Informationen.",
+      "Könnten Sie mir bitte helfen?",
+      "Ich möchte kurz etwas fragen."
+    ],
+    "productionChecklist": [
+      "Use um ... zu if the subject stays the same.",
+      "Use damit if there is a second subject.",
+      "State the purpose of the call clearly.",
+      "Keep the context practical: appointment, information, form, or course."
+    ],
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
+  },
+      {
+    "id": "b1_connector_119",
+    "source": "B1Work course notes + OZMOSIS B1 Connector Sprint v1",
+    "chapter": 4,
+    "courseDomain": "firma_buero",
+    "grammarDomain": "temporalsaetze",
+    "itemType": "production_card",
+    "cefr": "B1",
+    "difficulty": "sprint_core",
+    "variantFamilyId": "production_time",
+    "variantRole": "production_seed",
+    "targetRule": "Production card: use the target connector actively in a short B1-relevant response.",
+    "contrastTargets": [],
+    "prompt_de": "Sprechen/Schreiben: Beschreiben Sie kurz, was Sie machen, bevor Sie nach Hause gehen.",
+    "answer": "self_check",
+    "acceptedAnswers": [
+      "self_check"
+    ],
+    "fullAnswer_de": "Bevor ich nach Hause gehe, räume ich meinen Arbeitsplatz auf.",
+    "modelAnswer_de": "Bevor ich nach Hause gehe, schreibe ich die E-Mail fertig. Danach räume ich meinen Arbeitsplatz auf.",
+    "support_en": "Say briefly what you do before going home.",
+    "microRule": "Production card: use the target connector actively in a short B1-relevant response.",
+    "tags": [
+      "time",
+      "production",
+      "bevor"
+    ],
+    "status": "active",
+    "qa": {
+      "status": "passed_internal",
+      "checks": {
+        "b1_relevance": true,
+        "natural_hochdeutsch": true,
+        "single_target": true,
+        "no_genitive_target": true,
+        "no_adjective_ending_target": true,
+        "course_context_relevant": true
       },
-      "usefulPhrases": [
-        "Bevor ich nach Hause gehe, ...",
-        "Ich schreibe die E-Mail fertig.",
-        "Ich räume meinen Arbeitsplatz auf.",
-        "Ich informiere meine Kollegin.",
-        "Danach gehe ich nach Hause."
-      ],
-      "productionChecklist": [
-        "Use bevor.",
-        "Put the finite verb at the end of the bevor-clause.",
-        "Name one or two workplace actions.",
-        "Make the sequence clear."
-      ]
+      "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
     },
-    {
-      "id": "b1_connector_120",
-      "source": "B1Work course notes + OZMOSIS B1 Connector Sprint v1",
-      "chapter": 4,
-      "courseDomain": "bestellung_auftrag",
-      "grammarDomain": "temporalsaetze",
-      "itemType": "production_card",
-      "cefr": "B1",
-      "difficulty": "sprint_core",
-      "variantFamilyId": "production_sequence",
-      "variantRole": "production_seed",
-      "targetRule": "Production card: use the target connector actively in a short B1-relevant response.",
-      "contrastTargets": [],
-      "prompt_de": "Sprechen/Schreiben: Beschreiben Sie zwei Schritte bei einer Bestellung. Verwenden Sie nachdem.",
-      "answer": "self_check",
-      "acceptedAnswers": [
-        "self_check"
-      ],
-      "fullAnswer_de": "Nachdem wir die Ware geprüft haben, schicken wir die Rechnung.",
-      "modelAnswer_de": "Nachdem ich die Bestellung geprüft habe, schicke ich die Bestätigung. Danach informiere ich den Kunden über die Lieferung.",
-      "support_en": "Describe two steps in an order process. Use nachdem.",
-      "microRule": "Production card: use the target connector actively in a short B1-relevant response.",
-      "tags": [
-        "time",
-        "production",
-        "nachdem"
-      ],
-      "status": "active",
-      "qa": {
-        "status": "passed_internal",
-        "checks": {
-          "b1_relevance": true,
-          "natural_hochdeutsch": true,
-          "single_target": true,
-          "no_genitive_target": true,
-          "no_adjective_ending_target": true,
-          "course_context_relevant": true
-        },
-        "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
+    "usefulPhrases": [
+      "Bevor ich nach Hause gehe, ...",
+      "Ich schreibe die E-Mail fertig.",
+      "Ich räume meinen Arbeitsplatz auf.",
+      "Ich informiere meine Kollegin.",
+      "Danach gehe ich nach Hause."
+    ],
+    "productionChecklist": [
+      "Use bevor.",
+      "Put the finite verb at the end of the bevor-clause.",
+      "Name one or two workplace actions.",
+      "Make the sequence clear."
+    ],
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
+  },
+      {
+    "id": "b1_connector_120",
+    "source": "B1Work course notes + OZMOSIS B1 Connector Sprint v1",
+    "chapter": 4,
+    "courseDomain": "bestellung_auftrag",
+    "grammarDomain": "temporalsaetze",
+    "itemType": "production_card",
+    "cefr": "B1",
+    "difficulty": "sprint_core",
+    "variantFamilyId": "production_sequence",
+    "variantRole": "production_seed",
+    "targetRule": "Production card: use the target connector actively in a short B1-relevant response.",
+    "contrastTargets": [],
+    "prompt_de": "Sprechen/Schreiben: Beschreiben Sie zwei Schritte bei einer Bestellung. Verwenden Sie nachdem.",
+    "answer": "self_check",
+    "acceptedAnswers": [
+      "self_check"
+    ],
+    "fullAnswer_de": "Nachdem wir die Ware geprüft haben, schicken wir die Rechnung.",
+    "modelAnswer_de": "Nachdem ich die Bestellung geprüft habe, schicke ich die Bestätigung. Danach informiere ich den Kunden über die Lieferung.",
+    "support_en": "Describe two steps in an order process. Use nachdem.",
+    "microRule": "Production card: use the target connector actively in a short B1-relevant response.",
+    "tags": [
+      "time",
+      "production",
+      "nachdem"
+    ],
+    "status": "active",
+    "qa": {
+      "status": "passed_internal",
+      "checks": {
+        "b1_relevance": true,
+        "natural_hochdeutsch": true,
+        "single_target": true,
+        "no_genitive_target": true,
+        "no_adjective_ending_target": true,
+        "course_context_relevant": true
       },
-      "usefulPhrases": [
-        "Nachdem ich die Bestellung geprüft habe, ...",
-        "Ich schicke die Bestätigung.",
-        "Ich kontrolliere die Lieferadresse.",
-        "Danach informiere ich den Kunden.",
-        "die Bestellung / der Auftrag"
-      ],
-      "productionChecklist": [
-        "Use nachdem.",
-        "Put the finite verb at the end of the nachdem-clause.",
-        "Describe two clear steps.",
-        "Use order, delivery, or office vocabulary."
-      ]
-    }
+      "qa_note": "Generated for structured B1 connector practice; final in-app spot check still required after implementation."
+    },
+    "usefulPhrases": [
+      "Nachdem ich die Bestellung geprüft habe, ...",
+      "Ich schicke die Bestätigung.",
+      "Ich kontrolliere die Lieferadresse.",
+      "Danach informiere ich den Kunden.",
+      "die Bestellung / der Auftrag"
+    ],
+    "productionChecklist": [
+      "Use nachdem.",
+      "Put the finite verb at the end of the nachdem-clause.",
+      "Describe two clear steps.",
+      "Use order, delivery, or office vocabulary."
+    ],
+    "normalAutoGradedPracticeEligible": false,
+    "v02ReconciliationBucket": "PRODUCTION_PRACTICE",
+    "v02ApplyGateStatus": "production_isolated_v0_85_6a_2",
+    "v02ApplyGateVersion": "v0.85.6a.2",
+    "v02ApplyGateReason": "self-marked/production indicators present"
+  }
   ];
 
   var V084_CONNECTOR_COMPLETION_ITEMS = [

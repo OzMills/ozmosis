@@ -2,11 +2,11 @@
 
 ## 1. Current Baseline
 
-Current runtime baseline: `v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues`.
+Current runtime baseline: `v0.85.6a.2`.
 
-Current acceptance status: v0.85.6 accepted Source Cleanup Batch 1 after the v0.85.5 runtime display contract lock and v0.85.5b Satzbau proof repair. It selected 33 high-confidence queue rows, changed 31 content items, reduced meaning-choice source cue risks from 30 to 0, cleaned one learner-facing internal-label row, deferred 4,118 rows, and preserved answer keys, accepted answers, item IDs, choices, scoring, evidence, storage, export/import, article-grid behaviour, shared-frame behaviour, and Satzbau behaviour.
+Current acceptance status: v0.85.6a.2 accepted the v0.2 reconciliation apply gate after the corrected v0.85.6a.1 dry run. It applied 859 safe replacements, quarantined 4,459 unsafe imported rows from normal practice, isolated 291 production rows from normal auto-graded practice, kept 567 legacy seed rows, left 944 exception-review rows untouched, fixed Satzbau answer-normalisation false negatives, and gated generic location/movement feedback.
 
-Current gate result: `SOURCE_CLEANUP_BATCH1_ACCEPTED`.
+Current gate result: `V02_RECONCILIATION_APPLY_GATE_ACCEPTED`.
 
 Next required patch: `v0.85.7 - Source Cleanup Batch 2: Under-Contextualised Clozes`.
 
@@ -62,6 +62,7 @@ This summary is not a replacement for `CHANGELOG-FULL-OZMOSIS.txt`.
 - `v0.85.5a` - Satzbau Build-Line and Answer-Leak Repair
 - `v0.85.5b` - Satzbau Proof Harness and First-Run Overlay Repair
 - `v0.85.6` - Source Cleanup Batch 1: Internal Labels and Meaning Cues
+- `v0.85.6a.2` - v0.2 Reconciliation Apply Gate
 - `v0.85.7` - Source Cleanup Batch 2: Under-Contextualised Clozes
 - `v0.85.8` - Feedback Cleanup: Contrast Notes and Micro-rules
 - `v0.85.9` - Metadata Manifest Migration

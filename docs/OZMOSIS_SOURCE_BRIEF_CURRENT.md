@@ -2,9 +2,9 @@
 
 ## Current Patch Status
 
-Current runtime baseline: `v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues`.
+Current runtime baseline: `v0.85.6a.2`.
 
-Current gate result: `SOURCE_CLEANUP_BATCH1_ACCEPTED`.
+Current gate result: `V02_RECONCILIATION_APPLY_GATE_ACCEPTED`.
 
 Next required patch: `v0.85.7 - Source Cleanup Batch 2: Under-Contextualised Clozes`.
 

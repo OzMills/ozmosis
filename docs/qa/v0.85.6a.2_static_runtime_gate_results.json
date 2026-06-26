@@ -1,0 +1,93 @@
+{
+  "version": {
+    "appVersion": "v0.85.6a.2",
+    "exportVersion": "v0.85.6a.2-v02-reconciliation-apply-gate"
+  },
+  "satzbau": {
+    "kursraum": true,
+    "unterlagen": true
+  },
+  "feedback": {
+    "woQuestionFeedback": "",
+    "explicitLocationFeedback": "Location after a two-way preposition uses dative; movement or direction uses accusative."
+  },
+  "known": [
+    {
+      "id": "v080149_cat01_contrast_cat01_cs_010",
+      "exists": true,
+      "status": "quarantined_v0_85_6a_2",
+      "normalPracticeEligible": false,
+      "activeB1Evidence": false,
+      "reviewOnly": true,
+      "exclusion": [
+        "manifest_gate_excluded",
+        "preview_or_inactive_import"
+      ]
+    },
+    {
+      "id": "v080149_cat02_practice_family_cat02_pf_059",
+      "exists": true,
+      "status": "replaced_v0_85_6a_2",
+      "activeB1Evidence": true,
+      "exclusion": []
+    },
+    {
+      "id": "v080149_cat02_practice_family_cat02_pf_072",
+      "exists": true,
+      "status": "quarantined_v0_85_6a_2",
+      "normalPracticeEligible": false,
+      "activeB1Evidence": false,
+      "reviewOnly": true,
+      "exclusion": [
+        "manifest_gate_excluded",
+        "preview_or_inactive_import"
+      ]
+    },
+    {
+      "id": "v080149_cat02_practice_family_cat02_pf_073",
+      "exists": true,
+      "status": "quarantined_v0_85_6a_2",
+      "normalPracticeEligible": false,
+      "activeB1Evidence": false,
+      "reviewOnly": true,
+      "exclusion": [
+        "manifest_gate_excluded",
+        "preview_or_inactive_import"
+      ]
+    },
+    {
+      "id": "v080149_cat02_contrast_cat02_cs_015",
+      "exists": true,
+      "status": "replaced_v0_85_6a_2",
+      "activeB1Evidence": true,
+      "exclusion": []
+    },
+    {
+      "id": "v080149_cat01_practice_family_cat01_pf_052",
+      "exists": true,
+      "status": "quarantined_v0_85_6a_2",
+      "normalPracticeEligible": false,
+      "activeB1Evidence": false,
+      "reviewOnly": true,
+      "exclusion": [
+        "manifest_gate_excluded",
+        "preview_or_inactive_import"
+      ]
+    }
+  ],
+  "audit": {
+    "renderedPromptLeaks": 0,
+    "meaningChoiceHiddenCueRisks": 0,
+    "underContextualisedClozeWithoutCue": 0,
+    "reviewOnlyEnteringNormalPractice": 0
+  },
+  "activeNormalPracticeContract": {
+    "internalLabelsHidden": true,
+    "meaningCuesVisible": true,
+    "clozeCuesVisibleOrExcluded": true,
+    "hintsRemainRevealOnly": true,
+    "reviewOnlyExcluded": true
+  },
+  "totalItems": 7194,
+  "failures": []
+}
