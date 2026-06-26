@@ -1,0 +1,7 @@
+itemId,exists,v02ApplyGateStatus,normalPracticeEligible,activeB1Evidence,reviewOnly,appearsInAnyNormalPool,appearsInProductionOnlyPool,passFail,notes
+v080149_cat01_contrast_cat01_cs_010,true,quarantined_v0_85_6a_2,false,false,true,false,false,PASS,
+v080149_cat02_practice_family_cat02_pf_059,true,replaced_v0_85_6a_2,,true,,true,false,PASS,
+v080149_cat02_practice_family_cat02_pf_072,true,quarantined_v0_85_6a_2,false,false,true,false,false,PASS,
+v080149_cat02_practice_family_cat02_pf_073,true,quarantined_v0_85_6a_2,false,false,true,false,false,PASS,
+v080149_cat02_contrast_cat02_cs_015,true,replaced_v0_85_6a_2,,true,,true,false,PASS,
+v080149_cat01_practice_family_cat01_pf_052,true,quarantined_v0_85_6a_2,false,false,true,false,false,PASS,

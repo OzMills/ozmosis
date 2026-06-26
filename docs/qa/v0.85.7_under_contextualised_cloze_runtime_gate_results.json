@@ -1,0 +1,37 @@
+{
+  "version": {
+    "appVersion": "v0.85.7",
+    "exportVersion": "v0.85.7-under-contextualised-cloze-cleanup"
+  },
+  "routeRows": 188,
+  "routeFailures": [],
+  "knownRows": 6,
+  "knownFailures": [],
+  "satzbau": {
+    "kursraum": true,
+    "unterlagen": true
+  },
+  "feedback": {
+    "woQuestionFeedback": "",
+    "explicitLocationFeedback": "Location after a two-way preposition uses dative; movement or direction uses accusative."
+  },
+  "exportImport": {
+    "payloadIsObject": true,
+    "validationOk": true,
+    "staticApplyOk": false,
+    "staticApplyReason": "browser storage error",
+    "malformedRejected": true,
+    "malformedReason": "missing Ozmosis save data"
+  },
+  "displayAudit": {
+    "renderedPromptLeaks": 0,
+    "meaningChoiceHiddenCueRisks": 0,
+    "underContextualisedClozeWithoutCue": 0,
+    "reviewOnlyEnteringNormalPractice": 0
+  },
+  "storageKeys": {
+    "sprint": "ozmosis_b1_sprint_progress_v1",
+    "evidence": "ozmosis_b1_progress_evidence_v1"
+  },
+  "failures": []
+}

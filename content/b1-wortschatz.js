@@ -156,12 +156,12 @@
     "subtopic": "confirmation",
     "target": "die Bestätigung",
     "type": "typed_cloze",
-    "prompt_de": "Könnten Sie mir bitte eine ___ per E-Mail schicken?",
+    "prompt_de": "Könnten Sie mir bitte eine ___ für den Termin per E-Mail schicken?",
     "answer": "Bestätigung",
     "accepted": [
       "Bestätigung"
     ],
-    "translation_en": "Could you please send me a confirmation by email?",
+    "translation_en": "Could you please send me a confirmation for the appointment by email?",
     "choices": [],
     "correct_choice": "",
     "micro_rule": "die Bestätigung = confirmation.",
@@ -171,7 +171,8 @@
       "confirmation",
       "email",
       "polite_request"
-    ]
+    ],
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
   },
   {
     "id": "b1_vocab_bestaetigung_002",
@@ -296,12 +297,12 @@
     "subtopic": "sending documents",
     "target": "die Unterlagen",
     "type": "typed_cloze",
-    "prompt_de": "Bitte schicken Sie mir die ___ bis Freitag.",
+    "prompt_de": "Für die Bewerbung: Bitte schicken Sie mir die ___ bis Freitag.",
     "answer": "Unterlagen",
     "accepted": [
       "Unterlagen"
     ],
-    "translation_en": "Please send me the documents by Friday.",
+    "translation_en": "For the application: Please send me the documents by Friday.",
     "choices": [],
     "correct_choice": "",
     "micro_rule": "die Unterlagen = documents/papers; usually plural.",
@@ -311,7 +312,8 @@
       "documents",
       "plural",
       "office"
-    ]
+    ],
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
   },
   {
     "id": "b1_vocab_unterlagen_002",
@@ -723,12 +725,12 @@
     "subtopic": "delivery status",
     "target": "die Lieferung",
     "type": "typed_cloze",
-    "prompt_de": "Die ___ kommt leider erst morgen an.",
+    "prompt_de": "Die ___ meiner Bestellung kommt leider erst morgen an.",
     "answer": "Lieferung",
     "accepted": [
       "Lieferung"
     ],
-    "translation_en": "The delivery unfortunately arrives tomorrow.",
+    "translation_en": "The delivery for my order unfortunately arrives tomorrow.",
     "choices": [],
     "correct_choice": "",
     "micro_rule": "die Lieferung = delivery.",
@@ -738,7 +740,8 @@
       "delivery",
       "order",
       "delay"
-    ]
+    ],
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
   },
   {
     "id": "b1_vocab_lieferung_002",
@@ -866,12 +869,12 @@
     "subtopic": "orders",
     "target": "die Bestellung",
     "type": "typed_cloze",
-    "prompt_de": "Ich möchte meine ___ ändern.",
+    "prompt_de": "Ich habe online bestellt. Ich möchte meine ___ ändern.",
     "answer": "Bestellung",
     "accepted": [
       "Bestellung"
     ],
-    "translation_en": "I would like to change my order.",
+    "translation_en": "I ordered online. I would like to change my order.",
     "choices": [],
     "correct_choice": "",
     "micro_rule": "die Bestellung = order.",
@@ -880,7 +883,8 @@
     "tags": [
       "order",
       "customer_service"
-    ]
+    ],
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
   },
   {
     "id": "b1_vocab_bestellung_002",
@@ -1007,12 +1011,12 @@
     "subtopic": "invoices",
     "target": "die Rechnung",
     "type": "typed_cloze",
-    "prompt_de": "Bitte schicken Sie mir die ___ noch einmal.",
+    "prompt_de": "Für die Zahlung: Bitte schicken Sie mir die ___ noch einmal.",
     "answer": "Rechnung",
     "accepted": [
       "Rechnung"
     ],
-    "translation_en": "Please send me the invoice again.",
+    "translation_en": "For the payment: Please send me the invoice again.",
     "choices": [],
     "correct_choice": "",
     "micro_rule": "die Rechnung = invoice/bill.",
@@ -1022,7 +1026,8 @@
       "invoice",
       "office",
       "email"
-    ]
+    ],
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
   },
   {
     "id": "b1_vocab_rechnung_002",
@@ -1147,12 +1152,12 @@
     "subtopic": "device problem",
     "target": "das Gerät",
     "type": "typed_cloze",
-    "prompt_de": "Das ___ funktioniert nicht.",
+    "prompt_de": "Das technische ___ funktioniert nicht.",
     "answer": "Gerät",
     "accepted": [
       "Gerät"
     ],
-    "translation_en": "The device does not work.",
+    "translation_en": "The technical device does not work.",
     "choices": [],
     "correct_choice": "",
     "micro_rule": "das Gerät = device.",
@@ -1161,7 +1166,8 @@
     "tags": [
       "technical_problem",
       "device"
-    ]
+    ],
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
   },
   {
     "id": "b1_vocab_geraet_002",
@@ -1171,12 +1177,12 @@
     "subtopic": "reporting problems",
     "target": "ein Problem mit dem Gerät",
     "type": "typed_cloze",
-    "prompt_de": "Ich habe ein Problem mit dem ___.",
+    "prompt_de": "Ich habe ein technisches Problem mit dem ___.",
     "answer": "Gerät",
     "accepted": [
       "Gerät"
     ],
-    "translation_en": "I have a problem with the device.",
+    "translation_en": "I have a technical problem with the device.",
     "choices": [],
     "correct_choice": "",
     "micro_rule": "mit + Dativ: mit dem Gerät.",
@@ -1186,7 +1192,8 @@
       "technical_problem",
       "dative",
       "device"
-    ]
+    ],
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
   },
   {
     "id": "b1_vocab_geraet_003",
@@ -1568,12 +1575,12 @@
     "subtopic": "sick notification",
     "target": "die Krankmeldung",
     "type": "typed_cloze",
-    "prompt_de": "Ich schicke Ihnen die ___ per E-Mail.",
+    "prompt_de": "Weil ich krank bin, schicke ich Ihnen die ___ per E-Mail.",
     "answer": "Krankmeldung",
     "accepted": [
       "Krankmeldung"
     ],
-    "translation_en": "I am sending you the sick note / sickness notification by email.",
+    "translation_en": "Because I am ill, I am sending you the sick note / sickness notification by email.",
     "choices": [],
     "correct_choice": "",
     "micro_rule": "die Krankmeldung = sick note or sickness notification.",
@@ -1583,7 +1590,8 @@
       "sick_note",
       "email",
       "work"
-    ]
+    ],
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
   },
   {
     "id": "b1_vocab_krankmeldung_002",
@@ -1710,7 +1718,7 @@
     "subtopic": "doctor appointment",
     "target": "der Arzttermin",
     "type": "typed_cloze",
-    "prompt_de": "Ich habe morgen einen ___ um 10 Uhr.",
+    "prompt_de": "Ich habe morgen einen ___ beim Arzt um 10 Uhr.",
     "answer": "Arzttermin",
     "accepted": [
       "Arzttermin"
@@ -1725,7 +1733,8 @@
       "doctor",
       "appointment",
       "absence"
-    ]
+    ],
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
   },
   {
     "id": "b1_vocab_arzttermin_002",
@@ -1852,12 +1861,12 @@
     "subtopic": "health insurance provider",
     "target": "die Krankenkasse",
     "type": "typed_cloze",
-    "prompt_de": "Ich muss meine ___ anrufen.",
+    "prompt_de": "Wegen meiner Versicherung muss ich meine ___ anrufen.",
     "answer": "Krankenkasse",
     "accepted": [
       "Krankenkasse"
     ],
-    "translation_en": "I have to call my health insurance provider.",
+    "translation_en": "Because of my insurance, I have to call my health insurance provider.",
     "choices": [],
     "correct_choice": "",
     "micro_rule": "die Krankenkasse = health insurance provider.",
@@ -1866,7 +1875,8 @@
     "tags": [
       "health_insurance",
       "phone_call"
-    ]
+    ],
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
   },
   {
     "id": "b1_vocab_krankenkasse_002",
@@ -1876,12 +1886,12 @@
     "subtopic": "sending documents",
     "target": "Krankenkasse",
     "type": "typed_cloze",
-    "prompt_de": "Die Unterlagen schicke ich an die ___.",
+    "prompt_de": "Die Unterlagen für die Versicherung schicke ich an die ___.",
     "answer": "Krankenkasse",
     "accepted": [
       "Krankenkasse"
     ],
-    "translation_en": "I am sending the documents to the health insurance provider.",
+    "translation_en": "I am sending the insurance documents to the health insurance provider.",
     "choices": [],
     "correct_choice": "",
     "micro_rule": "an die Krankenkasse = to the health insurance provider.",
@@ -1891,7 +1901,8 @@
       "health_insurance",
       "documents",
       "admin"
-    ]
+    ],
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
   },
   {
     "id": "b1_vocab_krankenkasse_003",
@@ -1993,12 +2004,12 @@
     "subtopic": "insurance",
     "target": "die Versicherung",
     "type": "typed_cloze",
-    "prompt_de": "Ich habe eine Frage zu meiner ___.",
+    "prompt_de": "Ich habe eine Frage zu meiner ___ bei der Krankenkasse.",
     "answer": "Versicherung",
     "accepted": [
       "Versicherung"
     ],
-    "translation_en": "I have a question about my insurance.",
+    "translation_en": "I have a question about my insurance with the health insurance provider.",
     "choices": [],
     "correct_choice": "",
     "micro_rule": "die Versicherung = insurance.",
@@ -2008,7 +2019,8 @@
       "insurance",
       "question",
       "admin"
-    ]
+    ],
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
   },
   {
     "id": "b1_vocab_versicherung_002",
@@ -2135,12 +2147,12 @@
     "subtopic": "health insurance card",
     "target": "die Gesundheitskarte",
     "type": "typed_cloze",
-    "prompt_de": "Bitte bringen Sie Ihre ___ zum Termin mit.",
+    "prompt_de": "Bitte bringen Sie Ihre ___ zum Arzttermin mit.",
     "answer": "Gesundheitskarte",
     "accepted": [
       "Gesundheitskarte"
     ],
-    "translation_en": "Please bring your health insurance card to the appointment.",
+    "translation_en": "Please bring your health insurance card to the doctor's appointment.",
     "choices": [],
     "correct_choice": "",
     "micro_rule": "die Gesundheitskarte = health insurance card.",
@@ -2150,7 +2162,8 @@
       "health_card",
       "doctor",
       "appointment"
-    ]
+    ],
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
   },
   {
     "id": "b1_vocab_gesundheitskarte_002",
@@ -2554,12 +2567,12 @@
     "subtopic": "medical examination",
     "target": "die Untersuchung",
     "type": "typed_cloze",
-    "prompt_de": "Die ___ dauert ungefähr zwanzig Minuten.",
+    "prompt_de": "Beim Arzt: Die ___ dauert ungefähr zwanzig Minuten.",
     "answer": "Untersuchung",
     "accepted": [
       "Untersuchung"
     ],
-    "translation_en": "The examination takes about twenty minutes.",
+    "translation_en": "At the doctor's office: The examination takes about twenty minutes.",
     "choices": [],
     "correct_choice": "",
     "micro_rule": "die Untersuchung = examination/check-up.",
@@ -2568,7 +2581,8 @@
     "tags": [
       "doctor",
       "examination"
-    ]
+    ],
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
   },
   {
     "id": "b1_vocab_untersuchung_002",
@@ -2693,12 +2707,12 @@
     "subtopic": "symptoms",
     "target": "die Beschwerden",
     "type": "typed_cloze",
-    "prompt_de": "Welche ___ haben Sie?",
+    "prompt_de": "Die Ärztin fragt: Welche ___ haben Sie?",
     "answer": "Beschwerden",
     "accepted": [
       "Beschwerden"
     ],
-    "translation_en": "What symptoms/problems do you have?",
+    "translation_en": "The doctor asks: What symptoms/problems do you have?",
     "choices": [],
     "correct_choice": "",
     "micro_rule": "die Beschwerden can mean symptoms/complaints; at the doctor it often means symptoms.",
@@ -2708,7 +2722,8 @@
       "symptoms",
       "doctor",
       "plural"
-    ]
+    ],
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
   },
   {
     "id": "b1_vocab_beschwerden_002",
@@ -2833,12 +2848,12 @@
     "subtopic": "job application",
     "target": "die Bewerbung",
     "type": "typed_cloze",
-    "prompt_de": "Ich schicke Ihnen meine ___ per E-Mail.",
+    "prompt_de": "Für die Stelle schicke ich Ihnen meine ___ per E-Mail.",
     "answer": "Bewerbung",
     "accepted": [
       "Bewerbung"
     ],
-    "translation_en": "I am sending you my application by email.",
+    "translation_en": "For the position, I am sending you my application by email.",
     "choices": [],
     "correct_choice": "",
     "micro_rule": "die Bewerbung = application.",
@@ -2848,7 +2863,8 @@
       "application",
       "email",
       "work"
-    ]
+    ],
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
   },
   {
     "id": "b1_vocab_bewerbung_002",
@@ -2975,12 +2991,12 @@
     "subtopic": "cv",
     "target": "der Lebenslauf",
     "type": "typed_cloze",
-    "prompt_de": "Mein ___ ist im Anhang.",
+    "prompt_de": "Bei meiner Bewerbung: Mein ___ ist im Anhang.",
     "answer": "Lebenslauf",
     "accepted": [
       "Lebenslauf"
     ],
-    "translation_en": "My CV is attached.",
+    "translation_en": "For my application: My CV is attached.",
     "choices": [],
     "correct_choice": "",
     "micro_rule": "der Lebenslauf = CV / résumé.",
@@ -2990,7 +3006,8 @@
       "cv",
       "application",
       "email"
-    ]
+    ],
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
   },
   {
     "id": "b1_vocab_lebenslauf_002",
@@ -3115,12 +3132,12 @@
     "subtopic": "job position",
     "target": "die Stelle",
     "type": "typed_cloze",
-    "prompt_de": "Ich interessiere mich für die ___.",
+    "prompt_de": "Ich suche Arbeit und interessiere mich für die ___.",
     "answer": "Stelle",
     "accepted": [
       "Stelle"
     ],
-    "translation_en": "I am interested in the position.",
+    "translation_en": "I am looking for work and am interested in the position.",
     "choices": [],
     "correct_choice": "",
     "micro_rule": "die Stelle = job position.",
@@ -3129,7 +3146,8 @@
     "tags": [
       "job",
       "application"
-    ]
+    ],
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
   },
   {
     "id": "b1_vocab_stelle_002",
@@ -3254,12 +3272,12 @@
     "subtopic": "job interview",
     "target": "das Vorstellungsgespräch",
     "type": "typed_cloze",
-    "prompt_de": "Ich habe morgen ein ___.",
+    "prompt_de": "Ich habe morgen ein ___ bei der Firma.",
     "answer": "Vorstellungsgespräch",
     "accepted": [
       "Vorstellungsgespräch"
     ],
-    "translation_en": "I have a job interview tomorrow.",
+    "translation_en": "I have a job interview at the company tomorrow.",
     "choices": [],
     "correct_choice": "",
     "micro_rule": "das Vorstellungsgespräch = job interview.",
@@ -3268,7 +3286,8 @@
     "tags": [
       "job_interview",
       "application"
-    ]
+    ],
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
   },
   {
     "id": "b1_vocab_vorstellungsgespraech_002",
@@ -3535,12 +3554,12 @@
     "subtopic": "tasks",
     "target": "die Aufgabe",
     "type": "typed_cloze",
-    "prompt_de": "Ich habe die ___ noch nicht verstanden.",
+    "prompt_de": "Im Kurs habe ich die ___ noch nicht verstanden.",
     "answer": "Aufgabe",
     "accepted": [
       "Aufgabe"
     ],
-    "translation_en": "I have not understood the task yet.",
+    "translation_en": "In the course, I have not understood the task yet.",
     "choices": [],
     "correct_choice": "",
     "micro_rule": "die Aufgabe = task/exercise.",
@@ -3550,7 +3569,8 @@
       "task",
       "course",
       "work"
-    ]
+    ],
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
   },
   {
     "id": "b1_vocab_aufgabe_002",
@@ -3678,12 +3698,12 @@
     "subtopic": "meetings",
     "target": "die Besprechung",
     "type": "typed_cloze",
-    "prompt_de": "Die ___ beginnt um neun Uhr.",
+    "prompt_de": "Die ___ mit dem Team beginnt um neun Uhr.",
     "answer": "Besprechung",
     "accepted": [
       "Besprechung"
     ],
-    "translation_en": "The meeting begins at nine o'clock.",
+    "translation_en": "The meeting with the team begins at nine o'clock.",
     "choices": [],
     "correct_choice": "",
     "micro_rule": "die Besprechung = meeting/discussion at work.",
@@ -3692,7 +3712,8 @@
     "tags": [
       "meeting",
       "work"
-    ]
+    ],
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
   },
   {
     "id": "b1_vocab_besprechung_002",
@@ -3959,12 +3980,12 @@
     "subtopic": "login details",
     "target": "die Zugangsdaten",
     "type": "typed_cloze",
-    "prompt_de": "Ich habe meine ___ noch nicht bekommen.",
+    "prompt_de": "Für den Online-Kurs habe ich meine ___ noch nicht bekommen.",
     "answer": "Zugangsdaten",
     "accepted": [
       "Zugangsdaten"
     ],
-    "translation_en": "I have not received my login details yet.",
+    "translation_en": "For the online course, I have not received my login details yet.",
     "choices": [],
     "correct_choice": "",
     "micro_rule": "die Zugangsdaten = login/access details; plural.",
@@ -3974,7 +3995,8 @@
       "login",
       "technical_problem",
       "course"
-    ]
+    ],
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
   },
   {
     "id": "b1_vocab_zugangsdaten_002",
@@ -4126,12 +4148,12 @@
     "subtopic": "reporting error",
     "target": "eine Fehlermeldung bekommen",
     "type": "typed_cloze",
-    "prompt_de": "Ich bekomme immer wieder eine ___.",
+    "prompt_de": "Beim Einloggen bekomme ich immer wieder eine ___.",
     "answer": "Fehlermeldung",
     "accepted": [
       "Fehlermeldung"
     ],
-    "translation_en": "I keep getting an error message.",
+    "translation_en": "When logging in, I keep getting an error message.",
     "choices": [],
     "correct_choice": "",
     "micro_rule": "eine Fehlermeldung bekommen = to get an error message.",
@@ -4141,7 +4163,8 @@
       "technical_problem",
       "error_message",
       "support"
-    ]
+    ],
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes"
   },
   {
     "id": "b1_vocab_fehlermeldung_003",

@@ -2,13 +2,13 @@
 
 ## 1. Current Baseline
 
-Current runtime baseline: `v0.85.6a.3`.
+Current runtime baseline: `v0.85.7`.
 
-Current acceptance status: v0.85.6a.3 accepted the v0.85.6a.2 reconciliation apply gate after a post-apply runtime pool audit. It preserves the v0.85.6a.2 reconciliation counts, checks 188 route-pool rows, confirms the six known problem rows are replaced or excluded, and fixes normal auto-graded practice so production/self-marked rows cannot enter normal scoring paths.
+Current acceptance status: v0.85.7 accepted Source Cleanup Batch 2 after the v0.85.6a.3 pool-integrity baseline. It investigated 66 under-contextualised cloze candidates, applied 23 high-confidence active typed-cloze prompt/context repairs, left 33 false positives unchanged, deferred 10 rows, checked 188 route-pool rows, confirmed the six known problem rows remain safe, and preserved production/self-marked row isolation from normal auto-graded scoring paths.
 
-Current gate result: `POST_APPLY_ACCEPTED_POOL_FIX_APPLIED`.
+Current gate result: `UNDER_CONTEXT_CLOZE_CLEANUP_ACCEPTED`.
 
-Next required patch: `v0.85.7 - Source Cleanup Batch 2: Under-Contextualised Clozes`.
+Next required patch: `v0.85.8 - Feedback Cleanup: Contrast Notes and Micro-rules`.
 
 ## 2. Completed Foundation
 
@@ -133,7 +133,8 @@ Stop if the hub fails.
 - Satzbau Build-Line and Answer-Leak Repair is implemented and accepted as v0.85.5a, but its screenshot artefacts were later superseded.
 - Satzbau Proof Harness and First-Run Overlay Repair is implemented and accepted as v0.85.5b.
 - Source Cleanup Batch 1: Internal Labels and Meaning Cues is implemented and accepted as v0.85.6.
-- Source Cleanup Batch 2: Under-Contextualised Clozes is the next allowed implementation patch as v0.85.7.
+- Source Cleanup Batch 2: Under-Contextualised Clozes is implemented and accepted as v0.85.7.
+- Feedback Cleanup: Contrast Notes and Micro-rules is the next allowed implementation patch as v0.85.8.
 - Production Completion Pass is blocked until the final v0.85.x readiness gate reports `READY_FOR_V0.86`.
 - Weakness repair must wait until Skill Matrix and task-depth evidence are stable.
 - Durability/spaced review must wait until enough reviewable B1 coverage exists.

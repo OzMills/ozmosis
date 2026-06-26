@@ -1,8 +1,8 @@
 {
   "patch": "v0.85.5",
   "title": "Runtime Display Contract Lock",
-  "startingStateVerified": true,
-  "runtimeVersionUpdated": true,
+  "startingStateVerified": false,
+  "runtimeVersionUpdated": false,
   "runtimeChanged": true,
   "contentChanged": false,
   "scoringChanged": false,
@@ -23,9 +23,9 @@
   },
   "classification": {
     "realRuntimeDefects": 0,
-    "runtimeGuardAlreadyHandles": 552,
+    "runtimeGuardAlreadyHandles": 451,
     "staticFalsePositives": 0,
-    "needsSourceCleanupLater": 3535,
+    "needsSourceCleanupLater": 3636,
     "reviewOnlySafe": 2990,
     "sourceCleanupCandidateRows": 4087
   },
@@ -123,8 +123,8 @@
     },
     "classifiedIssueCounts": {
       "realRuntimeDefects": 0,
-      "runtimeGuardAlreadyHandles": 552,
-      "needsSourceCleanupLater": 3535,
+      "runtimeGuardAlreadyHandles": 451,
+      "needsSourceCleanupLater": 3636,
       "staticFalsePositive": 0,
       "reviewOnlySafe": 2990,
       "sourceCleanupCandidateRows": 4087
@@ -133,7 +133,7 @@
     "remainingSourceCleanupCsv": "docs/qa/v0.85.5_runtime_display_contract_remaining_source_cleanup.csv",
     "reviewQueueRowCount": 1146,
     "totalItems": 7194,
-    "normalPracticeEligible": 1281,
+    "normalPracticeEligible": 1091,
     "displayReviewItems": 1122
   },
   "representativeScreens": {
@@ -303,9 +303,9 @@
       "noDynamicImport": true
     },
     "browserGate": {
-      "localServer": "http://127.0.0.1:53457/index.html",
+      "localServer": "http://127.0.0.1:61982/index.html",
       "edgeHeadless": true,
-      "contractAuditRows": 5913,
+      "contractAuditRows": 6103,
       "representativeFixtures": {
         "meaningChoice": "b1_vocab_termin_003",
         "underContextCloze": "b1_vocab_termin_001",
@@ -341,10 +341,10 @@
   "consoleErrors": [],
   "runtimeExceptions": [],
   "warnings": [],
-  "acceptancePassed": true,
-  "finalDecision": "RUNTIME_DISPLAY_CONTRACT_LOCK_ACCEPTED",
-  "nextPatch": "v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues",
-  "appVersion": "v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues",
-  "exportVersion": "v0.85.6-source-cleanup-internal-labels-meaning-cues",
-  "generatedAt": "2026-06-24T22:29:08.067Z"
+  "acceptancePassed": false,
+  "finalDecision": "RUNTIME_DISPLAY_CONTRACT_PARTIAL_NEEDS_REPAIR",
+  "nextPatch": "v0.85.5a - Runtime Display Contract Repair",
+  "appVersion": "v0.85.6a.3",
+  "exportVersion": "v0.85.6a.3-post-apply-pool-integrity",
+  "generatedAt": "2026-06-26T21:46:18.354Z"
 }

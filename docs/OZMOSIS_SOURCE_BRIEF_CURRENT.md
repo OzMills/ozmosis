@@ -2,11 +2,13 @@
 
 ## Current Patch Status
 
-Current runtime baseline: `v0.85.6a.3`.
+Current runtime baseline: `v0.85.7`.
 
-Current gate result: `POST_APPLY_ACCEPTED_POOL_FIX_APPLIED`.
+Current gate result: `UNDER_CONTEXT_CLOZE_CLEANUP_ACCEPTED`.
 
-Next required patch: `v0.85.7 - Source Cleanup Batch 2: Under-Contextualised Clozes`.
+Next required patch: `v0.85.8 - Feedback Cleanup: Contrast Notes and Micro-rules`.
+
+Current patch summary: v0.85.7 completed Source Cleanup Batch 2 by investigating 66 under-contextualised cloze candidates, applying 23 high-confidence active typed-cloze prompt repairs in `content/b1-wortschatz.js`, leaving 33 false positives unchanged, and deferring 10 rows. The patch preserved item IDs, answer keys, accepted answers, scoring, evidence, storage, export/import, production isolation, route-pool integrity, and the B1-only active scope.
 
 ## 1. Project Identity
 
@@ -168,11 +170,11 @@ Deferred features must not be forgotten or implemented early:
 
 ## 11. Current Baseline
 
-Current runtime baseline: `v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues`.
+Current runtime baseline: `v0.85.7`.
 
-Current acceptance status: v0.85.6 accepted Source Cleanup Batch 1 after the v0.85.5 runtime display contract lock and v0.85.5b Satzbau proof repair. It selected 33 high-confidence queue rows, changed 31 content items, reduced meaning-choice source cue risks from 30 to 0, cleaned one learner-facing internal-label row, deferred 4,118 rows, and preserved answer keys, accepted answers, item IDs, choices, scoring, evidence, storage, export/import, article-grid behaviour, shared-frame behaviour, and Satzbau behaviour.
+Current acceptance status: v0.85.7 accepted Source Cleanup Batch 2 after the v0.85.6a.3 pool-integrity baseline. It investigated 66 under-contextualised cloze candidates, applied 23 high-confidence active typed-cloze prompt/context repairs, left 33 false positives unchanged, deferred 10 rows, preserved the v0.85.6a.3 normal-practice pool guard, and preserved answer keys, accepted answers, item IDs, choices, scoring, evidence, storage, export/import, production isolation, route-pool integrity, and B1-only active scope.
 
-Next required patch: `v0.85.7 - Source Cleanup Batch 2: Under-Contextualised Clozes`.
+Next required patch: `v0.85.8 - Feedback Cleanup: Contrast Notes and Micro-rules`.
 
 Current planning handoff:
 
@@ -202,5 +204,6 @@ Current planning handoff:
 - Satzbau Build-Line and Answer-Leak Repair has been implemented and accepted as v0.85.5a, but its screenshot artefacts were later superseded.
 - Satzbau Proof Harness and First-Run Overlay Repair has been implemented and accepted as v0.85.5b.
 - Source Cleanup Batch 1: Internal Labels and Meaning Cues has been implemented and accepted as v0.85.6.
-- Source Cleanup Batch 2: Under-Contextualised Clozes is next as v0.85.7.
+- Source Cleanup Batch 2: Under-Contextualised Clozes has been implemented and accepted as v0.85.7.
+- Feedback Cleanup: Contrast Notes and Micro-rules is next as v0.85.8.
 - Production Completion Pass remains blocked until v0.85.11 reports `READY_FOR_V0.86`.

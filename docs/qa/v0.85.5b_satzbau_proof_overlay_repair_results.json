@@ -1,8 +1,8 @@
 {
   "patch": "v0.85.5b",
   "title": "Satzbau Proof Harness and First-Run Overlay Repair",
-  "startingStateVerified": true,
-  "runtimeVersionUpdated": true,
+  "startingStateVerified": false,
+  "runtimeVersionUpdated": false,
   "filesChanged": [
     "index.html",
     "README.md",
@@ -273,13 +273,13 @@
   "testsNotRun": [],
   "consoleErrors": [],
   "ignoredConsoleNoise": [
-    "Failed to load resource: the server responded with a status of 404 (Not Found) (http://127.0.0.1:57574/favicon.ico)"
+    "Failed to load resource: the server responded with a status of 404 (Not Found) (http://127.0.0.1:61984/favicon.ico)"
   ],
   "runtimeExceptions": [],
-  "acceptancePassed": true,
-  "finalDecision": "SATZBAU_PROOF_OVERLAY_REPAIR_ACCEPTED",
-  "nextPatch": "v0.85.6 - Source Cleanup Batch 1: Internal Labels and Meaning Cues",
-  "appVersion": "v0.85.5b - Satzbau Proof Harness and First-Run Overlay Repair",
-  "exportVersion": "v0.85.5b-satzbau-proof-overlay-repair",
-  "generatedAt": "2026-06-24T21:39:03.328Z"
+  "acceptancePassed": false,
+  "finalDecision": "SATZBAU_PROOF_PARTIAL_NEEDS_REPAIR",
+  "nextPatch": "v0.85.5c - Satzbau Proof Harness Repair",
+  "appVersion": "v0.85.6a.3",
+  "exportVersion": "v0.85.6a.3-post-apply-pool-integrity",
+  "generatedAt": "2026-06-26T21:46:18.340Z"
 }

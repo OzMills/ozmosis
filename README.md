@@ -9,32 +9,43 @@ Future README updates should be made in this file. Do not create new `README-v*.
 
 ## Current App
 
-# Ozmosis v0.85.6a.3 Post-Apply Acceptance + Pool Integrity Gate
+# Ozmosis v0.85.7 Source Cleanup Batch 2: Under-Contextualised Clozes
 
 Ozmosis is a static, local-first German learning app. The deployed app remains `index.html`.
+
+v0.85.7 performs the second controlled source-cleanup batch after the v0.85.6a.3 pool-integrity baseline. It repairs high-confidence under-contextualised active typed-cloze prompts by adding short learner-safe German context cues while preserving the target blank, answers, accepted answers, item IDs, scoring, evidence, storage, export/import, route-pool integrity, and the B1-only active scope.
+
+- Runtime app version: `v0.85.7`
+- Runtime export version: `v0.85.7-under-contextualised-cloze-cleanup`
+- Current gate result: `UNDER_CONTEXT_CLOZE_CLEANUP_ACCEPTED`
+- Core result: 66 candidate rows investigated, 23 safe active typed-cloze prompt repairs applied, 33 false positives left unchanged, 10 rows deferred, 0 answer-key changes, 0 accepted-answer changes, 0 item-ID changes, 188 route-pool rows checked, 0 route failures, six known problem rows checked, 0 known-row failures, browser export/import passed, responsive smoke passed, and Arabic/LTR smoke passed.
+- Runtime preservation result: the v0.85.6a.3 normal-practice pool guard remains intact, production/self-marked rows remain isolated from normal auto-graded practice, and the active runtime display audit remains at 0 rendered prompt leaks, 0 hidden meaning-choice cue risks, 0 under-contextualised cloze-without-cue risks, and 0 review-only rows entering normal practice.
+
+## Current v0.85.7 docs
+
+- Changelog: `CHANGELOG-FULL-OZMOSIS.txt`
+- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.7.md`
+- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.7.md`
+- Current QA gate: `docs/qa/v0.85.7_under_contextualised_cloze_cleanup.md`
+- Candidate CSV: `docs/qa/v0.85.7_under_contextualised_cloze_candidates.csv`
+- Decision CSV: `docs/qa/v0.85.7_under_contextualised_cloze_decisions.csv`
+- Changed-row CSV: `docs/qa/v0.85.7_under_contextualised_cloze_changed_rows.csv`
+- Deferred-row CSV: `docs/qa/v0.85.7_under_contextualised_cloze_deferred_rows.csv`
+- Changed-row result JSON: `docs/qa/v0.85.7_under_contextualised_cloze_gate_results.json`
+- Runtime gate result JSON: `docs/qa/v0.85.7_under_contextualised_cloze_runtime_gate_results.json`
+- Browser result JSON: `docs/qa/v0.85.7_browser_acceptance_results.json`
+
+Next planned patch: `v0.85.8 - Feedback Cleanup: Contrast Notes and Micro-rules`.
+
+## Previous v0.85.6a.3 Post-Apply Acceptance + Pool Integrity Gate
 
 v0.85.6a.3 accepts the v0.85.6a.2 reconciliation apply gate after a runtime pool audit and a narrow normal-practice eligibility fix.
 
 - Runtime app version: `v0.85.6a.3`
 - Runtime export version: `v0.85.6a.3-post-apply-pool-integrity`
-- Current gate result: `POST_APPLY_ACCEPTED_POOL_FIX_APPLIED`
+- Gate result: `POST_APPLY_ACCEPTED_POOL_FIX_APPLIED`
 - Core result: 188 route-pool rows checked, 0 route failures, six known problem rows checked, 0 known-row failures, browser export/import passed, responsive smoke passed, and Arabic/LTR smoke passed.
 - Runtime fix result: normal auto-graded practice now excludes production/self-marked rows, production-isolated rows, quarantined rows, review-only rows, inactive-evidence rows, and `normalAutoGradedPracticeEligible === false` rows. Explicit production-only access remains self-marked.
-
-## Current v0.85.6a.3 docs
-
-- Changelog: `CHANGELOG-FULL-OZMOSIS.txt`
-- Standalone v0.85.6a.3 changelog: `CHANGELOG-v0_85_6a_3.txt`
-- Standalone v0.85.6a.3 README: `README-v0_85_6a_3.md`
-- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_v0.85.6a.3.md`
-- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_v0.85.6a.3.md`
-- Current QA gate: `docs/qa/v0.85.6a.3_post_apply_acceptance_pool_integrity_gate.md`
-- Route-pool audit CSV: `docs/qa/v0.85.6a.3_route_pool_integrity_audit.csv`
-- Known problem row runtime CSV: `docs/qa/v0.85.6a.3_known_problem_rows_runtime_check.csv`
-- Static result JSON: `docs/qa/v0.85.6a.3_post_apply_acceptance_results.json`
-- Browser result JSON: `docs/qa/v0.85.6a.3_browser_acceptance_results.json`
-
-Next planned patch: `v0.85.7 - Source Cleanup Batch 2: Under-Contextualised Clozes`.
 
 ## Previous v0.85.6a.2 v0.2 Reconciliation Apply Gate
 
@@ -89,7 +100,7 @@ It cleans high-confidence source-level prompt/cue issues that were already prote
 - Manual phone checklist: `docs/qa/v0.85.3.8_manual_phone_test_checklist.md`
 - Package policy: `docs/OZMOSIS_QA_ARTEFACT_AND_PACKAGE_POLICY.md`
 
-Next planned patch: `v0.85.7 - Source Cleanup Batch 2: Under-Contextualised Clozes`.
+Historical next planned patch from v0.85.6: `v0.85.7 - Source Cleanup Batch 2: Under-Contextualised Clozes`.
 
 ## Previous v0.85.5b Satzbau Proof Harness and First-Run Overlay Repair
 

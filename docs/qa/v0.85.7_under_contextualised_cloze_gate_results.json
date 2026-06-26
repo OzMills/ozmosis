@@ -1,0 +1,12 @@
+{
+  "patch": "v0.85.7",
+  "title": "Source Cleanup Batch 2: Under-Contextualised Clozes",
+  "candidateRows": 66,
+  "changedRows": 23,
+  "failedChangedRows": 0,
+  "answerKeysChanged": false,
+  "acceptedAnswersChanged": false,
+  "itemIdsChanged": false,
+  "markersPresent": 23,
+  "failures": []
+}
