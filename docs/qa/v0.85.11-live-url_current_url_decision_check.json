@@ -1,0 +1,68 @@
+{
+  "patch": "v0.85.11-live-url-a",
+  "title": "Canonical URL QA Artefact Backfill",
+  "checkedAt": "2026-06-27T17:58:50Z",
+  "localPackageVersion": {
+    "appVersion": "v0.85.11",
+    "exportVersion": "v0.85.11-final-regression-live-readiness"
+  },
+  "urls": [
+    {
+      "url": "https://ozmills.github.io/ozmosis/",
+      "httpStatus": 200,
+      "title": "Ozmosis",
+      "bodySnippet": "<!doctype html> <html lang=\"de\"> <head> <meta charset=\"utf-8\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, viewport-fit=cover\"> <title>Ozmosis</title>",
+      "detectedAppVersion": "v0.85.11",
+      "detectedExportVersion": "v0.85.11-final-regression-live-readiness",
+      "containsOzmosis": true,
+      "containsKasuskonsole": false,
+      "containsKasuskonsoleV15": false,
+      "containsOldLanguageStart": false,
+      "containsCurrentV08511": true,
+      "cacheHeaders": {
+        "server": "GitHub.com",
+        "contentType": "text/html; charset=utf-8",
+        "contentLength": "1279885",
+        "cacheControl": "max-age=600",
+        "lastModified": "Sat, 27 Jun 2026 17:10:51 GMT",
+        "etag": "\"6a40041b-13878d\"",
+        "xCache": "HIT",
+        "age": "0",
+        "xServedBy": "cache-fra-eddf8230078-FRA",
+        "xGithubRequestId": "7CEE:10DAC:1AF2640:1E68143:6A40056D"
+      },
+      "finalPathStatus": "LIVE_CURRENT_V08511_CANONICAL_CANDIDATE"
+    },
+    {
+      "url": "https://ozmills.github.io/kasuskonsole/",
+      "httpStatus": 404,
+      "title": "",
+      "bodySnippet": "",
+      "detectedAppVersion": "",
+      "detectedExportVersion": "",
+      "containsOzmosis": false,
+      "containsKasuskonsole": false,
+      "containsKasuskonsoleV15": false,
+      "containsOldLanguageStart": false,
+      "containsCurrentV08511": false,
+      "cacheHeaders": {
+        "server": "GitHub.com",
+        "contentType": "text/html; charset=utf-8",
+        "contentLength": "9115",
+        "etag": "\"6a332546-239b\"",
+        "xCache": "HIT",
+        "age": "2604",
+        "xServedBy": "cache-fra-eddf8230078-FRA",
+        "xGithubRequestId": "100A:35069B:1FDBA1D:227DBE1:6A400535"
+      },
+      "finalPathStatus": "LIVE_404",
+      "legacyStatus": "LEGACY_404"
+    }
+  ],
+  "canonicalUrl": "https://ozmills.github.io/ozmosis/",
+  "legacyUrl": "https://ozmills.github.io/kasuskonsole/",
+  "canonicalDecision": "ACCEPT_OZMOSIS_URL",
+  "legacyDecision": "LEGACY_404",
+  "v086Unlocked": true,
+  "finalVerdict": "CANONICAL_URL_QA_BACKFILL_ACCEPTED_READY_FOR_V086"
+}

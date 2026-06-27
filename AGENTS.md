@@ -10,11 +10,11 @@ Current working version: `v0.85.11`.
 
 Current runtime baseline: `v0.85.11`.
 
-Current gate result: `CANONICAL_URL_ACCEPTED_OZMOSIS_READY_FOR_V086`.
+Current gate result: `CANONICAL_URL_QA_BACKFILL_ACCEPTED_READY_FOR_V086`.
 
 Next planned patch: `v0.86 - Production Completion Pass`
 
-v0.86 status: allowed next. Canonical live URL accepted: `https://ozmills.github.io/ozmosis/`.
+v0.86 status: allowed next. Canonical live URL accepted and QA artefacts backfilled: `https://ozmills.github.io/ozmosis/`.
 
 Current README: `README.md`
 

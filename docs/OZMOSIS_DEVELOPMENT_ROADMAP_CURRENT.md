@@ -4,9 +4,9 @@
 
 Current runtime baseline: `v0.85.11`.
 
-Current acceptance status: v0.85.11-live-url accepted `https://ozmills.github.io/ozmosis/` as the canonical live URL for current Ozmosis after confirming it serves v0.85.11. The legacy `https://ozmills.github.io/kasuskonsole/` path returns HTTP 404 and is documented as an old path, not the current live app.
+Current acceptance status: v0.85.11-live-url accepted `https://ozmills.github.io/ozmosis/` as the canonical live URL for current Ozmosis after confirming it serves v0.85.11. v0.85.11-live-url-a backfilled the missing canonical URL QA artefacts for that decision. The legacy `https://ozmills.github.io/kasuskonsole/` path returns HTTP 404 and is documented as an old path, not the current live app.
 
-Current gate result: `CANONICAL_URL_ACCEPTED_OZMOSIS_READY_FOR_V086`.
+Current gate result: `CANONICAL_URL_QA_BACKFILL_ACCEPTED_READY_FOR_V086`.
 
 Next required patch: `v0.86 - Production Completion Pass`.
 
@@ -71,6 +71,7 @@ This summary is not a replacement for `CHANGELOG-FULL-OZMOSIS.txt`.
 - `v0.85.11` - Final Regression and Live Readiness Gate
 - `v0.85.11-live` - Deployment/Live Check Follow-up
 - `v0.85.11-live-url` - Canonical Live URL / Pages Path Decision
+- `v0.85.11-live-url-a` - Canonical URL QA Artefact Backfill
 - `v0.86` - Production Completion Pass
 - `v0.87` - Redemittel Completion Pass
 - `v0.88` - Wortschatz + Content QA Batch
@@ -141,7 +142,7 @@ Stop if the hub fails.
 - Review Queue Resolution Pass is implemented and accepted as v0.85.10.
 - Final Regression and Live Readiness Gate is implemented as v0.85.11.
 - Deployment/Live Check Follow-up is implemented as v0.85.11-live. `/ozmosis/` serves v0.85.11; `/kasuskonsole/` returns 404.
-- Canonical Live URL / Pages Path Decision is implemented as v0.85.11-live-url. `/ozmosis/` is accepted as canonical.
+- Canonical Live URL / Pages Path Decision is implemented as v0.85.11-live-url, with missing QA artefacts backfilled in v0.85.11-live-url-a. `/ozmosis/` is accepted as canonical.
 - Production Completion Pass is the next allowed patch as v0.86.
 - Weakness repair must wait until Skill Matrix and task-depth evidence are stable.
 - Durability/spaced review must wait until enough reviewable B1 coverage exists.

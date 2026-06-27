@@ -23,7 +23,7 @@ This is the only changelog moving forward. Do not create standalone `CHANGELOG-v
 ## Current Run Metadata
 
 - Update type: current-run append.
-- Update date: 2026-06-26.
+- Update date: 2026-06-27.
 - Branch from `.git/HEAD`: `main`.
 - Current HEAD from `.git/refs/heads/main`: `f37168656b89a21756ecffba9cc3c066a07c59a2`.
 - Normal `git` executable: unavailable in this environment.
@@ -41,11 +41,23 @@ Current state is based only on current repo files.
 - Current changelog: `CHANGELOG-FULL-OZMOSIS.txt`
 - Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_CURRENT.md`
 - Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_CURRENT.md`
-- Current QA report: `docs/qa/v0.85.11_final_regression_live_readiness_gate.md`
-- Current gate result: `CANONICAL_URL_ACCEPTED_OZMOSIS_READY_FOR_V086`
+- Current QA report: `docs/qa/v0.85.11-live-url_canonical_live_url_pages_path_decision.md`
+- Current gate result: `CANONICAL_URL_QA_BACKFILL_ACCEPTED_READY_FOR_V086`
 - Next required patch documented in current files: `v0.86 - Production Completion Pass`
 
 Canonical live URL: `https://ozmills.github.io/ozmosis/`. The legacy `https://ozmills.github.io/kasuskonsole/` path returns HTTP 404 and is not the current app path.
+
+## v0.85.11-live-url-a - Canonical URL QA Artefact Backfill
+
+- Re-checked `https://ozmills.github.io/ozmosis/` and confirmed it serves `v0.85.11` with export version `v0.85.11-final-regression-live-readiness`.
+- Re-checked `https://ozmills.github.io/kasuskonsole/` and confirmed it returns HTTP 404, classified as `LEGACY_404`.
+- Backfilled the missing canonical URL QA artefacts:
+  - `docs/qa/v0.85.11-live-url_current_url_decision_check.json`
+  - `docs/qa/v0.85.11-live-url_canonical_url_decision.md`
+  - `docs/qa/v0.85.11-live-url_canonical_live_url_pages_path_decision.md`
+- Updated canonical docs to reflect the backfill verdict `CANONICAL_URL_QA_BACKFILL_ACCEPTED_READY_FOR_V086`.
+- Preserved runtime app code, learner-facing content, scoring, evidence, storage keys, export/import, route pools, content banks, and B1-only active scope.
+- Kept `v0.86 - Production Completion Pass` as the next planned patch.
 
 ## v0.85.11-live-url - Canonical Live URL / Pages Path Decision
 

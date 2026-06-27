@@ -13,11 +13,11 @@ Future README updates should be made in this file. Do not create new `README-v*.
 
 Ozmosis is a static, local-first German learning app. The deployed app remains `index.html`.
 
-v0.85.11 is the final local regression gate for the v0.85.x stabilisation sequence. The canonical live URL decision accepts `https://ozmills.github.io/ozmosis/` as the current Ozmosis app URL because it serves v0.85.11. The legacy `https://ozmills.github.io/kasuskonsole/` path returns 404 and is not the current app path.
+v0.85.11 is the final local regression gate for the v0.85.x stabilisation sequence. The canonical live URL decision accepts `https://ozmills.github.io/ozmosis/` as the current Ozmosis app URL because it serves v0.85.11. The missing canonical URL QA artefacts have been backfilled. The legacy `https://ozmills.github.io/kasuskonsole/` path returns 404 and is not the current app path.
 
 - Runtime app version: `v0.85.11`
 - Runtime export version: `v0.85.11-final-regression-live-readiness`
-- Current gate result: `CANONICAL_URL_ACCEPTED_OZMOSIS_READY_FOR_V086`
+- Current gate result: `CANONICAL_URL_QA_BACKFILL_ACCEPTED_READY_FOR_V086`
 - Core result: v0.85.10 review queue counts reflected exactly: 15,139 source queue rows loaded, 10,421 unified rows after dedupe, 5,003 resolved rows, 3,565 quarantined/no-action rows, 1,145 production-wait rows, 300 metadata-deferred rows, 338 active targeted-repair rows, 70 active human-review rows, 0 stale rows, 0 unresolved rows, and 4,718 duplicate/superseded source rows.
 - Runtime preservation result: route-pool integrity, known problem rows, v0.85.7 cloze repairs, v0.85.8 feedback repairs, v0.85.9 manifest lookup, v0.85.10 queue outputs, Satzbau normalisation, wrong-target Wechselpraeposition feedback gating, runtime display-contract counts, browser route smoke, responsive smoke, Arabic/LTR smoke, and export/import remain preserved locally.
 - Canonical live URL: `https://ozmills.github.io/ozmosis/`
