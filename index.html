@@ -10650,6 +10650,7 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
             <button class="menuButton" id="menuWordOrderBtn" type="button">Word Order</button>
             <button class="menuButton" id="menuWortschatzBtn" type="button">Wortschatz</button>
             <button class="menuButton" id="menuRedemittelBtn" type="button">Redemittel</button>
+            <button class="menuButton" id="menuProductionBtn" type="button">Writing / Speaking</button>
             <button class="menuButton" id="menuCaseTrainerBtn" type="button">Case Trainer</button>
             <button class="menuButton" id="menuReviewPracticeBtn" type="button" hidden>Review practice</button>
           </div>
@@ -10857,7 +10858,7 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
 
     <section class="homeSection production" aria-labelledby="homeProductionTitle">
       <h3 class="homeSectionTitle" id="homeProductionTitle">Writing / Speaking</h3>
-      <button class="homeRefCard homeRefCardWide homeThemeProduction" id="homeRedemittelProductionBtn" type="button">
+      <button class="homeRefCard homeRefCardWide homeThemeProduction" id="homeProductionBtn" type="button">
         <span class="homeRefIcon homeIconPencil" aria-hidden="true"></span>
         <span class="homeRefText"><span class="homeRouteLabel">Production cards</span><span class="homeRouteSub">Self-marked writing and speaking prompts</span></span>
         <span class="homeRefArrow" aria-hidden="true">&gt;</span>
@@ -11603,8 +11604,8 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
   var B1_PATH_UNLOCK_STORAGE_KEY = "ozmosis_b1_path_unlock_overrides_v1";
   var B1_REVIEW_EDIT_QUEUE_STORAGE_KEY = "ozmosis_b1_review_edit_queue_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.85.11";
-  var OZMOSIS_EXPORT_VERSION = "v0.85.11-final-regression-live-readiness";
+  var OZMOSIS_APP_VERSION = "v0.86";
+  var OZMOSIS_EXPORT_VERSION = "v0.86-production-completion";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -11641,6 +11642,7 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     correct:0,
     wrong:0,
     practised:0,
+    productionSkipped:0,
     streak:0,
     connectorFamily:"",
     deckKey:"",
@@ -14594,6 +14596,7 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     if (routeKey === "grammar_repair") { startRepairTransformationRound("mixed"); return; }
     if (routeKey === "connectors") { startConnectorSprint("all"); return; }
     if (routeKey === "redemittel") { showRedemittelHub(); return; }
+    if (routeKey === "production") { startB1ProductionRound(); return; }
     if (routeKey === "redemittel_production") { startRedemittelRound("production"); return; }
     if (routeKey === "wortschatz") { startWortschatzRound("mixed"); return; }
     if (routeKey === "cases_articles") { startCasesArticlesRound("mixed"); return; }
@@ -20157,6 +20160,11 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     }
     if (item.itemType === "production_card" || options.productionAction) {
       record.productionAction = options.productionAction || (answerModeValue === "mark_practised" ? "mark_practised" : "unknown");
+      record.evidenceType = "self_marked_production";
+      record.productionPractised = record.productionAction === "mark_practised" || result === "practised";
+      record.autoGraded = false;
+      record.scoreImpact = 0;
+      record.correct = null;
       record.modelShown = !!(options.modelShown || options.modelRevealed);
       record.usefulPhrasesShown = !!options.usefulPhrasesShown;
       record.checklistShown = !!options.checklistShown;
@@ -21885,6 +21893,7 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
       reviewSystemStability:buildB1ReviewSystemStabilityAudit(evidenceStore.records),
       reviewEligibility:buildB1ReviewEligibility(evidenceStore.records),
       reviewCandidatePreview:buildB1ReviewCandidatePreview(evidenceStore.records),
+      productionSummary:b1ProductionQaSummary(),
       metadataReviewCoverage:buildB1MetadataReviewCoverageAudit(),
       b1CoverageAudit:buildB1CoverageAudit(),
       repairCandidates:debugWeaknessRepairSummary(),
@@ -23077,9 +23086,34 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
   function b1ItemIsProductionPracticeItem(item) {
     return !!(item && (
       item.itemType === "production_card" ||
+      item.taskType === "production_card" ||
+      item.type === "production_card" ||
       item.answerMode === "mark_practised" ||
+      item.responseSurface === "production" ||
       item.normalAutoGradedPracticeEligible === false
     ));
+  }
+  function b1ItemIsExplicitProductionCard(item) {
+    return !!(item && (
+      item.itemType === "production_card" ||
+      item.taskType === "production_card" ||
+      item.type === "production_card" ||
+      item.answerMode === "mark_practised" ||
+      item.responseSurface === "production"
+    ));
+  }
+  function b1ProductionHasRequiredDisplayParts(item) {
+    if (!item) return false;
+    var segments = b1ProductionDisplaySegments(item);
+    var prompt = String(item.prompt_de || item.prompt || item.question || segments.instruction || segments.cue || "").trim();
+    var model = String(item.modelAnswer_de || item.fullAnswer_de || segments.modelAnswer || "").trim();
+    return !!(prompt && model);
+  }
+  function b1ItemIsProductionRouteEligible(item, progress) {
+    if (!item || !item.id) return false;
+    if (item.previewOnly || item.categoryId === "CAT18" || item.activeB1Evidence === false || item.reviewOnly === true || item.status === "preview" || item.status === "retired") return false;
+    if (item.itemType === "variant_family") return b1ItemIsNormalEligible(item) && b1VariantFamilyHasProductionRouteVariant(item);
+    return b1ItemIsNormalEligible(item) && b1ItemIsExplicitProductionCard(item) && b1ProductionHasRequiredDisplayParts(item) && b1ItemIsPracticeSelectable(item, progress);
   }
   function b1VariantFamilyHasAutoGradedVariant(item) {
     return b1VariantFamilyVariants(item).some(function(variant){
@@ -23089,6 +23123,11 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
   function b1VariantFamilyHasProductionVariant(item) {
     return b1VariantFamilyVariants(item).some(function(variant){
       return b1ItemIsProductionPracticeItem(variant);
+    });
+  }
+  function b1VariantFamilyHasProductionRouteVariant(item) {
+    return b1VariantFamilyVariants(item).some(function(variant){
+      return b1ItemIsExplicitProductionCard(variant) && b1ProductionHasRequiredDisplayParts(variant) && variant.activeB1Evidence !== false && variant.reviewOnly !== true && variant.status !== "preview" && variant.status !== "retired";
     });
   }
   function b1ItemIsAutoGradedPracticeEligible(item) {
@@ -23860,6 +23899,99 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
   function startCasesArticlesRound(filter) { startB1ImportedModuleRound("cases_articles", filter); }
   function startPrepositionsRound(filter) { startB1ImportedModuleRound("prepositions", filter); }
   function startWordOrderRound(filter) { startB1ImportedModuleRound("word_order", filter); }
+  function b1ProductionPoolFor() {
+    var progress = b1PathProgressData();
+    var pool = [];
+    b1RegistryBanks().forEach(function(bank){
+      var bankKey = bank && bank.key || "";
+      if (bankKey === "b1_m18") return;
+      (Array.isArray(bank && bank.items) ? bank.items : []).forEach(function(item){
+        if (!b1ItemIsProductionRouteEligible(item, progress)) return;
+        pool.push(item);
+      });
+    });
+    return pool;
+  }
+  function b1ProductionQaSummary() {
+    var progress = b1PathProgressData();
+    var available = b1ProductionPoolFor();
+    var allProduction = [];
+    var blocked = [];
+    b1RegistryBanks().forEach(function(bank){
+      (Array.isArray(bank && bank.items) ? bank.items : []).forEach(function(item){
+        var explicit = b1ItemIsExplicitProductionCard(item) || item && item.itemType === "variant_family" && b1VariantFamilyHasProductionVariant(item);
+        if (!explicit) return;
+        var entry = {
+          itemId:item.id || "",
+          bankKey:bank.key || "",
+          itemType:item.itemType || item.taskType || "",
+          routeEligible:b1ItemIsProductionRouteEligible(item, progress)
+        };
+        allProduction.push(entry);
+        if (!entry.routeEligible) {
+          entry.blockedReason = b1NormalPracticeExclusionReasons(item).join("|") || (item.previewOnly || item.categoryId === "CAT18" ? "preview_or_inactive_import" : "not_route_eligible");
+          blocked.push(entry);
+        }
+      });
+    });
+    var records = safeGetB1Evidence().records || [];
+    var practised = records.filter(function(record){
+      return record && (record.productionAction === "mark_practised" || record.productionPractised === true || record.answerMode === "mark_practised" || record.selfMarked === true);
+    });
+    return {
+      productionCardsAvailable:available.length,
+      productionCardsPractised:practised.length,
+      productionCardsSkippedThisSession:Number(b1Runtime.productionSkipped || 0),
+      productionCardsExcludedFromAutoGradedPools:allProduction.length,
+      productionRowsWaitingForFutureContentRepair:blocked.length,
+      blockedSample:blocked.slice(0, 8)
+    };
+  }
+  function startB1ProductionRound() {
+    var pool = b1ProductionPoolFor();
+    if (!pool.length) {
+      showLearningMapScreen();
+      showAppStatus("No available production cards are ready yet.", "warn");
+      return;
+    }
+    var round = buildB1Round({ deckKey:"production", filterKey:"production", items:pool, roundLength:10, allowProduction:true });
+    var queue = round.queue;
+    b1Runtime.active = true;
+    b1Runtime.mode = "production";
+    b1Runtime.title = "Writing / Speaking";
+    b1Runtime.queue = queue;
+    b1Runtime.current = null;
+    b1Runtime.target = queue.length;
+    b1Runtime.correct = 0;
+    b1Runtime.wrong = 0;
+    b1Runtime.practised = 0;
+    b1Runtime.productionSkipped = 0;
+    b1Runtime.assisted = 0;
+    b1Runtime.streak = 0;
+    b1Runtime.connectorFamily = "";
+    b1Runtime.deckKey = "production";
+    b1Runtime.filterKey = "production";
+    b1Runtime.roundSeed = round.seed;
+    resetB1ChoiceSelection();
+    b1Runtime.translationOpen = false;
+    b1Runtime.currentExtraPractice = false;
+    b1Runtime.currentAssisted = false;
+    b1Runtime.dailySprint = false;
+    b1Runtime.dailyDateKey = "";
+    clearB1DiagnosticRuntime();
+    state = "b1Checking";
+    current = null;
+    hintUsed = false;
+    clearMobileClozeFocus();
+    setDiagnosticUiVisible(false);
+    document.body.classList.remove("b1TypedCloze", "b1LongAnswer");
+    setMenu(false);
+    setDevTools(false);
+    document.body.classList.add("b1Mode");
+    document.body.classList.remove("homeMode", "setupMode", "placeholderMode", "resultsMode");
+    setActiveScreen("");
+    nextB1Question();
+  }
   const B1_REPAIR_TRANSFORMATION_BANK_KEYS = ["cases_articles", "prepositions", "word_order", "connectors"];
   function b1IsRepairTransformationPracticeItem(item) {
     return b1IsRepairPracticeItem(item) || b1IsTransformationItem(item);
@@ -23981,6 +24113,7 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     b1Runtime.reviewTests = false;
     b1Runtime.reviewTestItemIds = [];
     b1Runtime.reviewTestDecisionPending = false;
+    b1Runtime.productionSkipped = 0;
   }
   function b1DiagnosticTokenText(item) {
     if (!item) return "";
@@ -27168,6 +27301,7 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     b1SetVisualTemplateState("production", "skip");
     b1SharedPracticeFrameMetadata("production-skip", "none");
     b1Runtime.currentEvidenceRecordId = "";
+    b1Runtime.productionSkipped = Number(b1Runtime.productionSkipped || 0) + 1;
     state = "b1Next";
     el("answerArea").classList.add("answered");
     var block = el("correctionBlock");
@@ -27205,7 +27339,7 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
       sourceCandidateId:b1Runtime.current._sourceCandidateId || b1Runtime.sourceCandidateId || null
     });
     b1Runtime.currentEvidenceRecordId = evidenceRecord ? evidenceRecord.id : "";
-    recordB1Progress(b1Runtime.current, "practised", { extraPractice:b1Runtime.currentExtraPractice });
+    recordB1Progress(b1Runtime.current, "practised", { extraPractice:b1Runtime.currentExtraPractice, noNormalProgress:true });
     b1Runtime.practised += 1;
     state = "b1Next";
     el("answerArea").classList.add("answered");
@@ -27216,7 +27350,7 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
       b1PostAnswerResultAreaHtml("<div class=\"b1StarUpdateLine neutral\"><span>Production practised.</span><span>Not star-rated.</span></div>");
     markB1ReviewTestDecisionPending();
     renderB1TaskStarStatus(b1Runtime.current);
-    renderB1ConfidenceControls(null);
+    resetB1ConfidenceControls();
     var buttons = el("connectorChoiceGrid") ? el("connectorChoiceGrid").querySelectorAll("button") : [];
     buttons.forEach(function(btn){ btn.disabled = true; });
     el("nextBtn").textContent = b1RoundComplete() ? "Ergebnis" : "Weiter";
@@ -27473,6 +27607,14 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
       el("resultSummary").textContent = "Items attempted: " + answered + " / " + b1Runtime.target;
       el("accuracySummary").textContent = "Evidence saved as normal item attempts with review context. Confidence is captured before continuing.";
       el("weakSummary").innerHTML = "<div class=\"sessionCoverage\"><strong>Correct this time</strong><span>" + b1Runtime.correct + " of " + scored + "</span><strong>Incorrect this time</strong><span>" + b1Runtime.wrong + "</span><strong>Assisted</strong><span>" + b1Runtime.assisted + "</span><strong>Claim limit</strong><span>Not mastery</span></div>";
+    } else if (b1Runtime.mode === "production") {
+      var productionHandled = Number(b1Runtime.practised || 0) + Number(b1Runtime.productionSkipped || 0);
+      el("modeTitle").textContent = "Writing / Speaking";
+      el("promptValue").textContent = "Production practice complete";
+      el("englishGloss").textContent = "Self-marked production practice only. No correctness score was created.";
+      el("resultSummary").textContent = "Cards handled: " + productionHandled + " / " + b1Runtime.target;
+      el("accuracySummary").textContent = "Practised cards were saved as self-marked evidence. Skipped cards saved no evidence.";
+      el("weakSummary").innerHTML = "<div class=\"sessionCoverage\"><strong>Practised</strong><span>" + b1Runtime.practised + "</span><strong>Skipped</strong><span>" + Number(b1Runtime.productionSkipped || 0) + "</span><strong>Correctness score</strong><span>None</span><strong>Stars</strong><span>Unchanged</span></div>";
     } else if (b1Runtime.dailySprint) {
       var dailyStats = b1DailyStats(b1CurrentDailySprint());
       el("resultSummary").textContent = "Correct this time: " + b1Runtime.correct + " / " + scored;
@@ -27481,7 +27623,7 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
       el("resultSummary").textContent = "Correct this time: " + b1Runtime.correct + " / " + scored;
     }
     if (b1Runtime.mode === "b1_diagnostic") el("bestSummary").textContent = "";
-    if (b1Runtime.mode !== "b1_diagnostic" && b1Runtime.mode !== "targeted_repair" && b1Runtime.mode !== "review_practice") {
+    if (b1Runtime.mode !== "b1_diagnostic" && b1Runtime.mode !== "targeted_repair" && b1Runtime.mode !== "review_practice" && b1Runtime.mode !== "production") {
       el("accuracySummary").textContent = "Progress saved locally. This is evidence, not mastery.";
       el("weakSummary").innerHTML = "<div class=\"sessionCoverage\"><strong>Items practised</strong><span>" + answered + " of " + b1Runtime.target + "</span><strong>Incorrect this time</strong><span>" + b1Runtime.wrong + "</span><strong>Assisted</strong><span>" + b1Runtime.assisted + "</span><strong>Production</strong><span>Self-marked practice: " + b1Runtime.practised + "</span></div>";
     }
@@ -28160,8 +28302,9 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
       homeOptionsBtn:function(){ showSettingsScreen(); },
       homeB1PathSeeAllBtn:function(){ showLearningMapScreen(); },
       settingsBackBtn:function(){ showHomeScreen(); },
+      menuProductionBtn:function(){ setMenu(false); startB1ProductionRound(); },
       homeRedemittelBtn:function(){ showRedemittelHub(); },
-      homeRedemittelProductionBtn:function(){ startRedemittelRound("production"); },
+      homeProductionBtn:function(){ startB1ProductionRound(); },
       redemittelBackBtn:function(){ showHomeScreen(); },
       redemittelMixedBtn:function(){ startRedemittelRound("mixed"); },
       redemittelFormalBtn:function(){ startRedemittelRound("formal_email"); },
@@ -29087,7 +29230,7 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
       };
     });
   };
-window.ozmosisTesterReportSummary=testerReportSummary; window.ozmosisLearnerReadableProgressReport=buildLearnerReadableProgressReport; window.ozmosisBuildSavePayload=buildOzmosisSavePayload; window.ozmosisValidateSavePayload=validateOzmosisSavePayload; window.ozmosisApplyValidatedSave=applyValidatedOzmosisSave; window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }; window.kasusNoArticle=function(){checkAnswer("none");}; window.kasusProceed=function(){proceed();}; window.kasusHint=function(){showHint();}; window.kasusNewRound=function(){showStartScreen();}; window.kasusStartRound=function(){startConfiguredRound();}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusSessionLog=function(){return sessionLog.slice();}; window.kasusCurrent=function(){return current ? cloneQuestion(current) : cloneB1Item(b1Runtime.current || {});}; window.kasusLeitnerDebug=function(){ return { storageKey:LEITNER_STORAGE_KEY, runtime:leitnerRuntime, progress:safeGetLeitner() }; }; window.ozmosisChoiceShuffleDebug=function(item, count){ return b1ChoiceShuffleDebugSummary(item, count); }; window.ozmosisB1Debug=function(){ return { storageKey:B1_STORAGE_KEY, evidenceStorageKey:B1_EVIDENCE_STORAGE_KEY, progressStateLabelVersion:PROGRESS_STATE_LABEL_VERSION, taskDepthSchemaVersion:B1_TASK_DEPTH_SCHEMA_VERSION, taskDepthDefinitions:b1TaskDepthDefinitions(), supportLevelSchemaVersion:B1_SUPPORT_LEVEL_SCHEMA_VERSION, supportLevelDefinitions:b1SupportLevelDefinitions(), displaySchemaAudit:b1DisplaySchemaAudit({includeReviewQueue:false}), itemCount:B1_ITEMS.length, connectorCount:B1_CONNECTOR_ITEMS.length, casesArticlesCount:B1_CASE_ARTICLE_ITEMS.length, redemittelCount:B1_REDEMITTEL_ITEMS.length, wortschatzCount:B1_WORTSCHATZ_ITEMS.length, b1M02Count:B1_M02_ITEMS.length, b1M03Count:B1_M03_ITEMS.length, b1M04Count:B1_M04_ITEMS.length, b1M05Count:B1_M05_ITEMS.length, registry:b1RegistrySummary(), runtime:b1Runtime, progress:safeGetB1Progress(), evidence:b1EvidenceSummary(), supportLevelSummary:b1SupportLevelSummaryForRecords(safeGetB1Evidence().records), learningMap:b1LearningMapScaffold(), skillMatrix:b1SkillMatrixData(), skillMatrixSummary:debugSkillMatrixSummary(), recommendation:b1NextRecommendedPractice(), recommendationSummary:debugRecommendationSummary(), learnerReadableProgressReport:buildLearnerReadableProgressReport(), errorPatterns:b1ErrorPatternSignals(), errorPatternSummary:debugErrorPatternSummary(), errorTypeSummaries:b1ErrorTypeSummaries(), errorTypeSummary:debugErrorTypeSummary(), connectorDiagnostics:b1ConnectorDiagnosticCards(), connectorDiagnosticSummary:debugConnectorDiagnosticSummary(), diagnosticRepairQa:b1DiagnosticRepairQaSummary(), diagnosticRepairStability:b1DiagnosticRepairStabilitySummary(), durabilityReadiness:buildB1DurabilityReadinessSnapshot(), durabilityQa:buildB1DurabilityQaAudit(), reviewSystemStability:buildB1ReviewSystemStabilityAudit(), reviewEligibility:buildB1ReviewEligibility(), reviewCandidatePreview:buildB1ReviewCandidatePreview(), metadataReviewCoverage:buildB1MetadataReviewCoverageAudit(), b1CoverageAudit:buildB1CoverageAudit(), repairCandidates:b1WeaknessRepairCandidates(), repairCandidateSummary:debugWeaknessRepairSummary(), repairQueues:b1BuildWeaknessRepairQueue(), repairQueueSummary:b1RepairQueueDebugSummary(), diagnosticPlan:b1Runtime.diagnosticPlan, qaStageItemById:b1QaStageItemById, qaRepairPreview:b1QaRepairPreview, choiceShuffle:b1ChoiceShuffleDebugSummary(), debugSnapshot:buildDebugSnapshot }; }; window.ozmosisStartB1Round=function(mode){ startB1Round(mode || "mixed"); }; window.ozmosisStartDiagnostic=function(){ startB1DiagnosticSprint(); }; window.ozmosisStartConnector=function(family){ startConnectorSprint(family || "all"); }; window.ozmosisStartRepairTransformation=function(filter){ startRepairTransformationRound(filter || "mixed"); }; window.ozmosisStartCasesArticles=function(filter){ startCasesArticlesRound(filter || "mixed"); }; window.ozmosisStartRedemittel=function(filter){ startRedemittelRound(filter || "mixed"); }; window.ozmosisStartWortschatz=function(filter){ startWortschatzRound(filter || "mixed"); }; window.ozmosisStartB1M01=function(filter){ startB1M01Round(filter || "mixed"); }; window.ozmosisStartB1M02=function(filter){ startB1M02Round(filter || "mixed"); }; window.ozmosisStartB1M03=function(filter){ startB1M03Round(filter || "mixed"); }; window.ozmosisStartB1M04=function(filter){ startB1M04Round(filter || "mixed"); }; window.ozmosisStartB1M05=function(filter){ startB1M05Round(filter || "mixed"); }; window.ozmosisStartTargetedRepair=function(queueId){ startTargetedRepairPractice(queueId || ""); }; window.ozmosisStartReviewPractice=function(){ startB1ReviewPractice(); }; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusResetBest=function(){ highScore=0; bestStreakAll=0; savePersistent(); if (state === "results") showResults(); else renderHud(); }; window.kasusResetProfile=function(){ resetLearnerModel(); }; window.kasusToggleMenu=function(){ var panel=el("settingsPanel"); panel.classList.toggle("open"); document.body.classList.toggle("menuOpen", panel.classList.contains("open")); };
+window.ozmosisTesterReportSummary=testerReportSummary; window.ozmosisLearnerReadableProgressReport=buildLearnerReadableProgressReport; window.ozmosisBuildSavePayload=buildOzmosisSavePayload; window.ozmosisValidateSavePayload=validateOzmosisSavePayload; window.ozmosisApplyValidatedSave=applyValidatedOzmosisSave; window.kasusCheck=function(){ if (b1Runtime.active) checkB1Answer(); else checkAnswer(); }; window.kasusNoArticle=function(){checkAnswer("none");}; window.kasusProceed=function(){proceed();}; window.kasusHint=function(){showHint();}; window.kasusNewRound=function(){showStartScreen();}; window.kasusStartRound=function(){startConfiguredRound();}; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusSessionLog=function(){return sessionLog.slice();}; window.kasusCurrent=function(){return current ? cloneQuestion(current) : cloneB1Item(b1Runtime.current || {});}; window.kasusLeitnerDebug=function(){ return { storageKey:LEITNER_STORAGE_KEY, runtime:leitnerRuntime, progress:safeGetLeitner() }; }; window.ozmosisChoiceShuffleDebug=function(item, count){ return b1ChoiceShuffleDebugSummary(item, count); }; window.ozmosisB1Debug=function(){ return { storageKey:B1_STORAGE_KEY, evidenceStorageKey:B1_EVIDENCE_STORAGE_KEY, progressStateLabelVersion:PROGRESS_STATE_LABEL_VERSION, taskDepthSchemaVersion:B1_TASK_DEPTH_SCHEMA_VERSION, taskDepthDefinitions:b1TaskDepthDefinitions(), supportLevelSchemaVersion:B1_SUPPORT_LEVEL_SCHEMA_VERSION, supportLevelDefinitions:b1SupportLevelDefinitions(), displaySchemaAudit:b1DisplaySchemaAudit({includeReviewQueue:false}), itemCount:B1_ITEMS.length, connectorCount:B1_CONNECTOR_ITEMS.length, casesArticlesCount:B1_CASE_ARTICLE_ITEMS.length, redemittelCount:B1_REDEMITTEL_ITEMS.length, wortschatzCount:B1_WORTSCHATZ_ITEMS.length, b1M02Count:B1_M02_ITEMS.length, b1M03Count:B1_M03_ITEMS.length, b1M04Count:B1_M04_ITEMS.length, b1M05Count:B1_M05_ITEMS.length, registry:b1RegistrySummary(), runtime:b1Runtime, progress:safeGetB1Progress(), evidence:b1EvidenceSummary(), supportLevelSummary:b1SupportLevelSummaryForRecords(safeGetB1Evidence().records), learningMap:b1LearningMapScaffold(), skillMatrix:b1SkillMatrixData(), skillMatrixSummary:debugSkillMatrixSummary(), recommendation:b1NextRecommendedPractice(), recommendationSummary:debugRecommendationSummary(), learnerReadableProgressReport:buildLearnerReadableProgressReport(), errorPatterns:b1ErrorPatternSignals(), errorPatternSummary:debugErrorPatternSummary(), errorTypeSummaries:b1ErrorTypeSummaries(), errorTypeSummary:debugErrorTypeSummary(), connectorDiagnostics:b1ConnectorDiagnosticCards(), connectorDiagnosticSummary:debugConnectorDiagnosticSummary(), diagnosticRepairQa:b1DiagnosticRepairQaSummary(), diagnosticRepairStability:b1DiagnosticRepairStabilitySummary(), durabilityReadiness:buildB1DurabilityReadinessSnapshot(), durabilityQa:buildB1DurabilityQaAudit(), reviewSystemStability:buildB1ReviewSystemStabilityAudit(), reviewEligibility:buildB1ReviewEligibility(), reviewCandidatePreview:buildB1ReviewCandidatePreview(), productionSummary:b1ProductionQaSummary(), metadataReviewCoverage:buildB1MetadataReviewCoverageAudit(), b1CoverageAudit:buildB1CoverageAudit(), repairCandidates:b1WeaknessRepairCandidates(), repairCandidateSummary:debugWeaknessRepairSummary(), repairQueues:b1BuildWeaknessRepairQueue(), repairQueueSummary:b1RepairQueueDebugSummary(), diagnosticPlan:b1Runtime.diagnosticPlan, qaStageItemById:b1QaStageItemById, qaRepairPreview:b1QaRepairPreview, choiceShuffle:b1ChoiceShuffleDebugSummary(), debugSnapshot:buildDebugSnapshot }; }; window.ozmosisStartB1Round=function(mode){ startB1Round(mode || "mixed"); }; window.ozmosisStartDiagnostic=function(){ startB1DiagnosticSprint(); }; window.ozmosisStartConnector=function(family){ startConnectorSprint(family || "all"); }; window.ozmosisStartRepairTransformation=function(filter){ startRepairTransformationRound(filter || "mixed"); }; window.ozmosisStartCasesArticles=function(filter){ startCasesArticlesRound(filter || "mixed"); }; window.ozmosisStartRedemittel=function(filter){ startRedemittelRound(filter || "mixed"); }; window.ozmosisStartWortschatz=function(filter){ startWortschatzRound(filter || "mixed"); }; window.ozmosisStartProduction=function(){ startB1ProductionRound(); }; window.ozmosisStartB1M01=function(filter){ startB1M01Round(filter || "mixed"); }; window.ozmosisStartB1M02=function(filter){ startB1M02Round(filter || "mixed"); }; window.ozmosisStartB1M03=function(filter){ startB1M03Round(filter || "mixed"); }; window.ozmosisStartB1M04=function(filter){ startB1M04Round(filter || "mixed"); }; window.ozmosisStartB1M05=function(filter){ startB1M05Round(filter || "mixed"); }; window.ozmosisStartTargetedRepair=function(queueId){ startTargetedRepairPractice(queueId || ""); }; window.ozmosisStartReviewPractice=function(){ startB1ReviewPractice(); }; window.kasusSetHeatmapType=setResultHeatmapType; window.kasusResetBest=function(){ highScore=0; bestStreakAll=0; savePersistent(); if (state === "results") showResults(); else renderHud(); }; window.kasusResetProfile=function(){ resetLearnerModel(); }; window.kasusToggleMenu=function(){ var panel=el("settingsPanel"); panel.classList.toggle("open"); document.body.classList.toggle("menuOpen", panel.classList.contains("open")); };
   window.ozmosisVersionInfo=function(){ return { appVersion:OZMOSIS_APP_VERSION, exportVersion:OZMOSIS_EXPORT_VERSION }; };
   window.ozmosisDisplaySchemaAudit=function(options){ return b1DisplaySchemaAudit(options || {includeReviewQueue:true}); };
   window.ozmosisRuntimeDisplayContractAudit=function(options){ return b1RuntimeDisplayContractAudit(options || {includeRows:true}); };

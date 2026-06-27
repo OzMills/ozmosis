@@ -303,7 +303,7 @@
       "noDynamicImport": true
     },
     "browserGate": {
-      "localServer": "http://127.0.0.1:52750/index.html",
+      "localServer": "http://127.0.0.1:56377/index.html",
       "edgeHeadless": true,
       "contractAuditRows": 6103,
       "representativeFixtures": {
@@ -346,5 +346,5 @@
   "nextPatch": "v0.85.5a - Runtime Display Contract Repair",
   "appVersion": "v0.85.11",
   "exportVersion": "v0.85.11-final-regression-live-readiness",
-  "generatedAt": "2026-06-27T16:37:37.567Z"
+  "generatedAt": "2026-06-27T22:07:18.297Z"
 }

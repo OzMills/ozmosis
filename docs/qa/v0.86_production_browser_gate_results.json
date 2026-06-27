@@ -1,0 +1,155 @@
+{
+  "patch": "v0.86",
+  "title": "Production Browser Gate",
+  "browser": "Edge/CDP",
+  "localServer": "http://127.0.0.1:51595/index.html",
+  "consoleErrors": [],
+  "runtimeExceptions": [],
+  "routeSmoke": {
+    "home": {
+      "title": "Ozmosis",
+      "appVersion": "v0.85.11",
+      "exportVersion": "v0.85.11-final-regression-live-readiness",
+      "homeProductionButton": true,
+      "menuProductionButton": true
+    },
+    "menu": {
+      "opened": true,
+      "closed": true
+    },
+    "coreRoutes": {
+      "homeSprintBtn": true,
+      "homeDiagnosticBtn": true,
+      "homeGrammarBtn": true,
+      "homeWortschatzBtn": true,
+      "homeRedemittelBtn": true,
+      "homeProductionBtn": true,
+      "homeCaseTrainerBtn": true,
+      "homeLearningMapBtn": true,
+      "homeOptionsBtn": true,
+      "homeDevToolsBtn": true
+    }
+  },
+  "productionFlow": {
+    "before": {
+      "modeTitle": "Writing / Speaking",
+      "prompt": "Schreibe eine kurze, sichere Nachricht. Write one polite message to the course instructor saying you are sick today.",
+      "cardVisible": true,
+      "revealLabels": [
+        "Useful phrases",
+        "Self-check"
+      ],
+      "actionButtons": [
+        "Show example answer",
+        "I can't do this now",
+        "I practised this"
+      ],
+      "evidenceCount": 0,
+      "confidenceHidden": true
+    },
+    "reveals": {
+      "usefulPhrasesShown": true,
+      "checklistShown": true,
+      "modelShown": true,
+      "exampleAnswerVisible": true
+    },
+    "markPractised": {
+      "beforeEvidenceCount": 0,
+      "afterEvidenceCount": 1,
+      "evidenceDelta": 1,
+      "latestEvidence": {
+        "result": "practised",
+        "evidenceType": "self_marked_production",
+        "productionPractised": true,
+        "confidence": null,
+        "correct": null,
+        "scoreImpact": 0,
+        "autoGraded": false,
+        "productionAction": "mark_practised"
+      },
+      "confidenceRowHidden": true,
+      "feedbackText": "PractisedSaved as self-marked practice evidence. Model answer viewed.ResultProduction practised.Not star-rated.",
+      "hudText": "\n  \n    \n    1 / 10\n  \n  \n    Punkte0\n    Richtig0\n    Fehler0\n    FORTSCHRITT1 / 10\n  \n"
+    },
+    "nextCard": {
+      "beforePrompt": "Schreibe eine kurze, sichere Nachricht. Write one polite message to the course instructor saying you are sick today.",
+      "afterPrompt": "Schreibe einen höflichen Satz: Deine Lieferung ist noch nicht angekommen.",
+      "actions": [
+        "Show example answer",
+        "I can't do this now",
+        "I practised this"
+      ],
+      "evidenceCount": 1
+    },
+    "skip": {
+      "beforeEvidenceCount": 1,
+      "afterEvidenceCount": 1,
+      "evidenceDelta": 0,
+      "skipFeedback": "SkippedNo production evidence was recorded.ResultNot star-rated."
+    },
+    "summary": {
+      "resultSummaryConfigured": true,
+      "productionResultCopyPresentInSource": true
+    }
+  },
+  "responsive": {
+    "320x568": {
+      "bodyOverflowX": false,
+      "productionActionsVisible": true,
+      "viewport": {
+        "width": 320,
+        "height": 568
+      }
+    },
+    "390x844": {
+      "bodyOverflowX": false,
+      "productionActionsVisible": true,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    "430x932": {
+      "bodyOverflowX": false,
+      "productionActionsVisible": true,
+      "viewport": {
+        "width": 430,
+        "height": 932
+      }
+    },
+    "768x1024": {
+      "bodyOverflowX": false,
+      "productionActionsVisible": true,
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      }
+    },
+    "1365x599": {
+      "bodyOverflowX": false,
+      "productionActionsVisible": true,
+      "viewport": {
+        "width": 1365,
+        "height": 599
+      }
+    },
+    "1440x900": {
+      "bodyOverflowX": false,
+      "productionActionsVisible": true,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      }
+    }
+  },
+  "exportImportUi": {
+    "exportSaveVisible": true,
+    "importSaveVisible": true,
+    "importInputPresent": true
+  },
+  "acceptancePassed": true,
+  "testsNotRun": [
+    "Temporary Edge profile cleanup deferred: EPERM, Permission denied: \\\\?\\C:\\Users\\rossm\\AppData\\Local\\Temp\\ozmosis-v086-production-edge-profile-tUgGlg '\\\\?\\C:\\Users\\rossm\\AppData\\Local\\Temp\\ozmosis-v086-production-edge-profile-tUgGlg'"
+  ],
+  "generatedAt": "2026-06-27T22:06:21.581Z"
+}
