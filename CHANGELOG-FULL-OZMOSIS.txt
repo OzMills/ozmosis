@@ -42,10 +42,22 @@ Current state is based only on current repo files.
 - Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_CURRENT.md`
 - Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_CURRENT.md`
 - Current QA report: `docs/qa/v0.85.11_final_regression_live_readiness_gate.md`
-- Current gate result: `LIVE_PATH_WRONG_NEEDS_REPO_SETTINGS`
-- Next required patch documented in current files: `v0.85.11-live-url - Canonical Live URL / Pages Path Decision`
+- Current gate result: `CANONICAL_URL_ACCEPTED_OZMOSIS_READY_FOR_V086`
+- Next required patch documented in current files: `v0.86 - Production Completion Pass`
 
-Live GitHub Pages was checked during v0.85.11-live. `https://ozmills.github.io/ozmosis/` serves v0.85.11, while the legacy `https://ozmills.github.io/kasuskonsole/` path returns HTTP 404.
+Canonical live URL: `https://ozmills.github.io/ozmosis/`. The legacy `https://ozmills.github.io/kasuskonsole/` path returns HTTP 404 and is not the current app path.
+
+## v0.85.11-live-url - Canonical Live URL / Pages Path Decision
+
+- Re-checked `https://ozmills.github.io/ozmosis/` and confirmed it serves `v0.85.11` with export version `v0.85.11-final-regression-live-readiness`.
+- Re-checked `https://ozmills.github.io/kasuskonsole/` and confirmed it returns HTTP 404.
+- Accepted `https://ozmills.github.io/ozmosis/` as the canonical live URL for current Ozmosis.
+- Documented `https://ozmills.github.io/kasuskonsole/` as a legacy/old path, not the current live app.
+- Preserved runtime app code, learner-facing content, scoring, evidence, storage keys, export/import, route pools, content banks, and B1-only active scope.
+- Added QA documentation at `docs/qa/v0.85.11-live-url_canonical_live_url_pages_path_decision.md`.
+- Added decision documentation at `docs/qa/v0.85.11-live-url_canonical_url_decision.md`.
+- Set the final verdict to `CANONICAL_URL_ACCEPTED_OZMOSIS_READY_FOR_V086`.
+- Set the next planned patch to `v0.86 - Production Completion Pass`.
 
 ## v0.85.11-live - Deployment / Live Check Follow-up
 

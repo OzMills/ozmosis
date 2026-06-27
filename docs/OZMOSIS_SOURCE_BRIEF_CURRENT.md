@@ -4,11 +4,11 @@
 
 Current runtime baseline: `v0.85.11`.
 
-Current gate result: `LIVE_PATH_WRONG_NEEDS_REPO_SETTINGS`.
+Current gate result: `CANONICAL_URL_ACCEPTED_OZMOSIS_READY_FOR_V086`.
 
-Next required patch: `v0.85.11-live-url - Canonical Live URL / Pages Path Decision`.
+Next required patch: `v0.86 - Production Completion Pass`.
 
-Current patch summary: v0.85.11-live verified that the current app is already live at `https://ozmills.github.io/ozmosis/` with app version `v0.85.11` and export version `v0.85.11-final-regression-live-readiness`. The legacy checked path `https://ozmills.github.io/kasuskonsole/` returns HTTP 404. This is a canonical URL / Pages path decision, not a runtime package failure. v0.86 remains blocked until `/ozmosis/` is explicitly accepted as canonical or `/kasuskonsole/` is configured to serve v0.85.11.
+Current patch summary: v0.85.11-live-url accepted `https://ozmills.github.io/ozmosis/` as the canonical live URL for current Ozmosis after confirming it serves app version `v0.85.11` and export version `v0.85.11-final-regression-live-readiness`. The legacy `https://ozmills.github.io/kasuskonsole/` path returns HTTP 404 and is not the current app path. v0.86 is now allowed next.
 
 ## 1. Project Identity
 
@@ -172,9 +172,9 @@ Deferred features must not be forgotten or implemented early:
 
 Current runtime baseline: `v0.85.11`.
 
-Current acceptance status: v0.85.11-live confirmed that the repo-name Pages URL `/ozmosis/` serves v0.85.11, but the formal legacy `/kasuskonsole/` URL returns HTTP 404. The final verdict is `LIVE_PATH_WRONG_NEEDS_REPO_SETTINGS`.
+Current acceptance status: v0.85.11-live-url accepted `/ozmosis/` as the canonical live URL after confirming it serves v0.85.11. The final verdict is `CANONICAL_URL_ACCEPTED_OZMOSIS_READY_FOR_V086`.
 
-Next required patch: `v0.85.11-live-url - Canonical Live URL / Pages Path Decision`.
+Next required patch: `v0.86 - Production Completion Pass`.
 
 Current planning handoff:
 
@@ -210,4 +210,5 @@ Current planning handoff:
 - Review Queue Resolution Pass has been implemented and accepted as v0.85.10.
 - Final Regression and Live Readiness Gate has been implemented as v0.85.11.
 - Deployment / Live Check Follow-up has been implemented as v0.85.11-live. The current app is live at `/ozmosis/`, while `/kasuskonsole/` returns 404.
-- Production Completion Pass remains blocked until `/ozmosis/` is explicitly accepted as the canonical live URL or `/kasuskonsole/` is configured to serve v0.85.11.
+- Canonical Live URL / Pages Path Decision has been implemented as v0.85.11-live-url. `/ozmosis/` is accepted as canonical.
+- Production Completion Pass is now allowed as v0.86.
