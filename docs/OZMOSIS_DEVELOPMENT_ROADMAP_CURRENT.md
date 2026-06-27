@@ -4,11 +4,11 @@
 
 Current runtime baseline: `v0.85.11`.
 
-Current acceptance status: v0.85.11 accepted the local final regression gate after the v0.85.10 review queue pass. The review queue counts reflected the package exactly, route-pool and known-row gates passed locally, and the v0.85.7-v0.85.10 regression chain remained preserved. Live GitHub Pages returned HTTP 404, so the gate result is local-ready but live-check blocked.
+Current acceptance status: v0.85.11-live confirmed that `https://ozmills.github.io/ozmosis/` serves v0.85.11, while the legacy checked path `https://ozmills.github.io/kasuskonsole/` returns HTTP 404. The issue is a canonical URL / Pages path mismatch, not a stale current-repo deployment.
 
-Current gate result: `LOCAL_READY_LIVE_CHECK_BLOCKED`.
+Current gate result: `LIVE_PATH_WRONG_NEEDS_REPO_SETTINGS`.
 
-Next required patch: `v0.85.11-live - Deployment/Live Check Follow-up`.
+Next required patch: `v0.85.11-live-url - Canonical Live URL / Pages Path Decision`.
 
 ## 2. Completed Foundation
 
@@ -70,7 +70,8 @@ This summary is not a replacement for `CHANGELOG-FULL-OZMOSIS.txt`.
 - `v0.85.10` - Review Queue Resolution Pass
 - `v0.85.11` - Final Regression and Live Readiness Gate
 - `v0.85.11-live` - Deployment/Live Check Follow-up
-- `v0.86` - Production Completion Pass, blocked until live deployment/readiness is confirmed or project policy explicitly allows local-package readiness without live confirmation
+- `v0.85.11-live-url` - Canonical Live URL / Pages Path Decision
+- `v0.86` - Production Completion Pass, blocked until `/ozmosis/` is explicitly accepted as canonical or `/kasuskonsole/` is configured to serve v0.85.11
 - `v0.87` - Redemittel Completion Pass
 - `v0.88` - Wortschatz + Content QA Batch
 - `v0.89` - B1 Coverage Stabilisation + Review Coverage Readiness
@@ -138,9 +139,10 @@ Stop if the hub fails.
 - Feedback Cleanup: Contrast Notes and Micro-rules is implemented and accepted as v0.85.8.
 - Metadata Manifest Migration is implemented and accepted as v0.85.9.
 - Review Queue Resolution Pass is implemented and accepted as v0.85.10.
-- Final Regression and Live Readiness Gate is implemented as v0.85.11 with local readiness accepted and live GitHub Pages unavailable at the checked URL.
-- Deployment/Live Check Follow-up is the next allowed patch as v0.85.11-live.
-- Production Completion Pass is blocked until live deployment/readiness is confirmed or project policy explicitly allows local-package readiness without live confirmation.
+- Final Regression and Live Readiness Gate is implemented as v0.85.11.
+- Deployment/Live Check Follow-up is implemented as v0.85.11-live. `/ozmosis/` serves v0.85.11; `/kasuskonsole/` returns 404.
+- Canonical Live URL / Pages Path Decision is the next allowed patch as v0.85.11-live-url.
+- Production Completion Pass is blocked until `/ozmosis/` is explicitly accepted as canonical or `/kasuskonsole/` is configured to serve v0.85.11.
 - Weakness repair must wait until Skill Matrix and task-depth evidence are stable.
 - Durability/spaced review must wait until enough reviewable B1 coverage exists.
 - External Review must wait until production cards and save/import are stable.

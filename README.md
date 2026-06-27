@@ -13,27 +13,30 @@ Future README updates should be made in this file. Do not create new `README-v*.
 
 Ozmosis is a static, local-first German learning app. The deployed app remains `index.html`.
 
-v0.85.11 is the final local regression gate for the v0.85.x stabilisation sequence. It verifies that the accepted v0.85.10 review-queue baseline still reflects the package, that route pools remain clean, and that the v0.85.7-v0.85.10 repairs remain preserved. The local package is ready, but the live GitHub Pages URL returned 404 during this gate, so v0.86 remains blocked until live deployment/readiness is followed up.
+v0.85.11 is the final local regression gate for the v0.85.x stabilisation sequence. The live follow-up confirmed that the current app is live at `https://ozmills.github.io/ozmosis/`, but the legacy checked path `https://ozmills.github.io/kasuskonsole/` returns 404. v0.86 remains blocked until `/ozmosis/` is explicitly accepted as the canonical live URL or `/kasuskonsole/` is configured to serve v0.85.11.
 
 - Runtime app version: `v0.85.11`
 - Runtime export version: `v0.85.11-final-regression-live-readiness`
-- Current gate result: `LOCAL_READY_LIVE_CHECK_BLOCKED`
+- Current gate result: `LIVE_PATH_WRONG_NEEDS_REPO_SETTINGS`
 - Core result: v0.85.10 review queue counts reflected exactly: 15,139 source queue rows loaded, 10,421 unified rows after dedupe, 5,003 resolved rows, 3,565 quarantined/no-action rows, 1,145 production-wait rows, 300 metadata-deferred rows, 338 active targeted-repair rows, 70 active human-review rows, 0 stale rows, 0 unresolved rows, and 4,718 duplicate/superseded source rows.
 - Runtime preservation result: route-pool integrity, known problem rows, v0.85.7 cloze repairs, v0.85.8 feedback repairs, v0.85.9 manifest lookup, v0.85.10 queue outputs, Satzbau normalisation, wrong-target Wechselpraeposition feedback gating, runtime display-contract counts, browser route smoke, responsive smoke, Arabic/LTR smoke, and export/import remain preserved locally.
-- Live result: `https://ozmills.github.io/kasuskonsole/` returned HTTP 404, so live readiness is not confirmed by this gate.
+- Live result: `https://ozmills.github.io/ozmosis/` serves v0.85.11. `https://ozmills.github.io/kasuskonsole/` returns HTTP 404 and is not the current repo-name Pages path.
 
 ## Current v0.85.11 docs
 
 - Changelog: `CHANGELOG-FULL-OZMOSIS.txt`
 - Source brief: `docs/OZMOSIS_SOURCE_BRIEF_CURRENT.md`
 - Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_CURRENT.md`
-- Current QA gate: `docs/qa/v0.85.11_final_regression_live_readiness_gate.md`
+- Current QA gate: `docs/qa/v0.85.11-live_deployment_live_check_followup.md`
+- Final regression QA: `docs/qa/v0.85.11_final_regression_live_readiness_gate.md`
+- Live source check JSON: `docs/qa/v0.85.11-live_local_deployment_source_check.json`
+- Live current check JSON: `docs/qa/v0.85.11-live_github_pages_current_check.json`
 - Reflection check JSON: `docs/qa/v0.85.11_v08510_reflection_check.json`
 - Package hygiene JSON: `docs/qa/v0.85.11_package_hygiene_results.json`
 - Browser acceptance JSON: `docs/qa/v0.85.11_browser_acceptance_results.json`
 - Live GitHub Pages check JSON: `docs/qa/v0.85.11_live_github_pages_check.json`
 
-Next planned patch: `v0.85.11-live - Deployment/Live Check Follow-up`.
+Next planned patch: `v0.85.11-live-url - Canonical Live URL / Pages Path Decision`.
 
 ## Previous v0.85.10 Review Queue Resolution Pass
 

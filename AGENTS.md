@@ -10,11 +10,11 @@ Current working version: `v0.85.11`.
 
 Current runtime baseline: `v0.85.11`.
 
-Current gate result: `LOCAL_READY_LIVE_CHECK_BLOCKED`.
+Current gate result: `LIVE_PATH_WRONG_NEEDS_REPO_SETTINGS`.
 
-Next planned patch: `v0.85.11-live - Deployment/Live Check Follow-up`
+Next planned patch: `v0.85.11-live-url - Canonical Live URL / Pages Path Decision`
 
-v0.86 status: blocked until live deployment/readiness is confirmed or current project policy explicitly allows local-package readiness to unlock v0.86 without live confirmation.
+v0.86 status: blocked until `https://ozmills.github.io/ozmosis/` is explicitly accepted as the canonical live URL or `https://ozmills.github.io/kasuskonsole/` is configured to serve v0.85.11.
 
 Current README: `README.md`
 
@@ -24,7 +24,7 @@ Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_CURRENT.md`
 
 Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_CURRENT.md`
 
-Current QA gate: `docs/qa/v0.85.11_final_regression_live_readiness_gate.md`
+Current QA gate: `docs/qa/v0.85.11-live_deployment_live_check_followup.md`
 
 README/changelog convention: one canonical root `README.md` and one canonical `CHANGELOG-FULL-OZMOSIS.txt`. Do not create versioned README/changelog files moving forward unless the user explicitly asks for a standalone export.
 

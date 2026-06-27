@@ -1,0 +1,47 @@
+{
+  "localPackageVersion": {
+    "appVersion": "v0.85.11",
+    "exportVersion": "v0.85.11-final-regression-live-readiness"
+  },
+  "repoRootVersion": {
+    "appVersion": "v0.85.11",
+    "exportVersion": "v0.85.11-final-regression-live-readiness"
+  },
+  "requiredQaFiles": {
+    "docs/qa/v0.85.11_final_regression_live_readiness_gate.md": true,
+    "docs/qa/v0.85.11_v08510_reflection_check.json": true,
+    "docs/qa/v0.85.11_route_pool_integrity_audit.csv": true,
+    "docs/qa/v0.85.11_known_problem_rows_runtime_check.csv": true,
+    "docs/qa/v0.85.11_regression_chain_results.json": true,
+    "docs/qa/v0.85.11_runtime_display_contract_results.json": true,
+    "docs/qa/v0.85.11_satzbau_feedback_gate_results.json": true,
+    "docs/qa/v0.85.11_recommendation_progress_honesty_results.json": true,
+    "docs/qa/v0.85.11_export_import_storage_results.json": true,
+    "docs/qa/v0.85.11_browser_acceptance_results.json": true,
+    "docs/qa/v0.85.11_live_github_pages_check.json": true,
+    "docs/qa/v0.85.11_package_hygiene_results.json": true
+  },
+  "repoRootContainsIndex": true,
+  "repoRootContainsContent": true,
+  "repoRootContainsData": true,
+  "repoRootContainsDocs": true,
+  "repoRootReadmePointsToV08511": true,
+  "repoRootAgentsPointsToLiveFollowup": true,
+  "repoRootChangelogContainsV08511Entry": true,
+  "gitRemoteUrlFromConfig": "https://github.com/OzMills/ozmosis.git",
+  "currentBranchFromGitHead": "main",
+  "localMainRef": "f3e1c0ca3ef827f5205c7190e4e88bf8354b9093",
+  "storedOriginMainRef": "f3e1c0ca3ef827f5205c7190e4e88bf8354b9093",
+  "gitExecutableAvailable": false,
+  "deploymentSourceDetected": "Repo-root static GitHub Pages project source for the OzMills/ozmosis repository; no .github workflow, CNAME, .nojekyll, or docs-source Pages clue was present locally.",
+  "pagesWorkflowDetected": false,
+  "pagesSourceLikely": "GitHub Pages project site for repository name ozmosis, serving repo-root index.html at /ozmosis/.",
+  "deploymentBranchLikely": "main",
+  "deploymentPathLikely": "repo root index.html and static content, published at https://ozmills.github.io/ozmosis/",
+  "mismatchDetected": true,
+  "notes": [
+    "The local repo remote is OzMills/ozmosis.git, so the normal project Pages path is /ozmosis/.",
+    "The requested legacy /kasuskonsole/ URL does not match the current repository name.",
+    "The repo-name /ozmosis/ URL serves v0.85.11; the requested /kasuskonsole/ URL returns 404."
+  ]
+}

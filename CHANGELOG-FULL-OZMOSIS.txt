@@ -42,10 +42,25 @@ Current state is based only on current repo files.
 - Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_CURRENT.md`
 - Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_CURRENT.md`
 - Current QA report: `docs/qa/v0.85.11_final_regression_live_readiness_gate.md`
-- Current gate result: `LOCAL_READY_LIVE_CHECK_BLOCKED`
-- Next required patch documented in current files: `v0.85.11-live - Deployment/Live Check Follow-up`
+- Current gate result: `LIVE_PATH_WRONG_NEEDS_REPO_SETTINGS`
+- Next required patch documented in current files: `v0.85.11-live-url - Canonical Live URL / Pages Path Decision`
 
-Live GitHub Pages was checked during v0.85.11 at `https://ozmills.github.io/kasuskonsole/` and returned HTTP 404. The local package passed the regression gate, but live readiness is not confirmed.
+Live GitHub Pages was checked during v0.85.11-live. `https://ozmills.github.io/ozmosis/` serves v0.85.11, while the legacy `https://ozmills.github.io/kasuskonsole/` path returns HTTP 404.
+
+## v0.85.11-live - Deployment / Live Check Follow-up
+
+- Verified the local package remains `v0.85.11` with export version `v0.85.11-final-regression-live-readiness`.
+- Inspected the local Git config and found the repo remote is `https://github.com/OzMills/ozmosis.git` on `main`.
+- Found no local `.github/workflows`, `CNAME`, `.nojekyll`, or docs-source Pages clue.
+- Checked the formal requested URL `https://ozmills.github.io/kasuskonsole/`; it returned HTTP 404.
+- Checked the repo-name Pages URL `https://ozmills.github.io/ozmosis/`; it returned HTTP 200 and served `v0.85.11` / `v0.85.11-final-regression-live-readiness`.
+- Classified the live issue as a path/canonical URL mismatch, not a stale current-repo deployment.
+- Did not deploy, push, change remotes, change GitHub Pages settings, or change runtime app code.
+- Added QA documentation at `docs/qa/v0.85.11-live_deployment_live_check_followup.md`.
+- Added manual URL/deployment decision steps at `docs/qa/v0.85.11-live_manual_deployment_steps.md`.
+- Set the final verdict to `LIVE_PATH_WRONG_NEEDS_REPO_SETTINGS`.
+- Kept v0.86 blocked until `/ozmosis/` is explicitly accepted as the canonical live URL or `/kasuskonsole/` is configured to serve v0.85.11.
+- Set the next planned patch to `v0.85.11-live-url - Canonical Live URL / Pages Path Decision`.
 
 ## v0.85.11 - Final Regression and Live Readiness Gate
 

@@ -4,11 +4,11 @@
 
 Current runtime baseline: `v0.85.11`.
 
-Current gate result: `LOCAL_READY_LIVE_CHECK_BLOCKED`.
+Current gate result: `LIVE_PATH_WRONG_NEEDS_REPO_SETTINGS`.
 
-Next required patch: `v0.85.11-live - Deployment/Live Check Follow-up`.
+Next required patch: `v0.85.11-live-url - Canonical Live URL / Pages Path Decision`.
 
-Current patch summary: v0.85.11 completed the final local v0.85.x regression gate after v0.85.10. It verified the review queue counts, route-pool integrity, known problem rows, v0.85.7 cloze repairs, v0.85.8 feedback repairs, v0.85.9 metadata manifest behaviour, v0.85.10 queue outputs, runtime display-contract behaviour, Satzbau normalisation, feedback gating, browser route smoke, responsive smoke, Arabic/LTR, export/import, storage keys, scoring, evidence, content bank preservation, and package hygiene. Live GitHub Pages returned HTTP 404, so v0.86 remains blocked until live deployment/readiness is followed up or project policy explicitly allows local-package readiness without live confirmation.
+Current patch summary: v0.85.11-live verified that the current app is already live at `https://ozmills.github.io/ozmosis/` with app version `v0.85.11` and export version `v0.85.11-final-regression-live-readiness`. The legacy checked path `https://ozmills.github.io/kasuskonsole/` returns HTTP 404. This is a canonical URL / Pages path decision, not a runtime package failure. v0.86 remains blocked until `/ozmosis/` is explicitly accepted as canonical or `/kasuskonsole/` is configured to serve v0.85.11.
 
 ## 1. Project Identity
 
@@ -172,9 +172,9 @@ Deferred features must not be forgotten or implemented early:
 
 Current runtime baseline: `v0.85.11`.
 
-Current acceptance status: v0.85.11 locally accepted the final regression gate and preserved the v0.85.10 Review Queue Resolution baseline. Live GitHub Pages was unavailable at the checked URL, so the final readiness verdict is `LOCAL_READY_LIVE_CHECK_BLOCKED`.
+Current acceptance status: v0.85.11-live confirmed that the repo-name Pages URL `/ozmosis/` serves v0.85.11, but the formal legacy `/kasuskonsole/` URL returns HTTP 404. The final verdict is `LIVE_PATH_WRONG_NEEDS_REPO_SETTINGS`.
 
-Next required patch: `v0.85.11-live - Deployment/Live Check Follow-up`.
+Next required patch: `v0.85.11-live-url - Canonical Live URL / Pages Path Decision`.
 
 Current planning handoff:
 
@@ -208,5 +208,6 @@ Current planning handoff:
 - Feedback Cleanup: Contrast Notes and Micro-rules has been implemented and accepted as v0.85.8.
 - Metadata Manifest Migration has been implemented and accepted as v0.85.9.
 - Review Queue Resolution Pass has been implemented and accepted as v0.85.10.
-- Final Regression and Live Readiness Gate has been implemented as v0.85.11 with local gates passing and live GitHub Pages returning HTTP 404.
-- Production Completion Pass remains blocked until live deployment/readiness is followed up or current project policy explicitly allows local-package readiness without live confirmation.
+- Final Regression and Live Readiness Gate has been implemented as v0.85.11.
+- Deployment / Live Check Follow-up has been implemented as v0.85.11-live. The current app is live at `/ozmosis/`, while `/kasuskonsole/` returns 404.
+- Production Completion Pass remains blocked until `/ozmosis/` is explicitly accepted as the canonical live URL or `/kasuskonsole/` is configured to serve v0.85.11.
