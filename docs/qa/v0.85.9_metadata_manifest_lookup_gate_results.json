@@ -1,0 +1,61 @@
+{
+  "patch": "v0.85.9",
+  "version": {
+    "appVersion": "v0.85.9",
+    "exportVersion": "v0.85.9-metadata-manifest-migration"
+  },
+  "manifestPresent": true,
+  "manifestEntryCount": 7230,
+  "expectedItemIds": 7230,
+  "missingFromManifestCount": 0,
+  "extraInManifestCount": 0,
+  "duplicateItemIds": 0,
+  "forbiddenEntryCount": 0,
+  "lookupSample": {
+    "itemId": "b1_vocab_bestaetigung_001",
+    "sourceFile": "content/b1-wortschatz.js",
+    "contentBankKey": "wortschatz",
+    "routeKey": "wortschatz",
+    "moduleKey": "wortschatz",
+    "displayModuleId": "wortschatz",
+    "taskType": "typed_cloze",
+    "supportPolicy": "resolver",
+    "targetId": "die Bestätigung",
+    "variantFamilyId": "bestaetigung",
+    "reviewStatus": "active_or_route_dependent",
+    "sourceCleanupBatch": "v0.85.7-under-contextualised-clozes",
+    "feedbackCleanupBatch": "v0.85.8-feedback-cleanup",
+    "metadataProvenance": "deterministic_default",
+    "metadataConfidence": "high"
+  },
+  "coreSample": {
+    "itemId": "b1_grammar_connector_0000001",
+    "sourceFile": "index.html",
+    "contentBankKey": "core",
+    "routeKey": "today",
+    "moduleKey": "core",
+    "displayModuleId": "core",
+    "taskType": "grammar_cloze",
+    "supportPolicy": "resolver",
+    "reviewStatus": "active_or_route_dependent",
+    "metadataProvenance": "deterministic_default",
+    "metadataConfidence": "high"
+  },
+  "articleSample": {
+    "itemId": "art_def_nom_mas",
+    "sourceFile": "data/article-items.tsv",
+    "contentBankKey": "article_grid",
+    "routeKey": "article_grid",
+    "moduleKey": "article_grid",
+    "displayModuleId": "article_grid",
+    "taskType": "article_grid",
+    "reviewStatus": "active_or_route_dependent",
+    "metadataProvenance": "deterministic_default",
+    "metadataConfidence": "high"
+  },
+  "explicitMergeWins": true,
+  "recommendationReadsManifest": false,
+  "recForbiddenClaims": [],
+  "pass": true,
+  "failures": []
+}

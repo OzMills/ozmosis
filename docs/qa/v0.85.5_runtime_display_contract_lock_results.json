@@ -226,7 +226,7 @@
       "id": "b1_word_order_main_clause_v2_time_002",
       "bodySurface": "satzbau",
       "bodyState": "default",
-      "promptText": "BILDE DEN SATZ.\nich\nan\nrufe\nMorgen\ndie Praxis\nYOUR SENTENCE:\nTap chunks to build your sentence.\nClear\nType manually",
+      "promptText": "BILDE DEN SATZ.\ndie Praxis\nrufe\nan\nMorgen\nich\nYOUR SENTENCE:\nTap chunks to build your sentence.\nClear\nType manually",
       "glossText": "",
       "glossHidden": false,
       "translationHidden": true,
@@ -235,11 +235,11 @@
       "inlineInputFontSize": 16,
       "chunkCount": 5,
       "chunkTexts": [
-        "ich",
-        "an",
+        "die Praxis",
         "rufe",
+        "an",
         "Morgen",
-        "die Praxis"
+        "ich"
       ],
       "chunkFocusable": true,
       "sharedFramePresent": true,
@@ -294,7 +294,7 @@
   "testsRun": {
     "staticChecks": {
       "inlineScriptsParsed": 1,
-      "contentScriptsParsed": 25,
+      "contentScriptsParsed": 26,
       "protectedStorageKeys": true,
       "exportImportStrings": true,
       "noPackageJson": true,
@@ -303,7 +303,7 @@
       "noDynamicImport": true
     },
     "browserGate": {
-      "localServer": "http://127.0.0.1:51481/index.html",
+      "localServer": "http://127.0.0.1:52723/index.html",
       "edgeHeadless": true,
       "contractAuditRows": 6103,
       "representativeFixtures": {
@@ -344,7 +344,7 @@
   "acceptancePassed": false,
   "finalDecision": "RUNTIME_DISPLAY_CONTRACT_PARTIAL_NEEDS_REPAIR",
   "nextPatch": "v0.85.5a - Runtime Display Contract Repair",
-  "appVersion": "v0.85.8",
-  "exportVersion": "v0.85.8-feedback-cleanup-contrast-microrules",
-  "generatedAt": "2026-06-26T22:34:03.734Z"
+  "appVersion": "v0.85.10",
+  "exportVersion": "v0.85.10-review-queue-resolution",
+  "generatedAt": "2026-06-27T11:29:03.729Z"
 }

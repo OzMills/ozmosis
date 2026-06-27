@@ -1,0 +1,15 @@
+metric,before,after,notes
+total items,7230,7230,Runtime registry plus article TSV rows.
+active normal-practice items,978,978,Computed with existing runtime eligibility helper.
+production items,1329,1329,Manifest does not change production semantics.
+quarantined/review-only items,4459,4459,Manifest does not alter quarantine/review status.
+items with explicit metadata before,6930,6930,Low-risk explicit/deterministic complete rows before manifest.
+items with explicit/manifest metadata after,6930,7230,Manifest entries created without learner-facing content.
+items still derived-only,300,0,Source/bank/route/status metadata now has manifest coverage; semantic fields may still be missing.
+items missing targetFamily,300,300,Not inferred when absent.
+items missing reviewGroup,300,300,Not inferred when absent.
+items missing routeKey,0,0,No routeKey gaps after deterministic defaults.
+items missing moduleKey,0,0,No moduleKey gaps after deterministic defaults.
+items missing contentBankKey,0,0,No contentBankKey gaps after deterministic defaults.
+duplicate item IDs,0,0,No duplicate IDs detected.
+deferred field rows,300,300,Field-level deferrals remain for missing semantic metadata.

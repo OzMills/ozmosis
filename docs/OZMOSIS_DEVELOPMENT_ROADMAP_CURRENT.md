@@ -2,13 +2,13 @@
 
 ## 1. Current Baseline
 
-Current runtime baseline: `v0.85.8`.
+Current runtime baseline: `v0.85.10`.
 
-Current acceptance status: v0.85.8 accepted Feedback Cleanup after the v0.85.7 cloze cue cleanup. It investigated 66 candidate feedback rows, applied 23 high-confidence active typed-cloze micro-rule repairs, left 20 false positives unchanged, deferred/reviewed 23 rows, checked 188 route-pool rows, confirmed the six known problem rows remain safe, preserved v0.85.7 cloze cue repairs, and preserved production/self-marked row isolation from normal auto-graded scoring paths.
+Current acceptance status: v0.85.10 accepted Review Queue Resolution after the v0.85.9 metadata manifest migration. It loaded 15,139 source queue rows, deduplicated them into 10,421 unified queue rows, resolved 5,003 rows, separated 3,565 quarantined/no-action rows, 1,145 production-wait rows, 300 metadata-deferred rows, 338 active targeted-repair rows, and 70 active human-review rows, with 0 stale rows and 0 unresolved rows.
 
-Current gate result: `FEEDBACK_CLEANUP_ACCEPTED`.
+Current gate result: `REVIEW_QUEUE_RESOLUTION_ACCEPTED`.
 
-Next required patch: `v0.85.9 - Metadata Manifest Migration`.
+Next required patch: `v0.85.11 - Final Regression and Live Readiness Gate`.
 
 ## 2. Completed Foundation
 
@@ -135,7 +135,9 @@ Stop if the hub fails.
 - Source Cleanup Batch 1: Internal Labels and Meaning Cues is implemented and accepted as v0.85.6.
 - Source Cleanup Batch 2: Under-Contextualised Clozes is implemented and accepted as v0.85.7.
 - Feedback Cleanup: Contrast Notes and Micro-rules is implemented and accepted as v0.85.8.
-- Metadata Manifest Migration is the next allowed implementation patch as v0.85.9.
+- Metadata Manifest Migration is implemented and accepted as v0.85.9.
+- Review Queue Resolution Pass is implemented and accepted as v0.85.10.
+- Final Regression and Live Readiness Gate is the next allowed implementation patch as v0.85.11.
 - Production Completion Pass is blocked until the final v0.85.x readiness gate reports `READY_FOR_V0.86`.
 - Weakness repair must wait until Skill Matrix and task-depth evidence are stable.
 - Durability/spaced review must wait until enough reviewable B1 coverage exists.

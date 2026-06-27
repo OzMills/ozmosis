@@ -9,34 +9,55 @@ Future README updates should be made in this file. Do not create new `README-v*.
 
 ## Current App
 
-# Ozmosis v0.85.8 Feedback Cleanup: Contrast Notes and Micro-rules
+# Ozmosis v0.85.10 Review Queue Resolution Pass
 
 Ozmosis is a static, local-first German learning app. The deployed app remains `index.html`.
+
+v0.85.10 resolves the historical review queues into current action buckets using the v0.85.9 metadata manifest. It consolidates, deduplicates, and classifies queue rows without rewriting learner-facing German content, answers, choices, scoring, evidence, route pools, production self-marking, export/import, or B1-only active scope.
+
+- Runtime app version: `v0.85.10`
+- Runtime export version: `v0.85.10-review-queue-resolution`
+- Current gate result: `REVIEW_QUEUE_RESOLUTION_ACCEPTED`
+- Core result: 15,139 source queue rows loaded, 10,421 unified rows after dedupe, 5,003 resolved rows, 3,565 quarantined/no-action rows, 1,145 production-wait rows, 300 metadata-deferred rows, 338 active targeted-repair rows, 70 active human-review rows, 0 stale rows, 0 unresolved rows, and 4,718 duplicate/superseded source rows.
+- Runtime preservation result: route-pool integrity, known problem rows, v0.85.7 cloze repairs, v0.85.8 feedback repairs, v0.85.9 manifest lookup, Satzbau normalisation, wrong-target Wechselpraeposition feedback gating, runtime display-contract counts, browser route smoke, responsive smoke, Arabic/LTR smoke, and export/import remain preserved.
+
+## Current v0.85.10 docs
+
+- Changelog: `CHANGELOG-FULL-OZMOSIS.txt`
+- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_CURRENT.md`
+- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_CURRENT.md`
+- Current QA gate: `docs/qa/v0.85.10_review_queue_resolution_pass.md`
+- Source inventory CSV: `docs/qa/v0.85.10_review_queue_source_inventory.csv`
+- Unified queue CSV: `docs/qa/v0.85.10_review_queue_unified.csv`
+- Resolution decisions CSV: `docs/qa/v0.85.10_review_queue_resolution_decisions.csv`
+- Summary JSON: `docs/qa/v0.85.10_review_queue_resolution_summary.json`
+- Gate result JSON: `docs/qa/v0.85.10_review_queue_resolution_gate_results.json`
+- Active repair CSV: `docs/qa/v0.85.10_review_queue_current_active_repair_rows.csv`
+- Human review CSV: `docs/qa/v0.85.10_review_queue_current_human_review_rows.csv`
+- Production wait CSV: `docs/qa/v0.85.10_review_queue_production_wait_rows.csv`
+- Metadata deferred CSV: `docs/qa/v0.85.10_review_queue_metadata_deferred_rows.csv`
+
+Next planned patch: `v0.85.11 - Final Regression and Live Readiness Gate`.
+
+## Previous v0.85.9 Metadata Manifest Migration
+
+v0.85.9 adds a static item-level metadata manifest so QA, debug, and future review-preparation work can read stable metadata without deriving every field from scattered item rows. It does not change learner-facing prompts, answers, choices, scoring, evidence, route pools, star logic, production self-marking, export/import, or B1-only active scope.
+
+- Runtime app version: `v0.85.9`
+- Runtime export version: `v0.85.9-metadata-manifest-migration`
+- Gate result: `METADATA_MANIFEST_MIGRATION_ACCEPTED`
+- Core result: 7,230 current item IDs inventoried, 7,230 manifest entries created, 0 duplicate IDs, 0 missing manifest IDs, 0 extra manifest IDs, 6,930 safe entries, 300 safe-with-defaults entries, and 300 field-level semantic metadata deferrals where target-family or review-group data was not safe to invent.
+- Runtime preservation result: route-pool integrity, known problem rows, v0.85.7 cloze repairs, v0.85.8 feedback repairs, Satzbau normalisation, wrong-target Wechselpraeposition feedback gating, runtime display-contract counts, browser route smoke, responsive smoke, Arabic/LTR smoke, and export/import remain preserved.
+
+## Previous v0.85.8 Feedback Cleanup: Contrast Notes and Micro-rules
 
 v0.85.8 performs a controlled feedback cleanup after the accepted v0.85.7 cloze-cue batch. It repairs high-confidence post-answer micro-rules where the prompt and answer already made the task clear, but the feedback was still mostly a bare definition. It preserves prompts, stimuli, answers, accepted answers, choices, item IDs, scoring, evidence, storage, export/import, route-pool integrity, production isolation, and the B1-only active scope.
 
 - Runtime app version: `v0.85.8`
 - Runtime export version: `v0.85.8-feedback-cleanup-contrast-microrules`
-- Current gate result: `FEEDBACK_CLEANUP_ACCEPTED`
+- Gate result: `FEEDBACK_CLEANUP_ACCEPTED`
 - Core result: 66 candidate feedback rows investigated, 23 safe micro-rule repairs applied, 20 false positives left unchanged, 23 rows deferred/reviewed, 0 answer-key changes, 0 accepted-answer changes, 0 item-ID changes, 0 choice changes, 188 route-pool rows checked, 0 route failures, six known problem rows checked, 0 known-row failures, browser export/import passed, responsive smoke passed, and Arabic/LTR smoke passed.
 - Runtime preservation result: the v0.85.6a.3 normal-practice pool guard remains intact, production/self-marked rows remain isolated from normal auto-graded practice, and the active runtime display audit remains at 0 rendered prompt leaks, 0 hidden meaning-choice cue risks, 0 under-contextualised cloze-without-cue risks, and 0 review-only rows entering normal practice.
-
-## Current v0.85.8 docs
-
-- Changelog: `CHANGELOG-FULL-OZMOSIS.txt`
-- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_CURRENT.md`
-- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_CURRENT.md`
-- Current QA gate: `docs/qa/v0.85.8_feedback_cleanup_contrast_microrules.md`
-- Candidate CSV: `docs/qa/v0.85.8_feedback_cleanup_candidates.csv`
-- Decision CSV: `docs/qa/v0.85.8_feedback_cleanup_decisions.csv`
-- Changed-row CSV: `docs/qa/v0.85.8_feedback_cleanup_changed_rows.csv`
-- Deferred-row CSV: `docs/qa/v0.85.8_feedback_cleanup_deferred_rows.csv`
-- Feedback cleanup result JSON: `docs/qa/v0.85.8_feedback_cleanup_gate_results.json`
-- Runtime gate result JSON: `docs/qa/v0.85.8_feedback_cleanup_runtime_gate_results.json`
-- Cloze/feedback regression JSON: `docs/qa/v0.85.8_cloze_feedback_regression_results.json`
-- Browser result JSON: `docs/qa/v0.85.8_browser_acceptance_results.json`
-
-Next planned patch: `v0.85.9 - Metadata Manifest Migration`.
 
 ## Previous v0.85.7 Source Cleanup Batch 2: Under-Contextualised Clozes
 

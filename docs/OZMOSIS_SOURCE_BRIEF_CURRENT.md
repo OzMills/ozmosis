@@ -2,13 +2,13 @@
 
 ## Current Patch Status
 
-Current runtime baseline: `v0.85.8`.
+Current runtime baseline: `v0.85.10`.
 
-Current gate result: `FEEDBACK_CLEANUP_ACCEPTED`.
+Current gate result: `REVIEW_QUEUE_RESOLUTION_ACCEPTED`.
 
-Next required patch: `v0.85.9 - Metadata Manifest Migration`.
+Next required patch: `v0.85.11 - Final Regression and Live Readiness Gate`.
 
-Current patch summary: v0.85.8 completed Feedback Cleanup by investigating 66 candidate feedback rows, applying 23 high-confidence active typed-cloze micro-rule repairs in `content/b1-wortschatz.js`, leaving 20 false positives unchanged, and deferring/reviewing 23 rows. The patch preserved prompts, stimuli, item IDs, answer keys, accepted answers, choices, scoring, evidence, storage, export/import, production isolation, route-pool integrity, the v0.85.7 cloze cue repairs, and the B1-only active scope.
+Current patch summary: v0.85.10 completed Review Queue Resolution by loading 15,139 source queue rows, deduplicating them into 10,421 unified rows, and separating them into resolved, quarantined/no-action, production-wait, metadata-deferred, active-targeted-repair, and active-human-review outputs. It preserves learner-facing content, item IDs, answer keys, accepted answers, choices, scoring, evidence, storage keys, export/import, route-pool eligibility, production isolation, v0.85.7 cloze repairs, v0.85.8 feedback repairs, v0.85.9 metadata manifest behaviour, and the B1-only active scope.
 
 ## 1. Project Identity
 
@@ -170,11 +170,11 @@ Deferred features must not be forgotten or implemented early:
 
 ## 11. Current Baseline
 
-Current runtime baseline: `v0.85.8`.
+Current runtime baseline: `v0.85.10`.
 
-Current acceptance status: v0.85.8 accepted Feedback Cleanup after the v0.85.7 cloze cue cleanup. It investigated 66 feedback candidates, applied 23 high-confidence active typed-cloze micro-rule repairs, left 20 false positives unchanged, deferred/reviewed 23 rows, preserved the v0.85.6a.3 normal-practice pool guard, preserved the v0.85.7 cloze cue repairs, and preserved prompts, stimuli, answer keys, accepted answers, item IDs, choices, scoring, evidence, storage, export/import, production isolation, route-pool integrity, and B1-only active scope.
+Current acceptance status: v0.85.10 accepted Review Queue Resolution after the v0.85.9 metadata manifest migration. It resolved or separated all available review queue rows without changing prompts, stimuli, answer keys, accepted answers, item IDs, choices, scoring, evidence, storage, export/import, production isolation, route-pool integrity, or B1-only active scope.
 
-Next required patch: `v0.85.9 - Metadata Manifest Migration`.
+Next required patch: `v0.85.11 - Final Regression and Live Readiness Gate`.
 
 Current planning handoff:
 
@@ -206,5 +206,7 @@ Current planning handoff:
 - Source Cleanup Batch 1: Internal Labels and Meaning Cues has been implemented and accepted as v0.85.6.
 - Source Cleanup Batch 2: Under-Contextualised Clozes has been implemented and accepted as v0.85.7.
 - Feedback Cleanup: Contrast Notes and Micro-rules has been implemented and accepted as v0.85.8.
-- Metadata Manifest Migration is next as v0.85.9.
+- Metadata Manifest Migration has been implemented and accepted as v0.85.9.
+- Review Queue Resolution Pass has been implemented and accepted as v0.85.10.
+- Final Regression and Live Readiness Gate is next as v0.85.11.
 - Production Completion Pass remains blocked until v0.85.11 reports `READY_FOR_V0.86`.

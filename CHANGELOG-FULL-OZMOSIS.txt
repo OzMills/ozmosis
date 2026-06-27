@@ -35,17 +35,52 @@ This is the only changelog moving forward. Do not create standalone `CHANGELOG-v
 
 Current state is based only on current repo files.
 
-- Current app version in `index.html`: `v0.85.8`
-- Current export version in `index.html`: `v0.85.8-feedback-cleanup-contrast-microrules`
+- Current app version in `index.html`: `v0.85.10`
+- Current export version in `index.html`: `v0.85.10-review-queue-resolution`
 - Current README: `README.md`
 - Current changelog: `CHANGELOG-FULL-OZMOSIS.txt`
 - Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_CURRENT.md`
 - Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_CURRENT.md`
-- Current QA report: `docs/qa/v0.85.8_feedback_cleanup_contrast_microrules.md`
-- Current gate result: `FEEDBACK_CLEANUP_ACCEPTED`
-- Next required patch documented in current files: `v0.85.9 - Metadata Manifest Migration`
+- Current QA report: `docs/qa/v0.85.10_review_queue_resolution_pass.md`
+- Current gate result: `REVIEW_QUEUE_RESOLUTION_ACCEPTED`
+- Next required patch documented in current files: `v0.85.11 - Final Regression and Live Readiness Gate`
 
-Live GitHub Pages was checked by the v0.85.3.8 gate and was reachable, but still served `v0.85.3.7 - Correction and Satzbau Surface Pass` before deployment/cache update.
+Live GitHub Pages was checked by the v0.85.3.8 gate and was reachable, but still served `v0.85.3.7 - Correction and Satzbau Surface Pass` before deployment/cache update. It was not rechecked during v0.85.10.
+
+## v0.85.10 - Review Queue Resolution Pass
+
+- Consolidated the available historical review and issue queues after the v0.85.9 metadata manifest migration.
+- Inventoried 12 queue/source files and loaded 15,139 source queue rows.
+- Deduplicated the source rows into 10,421 unified review queue rows.
+- Classified 5,003 rows as resolved, including 4,037 resolved by source/display cleanup, 22 resolved by v0.85.7 cloze cleanup, and 944 resolved by v0.85.9 metadata manifest coverage.
+- Classified 3,565 rows as quarantined/no-action for now.
+- Classified 1,145 rows as production-wait rows for the later Production Completion Pass.
+- Classified 300 rows as metadata-deferred/no-runtime-risk rows.
+- Separated 338 active targeted-repair rows and 70 active human-review rows for future targeted content QA without rewriting them in this patch.
+- Reported 0 stale rows, 0 unresolved rows, and 4,718 duplicate/superseded source rows.
+- Preserved learner-facing prompts, stimuli, answer keys, accepted answers, choices, feedback text, scoring, evidence semantics, storage keys, export/import, route-pool eligibility, production self-marking, v0.85.7 cloze repairs, v0.85.8 feedback repairs, v0.85.9 metadata manifest behaviour, content banks, route composition, and B1-only active scope.
+- Added QA documentation at `docs/qa/v0.85.10_review_queue_resolution_pass.md`.
+- Added queue evidence CSV/JSON outputs under `docs/qa/v0.85.10_review_queue_*`.
+- Kept the canonical documentation convention: no `README-v0_85_10.md`, no `CHANGELOG-v0_85_10.txt`, and no versioned v0.85.10 source brief or roadmap.
+- Set the next planned patch to `v0.85.11 - Final Regression and Live Readiness Gate`.
+
+## v0.85.9 - Metadata Manifest Migration
+
+- Added the static local metadata manifest at `content/b1-metadata-manifest.js`.
+- Exposed the manifest as `window.OZMOSIS_B1_METADATA_MANIFEST_V1` with non-module script loading from `index.html`.
+- Added manifest lookup/merge helpers so explicit item metadata wins, manifest metadata fills stable known fields, and derived fallbacks remain available for missing or ambiguous values.
+- Inventoried 7,230 current item IDs: 7,194 runtime registry items and 36 article-grid TSV items.
+- Created 7,230 metadata-only manifest entries with 0 duplicate item IDs, 0 missing manifest IDs, and 0 extra manifest IDs.
+- Classified 6,930 entries as `MANIFEST_SAFE` and 300 entries as `MANIFEST_SAFE_WITH_DEFAULTS`.
+- Deferred 300 field-level target-family/review-group metadata values rather than inventing semantic metadata.
+- Confirmed manifest entries do not include learner-facing prompt, answer, accepted-answer, choice, feedback, explanation, or translation fields.
+- Confirmed the recommendation path does not read the manifest and did not become more confident because of the manifest.
+- Preserved v0.85.6a.3 route-pool integrity, v0.85.7 cloze cue repairs, v0.85.8 feedback repairs, production isolation, quarantine behaviour, Satzbau normalisation, wrong-target Wechselpraeposition feedback gating, runtime display-contract counts, storage keys, export/import, scoring, evidence semantics, content banks, route composition, and B1-only active scope.
+- Verified Edge/CDP browser route smoke, responsive smoke, Arabic/LTR smoke, and export/import UI on a local static server.
+- Added QA documentation at `docs/qa/v0.85.9_metadata_manifest_migration.md`.
+- Added CSV/JSON evidence at `docs/qa/v0.85.9_metadata_manifest_inventory.csv`, `docs/qa/v0.85.9_metadata_manifest_inventory_summary.json`, `docs/qa/v0.85.9_metadata_manifest_decisions.csv`, `docs/qa/v0.85.9_metadata_manifest_deferred_rows.csv`, `docs/qa/v0.85.9_metadata_manifest_before_after.csv`, `docs/qa/v0.85.9_metadata_manifest_coverage_summary.json`, `docs/qa/v0.85.9_metadata_manifest_lookup_gate_results.json`, `docs/qa/v0.85.9_metadata_manifest_runtime_gate_results.json`, `docs/qa/v0.85.9_cloze_feedback_regression_results.json`, and `docs/qa/v0.85.9_browser_acceptance_results.json`.
+- Kept the canonical documentation convention: no `README-v0_85_9.md`, no `CHANGELOG-v0_85_9.txt`, and no versioned v0.85.9 source brief or roadmap.
+- Set the next planned patch to `v0.85.10 - Review Queue Resolution Pass`.
 
 ## v0.85.8 - Feedback Cleanup: Contrast Notes and Micro-rules
 

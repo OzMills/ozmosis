@@ -87,7 +87,7 @@
   "testsRun": {
     "staticChecks": {
       "inlineScriptsParsed": 1,
-      "contentScriptsParsed": 25,
+      "contentScriptsParsed": 26,
       "displaySchemaParsed": true,
       "protectedStorageKeys": true,
       "noPackageJson": true,
@@ -273,13 +273,13 @@
   "testsNotRun": [],
   "consoleErrors": [],
   "ignoredConsoleNoise": [
-    "Failed to load resource: the server responded with a status of 404 (Not Found) (http://127.0.0.1:51483/favicon.ico)"
+    "Failed to load resource: the server responded with a status of 404 (Not Found) (http://127.0.0.1:55286/favicon.ico)"
   ],
   "runtimeExceptions": [],
   "acceptancePassed": false,
   "finalDecision": "SATZBAU_PROOF_PARTIAL_NEEDS_REPAIR",
   "nextPatch": "v0.85.5c - Satzbau Proof Harness Repair",
-  "appVersion": "v0.85.8",
-  "exportVersion": "v0.85.8-feedback-cleanup-contrast-microrules",
-  "generatedAt": "2026-06-26T22:34:03.793Z"
+  "appVersion": "v0.85.10",
+  "exportVersion": "v0.85.10-review-queue-resolution",
+  "generatedAt": "2026-06-27T11:31:17.595Z"
 }

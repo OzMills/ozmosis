@@ -1,0 +1,26 @@
+{
+  "patch": "v0.85.9",
+  "appVersion": "v0.85.8",
+  "exportVersion": "v0.85.8-feedback-cleanup-contrast-microrules",
+  "totalItems": 7230,
+  "runtimeRegistryItems": 7194,
+  "articleTsvItems": 36,
+  "manifestEntries": 7230,
+  "duplicateItemIds": 0,
+  "classificationCounts": {
+    "MANIFEST_SAFE_WITH_DEFAULTS": 300,
+    "MANIFEST_SAFE": 6930
+  },
+  "activeNormalPracticeItems": 978,
+  "productionItems": 1329,
+  "quarantinedOrReviewOnlyItems": 4459,
+  "itemsWithExplicitMetadataBefore": 6930,
+  "itemsWithExplicitOrManifestMetadataAfter": 7230,
+  "itemsStillDerivedOnly": 0,
+  "missingTargetFamily": 300,
+  "missingReviewGroup": 300,
+  "missingRouteKey": 0,
+  "missingModuleKey": 0,
+  "missingContentBankKey": 0,
+  "deferredRows": 300
+}

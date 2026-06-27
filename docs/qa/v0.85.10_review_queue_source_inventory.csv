@@ -1,0 +1,13 @@
+sourceFile,exists,rowCount,queueType,originVersion,containsItemId,containsSourceRowId,containsIssueCodes,containsRecommendedAction,containsRouteExposure,containsCurrentStatus,containsNormalPracticeEligibility,usableForResolution,notes
+docs/qa/v0.85.1_prompt_cue_review_queue.csv,true,922,prompt_cue,v0.85.1,true,false,true,true,true,true,true,true,loaded
+docs/qa/v0.85.4_completion_gate_review_queue_status.csv,true,2990,review_queue_status,v0.85.4,true,false,true,false,true,true,false,true,loaded
+docs/qa/v0.85.4_completion_gate_prompt_cue_issues.csv,true,4023,prompt_cue,v0.85.4,true,false,true,false,true,true,false,true,loaded
+docs/qa/v0.85.4_completion_gate_cloze_cue_issues.csv,true,64,cloze_cue,v0.85.4,true,false,true,false,true,true,false,true,loaded
+docs/qa/v0.85.4_completion_gate_feedback_issues.csv,true,1145,feedback,v0.85.4,true,false,true,false,true,true,false,true,loaded
+docs/qa/v0.85.6_source_cleanup_batch1_deferred_rows.csv,true,4118,deferred_rows,v0.85.6,true,false,true,false,false,false,false,true,loaded
+docs/qa/v0.85.6a.2_exceptions_for_review.csv,true,944,exception_review,v0.85.6,true,true,false,true,false,true,false,true,loaded
+docs/qa/v0.85.7_under_contextualised_cloze_deferred_rows.csv,true,10,deferred_rows,v0.85.7,true,true,true,true,true,true,false,true,loaded
+docs/qa/v0.85.8_feedback_cleanup_deferred_rows.csv,true,23,feedback,v0.85.8,true,false,true,false,true,true,false,true,loaded
+docs/qa/v0.85.9_metadata_manifest_deferred_rows.csv,true,300,metadata_deferred,v0.85.9,true,false,true,false,false,true,false,true,loaded
+docs/qa/v0.85.9_metadata_manifest_inventory.csv,true,7230,metadata_inventory,v0.85.9,true,true,false,true,true,true,true,true,filtered to rows with metadata gaps or non-safe decisions
+docs/qa/v0.85.9_metadata_manifest_decisions.csv,true,7230,metadata_decisions,v0.85.9,true,true,true,true,true,true,true,true,filtered to rows with metadata gaps or non-safe decisions
