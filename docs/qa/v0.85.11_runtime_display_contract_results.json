@@ -1,0 +1,27 @@
+{
+  "patch": "v0.85.11",
+  "version": {
+    "appVersion": "v0.85.11",
+    "exportVersion": "v0.85.11-final-regression-live-readiness"
+  },
+  "activeNormalPracticeDisplayAudit": {
+    "renderedPromptLeaks": 0,
+    "meaningChoiceHiddenCueRisks": 0,
+    "underContextualisedClozeWithoutCue": 0,
+    "reviewOnlyEnteringNormalPractice": 0
+  },
+  "activeRuntimeContractPass": true,
+  "legacyScriptResultPath": "docs/qa/v0.85.5_runtime_display_contract_lock_results.json",
+  "legacyScriptFinalDecision": "RUNTIME_DISPLAY_CONTRACT_PARTIAL_NEEDS_REPAIR",
+  "legacyScriptAcceptancePassed": false,
+  "legacyScriptNote": "The legacy script retains its v0.85.5 partial verdict label, but its active runtime defect counts are zero under v0.85.11.",
+  "classifiedIssueCounts": {
+    "realRuntimeDefects": 0,
+    "runtimeGuardAlreadyHandles": 451,
+    "staticFalsePositives": 0,
+    "needsSourceCleanupLater": 3636,
+    "reviewOnlySafe": 2990,
+    "sourceCleanupCandidateRows": 4087
+  },
+  "pass": true
+}

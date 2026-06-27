@@ -1,0 +1,14 @@
+{
+  "patch": "v0.85.11",
+  "version": {
+    "appVersion": "v0.85.11",
+    "exportVersion": "v0.85.11-final-regression-live-readiness"
+  },
+  "recommendationReadsManifest": false,
+  "recommendationForbiddenClaims": [],
+  "reviewQueueMakesRecommendationsMoreConfident": false,
+  "metadataManifestMakesRecommendationsMoreConfident": false,
+  "skillMatrixLearningMapMasteryReadinessClaimsFound": false,
+  "forbiddenActiveLearnerFacingClaimsFound": [],
+  "pass": true
+}

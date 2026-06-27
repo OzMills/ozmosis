@@ -2,13 +2,13 @@
 
 ## 1. Current Baseline
 
-Current runtime baseline: `v0.85.10`.
+Current runtime baseline: `v0.85.11`.
 
-Current acceptance status: v0.85.10 accepted Review Queue Resolution after the v0.85.9 metadata manifest migration. It loaded 15,139 source queue rows, deduplicated them into 10,421 unified queue rows, resolved 5,003 rows, separated 3,565 quarantined/no-action rows, 1,145 production-wait rows, 300 metadata-deferred rows, 338 active targeted-repair rows, and 70 active human-review rows, with 0 stale rows and 0 unresolved rows.
+Current acceptance status: v0.85.11 accepted the local final regression gate after the v0.85.10 review queue pass. The review queue counts reflected the package exactly, route-pool and known-row gates passed locally, and the v0.85.7-v0.85.10 regression chain remained preserved. Live GitHub Pages returned HTTP 404, so the gate result is local-ready but live-check blocked.
 
-Current gate result: `REVIEW_QUEUE_RESOLUTION_ACCEPTED`.
+Current gate result: `LOCAL_READY_LIVE_CHECK_BLOCKED`.
 
-Next required patch: `v0.85.11 - Final Regression and Live Readiness Gate`.
+Next required patch: `v0.85.11-live - Deployment/Live Check Follow-up`.
 
 ## 2. Completed Foundation
 
@@ -69,7 +69,8 @@ This summary is not a replacement for `CHANGELOG-FULL-OZMOSIS.txt`.
 - `v0.85.9` - Metadata Manifest Migration
 - `v0.85.10` - Review Queue Resolution Pass
 - `v0.85.11` - Final Regression and Live Readiness Gate
-- `v0.86` - Production Completion Pass, blocked until v0.85.11 reports `READY_FOR_V0.86`
+- `v0.85.11-live` - Deployment/Live Check Follow-up
+- `v0.86` - Production Completion Pass, blocked until live deployment/readiness is confirmed or project policy explicitly allows local-package readiness without live confirmation
 - `v0.87` - Redemittel Completion Pass
 - `v0.88` - Wortschatz + Content QA Batch
 - `v0.89` - B1 Coverage Stabilisation + Review Coverage Readiness
@@ -137,8 +138,9 @@ Stop if the hub fails.
 - Feedback Cleanup: Contrast Notes and Micro-rules is implemented and accepted as v0.85.8.
 - Metadata Manifest Migration is implemented and accepted as v0.85.9.
 - Review Queue Resolution Pass is implemented and accepted as v0.85.10.
-- Final Regression and Live Readiness Gate is the next allowed implementation patch as v0.85.11.
-- Production Completion Pass is blocked until the final v0.85.x readiness gate reports `READY_FOR_V0.86`.
+- Final Regression and Live Readiness Gate is implemented as v0.85.11 with local readiness accepted and live GitHub Pages unavailable at the checked URL.
+- Deployment/Live Check Follow-up is the next allowed patch as v0.85.11-live.
+- Production Completion Pass is blocked until live deployment/readiness is confirmed or project policy explicitly allows local-package readiness without live confirmation.
 - Weakness repair must wait until Skill Matrix and task-depth evidence are stable.
 - Durability/spaced review must wait until enough reviewable B1 coverage exists.
 - External Review must wait until production cards and save/import are stable.

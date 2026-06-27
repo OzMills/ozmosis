@@ -1,0 +1,48 @@
+{
+  "patch": "v0.85.11",
+  "version": {
+    "appVersion": "v0.85.11",
+    "exportVersion": "v0.85.11-final-regression-live-readiness"
+  },
+  "v0857ClozeCueRegression": {
+    "pass": true,
+    "checkedRows": 23,
+    "failures": []
+  },
+  "v0858FeedbackRegression": {
+    "pass": true,
+    "checkedRows": 23,
+    "failures": []
+  },
+  "v0859MetadataManifestRegression": {
+    "pass": true,
+    "manifestEntryCount": 7230,
+    "expectedItemIds": 7230,
+    "duplicateItemIds": 0,
+    "missingFromManifestCount": 0,
+    "extraInManifestCount": 0,
+    "recommendationReadsManifest": false
+  },
+  "v08510ReviewQueueRegression": {
+    "pass": true,
+    "reflectionPass": true,
+    "bucketSum": 10421,
+    "unifiedQueueRows": 10421,
+    "unresolvedRows": 0,
+    "counts": {
+      "docs/qa/v0.85.10_review_queue_unified.csv": 10421,
+      "docs/qa/v0.85.10_review_queue_resolution_decisions.csv": 15139,
+      "docs/qa/v0.85.10_review_queue_resolved_rows.csv": 5003,
+      "docs/qa/v0.85.10_review_queue_current_active_repair_rows.csv": 338,
+      "docs/qa/v0.85.10_review_queue_current_human_review_rows.csv": 70,
+      "docs/qa/v0.85.10_review_queue_quarantined_no_action_rows.csv": 3565,
+      "docs/qa/v0.85.10_review_queue_production_wait_rows.csv": 1145,
+      "docs/qa/v0.85.10_review_queue_metadata_deferred_rows.csv": 300,
+      "docs/qa/v0.85.10_review_queue_stale_rows.csv": 0,
+      "docs/qa/v0.85.10_review_queue_unresolved_rows.csv": 0,
+      "docs/qa/v0.85.10_review_queue_source_inventory.csv": 12
+    }
+  },
+  "learnerFacingContentSilentlyChanged": false,
+  "pass": true
+}

@@ -1,0 +1,367 @@
+{
+  "patch": "v0.85.11",
+  "version": {
+    "appVersion": "v0.85.11",
+    "exportVersion": "v0.85.11-final-regression-live-readiness"
+  },
+  "method": "Microsoft Edge headless via Chrome DevTools Protocol",
+  "viewports": [
+    {
+      "width": 320,
+      "height": 568,
+      "homeOverflow": false,
+      "menuOpenClick": {
+        "clicked": true,
+        "id": "menuToggle",
+        "text": "☰"
+      },
+      "menuOpened": true,
+      "menuCloseClick": {
+        "clicked": true,
+        "id": "menuCloseBtn",
+        "text": "×"
+      },
+      "menuClosed": true,
+      "sprintClicked": true,
+      "answerControlsReachable": true,
+      "openState": {
+        "title": "Ozmosis",
+        "url": "http://127.0.0.1:61059/index.html",
+        "version": {
+          "appVersion": "v0.85.11",
+          "exportVersion": "v0.85.11-final-regression-live-readiness"
+        },
+        "bodyOverflow": false,
+        "docOverflow": false,
+        "text": "☰\nOzmosis\nRecommended Task\nRECOMMENDED TASK\nB1.14 Practice\n>\n?\nFirst visit?\nTest yourself to let us know your level\nMini-Test\nSkip\nB1 Practice\nB1.1\nPractical Admin\nAppointments • Callbacks • Availability\n★0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n>\nB1.2\nCourse and Work Starting Point\nChoices • Contracts • Starting at work\n★0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n>\n★ 0%\nAll Practice\nS",
+        "menuOpen": true,
+        "hasCheck": true,
+        "hasNext": false,
+        "hasExport": true,
+        "hasImport": true,
+        "hasAnswer": true,
+        "activeInputDir": "ltr",
+        "bodyDir": "ltr"
+      },
+      "closedState": {
+        "title": "Ozmosis",
+        "url": "http://127.0.0.1:61059/index.html",
+        "version": {
+          "appVersion": "v0.85.11",
+          "exportVersion": "v0.85.11-final-regression-live-readiness"
+        },
+        "bodyOverflow": false,
+        "docOverflow": false,
+        "text": "☰\nOzmosis\nRecommended Task\nRECOMMENDED TASK\nB1.14 Practice\n>\n?\nFirst visit?\nTest yourself to let us know your level\nMini-Test\nSkip\nB1 Practice\nB1.1\nPractical Admin\nAppointments • Callbacks • Availability\n★0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n>\nB1.2\nCourse and Work Starting Point\nChoices • Contracts • Starting at work\n★0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n>\n★ 0%\nAll Practice\nS",
+        "menuOpen": false,
+        "hasCheck": true,
+        "hasNext": false,
+        "hasExport": true,
+        "hasImport": true,
+        "hasAnswer": true,
+        "activeInputDir": "ltr",
+        "bodyDir": "ltr"
+      },
+      "pass": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "homeOverflow": false,
+      "menuOpenClick": {
+        "clicked": true,
+        "id": "menuToggle",
+        "text": "☰"
+      },
+      "menuOpened": true,
+      "menuCloseClick": {
+        "clicked": true,
+        "id": "menuCloseBtn",
+        "text": "×"
+      },
+      "menuClosed": true,
+      "sprintClicked": true,
+      "answerControlsReachable": true,
+      "openState": {
+        "title": "Ozmosis",
+        "url": "http://127.0.0.1:61059/index.html",
+        "version": {
+          "appVersion": "v0.85.11",
+          "exportVersion": "v0.85.11-final-regression-live-readiness"
+        },
+        "bodyOverflow": false,
+        "docOverflow": false,
+        "text": "☰\nOzmosis\nRecommended Task\nRECOMMENDED TASK\nB1.14 Practice\n>\n?\nFirst visit?\nTest yourself to let us know your level\nMini-Test\nSkip\nB1 Practice\nB1.1\nPractical Admin\nAppointments • Callbacks • Availability\n★0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n>\nB1.2\nCourse and Work Starting Point\nChoices • Contracts • Starting at work\n★0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n>\n★ 0%\nAll Practice\nS",
+        "menuOpen": true,
+        "hasCheck": true,
+        "hasNext": false,
+        "hasExport": true,
+        "hasImport": true,
+        "hasAnswer": true,
+        "activeInputDir": "ltr",
+        "bodyDir": "ltr"
+      },
+      "closedState": {
+        "title": "Ozmosis",
+        "url": "http://127.0.0.1:61059/index.html",
+        "version": {
+          "appVersion": "v0.85.11",
+          "exportVersion": "v0.85.11-final-regression-live-readiness"
+        },
+        "bodyOverflow": false,
+        "docOverflow": false,
+        "text": "☰\nOzmosis\nRecommended Task\nRECOMMENDED TASK\nB1.14 Practice\n>\n?\nFirst visit?\nTest yourself to let us know your level\nMini-Test\nSkip\nB1 Practice\nB1.1\nPractical Admin\nAppointments • Callbacks • Availability\n★0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n>\nB1.2\nCourse and Work Starting Point\nChoices • Contracts • Starting at work\n★0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n>\n★ 0%\nAll Practice\nS",
+        "menuOpen": false,
+        "hasCheck": true,
+        "hasNext": false,
+        "hasExport": true,
+        "hasImport": true,
+        "hasAnswer": true,
+        "activeInputDir": "ltr",
+        "bodyDir": "ltr"
+      },
+      "pass": true
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "homeOverflow": false,
+      "menuOpenClick": {
+        "clicked": true,
+        "id": "menuToggle",
+        "text": "☰"
+      },
+      "menuOpened": true,
+      "menuCloseClick": {
+        "clicked": true,
+        "id": "menuCloseBtn",
+        "text": "×"
+      },
+      "menuClosed": true,
+      "sprintClicked": true,
+      "answerControlsReachable": true,
+      "openState": {
+        "title": "Ozmosis",
+        "url": "http://127.0.0.1:61059/index.html",
+        "version": {
+          "appVersion": "v0.85.11",
+          "exportVersion": "v0.85.11-final-regression-live-readiness"
+        },
+        "bodyOverflow": false,
+        "docOverflow": false,
+        "text": "☰\nOzmosis\nRecommended Task\nRECOMMENDED TASK\nB1.14 Practice\n>\n?\nFirst visit?\nTest yourself to let us know your level\nMini-Test\nSkip\nB1 Practice\nB1.1\nPractical Admin\nAppointments • Callbacks • Availability\n★0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n>\nB1.2\nCourse and Work Starting Point\nChoices • Contracts • Starting at work\n★0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n>\n★ 0%\nAll Practice\nS",
+        "menuOpen": true,
+        "hasCheck": true,
+        "hasNext": false,
+        "hasExport": true,
+        "hasImport": true,
+        "hasAnswer": true,
+        "activeInputDir": "ltr",
+        "bodyDir": "ltr"
+      },
+      "closedState": {
+        "title": "Ozmosis",
+        "url": "http://127.0.0.1:61059/index.html",
+        "version": {
+          "appVersion": "v0.85.11",
+          "exportVersion": "v0.85.11-final-regression-live-readiness"
+        },
+        "bodyOverflow": false,
+        "docOverflow": false,
+        "text": "☰\nOzmosis\nRecommended Task\nRECOMMENDED TASK\nB1.14 Practice\n>\n?\nFirst visit?\nTest yourself to let us know your level\nMini-Test\nSkip\nB1 Practice\nB1.1\nPractical Admin\nAppointments • Callbacks • Availability\n★0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n>\nB1.2\nCourse and Work Starting Point\nChoices • Contracts • Starting at work\n★0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n>\n★ 0%\nAll Practice\nS",
+        "menuOpen": false,
+        "hasCheck": true,
+        "hasNext": false,
+        "hasExport": true,
+        "hasImport": true,
+        "hasAnswer": true,
+        "activeInputDir": "ltr",
+        "bodyDir": "ltr"
+      },
+      "pass": true
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "homeOverflow": false,
+      "menuOpenClick": {
+        "clicked": true,
+        "id": "menuToggle",
+        "text": "☰"
+      },
+      "menuOpened": true,
+      "menuCloseClick": {
+        "clicked": true,
+        "id": "menuCloseBtn",
+        "text": "×"
+      },
+      "menuClosed": true,
+      "sprintClicked": true,
+      "answerControlsReachable": true,
+      "openState": {
+        "title": "Ozmosis",
+        "url": "http://127.0.0.1:61059/index.html",
+        "version": {
+          "appVersion": "v0.85.11",
+          "exportVersion": "v0.85.11-final-regression-live-readiness"
+        },
+        "bodyOverflow": false,
+        "docOverflow": false,
+        "text": "☰\nOzmosis\nRecommended Task\nRECOMMENDED TASK\nB1.14 Practice\n>\n?\nFirst visit?\nTest yourself to let us know your level\nMini-Test\nSkip\nB1 Practice\nB1.1\nPractical Admin\nAppointments • Callbacks • Availability\n★0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n>\nB1.2\nCourse and Work Starting Point\nChoices • Contracts • Starting at work\n★0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n>\n★ 0%\nAll Practice\nS",
+        "menuOpen": true,
+        "hasCheck": true,
+        "hasNext": false,
+        "hasExport": true,
+        "hasImport": true,
+        "hasAnswer": true,
+        "activeInputDir": "ltr",
+        "bodyDir": "ltr"
+      },
+      "closedState": {
+        "title": "Ozmosis",
+        "url": "http://127.0.0.1:61059/index.html",
+        "version": {
+          "appVersion": "v0.85.11",
+          "exportVersion": "v0.85.11-final-regression-live-readiness"
+        },
+        "bodyOverflow": false,
+        "docOverflow": false,
+        "text": "☰\nOzmosis\nRecommended Task\nRECOMMENDED TASK\nB1.14 Practice\n>\n?\nFirst visit?\nTest yourself to let us know your level\nMini-Test\nSkip\nB1 Practice\nB1.1\nPractical Admin\nAppointments • Callbacks • Availability\n★0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n>\nB1.2\nCourse and Work Starting Point\nChoices • Contracts • Starting at work\n★0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n>\n★ 0%\nAll Practice\nS",
+        "menuOpen": false,
+        "hasCheck": true,
+        "hasNext": false,
+        "hasExport": true,
+        "hasImport": true,
+        "hasAnswer": true,
+        "activeInputDir": "ltr",
+        "bodyDir": "ltr"
+      },
+      "pass": true
+    },
+    {
+      "width": 1365,
+      "height": 599,
+      "homeOverflow": false,
+      "menuOpenClick": {
+        "clicked": true,
+        "id": "menuToggle",
+        "text": "☰"
+      },
+      "menuOpened": true,
+      "menuCloseClick": {
+        "clicked": true,
+        "id": "menuCloseBtn",
+        "text": "×"
+      },
+      "menuClosed": true,
+      "sprintClicked": true,
+      "answerControlsReachable": true,
+      "openState": {
+        "title": "Ozmosis",
+        "url": "http://127.0.0.1:61059/index.html",
+        "version": {
+          "appVersion": "v0.85.11",
+          "exportVersion": "v0.85.11-final-regression-live-readiness"
+        },
+        "bodyOverflow": false,
+        "docOverflow": false,
+        "text": "☰\nOzmosis\nRecommended Task\nRECOMMENDED TASK\nB1.14 Practice\n>\n?\nFirst visit?\nTest yourself to let us know your level\nMini-Test\nSkip\nB1 Practice\nB1.1\nPractical Admin\nAppointments • Callbacks • Availability\n★0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n>\nB1.2\nCourse and Work Starting Point\nChoices • Contracts • Starting at work\n★0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n>\n★ 0%\nAll Practice\nS",
+        "menuOpen": true,
+        "hasCheck": true,
+        "hasNext": false,
+        "hasExport": true,
+        "hasImport": true,
+        "hasAnswer": true,
+        "activeInputDir": "ltr",
+        "bodyDir": "ltr"
+      },
+      "closedState": {
+        "title": "Ozmosis",
+        "url": "http://127.0.0.1:61059/index.html",
+        "version": {
+          "appVersion": "v0.85.11",
+          "exportVersion": "v0.85.11-final-regression-live-readiness"
+        },
+        "bodyOverflow": false,
+        "docOverflow": false,
+        "text": "☰\nOzmosis\nRecommended Task\nRECOMMENDED TASK\nB1.14 Practice\n>\n?\nFirst visit?\nTest yourself to let us know your level\nMini-Test\nSkip\nB1 Practice\nB1.1\nPractical Admin\nAppointments • Callbacks • Availability\n★0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n>\nB1.2\nCourse and Work Starting Point\nChoices • Contracts • Starting at work\n★0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n>\n★ 0%\nAll Practice\nS",
+        "menuOpen": false,
+        "hasCheck": true,
+        "hasNext": false,
+        "hasExport": true,
+        "hasImport": true,
+        "hasAnswer": true,
+        "activeInputDir": "ltr",
+        "bodyDir": "ltr"
+      },
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "homeOverflow": false,
+      "menuOpenClick": {
+        "clicked": true,
+        "id": "menuToggle",
+        "text": "☰"
+      },
+      "menuOpened": true,
+      "menuCloseClick": {
+        "clicked": true,
+        "id": "menuCloseBtn",
+        "text": "×"
+      },
+      "menuClosed": true,
+      "sprintClicked": true,
+      "answerControlsReachable": true,
+      "openState": {
+        "title": "Ozmosis",
+        "url": "http://127.0.0.1:61059/index.html",
+        "version": {
+          "appVersion": "v0.85.11",
+          "exportVersion": "v0.85.11-final-regression-live-readiness"
+        },
+        "bodyOverflow": false,
+        "docOverflow": false,
+        "text": "☰\nOzmosis\nRecommended Task\nRECOMMENDED TASK\nB1.14 Practice\n>\n?\nFirst visit?\nTest yourself to let us know your level\nMini-Test\nSkip\nB1 Practice\nB1.1\nPractical Admin\nAppointments • Callbacks • Availability\n★0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n>\nB1.2\nCourse and Work Starting Point\nChoices • Contracts • Starting at work\n★0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n>\n★ 0%\nAll Practice\nS",
+        "menuOpen": true,
+        "hasCheck": true,
+        "hasNext": false,
+        "hasExport": true,
+        "hasImport": true,
+        "hasAnswer": true,
+        "activeInputDir": "ltr",
+        "bodyDir": "ltr"
+      },
+      "closedState": {
+        "title": "Ozmosis",
+        "url": "http://127.0.0.1:61059/index.html",
+        "version": {
+          "appVersion": "v0.85.11",
+          "exportVersion": "v0.85.11-final-regression-live-readiness"
+        },
+        "bodyOverflow": false,
+        "docOverflow": false,
+        "text": "☰\nOzmosis\nRecommended Task\nRECOMMENDED TASK\nB1.14 Practice\n>\n?\nFirst visit?\nTest yourself to let us know your level\nMini-Test\nSkip\nB1 Practice\nB1.1\nPractical Admin\nAppointments • Callbacks • Availability\n★0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n>\nB1.2\nCourse and Work Starting Point\nChoices • Contracts • Starting at work\n★0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n★\n0%\n>\n★ 0%\nAll Practice\nS",
+        "menuOpen": false,
+        "hasCheck": true,
+        "hasNext": false,
+        "hasExport": true,
+        "hasImport": true,
+        "hasAnswer": true,
+        "activeInputDir": "ltr",
+        "bodyDir": "ltr"
+      },
+      "pass": true
+    }
+  ],
+  "requiredViewports": [
+    "320x568",
+    "390x844",
+    "430x932",
+    "768x1024",
+    "1365x599",
+    "1440x900"
+  ],
+  "pass": true
+}

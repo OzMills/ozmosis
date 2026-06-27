@@ -1,0 +1,22 @@
+{
+  "patch": "v0.85.11",
+  "version": {
+    "appVersion": "v0.85.11",
+    "exportVersion": "v0.85.11-final-regression-live-readiness"
+  },
+  "method": "Microsoft Edge headless via Chrome DevTools Protocol",
+  "arabic": {
+    "arabicClicked": {
+      "clicked": true,
+      "text": "ARالعربية"
+    },
+    "bodyDir": "ltr",
+    "inputDir": "ltr",
+    "germanNodes": [],
+    "overflow": false,
+    "pass": true
+  },
+  "germanContentRemainsLtr": true,
+  "menuAndOptionsReachable": true,
+  "pass": true
+}

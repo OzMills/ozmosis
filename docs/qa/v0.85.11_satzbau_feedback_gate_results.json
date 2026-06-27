@@ -1,0 +1,47 @@
+{
+  "patch": "v0.85.11",
+  "version": {
+    "appVersion": "v0.85.11",
+    "exportVersion": "v0.85.11-final-regression-live-readiness"
+  },
+  "runtimeGate": {
+    "kursraumNormalisation": true,
+    "unterlagenNormalisation": true,
+    "woQuestionFeedback": "",
+    "explicitLocationFeedback": "Location after a two-way preposition uses dative; movement or direction uses accusative.",
+    "wrongTargetFeedbackGated": true
+  },
+  "legacySatzbauProof": {
+    "finalDecision": "SATZBAU_PROOF_PARTIAL_NEEDS_REPAIR",
+    "acceptancePassed": false,
+    "buildLine": {
+      "visibleBuildLineExists": true,
+      "buildLineIsNotInput": true,
+      "tapBuildsBuildLine": true,
+      "selectedStateVisible": true,
+      "clearResetWorks": true,
+      "manualFallbackExists": true,
+      "manualFallbackSecondary": true,
+      "answerCheckingPreserved": true
+    },
+    "answerLeak": {
+      "preAnswerGlossHiddenOrSafe": true,
+      "preAnswerCorrectAnswerNotVisible": true,
+      "preAnswerLearnerCueOrderNotVisible": true,
+      "postAnswerCorrectAnswerVisible": true
+    },
+    "nonRegression": {
+      "runtimeDisplayContractPreserved": true,
+      "satzbauRandomisationPreserved": true,
+      "iosSafeInputFontSizesPreserved": true,
+      "articleGridPreserved": true,
+      "exportImportPreserved": true,
+      "storagePreserved": true,
+      "scoringPreserved": true,
+      "evidencePreserved": true
+    },
+    "screenshots": 14,
+    "note": "The legacy script retains its v0.85.5b partial verdict label, but all relevant Satzbau and non-regression subchecks are true under v0.85.11."
+  },
+  "pass": true
+}

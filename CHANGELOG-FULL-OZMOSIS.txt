@@ -35,17 +35,29 @@ This is the only changelog moving forward. Do not create standalone `CHANGELOG-v
 
 Current state is based only on current repo files.
 
-- Current app version in `index.html`: `v0.85.10`
-- Current export version in `index.html`: `v0.85.10-review-queue-resolution`
+- Current app version in `index.html`: `v0.85.11`
+- Current export version in `index.html`: `v0.85.11-final-regression-live-readiness`
 - Current README: `README.md`
 - Current changelog: `CHANGELOG-FULL-OZMOSIS.txt`
 - Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_CURRENT.md`
 - Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_CURRENT.md`
-- Current QA report: `docs/qa/v0.85.10_review_queue_resolution_pass.md`
-- Current gate result: `REVIEW_QUEUE_RESOLUTION_ACCEPTED`
-- Next required patch documented in current files: `v0.85.11 - Final Regression and Live Readiness Gate`
+- Current QA report: `docs/qa/v0.85.11_final_regression_live_readiness_gate.md`
+- Current gate result: `LOCAL_READY_LIVE_CHECK_BLOCKED`
+- Next required patch documented in current files: `v0.85.11-live - Deployment/Live Check Follow-up`
 
-Live GitHub Pages was checked by the v0.85.3.8 gate and was reachable, but still served `v0.85.3.7 - Correction and Satzbau Surface Pass` before deployment/cache update. It was not rechecked during v0.85.10.
+Live GitHub Pages was checked during v0.85.11 at `https://ozmills.github.io/kasuskonsole/` and returned HTTP 404. The local package passed the regression gate, but live readiness is not confirmed.
+
+## v0.85.11 - Final Regression and Live Readiness Gate
+
+- Ran the final local v0.85.x regression gate after the accepted v0.85.10 Review Queue Resolution Pass.
+- Verified the v0.85.10 review queue summary still reflects the package: 15,139 source rows loaded, 10,421 unified rows, 5,003 resolved rows, 3,565 quarantined/no-action rows, 1,145 production-wait rows, 300 metadata-deferred rows, 338 active targeted-repair rows, 70 active human-review rows, 0 stale rows, 0 unresolved rows, and 4,718 duplicate/superseded rows.
+- Re-ran route-pool integrity, known-problem-row, metadata manifest, cloze/feedback, runtime display-contract, Satzbau, browser route, responsive, Arabic/LTR, export/import, and package-hygiene gates locally.
+- Preserved learner-facing German content, item IDs, answer keys, accepted answers, choices, scoring, evidence semantics, storage keys, export/import, production self-marking, route-pool eligibility, v0.85.7 cloze repairs, v0.85.8 feedback repairs, v0.85.9 metadata manifest behaviour, v0.85.10 review queue outputs, content banks, route composition, and B1-only active scope.
+- Reported live GitHub Pages as unavailable because `https://ozmills.github.io/kasuskonsole/` returned HTTP 404.
+- Set the final readiness verdict to `LOCAL_READY_LIVE_CHECK_BLOCKED`.
+- Added QA documentation at `docs/qa/v0.85.11_final_regression_live_readiness_gate.md`.
+- Kept the canonical documentation convention: no `README-v0_85_11.md`, no `CHANGELOG-v0_85_11.txt`, and no versioned v0.85.11 source brief or roadmap.
+- Set the next planned patch to `v0.85.11-live - Deployment/Live Check Follow-up`.
 
 ## v0.85.10 - Review Queue Resolution Pass
 

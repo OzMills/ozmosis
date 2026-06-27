@@ -1,0 +1,38 @@
+{
+  "patch": "v0.85.11",
+  "version": {
+    "appVersion": "v0.85.11",
+    "exportVersion": "v0.85.11-final-regression-live-readiness"
+  },
+  "preBumpExportVersionVerifiedByStartingGate": "v0.85.10-review-queue-resolution",
+  "postBumpExportVersionVerified": "v0.85.11-final-regression-live-readiness",
+  "runtimeStaticExportImport": {
+    "payloadIsObject": true,
+    "validationOk": true,
+    "staticApplyOk": false,
+    "staticApplyReason": "browser storage error",
+    "malformedRejected": true,
+    "malformedReason": "missing Ozmosis save data"
+  },
+  "browserExportImport": {
+    "payloadIsObject": true,
+    "validationOk": true,
+    "applyOk": true,
+    "malformedRejected": true,
+    "malformedReason": "missing Ozmosis save data",
+    "hasExportBtn": true,
+    "hasImportBtn": true
+  },
+  "protectedStorageKeysPresent": {
+    "ozmosis_b1_sprint_progress_v1": true,
+    "ozmosis_b1_progress_evidence_v1": true,
+    "ozmosis_b1_path_unlock_overrides_v1": true,
+    "ozmosis_b1_review_edit_queue_v1": true,
+    "ozmosis_b1_progress_summary_v1": true
+  },
+  "storageKeysChanged": false,
+  "exportImportFormatChanged": false,
+  "fileChooserManualFlowRun": false,
+  "malformedImportRejected": true,
+  "pass": true
+}

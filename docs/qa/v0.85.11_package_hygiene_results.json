@@ -1,0 +1,35 @@
+{
+  "patch": "v0.85.11",
+  "version": {
+    "appVersion": "v0.85.11",
+    "exportVersion": "v0.85.11-final-regression-live-readiness"
+  },
+  "inlineScriptsParsed": 1,
+  "contentScriptsParsed": 26,
+  "articleTsvRows": 36,
+  "protectedStorageKeysPresent": {
+    "ozmosis_b1_sprint_progress_v1": true,
+    "ozmosis_b1_progress_evidence_v1": true,
+    "ozmosis_b1_path_unlock_overrides_v1": true,
+    "ozmosis_b1_review_edit_queue_v1": true,
+    "ozmosis_b1_progress_summary_v1": true
+  },
+  "forbiddenVersionedDocsPresent": [],
+  "dependencyOrBuildFilesPresent": [],
+  "typeModuleMatches": 0,
+  "dynamicImportMatches": 0,
+  "existingFetchMatches": 1,
+  "newRuntimeFetchRequirementAdded": false,
+  "backendApiRuntimeAiAdded": false,
+  "b2ActiveFlowActivated": false,
+  "canonicalDocsCurrent": {
+    "README.md": true,
+    "CHANGELOG-FULL-OZMOSIS.txt": true,
+    "AGENTS.md": true,
+    "docs/OZMOSIS_SOURCE_BRIEF_CURRENT.md": true,
+    "docs/OZMOSIS_DEVELOPMENT_ROADMAP_CURRENT.md": true
+  },
+  "historicalVersionedDocsUntouchedByConvention": true,
+  "failures": [],
+  "pass": true
+}

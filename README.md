@@ -9,24 +9,41 @@ Future README updates should be made in this file. Do not create new `README-v*.
 
 ## Current App
 
-# Ozmosis v0.85.10 Review Queue Resolution Pass
+# Ozmosis v0.85.11 Final Regression and Live Readiness Gate
 
 Ozmosis is a static, local-first German learning app. The deployed app remains `index.html`.
+
+v0.85.11 is the final local regression gate for the v0.85.x stabilisation sequence. It verifies that the accepted v0.85.10 review-queue baseline still reflects the package, that route pools remain clean, and that the v0.85.7-v0.85.10 repairs remain preserved. The local package is ready, but the live GitHub Pages URL returned 404 during this gate, so v0.86 remains blocked until live deployment/readiness is followed up.
+
+- Runtime app version: `v0.85.11`
+- Runtime export version: `v0.85.11-final-regression-live-readiness`
+- Current gate result: `LOCAL_READY_LIVE_CHECK_BLOCKED`
+- Core result: v0.85.10 review queue counts reflected exactly: 15,139 source queue rows loaded, 10,421 unified rows after dedupe, 5,003 resolved rows, 3,565 quarantined/no-action rows, 1,145 production-wait rows, 300 metadata-deferred rows, 338 active targeted-repair rows, 70 active human-review rows, 0 stale rows, 0 unresolved rows, and 4,718 duplicate/superseded source rows.
+- Runtime preservation result: route-pool integrity, known problem rows, v0.85.7 cloze repairs, v0.85.8 feedback repairs, v0.85.9 manifest lookup, v0.85.10 queue outputs, Satzbau normalisation, wrong-target Wechselpraeposition feedback gating, runtime display-contract counts, browser route smoke, responsive smoke, Arabic/LTR smoke, and export/import remain preserved locally.
+- Live result: `https://ozmills.github.io/kasuskonsole/` returned HTTP 404, so live readiness is not confirmed by this gate.
+
+## Current v0.85.11 docs
+
+- Changelog: `CHANGELOG-FULL-OZMOSIS.txt`
+- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_CURRENT.md`
+- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_CURRENT.md`
+- Current QA gate: `docs/qa/v0.85.11_final_regression_live_readiness_gate.md`
+- Reflection check JSON: `docs/qa/v0.85.11_v08510_reflection_check.json`
+- Package hygiene JSON: `docs/qa/v0.85.11_package_hygiene_results.json`
+- Browser acceptance JSON: `docs/qa/v0.85.11_browser_acceptance_results.json`
+- Live GitHub Pages check JSON: `docs/qa/v0.85.11_live_github_pages_check.json`
+
+Next planned patch: `v0.85.11-live - Deployment/Live Check Follow-up`.
+
+## Previous v0.85.10 Review Queue Resolution Pass
 
 v0.85.10 resolves the historical review queues into current action buckets using the v0.85.9 metadata manifest. It consolidates, deduplicates, and classifies queue rows without rewriting learner-facing German content, answers, choices, scoring, evidence, route pools, production self-marking, export/import, or B1-only active scope.
 
 - Runtime app version: `v0.85.10`
 - Runtime export version: `v0.85.10-review-queue-resolution`
-- Current gate result: `REVIEW_QUEUE_RESOLUTION_ACCEPTED`
+- Gate result: `REVIEW_QUEUE_RESOLUTION_ACCEPTED`
 - Core result: 15,139 source queue rows loaded, 10,421 unified rows after dedupe, 5,003 resolved rows, 3,565 quarantined/no-action rows, 1,145 production-wait rows, 300 metadata-deferred rows, 338 active targeted-repair rows, 70 active human-review rows, 0 stale rows, 0 unresolved rows, and 4,718 duplicate/superseded source rows.
 - Runtime preservation result: route-pool integrity, known problem rows, v0.85.7 cloze repairs, v0.85.8 feedback repairs, v0.85.9 manifest lookup, Satzbau normalisation, wrong-target Wechselpraeposition feedback gating, runtime display-contract counts, browser route smoke, responsive smoke, Arabic/LTR smoke, and export/import remain preserved.
-
-## Current v0.85.10 docs
-
-- Changelog: `CHANGELOG-FULL-OZMOSIS.txt`
-- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_CURRENT.md`
-- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_CURRENT.md`
-- Current QA gate: `docs/qa/v0.85.10_review_queue_resolution_pass.md`
 - Source inventory CSV: `docs/qa/v0.85.10_review_queue_source_inventory.csv`
 - Unified queue CSV: `docs/qa/v0.85.10_review_queue_unified.csv`
 - Resolution decisions CSV: `docs/qa/v0.85.10_review_queue_resolution_decisions.csv`
@@ -36,8 +53,6 @@ v0.85.10 resolves the historical review queues into current action buckets using
 - Human review CSV: `docs/qa/v0.85.10_review_queue_current_human_review_rows.csv`
 - Production wait CSV: `docs/qa/v0.85.10_review_queue_production_wait_rows.csv`
 - Metadata deferred CSV: `docs/qa/v0.85.10_review_queue_metadata_deferred_rows.csv`
-
-Next planned patch: `v0.85.11 - Final Regression and Live Readiness Gate`.
 
 ## Previous v0.85.9 Metadata Manifest Migration
 

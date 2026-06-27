@@ -1,0 +1,15 @@
+{
+  "patch": "v0.85.11",
+  "url": "https://ozmills.github.io/kasuskonsole/",
+  "method": "PowerShell Invoke-WebRequest -UseBasicParsing",
+  "status": "LIVE_UNAVAILABLE",
+  "httpStatus": 404,
+  "error": "The remote server returned an error: (404) Not Found.",
+  "localPackageVersion": {
+    "appVersion": "v0.85.11",
+    "exportVersion": "v0.85.11-final-regression-live-readiness"
+  },
+  "deploymentChanged": false,
+  "passForLiveReadiness": false,
+  "notes": "Network access succeeded, but the live GitHub Pages URL returned 404, so live readiness cannot be confirmed."
+}

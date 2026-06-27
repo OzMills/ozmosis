@@ -2,13 +2,13 @@
 
 ## Current Patch Status
 
-Current runtime baseline: `v0.85.10`.
+Current runtime baseline: `v0.85.11`.
 
-Current gate result: `REVIEW_QUEUE_RESOLUTION_ACCEPTED`.
+Current gate result: `LOCAL_READY_LIVE_CHECK_BLOCKED`.
 
-Next required patch: `v0.85.11 - Final Regression and Live Readiness Gate`.
+Next required patch: `v0.85.11-live - Deployment/Live Check Follow-up`.
 
-Current patch summary: v0.85.10 completed Review Queue Resolution by loading 15,139 source queue rows, deduplicating them into 10,421 unified rows, and separating them into resolved, quarantined/no-action, production-wait, metadata-deferred, active-targeted-repair, and active-human-review outputs. It preserves learner-facing content, item IDs, answer keys, accepted answers, choices, scoring, evidence, storage keys, export/import, route-pool eligibility, production isolation, v0.85.7 cloze repairs, v0.85.8 feedback repairs, v0.85.9 metadata manifest behaviour, and the B1-only active scope.
+Current patch summary: v0.85.11 completed the final local v0.85.x regression gate after v0.85.10. It verified the review queue counts, route-pool integrity, known problem rows, v0.85.7 cloze repairs, v0.85.8 feedback repairs, v0.85.9 metadata manifest behaviour, v0.85.10 queue outputs, runtime display-contract behaviour, Satzbau normalisation, feedback gating, browser route smoke, responsive smoke, Arabic/LTR, export/import, storage keys, scoring, evidence, content bank preservation, and package hygiene. Live GitHub Pages returned HTTP 404, so v0.86 remains blocked until live deployment/readiness is followed up or project policy explicitly allows local-package readiness without live confirmation.
 
 ## 1. Project Identity
 
@@ -170,11 +170,11 @@ Deferred features must not be forgotten or implemented early:
 
 ## 11. Current Baseline
 
-Current runtime baseline: `v0.85.10`.
+Current runtime baseline: `v0.85.11`.
 
-Current acceptance status: v0.85.10 accepted Review Queue Resolution after the v0.85.9 metadata manifest migration. It resolved or separated all available review queue rows without changing prompts, stimuli, answer keys, accepted answers, item IDs, choices, scoring, evidence, storage, export/import, production isolation, route-pool integrity, or B1-only active scope.
+Current acceptance status: v0.85.11 locally accepted the final regression gate and preserved the v0.85.10 Review Queue Resolution baseline. Live GitHub Pages was unavailable at the checked URL, so the final readiness verdict is `LOCAL_READY_LIVE_CHECK_BLOCKED`.
 
-Next required patch: `v0.85.11 - Final Regression and Live Readiness Gate`.
+Next required patch: `v0.85.11-live - Deployment/Live Check Follow-up`.
 
 Current planning handoff:
 
@@ -208,5 +208,5 @@ Current planning handoff:
 - Feedback Cleanup: Contrast Notes and Micro-rules has been implemented and accepted as v0.85.8.
 - Metadata Manifest Migration has been implemented and accepted as v0.85.9.
 - Review Queue Resolution Pass has been implemented and accepted as v0.85.10.
-- Final Regression and Live Readiness Gate is next as v0.85.11.
-- Production Completion Pass remains blocked until v0.85.11 reports `READY_FOR_V0.86`.
+- Final Regression and Live Readiness Gate has been implemented as v0.85.11 with local gates passing and live GitHub Pages returning HTTP 404.
+- Production Completion Pass remains blocked until live deployment/readiness is followed up or current project policy explicitly allows local-package readiness without live confirmation.
