@@ -35,17 +35,40 @@ This is the only changelog moving forward. Do not create standalone `CHANGELOG-v
 
 Current state is based only on current repo files.
 
-- Current app version in `index.html`: `v0.86`
-- Current export version in `index.html`: `v0.86-production-completion`
+- Current app version in `index.html`: `v0.87`
+- Current export version in `index.html`: `v0.87-redemittel-completion`
 - Current README: `README.md`
 - Current changelog: `CHANGELOG-FULL-OZMOSIS.txt`
 - Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_CURRENT.md`
 - Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_CURRENT.md`
-- Current QA report: `docs/qa/v0.86_production_completion_pass.md`
-- Current gate result: `PRODUCTION_COMPLETION_ACCEPTED`
-- Next required patch documented in current files: `v0.87 - Redemittel Completion Pass`
+- Current QA report: `docs/qa/v0.87_redemittel_completion_pass.md`
+- Current gate result: `REDEMITTEL_COMPLETION_ACCEPTED`
+- Next required patch documented in current files: `v0.88 - Wortschatz + Content QA Batch`
 
 Canonical live URL: `https://ozmills.github.io/ozmosis/`. The legacy `https://ozmills.github.io/kasuskonsole/` path returns HTTP 404 and is not the current app path.
+
+## v0.87 - Redemittel Completion Pass
+
+- Completed and stabilised the dedicated Redemittel practice layer without broad content generation.
+- Audited 90 routed Redemittel rows: 83 normal auto-graded rows and 7 explicit self-marked production cards.
+- Confirmed Mixed Redemittel, Formal Email, Appointment, Request, Complaint, Application, Illness / Absence, Polite Requests, and Self-marked Production all pass the route-pool gate.
+- Preserved normal auto-graded Redemittel isolation: production/self-marked rows, review-only rows, inactive rows, quarantined rows, and `normalAutoGradedPracticeEligible === false` rows remain excluded from normal Redemittel practice.
+- Preserved Redemittel production semantics: `I can't do this now` records no evidence, and `I practised this` records self-marked production evidence only and remains not star-rated.
+- Added compact Redemittel function/register task instructions for normal Redemittel practice, such as formal email, appointment, request, complaint, application, illness / absence, and polite request.
+- Clarified the Redemittel Home and route-hub copy so the route reads as phrase-function practice and the production subroute is visibly self-marked with no auto-grading.
+- Created Redemittel QA artefacts:
+  - `docs/qa/v0.87_redemittel_inventory.csv`
+  - `docs/qa/v0.87_redemittel_inventory_summary.json`
+  - `docs/qa/v0.87_redemittel_route_pool_audit.csv`
+  - `docs/qa/v0.87_redemittel_completion_decisions.csv`
+  - `docs/qa/v0.87_redemittel_gate_results.json`
+  - `docs/qa/v0.87_redemittel_browser_gate_results.json`
+  - `docs/qa/v0.87_redemittel_completion_pass.md`
+- Final Edge/CDP validation confirms the v0.87 Home, Settings, Learning Map, Redemittel hub, Export Save, and Import Save surfaces. The final browser gate stopped before active Redemittel item-flow, so active-flow final-browser validation is documented as a known limitation in the QA report.
+- Preserved scoring, auto-graded evidence semantics, confidence values, support-level semantics, diagnostic evidence semantics, production self-marking, Today’s B1 Sprint composition, content banks, item IDs, answer keys, accepted answers, choices/options, protected storage keys, export/import structure, B1-only active scope, GitHub Pages compatibility, and canonical README/changelog convention.
+- Did not add Redemittel rows; no new dependencies, backend, build step, runtime AI, B2 activation, Leitner, delayed review, or flag export were added.
+- Did not create versioned v0.87 README, changelog, source brief, or roadmap files.
+- Set the next planned patch to `v0.88 - Wortschatz + Content QA Batch`.
 
 ## v0.86 - Production Completion Pass
 

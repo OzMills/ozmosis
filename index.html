@@ -10829,7 +10829,7 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
         </button>
         <button class="homeRefCard homeRefCardSmall homeThemeRedemittel" id="homeRedemittelBtn" type="button">
           <span class="homeRefIcon homeIconChat" aria-hidden="true"></span>
-          <span class="homeRefText"><span class="homeRouteLabel">Redemittel</span><span class="homeRouteSub">Email &middot; Appointments</span></span>
+          <span class="homeRefText"><span class="homeRouteLabel">Redemittel</span><span class="homeRouteSub">Email &middot; appointments &middot; requests</span></span>
           <span class="homeRefArrow" aria-hidden="true">&gt;</span>
         </button>
       </div>
@@ -10947,7 +10947,7 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
       <button class="homeNavButton" id="redemittelApplicationBtn" type="button"><span class="homeNavBadge">Topic drill</span><span class="homeNavMain"><span class="homeNavTitle">Application</span><span class="homeNavSub">Experience · strengths · documents</span></span></button>
       <button class="homeNavButton" id="redemittelIllnessBtn" type="button"><span class="homeNavBadge">Topic drill</span><span class="homeNavMain"><span class="homeNavTitle">Illness / Absence</span><span class="homeNavSub">Sick note · absence · appointment</span></span></button>
       <button class="homeNavButton" id="redemittelPoliteBtn" type="button"><span class="homeNavBadge">Topic drill</span><span class="homeNavMain"><span class="homeNavTitle">Polite Requests</span><span class="homeNavSub">Konjunktiv II request forms</span></span></button>
-      <button class="homeNavButton" id="redemittelProductionBtn" type="button"><span class="homeNavBadge">Self-marked</span><span class="homeNavMain"><span class="homeNavTitle">Production Cards</span><span class="homeNavSub">Writing and speaking prompts</span></span></button>
+      <button class="homeNavButton" id="redemittelProductionBtn" type="button"><span class="homeNavBadge">Self-marked</span><span class="homeNavMain"><span class="homeNavTitle">Self-marked Production</span><span class="homeNavSub">Writing and speaking prompts &middot; no auto-grading</span></span></button>
     </nav>
     <button class="homeBackButton" id="redemittelBackBtn" type="button">Back</button>
   </section>
@@ -11604,8 +11604,8 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
   var B1_PATH_UNLOCK_STORAGE_KEY = "ozmosis_b1_path_unlock_overrides_v1";
   var B1_REVIEW_EDIT_QUEUE_STORAGE_KEY = "ozmosis_b1_review_edit_queue_v1";
   var B1_EVIDENCE_RECORD_LIMIT = 1000;
-  var OZMOSIS_APP_VERSION = "v0.86";
-  var OZMOSIS_EXPORT_VERSION = "v0.86-production-completion";
+  var OZMOSIS_APP_VERSION = "v0.87";
+  var OZMOSIS_EXPORT_VERSION = "v0.87-redemittel-completion";
   var PROGRESS_STATE_LABEL_VERSION = "v1";
   var B1_EVIDENCE_SESSION_ID = "b1sess_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 8);
   var B1_EVIDENCE_SEQUENCE = 0;
@@ -24706,11 +24706,67 @@ body.b1Mode[data-b1-surface="satzbau"] .satzbauClearBtn:disabled {
     }
     return issues.filter(function(issue, index, arr){ return issue && arr.indexOf(issue) === index; });
   }
+  function b1DisplayItemIsRedemittel(item) {
+    if (!item) return false;
+    var bankKey = b1DisplayBankKeyForItem(item);
+    if (bankKey === "redemittel") return true;
+    if (item.contentBankKey === "redemittel" || item.bankKey === "redemittel" || item.routeKey === "redemittel") return true;
+    if (item.grammarDomain === "redemittel") return true;
+    return /redemittel/i.test(String(item.itemType || item.taskType || ""));
+  }
+  function b1RedemittelFunctionLabel(item) {
+    var section = String(item && (item.section || item.category || item.courseDomain) || "");
+    var labels = {
+      formal_email:"formal email",
+      appointment:"appointment",
+      request:"request",
+      complaint:"complaint",
+      application:"application",
+      illness_absence:"illness / absence",
+      polite_requests:"polite request",
+      production:"production"
+    };
+    if (labels[section]) return labels[section];
+    var tags = Array.isArray(item && item.tags) ? item.tags.map(function(tag){ return String(tag || "").toLowerCase(); }) : [];
+    if (tags.indexOf("email") !== -1) return "email";
+    if (tags.indexOf("appointment") !== -1) return "appointment";
+    if (tags.indexOf("request") !== -1) return "request";
+    if (tags.indexOf("complaint") !== -1) return "complaint";
+    if (tags.indexOf("application") !== -1) return "application";
+    if (tags.indexOf("illness") !== -1 || tags.indexOf("absence") !== -1) return "illness / absence";
+    return "";
+  }
+  function b1RedemittelRegisterLabel(item) {
+    var section = String(item && item.section || "");
+    var tags = Array.isArray(item && item.tags) ? item.tags.map(function(tag){ return String(tag || "").toLowerCase(); }) : [];
+    if (section === "formal_email") return "";
+    if (section === "polite_requests") return "polite";
+    if (tags.indexOf("formal") !== -1) return "formal";
+    if (tags.indexOf("polite") !== -1) return "polite";
+    return "";
+  }
+  function b1RedemittelSurfaceInstruction(item) {
+    if (!item) return "practice the phrase";
+    if (item.itemType === "redemittel_cloze" || item.itemType === "phrase_cloze") return "complete the phrase";
+    if (b1UsesChoices(item)) return "choose the best phrase";
+    if (item.itemType === "error_repair") return "repair the phrase";
+    return "practice the phrase";
+  }
+  function b1RedemittelInstructionForItem(item) {
+    var parts = ["Redemittel"];
+    var functionLabel = b1RedemittelFunctionLabel(item);
+    var register = b1RedemittelRegisterLabel(item);
+    if (functionLabel) parts.push(functionLabel);
+    if (register && functionLabel.indexOf(register) === -1) parts.push(register);
+    parts.push(b1RedemittelSurfaceInstruction(item));
+    return parts.join(" - ") + ".";
+  }
   function b1DisplayInstructionForItem(item, model) {
     if (item && item.instruction_de) return b1DisplayClean(item.instruction_de);
     if (item && item.itemType === "production_card") return b1ProductionDisplaySegments(item).instruction || "Produziere eine kurze B1-Antwort.";
     if (item && item.itemType === "error_repair") return item.taskType === "Umformen" ? "Forme den Satz um." : "Korrigiere den Satz.";
     if (b1IsSatzbauItem(item)) return "Bilde den Satz.";
+    if (b1DisplayItemIsRedemittel(item)) return b1RedemittelInstructionForItem(item);
     if (b1IsTypedCloze(item)) return "Ergänze den Satz.";
     if (b1DisplayChoiceLikelyUsesMeaningCue(item)) return "Welche Form passt zur Bedeutung?";
     if (b1UsesChoices(item)) return "Wähle die passende Form.";

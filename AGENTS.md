@@ -6,15 +6,15 @@ Ozmosis is a static, dependency-free German learning app deployed through GitHub
 
 Ozmosis was formerly called Kasuskonsole. Historical notes may still use that name, but current user-facing and repo-facing language should use `Ozmosis`.
 
-Current working version: `v0.86`.
+Current working version: `v0.87`.
 
-Current runtime baseline: `v0.86`.
+Current runtime baseline: `v0.87`.
 
-Current gate result: `PRODUCTION_COMPLETION_ACCEPTED`.
+Current gate result: `REDEMITTEL_COMPLETION_ACCEPTED`.
 
-Next planned patch: `v0.87 - Redemittel Completion Pass`
+Next planned patch: `v0.88 - Wortschatz + Content QA Batch`
 
-v0.86 status: accepted. Production / Writing / Speaking practice is available as an explicit self-marked route.
+v0.87 status: accepted. Redemittel practice is route-pool audited, function-labelled, and production-isolated.
 
 Current README: `README.md`
 
@@ -24,7 +24,7 @@ Current source brief: `docs/OZMOSIS_SOURCE_BRIEF_CURRENT.md`
 
 Current roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_CURRENT.md`
 
-Current QA gate: `docs/qa/v0.86_production_completion_pass.md`
+Current QA gate: `docs/qa/v0.87_redemittel_completion_pass.md`
 
 README/changelog convention: one canonical root `README.md` and one canonical `CHANGELOG-FULL-OZMOSIS.txt`. Do not create versioned README/changelog files moving forward unless the user explicitly asks for a standalone export.
 

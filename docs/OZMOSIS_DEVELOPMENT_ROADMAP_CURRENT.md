@@ -2,13 +2,13 @@
 
 ## 1. Current Baseline
 
-Current runtime baseline: `v0.86`.
+Current runtime baseline: `v0.87`.
 
-Current acceptance status: v0.86 Production Completion Pass accepted. Production / Writing / Speaking is available as explicit self-marked practice, while normal auto-graded route pools remain isolated from production rows. The canonical live URL remains `https://ozmills.github.io/ozmosis/`; it served v0.85.11 during the v0.86 live check.
+Current acceptance status: v0.87 Redemittel Completion Pass accepted. Redemittel practice is route-pool audited, function-labelled, and production-isolated; normal Redemittel routes remain auto-graded only and Redemittel production remains self-marked only.
 
-Current gate result: `PRODUCTION_COMPLETION_ACCEPTED`.
+Current gate result: `REDEMITTEL_COMPLETION_ACCEPTED`.
 
-Next required patch: `v0.87 - Redemittel Completion Pass`.
+Next required patch: `v0.88 - Wortschatz + Content QA Batch`.
 
 ## 2. Completed Foundation
 
@@ -28,7 +28,7 @@ The current foundation includes:
 - B1 Path/star progress;
 - import/export save workflow;
 - route isolation baseline;
-- focused route-bank coverage for Cases and Articles, Prepositions, Word Order, and Connectors.
+- focused route-bank coverage for Cases and Articles, Prepositions, Word Order, Connectors, and Redemittel.
 
 This summary is not a replacement for `CHANGELOG-FULL-OZMOSIS.txt`.
 
@@ -144,7 +144,7 @@ Stop if the hub fails.
 - Deployment/Live Check Follow-up is implemented as v0.85.11-live. `/ozmosis/` serves v0.85.11; `/kasuskonsole/` returns 404.
 - Canonical Live URL / Pages Path Decision is implemented as v0.85.11-live-url, with missing QA artefacts backfilled in v0.85.11-live-url-a. `/ozmosis/` is accepted as canonical.
 - Production Completion Pass is implemented as v0.86.
-- Redemittel Completion Pass is the next planned patch as v0.87.
+- Redemittel Completion Pass is implemented and accepted as v0.87.
 - Weakness repair must wait until Skill Matrix and task-depth evidence are stable.
 - Durability/spaced review must wait until enough reviewable B1 coverage exists.
 - External Review must wait until production cards and save/import are stable.

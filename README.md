@@ -9,31 +9,43 @@ Future README updates should be made in this file. Do not create new `README-v*.
 
 ## Current App
 
-# Ozmosis v0.86 Production Completion Pass
+# Ozmosis v0.87 Redemittel Completion Pass
 
 Ozmosis is a static, local-first German learning app. The deployed app remains `index.html`.
+
+v0.87 completes and stabilises the Redemittel practice layer. Redemittel now has an audited 90-row routed bank: 83 normal auto-graded phrase/cloze/choice rows and 7 explicit self-marked production cards. Normal Redemittel routes stay auto-graded only, production cards stay self-marked only, and mixed Redemittel items now show a compact function/register instruction before the task.
+
+- Runtime app version: `v0.87`
+- Runtime export version: `v0.87-redemittel-completion`
+- Current gate result: `REDEMITTEL_COMPLETION_ACCEPTED`
+- Redemittel inventory result: 90 routed Redemittel rows found; 83 safe for normal auto-graded Redemittel routes; 7 safe for explicit self-marked Redemittel production; 0 production rows leak into normal Redemittel practice.
+- Redemittel route result: Mixed, Formal Email, Appointment, Request, Complaint, Application, Illness / Absence, Polite Requests, and Self-marked Production all pass the route-pool gate.
+- Browser validation note: final Edge/CDP validation confirms the v0.87 Home, Settings, Learning Map, Redemittel hub, Export Save, and Import Save surfaces. The final browser gate stopped before active Redemittel item-flow, so active-flow browser coverage is documented as a known limitation in the QA report.
+- Runtime preservation result: scoring, confidence values, protected localStorage keys, export/import structure, normal auto-graded pools, route-pool exclusions, content banks, item IDs, answer keys, accepted answers, choices, B1-only active scope, v0.85.9 metadata manifest lookup, v0.85.10 review queue parse, and v0.85.11 live URL decision remain preserved.
+- Canonical live URL: `https://ozmills.github.io/ozmosis/`
+- Legacy path: `https://ozmills.github.io/kasuskonsole/` returns HTTP 404 and is not the current live app.
+
+## Current v0.87 docs
+
+- Changelog: `CHANGELOG-FULL-OZMOSIS.txt`
+- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_CURRENT.md`
+- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_CURRENT.md`
+- Current QA gate: `docs/qa/v0.87_redemittel_completion_pass.md`
+- Redemittel inventory CSV: `docs/qa/v0.87_redemittel_inventory.csv`
+- Redemittel inventory summary JSON: `docs/qa/v0.87_redemittel_inventory_summary.json`
+- Redemittel route-pool audit CSV: `docs/qa/v0.87_redemittel_route_pool_audit.csv`
+- Redemittel browser gate JSON: `docs/qa/v0.87_redemittel_browser_gate_results.json`
+
+Next planned patch: `v0.88 - Wortschatz + Content QA Batch`.
+
+## Previous v0.86 Production Completion Pass
 
 v0.86 completes the explicit Production / Writing / Speaking practice route. Production cards are self-marked only: learners can reveal useful phrases, self-check guidance, and an example answer, then mark `I practised this` or skip with `I can't do this now`. Production practice does not create correctness, score, or star evidence.
 
 - Runtime app version: `v0.86`
 - Runtime export version: `v0.86-production-completion`
-- Current gate result: `PRODUCTION_COMPLETION_ACCEPTED`
+- Gate result: `PRODUCTION_COMPLETION_ACCEPTED`
 - Production inventory result: 321 production/self-marked rows found; 196 safe for the explicit production route; 125 blocked/deferred; 0 production rows eligible for normal auto-graded practice.
-- Runtime preservation result: scoring, confidence values, protected localStorage keys, export/import structure, normal auto-graded pools, route-pool exclusions, content banks, item IDs, answer keys, accepted answers, choices, B1-only active scope, v0.85.9 metadata manifest lookup, v0.85.10 review queue parse, and v0.85.11 live URL decision remain preserved.
-- Canonical live URL: `https://ozmills.github.io/ozmosis/`
-- Legacy path: `https://ozmills.github.io/kasuskonsole/` returns HTTP 404 and is not the current live app.
-
-## Current v0.86 docs
-
-- Changelog: `CHANGELOG-FULL-OZMOSIS.txt`
-- Source brief: `docs/OZMOSIS_SOURCE_BRIEF_CURRENT.md`
-- Roadmap: `docs/OZMOSIS_DEVELOPMENT_ROADMAP_CURRENT.md`
-- Current QA gate: `docs/qa/v0.86_production_completion_pass.md`
-- Production inventory CSV: `docs/qa/v0.86_production_inventory.csv`
-- Production inventory summary JSON: `docs/qa/v0.86_production_inventory_summary.json`
-- Production browser gate JSON: `docs/qa/v0.86_production_browser_gate_results.json`
-
-Next planned patch: `v0.87 - Redemittel Completion Pass`.
 
 ## Previous v0.85.10 Review Queue Resolution Pass
 

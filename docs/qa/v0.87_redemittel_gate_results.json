@@ -1,0 +1,136 @@
+{
+  "patch": "v0.87",
+  "title": "Redemittel Completion Pass",
+  "appVersion": "v0.87",
+  "exportVersion": "v0.87-redemittel-completion",
+  "versionState": "final",
+  "inlineScriptCount": 1,
+  "contentFilesParsed": 26,
+  "articleTsv": {
+    "rows": 36,
+    "columns": 11
+  },
+  "requiredV086QaPresent": true,
+  "protectedStorageKeysPresent": true,
+  "routePoolFailures": [],
+  "routePoolLimited": [],
+  "inventory": {
+    "totalRedemittelSignalRows": 90,
+    "dedicatedRedemittelRows": 90,
+    "autoGradedDedicatedRows": 83,
+    "productionDedicatedRows": 7,
+    "routePools": {
+      "mixed": {
+        "safeRowCount": 83,
+        "blockedRowCount": 7,
+        "productionLeakCount": 0,
+        "autoGradedLeakCount": 0,
+        "verdict": "PASS"
+      },
+      "formal_email": {
+        "safeRowCount": 15,
+        "blockedRowCount": 0,
+        "productionLeakCount": 0,
+        "autoGradedLeakCount": 0,
+        "verdict": "PASS"
+      },
+      "appointment": {
+        "safeRowCount": 12,
+        "blockedRowCount": 0,
+        "productionLeakCount": 0,
+        "autoGradedLeakCount": 0,
+        "verdict": "PASS"
+      },
+      "request": {
+        "safeRowCount": 12,
+        "blockedRowCount": 0,
+        "productionLeakCount": 0,
+        "autoGradedLeakCount": 0,
+        "verdict": "PASS"
+      },
+      "complaint": {
+        "safeRowCount": 12,
+        "blockedRowCount": 0,
+        "productionLeakCount": 0,
+        "autoGradedLeakCount": 0,
+        "verdict": "PASS"
+      },
+      "application": {
+        "safeRowCount": 12,
+        "blockedRowCount": 0,
+        "productionLeakCount": 0,
+        "autoGradedLeakCount": 0,
+        "verdict": "PASS"
+      },
+      "illness_absence": {
+        "safeRowCount": 10,
+        "blockedRowCount": 0,
+        "productionLeakCount": 0,
+        "autoGradedLeakCount": 0,
+        "verdict": "PASS"
+      },
+      "polite_requests": {
+        "safeRowCount": 10,
+        "blockedRowCount": 0,
+        "productionLeakCount": 0,
+        "autoGradedLeakCount": 0,
+        "verdict": "PASS"
+      },
+      "production": {
+        "safeRowCount": 7,
+        "blockedRowCount": 0,
+        "productionLeakCount": 0,
+        "autoGradedLeakCount": 0,
+        "verdict": "PASS"
+      }
+    },
+    "byTaskType": {
+      "redemittel_cloze": 55,
+      "phrase_choice": 13,
+      "Kontrast": 15,
+      "production_card": 7
+    },
+    "byFunction": {
+      "email": 15,
+      "appointment": 12,
+      "request": 12,
+      "complaint": 12,
+      "application": 12,
+      "illness/absence": 10,
+      "polite request": 10,
+      "production": 7
+    },
+    "byRegister": {
+      "formal email": 15,
+      "neutral": 50,
+      "polite": 14,
+      "polite/formal": 10,
+      "formal": 1
+    },
+    "rowsNeedingAction": 0,
+    "manifest": {
+      "present": true,
+      "entryCount": 7230,
+      "duplicateItemIds": 0
+    }
+  },
+  "checks": {
+    "noVersionedV087Docs": true,
+    "noTypeModule": true,
+    "noDynamicImport": true,
+    "redemittelProductionIsolated": true,
+    "redemittelProductionOnlySelfMarked": true,
+    "itemIdsUnique": true,
+    "manifestPresent": true,
+    "manifestDuplicateIds": 0
+  },
+  "outputs": [
+    "docs/qa/v0.87_redemittel_inventory.csv",
+    "docs/qa/v0.87_redemittel_inventory_summary.json",
+    "docs/qa/v0.87_redemittel_route_pool_audit.csv",
+    "docs/qa/v0.87_redemittel_completion_decisions.csv",
+    "docs/qa/v0.87_redemittel_gate_results.json"
+  ],
+  "failures": [],
+  "acceptancePassed": true
+}

@@ -2,13 +2,13 @@
 
 ## Current Patch Status
 
-Current runtime baseline: `v0.86`.
+Current runtime baseline: `v0.87`.
 
-Current gate result: `PRODUCTION_COMPLETION_ACCEPTED`.
+Current gate result: `REDEMITTEL_COMPLETION_ACCEPTED`.
 
-Next required patch: `v0.87 - Redemittel Completion Pass`.
+Next required patch: `v0.88 - Wortschatz + Content QA Batch`.
 
-Current patch summary: v0.86 completes explicit Production / Writing / Speaking practice. Production cards are opened intentionally, remain self-marked only, and do not create correctness, score, confidence, or star evidence. The production inventory found 321 production/self-marked rows, with 196 safe for the explicit production route and 125 blocked/deferred. Normal auto-graded pools remain isolated from production rows. The canonical live URL remains `https://ozmills.github.io/ozmosis/`; it served v0.85.11 during this patch’s live check. The legacy `https://ozmills.github.io/kasuskonsole/` path returned HTTP 404 in this environment.
+Current patch summary: v0.87 completes and stabilises the dedicated Redemittel practice layer. The routed Redemittel bank has 90 rows: 83 normal auto-graded phrase/cloze/choice rows and 7 explicit self-marked production cards. All Redemittel subroutes pass the route-pool gate, normal Redemittel practice excludes production rows, and production Redemittel remains self-marked only. Redemittel practice now shows compact function/register task instructions without changing scoring, evidence semantics, storage keys, content-bank IDs, answer keys, accepted answers, or Today’s B1 Sprint composition.
 
 ## 1. Project Identity
 
@@ -170,11 +170,11 @@ Deferred features must not be forgotten or implemented early:
 
 ## 11. Current Baseline
 
-Current runtime baseline: `v0.86`.
+Current runtime baseline: `v0.87`.
 
-Current acceptance status: v0.86 Production Completion Pass accepted. Production is available as an explicit self-marked practice route, and normal auto-graded pools remain isolated from production rows.
+Current acceptance status: v0.87 Redemittel Completion Pass accepted. Redemittel subroutes are route-pool audited, normal Redemittel practice remains auto-graded only, and Redemittel production remains self-marked only.
 
-Next required patch: `v0.87 - Redemittel Completion Pass`.
+Next required patch: `v0.88 - Wortschatz + Content QA Batch`.
 
 Current planning handoff:
 
@@ -212,4 +212,4 @@ Current planning handoff:
 - Deployment / Live Check Follow-up has been implemented as v0.85.11-live. The current app is live at `/ozmosis/`, while `/kasuskonsole/` returns 404.
 - Canonical Live URL / Pages Path Decision has been implemented as v0.85.11-live-url, with missing QA artefacts backfilled in v0.85.11-live-url-a. `/ozmosis/` is accepted as canonical.
 - Production Completion Pass has been implemented as v0.86.
-- Redemittel Completion Pass is the next planned patch as v0.87.
+- Redemittel Completion Pass has been implemented and accepted as v0.87.

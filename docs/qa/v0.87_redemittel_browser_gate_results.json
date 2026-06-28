@@ -1,0 +1,51 @@
+{
+  "patch": "v0.87",
+  "title": "Redemittel Browser Gate",
+  "browser": "Edge/CDP",
+  "localServer": "http://127.0.0.1:52122/index.html",
+  "consoleErrors": [],
+  "runtimeExceptions": [],
+  "routeSmoke": {
+    "home": {
+      "appVersion": "v0.87",
+      "exportVersion": "v0.87-redemittel-completion",
+      "homeVisible": true,
+      "homeRedemittelSub": "RedemittelEmail · appointments · requests\n          >"
+    },
+    "menuOpenClose": {
+      "opened": true,
+      "closed": true
+    },
+    "settingsOptions": {
+      "settingsVisible": true,
+      "exportSaveVisible": true,
+      "importSaveVisible": true,
+      "saveHelpersPresent": true
+    },
+    "learningMapSkillMatrix": {
+      "learningMapVisible": true,
+      "matrixTextPresent": true
+    },
+    "redemittelHub": {
+      "visible": true,
+      "productionCopy": "Self-markedSelf-marked ProductionWriting and speaking prompts · no auto-grading",
+      "subrouteCount": 9
+    }
+  },
+  "redemittelFlow": {},
+  "productionFlow": {},
+  "responsive": {},
+  "arabicLtr": {},
+  "exportImportUi": {
+    "settingsVisible": true,
+    "exportSaveVisible": true,
+    "importSaveVisible": true,
+    "saveHelpersPresent": true
+  },
+  "testsNotRun": [
+    "Browser execution of save validation/import apply was not run in the final gate because invoking the save helpers hung headless CDP; Export Save / Import Save UI and helper presence were verified, and v0.87 does not change export/import code."
+  ],
+  "acceptancePassed": false,
+  "generatedAt": "2026-06-27T23:54:34.179Z",
+  "currentStep": "done:redemittelHub"
+}
